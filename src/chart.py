@@ -78,15 +78,15 @@ def epoch_to_num(open_time_ms: int) -> float:
 
 
 def render_pattern_chart(klines: List[Kline], pattern: Pattern,
-                         candles: int = 120,
-                         width_px: int = 900,
+                         candles: int = 80,
+                         width_px: int = 1000,
                          dpi: int = 120,
                          max_bytes: int = 1_887_436) -> Optional[bytes]:
     """
     渲染形态标注图，返回 PNG 字节。
 
     参数：
-      candles   —— 图上显示最近多少根K线
+      candles   —— 图上显示最近多少根K线（默认 80，权衡清晰度 vs 跨度）
       width_px  —— 图宽度（像素）
       dpi       —— 渲染DPI
       max_bytes —— 大小上限（默认1.8MB，企微硬限制是2MB）
@@ -96,7 +96,7 @@ def render_pattern_chart(klines: List[Kline], pattern: Pattern,
     if not klines or len(klines) < 10:
         return None
 
-    height_px = int(width_px * 0.58)
+    height_px = int(width_px * 0.65)
     fig_w = width_px / float(dpi)
     fig_h = height_px / float(dpi)
 
@@ -133,8 +133,9 @@ def _render(klines, pattern, candles, fig_w, fig_h, dpi) -> Optional[bytes]:
     times = [epoch_to_num(k.openTime) for k in tail]
     n = len(tail)
 
-    # ---------- 1. K线（手绘，不依赖已废弃的 mpl_finance）----------
-    bar_width = 0.6 * (times[1] - times[0]) if n > 1 else 0.6
+    # ---------- 1. K线（手绘）----------
+    # bar_width 0.85 让柱子更宽，视觉清晰
+    bar_width = 0.85 * (times[1] - times[0]) if n > 1 else 0.85
     for i, k in enumerate(tail):
         color = UP_COLOR if k.close >= k.open else DOWN_COLOR
         body_low = min(k.open, k.close)
@@ -143,22 +144,28 @@ def _render(klines, pattern, candles, fig_w, fig_h, dpi) -> Optional[bytes]:
         if body_h <= 0:
             body_h = (k.high - k.low) * 0.02 or 1e-8
         ax.bar(times[i], body_h, bottom=body_low, width=bar_width,
-               color=color, edgecolor=color, linewidth=0.3)
-        ax.vlines(times[i], k.low, k.high, color=color,
-                  linewidth=0.6, alpha=0.8)
+               color=color, edgecolor="white", linewidth=0.4)
+        # 影线（细一些，区分于实体）
+        ax.vlines(times[i], k.low, body_low, color=color,
+                  linewidth=0.7, alpha=0.7)
+        ax.vlines(times[i], body_high, k.high, color=color,
+                  linewidth=0.7, alpha=0.7)
 
     # ---------- 2. 趋势线 / 边界 ----------
     if pattern.upper_boundary is not None:
         _draw_line(ax, pattern.upper_boundary, times[0], times[-1],
-                   BOUND_COLOR, "Upper Boundary")
+                   BOUND_COLOR, "Upper Boundary",
+                   linestyle="-", linewidth=2.0)
     if pattern.lower_boundary is not None:
         _draw_line(ax, pattern.lower_boundary, times[0], times[-1],
-                   BOUND_COLOR, "Lower Boundary")
+                   BOUND_COLOR, "Lower Boundary",
+                   linestyle="-", linewidth=2.0)
 
     # ---------- 3. 颈线 ----------
     if pattern.neckline is not None:
         _draw_line(ax, pattern.neckline, times[0], times[-1],
-                   NECK_COLOR, "Neckline", linestyle="--")
+                   NECK_COLOR, "Neckline",
+                   linestyle="--", linewidth=2.2)
 
     # ---------- 4. 摆动点 ----------
     for p in pattern.pivots:
@@ -182,41 +189,62 @@ def _render(klines, pattern, candles, fig_w, fig_h, dpi) -> Optional[bytes]:
                    label=f"Breakout {pattern.breakout_price:.4f}")
 
     # ---------- 6. 交易价位水平线 ----------
+    # 每条用不同线型+不同粗细+不同 alpha，标准化让眼睛瞬间分清
+    if pattern.entry_price > 0:
+        ax.axhline(pattern.entry_price, color="#333333", linestyle="-",
+                   linewidth=1.2, alpha=0.85,
+                   label=f"Entry {pattern.entry_price:.4f}")
+    if pattern.stop_loss > 0:
+        ax.axhline(pattern.stop_loss, color=SL_COLOR, linestyle="--",
+                   linewidth=1.5, alpha=0.9,
+                   label=f"Stop {pattern.stop_loss:.4f}")
     if pattern.take_profit_1 > 0:
-        ax.axhline(pattern.take_profit_1, color=TP1_COLOR, linestyle=":",
-                   linewidth=1.0, alpha=0.7,
+        ax.axhline(pattern.take_profit_1, color=TP1_COLOR, linestyle="-.",
+                   linewidth=1.5, alpha=0.9,
                    label=f"TP1 {pattern.take_profit_1:.4f}")
     if pattern.take_profit_2 > 0:
         ax.axhline(pattern.take_profit_2, color=TP2_COLOR, linestyle=":",
-                   linewidth=1.0, alpha=0.45,
+                   linewidth=1.5, alpha=0.75,
                    label=f"TP2 {pattern.take_profit_2:.4f}")
-    if pattern.stop_loss > 0:
-        ax.axhline(pattern.stop_loss, color=SL_COLOR, linestyle="-.",
-                   linewidth=1.0, alpha=0.55,
-                   label=f"Stop {pattern.stop_loss:.4f}")
-    if pattern.entry_price > 0:
-        ax.axhline(pattern.entry_price, color="#5F5E5A", linestyle="-",
-                   linewidth=0.8, alpha=0.5,
-                   label=f"Entry {pattern.entry_price:.4f}")
 
-    # ---------- 7. 装帧 ----------
+    # ---------- 7. 三角形填充（让收敛形态一眼可辨）----------
+    if (pattern.upper_boundary is not None and
+            pattern.lower_boundary is not None):
+        # 只在两条边界都覆盖的时间段内填充
+        u_x_min = min(pattern.upper_boundary.p1.index,
+                      pattern.lower_boundary.p1.index)
+        u_x_max = max(pattern.upper_boundary.p2.index,
+                      pattern.lower_boundary.p2.index)
+        fill_x0 = epoch_to_num(klines[u_x_min].openTime)
+        fill_x1 = epoch_to_num(klines[min(u_x_max, len(klines) - 1)].openTime)
+        xs = [fill_x0, fill_x1]
+        upper_y = [pattern.upper_boundary.value_at(u_x_min),
+                   pattern.upper_boundary.value_at(min(u_x_max, len(klines) - 1))]
+        lower_y = [pattern.lower_boundary.value_at(u_x_min),
+                   pattern.lower_boundary.value_at(min(u_x_max, len(klines) - 1))]
+        ax.fill_between(xs, lower_y, upper_y,
+                         color=BOUND_COLOR, alpha=0.08, zorder=2)
+
+    # ---------- 8. 装帧 ----------
     label = PATTERN_LABELS_EN.get(pattern.pattern_type, pattern.pattern_type)
     direction_en = "LONG" if pattern.direction == Direction.LONG else "SHORT"
     title = (f"{pattern.symbol}  {pattern.interval}  {label}  [{direction_en}]\n"
              f"Strength {pattern.strength_score}/100   "
              f"Confidence {pattern.confidence:.2f}   "
              f"R:R 1:{pattern.risk_reward:.2f}")
-    ax.set_title(title, fontsize=9, fontweight="bold", pad=8)
-    ax.set_ylabel("Price", fontsize=8)
+    ax.set_title(title, fontsize=11, fontweight="bold", pad=8)
+    ax.set_ylabel("Price", fontsize=9)
     ax.grid(True, alpha=0.18, linewidth=0.5)
-    ax.legend(loc="upper left", fontsize=6.5, framealpha=0.85, ncol=2)
+    # legend 放到图外右下角，避免遮 K 线
+    ax.legend(loc="center left", bbox_to_anchor=(1.01, 0.5),
+              fontsize=8, framealpha=0.9, ncol=1)
 
-    # ---------- 8. 成交量 ----------
+    # ---------- 9. 成交量 ----------
     vol_colors = [UP_COLOR if k.close >= k.open else DOWN_COLOR
                   for k in tail]
     ax_vol.bar(times, [k.volume for k in tail], width=bar_width,
-               color=vol_colors, alpha=0.55)
-    ax_vol.set_ylabel("Vol", fontsize=7)
+               color=vol_colors, alpha=0.6, edgecolor="none")
+    ax_vol.set_ylabel("Vol", fontsize=8)
     ax_vol.grid(True, alpha=0.15, linewidth=0.5)
     ax_vol.tick_params(labelsize=7)
 
@@ -228,6 +256,8 @@ def _render(klines, pattern, candles, fig_w, fig_h, dpi) -> Optional[bytes]:
     plt.setp(ax_vol.get_xticklabels(), rotation=0, ha="center")
 
     fig.tight_layout()
+    # 给右侧 legend 留空间，避免被裁掉
+    fig.subplots_adjust(right=0.78)
 
     buf = io.BytesIO()
     fig.savefig(buf, format="png", dpi=dpi, facecolor="white",
@@ -236,7 +266,8 @@ def _render(klines, pattern, candles, fig_w, fig_h, dpi) -> Optional[bytes]:
     return buf.getvalue()
 
 
-def _draw_line(ax, line, t_start, t_end, color, label, linestyle="-"):
+def _draw_line(ax, line, t_start, t_end, color, label, linestyle="-",
+               linewidth=2.0):
     """把 Line 对象画到指定时间范围上"""
     p1, p2 = line.p1, line.p2
     if p2.index == p1.index:
@@ -256,8 +287,8 @@ def _draw_line(ax, line, t_start, t_end, color, label, linestyle="-"):
     y_end = p1.price + price_slope * (t_end - t1)
 
     ax.plot([t_start, t_end], [y_start, y_end],
-            color=color, linestyle=linestyle, linewidth=1.3,
-            alpha=0.8, label=label)
+            color=color, linestyle=linestyle, linewidth=linewidth,
+            alpha=0.9, label=label)
 
 
 def test_font_availability() -> dict:
