@@ -57,7 +57,7 @@ TALIB_PATTERNS = [
 
 # 中性形态：TA-Lib 返回正数但并非看涨含义（如十字星 = 犹豫不定）
 # 这些不标注方向，避免误导
-NEUTRAL_PATTERNS = {"CDLDOJI", "CDLDRAGONFLYDOJI"}
+NEUTRAL_PATTERNS = {"CDLDOJI", "CDLDRAGONFLYDOJI", "CDLGRAVESTONEDOJI"}
 
 
 def detect_at(klines: List[Kline], index: int) -> List[str]:
