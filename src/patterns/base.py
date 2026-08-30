@@ -121,6 +121,9 @@ class Pattern:
     resonant_with: List[str] = field(default_factory=list)
     conflict_with: List[str] = field(default_factory=list)
 
+    # 单K线确认（TA-Lib 蜡烛图形态，如 "吞没形态(看涨)"）
+    candle_confirmations: List[str] = field(default_factory=list)
+
     def boundary_at(self, index: int) -> Optional[float]:
         """
         返回该形态在指定 K 线处的突破判定边界。

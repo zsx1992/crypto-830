@@ -5,3 +5,4 @@ requests>=2.31.0          # 调用 Binance / OKX 公开 REST API
 PyYAML>=6.0               # 解析 config.yaml
 matplotlib>=3.7.0         # 渲染形态标注图（Agg 后端，无需显示设备）
 numpy>=1.24.0             # matplotlib 依赖 + 数值计算
+TA-Lib>=0.4.28            # 单K线蜡烛图形态（60种）；装不上时自动降级为内置numpy实现

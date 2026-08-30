@@ -251,8 +251,38 @@ class SignalScorer:
         for dim, val in dims.items():
             total += val * self.weights.get(dim, 0.0)
 
-        p.strength_score = int(round(total * 100))
+        # 单K线确认加成（TA-Lib 蜡烛图形态，最多 ±8 分）
+        total += self._score_candle_confirmation(p)
+
+        # 封顶 100
+        p.strength_score = int(round(min(total, 1.0) * 100))
         return p.strength_score
+
+    @staticmethod
+    def _score_candle_confirmation(p: Pattern) -> float:
+        """
+        突破K线的蜡烛图形态与突破方向是否一致。
+
+        方向一致（如做多 + 看涨吞没）→ +0.08（8分）
+        方向冲突（如做多 + 流星线）   → -0.06
+        无确认                          → 0
+        """
+        candles = getattr(p, "candle_confirmations", [])
+        if not candles:
+            return 0.0
+        bullish = any("看涨" in c for c in candles)
+        bearish = any("看跌" in c for c in candles)
+        if p.direction == Direction.LONG:
+            if bullish:
+                return 0.08
+            if bearish:
+                return -0.06
+        else:
+            if bearish:
+                return 0.08
+            if bullish:
+                return -0.06
+        return 0.0
 
     def grade(self, score: int) -> str:
         """分档"""

@@ -160,6 +160,12 @@ class WeComNotifier:
             f"`{', '.join(p.resonant_with) if p.resonant_with else '无'}`",
         ])
 
+        # 单K线确认（TA-Lib）
+        candle_cf = getattr(p, "candle_confirmations", [])
+        if candle_cf:
+            lines.append("> K线确认: "
+                         f"`{', '.join(candle_cf)}`")
+
         lines.extend([
             ">",
             f"> {self.disclaimer}",

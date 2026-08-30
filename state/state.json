@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "lastScanAt": "2026-08-30T08:59:42.493760+00:00",
+  "pushedSignals": [
+    {
+      "symbol": "TRIAUSDT",
+      "patternType": "descending_triangle",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 100,
+      "detectedAt": "2026-08-30T08:59:41.064680+00:00",
+      "pushedAt": "2026-08-30T08:59:41.064680+00:00",
+      "cooldownUntil": "2026-08-30T16:59:41.064680+00:00",
+      "signalHash": "6e757033a83184b9"
+    },
+    {
+      "symbol": "ZKPUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 80,
+      "detectedAt": "2026-08-30T08:59:41.868797+00:00",
+      "pushedAt": "2026-08-30T08:59:41.868797+00:00",
+      "cooldownUntil": "2026-08-30T10:59:41.868797+00:00",
+      "signalHash": "3e5e455732186698"
+    },
+    {
+      "symbol": "ENAUSDT",
+      "patternType": "symmetrical_triangle",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 75,
+      "detectedAt": "2026-08-30T08:59:42.493675+00:00",
+      "pushedAt": "2026-08-30T08:59:42.493675+00:00",
+      "cooldownUntil": "2026-08-31T08:59:42.493675+00:00",
+      "signalHash": "127943e2c7cbba6e"
+    }
+  ],
+  "scanStats": {
+    "scanned_pairs": 119,
+    "failed_pairs": 1,
+    "candidates": 335,
+    "confirmed": 71,
+    "after_scoring": 3,
+    "after_dedup": 3,
+    "pushed": 3,
+    "duration_seconds": 50.8,
+    "source_stats": {
+      "okx": 119
+    },
+    "health_stats": {
+      "healthy": 101,
+      "sensitive": 18
+    }
+  }
+}

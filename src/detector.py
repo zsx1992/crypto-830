@@ -164,6 +164,19 @@ class PatternEngine:
             if p.breakout_index >= 0:
                 p.breakout_age = last_index - p.breakout_index
 
+        # 单K线确认（TA-Lib）：突破那根K线是不是锤子/吞没/流星等
+        try:
+            from candles import detect_at, summary as candle_summary
+            for p in candidates:
+                if p.status == PatternStatus.CONFIRMED:
+                    p.candle_confirmations = detect_at(
+                        klines, p.breakout_index)
+            if not getattr(self, "_candle_logged", False):
+                logger.info(f"[candles] K线确认引擎: {candle_summary()}")
+                self._candle_logged = True
+        except Exception as e:
+            logger.debug(f"[candles] K线确认不可用: {e}")
+
         # 检查突破是否仍然有效（防止推送已经失败的假突破）
         #
         # 实测案例：GIGGLEUSDT 4h 上升三角形在 #115 以 44.81 突破，

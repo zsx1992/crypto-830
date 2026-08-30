@@ -188,6 +188,21 @@ def _render(klines, pattern, candles, fig_w, fig_h, dpi) -> Optional[bytes]:
                    edgecolors="white", linewidths=1.0,
                    label=f"Breakout {pattern.breakout_price:.4f}")
 
+        # 单K线确认标注（TA-Lib 形态名，英文标签）
+        candle_cf = getattr(pattern, "candle_confirmations", [])
+        if candle_cf:
+            cf_en = ", ".join(c.split("(")[0] for c in candle_cf)
+            ax.annotate(
+                cf_en,
+                xy=(times[bo_rel], pattern.breakout_price),
+                xytext=(times[bo_rel] + 0.9 * bar_width,
+                        pattern.breakout_price),
+                fontsize=7.5, fontweight="bold", color=color,
+                va="center", ha="left",
+                arrowprops=dict(arrowstyle="-", color=color,
+                                lw=0.6, alpha=0.6),
+            )
+
     # ---------- 6. 交易价位水平线 ----------
     # 每条用不同线型+不同粗细+不同 alpha，标准化让眼睛瞬间分清
     if pattern.entry_price > 0:
