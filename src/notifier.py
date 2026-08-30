@@ -236,6 +236,7 @@ class WeComNotifier:
 
     def _post(self, payload: dict, retry: int = 2) -> bool:
         """实际发送，失败重试"""
+        msg_type = payload.get("msgtype", "?")
         for attempt in range(retry + 1):
             try:
                 resp = requests.post(self.webhook_url, json=payload,
@@ -243,17 +244,30 @@ class WeComNotifier:
                 data = resp.json()
                 code = data.get("errcode")
                 if code == 0:
+                    logger.info(f"[notifier] {msg_type} 推送成功 -> {self._safe_url()}")
                     return True
-                logger.error(f"企微返回错误 errcode={code} "
-                             f"errmsg={data.get('errmsg')}")
+                logger.error(f"[notifier] {msg_type} 推送失败 "
+                             f"errcode={code} errmsg={data.get('errmsg')} "
+                             f"webhook={self._safe_url()}")
                 if code == 45009:      # 图片过大
-                    logger.error("图片超过 2MB 限制")
+                    logger.error("[notifier] 图片超过 2MB 限制")
                     return False
                 time.sleep(2)
             except Exception as e:
-                logger.error(f"推送请求异常 (attempt {attempt + 1}): {e}")
+                logger.error(f"[notifier] {msg_type} 推送异常 "
+                             f"(attempt {attempt + 1}): {e} "
+                             f"webhook={self._safe_url()}")
                 time.sleep(2)
         return False
+
+    def _safe_url(self) -> str:
+        """脱敏 webhook URL 用于日志：保留域名，隐藏 key"""
+        url = self.webhook_url or "(空)"
+        if "/send?key=" in url:
+            base, key = url.split("/send?key=", 1)
+            if len(key) > 8:
+                return f"{base}/send?key={key[:4]}***{key[-4:]}"
+        return url[:80] + ("..." if len(url) > 80 else "")
 
     def push_summary(self, scanned: int, candidates: int,
                      signals: int, duration: float):
@@ -272,6 +286,7 @@ class WeComNotifier:
             print(f"[DRY-RUN] 摘要: {content}")
             return True
         if not self.webhook_url:
+            logger.error("[notifier] 未配置 webhook_url，无法推送摘要")
             return False
         self.limiter.acquire()
         return self._post({"msgtype": "markdown",

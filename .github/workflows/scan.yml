@@ -61,6 +61,36 @@ jobs:
           restore-keys: |
             pattern-state-
 
+      # 验证 webhook 连通性 — 在扫描前先发一条测试消息。
+      # 如果扫描后没收到任何消息但这条收到了 → 问题是扫描器
+      # 如果这条也没收到 → 问题是 Secret 或 webhook URL
+      - name: Test WeCom webhook
+        if: env.WECOM_WEBHOOK != ''
+        env:
+          WECOM_WEBHOOK: ${{ secrets.WECOM_WEBHOOK }}
+        run: |
+          if [ -z "$WECOM_WEBHOOK" ]; then
+            echo "❌ WECOM_WEBHOOK Secret 未配置或为空"
+            exit 0
+          fi
+          # 脱敏打印（保留前8字符+后4字符）
+          SAFE=$(echo "$WECOM_WEBHOOK" | sed -E 's|(.{20}).+(.{8})|\1***\2|')
+          echo "Webhook (脱敏): $SAFE"
+          PAYLOAD='{"msgtype":"markdown","markdown":{"content":"🧪 Webhook 测试\n> 来源: GitHub Actions\n> 若你看到这条,说明 Secret → env → 企微 整条链路通了"}}'
+          HTTP_CODE=$(curl -s -o /tmp/wecom_test_resp.json -w "%{http_code}" \
+                       -H "Content-Type: application/json" \
+                       -X POST \
+                       -d "$PAYLOAD" \
+                       "$WECOM_WEBHOOK")
+          RESP=$(cat /tmp/wecom_test_resp.json)
+          echo "HTTP: $HTTP_CODE  Body: $RESP"
+          ERRCODE=$(echo "$RESP" | python -c "import sys,json;print(json.load(sys.stdin).get('errcode','?'))" 2>/dev/null || echo "?")
+          if [ "$ERRCODE" = "0" ]; then
+            echo "✅ 测试消息发送成功，请在企微群确认收到"
+          else
+            echo "❌ 测试消息发送失败 (errcode=$ERRCODE)，请检查 Secret 值是否完整正确"
+          fi
+
       - name: Run scanner
         env:
           # Webhook 地址存在 Secrets 里，不出现在此文件的明文里
