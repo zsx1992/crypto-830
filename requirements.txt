@@ -1,0 +1,7 @@
+# 运行依赖（全部免费、无需鉴权）
+# 与 .github/workflows/scan.yml 中安装的保持一致
+
+requests>=2.31.0          # 调用 Binance / OKX 公开 REST API
+PyYAML>=6.0               # 解析 config.yaml
+matplotlib>=3.7.0         # 渲染形态标注图（Agg 后端，无需显示设备）
+numpy>=1.24.0             # matplotlib 依赖 + 数值计算

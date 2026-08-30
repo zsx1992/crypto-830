@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "lastScanAt": "2026-08-30T06:39:49.801845+00:00",
+  "pushedSignals": [
+    {
+      "symbol": "AAVEUSDT",
+      "patternType": "ascending_triangle",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 95,
+      "detectedAt": "2026-08-30T06:39:43.796753+00:00",
+      "pushedAt": "2026-08-30T06:39:43.796753+00:00",
+      "cooldownUntil": "2026-08-31T06:39:43.796753+00:00",
+      "signalHash": "0c9986f7eae1849f"
+    },
+    {
+      "symbol": "GIGGLEUSDT",
+      "patternType": "ascending_triangle",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 93,
+      "detectedAt": "2026-08-30T06:39:44.348540+00:00",
+      "pushedAt": "2026-08-30T06:39:44.348540+00:00",
+      "cooldownUntil": "2026-08-30T14:39:44.348540+00:00",
+      "signalHash": "6718dd86953677dc"
+    },
+    {
+      "symbol": "DASHUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 91,
+      "detectedAt": "2026-08-30T06:39:44.798950+00:00",
+      "pushedAt": "2026-08-30T06:39:44.798950+00:00",
+      "cooldownUntil": "2026-08-30T08:39:44.798950+00:00",
+      "signalHash": "e86f0be247da80e5"
+    },
+    {
+      "symbol": "ENAUSDT",
+      "patternType": "symmetrical_triangle",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 87,
+      "detectedAt": "2026-08-30T06:39:45.284052+00:00",
+      "pushedAt": "2026-08-30T06:39:45.284052+00:00",
+      "cooldownUntil": "2026-08-31T06:39:45.284052+00:00",
+      "signalHash": "127943e2c7cbba6e"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "patternType": "symmetrical_triangle",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 85,
+      "detectedAt": "2026-08-30T06:39:45.769956+00:00",
+      "pushedAt": "2026-08-30T06:39:45.769956+00:00",
+      "cooldownUntil": "2026-08-31T06:39:45.769956+00:00",
+      "signalHash": "50093c3b98758dfc"
+    },
+    {
+      "symbol": "ZECUSDT",
+      "patternType": "falling_wedge",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 85,
+      "detectedAt": "2026-08-30T06:39:46.273683+00:00",
+      "pushedAt": "2026-08-30T06:39:46.273683+00:00",
+      "cooldownUntil": "2026-08-31T06:39:46.273683+00:00",
+      "signalHash": "a48d573feb656a5f"
+    },
+    {
+      "symbol": "UNIUSDT",
+      "patternType": "ascending_triangle",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 80,
+      "detectedAt": "2026-08-30T06:39:46.740158+00:00",
+      "pushedAt": "2026-08-30T06:39:46.740158+00:00",
+      "cooldownUntil": "2026-08-30T08:39:46.740158+00:00",
+      "signalHash": "f580cccfdd8b95de"
+    },
+    {
+      "symbol": "NILUSDT",
+      "patternType": "symmetrical_triangle",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 76,
+      "detectedAt": "2026-08-30T06:39:47.234183+00:00",
+      "pushedAt": "2026-08-30T06:39:47.234183+00:00",
+      "cooldownUntil": "2026-08-30T14:39:47.234183+00:00",
+      "signalHash": "609ce86f9841e7a1"
+    },
+    {
+      "symbol": "XAUUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 73,
+      "detectedAt": "2026-08-30T06:39:47.913586+00:00",
+      "pushedAt": "2026-08-30T06:39:47.913586+00:00",
+      "cooldownUntil": "2026-08-30T14:39:47.913586+00:00",
+      "signalHash": "1e9b9ad8f9e542b6"
+    },
+    {
+      "symbol": "XAGUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 71,
+      "detectedAt": "2026-08-30T06:39:48.361920+00:00",
+      "pushedAt": "2026-08-30T06:39:48.361920+00:00",
+      "cooldownUntil": "2026-08-30T14:39:48.361920+00:00",
+      "signalHash": "cd48edba33851991"
+    },
+    {
+      "symbol": "BTWUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 70,
+      "detectedAt": "2026-08-30T06:39:48.854125+00:00",
+      "pushedAt": "2026-08-30T06:39:48.854125+00:00",
+      "cooldownUntil": "2026-08-30T07:09:48.854125+00:00",
+      "signalHash": "6b2a2669ea23cdd8"
+    },
+    {
+      "symbol": "DASHUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 70,
+      "detectedAt": "2026-08-30T06:39:49.328009+00:00",
+      "pushedAt": "2026-08-30T06:39:49.328009+00:00",
+      "cooldownUntil": "2026-08-30T14:39:49.328009+00:00",
+      "signalHash": "ab14e473c589326e"
+    },
+    {
+      "symbol": "DOSUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 65,
+      "detectedAt": "2026-08-30T06:39:49.801792+00:00",
+      "pushedAt": "2026-08-30T06:39:49.801792+00:00",
+      "cooldownUntil": "2026-08-30T08:39:49.801792+00:00",
+      "signalHash": "3e443f3b7d8d6dd7"
+    }
+  ],
+  "scanStats": {
+    "scanned_pairs": 199,
+    "failed_pairs": 1,
+    "candidates": 492,
+    "confirmed": 113,
+    "after_scoring": 13,
+    "after_dedup": 13,
+    "pushed": 13,
+    "duration_seconds": 32.7,
+    "source_stats": {
+      "binance": 199
+    },
+    "health_stats": {
+      "healthy": 187,
+      "sensitive": 12
+    }
+  }
+}

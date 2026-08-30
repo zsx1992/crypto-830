@@ -1,0 +1,99 @@
+name: Crypto Pattern Scanner
+
+# 定时触发 + 手动触发
+on:
+  schedule:
+    # 每 15 分钟一次（UTC 时间）
+    # 注意：GitHub Actions 的 schedule 在高峰期可能延迟 1~15 分钟，
+    #       这是平台限制，无法避免。配置里的 freshness_bars 已考虑此延迟。
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+    inputs:
+      top_n:
+        description: '扫描前 N 个标的（留空用配置文件的 300）'
+        required: false
+        type: string
+      dry_run:
+        description: '干跑模式（不发送消息）'
+        required: false
+        default: false
+        type: boolean
+
+# 防止同一 job 重叠运行。
+# cancel-in-progress 设为 false：正在跑的扫描不该被新触发取消，
+# 否则会丢失本轮信号。
+concurrency:
+  group: crypto-pattern-scanner
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PYTHONUNBUFFERED: "1"
+      TZ: "UTC"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pyyaml matplotlib numpy
+
+      # 去重状态：cache 为主，git 文件为兜底
+      # cache 会被 Actions 清理（保留政策/容量上限），
+      # 所以下面还有一步 git commit 回写做永久备份
+      - name: Restore dedup state
+        id: state-cache
+        uses: actions/cache@v4
+        with:
+          path: state/
+          key: pattern-state-${{ github.run_id }}
+          restore-keys: |
+            pattern-state-
+
+      - name: Run scanner
+        env:
+          # Webhook 地址存在 Secrets 里，不出现在此文件的明文里
+          WECOM_WEBHOOK: ${{ secrets.WECOM_WEBHOOK }}
+        run: |
+          ARGS="--config config.yaml --full"
+          if [ -n "${{ github.event.inputs.top_n }}" ]; then
+            ARGS="$ARGS --top-n ${{ github.event.inputs.top_n }}"
+          fi
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          echo "运行参数: $ARGS"
+          python main.py $ARGS
+
+      - name: Persist state to repo (cache 的兜底)
+        run: |
+          git config user.name "scanner-bot"
+          git config user.email "bot@scanner.local"
+          git add state/ || true
+          if git diff --cached --quiet; then
+            echo "状态无变化，跳过提交"
+          else
+            git commit -m "chore: update scan state $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push || echo "推送失败（可能是并发冲突），不影响本次扫描"
+          fi
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scan-results-${{ github.run_id }}
+          path: |
+            output/
+            state/state.json
+          retention-days: 7

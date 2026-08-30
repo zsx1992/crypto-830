@@ -1,0 +1,5054 @@
+{
+  "source_dir": "C:\\Users\\regal\\Desktop\\discord.com",
+  "total": 360,
+  "labeled": 173,
+  "pattern_dist": {
+    "head_shoulders_top": 15,
+    "rounding_bottom": 2,
+    "head_shoulders_unspecified": 10,
+    "descending_triangle": 24,
+    "symmetrical_triangle": 24,
+    "head_shoulders_bottom": 26,
+    "channel": 14,
+    "ascending_triangle": 17,
+    "triangle_unspecified": 3,
+    "double_bottom": 37,
+    "flag": 7,
+    "v_reversal": 1,
+    "rising_wedge": 2,
+    "wedge_unspecified": 4,
+    "cup_and_handle": 1,
+    "falling_wedge": 3
+  },
+  "timeframe_dist": {
+    "15m": 69,
+    "2h": 35,
+    "4h": 54,
+    "1h": 65,
+    "1d": 7
+  },
+  "context_dist": {
+    "回踩": 32,
+    "跌破": 12,
+    "顶部": 11,
+    "精准": 1,
+    "突破": 43,
+    "压力": 10,
+    "开空": 4,
+    "中继": 24,
+    "底部": 17,
+    "蓄势": 8,
+    "支撑": 13,
+    "做多": 4,
+    "反转": 5,
+    "试仓": 1,
+    "高位": 1,
+    "颈线": 1,
+    "目标": 1,
+    "观察": 3,
+    "开多": 1,
+    "诱空": 1,
+    "假跌破": 1,
+    "假突破": 2
+  },
+  "samples": [
+    {
+      "file": "[00 01] 2023年7月9日星期日 00 01.png",
+      "sample_id": null,
+      "date": "2023-07-09",
+      "time": "00:01",
+      "detected_at": "2023-07-09T00:01:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "[00 01] 2023年7月9日星期日 00 01"
+    },
+    {
+      "file": "[00 20] 2023年7月9日星期日 00 20【200】link 15min 顶部形成头肩顶 跌破后回踩肩部 精准.png",
+      "sample_id": 200,
+      "date": "2023-07-09",
+      "time": "00:20",
+      "detected_at": "2023-07-09T00:20:00",
+      "symbol": "LINK",
+      "timeframe": "15m",
+      "patterns": [
+        "head_shoulders_top"
+      ],
+      "context": [
+        "回踩",
+        "跌破",
+        "顶部",
+        "精准"
+      ],
+      "note": "link 15min 顶部形成头肩顶 跌破后回踩肩部 精准"
+    },
+    {
+      "file": "[10 13] 2023年7月27日星期四 10 13【240】sol 15min 走了圆弧底 突破压力位置 短暂回踩 .png",
+      "sample_id": 240,
+      "date": "2023-07-27",
+      "time": "10:13",
+      "detected_at": "2023-07-27T10:13:00",
+      "symbol": "SOL",
+      "timeframe": "15m",
+      "patterns": [
+        "rounding_bottom"
+      ],
+      "context": [
+        "突破",
+        "回踩",
+        "压力"
+      ],
+      "note": "sol 15min 走了圆弧底 突破压力位置 短暂回踩"
+    },
+    {
+      "file": "[10 15] 2023年7月27日星期四 10 15【241】snx 15min 顶部 类似头肩结构 此处开空性价比较.png",
+      "sample_id": 241,
+      "date": "2023-07-27",
+      "time": "10:15",
+      "detected_at": "2023-07-27T10:15:00",
+      "symbol": "SNX",
+      "timeframe": "15m",
+      "patterns": [
+        "head_shoulders_unspecified"
+      ],
+      "context": [
+        "开空",
+        "顶部"
+      ],
+      "note": "snx 15min 顶部 类似头肩结构 此处开空性价比较"
+    },
+    {
+      "file": "[10 20] 2023年7月27日星期四 10 20【243】matic 2h 下跌中继 下降三角形 e点没到 就开启.png",
+      "sample_id": 243,
+      "date": "2023-07-27",
+      "time": "10:20",
+      "detected_at": "2023-07-27T10:20:00",
+      "symbol": "MATIC",
+      "timeframe": "2h",
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "matic 2h 下跌中继 下降三角形 e点没到 就开启"
+    },
+    {
+      "file": "[10 21] 2023年7月27日星期四 10 21【244】matic 2h 上涨后形成对三.png",
+      "sample_id": 244,
+      "date": "2023-07-27",
+      "time": "10:21",
+      "detected_at": "2023-07-27T10:21:00",
+      "symbol": "MATIC",
+      "timeframe": "2h",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [],
+      "note": "matic 2h 上涨后形成对三"
+    },
+    {
+      "file": "[10 23] 2023年7月27日星期四 10 23【245】matic 上涨过程形成盘整区.png",
+      "sample_id": 245,
+      "date": "2023-07-27",
+      "time": "10:23",
+      "detected_at": "2023-07-27T10:23:00",
+      "symbol": "MATIC",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "matic 上涨过程形成盘整区"
+    },
+    {
+      "file": "[10 25] 2023年7月27日星期四 10 25【246】matic 2h 底部区间形成头肩底形态 右肩突破后短暂.png",
+      "sample_id": 246,
+      "date": "2023-07-27",
+      "time": "10:25",
+      "detected_at": "2023-07-27T10:25:00",
+      "symbol": "MATIC",
+      "timeframe": "2h",
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [
+        "突破",
+        "底部"
+      ],
+      "note": "matic 2h 底部区间形成头肩底形态 右肩突破后短暂"
+    },
+    {
+      "file": "[10 32] 2023年7月27日星期四 10 32【248】matic 通道上涨 通道末尾无力反弹 顺势下跌.png",
+      "sample_id": 248,
+      "date": "2023-07-27",
+      "time": "10:32",
+      "detected_at": "2023-07-27T10:32:00",
+      "symbol": "MATIC",
+      "timeframe": null,
+      "patterns": [
+        "channel"
+      ],
+      "context": [],
+      "note": "matic 通道上涨 通道末尾无力反弹 顺势下跌"
+    },
+    {
+      "file": "[10 36] 2023年7月27日星期四 10 36【249】matic 上升三角 最佳开仓点位在突破上边界 回踩的时.png",
+      "sample_id": 249,
+      "date": "2023-07-27",
+      "time": "10:36",
+      "detected_at": "2023-07-27T10:36:00",
+      "symbol": "MATIC",
+      "timeframe": null,
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [
+        "突破",
+        "回踩"
+      ],
+      "note": "matic 上升三角 最佳开仓点位在突破上边界 回踩的时"
+    },
+    {
+      "file": "[10 40] 2023年7月27日星期四 10 40【251】matic 4h 头肩顶结构.png",
+      "sample_id": 251,
+      "date": "2023-07-27",
+      "time": "10:40",
+      "detected_at": "2023-07-27T10:40:00",
+      "symbol": "MATIC",
+      "timeframe": "4h",
+      "patterns": [
+        "head_shoulders_top"
+      ],
+      "context": [],
+      "note": "matic 4h 头肩顶结构"
+    },
+    {
+      "file": "[10 41] 2023年7月27日星期四 10 41.png",
+      "sample_id": null,
+      "date": "2023-07-27",
+      "time": "10:41",
+      "detected_at": "2023-07-27T10:41:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "[10 41] 2023年7月27日星期四 10 41"
+    },
+    {
+      "file": "[10 47] 2023年7月27日星期四 10 47【253】doge 2h 头肩底 突破压力位置 回踩.png",
+      "sample_id": 253,
+      "date": "2023-07-27",
+      "time": "10:47",
+      "detected_at": "2023-07-27T10:47:00",
+      "symbol": "DOGE",
+      "timeframe": "2h",
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [
+        "突破",
+        "回踩",
+        "压力"
+      ],
+      "note": "doge 2h 头肩底 突破压力位置 回踩"
+    },
+    {
+      "file": "[10 49] 2023年7月27日星期四 10 49【254】doge 2h 圆底+三角 不断蓄势 突破.png",
+      "sample_id": 254,
+      "date": "2023-07-27",
+      "time": "10:49",
+      "detected_at": "2023-07-27T10:49:00",
+      "symbol": "DOGE",
+      "timeframe": "2h",
+      "patterns": [
+        "rounding_bottom",
+        "triangle_unspecified"
+      ],
+      "context": [
+        "突破",
+        "蓄势"
+      ],
+      "note": "doge 2h 圆底+三角 不断蓄势 突破"
+    },
+    {
+      "file": "[16 03] 2023年7月9日星期日 16 03【203】arb 15min 回踩到4h支撑后 迅速拉升 15min.png",
+      "sample_id": 203,
+      "date": "2023-07-09",
+      "time": "16:03",
+      "detected_at": "2023-07-09T16:03:00",
+      "symbol": "ARB",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [
+        "回踩",
+        "支撑"
+      ],
+      "note": "arb 15min 回踩到4h支撑后 迅速拉升 15min"
+    },
+    {
+      "file": "[16 13] 2023年7月9日星期日 16 13【205】comp 1h 有点想走头肩结构 目前达到支撑位置 右肩形.png",
+      "sample_id": 205,
+      "date": "2023-07-09",
+      "time": "16:13",
+      "detected_at": "2023-07-09T16:13:00",
+      "symbol": "COMP",
+      "timeframe": "1h",
+      "patterns": [
+        "head_shoulders_unspecified"
+      ],
+      "context": [
+        "支撑"
+      ],
+      "note": "comp 1h 有点想走头肩结构 目前达到支撑位置 右肩形"
+    },
+    {
+      "file": "[16 28] 2023年7月9日星期日 16 28【206】 hbar 4h 形成头肩结构 左肩有一个下降三角 跌破支.png",
+      "sample_id": 206,
+      "date": "2023-07-09",
+      "time": "16:28",
+      "detected_at": "2023-07-09T16:28:00",
+      "symbol": "HBAR",
+      "timeframe": "4h",
+      "patterns": [
+        "head_shoulders_unspecified",
+        "descending_triangle"
+      ],
+      "context": [
+        "跌破"
+      ],
+      "note": "hbar 4h 形成头肩结构 左肩有一个下降三角 跌破支"
+    },
+    {
+      "file": "[18 14] 2025年5月11日星期日 18 14预测【459】punusdt 上涨中继 回调到0.27左右 继续上.png",
+      "sample_id": 459,
+      "date": "2025-05-11",
+      "time": "18:14",
+      "detected_at": "2025-05-11T18:14:00",
+      "symbol": "PUNUSDT",
+      "timeframe": null,
+      "patterns": [],
+      "context": [
+        "中继"
+      ],
+      "note": "punusdt 上涨中继 回调到0.27左右 继续上"
+    },
+    {
+      "file": "[18 16] 2025年8月10日星期日 18 16【489】1d arb w底.png",
+      "sample_id": 489,
+      "date": "2025-08-10",
+      "time": "18:16",
+      "detected_at": "2025-08-10T18:16:00",
+      "symbol": "ARB",
+      "timeframe": "1d",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "1d arb w底"
+    },
+    {
+      "file": "[20 26] 2023年8月9日星期三 20 26.png",
+      "sample_id": null,
+      "date": "2023-08-09",
+      "time": "20:26",
+      "detected_at": "2023-08-09T20:26:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "[20 26] 2023年8月9日星期三 20 26"
+    },
+    {
+      "file": "[20 59] 2023年8月15日星期二 20 59【369】xmr 1h 目前回踩 支撑 可小仓位做多.png",
+      "sample_id": 369,
+      "date": "2023-08-15",
+      "time": "20:59",
+      "detected_at": "2023-08-15T20:59:00",
+      "symbol": "XMR",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [
+        "回踩",
+        "支撑",
+        "做多"
+      ],
+      "note": "xmr 1h 目前回踩 支撑 可小仓位做多"
+    },
+    {
+      "file": "[21 05] 2023年8月15日星期二 21 05【371】xmr 4h 上直三 底部反转结构.png",
+      "sample_id": 371,
+      "date": "2023-08-15",
+      "time": "21:05",
+      "detected_at": "2023-08-15T21:05:00",
+      "symbol": "XMR",
+      "timeframe": "4h",
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [
+        "反转",
+        "底部"
+      ],
+      "note": "xmr 4h 上直三 底部反转结构"
+    },
+    {
+      "file": "[21 06] 2023年8月7日星期一 21 06【304】icp 2h 底部形成w底 突破后再次形成w底 中继.png",
+      "sample_id": 304,
+      "date": "2023-08-07",
+      "time": "21:06",
+      "detected_at": "2023-08-07T21:06:00",
+      "symbol": "ICP",
+      "timeframe": "2h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "中继",
+        "突破",
+        "底部"
+      ],
+      "note": "icp 2h 底部形成w底 突破后再次形成w底 中继"
+    },
+    {
+      "file": "[21 08] 2023年7月19日星期三 21 08【230】alice 4h级别趋势线跌破 15min 回踩趋势线 .png",
+      "sample_id": 230,
+      "date": "2023-07-19",
+      "time": "21:08",
+      "detected_at": "2023-07-19T21:08:00",
+      "symbol": "ALICE",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [
+        "回踩",
+        "跌破"
+      ],
+      "note": "alice 4h级别趋势线跌破 15min 回踩趋势线"
+    },
+    {
+      "file": "[21 11] 2023年8月2日星期三 21 11【281】ftm 2h w底 目前处于肩部 15min有做多形态可多.png",
+      "sample_id": 281,
+      "date": "2023-08-02",
+      "time": "21:11",
+      "detected_at": "2023-08-02T21:11:00",
+      "symbol": "FTM",
+      "timeframe": "15m",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "做多"
+      ],
+      "note": "ftm 2h w底 目前处于肩部 15min有做多形态可多"
+    },
+    {
+      "file": "[21 12] 2023年7月19日星期三 21 12【231】ant 1d 目前涨到日线压力位置 4h级别形成对三 蓄.png",
+      "sample_id": 231,
+      "date": "2023-07-19",
+      "time": "21:12",
+      "detected_at": "2023-07-19T21:12:00",
+      "symbol": "ANT",
+      "timeframe": "4h",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [
+        "压力"
+      ],
+      "note": "ant 1d 目前涨到日线压力位置 4h级别形成对三 蓄"
+    },
+    {
+      "file": "[21 13] 2026年1月15日星期四 21 13【506】eth 4h 形成w底 目前突破回踩.webp",
+      "sample_id": 506,
+      "date": "2026-01-15",
+      "time": "21:13",
+      "detected_at": "2026-01-15T21:13:00",
+      "symbol": "ETH",
+      "timeframe": "4h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "突破",
+        "回踩"
+      ],
+      "note": "eth 4h 形成w底 目前突破回踩"
+    },
+    {
+      "file": "[21 14] 2026年1月15日星期四 21 14【507】eth 15min 上涨前15min 又形成w底.webp",
+      "sample_id": 507,
+      "date": "2026-01-15",
+      "time": "21:14",
+      "detected_at": "2026-01-15T21:14:00",
+      "symbol": "ETH",
+      "timeframe": "15m",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "eth 15min 上涨前15min 又形成w底"
+    },
+    {
+      "file": "[21 20] 2023年7月31日星期一 21 20【261】 ach 15min 头肩底目前处于肩部 可尝试做多.png",
+      "sample_id": 261,
+      "date": "2023-07-31",
+      "time": "21:20",
+      "detected_at": "2023-07-31T21:20:00",
+      "symbol": "ACH",
+      "timeframe": "15m",
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [
+        "做多"
+      ],
+      "note": "ach 15min 头肩底目前处于肩部 可尝试做多"
+    },
+    {
+      "file": "[21 20] 2023年7月3日星期一 21 20【186】alice 15min 顶部收敛三角 e点标准的开仓点位.png",
+      "sample_id": 186,
+      "date": "2023-07-03",
+      "time": "21:20",
+      "detected_at": "2023-07-03T21:20:00",
+      "symbol": "ALICE",
+      "timeframe": "15m",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [
+        "顶部"
+      ],
+      "note": "alice 15min 顶部收敛三角 e点标准的开仓点位"
+    },
+    {
+      "file": "[21 20] 2026年1月15日星期四 21 20【509】eth 4h下降中继 上升旗形.webp",
+      "sample_id": 509,
+      "date": "2026-01-15",
+      "time": "21:20",
+      "detected_at": "2026-01-15T21:20:00",
+      "symbol": "ETH",
+      "timeframe": "4h",
+      "patterns": [
+        "flag"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "eth 4h下降中继 上升旗形"
+    },
+    {
+      "file": "[21 22] 2026年1月15日星期四 21 22【510】eth 4h级别的v形反转.webp",
+      "sample_id": 510,
+      "date": "2026-01-15",
+      "time": "21:22",
+      "detected_at": "2026-01-15T21:22:00",
+      "symbol": "ETH",
+      "timeframe": "4h",
+      "patterns": [
+        "v_reversal"
+      ],
+      "context": [
+        "反转"
+      ],
+      "note": "eth 4h级别的v形反转"
+    },
+    {
+      "file": "[21 23] 2023年8月15日星期二 21 23【373】xmr 4h 头肩底 突破后回踩.png",
+      "sample_id": 373,
+      "date": "2023-08-15",
+      "time": "21:23",
+      "detected_at": "2023-08-15T21:23:00",
+      "symbol": "XMR",
+      "timeframe": "4h",
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [
+        "突破",
+        "回踩"
+      ],
+      "note": "xmr 4h 头肩底 突破后回踩"
+    },
+    {
+      "file": "[21 28] 2023年7月31日星期一 21 28[263] apt 2h 目前处于支撑位置 走势太弱 多头比较弱势.png",
+      "sample_id": null,
+      "date": "2023-07-31",
+      "time": "21:28",
+      "detected_at": "2023-07-31T21:28:00",
+      "symbol": "APT",
+      "timeframe": "2h",
+      "patterns": [],
+      "context": [
+        "支撑"
+      ],
+      "note": "[21 28] 2023年7月31日星期一 21 28[263] apt 2h 目前处于支撑位置 走势太弱 多头比较弱势"
+    },
+    {
+      "file": "[21 29] 2026年1月14日星期三 21 29【497】clo 头肩底 也可以说w底 突破后多次回踩 可以上车.webp",
+      "sample_id": 497,
+      "date": "2026-01-14",
+      "time": "21:29",
+      "detected_at": "2026-01-14T21:29:00",
+      "symbol": "CLO",
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_bottom",
+        "double_bottom"
+      ],
+      "context": [
+        "突破",
+        "回踩"
+      ],
+      "note": "clo 头肩底 也可以说w底 突破后多次回踩 可以上车"
+    },
+    {
+      "file": "[21 30] 2023年8月8日星期二 21 30【318】sol 15min 头肩顶结构.png",
+      "sample_id": 318,
+      "date": "2023-08-08",
+      "time": "21:30",
+      "detected_at": "2023-08-08T21:30:00",
+      "symbol": "SOL",
+      "timeframe": "15m",
+      "patterns": [
+        "head_shoulders_top"
+      ],
+      "context": [],
+      "note": "sol 15min 头肩顶结构"
+    },
+    {
+      "file": "[21 42] 2023年8月8日星期二 21 42【320】sol 15min 对三.png",
+      "sample_id": 320,
+      "date": "2023-08-08",
+      "time": "21:42",
+      "detected_at": "2023-08-08T21:42:00",
+      "symbol": "SOL",
+      "timeframe": "15m",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [],
+      "note": "sol 15min 对三"
+    },
+    {
+      "file": "[21 46] 2023年7月27日星期四 21 46【256】bnb 2h 高位出现对三 反弹弱势 不错的开空试仓位置.png",
+      "sample_id": 256,
+      "date": "2023-07-27",
+      "time": "21:46",
+      "detected_at": "2023-07-27T21:46:00",
+      "symbol": "BNB",
+      "timeframe": "2h",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [
+        "开空",
+        "试仓",
+        "高位"
+      ],
+      "note": "bnb 2h 高位出现对三 反弹弱势 不错的开空试仓位置"
+    },
+    {
+      "file": "[21 46] 2023年8月8日星期二 21 46【322】sol 15min 通道下跌 末尾形成w底.png",
+      "sample_id": 322,
+      "date": "2023-08-08",
+      "time": "21:46",
+      "detected_at": "2023-08-08T21:46:00",
+      "symbol": "SOL",
+      "timeframe": "15m",
+      "patterns": [
+        "double_bottom",
+        "channel"
+      ],
+      "context": [],
+      "note": "sol 15min 通道下跌 末尾形成w底"
+    },
+    {
+      "file": "[21 50] 2026年1月14日星期三 21 50.png",
+      "sample_id": null,
+      "date": "2026-01-14",
+      "time": "21:50",
+      "detected_at": "2026-01-14T21:50:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "[21 50] 2026年1月14日星期三 21 50"
+    },
+    {
+      "file": "[21 51] 2023年7月18日星期二 21 51【225】sol 15min 三角收敛.png",
+      "sample_id": 225,
+      "date": "2023-07-18",
+      "time": "21:51",
+      "detected_at": "2023-07-18T21:51:00",
+      "symbol": "SOL",
+      "timeframe": "15m",
+      "patterns": [
+        "triangle_unspecified"
+      ],
+      "context": [],
+      "note": "sol 15min 三角收敛"
+    },
+    {
+      "file": "[21 51] 2023年7月3日星期一 21 51【189】 gmt 2h 头肩结构 右肩形成 上涨楔形 双重看空 可.png",
+      "sample_id": 189,
+      "date": "2023-07-03",
+      "time": "21:51",
+      "detected_at": "2023-07-03T21:51:00",
+      "symbol": "GMT",
+      "timeframe": "2h",
+      "patterns": [
+        "head_shoulders_unspecified",
+        "rising_wedge"
+      ],
+      "context": [],
+      "note": "gmt 2h 头肩结构 右肩形成 上涨楔形 双重看空 可"
+    },
+    {
+      "file": "[21 52] 2023年8月7日星期一 21 52【307】imx 2h 对三 多次回踩趋势线 反弹越来越弱4.png",
+      "sample_id": 307,
+      "date": "2023-08-07",
+      "time": "21:52",
+      "detected_at": "2023-08-07T21:52:00",
+      "symbol": "IMX",
+      "timeframe": "2h",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [
+        "回踩"
+      ],
+      "note": "imx 2h 对三 多次回踩趋势线 反弹越来越弱4"
+    },
+    {
+      "file": "[21 53] 2026年1月14日星期三 21 53【499】dash 15min w底部形成 突破回踩.png",
+      "sample_id": 499,
+      "date": "2026-01-14",
+      "time": "21:53",
+      "detected_at": "2026-01-14T21:53:00",
+      "symbol": "DASH",
+      "timeframe": "15m",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "突破",
+        "回踩",
+        "底部"
+      ],
+      "note": "dash 15min w底部形成 突破回踩"
+    },
+    {
+      "file": "[21 54] 2023年7月18日星期二 21 54【226】 snx 楔形 走势强于btc 到达下边界 可尝试多.png",
+      "sample_id": 226,
+      "date": "2023-07-18",
+      "time": "21:54",
+      "detected_at": "2023-07-18T21:54:00",
+      "symbol": "SNX",
+      "timeframe": null,
+      "patterns": [
+        "wedge_unspecified"
+      ],
+      "context": [],
+      "note": "snx 楔形 走势强于btc 到达下边界 可尝试多"
+    },
+    {
+      "file": "[21 54] 2026年1月14日星期三 21 54.webp",
+      "sample_id": null,
+      "date": "2026-01-14",
+      "time": "21:54",
+      "detected_at": "2026-01-14T21:54:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "[21 54] 2026年1月14日星期三 21 54"
+    },
+    {
+      "file": "[21 55] 2023年8月8日星期二 21 55【324】sol 4h 头肩顶结构.png",
+      "sample_id": 324,
+      "date": "2023-08-08",
+      "time": "21:55",
+      "detected_at": "2023-08-08T21:55:00",
+      "symbol": "SOL",
+      "timeframe": "4h",
+      "patterns": [
+        "head_shoulders_top"
+      ],
+      "context": [],
+      "note": "sol 4h 头肩顶结构"
+    },
+    {
+      "file": "[21 56] 2023年8月8日星期二 21 56【325】sol 下直三 e点突破.png",
+      "sample_id": 325,
+      "date": "2023-08-08",
+      "time": "21:56",
+      "detected_at": "2023-08-08T21:56:00",
+      "symbol": "SOL",
+      "timeframe": null,
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [
+        "突破"
+      ],
+      "note": "sol 下直三 e点突破"
+    },
+    {
+      "file": "[21 57] 2026年1月14日星期三 21 57.png",
+      "sample_id": null,
+      "date": "2026-01-14",
+      "time": "21:57",
+      "detected_at": "2026-01-14T21:57:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "[21 57] 2026年1月14日星期三 21 57"
+    },
+    {
+      "file": "[21 59] 2023年7月19日星期三 21 59【234】xlm 15min w底+杯柄形态.png",
+      "sample_id": 234,
+      "date": "2023-07-19",
+      "time": "21:59",
+      "detected_at": "2023-07-19T21:59:00",
+      "symbol": "XLM",
+      "timeframe": "15m",
+      "patterns": [
+        "double_bottom",
+        "cup_and_handle"
+      ],
+      "context": [],
+      "note": "xlm 15min w底+杯柄形态"
+    },
+    {
+      "file": "[21 59] 2026年1月14日星期三 21 59【501】irys 15min 上涨结构上涨后回踩.webp",
+      "sample_id": 501,
+      "date": "2026-01-14",
+      "time": "21:59",
+      "detected_at": "2026-01-14T21:59:00",
+      "symbol": "IRYS",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [
+        "回踩"
+      ],
+      "note": "irys 15min 上涨结构上涨后回踩"
+    },
+    {
+      "file": "[21 59] 2026年1月14日星期三 21 59【502】irys 15min 目前跌破颈线.webp",
+      "sample_id": 502,
+      "date": "2026-01-14",
+      "time": "21:59",
+      "detected_at": "2026-01-14T21:59:00",
+      "symbol": "IRYS",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [
+        "跌破",
+        "颈线"
+      ],
+      "note": "irys 15min 目前跌破颈线"
+    },
+    {
+      "file": "[22 00] 2023年7月18日星期二 22 00【228】op 4h到达关键压力位置 大饼走强 op可能涨的比较厉.png",
+      "sample_id": 228,
+      "date": "2023-07-18",
+      "time": "22:00",
+      "detected_at": "2023-07-18T22:00:00",
+      "symbol": "OP",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [
+        "压力"
+      ],
+      "note": "op 4h到达关键压力位置 大饼走强 op可能涨的比较厉"
+    },
+    {
+      "file": "[22 03] 2023年8月17日星期四 22 03【394】near 1h 上升旗.png",
+      "sample_id": 394,
+      "date": "2023-08-17",
+      "time": "22:03",
+      "detected_at": "2023-08-17T22:03:00",
+      "symbol": "NEAR",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "near 1h 上升旗"
+    },
+    {
+      "file": "[22 03] 2023年8月7日星期一 22 03【309】imx 4h 头肩顶.png",
+      "sample_id": 309,
+      "date": "2023-08-07",
+      "time": "22:03",
+      "detected_at": "2023-08-07T22:03:00",
+      "symbol": "IMX",
+      "timeframe": "4h",
+      "patterns": [
+        "head_shoulders_top"
+      ],
+      "context": [],
+      "note": "imx 4h 头肩顶"
+    },
+    {
+      "file": "[22 05] 2024年7月9日星期二 22 05【429】btc 1h 下跌中继.png",
+      "sample_id": 429,
+      "date": "2024-07-09",
+      "time": "22:05",
+      "detected_at": "2024-07-09T22:05:00",
+      "symbol": "BTC",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [
+        "中继"
+      ],
+      "note": "btc 1h 下跌中继"
+    },
+    {
+      "file": "[22 06] 2023年7月27日星期四 22 06【258】bnb 上升三角 突破后回踩支撑位置.png",
+      "sample_id": 258,
+      "date": "2023-07-27",
+      "time": "22:06",
+      "detected_at": "2023-07-27T22:06:00",
+      "symbol": "BNB",
+      "timeframe": null,
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [
+        "突破",
+        "回踩",
+        "支撑"
+      ],
+      "note": "bnb 上升三角 突破后回踩支撑位置"
+    },
+    {
+      "file": "[22 06] 2023年8月10日星期四 22 06【351】dot 2h 楔形上涨.png",
+      "sample_id": 351,
+      "date": "2023-08-10",
+      "time": "22:06",
+      "detected_at": "2023-08-10T22:06:00",
+      "symbol": "DOT",
+      "timeframe": "2h",
+      "patterns": [
+        "wedge_unspecified"
+      ],
+      "context": [],
+      "note": "dot 2h 楔形上涨"
+    },
+    {
+      "file": "[22 06] 2023年8月7日星期一 22 06【310】btc 4h 通道下跌 转为 楔形 突破上边界时有明显蓄势.png",
+      "sample_id": 310,
+      "date": "2023-08-07",
+      "time": "22:06",
+      "detected_at": "2023-08-07T22:06:00",
+      "symbol": "BTC",
+      "timeframe": "4h",
+      "patterns": [
+        "wedge_unspecified",
+        "channel"
+      ],
+      "context": [
+        "突破",
+        "蓄势"
+      ],
+      "note": "btc 4h 通道下跌 转为 楔形 突破上边界时有明显蓄势"
+    },
+    {
+      "file": "[22 07] 2023年8月8日星期二 22 07【327】ltc 15min 上直三.png",
+      "sample_id": 327,
+      "date": "2023-08-08",
+      "time": "22:07",
+      "detected_at": "2023-08-08T22:07:00",
+      "symbol": "LTC",
+      "timeframe": "15m",
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [],
+      "note": "ltc 15min 上直三"
+    },
+    {
+      "file": "[22 08] 2023年8月17日星期四 22 08【396】near 4h 突破前有回踩 上涨前有短暂蓄势.png",
+      "sample_id": 396,
+      "date": "2023-08-17",
+      "time": "22:08",
+      "detected_at": "2023-08-17T22:08:00",
+      "symbol": "NEAR",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [
+        "突破",
+        "回踩",
+        "蓄势"
+      ],
+      "note": "near 4h 突破前有回踩 上涨前有短暂蓄势"
+    },
+    {
+      "file": "[22 08] 2026年1月15日星期四 22 08.png",
+      "sample_id": null,
+      "date": "2026-01-15",
+      "time": "22:08",
+      "detected_at": "2026-01-15T22:08:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "[22 08] 2026年1月15日星期四 22 08"
+    },
+    {
+      "file": "[22 10] 2023年8月17日星期四 22 10【397】near 4h 头肩底 两个一样的结构.png",
+      "sample_id": 397,
+      "date": "2023-08-17",
+      "time": "22:10",
+      "detected_at": "2023-08-17T22:10:00",
+      "symbol": "NEAR",
+      "timeframe": "4h",
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [],
+      "note": "near 4h 头肩底 两个一样的结构"
+    },
+    {
+      "file": "[22 10] 2026年1月15日星期四 22 10【513】bdxn 起涨前走了w底部.png",
+      "sample_id": 513,
+      "date": "2026-01-15",
+      "time": "22:10",
+      "detected_at": "2026-01-15T22:10:00",
+      "symbol": "BDXN",
+      "timeframe": null,
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "底部"
+      ],
+      "note": "bdxn 起涨前走了w底部"
+    },
+    {
+      "file": "[22 12] 2023年8月17日星期四 22 12【398】near 4h 上直三.png",
+      "sample_id": 398,
+      "date": "2023-08-17",
+      "time": "22:12",
+      "detected_at": "2023-08-17T22:12:00",
+      "symbol": "NEAR",
+      "timeframe": "4h",
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [],
+      "note": "near 4h 上直三"
+    },
+    {
+      "file": "[22 13] 2023年8月8日星期二 22 13【329】ltc 2h 对三.png",
+      "sample_id": 329,
+      "date": "2023-08-08",
+      "time": "22:13",
+      "detected_at": "2023-08-08T22:13:00",
+      "symbol": "LTC",
+      "timeframe": "2h",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [],
+      "note": "ltc 2h 对三"
+    },
+    {
+      "file": "[22 14] 2023年8月8日星期二 22 14【330】ltc 对三 下跌中继 高点越来越弱 多头无力.png",
+      "sample_id": 330,
+      "date": "2023-08-08",
+      "time": "22:14",
+      "detected_at": "2023-08-08T22:14:00",
+      "symbol": "LTC",
+      "timeframe": null,
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "ltc 对三 下跌中继 高点越来越弱 多头无力"
+    },
+    {
+      "file": "[22 15] 2023年8月8日星期二 22 15【331】ltc 上直三.png",
+      "sample_id": 331,
+      "date": "2023-08-08",
+      "time": "22:15",
+      "detected_at": "2023-08-08T22:15:00",
+      "symbol": "LTC",
+      "timeframe": null,
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [],
+      "note": "ltc 上直三"
+    },
+    {
+      "file": "[22 15] 2026年1月14日星期三 22 15【504】aster 2h 像是w底 如果突破第一目标为0.9.webp",
+      "sample_id": 504,
+      "date": "2026-01-14",
+      "time": "22:15",
+      "detected_at": "2026-01-14T22:15:00",
+      "symbol": "ASTER",
+      "timeframe": "2h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "突破",
+        "目标"
+      ],
+      "note": "aster 2h 像是w底 如果突破第一目标为0.9"
+    },
+    {
+      "file": "[22 16] 2023年8月10日星期四 22 16【353】dot 4h 头肩顶结构 右肩下直三.png",
+      "sample_id": 353,
+      "date": "2023-08-10",
+      "time": "22:16",
+      "detected_at": "2023-08-10T22:16:00",
+      "symbol": "DOT",
+      "timeframe": "4h",
+      "patterns": [
+        "head_shoulders_top",
+        "descending_triangle"
+      ],
+      "context": [],
+      "note": "dot 4h 头肩顶结构 右肩下直三"
+    },
+    {
+      "file": "[22 16] 2023年8月8日星期二 22 16【332】ltc 对三上涨中继.png",
+      "sample_id": 332,
+      "date": "2023-08-08",
+      "time": "22:16",
+      "detected_at": "2023-08-08T22:16:00",
+      "symbol": "LTC",
+      "timeframe": null,
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "ltc 对三上涨中继"
+    },
+    {
+      "file": "[22 17] 2023年8月14日星期一 22 17【360】xlm 1h 下直三.png",
+      "sample_id": 360,
+      "date": "2023-08-14",
+      "time": "22:17",
+      "detected_at": "2023-08-14T22:17:00",
+      "symbol": "XLM",
+      "timeframe": "1h",
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [],
+      "note": "xlm 1h 下直三"
+    },
+    {
+      "file": "[22 18] 2023年7月31日星期一 22 18【266】wld 15min 上升三角 有点弱势 观察.png",
+      "sample_id": 266,
+      "date": "2023-07-31",
+      "time": "22:18",
+      "detected_at": "2023-07-31T22:18:00",
+      "symbol": "WLD",
+      "timeframe": "15m",
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [
+        "观察"
+      ],
+      "note": "wld 15min 上升三角 有点弱势 观察"
+    },
+    {
+      "file": "[22 19] 2023年8月8日星期二 22 19【333】ltc 下直三 末尾沿着支撑线弹不起来.png",
+      "sample_id": 333,
+      "date": "2023-08-08",
+      "time": "22:19",
+      "detected_at": "2023-08-08T22:19:00",
+      "symbol": "LTC",
+      "timeframe": null,
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [
+        "支撑"
+      ],
+      "note": "ltc 下直三 末尾沿着支撑线弹不起来"
+    },
+    {
+      "file": "[22 20] 2023年8月15日星期二 22 20【377】hbar 1h 对三 顶部反转.png",
+      "sample_id": 377,
+      "date": "2023-08-15",
+      "time": "22:20",
+      "detected_at": "2023-08-15T22:20:00",
+      "symbol": "HBAR",
+      "timeframe": "1h",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [
+        "反转",
+        "顶部"
+      ],
+      "note": "hbar 1h 对三 顶部反转"
+    },
+    {
+      "file": "[22 20] 2023年8月17日星期四 22 20【400】mkr 1h 上涨通道 下跌中继形态.png",
+      "sample_id": 400,
+      "date": "2023-08-17",
+      "time": "22:20",
+      "detected_at": "2023-08-17T22:20:00",
+      "symbol": "MKR",
+      "timeframe": "1h",
+      "patterns": [
+        "channel"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "mkr 1h 上涨通道 下跌中继形态"
+    },
+    {
+      "file": "[22 22] 2023年8月14日星期一 22 22【361】agld 1h 头肩顶 右肩形成下直三.png",
+      "sample_id": 361,
+      "date": "2023-08-14",
+      "time": "22:22",
+      "detected_at": "2023-08-14T22:22:00",
+      "symbol": "AGLD",
+      "timeframe": "1h",
+      "patterns": [
+        "head_shoulders_top",
+        "descending_triangle"
+      ],
+      "context": [],
+      "note": "agld 1h 头肩顶 右肩形成下直三"
+    },
+    {
+      "file": "[22 22] 2023年8月15日星期二 22 22【378】hbar 1h 上直三 突破前有蓄势.png",
+      "sample_id": 378,
+      "date": "2023-08-15",
+      "time": "22:22",
+      "detected_at": "2023-08-15T22:22:00",
+      "symbol": "HBAR",
+      "timeframe": "1h",
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [
+        "突破",
+        "蓄势"
+      ],
+      "note": "hbar 1h 上直三 突破前有蓄势"
+    },
+    {
+      "file": "[22 23] 2023年7月17日星期一 22 23【220】alice 2h 目前处于支撑线附近 观察15min结构.png",
+      "sample_id": 220,
+      "date": "2023-07-17",
+      "time": "22:23",
+      "detected_at": "2023-07-17T22:23:00",
+      "symbol": "ALICE",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [
+        "支撑",
+        "观察"
+      ],
+      "note": "alice 2h 目前处于支撑线附近 观察15min结构"
+    },
+    {
+      "file": "[22 23] 2023年8月8日星期二 22 23【335】 ltc 2h 对三 跌破后回踩压力位置.png",
+      "sample_id": 335,
+      "date": "2023-08-08",
+      "time": "22:23",
+      "detected_at": "2023-08-08T22:23:00",
+      "symbol": "LTC",
+      "timeframe": "2h",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [
+        "回踩",
+        "跌破",
+        "压力"
+      ],
+      "note": "ltc 2h 对三 跌破后回踩压力位置"
+    },
+    {
+      "file": "[22 24] 2023年8月15日星期二 22 24【379】hbar 4h 下直三.png",
+      "sample_id": 379,
+      "date": "2023-08-15",
+      "time": "22:24",
+      "detected_at": "2023-08-15T22:24:00",
+      "symbol": "HBAR",
+      "timeframe": "4h",
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [],
+      "note": "hbar 4h 下直三"
+    },
+    {
+      "file": "[22 25] 2023年8月15日星期二 22 25【380】hbar 4h 上直三.png",
+      "sample_id": 380,
+      "date": "2023-08-15",
+      "time": "22:25",
+      "detected_at": "2023-08-15T22:25:00",
+      "symbol": "HBAR",
+      "timeframe": "4h",
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [],
+      "note": "hbar 4h 上直三"
+    },
+    {
+      "file": "[22 25] 2025年4月14日星期一 22 25【437】1h级别左侧下降三角，下跌后形成头肩底，头肩底突破后打到.png",
+      "sample_id": 437,
+      "date": "2025-04-14",
+      "time": "22:25",
+      "detected_at": "2025-04-14T22:25:00",
+      "symbol": null,
+      "timeframe": "1h",
+      "patterns": [
+        "head_shoulders_bottom",
+        "descending_triangle"
+      ],
+      "context": [
+        "突破"
+      ],
+      "note": "1h级别左侧下降三角，下跌后形成头肩底，头肩底突破后打到"
+    },
+    {
+      "file": "[22 26] 2023年7月2日星期日 22 26【180】bch 15min 对三突破后短暂盘整 适合开多.png",
+      "sample_id": 180,
+      "date": "2023-07-02",
+      "time": "22:26",
+      "detected_at": "2023-07-02T22:26:00",
+      "symbol": "BCH",
+      "timeframe": "15m",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [
+        "突破",
+        "开多"
+      ],
+      "note": "bch 15min 对三突破后短暂盘整 适合开多"
+    },
+    {
+      "file": "[22 28] 2023年8月3日星期四 22 28【283】comp 1h 下降楔形 回到楔形上边缘 有蓄势动作 最佳.png",
+      "sample_id": 283,
+      "date": "2023-08-03",
+      "time": "22:28",
+      "detected_at": "2023-08-03T22:28:00",
+      "symbol": "COMP",
+      "timeframe": "1h",
+      "patterns": [
+        "falling_wedge"
+      ],
+      "context": [
+        "蓄势"
+      ],
+      "note": "comp 1h 下降楔形 回到楔形上边缘 有蓄势动作 最佳"
+    },
+    {
+      "file": "[22 30] 2023年8月3日星期四 22 30【284】comp 1h 顶部出现上涨旗形 看跌信号 最佳开仓点位e.png",
+      "sample_id": 284,
+      "date": "2023-08-03",
+      "time": "22:30",
+      "detected_at": "2023-08-03T22:30:00",
+      "symbol": "COMP",
+      "timeframe": "1h",
+      "patterns": [
+        "flag"
+      ],
+      "context": [
+        "顶部"
+      ],
+      "note": "comp 1h 顶部出现上涨旗形 看跌信号 最佳开仓点位e"
+    },
+    {
+      "file": "[22 30] 2025年4月14日星期一 22 30.png",
+      "sample_id": null,
+      "date": "2025-04-14",
+      "time": "22:30",
+      "detected_at": "2025-04-14T22:30:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "[22 30] 2025年4月14日星期一 22 30"
+    },
+    {
+      "file": "[22 30] 2025年5月12日星期一 22 30下一步止步在0.27左右.png",
+      "sample_id": null,
+      "date": "2025-05-12",
+      "time": "22:30",
+      "detected_at": "2025-05-12T22:30:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "[22 30] 2025年5月12日星期一 22 30下一步止步在0.27左右"
+    },
+    {
+      "file": "[22 30] 2025年5月14日星期三 22 30【465】 下跌中继 走了上涨楔形.png",
+      "sample_id": 465,
+      "date": "2025-05-14",
+      "time": "22:30",
+      "detected_at": "2025-05-14T22:30:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "rising_wedge"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "下跌中继 走了上涨楔形"
+    },
+    {
+      "file": "[22 31] 2025年4月14日星期一 22 31【439】头肩底结构 突破前 诱空空 快速拉升.png",
+      "sample_id": 439,
+      "date": "2025-04-14",
+      "time": "22:31",
+      "detected_at": "2025-04-14T22:31:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [
+        "突破",
+        "诱空"
+      ],
+      "note": "头肩底结构 突破前 诱空空 快速拉升"
+    },
+    {
+      "file": "[22 32] 2023年8月3日星期四 22 32【285】comp 1h w底突破肩部 短暂回踩.png",
+      "sample_id": 285,
+      "date": "2023-08-03",
+      "time": "22:32",
+      "detected_at": "2023-08-03T22:32:00",
+      "symbol": "COMP",
+      "timeframe": "1h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "突破",
+        "回踩"
+      ],
+      "note": "comp 1h w底突破肩部 短暂回踩"
+    },
+    {
+      "file": "[22 32] 2025年4月14日星期一 22 32【440】 下降通道 假跌破后回到通道.png",
+      "sample_id": 440,
+      "date": "2025-04-14",
+      "time": "22:32",
+      "detected_at": "2025-04-14T22:32:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "channel"
+      ],
+      "context": [
+        "跌破",
+        "假跌破"
+      ],
+      "note": "下降通道 假跌破后回到通道"
+    },
+    {
+      "file": "[22 33] 2023年7月17日星期一 22 33【222】comp 15min 下降旗形 到达底部开始拉升 上涨中.png",
+      "sample_id": 222,
+      "date": "2023-07-17",
+      "time": "22:33",
+      "detected_at": "2023-07-17T22:33:00",
+      "symbol": "COMP",
+      "timeframe": "15m",
+      "patterns": [
+        "flag"
+      ],
+      "context": [
+        "底部"
+      ],
+      "note": "comp 15min 下降旗形 到达底部开始拉升 上涨中"
+    },
+    {
+      "file": "[22 33] 2023年8月3日星期四 22 33【286】comp 1h 下直三 跌破支撑回踩.png",
+      "sample_id": 286,
+      "date": "2023-08-03",
+      "time": "22:33",
+      "detected_at": "2023-08-03T22:33:00",
+      "symbol": "COMP",
+      "timeframe": "1h",
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [
+        "回踩",
+        "跌破",
+        "支撑"
+      ],
+      "note": "comp 1h 下直三 跌破支撑回踩"
+    },
+    {
+      "file": "[22 34] 2025年4月14日星期一 22 34【441】上阵过程中继 走了回调 下降通道.png",
+      "sample_id": 441,
+      "date": "2025-04-14",
+      "time": "22:34",
+      "detected_at": "2025-04-14T22:34:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "channel"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "上阵过程中继 走了回调 下降通道"
+    },
+    {
+      "file": "[22 35] 2023年12月27日星期三 22 35【413】下降楔形反转结构 btc 15min.png",
+      "sample_id": 413,
+      "date": "2023-12-27",
+      "time": "22:35",
+      "detected_at": "2023-12-27T22:35:00",
+      "symbol": "BTC",
+      "timeframe": "15m",
+      "patterns": [
+        "falling_wedge"
+      ],
+      "context": [
+        "反转"
+      ],
+      "note": "下降楔形反转结构 btc 15min"
+    },
+    {
+      "file": "[22 35] 2025年5月12日星期一 22 35【462】下跌过程中 通道上涨 看跌 多次回踩通道底部 多次假突破.png",
+      "sample_id": 462,
+      "date": "2025-05-12",
+      "time": "22:35",
+      "detected_at": "2025-05-12T22:35:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "channel"
+      ],
+      "context": [
+        "突破",
+        "回踩",
+        "假突破",
+        "底部"
+      ],
+      "note": "下跌过程中 通道上涨 看跌 多次回踩通道底部 多次假突破"
+    },
+    {
+      "file": "[22 36] 2025年4月14日星期一 22 36【442】底部走了上升通道 不太抗战 通道内弹不动 若是btc下跌.png",
+      "sample_id": 442,
+      "date": "2025-04-14",
+      "time": "22:36",
+      "detected_at": "2025-04-14T22:36:00",
+      "symbol": "BTC",
+      "timeframe": null,
+      "patterns": [
+        "channel"
+      ],
+      "context": [
+        "底部"
+      ],
+      "note": "底部走了上升通道 不太抗战 通道内弹不动 若是btc下跌"
+    },
+    {
+      "file": "[22 37] 2023年7月2日星期日 22 37【182】gmt 15min 下降中继结构 上升三角 顶部和跌破后开.png",
+      "sample_id": 182,
+      "date": "2023-07-02",
+      "time": "22:37",
+      "detected_at": "2023-07-02T22:37:00",
+      "symbol": "GMT",
+      "timeframe": "15m",
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [
+        "中继",
+        "跌破",
+        "顶部"
+      ],
+      "note": "gmt 15min 下降中继结构 上升三角 顶部和跌破后开"
+    },
+    {
+      "file": "[22 37] 2023年8月7日星期一 22 37【314】ada 2h w底 突破前 在压力位置盘整 突破后形成对三.png",
+      "sample_id": 314,
+      "date": "2023-08-07",
+      "time": "22:37",
+      "detected_at": "2023-08-07T22:37:00",
+      "symbol": "ADA",
+      "timeframe": "2h",
+      "patterns": [
+        "double_bottom",
+        "symmetrical_triangle"
+      ],
+      "context": [
+        "突破",
+        "压力"
+      ],
+      "note": "ada 2h w底 突破前 在压力位置盘整 突破后形成对三"
+    },
+    {
+      "file": "[22 38] 2023年8月3日星期四 22 38【289】comp 4h 下直三.png",
+      "sample_id": 289,
+      "date": "2023-08-03",
+      "time": "22:38",
+      "detected_at": "2023-08-03T22:38:00",
+      "symbol": "COMP",
+      "timeframe": "4h",
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [],
+      "note": "comp 4h 下直三"
+    },
+    {
+      "file": "[22 39] 2023年8月17日星期四 22 39【402】grt 1h 下降旗形 突破后回踩趋势线.png",
+      "sample_id": 402,
+      "date": "2023-08-17",
+      "time": "22:39",
+      "detected_at": "2023-08-17T22:39:00",
+      "symbol": "GRT",
+      "timeframe": "1h",
+      "patterns": [
+        "flag"
+      ],
+      "context": [
+        "突破",
+        "回踩"
+      ],
+      "note": "grt 1h 下降旗形 突破后回踩趋势线"
+    },
+    {
+      "file": "[22 40] 2023年8月9日星期三 22 40【339】matic 2h 上涨中继 盘整区间.png",
+      "sample_id": 339,
+      "date": "2023-08-09",
+      "time": "22:40",
+      "detected_at": "2023-08-09T22:40:00",
+      "symbol": "MATIC",
+      "timeframe": "2h",
+      "patterns": [],
+      "context": [
+        "中继"
+      ],
+      "note": "matic 2h 上涨中继 盘整区间"
+    },
+    {
+      "file": "[22 41] 2023年8月3日星期四 22 41【290】crv 15min 对三 可尝试开空.png",
+      "sample_id": 290,
+      "date": "2023-08-03",
+      "time": "22:41",
+      "detected_at": "2023-08-03T22:41:00",
+      "symbol": "CRV",
+      "timeframe": "15m",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [
+        "开空"
+      ],
+      "note": "crv 15min 对三 可尝试开空"
+    },
+    {
+      "file": "[22 43] 2023年12月27日星期三 22 43【415】kava 15min w底 突破压力位置 多次回踩.png",
+      "sample_id": 415,
+      "date": "2023-12-27",
+      "time": "22:43",
+      "detected_at": "2023-12-27T22:43:00",
+      "symbol": "KAVA",
+      "timeframe": "15m",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "突破",
+        "回踩",
+        "压力"
+      ],
+      "note": "kava 15min w底 突破压力位置 多次回踩"
+    },
+    {
+      "file": "[22 43] 2023年8月9日星期三 22 43【340】matic 2h 头肩底 突破前位于压力位置盘整 做多好机.png",
+      "sample_id": 340,
+      "date": "2023-08-09",
+      "time": "22:43",
+      "detected_at": "2023-08-09T22:43:00",
+      "symbol": "MATIC",
+      "timeframe": "2h",
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [
+        "突破",
+        "压力",
+        "做多"
+      ],
+      "note": "matic 2h 头肩底 突破前位于压力位置盘整 做多好机"
+    },
+    {
+      "file": "[22 43] 2024年6月20日星期四 22 43【419】 ada 1day 回踩到成交密集区 15min回踩到支.png",
+      "sample_id": 419,
+      "date": "2024-06-20",
+      "time": "22:43",
+      "detected_at": "2024-06-20T22:43:00",
+      "symbol": "ADA",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [
+        "回踩"
+      ],
+      "note": "ada 1day 回踩到成交密集区 15min回踩到支"
+    },
+    {
+      "file": "[22 44] 2023年8月3日星期四 22 44【292】crv 下直三 顺坡.png",
+      "sample_id": 292,
+      "date": "2023-08-03",
+      "time": "22:44",
+      "detected_at": "2023-08-03T22:44:00",
+      "symbol": "CRV",
+      "timeframe": null,
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [],
+      "note": "crv 下直三 顺坡"
+    },
+    {
+      "file": "[22 45] 2023年8月14日星期一 22 45【364】uni 对三 上涨之后 走了牛旗.png",
+      "sample_id": 364,
+      "date": "2023-08-14",
+      "time": "22:45",
+      "detected_at": "2023-08-14T22:45:00",
+      "symbol": "UNI",
+      "timeframe": null,
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [],
+      "note": "uni 对三 上涨之后 走了牛旗"
+    },
+    {
+      "file": "[22 45] 2024年6月20日星期四 22 45【420】apt 1day强支撑 观察能否站稳.png",
+      "sample_id": 420,
+      "date": "2024-06-20",
+      "time": "22:45",
+      "detected_at": "2024-06-20T22:45:00",
+      "symbol": "APT",
+      "timeframe": "1d",
+      "patterns": [],
+      "context": [
+        "支撑",
+        "观察"
+      ],
+      "note": "apt 1day强支撑 观察能否站稳"
+    },
+    {
+      "file": "[22 46] 2023年8月1日星期二 22 46【268】apt 4h 目前跌到4h支撑区域 看小级别形态.png",
+      "sample_id": 268,
+      "date": "2023-08-01",
+      "time": "22:46",
+      "detected_at": "2023-08-01T22:46:00",
+      "symbol": "APT",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [
+        "支撑"
+      ],
+      "note": "apt 4h 目前跌到4h支撑区域 看小级别形态"
+    },
+    {
+      "file": "[22 47] 2023年8月15日星期二 22 47【382】底部形成盘整区间 突破区间前有短暂的蓄势 突破后顶部形成.png",
+      "sample_id": 382,
+      "date": "2023-08-15",
+      "time": "22:47",
+      "detected_at": "2023-08-15T22:47:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [
+        "突破",
+        "蓄势",
+        "顶部",
+        "底部"
+      ],
+      "note": "底部形成盘整区间 突破区间前有短暂的蓄势 突破后顶部形成"
+    },
+    {
+      "file": "[22 47] 2023年8月1日星期二 22 47【269】agld 1h w底 突破肩部 回踩后上涨 最佳开仓点位在.png",
+      "sample_id": 269,
+      "date": "2023-08-01",
+      "time": "22:47",
+      "detected_at": "2023-08-01T22:47:00",
+      "symbol": "AGLD",
+      "timeframe": "1h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "突破",
+        "回踩"
+      ],
+      "note": "agld 1h w底 突破肩部 回踩后上涨 最佳开仓点位在"
+    },
+    {
+      "file": "[22 48] 2023年8月3日星期四 22 48【293】crv 熊旗 熊旗末尾 反弹无力.png",
+      "sample_id": 293,
+      "date": "2023-08-03",
+      "time": "22:48",
+      "detected_at": "2023-08-03T22:48:00",
+      "symbol": "CRV",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "crv 熊旗 熊旗末尾 反弹无力"
+    },
+    {
+      "file": "[22 49] 2023年8月15日星期二 22 49【383】fil 4h 下降楔形 顺破 中继结构.png",
+      "sample_id": 383,
+      "date": "2023-08-15",
+      "time": "22:49",
+      "detected_at": "2023-08-15T22:49:00",
+      "symbol": "FIL",
+      "timeframe": "4h",
+      "patterns": [
+        "falling_wedge"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "fil 4h 下降楔形 顺破 中继结构"
+    },
+    {
+      "file": "[22 52] 2023年8月14日星期一 22 52【366】atom 2h w底 右肩突破后回踩支撑 最好的开仓点位.png",
+      "sample_id": 366,
+      "date": "2023-08-14",
+      "time": "22:52",
+      "detected_at": "2023-08-14T22:52:00",
+      "symbol": "ATOM",
+      "timeframe": "2h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "突破",
+        "回踩",
+        "支撑"
+      ],
+      "note": "atom 2h w底 右肩突破后回踩支撑 最好的开仓点位"
+    },
+    {
+      "file": "[22 53] 2023年8月15日星期二 22 53【385】fil 4h 下直三 中继结构.png",
+      "sample_id": 385,
+      "date": "2023-08-15",
+      "time": "22:53",
+      "detected_at": "2023-08-15T22:53:00",
+      "symbol": "FIL",
+      "timeframe": "4h",
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "fil 4h 下直三 中继结构"
+    },
+    {
+      "file": "[22 53] 2023年8月3日星期四 22 53【295】crv 4h 上直三.png",
+      "sample_id": 295,
+      "date": "2023-08-03",
+      "time": "22:53",
+      "detected_at": "2023-08-03T22:53:00",
+      "symbol": "CRV",
+      "timeframe": "4h",
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [],
+      "note": "crv 4h 上直三"
+    },
+    {
+      "file": "[22 54] 2023年8月14日星期一 22 54【367】atom 下直三 中继结构.png",
+      "sample_id": 367,
+      "date": "2023-08-14",
+      "time": "22:54",
+      "detected_at": "2023-08-14T22:54:00",
+      "symbol": "ATOM",
+      "timeframe": null,
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "atom 下直三 中继结构"
+    },
+    {
+      "file": "[22 57] 2023年8月16日星期三 22 57【388】vet 1h 对三 突破后有短暂回踩动作.png",
+      "sample_id": 388,
+      "date": "2023-08-16",
+      "time": "22:57",
+      "detected_at": "2023-08-16T22:57:00",
+      "symbol": "VET",
+      "timeframe": "1h",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [
+        "突破",
+        "回踩"
+      ],
+      "note": "vet 1h 对三 突破后有短暂回踩动作"
+    },
+    {
+      "file": "[22 57] 2023年8月17日星期四 22 57【404】grt 突破回踩 有蓄势.png",
+      "sample_id": 404,
+      "date": "2023-08-17",
+      "time": "22:57",
+      "detected_at": "2023-08-17T22:57:00",
+      "symbol": "GRT",
+      "timeframe": null,
+      "patterns": [],
+      "context": [
+        "突破",
+        "回踩",
+        "蓄势"
+      ],
+      "note": "grt 突破回踩 有蓄势"
+    },
+    {
+      "file": "[22 57] 2023年8月1日星期二 22 57【271】agld 1h 头肩底.png",
+      "sample_id": 271,
+      "date": "2023-08-01",
+      "time": "22:57",
+      "detected_at": "2023-08-01T22:57:00",
+      "symbol": "AGLD",
+      "timeframe": "1h",
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [],
+      "note": "agld 1h 头肩底"
+    },
+    {
+      "file": "[22 57] 2023年8月3日星期四 22 57[296] xrp 下直三.png",
+      "sample_id": null,
+      "date": "2023-08-03",
+      "time": "22:57",
+      "detected_at": "2023-08-03T22:57:00",
+      "symbol": "XRP",
+      "timeframe": null,
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [],
+      "note": "[22 57] 2023年8月3日星期四 22 57[296] xrp 下直三"
+    },
+    {
+      "file": "[22 58] 2026年1月21日星期三 22 58【517】fartcoin 4h 像是变异的w底.png",
+      "sample_id": 517,
+      "date": "2026-01-21",
+      "time": "22:58",
+      "detected_at": "2026-01-21T22:58:00",
+      "symbol": "FARTCOIN",
+      "timeframe": "4h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "fartcoin 4h 像是变异的w底"
+    },
+    {
+      "file": "[23 00] 2023年8月1日星期二 23 00【272】agld 头肩底结构.png",
+      "sample_id": 272,
+      "date": "2023-08-01",
+      "time": "23:00",
+      "detected_at": "2023-08-01T23:00:00",
+      "symbol": "AGLD",
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [],
+      "note": "agld 头肩底结构"
+    },
+    {
+      "file": "[23 00] 2023年8月3日星期四 23 00【297】xrp 1d 日线级别出现上直三.png",
+      "sample_id": 297,
+      "date": "2023-08-03",
+      "time": "23:00",
+      "detected_at": "2023-08-03T23:00:00",
+      "symbol": "XRP",
+      "timeframe": "1d",
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [],
+      "note": "xrp 1d 日线级别出现上直三"
+    },
+    {
+      "file": "[23 01] 2025年4月28日星期一 23 01【452】大的w底结构 1h级别大涨前成交量很低.png",
+      "sample_id": 452,
+      "date": "2025-04-28",
+      "time": "23:01",
+      "detected_at": "2025-04-28T23:01:00",
+      "symbol": null,
+      "timeframe": "1h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "大的w底结构 1h级别大涨前成交量很低"
+    },
+    {
+      "file": "[23 02] 2023年8月1日星期二 23 02【273】agld头肩顶结构 左肩下降三角 突破后拉升.png",
+      "sample_id": 273,
+      "date": "2023-08-01",
+      "time": "23:02",
+      "detected_at": "2023-08-01T23:02:00",
+      "symbol": "AGLD",
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_top",
+        "descending_triangle"
+      ],
+      "context": [
+        "突破"
+      ],
+      "note": "agld头肩顶结构 左肩下降三角 突破后拉升"
+    },
+    {
+      "file": "[23 03] 2025年4月28日星期一 23 03【453】1000pepe 1h 大涨之前成交量都比较低.png",
+      "sample_id": 453,
+      "date": "2025-04-28",
+      "time": "23:03",
+      "detected_at": "2025-04-28T23:03:00",
+      "symbol": "PEPE",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "1000pepe 1h 大涨之前成交量都比较低"
+    },
+    {
+      "file": "[23 06] 2025年4月15日星期二 23 06【446】头肩底结构右肩下降通道 可能会反转.png",
+      "sample_id": 446,
+      "date": "2025-04-15",
+      "time": "23:06",
+      "detected_at": "2025-04-15T23:06:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_bottom",
+        "channel"
+      ],
+      "context": [
+        "反转"
+      ],
+      "note": "头肩底结构右肩下降通道 可能会反转"
+    },
+    {
+      "file": "[23 06] 2025年4月28日星期一 23 06大涨大跌前成交量都很低.png",
+      "sample_id": null,
+      "date": "2025-04-28",
+      "time": "23:06",
+      "detected_at": "2025-04-28T23:06:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "[23 06] 2025年4月28日星期一 23 06大涨大跌前成交量都很低"
+    },
+    {
+      "file": "[23 08] 2023年7月12日星期三 23 08【210】arpa 15min 对三 目前在上边缘 可尝试小仓位开.png",
+      "sample_id": 210,
+      "date": "2023-07-12",
+      "time": "23:08",
+      "detected_at": "2023-07-12T23:08:00",
+      "symbol": "ARPA",
+      "timeframe": "15m",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [],
+      "note": "arpa 15min 对三 目前在上边缘 可尝试小仓位开"
+    },
+    {
+      "file": "[23 09] 2023年8月16日星期三 23 09【390】vet 1h 头肩底 突破回踩 最佳开仓点位.png",
+      "sample_id": 390,
+      "date": "2023-08-16",
+      "time": "23:09",
+      "detected_at": "2023-08-16T23:09:00",
+      "symbol": "VET",
+      "timeframe": "1h",
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [
+        "突破",
+        "回踩"
+      ],
+      "note": "vet 1h 头肩底 突破回踩 最佳开仓点位"
+    },
+    {
+      "file": "[23 09] 2025年4月15日星期二 23 09【447】标准的w底 突破时候多次徘徊 突破之后回踩支撑位置.png",
+      "sample_id": 447,
+      "date": "2025-04-15",
+      "time": "23:09",
+      "detected_at": "2025-04-15T23:09:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "突破",
+        "回踩",
+        "支撑"
+      ],
+      "note": "标准的w底 突破时候多次徘徊 突破之后回踩支撑位置"
+    },
+    {
+      "file": "[23 10] 2023年8月16日星期三 23 10【391】 vet 1h 通道盘整 下跌中继.png",
+      "sample_id": 391,
+      "date": "2023-08-16",
+      "time": "23:10",
+      "detected_at": "2023-08-16T23:10:00",
+      "symbol": "VET",
+      "timeframe": "1h",
+      "patterns": [
+        "channel"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "vet 1h 通道盘整 下跌中继"
+    },
+    {
+      "file": "[23 10] 2025年4月28日星期一 23 10【ach】w头肩底 右肩盘整 带突破.png",
+      "sample_id": null,
+      "date": "2025-04-28",
+      "time": "23:10",
+      "detected_at": "2025-04-28T23:10:00",
+      "symbol": "ACH",
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [
+        "突破"
+      ],
+      "note": "[23 10] 2025年4月28日星期一 23 10【ach】w头肩底 右肩盘整 带突破"
+    },
+    {
+      "file": "[23 11] 2025年4月15日星期二 23 11.png",
+      "sample_id": null,
+      "date": "2025-04-15",
+      "time": "23:11",
+      "detected_at": "2025-04-15T23:11:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "[23 11] 2025年4月15日星期二 23 11"
+    },
+    {
+      "file": "[23 13] 2023年8月1日星期二 23 13【275】ada w底.png",
+      "sample_id": 275,
+      "date": "2023-08-01",
+      "time": "23:13",
+      "detected_at": "2023-08-01T23:13:00",
+      "symbol": "ADA",
+      "timeframe": null,
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "ada w底"
+    },
+    {
+      "file": "[23 14] 2023年8月1日星期二 23 14【276】ada 2h 楔形顺破.png",
+      "sample_id": 276,
+      "date": "2023-08-01",
+      "time": "23:14",
+      "detected_at": "2023-08-01T23:14:00",
+      "symbol": "ADA",
+      "timeframe": "2h",
+      "patterns": [
+        "wedge_unspecified"
+      ],
+      "context": [],
+      "note": "ada 2h 楔形顺破"
+    },
+    {
+      "file": "[23 20] 2023年8月1日星期二 23 20【277】yfi 1h 下直三 底部弹不起来 多头弱势.png",
+      "sample_id": 277,
+      "date": "2023-08-01",
+      "time": "23:20",
+      "detected_at": "2023-08-01T23:20:00",
+      "symbol": "YFI",
+      "timeframe": "1h",
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [
+        "底部"
+      ],
+      "note": "yfi 1h 下直三 底部弹不起来 多头弱势"
+    },
+    {
+      "file": "[23 21] 2023年7月12日星期三 23 21【212】ftm15min 有点头肩底意思 突破可尝试多.png",
+      "sample_id": 212,
+      "date": "2023-07-12",
+      "time": "23:21",
+      "detected_at": "2023-07-12T23:21:00",
+      "symbol": "FTM",
+      "timeframe": "15m",
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [
+        "突破"
+      ],
+      "note": "ftm15min 有点头肩底意思 突破可尝试多"
+    },
+    {
+      "file": "[23 21] 2025年8月4日星期一 23 21【480】1000pepe 15min 头肩底结构.png",
+      "sample_id": 480,
+      "date": "2025-08-04",
+      "time": "23:21",
+      "detected_at": "2025-08-04T23:21:00",
+      "symbol": "PEPE",
+      "timeframe": "15m",
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [],
+      "note": "1000pepe 15min 头肩底结构"
+    },
+    {
+      "file": "[23 23] 2023年7月12日星期三 23 23【213】gmt 15min 上升三角 转通道 到达通道底部拉升.png",
+      "sample_id": 213,
+      "date": "2023-07-12",
+      "time": "23:23",
+      "detected_at": "2023-07-12T23:23:00",
+      "symbol": "GMT",
+      "timeframe": "15m",
+      "patterns": [
+        "ascending_triangle",
+        "channel"
+      ],
+      "context": [
+        "底部"
+      ],
+      "note": "gmt 15min 上升三角 转通道 到达通道底部拉升"
+    },
+    {
+      "file": "[23 24] 2023年7月12日星期三 23 24【214】hook 15min 头肩顶 跌破后回踩 开启连续阴跌.png",
+      "sample_id": 214,
+      "date": "2023-07-12",
+      "time": "23:24",
+      "detected_at": "2023-07-12T23:24:00",
+      "symbol": "HOOK",
+      "timeframe": "15m",
+      "patterns": [
+        "head_shoulders_top"
+      ],
+      "context": [
+        "回踩",
+        "跌破"
+      ],
+      "note": "hook 15min 头肩顶 跌破后回踩 开启连续阴跌"
+    },
+    {
+      "file": "[23 24] 2023年7月8日星期六 23 24.png",
+      "sample_id": null,
+      "date": "2023-07-08",
+      "time": "23:24",
+      "detected_at": "2023-07-08T23:24:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "[23 24] 2023年7月8日星期六 23 24"
+    },
+    {
+      "file": "[23 24] 2023年7月8日星期六 23 24【195】core 15min 下降三角 目前处于末尾 可尝试开空.png",
+      "sample_id": 195,
+      "date": "2023-07-08",
+      "time": "23:24",
+      "detected_at": "2023-07-08T23:24:00",
+      "symbol": "CORE",
+      "timeframe": "15m",
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [
+        "开空"
+      ],
+      "note": "core 15min 下降三角 目前处于末尾 可尝试开空"
+    },
+    {
+      "file": "[23 24] 2025年8月4日星期一 23 24【481】1000pepe非常标准的头肩结构.png",
+      "sample_id": 481,
+      "date": "2025-08-04",
+      "time": "23:24",
+      "detected_at": "2025-08-04T23:24:00",
+      "symbol": "PEPE",
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_unspecified"
+      ],
+      "context": [],
+      "note": "1000pepe非常标准的头肩结构"
+    },
+    {
+      "file": "[23 25] 2025年8月4日星期一 23 25【482】asr 15min 对三 预测上涨结构.png",
+      "sample_id": 482,
+      "date": "2025-08-04",
+      "time": "23:25",
+      "detected_at": "2025-08-04T23:25:00",
+      "symbol": "ASR",
+      "timeframe": "15m",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [],
+      "note": "asr 15min 对三 预测上涨结构"
+    },
+    {
+      "file": "[23 26] 2023年7月12日星期三 23 26【215】inj 15min 顶部形成对三 看跌.png",
+      "sample_id": 215,
+      "date": "2023-07-12",
+      "time": "23:26",
+      "detected_at": "2023-07-12T23:26:00",
+      "symbol": "INJ",
+      "timeframe": "15m",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [
+        "顶部"
+      ],
+      "note": "inj 15min 顶部形成对三 看跌"
+    },
+    {
+      "file": "[23 29] 2023年8月1日星期二 23 29【279】yfi 下跌中继旗形 盘整了太久 区间内可逢高空 逢低多 .png",
+      "sample_id": 279,
+      "date": "2023-08-01",
+      "time": "23:29",
+      "detected_at": "2023-08-01T23:29:00",
+      "symbol": "YFI",
+      "timeframe": null,
+      "patterns": [
+        "flag"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "yfi 下跌中继旗形 盘整了太久 区间内可逢高空 逢低多"
+    },
+    {
+      "file": "[23 32] 2024年7月3日星期三 23 32.png",
+      "sample_id": null,
+      "date": "2024-07-03",
+      "time": "23:32",
+      "detected_at": "2024-07-03T23:32:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "[23 32] 2024年7月3日星期三 23 32"
+    },
+    {
+      "file": "[23 32] 2025年4月9日星期三 23 32【433】底部上升三角 突破前盘整 暴量上涨 盘整跌破盘整区前 上涨.png",
+      "sample_id": 433,
+      "date": "2025-04-09",
+      "time": "23:32",
+      "detected_at": "2025-04-09T23:32:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [
+        "突破",
+        "跌破",
+        "底部"
+      ],
+      "note": "底部上升三角 突破前盘整 暴量上涨 盘整跌破盘整区前 上涨"
+    },
+    {
+      "file": "[23 34] 2024年7月3日星期三 23 34【426】link 上直三.png",
+      "sample_id": 426,
+      "date": "2024-07-03",
+      "time": "23:34",
+      "detected_at": "2024-07-03T23:34:00",
+      "symbol": "LINK",
+      "timeframe": null,
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [],
+      "note": "link 上直三"
+    },
+    {
+      "file": "[23 35] 2024年6月24日星期一 23 35【423】 wld 15min 下直三.png",
+      "sample_id": 423,
+      "date": "2024-06-24",
+      "time": "23:35",
+      "detected_at": "2024-06-24T23:35:00",
+      "symbol": "WLD",
+      "timeframe": "15m",
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [],
+      "note": "wld 15min 下直三"
+    },
+    {
+      "file": "[23 35] 2024年7月3日星期三 23 35【427】arb 1h 盘整区间 走势较弱 下直三.png",
+      "sample_id": 427,
+      "date": "2024-07-03",
+      "time": "23:35",
+      "detected_at": "2024-07-03T23:35:00",
+      "symbol": "ARB",
+      "timeframe": "1h",
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [],
+      "note": "arb 1h 盘整区间 走势较弱 下直三"
+    },
+    {
+      "file": "[23 35] 2025年4月9日星期三 23 35【434】w底 包含小w底 突破前面蓄力 1h级别走出上涨三角.png",
+      "sample_id": 434,
+      "date": "2025-04-09",
+      "time": "23:35",
+      "detected_at": "2025-04-09T23:35:00",
+      "symbol": null,
+      "timeframe": "1h",
+      "patterns": [
+        "double_bottom",
+        "triangle_unspecified"
+      ],
+      "context": [
+        "突破"
+      ],
+      "note": "w底 包含小w底 突破前面蓄力 1h级别走出上涨三角"
+    },
+    {
+      "file": "[23 39] 2023年7月24日星期一 23 39【237】aave 15min 头肩结构 跌破后回踩 顺势下跌.png",
+      "sample_id": 237,
+      "date": "2023-07-24",
+      "time": "23:39",
+      "detected_at": "2023-07-24T23:39:00",
+      "symbol": "AAVE",
+      "timeframe": "15m",
+      "patterns": [
+        "head_shoulders_unspecified"
+      ],
+      "context": [
+        "回踩",
+        "跌破"
+      ],
+      "note": "aave 15min 头肩结构 跌破后回踩 顺势下跌"
+    },
+    {
+      "file": "[23 41] 2025年8月4日星期一 23 41.png",
+      "sample_id": null,
+      "date": "2025-08-04",
+      "time": "23:41",
+      "detected_at": "2025-08-04T23:41:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "[23 41] 2025年8月4日星期一 23 41"
+    },
+    {
+      "file": "[23 42] 2025年7月31日星期四 23 42【471】celo 1h头肩底 w底.png",
+      "sample_id": 471,
+      "date": "2025-07-31",
+      "time": "23:42",
+      "detected_at": "2025-07-31T23:42:00",
+      "symbol": "CELO",
+      "timeframe": "1h",
+      "patterns": [
+        "head_shoulders_bottom",
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "celo 1h头肩底 w底"
+    },
+    {
+      "file": "[23 43] 2025年8月4日星期一 23 43【485】hbar 1h标准的头肩底结构 暴涨.png",
+      "sample_id": 485,
+      "date": "2025-08-04",
+      "time": "23:43",
+      "detected_at": "2025-08-04T23:43:00",
+      "symbol": "HBAR",
+      "timeframe": "1h",
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [],
+      "note": "hbar 1h标准的头肩底结构 暴涨"
+    },
+    {
+      "file": "[23 44] 2025年7月30日星期三 23 44【468】1000pepe 1h左侧下降旗形.png",
+      "sample_id": 468,
+      "date": "2025-07-30",
+      "time": "23:44",
+      "detected_at": "2025-07-30T23:44:00",
+      "symbol": "PEPE",
+      "timeframe": "1h",
+      "patterns": [
+        "flag"
+      ],
+      "context": [],
+      "note": "1000pepe 1h左侧下降旗形"
+    },
+    {
+      "file": "[23 45] 2025年7月31日星期四 23 45【472】celo 1h w底.png",
+      "sample_id": 472,
+      "date": "2025-07-31",
+      "time": "23:45",
+      "detected_at": "2025-07-31T23:45:00",
+      "symbol": "CELO",
+      "timeframe": "1h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "celo 1h w底"
+    },
+    {
+      "file": "[23 46] 2025年8月4日星期一 23 46【486】hbar 有点头肩顶结构.png",
+      "sample_id": 486,
+      "date": "2025-08-04",
+      "time": "23:46",
+      "detected_at": "2025-08-04T23:46:00",
+      "symbol": "HBAR",
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_top"
+      ],
+      "context": [],
+      "note": "hbar 有点头肩顶结构"
+    },
+    {
+      "file": "[23 50] 2025年7月31日星期四 23 50【474】chz 1h头肩底 +头肩顶.png",
+      "sample_id": 474,
+      "date": "2025-07-31",
+      "time": "23:50",
+      "detected_at": "2025-07-31T23:50:00",
+      "symbol": "CHZ",
+      "timeframe": "1h",
+      "patterns": [
+        "head_shoulders_top",
+        "head_shoulders_bottom"
+      ],
+      "context": [],
+      "note": "chz 1h头肩底 +头肩顶"
+    },
+    {
+      "file": "[23 51] 2025年7月31日星期四 23 51【475】chz 1h顶部实现下降三角.png",
+      "sample_id": 475,
+      "date": "2025-07-31",
+      "time": "23:51",
+      "detected_at": "2025-07-31T23:51:00",
+      "symbol": "CHZ",
+      "timeframe": "1h",
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [
+        "顶部"
+      ],
+      "note": "chz 1h顶部实现下降三角"
+    },
+    {
+      "file": "[23 52] 2025年4月9日星期三 23 52接着又走头肩顶中继下跌.png",
+      "sample_id": null,
+      "date": "2025-04-09",
+      "time": "23:52",
+      "detected_at": "2025-04-09T23:52:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_top"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "[23 52] 2025年4月9日星期三 23 52接着又走头肩顶中继下跌"
+    },
+    {
+      "file": "[23 54] 2025年7月31日星期四 23 54【476】comp 1h 头肩顶结构已经形成.png",
+      "sample_id": 476,
+      "date": "2025-07-31",
+      "time": "23:54",
+      "detected_at": "2025-07-31T23:54:00",
+      "symbol": "COMP",
+      "timeframe": "1h",
+      "patterns": [
+        "head_shoulders_top"
+      ],
+      "context": [],
+      "note": "comp 1h 头肩顶结构已经形成"
+    },
+    {
+      "file": "[23 58] 2023年6月26日星期一 23 58.png",
+      "sample_id": null,
+      "date": "2023-06-26",
+      "time": "23:58",
+      "detected_at": "2023-06-26T23:58:00",
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "[23 58] 2023年6月26日星期一 23 58"
+    },
+    {
+      "file": "[23 59] 2023年8月13日星期日 23 59【357】shib 2h 上涨中继 对三.png",
+      "sample_id": 357,
+      "date": "2023-08-13",
+      "time": "23:59",
+      "detected_at": "2023-08-13T23:59:00",
+      "symbol": "SHIB",
+      "timeframe": "2h",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "shib 2h 上涨中继 对三"
+    },
+    {
+      "file": "修改附件删除.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除"
+    },
+    {
+      "file": "修改附件删除_10.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_10"
+    },
+    {
+      "file": "修改附件删除_11.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_11"
+    },
+    {
+      "file": "修改附件删除_12.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_12"
+    },
+    {
+      "file": "修改附件删除_13.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_13"
+    },
+    {
+      "file": "修改附件删除_14.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_14"
+    },
+    {
+      "file": "修改附件删除_15.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_15"
+    },
+    {
+      "file": "修改附件删除_16.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_16"
+    },
+    {
+      "file": "修改附件删除_17.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_17"
+    },
+    {
+      "file": "修改附件删除_18.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_18"
+    },
+    {
+      "file": "修改附件删除_2.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_2"
+    },
+    {
+      "file": "修改附件删除_3.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_3"
+    },
+    {
+      "file": "修改附件删除_4.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_4"
+    },
+    {
+      "file": "修改附件删除_5.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_5"
+    },
+    {
+      "file": "修改附件删除_6.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_6"
+    },
+    {
+      "file": "修改附件删除_7.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_7"
+    },
+    {
+      "file": "修改附件删除_8.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_8"
+    },
+    {
+      "file": "修改附件删除_9.png",
+      "sample_id": null,
+      "date": null,
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "修改附件删除_9"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 4 10 22 342025年4月10日星期四 22 34【436】头肩底突破回踩后快速拉升.png",
+      "sample_id": 436,
+      "date": "2025-04-10",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [
+        "突破",
+        "回踩"
+      ],
+      "note": "头肩底突破回踩后快速拉升"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 4 14 22 222025年4月14日星期一 22 22【437】4h w底 突破后回踩 .png",
+      "sample_id": 437,
+      "date": "2025-04-14",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": "4h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "突破",
+        "回踩"
+      ],
+      "note": "4h w底 突破后回踩"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 4 14 22 392025年4月14日星期一 22 39【443】下跌过程中继 通道上涨突.png",
+      "sample_id": 443,
+      "date": "2025-04-14",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "channel"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "下跌过程中继 通道上涨突"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 4 14 22 502025年4月14日星期一 22 50【444】头部走了很大的结构 对称.png",
+      "sample_id": 444,
+      "date": "2025-04-14",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "头部走了很大的结构 对称"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 4 15 23 022025年4月15日星期二 23 02【445】下跌中继 反弹到中线无力.png",
+      "sample_id": 445,
+      "date": "2025-04-15",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [
+        "中继"
+      ],
+      "note": "下跌中继 反弹到中线无力"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 4 15 23 252025年4月15日星期二 23 25【449】此图有多个结构 左侧对三.png",
+      "sample_id": 449,
+      "date": "2025-04-15",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [],
+      "note": "此图有多个结构 左侧对三"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 4 22 23 072025年4月22日星期二 23 07【451】w底 突破前蓄势时间较长.png",
+      "sample_id": 451,
+      "date": "2025-04-22",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "突破",
+        "蓄势"
+      ],
+      "note": "w底 突破前蓄势时间较长"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 4 28 22 582025年4月28日星期一 22 58【452】4h头肩底结构.png",
+      "sample_id": 452,
+      "date": "2025-04-28",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": "4h",
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [],
+      "note": "4h头肩底结构"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 4 28 23 142025年4月28日星期一 23 14上涨前无量.png",
+      "sample_id": null,
+      "date": "2025-04-28",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "哈里路没有牙 — 2025 4 28 23 142025年4月28日星期一 23 14上涨前无量"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 4 29 22 432025年4月29日星期二 22 43【454】预测一波 上涨结构 等待.png",
+      "sample_id": 454,
+      "date": "2025-04-29",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "预测一波 上涨结构 等待"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 4 9 23 292025年4月9日星期三 23 29【432】下跌中继 头肩顶结构下跌中继.png",
+      "sample_id": 432,
+      "date": "2025-04-09",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_top"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "下跌中继 头肩顶结构下跌中继"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 4 9 23 442025年4月9日星期三 23 44【434】4h级别突破中间压力位爆啦 .png",
+      "sample_id": 434,
+      "date": "2025-04-09",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [
+        "突破",
+        "压力"
+      ],
+      "note": "4h级别突破中间压力位爆啦"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 4 9 23 522025年4月9日星期三 23 52【435】头肩底结构 上涨末尾 顶部又.png",
+      "sample_id": 435,
+      "date": "2025-04-09",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [
+        "顶部"
+      ],
+      "note": "头肩底结构 上涨末尾 顶部又"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 5 11 17 242025年5月11日星期日 17 24【456】上涨中继 走通道 或者下.png",
+      "sample_id": 456,
+      "date": "2025-05-11",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [
+        "channel"
+      ],
+      "context": [
+        "中继"
+      ],
+      "note": "上涨中继 走通道 或者下"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 5 11 17 592025年5月11日星期日 17 59[457]trump 标准w底 突.png",
+      "sample_id": null,
+      "date": "2025-05-11",
+      "time": null,
+      "detected_at": null,
+      "symbol": "TRUMP",
+      "timeframe": null,
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "哈里路没有牙 — 2025 5 11 17 592025年5月11日星期日 17 59[457]trump 标准w底 突"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 5 11 18 092025年5月11日星期日 18 09【458】eigen 左侧下降中继.png",
+      "sample_id": 458,
+      "date": "2025-05-11",
+      "time": null,
+      "detected_at": null,
+      "symbol": "EIGEN",
+      "timeframe": null,
+      "patterns": [],
+      "context": [
+        "中继"
+      ],
+      "note": "eigen 左侧下降中继"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 5 12 22 182025年5月12日星期一 22 18【460】pnutusdt 预测.png",
+      "sample_id": 460,
+      "date": "2025-05-12",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PNUTUSDT",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "pnutusdt 预测"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 5 12 22 282025年5月12日星期一 22 28【461】1inch 为什么在这里.png",
+      "sample_id": 461,
+      "date": "2025-05-12",
+      "time": null,
+      "detected_at": null,
+      "symbol": "INCH",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "1inch 为什么在这里"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 5 12 22 412025年5月12日星期一 22 41【463】底部盘整 假突破 拉回去.png",
+      "sample_id": 463,
+      "date": "2025-05-12",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [
+        "突破",
+        "假突破",
+        "底部"
+      ],
+      "note": "底部盘整 假突破 拉回去"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 5 14 22 292025年5月14日星期三 22 29【464】pnut w底 突破后 .png",
+      "sample_id": 464,
+      "date": "2025-05-14",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PNUT",
+      "timeframe": null,
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "突破"
+      ],
+      "note": "pnut w底 突破后"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 5 7 23 412025年5月7日星期三 23 41【455】4h级别 走了头肩底 目前回.png",
+      "sample_id": 455,
+      "date": "2025-05-07",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": "4h",
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [],
+      "note": "4h级别 走了头肩底 目前回"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 7 30 23 422025年7月30日星期三 23 42【467】1000pepe 1h .png",
+      "sample_id": 467,
+      "date": "2025-07-30",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PEPE",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "1000pepe 1h"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 7 30 23 512025年7月30日星期三 23 51【469】1000pepe 1h .png",
+      "sample_id": 469,
+      "date": "2025-07-30",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PEPE",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "1000pepe 1h"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 7 31 23 402025年7月31日星期四 23 40【470】asr 15min 下降.png",
+      "sample_id": 470,
+      "date": "2025-07-31",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ASR",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "asr 15min 下降"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 7 31 23 472025年7月31日星期四 23 47【473】celo 1h 上升旗形.png",
+      "sample_id": 473,
+      "date": "2025-07-31",
+      "time": null,
+      "detected_at": null,
+      "symbol": "CELO",
+      "timeframe": "1h",
+      "patterns": [
+        "flag"
+      ],
+      "context": [],
+      "note": "celo 1h 上升旗形"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 7 31 23 572025年7月31日星期四 23 57【477】comp 1h 左侧下降.png",
+      "sample_id": 477,
+      "date": "2025-07-31",
+      "time": null,
+      "detected_at": null,
+      "symbol": "COMP",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "comp 1h 左侧下降"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 8 1 00 012025年8月1日星期五 00 01【478】neiro 1h w底部 他.png",
+      "sample_id": 478,
+      "date": "2025-08-01",
+      "time": null,
+      "detected_at": null,
+      "symbol": "NEIRO",
+      "timeframe": "1h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "底部"
+      ],
+      "note": "neiro 1h w底部 他"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 8 10 18 112025年8月10日星期日 18 11【488】pnut 1hw底.png",
+      "sample_id": 488,
+      "date": "2025-08-10",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PNUT",
+      "timeframe": "1h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "pnut 1hw底"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 8 10 18 212025年8月10日星期日 18 21【490】cfx 1d w底部.png",
+      "sample_id": 490,
+      "date": "2025-08-10",
+      "time": null,
+      "detected_at": null,
+      "symbol": "CFX",
+      "timeframe": "1d",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [
+        "底部"
+      ],
+      "note": "cfx 1d w底部"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 8 17 17 212025年8月17日星期日 17 21观察【491】arb 4h w底.png",
+      "sample_id": 491,
+      "date": "2025-08-17",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ARB",
+      "timeframe": "4h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "arb 4h w底"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 8 17 18 192025年8月17日星期日 18 19.png",
+      "sample_id": null,
+      "date": "2025-08-17",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "哈里路没有牙 — 2025 8 17 18 192025年8月17日星期日 18 19"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 8 29 22 022025年8月29日星期五 22 02【493】penguusdt 1h.png",
+      "sample_id": 493,
+      "date": "2025-08-29",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PENGUUSDT",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "penguusdt 1h"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 8 4 23 192025年8月4日星期一 23 19【479】btc 4h跌到趋势线 15.png",
+      "sample_id": 479,
+      "date": "2025-08-04",
+      "time": null,
+      "detected_at": null,
+      "symbol": "BTC",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "btc 4h跌到趋势线 15"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 8 4 23 322025年8月4日星期一 23 32【483】4h 形成w底 15min .png",
+      "sample_id": 483,
+      "date": "2025-08-04",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": "15m",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "4h 形成w底 15min"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 8 4 23 412025年8月4日星期一 23 41【484】INJ 4h 形成w底 15.png",
+      "sample_id": 484,
+      "date": "2025-08-04",
+      "time": null,
+      "detected_at": null,
+      "symbol": "INJ",
+      "timeframe": "4h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "INJ 4h 形成w底 15"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 8 4 23 522025年8月4日星期一 23 52【487】op 15min 头肩底结构.png",
+      "sample_id": 487,
+      "date": "2025-08-04",
+      "time": null,
+      "detected_at": null,
+      "symbol": "OP",
+      "timeframe": "15m",
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [],
+      "note": "op 15min 头肩底结构"
+    },
+    {
+      "file": "哈里路没有牙 — 2025 9 1 22 582025年9月1日星期一 22 58【494】mito 15min 标准的.png",
+      "sample_id": 494,
+      "date": "2025-09-01",
+      "time": null,
+      "detected_at": null,
+      "symbol": "MITO",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "mito 15min 标准的"
+    },
+    {
+      "file": "哈里路没有牙 — 2026 1 13 23 522026年1月13日星期二 23 52【495】river 15min .webp",
+      "sample_id": 495,
+      "date": "2026-01-13",
+      "time": null,
+      "detected_at": null,
+      "symbol": "RIVER",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "river 15min"
+    },
+    {
+      "file": "哈里路没有牙 — 2026 1 14 21 252026年1月14日星期三 21 25【496】play 1h 头肩底 .png",
+      "sample_id": 496,
+      "date": "2026-01-14",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PLAY",
+      "timeframe": "1h",
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [],
+      "note": "play 1h 头肩底"
+    },
+    {
+      "file": "哈里路没有牙 — 2026 1 14 22 132026年1月14日星期三 22 13【503】aster 2h 以为要.webp",
+      "sample_id": 503,
+      "date": "2026-01-14",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ASTER",
+      "timeframe": "2h",
+      "patterns": [],
+      "context": [],
+      "note": "aster 2h 以为要"
+    },
+    {
+      "file": "哈里路没有牙 — 2026 1 14 22 432026年1月14日星期三 22 43【505】sui 4h w底 目前.webp",
+      "sample_id": 505,
+      "date": "2026-01-14",
+      "time": null,
+      "detected_at": null,
+      "symbol": "SUI",
+      "timeframe": "4h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "sui 4h w底 目前"
+    },
+    {
+      "file": "哈里路没有牙 — 2026 1 15 21 202026年1月15日星期四 21 20【508】eth 4h 形成M头 .webp",
+      "sample_id": 508,
+      "date": "2026-01-15",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ETH",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "eth 4h 形成M头"
+    },
+    {
+      "file": "哈里路没有牙 — 2026 1 15 22 182026年1月15日星期四 22 18【514】fart w底.png",
+      "sample_id": 514,
+      "date": "2026-01-15",
+      "time": null,
+      "detected_at": null,
+      "symbol": "FART",
+      "timeframe": null,
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "fart w底"
+    },
+    {
+      "file": "哈里路没有牙 — 2026 1 19 21 472026年1月19日星期一 21 47【515】frax 底部盘整 此处.png",
+      "sample_id": 515,
+      "date": "2026-01-19",
+      "time": null,
+      "detected_at": null,
+      "symbol": "FRAX",
+      "timeframe": null,
+      "patterns": [],
+      "context": [
+        "底部"
+      ],
+      "note": "frax 底部盘整 此处"
+    },
+    {
+      "file": "哈里路没有牙 — 2026 1 21 22 512026年1月21日星期三 22 51【516】frax 15min 头.webp",
+      "sample_id": 516,
+      "date": "2026-01-21",
+      "time": null,
+      "detected_at": null,
+      "symbol": "FRAX",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "frax 15min 头"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 12 13 21 292023年12月13日星期三 21 29【410】1000p.png",
+      "sample_id": 410,
+      "date": "2023-12-13",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "1000p"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 12 26 21 412023年12月26日星期二 21 41[411] 1000.png",
+      "sample_id": null,
+      "date": "2023-12-26",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "哈里路没有牙 胡子观币 — 2023 12 26 21 412023年12月26日星期二 21 41[411] 1000"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 12 27 22 302023年12月27日星期三 22 30【412】lpt 1.png",
+      "sample_id": 412,
+      "date": "2023-12-27",
+      "time": null,
+      "detected_at": null,
+      "symbol": "LPT",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "lpt 1"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 12 27 22 392023年12月27日星期三 22 39【414】inj 1.png",
+      "sample_id": 414,
+      "date": "2023-12-27",
+      "time": null,
+      "detected_at": null,
+      "symbol": "INJ",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "inj 1"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 12 27 22 472023年12月27日星期三 22 47【416】sol 1.png",
+      "sample_id": 416,
+      "date": "2023-12-27",
+      "time": null,
+      "detected_at": null,
+      "symbol": "SOL",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "sol 1"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 12 5 23 122023年12月5日星期二 23 12【409】ordi 头肩.png",
+      "sample_id": 409,
+      "date": "2023-12-05",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ORDI",
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_unspecified"
+      ],
+      "context": [],
+      "note": "ordi 头肩"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 6 26 23 422023年6月26日星期一 23 42【176】ada 1h .png",
+      "sample_id": 176,
+      "date": "2023-06-26",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ADA",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "ada 1h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 6 27 00 022023年6月27日星期二 00 02【178】 sol 1h.png",
+      "sample_id": 178,
+      "date": "2023-06-27",
+      "time": null,
+      "detected_at": null,
+      "symbol": "SOL",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "sol 1h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 12 23 042023年7月12日星期三 23 04【209】arb 1h .png",
+      "sample_id": 209,
+      "date": "2023-07-12",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ARB",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "arb 1h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 12 23 202023年7月12日星期三 23 20【211】atom 15.png",
+      "sample_id": 211,
+      "date": "2023-07-12",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ATOM",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "atom 15"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 13 21 532023年7月13日星期四 21 53【216】1000pep.png",
+      "sample_id": 216,
+      "date": "2023-07-13",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PEP",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "1000pep"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 13 22 042023年7月13日星期四 22 04【217】cfx 15m.png",
+      "sample_id": 217,
+      "date": "2023-07-13",
+      "time": null,
+      "detected_at": null,
+      "symbol": "CFX",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "cfx 15m"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 17 22 102023年7月17日星期一 22 10【218】1inch 1.png",
+      "sample_id": 218,
+      "date": "2023-07-17",
+      "time": null,
+      "detected_at": null,
+      "symbol": "INCH",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "1inch 1"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 17 22 182023年7月17日星期一 22 18【219】aave 1h.png",
+      "sample_id": 219,
+      "date": "2023-07-17",
+      "time": null,
+      "detected_at": null,
+      "symbol": "AAVE",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "aave 1h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 17 22 312023年7月17日星期一 22 31【221】bnb 1h .png",
+      "sample_id": 221,
+      "date": "2023-07-17",
+      "time": null,
+      "detected_at": null,
+      "symbol": "BNB",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "bnb 1h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 18 21 332023年7月18日星期二 21 33【223】twt 1h走.png",
+      "sample_id": 223,
+      "date": "2023-07-18",
+      "time": null,
+      "detected_at": null,
+      "symbol": "TWT",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "twt 1h走"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 18 21 492023年7月18日星期二 21 49【224】sushi 2.png",
+      "sample_id": 224,
+      "date": "2023-07-18",
+      "time": null,
+      "detected_at": null,
+      "symbol": "SUSHI",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "sushi 2"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 18 21 582023年7月18日星期二 21 58【227】rndr 1h.png",
+      "sample_id": 227,
+      "date": "2023-07-18",
+      "time": null,
+      "detected_at": null,
+      "symbol": "RNDR",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "rndr 1h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 19 21 062023年7月19日星期三 21 06【229】agld 4h.png",
+      "sample_id": 229,
+      "date": "2023-07-19",
+      "time": null,
+      "detected_at": null,
+      "symbol": "AGLD",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "agld 4h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 19 21 152023年7月19日星期三 21 15【232】apt 1d级.png",
+      "sample_id": 232,
+      "date": "2023-07-19",
+      "time": null,
+      "detected_at": null,
+      "symbol": "APT",
+      "timeframe": "1d",
+      "patterns": [],
+      "context": [],
+      "note": "apt 1d级"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 19 21 522023年7月19日星期三 21 52【233】ldo 15m.png",
+      "sample_id": 233,
+      "date": "2023-07-19",
+      "time": null,
+      "detected_at": null,
+      "symbol": "LDO",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "ldo 15m"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 19 22 012023年7月19日星期三 22 01【235 】xrp 15.png",
+      "sample_id": null,
+      "date": "2023-07-19",
+      "time": null,
+      "detected_at": null,
+      "symbol": "XRP",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "哈里路没有牙 胡子观币 — 2023 7 19 22 012023年7月19日星期三 22 01【235 】xrp 15"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 2 22 252023年7月2日星期日 22 25【179】15min bch.png",
+      "sample_id": 179,
+      "date": "2023-07-02",
+      "time": null,
+      "detected_at": null,
+      "symbol": "BCH",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "15min bch"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 2 22 332023年7月2日星期日 22 33【181】eth 15min.png",
+      "sample_id": 181,
+      "date": "2023-07-02",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ETH",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "eth 15min"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 2 22 432023年7月2日星期日 22 43【183】key 1h 收敛.png",
+      "sample_id": 183,
+      "date": "2023-07-02",
+      "time": null,
+      "detected_at": null,
+      "symbol": "KEY",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "key 1h 收敛"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 20 21 562023年7月20日星期四 21 56【236】btc 15m.png",
+      "sample_id": 236,
+      "date": "2023-07-20",
+      "time": null,
+      "detected_at": null,
+      "symbol": "BTC",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "btc 15m"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 24 23 382023年7月24日星期一 23 38【236】1000pep.png",
+      "sample_id": 236,
+      "date": "2023-07-24",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PEP",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "1000pep"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 27 10 022023年7月27日星期四 10 02【238】wld 15m.png",
+      "sample_id": 238,
+      "date": "2023-07-27",
+      "time": null,
+      "detected_at": null,
+      "symbol": "WLD",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "wld 15m"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 27 10 102023年7月27日星期四 10 10【239】sxp 15m.png",
+      "sample_id": 239,
+      "date": "2023-07-27",
+      "time": null,
+      "detected_at": null,
+      "symbol": "SXP",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "sxp 15m"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 27 10 192023年7月27日星期四 10 19【242】matic 2.png",
+      "sample_id": 242,
+      "date": "2023-07-27",
+      "time": null,
+      "detected_at": null,
+      "symbol": "MATIC",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "matic 2"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 27 10 302023年7月27日星期四 10 30【247】matic 上.png",
+      "sample_id": 247,
+      "date": "2023-07-27",
+      "time": null,
+      "detected_at": null,
+      "symbol": "MATIC",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "matic 上"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 27 10 382023年7月27日星期四 10 38【250】matic s.png",
+      "sample_id": 250,
+      "date": "2023-07-27",
+      "time": null,
+      "detected_at": null,
+      "symbol": "MATIC",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "matic s"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 27 10 462023年7月27日星期四 10 46【252】doge 2h.png",
+      "sample_id": 252,
+      "date": "2023-07-27",
+      "time": null,
+      "detected_at": null,
+      "symbol": "DOGE",
+      "timeframe": "2h",
+      "patterns": [],
+      "context": [],
+      "note": "doge 2h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 27 21 452023年7月27日星期四 21 45【255】bnb 2h .png",
+      "sample_id": 255,
+      "date": "2023-07-27",
+      "time": null,
+      "detected_at": null,
+      "symbol": "BNB",
+      "timeframe": "2h",
+      "patterns": [],
+      "context": [],
+      "note": "bnb 2h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 27 22 032023年7月27日星期四 22 03【267】bnb 头肩顶.png",
+      "sample_id": 267,
+      "date": "2023-07-27",
+      "time": null,
+      "detected_at": null,
+      "symbol": "BNB",
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_top"
+      ],
+      "context": [],
+      "note": "bnb 头肩顶"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 3 11 492023年7月3日星期一 11 49【184】 tomo 1h .png",
+      "sample_id": 184,
+      "date": "2023-07-03",
+      "time": null,
+      "detected_at": null,
+      "symbol": "TOMO",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "tomo 1h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 3 21 152023年7月3日星期一 21 15【185】aave 15mi.png",
+      "sample_id": 185,
+      "date": "2023-07-03",
+      "time": null,
+      "detected_at": null,
+      "symbol": "AAVE",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "aave 15mi"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 3 21 362023年7月3日星期一 21 36【187】chz 头肩结构 .png",
+      "sample_id": 187,
+      "date": "2023-07-03",
+      "time": null,
+      "detected_at": null,
+      "symbol": "CHZ",
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_unspecified"
+      ],
+      "context": [],
+      "note": "chz 头肩结构"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 3 21 472023年7月3日星期一 21 47【188】 ftm 15mi.png",
+      "sample_id": 188,
+      "date": "2023-07-03",
+      "time": null,
+      "detected_at": null,
+      "symbol": "FTM",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "ftm 15mi"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 30 23 252023年7月30日星期日 23 25【259】sxp 2h .png",
+      "sample_id": 259,
+      "date": "2023-07-30",
+      "time": null,
+      "detected_at": null,
+      "symbol": "SXP",
+      "timeframe": "2h",
+      "patterns": [],
+      "context": [],
+      "note": "sxp 2h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 31 21 162023年7月31日星期一 21 16【260】aave 15.png",
+      "sample_id": 260,
+      "date": "2023-07-31",
+      "time": null,
+      "detected_at": null,
+      "symbol": "AAVE",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "aave 15"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 31 21 242023年7月31日星期一 21 24【262】ape 2h .png",
+      "sample_id": 262,
+      "date": "2023-07-31",
+      "time": null,
+      "detected_at": null,
+      "symbol": "APE",
+      "timeframe": "2h",
+      "patterns": [],
+      "context": [],
+      "note": "ape 2h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 31 22 022023年7月31日星期一 22 02【264】icp 2h .png",
+      "sample_id": 264,
+      "date": "2023-07-31",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ICP",
+      "timeframe": "2h",
+      "patterns": [],
+      "context": [],
+      "note": "icp 2h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 31 22 132023年7月31日星期一 22 13【265】snx 1h .png",
+      "sample_id": 265,
+      "date": "2023-07-31",
+      "time": null,
+      "detected_at": null,
+      "symbol": "SNX",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "snx 1h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 5 23 182023年7月5日星期三 23 18【190】aave 15mi.png",
+      "sample_id": 190,
+      "date": "2023-07-05",
+      "time": null,
+      "detected_at": null,
+      "symbol": "AAVE",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "aave 15mi"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 8 22 192023年7月8日星期六 22 19【191】1000pepe .png",
+      "sample_id": 191,
+      "date": "2023-07-08",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PEPE",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "1000pepe"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 8 22 312023年7月8日星期六 22 31【192】agld 1day.png",
+      "sample_id": 192,
+      "date": "2023-07-08",
+      "time": null,
+      "detected_at": null,
+      "symbol": "AGLD",
+      "timeframe": "1d",
+      "patterns": [],
+      "context": [],
+      "note": "agld 1day"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 8 22 482023年7月8日星期六 22 48【193】algo 4h形成.png",
+      "sample_id": 193,
+      "date": "2023-07-08",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ALGO",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "algo 4h形成"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 8 23 202023年7月8日星期六 23 20【194】bnb 15min.png",
+      "sample_id": 194,
+      "date": "2023-07-08",
+      "time": null,
+      "detected_at": null,
+      "symbol": "BNB",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "bnb 15min"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 8 23 272023年7月8日星期六 23 27【196】dot 15min.png",
+      "sample_id": 196,
+      "date": "2023-07-08",
+      "time": null,
+      "detected_at": null,
+      "symbol": "DOT",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "dot 15min"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 8 23 482023年7月8日星期六 23 48【197】icp 15min.png",
+      "sample_id": 197,
+      "date": "2023-07-08",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ICP",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "icp 15min"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 9 00 012023年7月9日星期日 00 01【198】ksm 15min.png",
+      "sample_id": 198,
+      "date": "2023-07-09",
+      "time": null,
+      "detected_at": null,
+      "symbol": "KSM",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "ksm 15min"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 9 00 172023年7月9日星期日 00 17【199】ldo 4h 熊旗.png",
+      "sample_id": 199,
+      "date": "2023-07-09",
+      "time": null,
+      "detected_at": null,
+      "symbol": "LDO",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "ldo 4h 熊旗"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 9 00 242023年7月9日星期日 00 24【201】mtl 15min.png",
+      "sample_id": 201,
+      "date": "2023-07-09",
+      "time": null,
+      "detected_at": null,
+      "symbol": "MTL",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "mtl 15min"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 9 15 582023年7月9日星期日 15 58【202】ape 15min.png",
+      "sample_id": 202,
+      "date": "2023-07-09",
+      "time": null,
+      "detected_at": null,
+      "symbol": "APE",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "ape 15min"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 9 16 072023年7月9日星期日 16 07【204】arpa 15mi.png",
+      "sample_id": 204,
+      "date": "2023-07-09",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ARPA",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "arpa 15mi"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 9 16 352023年7月9日星期日 16 35【207】hook 4h级别.png",
+      "sample_id": 207,
+      "date": "2023-07-09",
+      "time": null,
+      "detected_at": null,
+      "symbol": "HOOK",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "hook 4h级别"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 7 9 17 062023年7月9日星期日 17 06【208】matic 4h .png",
+      "sample_id": 208,
+      "date": "2023-07-09",
+      "time": null,
+      "detected_at": null,
+      "symbol": "MATIC",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "matic 4h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 1 22 442023年8月1日星期二 22 44【267】ape 4h 底部.png",
+      "sample_id": 267,
+      "date": "2023-08-01",
+      "time": null,
+      "detected_at": null,
+      "symbol": "APE",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [
+        "底部"
+      ],
+      "note": "ape 4h 底部"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 1 22 562023年8月1日星期二 22 56【270】agld 1h 下.png",
+      "sample_id": 270,
+      "date": "2023-08-01",
+      "time": null,
+      "detected_at": null,
+      "symbol": "AGLD",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "agld 1h 下"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 1 23 112023年8月1日星期二 23 11【274】ada 1h 头肩.png",
+      "sample_id": 274,
+      "date": "2023-08-01",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ADA",
+      "timeframe": "1h",
+      "patterns": [
+        "head_shoulders_unspecified"
+      ],
+      "context": [],
+      "note": "ada 1h 头肩"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 1 23 232023年8月1日星期二 23 23【278】yfi 下直三 看.png",
+      "sample_id": 278,
+      "date": "2023-08-01",
+      "time": null,
+      "detected_at": null,
+      "symbol": "YFI",
+      "timeframe": null,
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [],
+      "note": "yfi 下直三 看"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 10 22 002023年8月10日星期四 22 00【350】dot 2h .png",
+      "sample_id": 350,
+      "date": "2023-08-10",
+      "time": null,
+      "detected_at": null,
+      "symbol": "DOT",
+      "timeframe": "2h",
+      "patterns": [],
+      "context": [],
+      "note": "dot 2h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 10 22 122023年8月10日星期四 22 12【352】dot 4h .png",
+      "sample_id": 352,
+      "date": "2023-08-10",
+      "time": null,
+      "detected_at": null,
+      "symbol": "DOT",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "dot 4h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 10 22 242023年8月10日星期四 22 24【354】dot 4h .png",
+      "sample_id": 354,
+      "date": "2023-08-10",
+      "time": null,
+      "detected_at": null,
+      "symbol": "DOT",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "dot 4h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 13 18 582023年8月13日星期日 18 58【355】1000pep.png",
+      "sample_id": 355,
+      "date": "2023-08-13",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PEP",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "1000pep"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 13 23 582023年8月13日星期日 23 58【356】 shib 2.png",
+      "sample_id": 356,
+      "date": "2023-08-13",
+      "time": null,
+      "detected_at": null,
+      "symbol": "SHIB",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "shib 2"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 14 00 002023年8月14日星期一 00 00【358】shib 下直.png",
+      "sample_id": 358,
+      "date": "2023-08-14",
+      "time": null,
+      "detected_at": null,
+      "symbol": "SHIB",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "shib 下直"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 14 22 162023年8月14日星期一 22 16【359】xlm 1h .png",
+      "sample_id": 359,
+      "date": "2023-08-14",
+      "time": null,
+      "detected_at": null,
+      "symbol": "XLM",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "xlm 1h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 14 22 242023年8月14日星期一 22 24【362】agld 下直.png",
+      "sample_id": 362,
+      "date": "2023-08-14",
+      "time": null,
+      "detected_at": null,
+      "symbol": "AGLD",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "agld 下直"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 14 22 382023年8月14日星期一 22 38【363】uni 下直三.png",
+      "sample_id": 363,
+      "date": "2023-08-14",
+      "time": null,
+      "detected_at": null,
+      "symbol": "UNI",
+      "timeframe": null,
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [],
+      "note": "uni 下直三"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 14 22 512023年8月14日星期一 22 51【365】atom 支撑.png",
+      "sample_id": 365,
+      "date": "2023-08-14",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ATOM",
+      "timeframe": null,
+      "patterns": [],
+      "context": [
+        "支撑"
+      ],
+      "note": "atom 支撑"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 15 20 552023年8月15日星期二 20 55【368】1000pep.png",
+      "sample_id": 368,
+      "date": "2023-08-15",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PEP",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "1000pep"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 15 21 032023年8月15日星期二 21 03【370】xmr 1h .png",
+      "sample_id": 370,
+      "date": "2023-08-15",
+      "time": null,
+      "detected_at": null,
+      "symbol": "XMR",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "xmr 1h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 15 21 212023年8月15日星期二 21 21【372】xmr 4h .png",
+      "sample_id": 372,
+      "date": "2023-08-15",
+      "time": null,
+      "detected_at": null,
+      "symbol": "XMR",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "xmr 4h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 15 21 302023年8月15日星期二 21 30【374】15min 上.png",
+      "sample_id": 374,
+      "date": "2023-08-15",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "15min 上"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 15 22 122023年8月15日星期二 22 12【375】15min 左.png",
+      "sample_id": 375,
+      "date": "2023-08-15",
+      "time": null,
+      "detected_at": null,
+      "symbol": null,
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "15min 左"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 15 22 192023年8月15日星期二 22 19【376】hbar 1h.png",
+      "sample_id": 376,
+      "date": "2023-08-15",
+      "time": null,
+      "detected_at": null,
+      "symbol": "HBAR",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "hbar 1h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 15 22 442023年8月15日星期二 22 44【381】fil 头肩底.png",
+      "sample_id": 381,
+      "date": "2023-08-15",
+      "time": null,
+      "detected_at": null,
+      "symbol": "FIL",
+      "timeframe": null,
+      "patterns": [
+        "head_shoulders_bottom"
+      ],
+      "context": [],
+      "note": "fil 头肩底"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 15 22 522023年8月15日星期二 22 52【384】fil 下直三.png",
+      "sample_id": 384,
+      "date": "2023-08-15",
+      "time": null,
+      "detected_at": null,
+      "symbol": "FIL",
+      "timeframe": null,
+      "patterns": [
+        "descending_triangle"
+      ],
+      "context": [],
+      "note": "fil 下直三"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 15 22 562023年8月15日星期二 22 56【386】fil 4h .png",
+      "sample_id": 386,
+      "date": "2023-08-15",
+      "time": null,
+      "detected_at": null,
+      "symbol": "FIL",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "fil 4h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 16 22 532023年8月16日星期三 22 53【387】arb 15m.png",
+      "sample_id": 387,
+      "date": "2023-08-16",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ARB",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "arb 15m"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 16 23 042023年8月16日星期三 23 04【389】vet 1h .png",
+      "sample_id": 389,
+      "date": "2023-08-16",
+      "time": null,
+      "detected_at": null,
+      "symbol": "VET",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "vet 1h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 16 23 132023年8月16日星期三 23 13【392】vet 4h .png",
+      "sample_id": 392,
+      "date": "2023-08-16",
+      "time": null,
+      "detected_at": null,
+      "symbol": "VET",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "vet 4h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 17 21 592023年8月17日星期四 21 59【393】near 2h.png",
+      "sample_id": 393,
+      "date": "2023-08-17",
+      "time": null,
+      "detected_at": null,
+      "symbol": "NEAR",
+      "timeframe": "2h",
+      "patterns": [],
+      "context": [],
+      "note": "near 2h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 17 22 062023年8月17日星期四 22 06【395】near 4h.png",
+      "sample_id": 395,
+      "date": "2023-08-17",
+      "time": null,
+      "detected_at": null,
+      "symbol": "NEAR",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "near 4h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 17 22 152023年8月17日星期四 22 15【399】near 4h.png",
+      "sample_id": 399,
+      "date": "2023-08-17",
+      "time": null,
+      "detected_at": null,
+      "symbol": "NEAR",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "near 4h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 17 22 382023年8月17日星期四 22 38【401】grt 1h .png",
+      "sample_id": 401,
+      "date": "2023-08-17",
+      "time": null,
+      "detected_at": null,
+      "symbol": "GRT",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "grt 1h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 17 22 532023年8月17日星期四 22 53【403】grt 1h上.png",
+      "sample_id": 403,
+      "date": "2023-08-17",
+      "time": null,
+      "detected_at": null,
+      "symbol": "GRT",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "grt 1h上"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 2 21 092023年8月2日星期三 21 09【280】fil 4h 下直.png",
+      "sample_id": 280,
+      "date": "2023-08-02",
+      "time": null,
+      "detected_at": null,
+      "symbol": "FIL",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "fil 4h 下直"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 20 18 192023年8月20日星期日 18 19【405】astr 15.png",
+      "sample_id": 405,
+      "date": "2023-08-20",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ASTR",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "astr 15"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 20 18 302023年8月20日星期日 18 30【406】ksm 上直三.png",
+      "sample_id": 406,
+      "date": "2023-08-20",
+      "time": null,
+      "detected_at": null,
+      "symbol": "KSM",
+      "timeframe": null,
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [],
+      "note": "ksm 上直三"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 20 18 422023年8月20日星期日 18 42【407】rune 15.png",
+      "sample_id": 407,
+      "date": "2023-08-20",
+      "time": null,
+      "detected_at": null,
+      "symbol": "RUNE",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "rune 15"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 21 22 212023年8月21日星期一 22 21【408】algo 上直.png",
+      "sample_id": 408,
+      "date": "2023-08-21",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ALGO",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "algo 上直"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 3 22 262023年8月3日星期四 22 26【282】comp 1h 下.png",
+      "sample_id": 282,
+      "date": "2023-08-03",
+      "time": null,
+      "detected_at": null,
+      "symbol": "COMP",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "comp 1h 下"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 3 22 342023年8月3日星期四 22 34【287】comp 1h 头.png",
+      "sample_id": 287,
+      "date": "2023-08-03",
+      "time": null,
+      "detected_at": null,
+      "symbol": "COMP",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "comp 1h 头"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 3 22 422023年8月3日星期四 22 42【291】crv 1h 头肩.png",
+      "sample_id": 291,
+      "date": "2023-08-03",
+      "time": null,
+      "detected_at": null,
+      "symbol": "CRV",
+      "timeframe": "1h",
+      "patterns": [
+        "head_shoulders_unspecified"
+      ],
+      "context": [],
+      "note": "crv 1h 头肩"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 3 22 502023年8月3日星期四 22 50【294】crv 4h w底.png",
+      "sample_id": 294,
+      "date": "2023-08-03",
+      "time": null,
+      "detected_at": null,
+      "symbol": "CRV",
+      "timeframe": "4h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "crv 4h w底"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 6 21 592023年8月6日星期日 21 59【298】wld 15min.png",
+      "sample_id": 298,
+      "date": "2023-08-06",
+      "time": null,
+      "detected_at": null,
+      "symbol": "WLD",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "wld 15min"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 6 22 082023年8月6日星期日 22 08【299】ape 1d下降通.png",
+      "sample_id": 299,
+      "date": "2023-08-06",
+      "time": null,
+      "detected_at": null,
+      "symbol": "APE",
+      "timeframe": "1d",
+      "patterns": [],
+      "context": [],
+      "note": "ape 1d下降通"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 6 22 152023年8月6日星期日 22 15[300】atom 15mi.png",
+      "sample_id": null,
+      "date": "2023-08-06",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ATOM",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "哈里路没有牙 胡子观币 — 2023 8 6 22 152023年8月6日星期日 22 15[300】atom 15mi"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 6 22 282023年8月6日星期日 22 28【301】dydx 上直三.png",
+      "sample_id": 301,
+      "date": "2023-08-06",
+      "time": null,
+      "detected_at": null,
+      "symbol": "DYDX",
+      "timeframe": null,
+      "patterns": [
+        "ascending_triangle"
+      ],
+      "context": [],
+      "note": "dydx 上直三"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 7 20 502023年8月7日星期一 20 50【302】icp 1h 对三.png",
+      "sample_id": 302,
+      "date": "2023-08-07",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ICP",
+      "timeframe": "1h",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [],
+      "note": "icp 1h 对三"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 7 20 592023年8月7日星期一 20 59【303】icp 2h w底.png",
+      "sample_id": 303,
+      "date": "2023-08-07",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ICP",
+      "timeframe": "2h",
+      "patterns": [
+        "double_bottom"
+      ],
+      "context": [],
+      "note": "icp 2h w底"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 7 21 132023年8月7日星期一 21 13【305】icp 2h 下直.png",
+      "sample_id": 305,
+      "date": "2023-08-07",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ICP",
+      "timeframe": "2h",
+      "patterns": [],
+      "context": [],
+      "note": "icp 2h 下直"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 7 21 472023年8月7日星期一 21 47【306】imx 1h 下直.png",
+      "sample_id": 306,
+      "date": "2023-08-07",
+      "time": null,
+      "detected_at": null,
+      "symbol": "IMX",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "imx 1h 下直"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 7 22 002023年8月7日星期一 22 00【308】imx 4h 形成.png",
+      "sample_id": 308,
+      "date": "2023-08-07",
+      "time": null,
+      "detected_at": null,
+      "symbol": "IMX",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "imx 4h 形成"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 7 22 082023年8月7日星期一 22 08【311】btc 4h 上直.png",
+      "sample_id": 311,
+      "date": "2023-08-07",
+      "time": null,
+      "detected_at": null,
+      "symbol": "BTC",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "btc 4h 上直"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 7 22 212023年8月7日星期一 22 21【】【312】ada 2h .png",
+      "sample_id": 312,
+      "date": "2023-08-07",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ADA",
+      "timeframe": "2h",
+      "patterns": [],
+      "context": [],
+      "note": "ada 2h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 7 22 352023年8月7日星期一 22 35【313】ada 2h 顶部.png",
+      "sample_id": 313,
+      "date": "2023-08-07",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ADA",
+      "timeframe": "2h",
+      "patterns": [],
+      "context": [
+        "顶部"
+      ],
+      "note": "ada 2h 顶部"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 7 22 422023年8月7日星期一 22 42【315】ada 4h 强支.png",
+      "sample_id": 315,
+      "date": "2023-08-07",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ADA",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "ada 4h 强支"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 7 22 442023年8月7日星期一 22 44【316】ada 对三 跌破.png",
+      "sample_id": 316,
+      "date": "2023-08-07",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ADA",
+      "timeframe": null,
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [
+        "跌破"
+      ],
+      "note": "ada 对三 跌破"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 8 21 282023年8月8日星期二 21 28【317】sol 15min.png",
+      "sample_id": 317,
+      "date": "2023-08-08",
+      "time": null,
+      "detected_at": null,
+      "symbol": "SOL",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "sol 15min"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 8 21 362023年8月8日星期二 21 36【319】sol 15min.png",
+      "sample_id": 319,
+      "date": "2023-08-08",
+      "time": null,
+      "detected_at": null,
+      "symbol": "SOL",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "sol 15min"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 8 21 452023年8月8日星期二 21 45【321】sol 15min.png",
+      "sample_id": 321,
+      "date": "2023-08-08",
+      "time": null,
+      "detected_at": null,
+      "symbol": "SOL",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "sol 15min"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 8 21 532023年8月8日星期二 21 53【323】sol 4h 下降.png",
+      "sample_id": 323,
+      "date": "2023-08-08",
+      "time": null,
+      "detected_at": null,
+      "symbol": "SOL",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "sol 4h 下降"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 8 22 052023年8月8日星期二 22 05【326】ltc 15min.png",
+      "sample_id": 326,
+      "date": "2023-08-08",
+      "time": null,
+      "detected_at": null,
+      "symbol": "LTC",
+      "timeframe": "15m",
+      "patterns": [],
+      "context": [],
+      "note": "ltc 15min"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 8 22 122023年8月8日星期二 22 12【328】ltc 2h 通道.png",
+      "sample_id": 328,
+      "date": "2023-08-08",
+      "time": null,
+      "detected_at": null,
+      "symbol": "LTC",
+      "timeframe": "2h",
+      "patterns": [
+        "channel"
+      ],
+      "context": [],
+      "note": "ltc 2h 通道"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 8 22 202023年8月8日星期二 22 20【334】ltc 2h 对三.png",
+      "sample_id": 334,
+      "date": "2023-08-08",
+      "time": null,
+      "detected_at": null,
+      "symbol": "LTC",
+      "timeframe": "2h",
+      "patterns": [
+        "symmetrical_triangle"
+      ],
+      "context": [],
+      "note": "ltc 2h 对三"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 8 22 282023年8月8日星期二 22 28【336】1000pepe .png",
+      "sample_id": 336,
+      "date": "2023-08-08",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PEPE",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "1000pepe"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2023 8 9 22 382023年8月9日星期三 22 38【338】matic 2h .png",
+      "sample_id": 338,
+      "date": "2023-08-09",
+      "time": null,
+      "detected_at": null,
+      "symbol": "MATIC",
+      "timeframe": "2h",
+      "patterns": [],
+      "context": [],
+      "note": "matic 2h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2024 1 21 20 572024年1月21日星期日 20 57【417】sol 1h .png",
+      "sample_id": 417,
+      "date": "2024-01-21",
+      "time": null,
+      "detected_at": null,
+      "symbol": "SOL",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [],
+      "note": "sol 1h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2024 6 20 22 392024年6月20日星期四 22 39【418】1000pep.png",
+      "sample_id": 418,
+      "date": "2024-06-20",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PEP",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "1000pep"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2024 6 24 23 052024年6月24日星期一 23 05【421】ygg 4h .png",
+      "sample_id": 421,
+      "date": "2024-06-24",
+      "time": null,
+      "detected_at": null,
+      "symbol": "YGG",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "ygg 4h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2024 6 24 23 312024年6月24日星期一 23 31【422】xmr 4h .png",
+      "sample_id": 422,
+      "date": "2024-06-24",
+      "time": null,
+      "detected_at": null,
+      "symbol": "XMR",
+      "timeframe": "4h",
+      "patterns": [],
+      "context": [],
+      "note": "xmr 4h"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2024 7 3 23 312024年7月3日星期三 23 31【424】ada 1h 压力.png",
+      "sample_id": 424,
+      "date": "2024-07-03",
+      "time": null,
+      "detected_at": null,
+      "symbol": "ADA",
+      "timeframe": "1h",
+      "patterns": [],
+      "context": [
+        "压力"
+      ],
+      "note": "ada 1h 压力"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2024 7 9 22 042024年7月9日星期二 22 04【428】1000pepe .png",
+      "sample_id": 428,
+      "date": "2024-07-09",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PEPE",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "1000pepe"
+    },
+    {
+      "file": "哈里路没有牙 胡子观币 — 2025 4 9 23 242025年4月9日星期三 23 24【430】1000pepe .png",
+      "sample_id": 430,
+      "date": "2025-04-09",
+      "time": null,
+      "detected_at": null,
+      "symbol": "PEPE",
+      "timeframe": null,
+      "patterns": [],
+      "context": [],
+      "note": "1000pepe"
+    }
+  ]
+}

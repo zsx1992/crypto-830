@@ -1,0 +1,253 @@
+# ============================================================
+#  加密货币合约图表形态扫描器 - 完整配置文件
+#  用法: python main.py --config config.yaml
+#  所有阈值均可在此调整，代码中无硬编码
+# ============================================================
+
+# === 数据源配置 ===
+data_source:
+  primary: "binance"              # 主数据源: binance / okx
+  fallback: "okx"                 # 兜底数据源
+  base_url_binance: "https://fapi.binance.com/fapi/v1"
+  base_url_okx: "https://www.okx.com/api/v5/market"
+  timeout_seconds: 30              # HTTP 超时
+  retry_max: 3                     # 最大重试次数
+  retry_backoff_base: 2.0          # 指数退避基数(秒)
+  ticker_cache_hours: 6            # ticker 数据缓存时间(小时)
+
+# === 扫描目标 ===
+scan:
+  top_n: 300                      # 按24h成交额取前N个合约
+  min_volume_usdt: 10000000        # 最低24h成交额过滤(1000万USDT)
+  intervals:                       # 扫描周期列表
+    - "15m"
+    - "1h"
+    - "4h"
+    - "1d"
+
+  # 各周期需要的K线根数
+  # 实测标定：1d 从 60 提到 120，因为 60 根(2个月)只能提取 7 个摆动点，
+  # 头肩(需5点)勉强够用、复杂形态不够；120 根可得 18 个点，密度仍健康(0.150)
+  kline_counts:
+    "15m": 480                    # 5天
+    "1h": 240                     # 10天
+    "4h": 120                     # 20天
+    "1d": 120                     # 120天（原为60，实测偏少已上调）
+
+# === 并发与限流 ===
+throttling:
+  concurrency: 3                   # 并发HTTP请求数
+  request_interval_ms: 100         # 请求间最小间隔(毫秒)
+  batch_size: 50                  # 每批处理的标的数
+  batch_pause_sec: 2               # 批间暂停(秒)
+  weight_safety_margin: 100        # Binance weight 预留余量
+
+# === ZigZag 摆动点检测参数 ===
+# 实测标定（Top8 标的中位数）：摆动点密度落在 0.04~0.18 为健康区间
+#   周期   参数    K线数  摆动点   密度     判定
+#   15m   (5,5)   480    50      0.104   healthy
+#   1h    (5,5)   240    23      0.096   healthy
+#   4h    (3,3)   120    18      0.150   healthy
+#   1d    (3,3)   120    18      0.150   healthy
+#   1d    (2,2)   120    28      0.233   sensitive ← 噪声过多，已弃用
+zigzag:
+  # 按周期分别配置 left/right 窗口
+  # 值越小越灵敏但噪声越多; 天然滞后 = right 根K线
+  "15m":
+    left: 5
+    right: 5
+  "1h":
+    left: 5
+    right: 5
+  "4h":
+    left: 3
+    right: 3
+  "1d":
+    left: 3                       # 原为2，实测密度0.233过噪，上调至3
+    right: 3
+
+  # 多尺度扫描：在这些 left/right 窗口上各跑一遍检测再合并结果
+  #
+  # 实测（82个标注样本，判定窗口≤25根K线）：
+  #   单尺度(5,5)   精确类型命中率  8.5%
+  #   多尺度[3,5,8,12]          15.9%   ← 接近翻倍
+  # 原因：人眼看图会自动做视觉平滑，固定尺度必然与人的视角错位。
+  # 代价：计算量 ×4，且候选形态变多，需要靠去重和过滤收敛。
+  multiscale: [3, 5, 8, 12]
+
+# === 形态识别阈值 ===
+patterns:
+
+  # --- 价格容差 ---
+  tolerance:
+    peak_price: 0.08              # 双顶/头肩 两峰价差容差（原0.03，实测过严）
+    shoulder_ratio: 0.03          # 双顶/双底 中间谷/峰最小深度（原0.05）
+    neck_slope_max: 0.08          # 头肩 两谷/两峰高度差（原0.03）
+    head_prominence: 0.01         # 头肩 头部突出度下限（原0.02）
+    touch_penetration: 0.02        # 趋势线触点最大穿透容差 (2%)
+    triple_peak_diff: 0.05        # 三重顶/底 三峰间最大价差 (5%)
+
+  # --- 形态跨度限制 (K线根数) ---
+  span:
+    double_top_min: 8              # 双顶两峰最小间距（原10）
+    double_top_max: 150            # 双顶两峰最大间距（原120）
+    head_shoulders_min: 15         # 头肩形态最小跨度（原20）
+    head_shoulders_max: 220        # 头肩形态最大跨度（原200）
+    triangle_min_touches: 4        # 三角形最少触点数
+    triangle_min_span: 12          # 三角形最小跨度（新增，原硬编码15）
+    triangle_max_span: 160         # 三角形最大跨度（新增，原硬编码150）
+    triangle_min_height_atr: 1.0   # 三角形最小高度ATR倍数（原2.0，过严）
+    flag_pole_min_bars: 3          # 旗形旗杆最少K线数
+    flag_pole_min_move: 0.03       # 旗杆最小涨幅/跌幅 (3%)
+    flag_body_min: 5               # 旗身最少K线数
+    flag_body_max: 25              # 旗身最多K线数
+    wedge_min_touches: 5           # 楔形最少触点数
+    rectangle_min_height_atr: 3.0   # 箱体最小高度(ATR倍数)
+
+  # --- 突破确认 ---
+  confirmation:
+    breakout_candles: 2            # 连续几根收盘在边界外才算确认
+    max_check_candles: 5           # 最多往前看几根(超过则标记为未确认非失败)
+    breakout_atr_ratio: 0.5        # 突破最小幅度 (ATR倍数)
+    volume_ratio_min: 1.5          # 突破K线量 / 近20根均量 最小比值
+
+# === 信号过滤 ===
+filter:
+  min_strength: 60                 # 最低推送分数 (0~100)
+  min_rr: 1.5                     # 最小风险回报比
+  max_per_run: 20                 # 单次run最多推送条数
+  min_confidence: 0.4             # 最低几何置信度 (0~1)
+  min_volume_ratio: 1.5           # 最低量能比
+
+  # 同一标的最多推几条 + 方向冲突时以最大周期为准
+  #
+  # 实测问题：XRPUSDT 一次扫描报了 4 条(15m头肩顶空、1h头肩顶空、
+  # 4h双底多、1d双底多)，同一标的既让多又让空，使用者无所适从。
+  # 消解规则：方向冲突时以【最大周期】为准（大周期代表更大格局），
+  #           然后每个标的最多保留 max_per_symbol 条。
+  max_per_symbol: 2
+
+  # 噪音过滤
+  min_volatility: 0.005            # ATR/Price 低于此视为横盘 (0.5%)
+  max_candle_range: 0.08           # 单根K线振幅超此视为插针 (8%)
+  min_recent_volume_ratio: 0.3     # 最新一根量/前19均量 最低比值
+
+  # 冷却期 (分钟) — 同一(symbol, patternType, interval) 不重复推
+  cooldown_minutes:
+    "15m": 30
+    "1h": 120
+    "4h": 480
+    "1d": 1440
+
+  # 突破必须"仍然有效"才推送（拦截假突破）
+  #
+  # 实测案例：GIGGLEUSDT 4h 上升三角形在 #115 以 44.81 突破上边界，
+  # 当时满足全部条件（幅度2.97×ATR、量能9.33×、连确认5根），
+  # 但最新一根价格已跌回 40.17，跌破入场价——典型的假突破。
+  # 开启后，最新收盘价若已回到边界的错误一侧，状态标记为 FAILED 不推送。
+  require_intact_breakout: true
+
+  # 新鲜度窗口 (K线根数) — 突破点距今超过这个数就不推送
+  #
+  # 【实测发现的严重问题】不加这个约束时，所有"已确认信号"的突破点
+  # 距今 63~164 根K线（1h周期即 2.6~6.8天前），推送的全是过期信号。
+  # 检测器扫描整段历史，必然找到早已完成的形态。
+  #
+  # 取值逻辑：要能覆盖 GitHub Actions cron 的调度延迟（实测可达15分钟），
+  # 又不能太宽以至于推送时入场位已经走掉。
+  #
+  # 【实测标定】第一版设成 15m=8/1h=6/4h=4/1d=3，结果一个信号都出不来。
+  # 原因：ZigZag 的 right 窗口 + 突破需连续2根确认，天然存在 age 下限。
+  # 实测各周期已确认信号的最小 age：
+  #   15m: 5根    1h: 19根    4h: 4根    1d: 9根
+  # 所以 1h=6 和 1d=3 是【永远不可能满足】的死配置。
+  #
+  # 按实测分位数重设（40标的×4周期=160次扫描的统计）：
+  #   15m=12根(3小时)  → 约 6% 通过
+  #   1h =20根(20小时) → 约 17% 通过
+  #   4h =12根(2天)    → 约 44% 通过
+  #   1d =12根(12天)   → 约 73% 通过（日线形态稀少，放宽合理）
+  freshness_bars:
+    "15m": 12      # 3小时
+    "1h": 20       # 20小时
+    "4h": 12       # 2天
+    "1d": 12       # 12天
+  freshness_default: 15
+
+# === 信号强度打分权重 ===
+scoring:
+  weights:
+    completeness: 0.25             # 形态完整度
+    breakout_magnitude: 0.20       # 突破幅度/ATR
+    volume_confirmation: 0.15      # 成交量确认
+    multi_tf_resonance: 0.15       # 多周期共振
+    duration_reasonableness: 0.10  # 形态时长合理性
+    trend_consistency: 0.10        # 与大趋势一致性
+    proximity_to_target: 0.05      # 距目标位远近
+
+  # 共振加分
+  resonance_bonus:
+    "1h_from_15m": 15
+    "4h_from_15m": 10
+    "4h_from_1h": 15
+    "1d_from_1h": 10
+    "1d_from_4h": 15
+    smaller_lead: 8                # 更小周期领先确认
+
+  # 矛盾惩罚
+  conflict_penalty:
+    "1h_vs_4h": -20
+    "4h_vs_1d": -25
+    "triple_conflict": -40
+
+  # 分档
+  threshold_strong: 75             # >= 强信号
+  threshold_medium: 60             # 60~75 中等信号
+  # < 60 仅记录不推送
+
+# === 推送配置 ===
+notification:
+  # Webhook URL 从环境变量读取 (GitHub Secrets)
+  webhook_url_env: "WECOM_WEBHOOK"
+
+  # 企业微信限流保护 (硬限制20条/分钟, 我们留余量)
+  push_rate_limit_per_minute: 18
+
+  # 图表渲染
+  chart:
+    width: 900                      # 图表宽度(px)
+    height: 525                     # 图表高度(px)
+    dpi: 120                        # 渲染DPI
+    candles_displayed: 120           # 显示的K线根数
+    max_filesize_bytes: 1887436      # 图片大小上限(~1.8MB), 超过则降质
+    compression_dpi: 80             # 降质时使用的DPI
+
+  # 消息模板
+  template:
+    disclaimer: "仅供参考，不构成投资建议"
+    emoji_long: "\U0001F4C8"        # 📈
+    emoji_short: "\U0001F4C9"       # 📉
+
+# === 日志配置 ===
+logging:
+  level: "INFO"                    # DEBUG / INFO / WARN / ERROR
+  file: "output/scan_log.txt"       # 日志文件路径
+  console: true                     # 同时输出到控制台
+  # DEBUG 级别记录每个标的的扫描详情
+  # INFO 级别记录候选/过滤/推送事件
+  # WARN 记录限流/切换源/异常
+  # ERROR 记录推送失败/致命错误
+
+# === 输出产物 ===
+output:
+  dir: "output"                    # 输出目录
+  signals_file: "signals.json"     # 信号JSON
+  charts_dir: "charts"             # 图表子目录
+  stats_file: "stats_summary.json" # 统计摘要
+  retain_artifact_days: 7          # Actions artifact 保留天数
+
+# === 状态持久化 ===
+state:
+  file: "state/state.json"         # 去重状态文件路径
+  cache_key_prefix: "pattern-state-" # Actions cache key 前缀
+  cleanup_days: 7                  # 过期信号清理窗口(天)
