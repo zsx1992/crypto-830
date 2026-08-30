@@ -257,12 +257,15 @@ class WeComNotifier:
 
     def push_summary(self, scanned: int, candidates: int,
                      signals: int, duration: float):
-        """推送本次扫描摘要（无信号时也发，用于确认服务存活）"""
+        """推送本次扫描摘要（确认服务存活，0 信号时也发）"""
+        signal_note = f"触发信号: `{signals}`"
+        if signals == 0:
+            signal_note += "（本次无满足条件的形态）"
         content = (
             f"扫描完成\n"
             f"> 扫描对数: `{scanned}`\n"
             f"> 候选形态: `{candidates}`\n"
-            f"> 触发信号: `{signals}`\n"
+            f"> {signal_note}\n"
             f"> 耗时: `{duration:.1f}s`"
         )
         if self.dry_run:

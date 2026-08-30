@@ -97,6 +97,9 @@ class Scanner:
         # 同一标的最多推几个（防止 XRP 这种四周期各报一次刷屏）
         self.max_per_symbol = filt.get("max_per_symbol", 2)
 
+        # 是否每次运行后都发一条"扫描摘要"（确认服务存活 + 无信号时有反馈）
+        self.send_summary = notif.get("send_summary", True)
+
     # ---------- 主流程 ----------
 
     def run(self, top_n: Optional[int] = None,
@@ -279,6 +282,15 @@ class Scanner:
             "health_stats": result.health_stats,
         })
         self.state.save()
+
+        # ---- 9. 扫描摘要（确认服务存活；0 信号时给用户明确反馈）----
+        if self.send_summary:
+            self.notifier.push_summary(
+                scanned=result.scanned_pairs,
+                candidates=len(result.candidates),
+                signals=len(result.pushed),
+                duration=result.duration_sec,
+            )
 
         return result
 

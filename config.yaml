@@ -213,6 +213,10 @@ notification:
   # 企业微信限流保护 (硬限制20条/分钟, 我们留余量)
   push_rate_limit_per_minute: 18
 
+  # 每次运行后发一条"扫描摘要"（确认服务存活；0 信号时也发，
+  # 否则群里静悄悄的你以为挂了）。嫌吵就改 false。
+  send_summary: true
+
   # 图表渲染
   chart:
     width: 900                      # 图表宽度(px)
