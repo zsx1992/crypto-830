@@ -27,7 +27,7 @@ from crosstf import CrossTimeframeConfirm, interval_rank
 from state_store import StateStore
 from notifier import WeComNotifier
 from chart import render_pattern_chart
-from patterns.base import Pattern, PatternStatus
+from patterns.base import Pattern, PatternStatus, Direction
 
 logger = logging.getLogger(__name__)
 
@@ -96,6 +96,8 @@ class Scanner:
         self.min_volume = filt.get("min_volume_ratio", 1.5)
         # 同一标的最多推几个（防止 XRP 这种四周期各报一次刷屏）
         self.max_per_symbol = filt.get("max_per_symbol", 2)
+        # 趋势过滤（实盘推送前必须与当前周期趋势同向）
+        self.require_trend_alignment = filt.get("require_trend_alignment", True)
 
         # 是否每次运行后都发一条"扫描摘要"（确认服务存活 + 无信号时有反馈）
         self.send_summary = notif.get("send_summary", True)
@@ -207,7 +209,7 @@ class Scanner:
         # ---- 4. 完整过滤 ----
         # 这一步一个都不能漏。曾经只过滤了强度，结果推出去的信号里
         # 有"突破距今 201 根K线"的、也有 R:R 只有 1:0.6 的。
-        # 新鲜度、风险回报比、置信度、量能，四个条件必须全部检查。
+        # 新鲜度、风险回报比、置信度、量能、趋势同向，全部检查。
         passed = []
         for p in scored:
             max_age = self.engine.freshness_for(p.interval)
@@ -221,11 +223,21 @@ class Scanner:
                 continue
             if p.volume_ratio < self.min_volume:
                 continue
+            # 趋势过滤（实测依据见 config.yaml 注释）
+            if self.require_trend_alignment:
+                trend = trends.get((p.symbol, p.interval), "unknown")
+                aligned = (
+                    (p.direction == Direction.LONG and trend == "up")
+                    or (p.direction == Direction.SHORT and trend == "down")
+                )
+                if not aligned:
+                    continue
             passed.append(p)
 
         result.after_scoring = self._limit_per_symbol(passed)
         logger.info(f"完整过滤后 {len(result.after_scoring)} 个 "
-                    f"(新鲜度+R:R≥{self.min_rr}+置信度+量能)")
+                    f"(新鲜度+R:R≥{self.min_rr}+置信度+量能"
+                    f"+趋势同向{'✓' if self.require_trend_alignment else '✗'})")
 
         # ---- 5. 去重 ----
         self.state.cleanup()

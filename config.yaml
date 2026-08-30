@@ -131,6 +131,15 @@ filter:
   #           然后每个标的最多保留 max_per_symbol 条。
   max_per_symbol: 2
 
+  # 趋势过滤：信号方向必须与当前周期趋势同向才推送
+  #
+  # 【实测结论 2026-08-30】40标的×1500根盈利回测：
+  #   开: 11笔, 胜率36%, +0.10R    关: 13笔, 胜率39%, +0.16R
+  # 差异在噪声范围内，且只滤掉了2个信号（当前周期EMA过滤太弱）。
+  # 因此默认关闭，避免基于噪声改变实盘行为。想实验可改 true。
+  # LONG 信号 需 trend == up; SHORT 信号 需 trend == down
+  require_trend_alignment: false
+
   # 噪音过滤
   min_volatility: 0.005            # ATR/Price 低于此视为横盘 (0.5%)
   max_candle_range: 0.08           # 单根K线振幅超此视为插针 (8%)
