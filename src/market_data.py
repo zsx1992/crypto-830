@@ -372,6 +372,39 @@ class OkxClient:
         all_data.sort(key=lambda x: int(x[0]))
         return [self._parse_kline(row) for row in all_data[:limit]]
 
+    def get_top_symbols(self, top_n: int = 300,
+                        min_volume_usdt: float = 10_000_000) -> List[str]:
+        """
+        按 24h 成交额取前 N 个 USDT 本位永续合约（SWAP）。
+
+        OKX tickers 返回 volCcy24h（报价币成交额，对 USDT-SWAP 即 USDT）。
+        注意：在 GitHub Actions（美国 IP）上，若 OKX 也做地理屏蔽，
+        这里会返回空/异常，由 MarketDataClient 的兜底逻辑处理。
+        """
+        data = self._request("/tickers", {"instType": "SWAP"})
+        if not data:
+            logger.error("[OKX] 获取 ticker 失败")
+            return []
+
+        candidates = []
+        for t in data:
+            inst = t.get("instId", "")
+            if not inst.endswith("-USDT-SWAP"):
+                continue
+            try:
+                vol_quote = float(t.get("volCcy24h", 0))
+            except (TypeError, ValueError):
+                vol_quote = 0.0
+            if vol_quote < min_volume_usdt:
+                continue
+            candidates.append((inst, vol_quote))
+
+        candidates.sort(key=lambda x: x[1], reverse=True)
+        result = [inst.replace("-USDT-SWAP", "USDT")
+                  for inst, _ in candidates[:top_n]]
+        logger.info(f"[OKX] Top{len(result)} 标的选取完成")
+        return result
+
     @staticmethod
     def _to_inst_id(symbol: str) -> str:
         """BTCUSDT -> BTC-USDT-SWAP"""
@@ -443,8 +476,28 @@ class MarketDataClient:
 
     def get_top_symbols(self, top_n: int = 300,
                         min_volume_usdt: float = 10_000_000) -> List[str]:
-        """选取 Top N 标的（目前只有 Binance 提供全量 24h ticker）"""
-        return self.binance.get_top_symbols(top_n, min_volume_usdt)
+        """
+        选取 Top N 标的。
+
+        按 primary 路由：binance 用币安全量 ticker，okx 用欧意 SWAP ticker。
+        若主源失败，尝试另一个源。
+        """
+        if self.primary == "okx":
+            sources = [("okx", self.okx), ("binance", self.binance)]
+        else:
+            sources = [("binance", self.binance), ("okx", self.okx)]
+
+        for name, client in sources:
+            try:
+                syms = client.get_top_symbols(top_n, min_volume_usdt)
+                if syms:
+                    logger.info(f"标的选取使用数据源: {name}")
+                    return syms
+            except Exception as e:
+                logger.warning(f"[{name}] 标的选取失败: {e}，尝试下一源")
+
+        logger.error("所有数据源的标的选取均失败")
+        return []
 
     def get_klines(self, symbol: str, interval: str,
                    limit: int = 500,

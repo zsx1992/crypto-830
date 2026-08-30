@@ -5,9 +5,13 @@
 # ============================================================
 
 # === 数据源配置 ===
+#
+# 【重要】GitHub Actions 的服务器在美国，Binance 会返回 HTTP 451 拒绝服务
+# （地理屏蔽，2026-08-30 实测确认）。因此 Actions 上必须用 OKX 作主源。
+# 你本机（中国 IP）想用回 Binance，改 primary: "binance" 即可。
 data_source:
-  primary: "binance"              # 主数据源: binance / okx
-  fallback: "okx"                 # 兜底数据源
+  primary: "okx"                   # 主数据源: binance / okx
+  fallback: "binance"              # 兜底数据源
   base_url_binance: "https://fapi.binance.com/fapi/v1"
   base_url_okx: "https://www.okx.com/api/v5/market"
   timeout_seconds: 30              # HTTP 超时
