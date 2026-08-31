@@ -53,8 +53,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           # TA-Lib 有预编译 wheel；万一装不上代码会自动降级为内置numpy实现，不影响运行
-          pip install requests pyyaml matplotlib numpy TA-Lib || \
-            pip install requests pyyaml matplotlib numpy
+          #
+          # tzdata: IANA 时区数据，推送消息上的"北京时间"依赖它。
+          # ubuntu 镜像自带系统 tzdata，zoneinfo 本来就能用；这里显式装一份，
+          # 防止将来 runner 镜像精简掉 /usr/share/zoneinfo 导致时间静默回退成 UTC。
+          # 注意：本文件没有用 requirements.txt，改依赖时两处要同步。
+          pip install requests pyyaml matplotlib numpy TA-Lib tzdata || \
+            pip install requests pyyaml matplotlib numpy tzdata
 
       # 去重状态：cache 为主，git 文件为兜底
       # cache 会被 Actions 清理（保留政策/容量上限），
