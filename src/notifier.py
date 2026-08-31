@@ -21,6 +21,7 @@ import time
 import base64
 import hashlib
 import logging
+from datetime import datetime, timezone, timedelta
 from typing import List, Optional
 
 _SRC_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -50,6 +51,34 @@ PATTERN_NAMES_CN = {
     "rising_wedge": "上升楔形",
     "falling_wedge": "下降楔形",
 }
+
+
+# ------------------------------------------------------------
+#  时间格式化
+# ------------------------------------------------------------
+#
+# 【坑】GitHub Actions 的运行器是 UTC 时区。直接用 datetime.now()
+# 拿到的是 UTC 时间，推到群里会比北京时间【慢 8 小时】，看着像延迟推送。
+# 所以统一转成北京时间（可用 config.yaml 的 notification.timezone 改）。
+#
+# zoneinfo 在 Linux（Actions 用的 ubuntu）上直接可用；但在 Windows 上
+# 依赖 tzdata 包，没装会抛 ZoneInfoNotFoundError，所以做了固定偏移兜底，
+# 保证本机和云端都能跑。
+DEFAULT_TZ_NAME = "Asia/Shanghai"
+DEFAULT_TZ_OFFSET_HOURS = 8
+DEFAULT_TIME_FORMAT = "%Y-%m-%d %H:%M"
+
+
+def format_now(fmt: str = DEFAULT_TIME_FORMAT,
+               tz_name: str = DEFAULT_TZ_NAME,
+               fallback_offset_hours: int = DEFAULT_TZ_OFFSET_HOURS) -> str:
+    """按指定时区返回当前时间字符串"""
+    try:
+        from zoneinfo import ZoneInfo
+        return datetime.now(ZoneInfo(tz_name)).strftime(fmt)
+    except Exception:
+        return (datetime.now(timezone.utc)
+                + timedelta(hours=fallback_offset_hours)).strftime(fmt)
 
 
 class PushLimiter:
@@ -83,11 +112,15 @@ class WeComNotifier:
     def __init__(self, webhook_url: Optional[str] = None,
                  max_per_minute: int = 18,
                  dry_run: bool = False,
-                 disclaimer: str = "仅供参考，不构成投资建议"):
+                 disclaimer: str = "仅供参考，不构成投资建议",
+                 tz_name: str = DEFAULT_TZ_NAME,
+                 time_format: str = DEFAULT_TIME_FORMAT):
         self.webhook_url = webhook_url
         self.dry_run = dry_run
         self.limiter = PushLimiter(max_per_minute)
         self.disclaimer = disclaimer
+        self.tz_name = tz_name
+        self.time_format = time_format
 
         self.sent_count = 0
         self.failed_count = 0
@@ -98,6 +131,10 @@ class WeComNotifier:
             logger.warning("未提供 webhook_url，推送将失败")
 
     # ---------- 消息构造 ----------
+
+    def now_str(self) -> str:
+        """当前时间字符串（按配置时区，默认北京时间）"""
+        return format_now(self.time_format, self.tz_name)
 
     def build_markdown(self, p: Pattern) -> dict:
         """构造 markdown 消息体"""
@@ -124,8 +161,9 @@ class WeComNotifier:
 
         lines = [
             f"{icon} **{p.symbol} {name}**",
-            f"> 周期: `{p.interval}` | 方向: **{dir_cn}** "
-            f"| 强度: **{p.strength_score}/100** ({grade})",
+            f"> 时间: `{self.now_str()}` | 周期: `{p.interval}`",
+            f"> 方向: **{dir_cn}** | 强度: "
+            f"**{p.strength_score}/100** ({grade})",
             ">",
             f"> 当前价: `{current:.4f}`",
             ">",
@@ -283,6 +321,7 @@ class WeComNotifier:
             signal_note += "（本次无满足条件的形态）"
         content = (
             f"扫描完成\n"
+            f"> 时间: `{self.now_str()}`\n"
             f"> 扫描对数: `{scanned}`\n"
             f"> 候选形态: `{candidates}`\n"
             f"> {signal_note}\n"

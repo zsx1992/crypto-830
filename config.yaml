@@ -226,6 +226,15 @@ notification:
   # 企业微信限流保护 (硬限制20条/分钟, 我们留余量)
   push_rate_limit_per_minute: 18
 
+  # 推送消息上显示的时间
+  #
+  # 【坑】GitHub Actions 的运行器是 UTC 时区，不指定时区的话推到群里
+  # 会比你本地时间【慢 8 小时】，看着像"信号延迟推送"。这里显式指定北京时间。
+  # 想看 UTC 就改成 "UTC"。
+  # 注：Windows 本地若没装 tzdata 包，代码会自动退化成固定 UTC+8 偏移，不影响使用。
+  timezone: "Asia/Shanghai"          # IANA 时区名
+  time_format: "%Y-%m-%d %H:%M"      # 年月日 时分（秒可加 :%S）
+
   # 每次运行后发一条"扫描摘要"（确认服务存活；0 信号时也发，
   # 否则群里静悄悄的你以为挂了）。嫌吵就改 false。
   send_summary: true

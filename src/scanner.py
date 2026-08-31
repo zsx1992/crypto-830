@@ -87,6 +87,8 @@ class Scanner:
             dry_run=dry_run,
             disclaimer=notif.get("template", {}).get(
                 "disclaimer", "仅供参考，不构成投资建议"),
+            tz_name=notif.get("timezone", "Asia/Shanghai"),
+            time_format=notif.get("time_format", "%Y-%m-%d %H:%M"),
         )
         self.max_push = filt.get("max_per_run",
                                  notif.get("max_per_run", 20))
