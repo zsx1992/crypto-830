@@ -55,6 +55,7 @@ class DoubleTopBottomDetector(BaseDetector):
         "volume_ratio_min": 1.5,       # 量能确认
         "max_lookahead": 30,           # 从右峰开始最多往后看多少根找突破
         "min_height_atr": 1.0,         # 形态高度至少 1×ATR，否则无交易价值
+        "pullback_bars": 0,            # 突破后回踩确认窗口（0=关闭，2026-09-01 新增）
     }
 
     def __init__(self, params=None):
@@ -101,8 +102,8 @@ class DoubleTopBottomDetector(BaseDetector):
                           symbol: str, interval: str) -> "Pattern | None":
         p = self.params
 
-        # ① 两峰高度接近
-        peak_diff = abs(h1.price - h2.price) / h1.price
+        # ① 两峰高度接近（用 max 做分母，避免左右顺序导致容差偏移）
+        peak_diff = abs(h1.price - h2.price) / max(h1.price, h2.price)
         if peak_diff > p["peak_tolerance"]:
             return None
 
@@ -166,6 +167,30 @@ class DoubleTopBottomDetector(BaseDetector):
         if not ok:
             return pattern
 
+        # ⑦ 突破后回踩确认（拦截"影线插针"式假突破）
+        #
+        # 实测问题（2026-09-01）：XAG 4h 双顶靠单根长上影 close 跌破
+        # 颈线 + 后续 1 根也收在颈线下就判确认，朱哥人眼判"不像"。
+        # check_breakout 用 close，挡住了影线插针 close 的情况，但挡不住
+        # "上影长 + 实体略破" 这类边缘突破。回踩确认要求：突破后 N 根
+        # 内若有 K 线收盘价回到颈线错误一侧（SHORT: close > neck；
+        # LONG: close < neck），视为假突破，恢复 CANDIDATE 不推送。
+        if p.get("pullback_bars", 0) > 0:
+            pb_end = min(idx + 1 + p["pullback_bars"], len(klines))
+            pullback_failed = False
+            for j in range(idx + 1, pb_end):
+                if (Direction.SHORT == pattern.direction
+                        and klines[j].close > neck_price):
+                    pullback_failed = True
+                    break
+                if (Direction.LONG == pattern.direction
+                        and klines[j].close < neck_price):
+                    pullback_failed = True
+                    break
+            if pullback_failed:
+                pattern.status = PatternStatus.CANDIDATE
+                return pattern
+
         pattern.status = PatternStatus.CONFIRMED
         calc_trade_levels(pattern, klines, atr_value)
         return pattern
@@ -177,8 +202,8 @@ class DoubleTopBottomDetector(BaseDetector):
                              symbol: str, interval: str) -> "Pattern | None":
         p = self.params
 
-        # ① 两谷高度接近
-        trough_diff = abs(l1.price - l2.price) / l1.price
+        # ① 两谷高度接近（用 max 做分母，避免左右顺序导致容差偏移）
+        trough_diff = abs(l1.price - l2.price) / max(l1.price, l2.price)
         if trough_diff > p["peak_tolerance"]:
             return None
 
@@ -240,6 +265,23 @@ class DoubleTopBottomDetector(BaseDetector):
             return pattern
         if not ok:
             return pattern
+
+        # ⑦ 突破后回踩确认（逻辑同 _check_double_top，详见那里注释）
+        if p.get("pullback_bars", 0) > 0:
+            pb_end = min(idx + 1 + p["pullback_bars"], len(klines))
+            pullback_failed = False
+            for j in range(idx + 1, pb_end):
+                if (Direction.LONG == pattern.direction
+                        and klines[j].close < neck_price):
+                    pullback_failed = True
+                    break
+                if (Direction.SHORT == pattern.direction
+                        and klines[j].close > neck_price):
+                    pullback_failed = True
+                    break
+            if pullback_failed:
+                pattern.status = PatternStatus.CANDIDATE
+                return pattern
 
         pattern.status = PatternStatus.CONFIRMED
         calc_trade_levels(pattern, klines, atr_value)

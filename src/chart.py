@@ -60,6 +60,27 @@ PATTERN_LABELS_EN = {
     "falling_wedge": "Falling Wedge",
 }
 
+# TA-Lib 蜡烛形态名中英映射（chart.py 不在图上画中文，原因见头部注释）
+# key 是 candles.py 返回的中文（去掉"(看涨)/(看跌)"后缀的版本）
+CANDLE_LABELS_EN = {
+    "锤子线": "Hammer",
+    "倒锤子": "Inverted Hammer",
+    "流星线": "Shooting Star",
+    "上吊线": "Hanging Man",
+    "吞没形态": "Engulfing",
+    "晨星": "Morning Star",
+    "暮星": "Evening Star",
+    "刺透形态": "Piercing",
+    "乌云盖顶": "Dark Cloud",
+    "三白兵": "3 White Soldiers",
+    "三只乌鸦": "3 Black Crows",
+    "孕育形态": "Harami",
+    "蜻蜓十字": "Dragonfly Doji",
+    "墓碑十字": "Gravestone Doji",
+    "十字星": "Doji",
+    "光头光脚": "Marubozu",
+}
+
 
 # matplotlib 日期轴单位 = 天；1970-01-01 对应的日期数值
 EPOCH_OFFSET_DAYS = 719163
@@ -188,10 +209,21 @@ def _render(klines, pattern, candles, fig_w, fig_h, dpi) -> Optional[bytes]:
                    edgecolors="white", linewidths=1.0,
                    label=f"Breakout {pattern.breakout_price:.4f}")
 
-        # 单K线确认标注（TA-Lib 形态名，英文标签）
+        # 单K线确认标注（TA-Lib 形态名，英文标签——candles.py 返回中文，
+        # Actions runner 没中文字体，会渲染成方块。这里映射成英文）
         candle_cf = getattr(pattern, "candle_confirmations", [])
         if candle_cf:
-            cf_en = ", ".join(c.split("(")[0] for c in candle_cf)
+            parts = []
+            for c in candle_cf:
+                # c 形如 "锤子线(看涨)" / "十字星"
+                cn = c.split("(")[0].strip()
+                en = CANDLE_LABELS_EN.get(cn, cn)
+                if "(" in c and "看涨" in c:
+                    en += "(Bull)"
+                elif "(" in c and "看跌" in c:
+                    en += "(Bear)"
+                parts.append(en)
+            cf_en = ", ".join(parts)
             ax.annotate(
                 cf_en,
                 xy=(times[bo_rel], pattern.breakout_price),

@@ -76,14 +76,29 @@ class PatternEngine:
         tol = pattern_cfg.get("tolerance", {})
         span = pattern_cfg.get("span", {})
 
+        # 过滤阈值（必须先于 detectors 组装，因为下面 DoubleTopBottomDetector
+        # 需要读 double_pullback_bars）
+        filt = self.config.get("filter", {})
+        self.min_confidence = filt.get("min_confidence", 0.4)
+        # 按周期分级的 confidence 覆盖（2026-09-01：1d 误报率 75%，
+        # 单独设更严的门槛。不在表里的周期回退到全局 min_confidence）
+        self.min_confidence_by_interval = filt.get(
+            "min_confidence_by_interval", {})
+        # 双顶/双底：突破后回踩确认窗口（2026-09-01 实测 XAG 4h
+        # 误报根因是单根长上影 close 跌破就判确认）。
+        # 0 = 关闭。
+        self.double_pullback_bars = filt.get("double_pullback_bars", 0)
+
         # --- 组装检测器 ---
         self.detectors = [
             DoubleTopBottomDetector({
                 **common,
-                "peak_tolerance": tol.get("peak_price", 0.08),
+                "peak_tolerance": tol.get("double_top_bottom_price",
+                                          tol.get("peak_price", 0.05)),
                 "min_depth": tol.get("shoulder_ratio", 0.03),
                 "min_span": span.get("double_top_min", 8),
                 "max_span": span.get("double_top_max", 150),
+                "pullback_bars": self.double_pullback_bars,
             }),
             HeadShouldersDetector({
                 **common,
@@ -96,7 +111,7 @@ class PatternEngine:
             TriangleDetector({
                 **common,
                 "touch_tolerance": tol.get("touch_penetration", 0.02),
-                "min_touches": 2,
+                "min_touches": span.get("triangle_min_touches", 2),
                 "min_span": span.get("triangle_min_span", 12),
                 "max_span": span.get("triangle_max_span", 160),
                 "min_height_atr": span.get("triangle_min_height_atr", 1.0),
@@ -109,12 +124,14 @@ class PatternEngine:
             WedgeDetector({
                 **common,
                 "touch_tolerance": tol.get("touch_penetration", 0.02),
+                "min_touches": span.get("wedge_min_touches", 2),
+                "min_span": span.get("wedge_min_span", 15),
+                "max_span": span.get("wedge_max_span", 150),
+                "min_height_atr": span.get("wedge_min_height_atr", 2.0),
             }),
         ]
 
-        # 过滤阈值
-        filt = self.config.get("filter", {})
-        self.min_confidence = filt.get("min_confidence", 0.4)
+        # 过滤阈值（其余字段）
         self.min_rr = filt.get("min_rr", 1.5)
         self.min_volume = self._get(pattern_cfg,
                                     ["confirmation", "volume_ratio_min"], 1.5)
@@ -129,6 +146,11 @@ class PatternEngine:
 
         # 是否要求突破在最新K线仍然有效（拦截假突破）
         self.require_intact_breakout = filt.get("require_intact_breakout", True)
+
+    def confidence_threshold_for(self, interval: str) -> float:
+        """按周期取 confidence 门槛（1d 单独更严，其他用全局）"""
+        return self.min_confidence_by_interval.get(
+            interval, self.min_confidence)
 
     def freshness_for(self, interval: str) -> int:
         """取该周期的新鲜度窗口（根）"""
@@ -350,7 +372,7 @@ class PatternEngine:
         for p in patterns:
             if p.status != PatternStatus.CONFIRMED:
                 continue
-            if p.confidence < self.min_confidence:
+            if p.confidence < self.confidence_threshold_for(p.interval):
                 continue
             if p.volume_ratio < self.min_volume:
                 continue

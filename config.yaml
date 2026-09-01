@@ -36,7 +36,7 @@ scan:
     "15m": 480                    # 5天
     "1h": 240                     # 10天
     "4h": 120                     # 20天
-    "1d": 120                     # 120天（原为60，实测偏少已上调）
+    "1d": 240                     # 240天（2026-09-01 实测 1d 误报率75%→120 根拐点稀，上调到 240 提升密度）
 
 # === 并发与限流 ===
 throttling:
@@ -84,7 +84,8 @@ patterns:
 
   # --- 价格容差 ---
   tolerance:
-    peak_price: 0.08              # 双顶/头肩 两峰价差容差（原0.03，实测过严）
+    peak_price: 0.08              # 头肩 两肩价差容差
+    double_top_bottom_price: 0.05 # 双顶/双底 两峰/两谷价差容差（严于 peak_price，2026-09-01 标注 4 张双底里 2 张两谷差 12%/7% 全误报）
     shoulder_ratio: 0.03          # 双顶/双底 中间谷/峰最小深度（原0.05）
     neck_slope_max: 0.08          # 头肩 两谷/两峰高度差（原0.03）
     head_prominence: 0.01         # 头肩 头部突出度下限（原0.02）
@@ -106,6 +107,9 @@ patterns:
     flag_body_min: 5               # 旗身最少K线数
     flag_body_max: 25              # 旗身最多K线数
     wedge_min_touches: 5           # 楔形最少触点数
+    wedge_min_span: 15             # 楔形最小跨度（2026-09-01 补，与 detector DEFAULT_PARAMS 一致）
+    wedge_max_span: 150            # 楔形最大跨度
+    wedge_min_height_atr: 2.0      # 楔形最小高度ATR倍数
     rectangle_min_height_atr: 3.0   # 箱体最小高度(ATR倍数)
 
   # --- 突破确认 ---
@@ -133,7 +137,11 @@ filter:
   # （reward = 0.5×形态高度），故 1.5 → 0.75，等效原口径 RR≥1.5，与回测一致。
   min_rr: 0.75                     # 最小风险回报比（0.5x止盈下等效原1.5）
   max_per_run: 20                 # 单次run最多推送条数
-  min_confidence: 0.4             # 最低几何置信度 (0~1)
+  min_confidence: 0.6             # 最低几何置信度 (0~1)
+  # 按周期分级覆盖（1d 单独更严）：1d 实测误报率 75%（2026-09-01），
+  # 全局 0.6 之外再抬一档。不在表里的周期用全局 min_confidence。
+  min_confidence_by_interval:
+    "1d": 0.65
   min_volume_ratio: 1.5           # 最低量能比
 
   # 同一标的最多推几条 + 方向冲突时以最大周期为准
@@ -172,6 +180,13 @@ filter:
   # 但最新一根价格已跌回 40.17，跌破入场价——典型的假突破。
   # 开启后，最新收盘价若已回到边界的错误一侧，状态标记为 FAILED 不推送。
   require_intact_breakout: true
+
+  # 双顶/双底：突破后回踩确认窗口（2026-09-01 实测发现 XAG 4h 双顶
+  # 靠单根长上影 close 跌破颈线就判确认，XAG 标"不像"是误报）。
+  # 开启后，突破确认通过后若 N 根 K 线内收盘价回到颈线错误一侧
+  # （SHORT: close > neck；LONG: close < neck），视为假突破不推送。
+  # 0 表示关闭。默认 3 根（约 12 小时 @ 4h 周期）。
+  double_pullback_bars: 3
 
   # 新鲜度窗口 (K线根数) — 突破点距今超过这个数就不推送
   #
@@ -254,10 +269,10 @@ notification:
 
   # 图表渲染
   chart:
-    width: 900                      # 图表宽度(px)
+    width: 1100                     # 图表宽度(px)
     height: 525                     # 图表高度(px)
     dpi: 120                        # 渲染DPI
-    candles_displayed: 120           # 显示的K线根数
+    candles_displayed: 240           # 显示的K线根数(4h=40天, 覆盖完整形态跨度)
     max_filesize_bytes: 1887436      # 图片大小上限(~1.8MB), 超过则降质
     compression_dpi: 80             # 降质时使用的DPI
 

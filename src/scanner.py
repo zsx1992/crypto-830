@@ -221,7 +221,7 @@ class Scanner:
                 continue
             if p.risk_reward < self.min_rr:
                 continue
-            if p.confidence < self.min_confidence:
+            if p.confidence < self.engine.confidence_threshold_for(p.interval):
                 continue
             if p.volume_ratio < self.min_volume:
                 continue

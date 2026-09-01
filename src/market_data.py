@@ -76,6 +76,8 @@ class BinanceClient:
 
     def __init__(self, timeout: int = 30, retry_max: int = 3, backoff_base: float = 2.0):
         self.session = requests.Session()
+        # 不信任环境变量代理（本机失效代理 127.0.0.1:56352 会掩盖真实网络状态）
+        self.session.trust_env = False
         self.session.headers.update({"User-Agent": "crypto-pattern-scanner/1.0"})
         self.timeout = timeout
         self.retry_max = retry_max
@@ -289,6 +291,8 @@ class OkxClient:
 
     def __init__(self, timeout: int = 30, retry_max: int = 2):
         self.session = requests.Session()
+        # 不信任环境变量代理（同上，避免失效代理掩盖真实状态）
+        self.session.trust_env = False
         self.timeout = timeout
         self.retry_max = retry_max
         self.last_request_time = 0
@@ -299,6 +303,22 @@ class OkxClient:
         if elapsed < self.MIN_REQUEST_INTERVAL:
             time.sleep(self.MIN_REQUEST_INTERVAL - elapsed)
         self.last_request_time = time.time()
+
+    def ping(self) -> bool:
+        """
+        连通性测试：OKX 无 /ping，用 /public/time（服务器时间）轻量接口。
+
+        路径不在 market 子域下，需完整 URL：
+          https://www.okx.com/api/v5/public/time
+        """
+        url = "https://www.okx.com/api/v5/public/time"
+        try:
+            r = self.session.get(url, timeout=10)
+            if r.status_code != 200:
+                return False
+            return r.json().get("code") == "0"
+        except Exception:
+            return False
 
     def _request(self, path: str, params: Optional[dict] = None) -> Optional[list]:
         url = f"{self.BASE_URL}{path}"
@@ -471,7 +491,7 @@ class MarketDataClient:
     def ping(self) -> Dict[str, bool]:
         return {
             "binance": self.binance.ping(),
-            "okx": True,       # OKX 无轻量 ping，实际用时再判
+            "okx": self.okx.ping(),   # 真实请求 /public/time，不再硬编码
         }
 
     def get_top_symbols(self, top_n: int = 300,
