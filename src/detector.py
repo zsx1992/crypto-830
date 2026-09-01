@@ -27,6 +27,7 @@ from patterns import (
     Pattern, Direction, PatternStatus,
     DoubleTopBottomDetector, HeadShouldersDetector,
     TriangleDetector, FlagDetector, WedgeDetector,
+    set_trade_level_params,
 )
 
 logger = logging.getLogger(__name__)
@@ -53,6 +54,15 @@ class PatternEngine:
     def __init__(self, config: Optional[dict] = None):
         self.config = config or {}
         pattern_cfg = self.config.get("patterns", {})
+
+        # 交易价位参数（止盈/止损），来自 config.yaml patterns.trade_levels
+        # 回测实测：tp1_ratio 1.0 → -0.09R，0.5 → +0.56R（见 docs/05-delivery.md D.6）
+        tl = pattern_cfg.get("trade_levels", {})
+        set_trade_level_params(
+            tp1_ratio=tl.get("tp1_ratio"),
+            tp2_ratio=tl.get("tp2_ratio"),
+            atr_stop_multiplier=tl.get("atr_stop_multiplier"),
+        )
 
         # 各检测器共享的确认参数
         common = {

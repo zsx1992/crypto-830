@@ -8,6 +8,9 @@ venv/
 # 运行产物（不提交，走 Actions artifact）
 output/
 
+# 本地行情数据缓存（回测用，可由 tools/download_binance_klines.py 重新下载）
+data/
+
 # 注意：state/ 目录【需要提交】——它是去重状态的 git 兜底存储
 # （cache 为主，git 文件为兜底，详见 docs/03-engineering.md）
 # 因此 state/ 不在忽略列表中

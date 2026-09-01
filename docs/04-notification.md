@@ -107,11 +107,17 @@ function buildImagePayload(imageBytes):
 止损价 P_stop = 颈线价 + 1.5 × ATR      （做空时在颈线上方）
              或 边界外 + 0.5 × ATR     （三角形/楔形用边界替代颈线）
 
-止盈1 P_tp1 = P_entry - H × 1.0        （做空，保守 1:1）
-止盈2 P_tp2 = P_entry - H × 1.618      （做空，标准黄金分割）
+止盈1 P_tp1 = P_entry - H × tp1_ratio    （做空；tp1_ratio 默认 0.5）
+止盈2 P_tp2 = P_entry - H × tp2_ratio    （做空；tp2_ratio 默认 1.618）
 
 风险回报比 R:R = |P_tp1 - P_entry| / |P_entry - P_stop|
 ```
+
+> **【2026-09-01 更新】止盈比例调优**（依据 docs/05-delivery.md D.6 回测）：
+> `tp1_ratio` 由 1.0 调整为 **0.5**（config.yaml `patterns.trade_levels`）。
+> 回测 49 标的×2100根 4h：1.0x → -0.09R（胜率30%），0.5x → **+0.56R**（胜率48.5%）。
+> 1× 形态高度的目标太远，经常先回踩打止损；0.5x 更早落袋。
+> 止损仍为颈线外 1.5×ATR。R:R 口径随 tp1 减半，`filter.min_rr` 同步 1.5→0.75（等效原口径）。
 
 ### 4.2.2 各形态的参数化计算伪代码
 

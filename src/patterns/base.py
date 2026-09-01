@@ -369,21 +369,49 @@ def find_breakout_index(klines: List[Kline],
 #  交易价位计算
 # ============================================================
 
+# 交易价位默认参数（全局，启动时由 PatternEngine 从 config 覆盖）
+# 回测实测（49标的×2100根, 2026-09-01）：
+#   tp1_ratio=1.0 → -0.09R    0.75 → +0.26R    0.5 → +0.56R
+# 1×形态高度的目标太远，经常先回踩打止损；0.5x 更早落袋，胜率 30%→48.5%。
+_tp1_ratio = 1.0
+_tp2_ratio = 1.618
+_atr_stop_multiplier = 1.5
+
+
+def set_trade_level_params(tp1_ratio: float = None,
+                           tp2_ratio: float = None,
+                           atr_stop_multiplier: float = None) -> None:
+    """由 PatternEngine 启动时调用，用 config.yaml 的 patterns.trade_levels 覆盖默认值。"""
+    global _tp1_ratio, _tp2_ratio, _atr_stop_multiplier
+    if tp1_ratio is not None:
+        _tp1_ratio = tp1_ratio
+    if tp2_ratio is not None:
+        _tp2_ratio = tp2_ratio
+    if atr_stop_multiplier is not None:
+        _atr_stop_multiplier = atr_stop_multiplier
+
+
 def calc_trade_levels(pattern: Pattern,
                       klines: List[Kline],
                       atr_value: float,
-                      atr_stop_multiplier: float = 1.5,
-                      tp1_ratio: float = 1.0,
-                      tp2_ratio: float = 1.618) -> None:
+                      atr_stop_multiplier: float = None,
+                      tp1_ratio: float = None,
+                      tp2_ratio: float = None) -> None:
     """
     计算入场/止损/止盈，直接写入 pattern 对象。
 
     规则（见 docs/04-notification.md）：
       入场 = 突破确认 K 线的收盘价
       止损 = 颈线（或边界）外侧 1.5×ATR
-      止盈1 = 入场 ± 形态高度 × 1.0
+      止盈1 = 入场 ± 形态高度 × tp1_ratio（config 可调，回测推荐 0.5）
       止盈2 = 入场 ± 形态高度 × 1.618
     """
+    if atr_stop_multiplier is None:
+        atr_stop_multiplier = _atr_stop_multiplier
+    if tp1_ratio is None:
+        tp1_ratio = _tp1_ratio
+    if tp2_ratio is None:
+        tp2_ratio = _tp2_ratio
     # 入场价取【最新收盘价】，而不是突破K线的收盘价。
     #
     # 实测案例：GIGGLEUSDT 4h 上升三角形在第115根以 44.81 突破，

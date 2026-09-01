@@ -22,6 +22,7 @@ from .base import (
     fit_trendline, count_touches, horizontal_line,
     is_flat, is_rising, is_falling,
     check_breakout, find_breakout_index, calc_volume_ratio, calc_trade_levels,
+    set_trade_level_params,
 )
 from .double import DoubleTopBottomDetector
 from .head_shoulders import HeadShouldersDetector
@@ -33,7 +34,7 @@ __all__ = [
     "fit_trendline", "count_touches", "horizontal_line",
     "is_flat", "is_rising", "is_falling",
     "check_breakout", "find_breakout_index", "calc_volume_ratio",
-    "calc_trade_levels",
+    "calc_trade_levels", "set_trade_level_params",
     "DoubleTopBottomDetector", "HeadShouldersDetector",
     "TriangleDetector", "FlagDetector", "WedgeDetector",
 ]

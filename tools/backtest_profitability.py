@@ -30,7 +30,7 @@ from collections import Counter
 _SRC = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src")
 sys.path.insert(0, _SRC)
 
-from market_data import MarketDataClient
+from market_data import MarketDataClient, Kline
 from indicators import calc_indicators
 from zigzag import find_pivots
 from detector import PatternEngine
@@ -40,13 +40,19 @@ from crosstf import SignalScorer
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger(__name__)
 
-# ---- 回测参数（可用环境变量覆盖：BT_TOP_N / BT_BARS / BT_STEP / BT_LOOKAHEAD）----
+# ---- 回测参数（可用环境变量覆盖：BT_TOP_N / BT_BARS / BT_STEP / BT_LOOKAHEAD / BT_PRIMARY / BT_LOCAL_DIR）----
 INTERVAL = os.environ.get("BT_INTERVAL", "4h")
+BT_PRIMARY = os.environ.get("BT_PRIMARY", "binance")   # 数据源: 本机国内IP用 okx
+# 本地数据目录（data/klines_4h/{SYMBOL}.csv）。设置后跳过 API，完全离线回测。
+LOCAL_DIR = os.environ.get("BT_LOCAL_DIR", "")
+# 本地 1d 数据目录（任务②大周期趋势过滤验证用）。设置后对每个信号额外判定
+# 4h 信号 vs 1d 趋势是否同向，输出对齐/未对齐的对比统计。
+LOCAL_1D_DIR = os.environ.get("BT_LOCAL_1D_DIR", "")
 BARS = int(os.environ.get("BT_BARS", 1000))
 MIN_BARS = 150
 WINDOW_STEP = int(os.environ.get("BT_STEP", 50))
 LOOKAHEAD = int(os.environ.get("BT_LOOKAHEAD", 120))   # 入场后最多看多少根（4h×120=20天）
-FRESH_MAX = 8            # 突破距今<=8根才算"新鲜信号"
+FRESH_MAX = int(os.environ.get("BT_FRESH", 12))   # 突破距今<=N根才算"新鲜信号"（对齐实盘 config freshness_bars 4h=12）
 ZIGZAG = 5               # 单尺度
 
 TOP_N = int(os.environ.get("BT_TOP_N", 20))   # 回测的标的数
@@ -55,6 +61,85 @@ TIME_BUDGET_SEC = int(os.environ.get("BT_BUDGET", 400))   # 时间预算，防�
 # 实盘过滤条件（与 scanner.run 保持一致，保证回测=实盘）
 MIN_STRENGTH = 60
 MIN_RR = 1.5
+
+
+# ---- 本地 CSV 数据源（离线回测用，Binance data.binance.vision 下载的月度合并文件）----
+def _csv_path(symbol: str, dir_=None) -> str:
+    """兼容两种布局：{dir}/{SYMBOL}.csv 或 {dir}/{SYMBOL}/{SYMBOL}.csv"""
+    base = dir_ or LOCAL_DIR
+    p1 = os.path.join(base, f"{symbol}.csv")
+    if os.path.exists(p1):
+        return p1
+    p2 = os.path.join(base, symbol, f"{symbol}.csv")
+    return p2 if os.path.exists(p2) else ""
+
+
+def load_local_symbols(limit: int = 1000):
+    """从本地数据目录列出所有标的。"""
+    if not os.path.isdir(LOCAL_DIR):
+        return []
+    found = set()
+    for root, dirs, files in os.walk(LOCAL_DIR):
+        if root == LOCAL_DIR:
+            for fn in files:
+                if fn.endswith(".csv"):
+                    found.add(fn[:-4])
+        else:
+            sym = os.path.basename(root)
+            if any(fn == f"{sym}.csv" for fn in files):
+                found.add(sym)
+    syms = sorted(found)
+    # 按文件大小(行数近似)降序，优先流动性好的
+    syms.sort(key=lambda s: -(os.path.getsize(_csv_path(s)) if _csv_path(s) else 0))
+    return syms[:limit]
+
+
+def load_local_klines(symbol: str, interval: str, limit: int,
+                      end_time_ms: int = None, dir_=None):
+    """从本地 CSV 读 K 线（Binance 标准格式），返回 List[Kline] 升序。"""
+    path = _csv_path(symbol, dir_)
+    if not path:
+        return []
+    rows = []
+    with open(path, encoding="utf-8") as f:
+        for ln in f:
+            ln = ln.strip()
+            if not ln or ln.startswith("open_time"):
+                continue
+            parts = ln.split(",")
+            try:
+                ot = int(parts[0])
+                if end_time_ms is not None and ot > end_time_ms:
+                    continue
+                rows.append(Kline(
+                    openTime=ot,
+                    open=float(parts[1]),
+                    high=float(parts[2]),
+                    low=float(parts[3]),
+                    close=float(parts[4]),
+                    volume=float(parts[5]),
+                    closeTime=int(parts[6]),
+                    quoteVolume=float(parts[7]),
+                    tradeCount=int(parts[8]) if len(parts) > 8 else 0,
+                ))
+            except (ValueError, IndexError):
+                continue
+    rows.sort(key=lambda k: k.openTime)
+    return rows[-limit:]
+
+
+def detect_trend_at(klines_1d, check_ts_ms: int, lookback: int = 120) -> str:
+    """用截至 check_ts_ms 的 1d K 线判断趋势（EMA20 vs EMA50，与 indicators.detect_trend 一致）。
+
+    klines_1d: 升序的 1d K 线列表（可能长于 lookback）。
+    返回 "up" / "down" / "flat"（sideways/unknown 归并为 flat）。
+    """
+    from indicators import detect_trend
+    window = [k for k in klines_1d if k.openTime <= check_ts_ms]
+    if len(window) < 60:   # EMA50 至少需要约 50 根，留余量
+        return "flat"
+    t = detect_trend(window[-lookback:])
+    return t if t in ("up", "down") else "flat"
 
 
 def simulate(p: Pattern, klines, entry_bar: int,
@@ -123,31 +208,39 @@ def main():
                     help="止盈缩放系数 (默认1.0=形态高度, 可试0.5)")
     args = ap.parse_args()
 
-    client = MarketDataClient()
+    client = MarketDataClient(primary=BT_PRIMARY) if not LOCAL_DIR else None
     engine = PatternEngine()
     scorer = SignalScorer(engine.config)
     # 单尺度模式：临时禁用多尺度
     engine.multiscale_scales = [ZIGZAG]
 
-    print(f"\n参数: 标的={TOP_N} 周期={INTERVAL} "
+    data_source = f"本地CSV({LOCAL_DIR})" if LOCAL_DIR else f"API({BT_PRIMARY})"
+    print(f"\n参数: 标的={TOP_N} 周期={INTERVAL} 数据源={data_source} "
           f"趋势过滤={'关' if args.no_trend_filter else '开'} "
           f"止盈缩放={args.tp_scale}x")
-    print("拉取标的与历史数据...")
-    syms = client.get_top_symbols(top_n=TOP_N)
+    print("准备标的与历史数据...")
+    if LOCAL_DIR:
+        syms = load_local_symbols(limit=TOP_N)
+    else:
+        syms = client.get_top_symbols(top_n=TOP_N)
     print(f"标的: {len(syms)} 个, 周期: {INTERVAL}, "
           f"每标的 {BARS} 根历史\n")
 
     t0 = time.time()
-    all_trades = []
+    all_trades = []          # (pattern, trade, aligned: bool|None)
     per_pattern = Counter()
     per_dir = Counter()
+    aligned_stats = {"aligned": [], "misaligned": [], "unknown": []}
 
     for si, sym in enumerate(syms):
         if time.time() - t0 > TIME_BUDGET_SEC:
             print(f"  时间预算耗尽，提前结束（已完成 {si} 个标的）")
             break
         try:
-            klines, _ = client.get_klines(sym, INTERVAL, BARS)
+            if LOCAL_DIR:
+                klines = load_local_klines(sym, INTERVAL, BARS)
+            else:
+                klines, _ = client.get_klines(sym, INTERVAL, BARS)
         except Exception as e:
             print(f"  {sym}: 数据获取失败 {e}")
             continue
@@ -155,6 +248,10 @@ def main():
             continue
 
         n_signal = 0
+        # 任务②：加载 1d 大周期数据（仅本地回测模式）
+        klines_1d = None
+        if LOCAL_1D_DIR and os.path.isdir(LOCAL_1D_DIR):
+            klines_1d = load_local_klines(sym, "1d", 500, dir_=LOCAL_1D_DIR)
         for t in range(MIN_BARS, min(len(klines), BARS), WINDOW_STEP):
             window = klines[:t]
             ind = calc_indicators(window)
@@ -176,22 +273,37 @@ def main():
                     continue
                 if p.risk_reward < MIN_RR:
                     continue
-                # 趋势同向过滤（与实盘 require_trend_alignment 一致）
-                if not args.no_trend_filter:
+                # 任务②：1d 大周期趋势对齐判定
+                aligned = None
+                if klines_1d is not None and t > 0:
+                    check_ts = klines[t - 1].openTime
+                    tf_1d = detect_trend_at(klines_1d, check_ts)
                     aligned = (
+                        (p.direction == Direction.LONG and tf_1d == "up")
+                        or (p.direction == Direction.SHORT and tf_1d == "down")
+                    )
+                # 趋势同向过滤（与实盘 require_trend_alignment 一致，用当前周期趋势）
+                if not args.no_trend_filter:
+                    aligned_now = (
                         (p.direction == Direction.LONG and ind.trend == "up")
                         or (p.direction == Direction.SHORT
                             and ind.trend == "down")
                     )
-                    if not aligned:
+                    if not aligned_now:
                         continue
                 trade = simulate(p, klines, t, tp_scale=args.tp_scale)
                 if trade is None:
                     continue
                 n_signal += 1
-                all_trades.append((p, trade))
+                all_trades.append((p, trade, aligned))
                 per_pattern[p.pattern_type] += 1
                 per_dir[p.direction.value] += 1
+                if aligned is None:
+                    aligned_stats["unknown"].append(trade["r"])
+                elif aligned:
+                    aligned_stats["aligned"].append(trade["r"])
+                else:
+                    aligned_stats["misaligned"].append(trade["r"])
 
         print(f"  {sym:<12} 信号数: {n_signal}  "
               f"({time.time() - t0:.0f}s)")
@@ -207,19 +319,19 @@ def main():
         print("\n  无有效信号，无法统计")
         return
 
-    wins = [tr for _, tr in all_trades
+    wins = [tr for _, tr, _ in all_trades
             if tr["result"] in ("TP1", "TP1_then_SL", "TP2")]
-    losses = [tr for _, tr in all_trades if tr["result"] == "SL"]
-    timeouts = [tr for _, tr in all_trades if tr["result"] == "TIMEOUT"]
-    tp2_hits = [tr for _, tr in all_trades if tr["result"] == "TP2"]
+    losses = [tr for _, tr, _ in all_trades if tr["result"] == "SL"]
+    timeouts = [tr for _, tr, _ in all_trades if tr["result"] == "TIMEOUT"]
+    tp2_hits = [tr for _, tr, _ in all_trades if tr["result"] == "TP2"]
 
     win_rate = len(wins) / total * 100
     sl_rate = len(losses) / total * 100
 
     # 平均R（止盈按 TP1 计，止损按 -1R，超时按实际）
-    avg_r = sum(tr["r"] for _, tr in all_trades) / total
+    avg_r = sum(tr["r"] for _, tr, _ in all_trades) / total
     # 胜者平均R
-    avg_win_r = (sum(tr["r"] for _, tr in all_trades
+    avg_win_r = (sum(tr["r"] for _, tr, _ in all_trades
                      if tr["result"] in ("TP1", "TP1_then_SL", "TP2"))
                  / len(wins)) if wins else 0
     avg_loss_r = -1.0
@@ -239,7 +351,7 @@ def main():
     # 按形态分组
     print("  按形态分组（样本>=3）:")
     grouped = {}
-    for p, tr in all_trades:
+    for p, tr, _ in all_trades:
         grouped.setdefault(p.pattern_type, []).append(tr["r"])
     for pt, rs in sorted(grouped.items(), key=lambda x: -len(x[1])):
         if len(rs) < 3:
@@ -251,7 +363,7 @@ def main():
     print()
     print("  按方向:")
     for d in ("LONG", "SHORT"):
-        rs = [tr["r"] for p, tr in all_trades
+        rs = [tr["r"] for p, tr, _ in all_trades
               if p.direction.value == d]
         if not rs:
             continue
@@ -259,6 +371,21 @@ def main():
         print(f"    {d:<6} n={len(rs):<4} 胜率={wr:.0f}%  "
               f"均值={sum(rs) / len(rs):+.2f}R")
     print()
+
+    # 任务②：1d 大周期趋势对齐对比
+    if LOCAL_1D_DIR and (aligned_stats["aligned"] or aligned_stats["misaligned"]):
+        print("  按 1d 大周期趋势对齐分组（任务②）:")
+        labels = [("aligned", "同向(4h信号顺1d趋势)"),
+                  ("misaligned", "逆向(4h信号逆1d趋势)"),
+                  ("unknown", "1d数据不足/横盘")]
+        for key, label in labels:
+            rs = aligned_stats[key]
+            if not rs:
+                continue
+            wr = sum(1 for r in rs if r > 0) / len(rs) * 100
+            print(f"    {label:<16} n={len(rs):<4} 胜率={wr:.0f}%  "
+                  f"均值={sum(rs) / len(rs):+.2f}R")
+        print()
 
 
 if __name__ == "__main__":
