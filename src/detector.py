@@ -136,6 +136,10 @@ class PatternEngine:
         self.min_volume = self._get(pattern_cfg,
                                     ["confirmation", "volume_ratio_min"], 1.5)
 
+        # 形态自身跨度下限（第一拐点到最后一拐点，按周期）
+        # 2026-09-02 新增：过滤速成形态（10多根K线拼出的三角毫无价值）。
+        self.min_pattern_bars = pattern_cfg.get("min_pattern_bars", {})
+
         # 新鲜度窗口（按周期）
         self.freshness_bars = filt.get("freshness_bars", {})
         self.freshness_default = filt.get("freshness_default", 6)
@@ -219,6 +223,23 @@ class PatternEngine:
                 if p.status == PatternStatus.CONFIRMED:
                     if not p.is_breakout_intact(klines, atr_value=atr_value):
                         p.status = PatternStatus.FAILED
+
+        # 形态跨度过滤：第一拐点到最后一拐点必须 >= min_pattern_bars
+        min_span = self.min_pattern_bars.get(interval, 0)
+        if min_span > 0 and candidates:
+            filtered = []
+            for p in candidates:
+                if p.pivots:
+                    span = p.pivots[-1].index - p.pivots[0].index
+                    if span >= min_span:
+                        filtered.append(p)
+                    else:
+                        logger.debug(
+                            f"[span-filter] {p.pattern_type} {symbol} "
+                            f"{interval}: 跨度{span} < {min_span}")
+                else:
+                    filtered.append(p)
+            candidates = filtered
 
         # 去重 + 排序
         return self._deduplicate(candidates)

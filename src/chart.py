@@ -107,8 +107,9 @@ def render_pattern_chart(klines: List[Kline], pattern: Pattern,
     渲染形态标注图，返回 PNG 字节。
 
     参数：
-      candles   —— 图上显示最近多少根K线（默认 80，权衡清晰度 vs 跨度）
-      width_px  —— 图宽度（像素）
+      candles   —— int: 图上显示最近多少根K线；
+                   dict: 按周期取，如 {"15m":600, "1h":400, ...}
+      width_px  —— 图宽度基准（像素），实际会按K线数自适应
       dpi       —— 渲染DPI
       max_bytes —— 大小上限（默认1.8MB，企微硬限制是2MB）
 
@@ -116,6 +117,16 @@ def render_pattern_chart(klines: List[Kline], pattern: Pattern,
     """
     if not klines or len(klines) < 10:
         return None
+
+    # candles 支持 dict 按周期取
+    if isinstance(candles, dict):
+        candles = candles.get(pattern.interval, candles.get("4h", 120))
+    candles = int(candles)
+
+    # 图宽按K线数自适应：每根约2.2px，避免500根挤成实心带
+    # 同时设上下限：最小900px（企微可读），最大1600px（企微不溢出）
+    adaptive_width = max(900, min(1600, int(candles * 2.2)))
+    width_px = max(width_px, adaptive_width)
 
     height_px = int(width_px * 0.65)
     fig_w = width_px / float(dpi)

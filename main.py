@@ -61,9 +61,9 @@ DEFAULT_CONFIG = {
     },
     "scan": {
         "top_n": 300,
-        "min_volume_usdt": 10_000_000,
+        "min_volume_usdt": 5_000_000,
         "intervals": ["15m", "1h", "4h", "1d"],
-        "kline_counts": {"15m": 480, "1h": 240, "4h": 120, "1d": 240},
+        "kline_counts": {"15m": 600, "1h": 400, "4h": 300, "1d": 240},
     },
     "throttling": {
         "concurrency": 3,
