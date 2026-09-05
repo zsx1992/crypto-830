@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>crypto-830 形态标注 v4（画线纠错版）</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: "Microsoft YaHei", -apple-system, sans-serif; margin: 0; background: #f7f8fa; color: #222; }
+  #bar { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #e3e6ea; padding: 10px 16px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; z-index: 5; }
+  #bar .grow { flex: 1; }
+  button { padding: 7px 14px; border-radius: 6px; border: 1px solid #c9ced4; background: #fff; cursor: pointer; font-size: 13px; }
+  button:hover { background: #f0f2f5; }
+  button.on { background: #1976d2; color: #fff; border-color: #1976d2; }
+  button.primary { background: #1976d2; color: #fff; border-color: #1976d2; }
+  button.primary:hover { background: #1565c0; }
+  button.danger { color: #c62828; border-color: #e0a0a0; }
+  #wrap { max-width: 1100px; margin: 16px auto; padding: 0 16px; }
+  #meta { display: flex; gap: 18px; align-items: baseline; background: #fff; border: 1px solid #e3e6ea; border-radius: 10px; padding: 10px 16px; margin-bottom: 12px; flex-wrap: wrap; }
+  #meta .sym { font-size: 20px; font-weight: bold; }
+  .pill { font-size: 12px; background: #eef1f5; padding: 2px 10px; border-radius: 999px; }
+  .pill.sys { background: #fff3cd; color: #7a5b00; }
+  #stage { position: relative; display: inline-block; background: #fff; border: 1px solid #e3e6ea; border-radius: 10px; overflow: hidden; }
+  #stage img { display: block; max-height: 68vh; max-width: 100%; height: auto; user-select: none; -webkit-user-select: none; }
+  #stage svg { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; }
+  #stage svg.mode-select { cursor: default; }
+  #toolbar { display: flex; gap: 6px; align-items: center; background: #fff; border: 1px solid #e3e6ea; border-radius: 10px; padding: 8px 12px; margin: 12px 0; flex-wrap: wrap; }
+  #judge { display: flex; gap: 10px; margin: 12px 0; }
+  #judge button { flex: 1; padding: 12px; font-size: 16px; border-radius: 10px; }
+  .j-ok { background: #e8f5e9 !important; border-color: #4caf50 !important; color: #1b5e20; }
+  .j-bad { background: #fdecea !important; border-color: #e57373 !important; color: #b71c1c; }
+  .j-meh { background: #fff8e1 !important; border-color: #fbc02d !important; color: #7a5b00; }
+  .j-ok.sel, .j-bad.sel, .j-meh.sel { box-shadow: inset 0 0 0 2px #1976d2; }
+  select, input[type=text] { padding: 6px 8px; border-radius: 6px; border: 1px solid #c9ced4; font-size: 13px; }
+  #tip { font-size: 12px; color: #666; line-height: 1.8; background: #fff; border: 1px dashed #e3e6ea; border-radius: 10px; padding: 8px 12px; margin-top: 12px; }
+  #tip b { color: #1976d2; }
+  kbd { background: #f0f2f5; border: 1px solid #d5d9de; border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div id="bar">
+  <b>标注 v4</b>
+  <span id="prog">0 / 0</span>
+  <span id="doneCount"></span>
+  <span class="grow"></span>
+  <button id="btnSave" class="primary">推送到本地服务器</button>
+  <button id="btnCopy">复制 JSON</button>
+  <button id="btnClear" class="danger">清空本张判定</button>
+</div>
+
+<div id="wrap">
+  <div id="meta">
+    <span class="sym" id="m-sym">--</span>
+    <span class="pill" id="m-tf">--</span>
+    <span class="pill" id="m-kind">--</span>
+    <span class="pill">系统识别: <span id="m-pattern">--</span></span>
+    <span class="pill sys" id="m-note"></span>
+  </div>
+
+  <div id="toolbar">
+    <span>画线工具:</span>
+    <button id="t-select" class="on">选择/删除</button>
+    <button id="t-seg">线段</button>
+    <button id="t-ray">射线</button>
+    <button id="t-undo">撤销</button>
+    <button id="t-del">删除选中</button>
+    <span style="color:#999;margin-left:6px">线条颜色:</span>
+    <select id="lineColor">
+      <option value="#1976d2">蓝</option>
+      <option value="#e53935">红</option>
+      <option value="#43a047">绿</option>
+      <option value="#fb8c00">橙</option>
+      <option value="#8e24aa">紫</option>
+    </select>
+    <span style="color:#999;margin-left:auto">← → 翻页</span>
+  </div>
+
+  <div id="judge">
+    <button id="j-ok" class="j-ok">像</button>
+    <button id="j-bad" class="j-bad">不像</button>
+    <button id="j-meh" class="j-meh">拿不准</button>
+  </div>
+
+  <div style="display:flex; gap:10px; align-items:center; background:#fff; border:1px solid #e3e6ea; border-radius:10px; padding:8px 12px; flex-wrap:wrap;">
+    <span style="font-size:13px">这形态其实更像（可选，纠错用）:</span>
+    <select id="correctType"></select>
+    <input type="text" id="correctOther" placeholder="其他形态名（选了「其他」才填）" style="min-width:200px">
+    <span id="typeHint" style="font-size:12px;color:#666"></span>
+  </div>
+
+  <div id="stage">
+    <img id="chartImg" alt="K线图">
+    <svg id="svgLayer" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
+
+  <div id="nav" style="display:flex; gap:8px; margin:14px 0;">
+    <button id="btnPrev">← 上一张</button>
+    <button id="btnNext" class="primary">下一张 →</button>
+    <button id="btnNextUnjudged">跳到下一张未判定</button>
+  </div>
+
+  <div id="tip">
+    <b>快捷键：</b><kbd>1</kbd> 像 · <kbd>2</kbd> 不像 · <kbd>3</kbd> 拿不准 ·
+    <kbd>←</kbd>/<kbd>→</kbd> 翻页 ·
+    <kbd>Delete</kbd> 删除选中的线 · <kbd>Ctrl+Z</kbd> 撤销 ·
+    <kbd>L</kbd> 线段工具 · <kbd>R</kbd> 射线工具 · <kbd>Esc</kbd> 回到选择<br>
+    <b>画法：</b>选线段/射线工具 → 在图上按住左键拖拽 → 松开即画好一条线。射线会从起点向终点方向延伸到图边缘。
+    画完可切回「选择」点线高亮后删除。<br>
+    <b>进度自动存浏览器（key: crypto830_replay_v4）</b>，可分批标，别忘了点「推送到本地服务器」。
+  </div>
+</div>
+
+<script>
+const KEY = 'crypto830_replay_v4';
+const ITEMS = __ITEMS__;
+
+const TYPE_CN = {
+  'double_top': '双顶 / M顶', 'double_bottom': '双底 / W底',
+  'head_shoulders_top': '头肩顶', 'head_shoulders_bottom': '头肩底',
+  'ascending_triangle': '上升三角形', 'descending_triangle': '下降三角形',
+  'symmetrical_triangle': '对称三角形',
+  'flag': '旗形', 'rising_wedge': '上升楔形', 'falling_wedge': '下降楔形',
+  'other': '其他（自己写）'
+};
+const TYPE_CODES = Object.keys(TYPE_CN);
+
+let ans = {};
+try { ans = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { ans = {}; }
+
+let idx = 0;
+let mode = 'select';           // select | seg | ray
+let lineColor = '#1976d2';
+let cur = null;                // 正在画的线（预览）
+let selLine = null;            // 选中线 index
+let undoStack = [];
+let imgW = 0, imgH = 0;
+
+const img = document.getElementById('chartImg');
+const svg = document.getElementById('svgLayer');
+const NS = 'http://www.w3.org/2000/svg';
+
+function curAns() {
+  if (!ans[idx]) ans[idx] = { verdict: null, correctType: '', lines: [] };
+  return ans[idx];
+}
+function refreshAll() { refreshMeta(); refreshJudge(); refreshType(); renderLines(); refreshProgress(); }
+function refreshMeta() {
+  const it = ITEMS[idx];
+  document.getElementById('m-sym').textContent = it.symbol;
+  document.getElementById('m-tf').textContent = it.interval;
+  document.getElementById('m-kind').textContent = it.kind === '随机' ? '随机对照' : '推送信号';
+  document.getElementById('m-pattern').textContent = it.patternCn;
+  const n = ans[idx] && ans[idx].correctType;
+  document.getElementById('m-note').textContent = n && n !== it.pattern ? '你纠错为: ' + n : '';
+}
+function refreshJudge() {
+  const v = ans[idx] && ans[idx].verdict;
+  ['ok','bad','meh'].forEach(x => {
+    document.getElementById('j-' + x).classList.toggle('sel', v === x);
+  });
+}
+function refreshType() {
+  const a = ans[idx] || {};
+  const sel = document.getElementById('correctType');
+  if (!sel.options.length) {
+    TYPE_CODES.forEach(c => sel.add(new Option(TYPE_CN[c], c)));
+  }
+  sel.value = a.correctType && TYPE_CODES.includes(a.correctType) ? a.correctType : '';
+  document.getElementById('correctOther').value =
+    a.correctType && !TYPE_CODES.includes(a.correctType) ? a.correctType : '';
+  typeHint();
+}
+function typeHint() {
+  const a = ans[idx];
+  const sys = ITEMS[idx] && ITEMS[idx].patternCn;
+  const c = a && a.correctType;
+  const el = document.getElementById('typeHint');
+  el.textContent = (!c || c === sys) ? '（不纠错时，判定只代表"像不像"）' : '→ 将记录：系统说「' + sys + '」，你认为更像「' + c + '」';
+}
+function judgedTotal() { return count('ok') + count('bad') + count('meh'); }
+function refreshProgress() {
+  const judged = judgedTotal();
+  document.getElementById('prog').textContent = (idx + 1) + ' / ' + ITEMS.length;
+  document.getElementById('doneCount').textContent = '已判定 ' + judged + ' 张（像 ' +
+    count('ok') + ' / 不像 ' + count('bad') + ' / 拿不准 ' + count('meh') + '）';
+}
+
+function el(id) { return document.getElementById(id); }
+
+function load(idxIn) {
+  idx = ((idxIn % ITEMS.length) + ITEMS.length) % ITEMS.length;
+  img.onload = () => { initSvg(); refreshAll(); };
+  img.src = ITEMS[idx].file;
+}
+function initSvg() {
+  imgW = img.naturalWidth || 800;
+  imgH = img.naturalHeight || 450;
+  svg.setAttribute('viewBox', '0 0 ' + imgW + ' ' + imgH);
+  svg.setAttribute('width', imgW); svg.setAttribute('height', imgH);
+  renderLines();
+}
+function evtToPoint(e) {
+  const r = svg.getBoundingClientRect();
+  return { x: (e.clientX - r.left) / r.width * imgW, y: (e.clientY - r.top) / r.height * imgH };
+}
+
+function renderLines() {
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
+  const a = ans[idx] || { lines: [] };
+  a.lines.forEach((ln, i) => {
+    const isSel = selLine === i;
+    const seg = document.createElementNS(NS, 'line');
+    seg.setAttribute('x1', ln.x1); seg.setAttribute('y1', ln.y1);
+    seg.setAttribute('x2', ln.x2); seg.setAttribute('y2', ln.y2);
+    seg.setAttribute('stroke', ln.color || '#1976d2');
+    seg.setAttribute('stroke-width', isSel ? Math.max(3, imgW / 250) : Math.max(2, imgW / 400));
+    seg.setAttribute('stroke-dasharray', ln.kind === 'ray' ? '8 5' : '');
+    seg.style.pointerEvents = 'none';
+    if (isSel) {
+      const halo = document.createElementNS(NS, 'line');
+      halo.setAttribute('x1', ln.x1); halo.setAttribute('y1', ln.y1);
+      halo.setAttribute('x2', ln.x2); halo.setAttribute('y2', ln.y2);
+      halo.setAttribute('stroke', '#333'); halo.setAttribute('stroke-width', Math.max(6, imgW / 150));
+      halo.setAttribute('opacity', '0.25'); halo.style.pointerEvents = 'none';
+      svg.appendChild(halo);
+    }
+    svg.appendChild(seg);
+    const lbl = document.createElementNS(NS, 'text');
+    lbl.setAttribute('x', (ln.x1 + ln.x2) / 2 + 4); lbl.setAttribute('y', (ln.y1 + ln.y2) / 2 - 4);
+    lbl.setAttribute('font-size', Math.max(11, imgW / 90));
+    lbl.setAttribute('fill', ln.color || '#1976d2');
+    lbl.textContent = (i + 1);
+    svg.appendChild(lbl);
+  });
+  if (cur) {
+    const seg = document.createElementNS(NS, 'line');
+    seg.setAttribute('x1', cur.x1); seg.setAttribute('y1', cur.y1);
+    seg.setAttribute('x2', cur.x2); seg.setAttribute('y2', cur.y2);
+    seg.setAttribute('stroke', lineColor); seg.setAttribute('stroke-width', Math.max(2, imgW / 400));
+    seg.setAttribute('stroke-dasharray', '4 4'); seg.style.pointerEvents = 'none';
+    svg.appendChild(seg);
+  }
+}
+
+function extendRay(x1, y1, x2, y2) {
+  let dx = x2 - x1, dy = y2 - y1;
+  if (Math.abs(dx) < 0.01 && Math.abs(dy) < 0.01) return { x2, y2 };
+  let t = Infinity;
+  if (dx > 0) t = Math.min(t, (imgW - x1) / dx); else if (dx < 0) t = Math.min(t, -x1 / dx);
+  if (dy > 0) t = Math.min(t, (imgH - y1) / dy); else if (dy < 0) t = Math.min(t, -y1 / dy);
+  if (!isFinite(t)) t = 10000;
+  return { x2: x1 + t * dx, y2: y1 + t * dy };
+}
+
+function distToSeg(px, py, x1, y1, x2, y2) {
+  const dx = x2 - x1, dy = y2 - y1;
+  const L2 = dx * dx + dy * dy;
+  if (L2 === 0) return Math.hypot(px - x1, py - y1);
+  let t = ((px - x1) * dx + (py - y1) * dy) / L2;
+  t = Math.max(0, Math.min(1, t));
+  return Math.hypot(px - (x1 + t * dx), py - (y1 + t * dy));
+}
+
+function setMode(m) {
+  mode = m;
+  ['select','seg','ray'].forEach(x => el('t-' + x).classList.toggle('on', x === m));
+  svg.classList.toggle('mode-select', m === 'select');
+}
+
+svg.addEventListener('mousedown', e => {
+  const p = evtToPoint(e);
+  if (mode === 'select') {
+    const a = curAns();
+    let best = -1, bestD = 10 / 400 * imgW;
+    a.lines.forEach((ln, i) => {
+      const d = distToSeg(p.x, p.y, ln.x1, ln.y1, ln.x2, ln.y2);
+      if (d < bestD) { bestD = d; best = i; }
+    });
+    selLine = best;
+    renderLines();
+  } else {
+    cur = { x1: p.x, y1: p.y, x2: p.x, y2: p.y, color: lineColor };
+    svg.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+  }
+});
+function onMove(e) {
+  if (!cur) return;
+  const p = evtToPoint(e);
+  cur.x2 = p.x; cur.y2 = p.y;
+  if (mode === 'ray') { const ex = extendRay(cur.x1, cur.y1, p.x, p.y); cur.x2 = ex.x2; cur.y2 = ex.y2; }
+  renderLines();
+}
+function onUp() {
+  if (!cur) return;
+  const dx = cur.x2 - cur.x1, dy = cur.y2 - cur.y1;
+  if (Math.hypot(dx, dy) > Math.max(6, imgW / 150)) {
+    const a = curAns();
+    undoStack.push(a.lines.length);
+    a.lines.push({ kind: mode, x1: cur.x1, y1: cur.y1, x2: cur.x2, y2: cur.y2, color: cur.color });
+    persist();
+  }
+  cur = null;
+  svg.removeEventListener('mousemove', onMove);
+  window.removeEventListener('mouseup', onUp);
+  renderLines();
+}
+function deleteSel() {
+  const a = curAns();
+  if (selLine !== null && selLine >= 0 && selLine < a.lines.length) {
+    a.lines.splice(selLine, 1);
+    selLine = null;
+    persist(); renderLines();
+  }
+}
+function undoLine() {
+  const a = curAns();
+  if (undoStack.length) {
+    undoStack.pop();
+    a.lines.pop();
+    selLine = null;
+    persist(); renderLines();
+  }
+}
+
+function setVerdict(v) {
+  curAns().verdict = v;
+  persist(); refreshJudge();
+}
+function setCorrect() {
+  const a = curAns();
+  const sel = document.getElementById('correctType').value;
+  const other = document.getElementById('correctOther').value.trim();
+  a.correctType = sel === 'other' ? (other || '其他') : sel;
+  persist(); refreshMeta(); typeHint();
+}
+
+function persist() { localStorage.setItem(KEY, JSON.stringify(ans)); }
+
+function count(v) {
+  let n = 0;
+  for (const k in ans) if (ans[k] && ans[k].verdict === v) n++;
+  return n;
+}
+
+function buildResult() {
+  const rows = ITEMS.map((it, i) => {
+    const a = ans[i] || {};
+    return {
+      symbol: it.symbol, interval: it.interval, pattern: it.pattern,
+      patternCn: it.patternCn, chart: it.file, kind: it.kind,
+      verdict: a.verdict || null,
+      correctType: a.correctType || null,
+      lines: a.lines || []
+    };
+  });
+  return {
+    version: 4, generated_at: new Date().toISOString(),
+    judged: judgedTotal(), total: ITEMS.length,
+    summary: { ok: count('ok'), bad: count('bad'), meh: count('meh') },
+    rows: rows
+  };
+}
+async function pushToServer() {
+  const doc = buildResult();
+  doc.__target = 'user_annotations_v4.json';
+  const btn = el('btnSave');
+  btn.disabled = true;
+  try {
+    const resp = await fetch('/__save_annotations', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(doc)
+    });
+    const txt = await resp.text();
+    alert('服务器返回 [' + resp.status + ']: ' + txt);
+  } catch (err) {
+    alert('推送失败: ' + err + '（确认 8765 服务器在运行）');
+  }
+  btn.disabled = false;
+}
+
+el('btnPrev').onclick = () => load(idx - 1);
+el('btnNext').onclick = () => load(idx + 1);
+el('btnNextUnjudged').onclick = () => {
+  for (let step = 1; step <= ITEMS.length; step++) {
+    const ni = (idx + step) % ITEMS.length;
+    if (!ans[ni] || !ans[ni].verdict) { load(ni); return; }
+  }
+  alert('全部已判定！');
+};
+el('j-ok').onclick = () => setVerdict('ok');
+el('j-bad').onclick = () => setVerdict('bad');
+el('j-meh').onclick = () => setVerdict('meh');
+el('btnClear').onclick = () => { delete ans[idx]; persist(); selLine = null; refreshAll(); };
+el('t-select').onclick = () => setMode('select');
+el('t-seg').onclick = () => setMode('seg');
+el('t-ray').onclick = () => setMode('ray');
+el('t-del').onclick = deleteSel;
+el('t-undo').onclick = undoLine;
+el('lineColor').onchange = e => { lineColor = e.target.value; };
+el('correctType').onchange = setCorrect;
+el('correctOther').oninput = setCorrect;
+el('btnSave').onclick = pushToServer;
+el('btnCopy').onclick = () => {
+  navigator.clipboard.writeText(JSON.stringify(buildResult(), null, 1)).then(
+    () => alert('已复制完整 JSON'), () => alert('复制失败，请点「推送到本地服务器」'));
+};
+svg.addEventListener('dblclick', () => setMode('select'));
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+  if (e.key === 'ArrowRight') { e.preventDefault(); load(idx + 1); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); load(idx - 1); }
+  else if (e.key === '1') setVerdict('ok');
+  else if (e.key === '2') setVerdict('bad');
+  else if (e.key === '3') setVerdict('meh');
+  else if (e.key === 'Delete' || e.key === 'Backspace') deleteSel();
+  else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') undoLine();
+  else if (e.key === 'l' || e.key === 'L') setMode('seg');
+  else if (e.key === 'r' || e.key === 'R') setMode('ray');
+  else if (e.key === 'Escape') setMode('select');
+});
+
+load(0);
+</script>
+</body>
+</html>
