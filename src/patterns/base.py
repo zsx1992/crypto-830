@@ -93,6 +93,12 @@ class Pattern:
     lower_boundary: Optional[Line] = None
     height: float = 0.0
 
+    # 形态末端时间（最后一个 pivot 对应 K 线的 openTime, 毫秒）
+    # 由 scanner / history_replay 在推送前填充。
+    # 用途：判断"新检出的形态是不是上次推过的同一个"——
+    # 同一形态冷却期过后仍挂在图上时不应重复推送。
+    end_ms: int = 0
+
     # 突破
     breakout_index: int = -1
     breakout_price: float = 0.0
@@ -116,6 +122,12 @@ class Pattern:
     # 综合信号强度 0~100（七维加权，含量能/共振/趋势一致性等）
     # 由 crosstf.SignalScorer 计算，见 docs/01 1.4
     strength_score: int = 0
+
+    # 几何质量分 0~1（借鉴 hunk77 对称性+结构质量加权思路，由 validate_geometry 计算）
+    # 与 confidence 的区别：confidence 是检测器内部二值门槛后的完整度，
+    # geometry_score 是【分级】的"画得标不标准"评分（价格对称+时间对称+结构质量）。
+    geometry_score: float = 0.0
+    geometry_reason: str = ""
 
     # 多周期共振信息
     resonant_with: List[str] = field(default_factory=list)
@@ -238,6 +250,194 @@ def fit_trendline(pivots: List[Pivot], use_type: PivotType,
     return best_line, best_touches
 
 
+def channel_quality(upper: "Line", lower: "Line", pivots: List[Pivot],
+                    klines: List["Kline"], start_index: int, end_index: int
+                    ) -> Tuple[float, str]:
+    """
+    通道质量 0~1：衡量「能不能一眼看出这是个通道」。
+
+    这是朱哥判「像不像」的真实维度（2026-09-03 从 158 张标注反推）：
+    他认可的图「起码能看出来是通道」，而不是靠收敛度/对称性。
+    旧 touch_score = min(1, touches/4) 恒为 1.0（检测器已要求 min_touches），
+    完全无区分度 —— 本函数用连续量替代它。
+
+    两项各占一半：
+      1. 贴合度 adherence —— 摆动点离对应边界线多远（相对通道宽度）。
+         点都贴在线上 = 线清晰可辨；点散在线外 = 看不出线。
+      2. 包容性 containment —— 区间内 K 线有多少落在两条边界之间。
+         价格在通道里有秩序地来回 = 像；频繁穿越 = 只是震荡。
+
+    返回 (score 0~1, reason)。
+
+    ⚠️ 已验证无效，不要拿它当筛选器（2026-09-03，158 张人工标注）：
+       实测 91 张里几乎全是 1.000（贴合1.00/包容1.00），
+       朱哥判「像」均值 0.959 vs「不像」0.989，差 −0.030 ≈ 0。
+
+       失效原因 = 循环论证：
+       ① 贴合度用 pattern.pivots 去测由【同一批 pivot】拟合出的边界线，
+          必然完美贴合（就像用考试答案去批改这份答卷）；
+       ② 包容性同理——区间 [start,end] 本就由 pivot 位置界定，
+          区间内 K 线天然落在极值连线之间。
+       要评估「像不像通道」，必须用【独立于拟合过程】的样本
+       （例如形态区间之外的 K 线、或收紧到 1~2% 的容差）。
+       保留此函数仅为记录该思路，当前不在 validate_geometry 中使用。
+    """
+    if start_index >= end_index or not klines:
+        return 0.0, "无效区间"
+
+    # 基准宽度取区间起点处（收敛形态右端会趋近 0，不能拿来当分母）
+    width0 = upper.value_at(start_index) - lower.value_at(start_index)
+    if width0 <= 0:
+        return 0.0, "通道宽度≤0"
+
+    # ① 贴合度：摆动点到对应边界的平均偏离
+    devs = []
+    for p in pivots:
+        if not (start_index <= p.index <= end_index):
+            continue
+        line = upper if p.type == PivotType.HIGH else lower
+        expected = line.value_at(p.index)
+        devs.append(abs(p.price - expected))
+    if not devs:
+        return 0.0, "区间内无摆动点"
+    mean_dev = sum(devs) / len(devs)
+    # 偏离达到 12% 通道宽度即视为「看不出线」
+    adherence = max(0.0, min(1.0, 1.0 - mean_dev / (0.12 * width0)))
+
+    # ② 包容性：K 线是否待在通道里（允许 8% 宽度的越界容差）
+    inside = 0
+    total = 0
+    for i in range(start_index, min(end_index + 1, len(klines))):
+        uv = upper.value_at(i)
+        lv = lower.value_at(i)
+        w = uv - lv
+        if w <= 0:
+            continue
+        tol = 0.08 * w
+        k = klines[i]
+        total += 1
+        if k.high <= uv + tol and k.low >= lv - tol:
+            inside += 1
+    containment = inside / total if total else 0.0
+
+    score = 0.5 * adherence + 0.5 * containment
+    reason = f"贴合{adherence:.2f}/包容{containment:.2f}"
+    return round(max(0.0, min(1.0, score)), 3), reason
+
+
+def local_extrema(klines: List["Kline"], start_index: int, end_index: int,
+                  order: int = 2):
+    """
+    找区间内的【局部极值】（比 zigzag pivot 密集得多）。
+
+    这是评估形态质量的独立样本：检测器拟合边界用的是 zigzag pivot
+    （left/right = 3~12，一个形态通常只有 4 个），而这里用 order=2
+    能在一个 80 根的形态里找到 ~16 个极值点，且它们没有参与原拟合。
+
+    返回 (highs, lows)，元素为 (index, price)。
+    """
+    highs, lows = [], []
+    lo_i = max(1, start_index)
+    hi_i = min(len(klines) - 2, end_index)
+    for i in range(lo_i + order, hi_i - order + 1):
+        h = klines[i].high
+        l = klines[i].low
+        if i + order >= len(klines) or i - order < 0:
+            continue
+        is_high = all(klines[j].high <= h
+                      for j in range(i - order, i + order + 1) if j != i)
+        is_low = all(klines[j].low >= l
+                     for j in range(i - order, i + order + 1) if j != i)
+        if is_high:
+            highs.append((i, h))
+        if is_low:
+            lows.append((i, l))
+    return highs, lows
+
+
+def structure_orderliness(upper: "Line", lower: "Line",
+                          klines: List["Kline"], start_index: int,
+                          end_index: int, pattern_type: str = ""):
+    """
+    结构秩序感 0~1：用【独立于拟合过程】的样本评估形态。
+
+    与 channel_quality（已验证无效）的区别：
+      channel_quality 用参与拟合的那 4 个 pivot 去测拟合出的线 → 必然满分；
+      本函数改用区间内 order=2 的密集局部极值（~16 个，未参与拟合）+ 全量 K 线。
+
+    三项：
+      ① 单调性(40%) —— 高点/低点是否朝形态声称的方向依次推进。
+         真上升通道的高点应逐个抬高；震荡区间则忽高忽低。
+      ② 贴合度(30%) —— 这些独立极值点离边界线多远（相对通道宽度）。
+      ③ 穿越率(30%) —— 全量 K 线以 1% 宽度容差越界的比例（越界越多越不像）。
+
+    返回 (score 0~1, reason)。
+    """
+    if start_index >= end_index or not klines:
+        return 0.0, "无效区间"
+
+    width0 = upper.value_at(start_index) - lower.value_at(start_index)
+    if width0 <= 0:
+        return 0.0, "通道宽度≤0"
+
+    highs, lows = local_extrema(klines, start_index, end_index, order=2)
+    if len(highs) < 2 or len(lows) < 2:
+        return 0.0, "极值点不足"
+
+    # ① 单调性：形态声称的方向
+    pt = pattern_type
+    if pt in ("rising_wedge", "ascending_triangle"):
+        want_high, want_low = 1, 1          # 高点抬高、低点抬高
+    elif pt in ("falling_wedge", "descending_triangle"):
+        want_high, want_low = -1, -1        # 高点降低、低点降低
+    elif pt == "symmetrical_triangle":
+        want_high, want_low = -1, 1         # 高点降低、低点抬高（收敛）
+    else:
+        # 未知类型：取「更一致的那个方向」的秩序度（保守，不奖励随机）
+        def ratio(seq, sign):
+            return (sum(1 for a, b in zip(seq, seq[1:])
+                        if (b[1] - a[1]) * sign > 0) / max(len(seq) - 1, 1))
+        want_high = 1 if ratio(highs, 1) >= ratio(highs, -1) else -1
+        want_low = 1 if ratio(lows, 1) >= ratio(lows, -1) else -1
+
+    h_ratio = sum(1 for a, b in zip(highs, highs[1:])
+                  if (b[1] - a[1]) * want_high > 0) / max(len(highs) - 1, 1)
+    l_ratio = sum(1 for a, b in zip(lows, lows[1:])
+                  if (b[1] - a[1]) * want_low > 0) / max(len(lows) - 1, 1)
+    mono = 0.5 * h_ratio + 0.5 * l_ratio
+
+    # ② 贴合度：独立极值点到边界线的偏离
+    devs = []
+    for i, p in highs:
+        devs.append(abs(p - upper.value_at(i)))
+    for i, p in lows:
+        devs.append(abs(p - lower.value_at(i)))
+    mean_dev = sum(devs) / len(devs)
+    adherence = max(0.0, min(1.0, 1.0 - mean_dev / (0.15 * width0)))
+
+    # ③ 穿越率：全量 K 线，严格容差 1% 通道宽度
+    breach = 0
+    total = 0
+    for i in range(start_index, min(end_index + 1, len(klines))):
+        uv = upper.value_at(i)
+        lv = lower.value_at(i)
+        w = uv - lv
+        if w <= 0:
+            continue
+        tol = 0.01 * w
+        k = klines[i]
+        total += 1
+        if k.high > uv + tol or k.low < lv - tol:
+            breach += 1
+    breach_rate = breach / total if total else 1.0
+    containment = 1.0 - breach_rate
+
+    score = 0.40 * mono + 0.30 * adherence + 0.30 * containment
+    reason = (f"序{mono:.2f}/贴{adherence:.2f}/容{containment:.2f}"
+              f"(点{len(highs) + len(lows)})")
+    return round(max(0.0, min(1.0, score)), 3), reason
+
+
 def count_touches(line: Line, pivots: List[Pivot], tolerance: float = 0.02) -> int:
     """统计有多少摆动点落在该趋势线附近"""
     count = 0
@@ -274,6 +474,167 @@ def is_rising(line: Line, threshold: float = 0.0005) -> bool:
 
 def is_falling(line: Line, threshold: float = 0.0005) -> bool:
     return line.rel_slope < -threshold
+
+
+# ============================================================
+#  几何质量评估（借鉴 hunk77 的"对称性 + 结构质量"加权思路）
+# ============================================================
+
+def _price_symmetry(a: float, b: float, tol: float = 0.05) -> float:
+    """
+    价格对称性 0~1：a、b 越接近越高；相对差达到 tol 时得 0。
+
+    hunk77 把对称性作为置信度的主要权重（~32%）：
+    双顶两峰、双底两谷、头肩两肩，价格必须接近才算标准形态。
+    """
+    denom = max(abs(a), abs(b), 1e-9)
+    return max(0.0, min(1.0, 1.0 - abs(a - b) / denom / tol))
+
+
+def prior_move(klines: List[Kline], before_index: int,
+               bars: int) -> Optional[float]:
+    """
+    形态起点之前 close 的相对涨跌幅（正=涨，负=跌）。
+    返回 None 表示窗口不足。
+
+    用于「反转形态必须有前置趋势」的结构性闸门：
+    双顶/头肩顶要求 prior_move > 0（前面涨上来），
+    双底/头肩底要求 prior_move < 0（前面跌下来）。
+
+    实测动机（2026-09-03 朱哥 158 张人工标注）：现存漏网误报里
+    AAVE 双顶 / ENA 头肩顶 / ARB 双底 全是「下跌中继里的小 H-L-H」，
+    形态内部结构满足但前面根本没趋势。本闸门就是为了把这批假信号杀掉。
+    """
+    start = max(0, before_index - bars)
+    if before_index - start < 5:
+        return None
+    start_price = klines[start].close
+    if start_price <= 0:
+        return None
+    return (klines[before_index].close - start_price) / start_price
+
+
+def _time_symmetry(idx_left: int, idx_mid: int, idx_right: int,
+                   tol: float = 0.5) -> float:
+    """
+    时间对称性 0~1：左臂(idx_mid-idx_left)与右臂(idx_right-idx_mid)越接近越高。
+
+    crypto-830 原检测器【只查价格对称、不查时间对称】——这正是很多
+    "几何过了但图上看着歪"的根因：两臂时长差很多照样过。hunk77 的
+    结构质量里隐含了对形态左右均衡的要求，这里显式补上。
+    """
+    arm_l = abs(idx_mid - idx_left)
+    arm_r = abs(idx_right - idx_mid)
+    span = max(arm_l + arm_r, 1)
+    return max(0.0, min(1.0, 1.0 - abs(arm_l - arm_r) / span / tol))
+
+
+def convergence(upper: "Line", lower: "Line",
+                start_index: int, end_index: int) -> float:
+    """
+    边界收敛度 0~1：两条边界在【同一个索引处】比较间距，看右端比左端窄了多少。
+    =1 完全收拢到一点，=0 完全没收窄（或在发散）。
+
+    为什么必须对齐到同一索引：
+      旧实现写作
+          left_gap  = |u.value_at(u.p1.index)  - lo.value_at(lo.p1.index)|
+          right_gap = |u.value_at(u.p2.index)  - lo.value_at(lo.p2.index)|
+      两条边界的 p1/p2 索引常常不同，等于在两个不同的 x 位置比价格 ——
+      算出来的"收敛度"没有几何意义。实测大量真楔形被算成 0.00，
+      导致几何分失去区分度（人工标注：像 0.38 vs 不像 0.41）。
+
+    调用方应传入两条边界的共同跨度（通常取并集
+    start=min(u.p1.index, lo.p1.index), end=max(u.p2.index, lo.p2.index)）。
+    """
+    if end_index <= start_index:
+        return 0.0
+    left_gap = abs(upper.value_at(start_index) - lower.value_at(start_index))
+    right_gap = abs(upper.value_at(end_index) - lower.value_at(end_index))
+    if left_gap <= 1e-9:
+        return 0.0
+    return max(0.0, min(1.0, (left_gap - right_gap) / left_gap))
+
+
+def validate_geometry(pattern: "Pattern", atr_value: float = 0.0):
+    """
+    评估形态"画得标不标准"的几何质量分 0~1（分级，非二值）。
+
+    返回 (score 0~1, reason: str)。
+
+    设计（对应 hunk77 的 symmetry + structure quality）：
+      - 反转形态（双顶/双底/头肩）：
+          价格对称(两峰/两肩接近) + 时间对称(左右臂等长)
+          + 结构(深度/头部突出度/颈线水平)
+      - 持续形态（三角/楔形/旗形）：
+          边界收敛度(三角/楔形) 或 平行度(旗形) + 触点数量
+
+    这是【分级】质量分，用于把"勉强过关"的形态强度分压低，
+    而不是直接丢弃——丢弃由扫描器的 min_strength 闸门决定。
+    """
+    pt = pattern.pattern_type
+    pv = pattern.pivots
+    if not pv:
+        return 0.5, "无pivot"
+
+    reversal = pt in ("double_top", "double_bottom",
+                      "head_shoulders_top", "head_shoulders_bottom")
+    if reversal:
+        if pt in ("double_top", "double_bottom"):
+            # 结构: [翼1, 中, 翼2]（峰-谷-峰 / 谷-峰-谷）
+            w1, mid, w2 = pv[0], pv[1], pv[2]
+            price_sym = _price_symmetry(w1.price, w2.price, tol=0.05)
+            time_sym = _time_symmetry(w1.index, mid.index, w2.index, tol=0.5)
+            # 2026-09-05: 剔除「深」子分。实测 209 张人工标注（v4）：
+            #   深分 ok 均值 0.957 vs bad 0.983，差值 -0.026 ≈ 0，无区分度。
+            #   公式 min(1, depth/0.10) 深度超 10% 即满分，而形态深度普遍 >10%
+            #   → 0.20 权重纯送分，把几何总分虚高（"标准"样本 68% 被人否）。
+            #   几何分只保留有信号的价对(+0.094)与时对(+0.157)，权重重归一。
+            score = 0.55 * price_sym + 0.45 * time_sym
+            reason = (f"价对{price_sym:.2f}/时对{time_sym:.2f}")
+        else:
+            # 头肩: [左肩, 颈, 头, 颈, 右肩]
+            ls, n1, head, n2, rs = pv[0], pv[1], pv[2], pv[3], pv[4]
+            sh_sym = _price_symmetry(ls.price, rs.price, tol=0.05)
+            # 头部突出度：理想 5~15%（太突出像三重顶变体，太平像震荡）
+            if pt == "head_shoulders_top":
+                prom = (head.price - max(ls.price, rs.price)) / max(ls.price, rs.price)
+            else:
+                prom = (min(ls.price, rs.price) - head.price) / head.price
+            prom_score = max(0.0, min(1.0, 1.0 - abs(prom - 0.10) / 0.10))
+            time_sym = _time_symmetry(ls.index, head.index, rs.index, tol=0.5)
+            neck_flat = _price_symmetry(n1.price, n2.price, tol=0.05)
+            score = (0.30 * sh_sym + 0.20 * prom_score
+                     + 0.30 * time_sym + 0.20 * neck_flat)
+            reason = (f"肩对{sh_sym:.2f}/头突{prom_score:.2f}"
+                      f"/时对{time_sym:.2f}/颈平{neck_flat:.2f}")
+        return round(max(0.0, min(1.0, score)), 3), reason
+
+    # 持续形态：三角 / 楔形 / 旗形
+    if pattern.upper_boundary is not None and pattern.lower_boundary is not None:
+        u, lo = pattern.upper_boundary, pattern.lower_boundary
+        # 收敛度：右端间距 < 左端间距 → 收敛（三角/楔形都成立）
+        # 注意：必须在【同一索引】上比较（用并集跨度），错位比较会让收敛度失真
+        start_index = min(u.p1.index, lo.p1.index)
+        end_index = max(u.p2.index, lo.p2.index)
+        conv = convergence(u, lo, start_index, end_index)
+        is_tri = "triangle" in pt
+        is_wedge = "wedge" in pt
+        if is_tri or is_wedge:
+            structure = conv                       # 收敛（收窄）才标准
+        else:                                      # 旗形：近似平行通道
+            slope_diff = abs(u.rel_slope - lo.rel_slope)
+            structure = max(0.0, min(1.0, 1.0 - slope_diff / 0.01))
+        touches = count_touches(u, pv) + count_touches(lo, pv)
+        touch_score = min(1.0, touches / 4.0)
+        # 2026-09-05: 触分不再计入几何总分（仅保留在 reason 供诊断）。
+        # 检测器已要求 min_touches（三角/楔形上下沿合计 ≥4），touches≥4 时
+        # min(1, touches/4) 恒为 1.0 → 0.4 权重纯送分。实测 209 张人工标注：
+        # 触分 ok 1.000 vs bad 1.000 零区分度，把三角/楔形总分虚高顶过"标准线"。
+        score = structure
+        reason = f"收敛{conv:.2f}/触{touch_score:.2f}"
+        return round(max(0.0, min(1.0, score)), 3), reason
+
+    return 0.5, "持续形态缺边界"
 
 
 # ============================================================

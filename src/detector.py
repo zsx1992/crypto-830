@@ -291,9 +291,12 @@ class PatternEngine:
         if atr <= 0:
             return []
 
+        swing_min_atr = self.config.get("zigzag", {}).get("swing_min_atr", 1.0)
         all_found: List[Pattern] = []
         for s in scales:
-            pivots = find_pivots(klines, left=s, right=s)
+            pivots = find_pivots(klines, left=s, right=s,
+                                 atr_list=indicators.atr,
+                                 min_swing_atr=swing_min_atr)
             if len(pivots) < 3:
                 continue
             try:
@@ -305,6 +308,8 @@ class PatternEngine:
             except Exception as e:
                 logger.warning(f"[multiscale s={s}] {symbol} {interval}: {e}")
 
+        # 缓存本次指标（ADX/RSI/MACD 等），供 history_replay 复用算 strength_score
+        self.last_indicators = indicators
         return self._deduplicate(all_found)
 
     # ---------- 去重 ----------

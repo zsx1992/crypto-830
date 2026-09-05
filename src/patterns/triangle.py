@@ -38,7 +38,7 @@ from zigzag import Pivot, PivotType
 from market_data import Kline
 from patterns.base import (
     BaseDetector, Pattern, Direction, PatternStatus, Line,
-    fit_trendline, is_flat, is_rising, is_falling,
+    fit_trendline, is_flat, is_rising, is_falling, convergence,
     find_breakout_index, check_breakout, calc_volume_ratio, calc_trade_levels,
 )
 
@@ -56,6 +56,7 @@ class TriangleDetector(BaseDetector):
         "max_span": 150,               # 形态最大跨度
         "slope_ratio_min": 0.5,        # 对称三角形两条边斜率比下限
         "slope_ratio_max": 2.0,        # 上限
+        "converge_ratio_min": 0.15,    # 几何收窄下限：右端间距至少比左端窄 15%
         "breakout_candles": 2,
         "breakout_atr_ratio": 0.5,
         "volume_ratio_min": 1.5,
@@ -121,6 +122,12 @@ class TriangleDetector(BaseDetector):
         lower_at_start = lower.value_at(start_index)
         height = upper_at_start - lower_at_start
         if height < p["min_height_atr"] * atr_value:
+            return results
+
+        # 几何收窄硬闸门：斜率收敛（upper.rel_slope < lower.rel_slope）
+        # 只保证"方向对"，不保证收窄幅度够。必须在同一索引上量左右端间距。
+        if convergence(upper, lower, start_index, end_index) \
+                < p["converge_ratio_min"]:
             return results
 
         # --- 分类 ---

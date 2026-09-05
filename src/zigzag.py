@@ -44,7 +44,9 @@ class Pivot:
         return f"Pivot({t}@{self.index}, {self.price:.4f})"
 
 
-def find_pivots(klines: List[Kline], left: int = 5, right: int = 5) -> List[Pivot]:
+def find_pivots(klines: List[Kline], left: int = 5, right: int = 5,
+                atr_list: Optional[List[float]] = None,
+                min_swing_atr: float = 1.0) -> List[Pivot]:
     """
     ZigZag 摆动点检测主入口。
 
@@ -97,7 +99,16 @@ def find_pivots(klines: List[Kline], left: int = 5, right: int = 5) -> List[Pivo
                                         timestamp=current.openTime))
 
     # 第二步：强制高低交替（相邻同类只保留更极端的那个）
-    return _enforce_alternation(candidates)
+    result = _enforce_alternation(candidates)
+
+    # 第三步：摆幅显著性过滤（P3，对应 TV 指标的"噪声摆动点"剔除）
+    # 一个摆动点相对前一个反向点的价格变化若 < min_swing_atr × ATR，
+    # 视为微观噪声锯齿，直接丢弃——否则检测器会把这些点连成
+    # "头肩/三角"，正是"画的太不准"的根因。
+    if atr_list is not None:
+        result = _filter_significant(result, atr_list, min_swing_atr)
+
+    return result
 
 
 def _enforce_alternation(candidates: List[Pivot]) -> List[Pivot]:
@@ -144,6 +155,63 @@ def _enforce_alternation(candidates: List[Pivot]) -> List[Pivot]:
                     result[-1] = p        # 新的更低，替换
                 # 否则保留原来的
 
+    return result
+
+
+def _filter_significant(pivots: List[Pivot], atr_list: List[float],
+                        min_swing_atr: float = 1.0) -> List[Pivot]:
+    """
+    摆幅显著性过滤：反复删除"相对前一反向点摆幅 < min_swing_atr × ATR"的摆动点。
+
+    为什么需要（实测根因）：
+      ZigZag 只要求"窗口内极值"，在横盘/低波动段会产生大量振幅仅 0.1~0.3%
+      的锯齿摆动点。检测器会在这些点上拟合出"伪头肩/伪三角"，导致图上线连错、
+      用户觉得"太不准"。
+
+    算法：
+      从左到右扫描，对与上一保留点【反向】的点检查摆幅
+        swing = |price - prev.price| / ATR(at index)
+        swing < min_swing_atr  → 丢弃（噪声）
+      删除后可能出现相邻同类点，下一轮循环自动合并（保留更极端的）。
+      反复直至稳定（最坏迭代次数受点数量限制，必收敛）。
+
+    min_swing_atr 默认 1.0：只砍掉明显小于 1×ATR 的噪声，真实形态的摆动
+      （双底两谷差通常 1~3% ≈ 1~3×ATR）不会被误伤。
+    """
+    result = list(pivots)
+    guard = 0
+    max_iter = len(result) + 5
+    while guard < max_iter:
+        guard += 1
+        changed = False
+        new: List[Pivot] = []
+        for i, p in enumerate(result):
+            if i == 0:
+                new.append(p)
+                continue
+            prev = new[-1]
+            if p.type == prev.type:
+                # 理论上 enforce_alternation 后不会相邻同类；
+                # 若出现（删除导致），保留更极端的那个
+                if p.type == PivotType.HIGH:
+                    if p.price > prev.price:
+                        new[-1] = p
+                else:
+                    if p.price < prev.price:
+                        new[-1] = p
+                changed = True
+                continue
+            # 反向点：检查摆幅是否显著
+            a = atr_list[p.index] if 0 <= p.index < len(atr_list) else None
+            if a and a > 0:
+                swing = abs(p.price - prev.price) / a
+                if swing < min_swing_atr:
+                    changed = True
+                    continue  # 噪声，丢弃
+            new.append(p)
+        result = new
+        if not changed or len(result) <= 2:
+            break
     return result
 
 

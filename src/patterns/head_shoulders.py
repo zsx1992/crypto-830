@@ -38,6 +38,7 @@ from market_data import Kline
 from patterns.base import (
     BaseDetector, Pattern, Direction, PatternStatus, Line,
     find_breakout_index, check_breakout, calc_volume_ratio, calc_trade_levels,
+    prior_move,
 )
 
 
@@ -57,7 +58,10 @@ class HeadShouldersDetector(BaseDetector):
         "volume_ratio_min": 1.5,
         "max_lookahead": 30,            # 右肩之后最多看多少根找突破
         "min_height_atr": 1.0,
-        # 头肩底的额外条件：前置下跌趋势
+        # 反转形态结构性闸门：形态前必须有显著趋势（2026-09-03 共享给头肩顶）
+        # 实测：158 张人工标注的漏网误报里 ENA 头肩顶 / CRV 头肩底 全是
+        # 「横盘里的小 H-L-H-L-H」，形态内部结构满足但前面没趋势。
+        # 顶要求前面涨上来，底要求前面跌下来。prior_move 来自 base.py 共享。
         "require_prior_trend": True,
         "prior_trend_bars": 20,
         "prior_trend_min_move": 0.05,
@@ -134,6 +138,14 @@ class HeadShouldersDetector(BaseDetector):
         height = head.price - neck_at_head
         if height < p["min_height_atr"] * atr_value:
             return None
+
+        # ⑤b 前置趋势（结构性闸门，2026-09-03 补齐）：头肩顶是反转形态，
+        # 前面必须有一段显著上涨。否则横盘里的"H-L-H-L-H"会过其它所有检查
+        # 但根本不是反转。
+        if p["require_prior_trend"]:
+            mv = prior_move(klines, ls.index, p["prior_trend_bars"])
+            if mv is None or mv < p["prior_trend_min_move"]:
+                return None
 
         # ⑥ 右肩之后不能创新高超过头部（否则形态破坏）
         highest_after = max((k.high for k in klines[rs.index:]), default=rs.price)
@@ -220,11 +232,11 @@ class HeadShouldersDetector(BaseDetector):
         if height < p["min_height_atr"] * atr_value:
             return None
 
-        # ⑥ 额外条件：前置下跌趋势（这是头肩底被定为 B 级的原因）
-        if p["require_prior_trend"] and not self._has_prior_downtrend(
-                klines, ls.index, p["prior_trend_bars"],
-                p["prior_trend_min_move"]):
-            return None
+        # ⑥ 额外条件：前置下跌趋势（结构性闸门，2026-09-03 改用 base.prior_move）
+        if p["require_prior_trend"]:
+            mv = prior_move(klines, ls.index, p["prior_trend_bars"])
+            if mv is None or mv > -p["prior_trend_min_move"]:
+                return None
 
         # ⑦ 右肩之后不能创新低超过头部
         lowest_after = min((k.low for k in klines[rs.index:]), default=rs.price)
@@ -282,19 +294,6 @@ class HeadShouldersDetector(BaseDetector):
         if dx == 0:
             return p1.price
         return p1.price + (p2.price - p1.price) * (index - p1.index) / dx
-
-    @staticmethod
-    def _has_prior_downtrend(klines: List[Kline], before_index: int,
-                             bars: int, min_move: float) -> bool:
-        """形态开始前是否有一段明显下跌"""
-        start = max(0, before_index - bars)
-        if before_index - start < 5:
-            return False
-        start_price = klines[start].close
-        end_price = klines[before_index].close
-        if start_price <= 0:
-            return False
-        return (start_price - end_price) / start_price >= min_move
 
     @staticmethod
     def _confidence(shoulder_diff: float, neck_diff: float,

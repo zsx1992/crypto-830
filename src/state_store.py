@@ -12,9 +12,17 @@
   两者内容完全一致，cache 未命中时自动回落到文件。
 
 去重逻辑：
-  同一 (symbol, pattern_type, interval, direction) 在冷却期内不重复推送。
+  同一 (symbol, pattern_type, interval) 在冷却期内不重复推送。
   注意 direction 不计入去重键——同一标的同一形态若先报多后报空，
   说明结构已破坏，应当推送（让使用者知道情况变了）。
+
+  2026-09-05 修复（同形态冷却期过后重复推送）：
+  原实现只按冷却期拦截。实测 4h 周期冷却 480min=8h，而 freshness 窗口 12 根
+  =48h——同一形态确认后只要没被破坏，会连续多轮被检出；冷却期一过，
+  同一个形态（end_ms 不变）会再次推送，用户被重复刷屏。
+  现在追加"形态身份"识别：新检出形态的 end_ms 与上次推送记录相差 ≤
+  同周期 2 根K线 → 视为同一形态，即使冷却期已过也抑制推送；
+  只有形态演化出新末端（end_ms 明显前移）或方向翻转才允许再推。
 """
 
 import os
@@ -32,6 +40,11 @@ if _SRC_DIR not in sys.path:
 from patterns.base import Pattern
 
 logger = logging.getLogger(__name__)
+
+# 周期 -> 每根K线时长（分钟），用于"同一形态"的 end_ms 容差判定
+INTERVAL_MINUTES = {
+    "15m": 15, "1h": 60, "2h": 120, "4h": 240, "1d": 1440,
+}
 
 
 def signal_hash(symbol: str, pattern_type: str, interval: str) -> str:
@@ -111,13 +124,30 @@ class StateStore:
     # ---------- 去重 ----------
 
     def is_in_cooldown(self, p: Pattern) -> bool:
-        """该信号是否处于冷却期"""
+        """该信号是否应抑制推送（冷却期 + 同形态识别）"""
         h = signal_hash(p.symbol, p.pattern_type, p.interval)
         now = now_utc()
+        # "同一形态"容差 = 同周期 2 根K线时长（毫秒）
+        same_ms = INTERVAL_MINUTES.get(p.interval, 60) * 60_000 * 2
 
         for rec in self.state.get("pushedSignals", []):
             if rec.get("signalHash") != h:
                 continue
+            # 方向翻转：结构已破坏 → 允许重推（原设计意图）
+            rec_dir = rec.get("direction")
+            if rec_dir and rec_dir != p.direction.value:
+                continue
+            # 形态身份识别：end_ms 相同 → 同一个形态还挂在图上。
+            # 冷却期只是粗粒度闸门，这里做细粒度拦截，
+            # 修复"冷却一过同一形态又刷一次"的重复推送。
+            rec_end = rec.get("endMs")
+            same_form = bool(rec_end and p.end_ms
+                             and abs(p.end_ms - rec_end) <= same_ms)
+            if same_form:
+                logger.info(f"同形态已推过(端差{abs(p.end_ms-rec_end)}ms): "
+                            f"{p.symbol} {p.pattern_type} {p.interval}")
+                return True
+            # 非同一形态（演化出新末端 / 旧记录无 endMs）→ 冷却期兜底
             try:
                 until = datetime.fromisoformat(rec["cooldownUntil"])
             except Exception:
@@ -143,6 +173,7 @@ class StateStore:
             "pushedAt": now.isoformat(),
             "cooldownUntil": (now + timedelta(minutes=minutes)).isoformat(),
             "signalHash": signal_hash(p.symbol, p.pattern_type, p.interval),
+            "endMs": getattr(p, "end_ms", 0) or 0,
         }
         self.state.setdefault("pushedSignals", []).append(rec)
         self._dirty = True

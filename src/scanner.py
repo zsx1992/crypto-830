@@ -95,11 +95,18 @@ class Scanner:
         self.min_strength = filt.get("min_strength", 60)
         self.min_rr = filt.get("min_rr", 1.5)
         self.min_confidence = filt.get("min_confidence", 0.4)
+        # 几何质量分硬闸门（2026-09-05 加入）
+        # 依据：209 张人工标注（v4），修正"深/触"恒满子分后几何分才有区分度。
+        #   以修正分 ≥0.6 作推送闸门：精确率 16.7% → 25.6%，保留 65% 的"像"样本。
+        # 注意：只有新推送（走交叉确认）才会算 geometry_score，老版本数据无此字段。
+        self.min_geometry = filt.get("min_geometry", 0.6)
         self.min_volume = filt.get("min_volume_ratio", 1.5)
         # 同一标的最多推几个（防止 XRP 这种四周期各报一次刷屏）
         self.max_per_symbol = filt.get("max_per_symbol", 2)
         # 趋势过滤（实盘推送前必须与当前周期趋势同向）
         self.require_trend_alignment = filt.get("require_trend_alignment", True)
+        # 趋势对齐的 ADX 门槛：低于此值视为横盘，不强制方向对齐
+        self.adx_threshold = filt.get("trend_adx_threshold", 20)
 
         # 是否每次运行后都发一条"扫描摘要"（确认服务存活 + 无信号时有反馈）
         self.send_summary = notif.get("send_summary", True)
@@ -138,6 +145,7 @@ class Scanner:
         # trends: {(symbol, interval): trend}
         all_signals: List[Pattern] = []
         trends: Dict[Tuple[str, str], str] = {}
+        momentum: Dict[Tuple[str, str], dict] = {}
         klines_cache: Dict[Tuple[str, str], List[Kline]] = {}
 
         for interval in intervals:
@@ -170,6 +178,11 @@ class Scanner:
 
                         klines_cache[(symbol, interval)] = klines
                         trends[(symbol, interval)] = indicators.trend
+                        momentum[(symbol, interval)] = {
+                            "adx": indicators.adx_current,
+                            "rsi": indicators.rsi_current,
+                            "macd_hist": indicators.macd_hist_current,
+                        }
 
                         # 形态识别（多尺度）
                         cands = self.engine.scan_multiscale(
@@ -204,9 +217,20 @@ class Scanner:
         # 因为共振判断需要知道"这个标的在大周期上曾经是什么方向"，
         # 而大周期信号天然更新慢（1d 一天才一根K线）。
         # 但下面第 4 步会把不新鲜的过滤掉，不会拿去推送。
-        scored = self.cross_tf.confirm(all_signals, trends)
+        scored = self.cross_tf.confirm(all_signals, trends, momentum)
         result.confirmed = scored
         logger.info(f"交叉确认后剩余 {len(scored)} 个")
+
+        # ---- 3.5 填充形态末端时间 ----
+        # end_ms = 最后一个 pivot 对应 K 线的 openTime。
+        # 供第 5 步去重做"同一形态"识别——修复冷却期过后同形态重复推送
+        # （同一形态只要没被破坏，会连续多轮被检出）。
+        for p in scored:
+            kl = klines_cache.get((p.symbol, p.interval))
+            if kl and p.pivots:
+                ei = max(q.index for q in p.pivots)
+                if 0 <= ei < len(kl):
+                    p.end_ms = kl[ei].openTime
 
         # ---- 4. 完整过滤 ----
         # 这一步一个都不能漏。曾经只过滤了强度，结果推出去的信号里
@@ -221,19 +245,27 @@ class Scanner:
                 continue
             if p.risk_reward < self.min_rr:
                 continue
-            if p.confidence < self.engine.confidence_threshold_for(p.interval):
-                continue
             if p.volume_ratio < self.min_volume:
                 continue
+            # 几何质量闸门：画得不像（几何分低）的直接不推。
+            # 修正恒满子分后（2026-09-05）该分才有意义，见 __init__ 注释。
+            if getattr(p, "geometry_score", None) is not None:
+                if p.geometry_score < self.min_geometry:
+                    continue
             # 趋势过滤（实测依据见 config.yaml 注释）
+            # 仅当 ADX 显著（趋势存在）时才强制方向对齐；横盘不杀，
+            # 避免把区间内的反转形态误剔。
             if self.require_trend_alignment:
                 trend = trends.get((p.symbol, p.interval), "unknown")
-                aligned = (
-                    (p.direction == Direction.LONG and trend == "up")
-                    or (p.direction == Direction.SHORT and trend == "down")
-                )
-                if not aligned:
-                    continue
+                mom = momentum.get((p.symbol, p.interval))
+                adx = mom.get("adx", 0) if mom else 0
+                if adx >= self.adx_threshold:
+                    aligned = (
+                        (p.direction == Direction.LONG and trend == "up")
+                        or (p.direction == Direction.SHORT and trend == "down")
+                    )
+                    if not aligned:
+                        continue
             passed.append(p)
 
         result.after_scoring = self._limit_per_symbol(passed)

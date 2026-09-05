@@ -34,7 +34,7 @@ from zigzag import Pivot, PivotType
 from market_data import Kline
 from patterns.base import (
     BaseDetector, Pattern, Direction, PatternStatus, Line,
-    fit_trendline, is_flat, is_rising, is_falling,
+    fit_trendline, is_flat, is_rising, is_falling, convergence,
     find_breakout_index, check_breakout, calc_volume_ratio, calc_trade_levels,
 )
 
@@ -229,6 +229,7 @@ class WedgeDetector(BaseDetector):
         "min_span": 15,
         "max_span": 150,
         "converge_min": 0.0002,        # 两条边斜率差下限（必须真的在收敛）
+        "converge_ratio_min": 0.15,    # 几何收窄下限：右端间距至少比左端窄 15%
         "flat_threshold": 0.0005,
         "breakout_candles": 2,
         "breakout_atr_ratio": 0.5,
@@ -282,15 +283,27 @@ class WedgeDetector(BaseDetector):
         us, ls = upper.rel_slope, lower.rel_slope
         flat_t = p["flat_threshold"]
 
-        # --- 上升楔形：两条边都向上，上边更缓（收敛）→ 看跌 ---
-        if us > flat_t and ls > flat_t and (us - ls) >= p["converge_min"]:
+        # 几何收窄硬闸门：在同一索引上比较左右端间距，必须真的收窄。
+        # 斜率符号判定（下面的 us/ls）容易写反且无法保证"收窄"，
+        # 这一道是符号无关的兜底 —— 发散通道一律拒绝。
+        if convergence(upper, lower, start_index, end_index) \
+                < p["converge_ratio_min"]:
+            return results
+
+        # --- 上升楔形：两条边都向上，【下边更陡】才会收拢 → 看跌 ---
+        #     收敛条件: ls > us（下边界更快上追，间距收窄）
+        #     旧代码 (us - ls) >= converge_min 要求上边更陡 → 间距越走越宽，
+        #     等于把发散上升通道当楔形 —— 2026-09-03 人工标注精确率仅 4% 的根因。
+        if us > flat_t and ls > flat_t and (ls - us) >= p["converge_min"]:
             pat = self._build("rising_wedge", Direction.SHORT, upper, lower,
                               ut, lt, start_index, end_index, height,
                               klines, atr_value, symbol, interval)
             if pat:
                 results.append(pat)
 
-        # --- 下降楔形：两条边都向下，下边更陡（收敛）→ 看涨 ---
+        # --- 下降楔形：两条边都向下，【上边更缓】才会收拢 → 看涨 ---
+        #     收敛条件: us > ls（上边界跌得更慢，被下边界追近）
+        #     (us - ls) >= converge_min 在这里本来就是对的，保留。
         elif us < -flat_t and ls < -flat_t and (us - ls) >= p["converge_min"]:
             pat = self._build("falling_wedge", Direction.LONG, upper, lower,
                               ut, lt, start_index, end_index, height,

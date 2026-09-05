@@ -118,6 +118,128 @@ def atr(klines: List[Kline], period: int = 14) -> List[Optional[float]]:
     return result
 
 
+def _wilder_smooth(values: List[float], period: int) -> List[Optional[float]]:
+    """
+    Wilder 平滑（与 ATR 同算法），供 ADX / RSI 复用。
+
+    values 为单根增量序列（TR / +DM / 涨跌），内部允许含 None（用 0 占位）。
+    返回与输入等长的列表，前 period-1 个为 None。
+    """
+    if len(values) < period:
+        return [None] * len(values)
+    result: List[Optional[float]] = [None] * (period - 1)
+    first = sum(v for v in values[:period]) / period
+    result.append(first)
+    for i in range(period, len(values)):
+        prev = result[-1]
+        assert prev is not None
+        result.append((prev * (period - 1) + values[i]) / period)
+    return result
+
+
+def adx(klines: List[Kline], period: int = 14) -> List[Optional[float]]:
+    """
+    ADX(14) —— Wilder 平滑（TradingView 默认算法）。
+
+    用途：判定"趋势是否有意义"。ADX < 20 视为无趋势（横盘），
+   此时形态识别不应被趋势过滤误杀；ADX >= 25 趋势明确。
+    这是 fantomluck 共振引擎的门部件——只有趋势"够强"才让方向投票生效。
+
+    返回与 klines 等长，前 2*period-1 个为 None。
+    """
+    n = len(klines)
+    if n < period + 1:
+        return [None] * n
+
+    pdm = [0.0] * n
+    mdm = [0.0] * n
+    tr = [0.0] * n
+    for i in range(1, n):
+        prev = klines[i - 1]
+        up = klines[i].high - prev.high
+        dn = prev.low - klines[i].low
+        pdm[i] = up if (up > dn and up > 0) else 0.0
+        mdm[i] = dn if (dn > up and dn > 0) else 0.0
+        tr[i] = max(klines[i].high - klines[i].low,
+                    abs(klines[i].high - prev.close),
+                    abs(klines[i].low - prev.close))
+
+    atr_s = _wilder_smooth(tr, period)
+    pdm_s = _wilder_smooth(pdm, period)
+    mdm_s = _wilder_smooth(mdm, period)
+
+    dx = [0.0] * n
+    for i in range(period, n):
+        if atr_s[i] is None or atr_s[i] <= 0:
+            continue
+        pdi = 100.0 * pdm_s[i] / atr_s[i]
+        mdi = 100.0 * mdm_s[i] / atr_s[i]
+        denom = pdi + mdi
+        dx[i] = 100.0 * abs(pdi - mdi) / denom if denom > 0 else 0.0
+
+    dx_s = _wilder_smooth(dx, period)
+    adx_list: List[Optional[float]] = [None] * n
+    start = 2 * period - 1
+    for i in range(start, n):
+        adx_list[i] = dx_s[i]
+    return adx_list
+
+
+def rsi(klines: List[Kline], period: int = 14) -> List[Optional[float]]:
+    """
+    RSI(14) —— Wilder 平滑（TradingView 默认）。
+
+    用途：动量方向判定。> 50 偏多、< 50 偏空；超买 > 70 / 超卖 < 30。
+    用于共振引擎里"RSI 与形态方向同向才加分"。
+    """
+    n = len(klines)
+    if n < period + 1:
+        return [None] * n
+
+    gains = [0.0] * n
+    losses = [0.0] * n
+    for i in range(1, n):
+        d = klines[i].close - klines[i - 1].close
+        gains[i] = d if d > 0 else 0.0
+        losses[i] = -d if d < 0 else 0.0
+
+    ag = _wilder_smooth(gains, period)
+    al = _wilder_smooth(losses, period)
+    out: List[Optional[float]] = [None] * n
+    for i in range(period, n):
+        if ag[i] is None:
+            continue
+        if al[i] is not None and al[i] > 0:
+            rs = ag[i] / al[i]
+            out[i] = 100.0 - 100.0 / (1.0 + rs)
+        elif ag[i] > 0:
+            out[i] = 100.0
+        else:
+            out[i] = 50.0
+    return out
+
+
+def macd(klines: List[Kline], fast: int = 12, slow: int = 26,
+         signal: int = 9):
+    """
+    MACD(12,26,9)。
+
+    返回三元组 (macd_line, signal_line, hist)，三者均与 klines 等长（前段为 None）。
+    hist = macd_line - signal_line，柱体符号即动能方向：> 0 多头动能、< 0 空头动能。
+    """
+    closes = [k.close for k in klines]
+    ef = ema(closes, fast)
+    es = ema(closes, slow)
+    n = len(closes)
+    macd_line = [None if (ef[i] is None or es[i] is None) else ef[i] - es[i]
+                 for i in range(n)]
+    clean = [v if v is not None else 0.0 for v in macd_line]
+    sig = ema(clean, signal)
+    hist = [None if (macd_line[i] is None or sig[i] is None)
+            else macd_line[i] - sig[i] for i in range(n)]
+    return macd_line, sig, hist
+
+
 def volume_ma(klines: List[Kline], period: int = 20) -> List[Optional[float]]:
     """成交量均线（算术平均）—— 用于突破量能确认"""
     volumes = [k.volume for k in klines]
@@ -174,6 +296,11 @@ class IndicatorSet:
     ema_fast: List[Optional[float]]
     ema_slow: List[Optional[float]]
     trend: str
+    # 共振引擎门部件（对应 fantomluck 的多源投票）
+    adx: List[Optional[float]]            # ADX 序列
+    adx_current: float                    # 最新 ADX（趋势强度）
+    rsi_current: float                    # 最新 RSI（动量）
+    macd_hist_current: float              # 最新 MACD 柱（动能方向）
 
     @property
     def last_close(self) -> float:
@@ -200,6 +327,22 @@ def calc_indicators(klines: List[Kline],
     atr_current = atr_list[-1] if atr_list and atr_list[-1] is not None else 0.0
     vol_current = vol_ma_list[-1] if vol_ma_list and vol_ma_list[-1] is not None else 0.0
 
+    # 共振门部件：ADX / RSI / MACD
+    adx_list = adx(klines, atr_period)
+    rsi_list = rsi(klines, atr_period)
+    _, _, macd_hist = macd(klines)
+
+    def _last_valid(seq):
+        for v in reversed(seq):
+            if v is not None:
+                return v
+        return 0.0
+
+    adx_current = _last_valid(adx_list)
+    rsi_current = _last_valid(rsi_list)
+    macd_hist_current = macd_hist[-1] if macd_hist and macd_hist[-1] is not None \
+        else 0.0
+
     return IndicatorSet(
         klines=klines,
         atr=atr_list,
@@ -209,6 +352,10 @@ def calc_indicators(klines: List[Kline],
         ema_fast=ema(closes, ema_fast_period),
         ema_slow=ema(closes, ema_slow_period),
         trend=detect_trend(klines, ema_fast_period, ema_slow_period),
+        adx=adx_list,
+        adx_current=adx_current,
+        rsi_current=rsi_current,
+        macd_hist_current=macd_hist_current,
     )
 
 

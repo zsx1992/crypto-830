@@ -10,8 +10,9 @@
   2. 必须用 Agg 后端 —— GitHub Actions runner 没有显示设备。
      matplotlib.use("Agg") 必须在 import pyplot 之前。
 
-  3. 图上只用英文/数字标签 —— Actions runner 通常没有中文字体，
-     中文会渲染成方块。中文全部放在企微 markdown 正文里。
+  3. 图上用中文标签（形态名/颈线/边界/左肩头右肩/入场止损止盈）——
+     已打包 assets/fonts/SimHei.ttf，Actions runner 也能渲染中文。
+     找不到中文字体时自动回退英文标签（避免方块）。
 """
 
 import os
@@ -80,6 +81,92 @@ CANDLE_LABELS_EN = {
     "十字星": "Doji",
     "光头光脚": "Marubozu",
 }
+
+# 形态中文标签（图上用，需中文字体）
+PATTERN_LABELS_CN = {
+    "double_top": "双顶 (M顶)",
+    "double_bottom": "双底 (W底)",
+    "head_shoulders_top": "头肩顶",
+    "head_shoulders_bottom": "头肩底",
+    "ascending_triangle": "上升三角形",
+    "descending_triangle": "下降三角形",
+    "symmetrical_triangle": "对称三角形",
+    "flag": "旗形",
+    "rising_wedge": "上升楔形",
+    "falling_wedge": "下降楔形",
+}
+
+# ---- 中文字体支持 ----
+# 打包 assets/fonts/SimHei.ttf，Actions runner 也能渲染中文，不再出方块。
+# 找不到中文字体时 HAS_CJK=False，自动回退英文标签（避免方块）。
+import matplotlib.font_manager as fm
+
+_CJK_FONT_PATH_CANDIDATES = [
+    os.path.join(os.path.dirname(_SRC_DIR), "assets", "fonts", "SimHei.ttf"),
+    "C:/Windows/Fonts/simhei.ttf",
+    "C:/Windows/Fonts/msyh.ttc",
+]
+_CJK_FONT_NAMES = ["SimHei", "Microsoft YaHei", "Noto Sans CJK SC",
+                   "Noto Sans SC", "WenQuanYi Micro Hei", "SimSun"]
+
+HAS_CJK = False
+CJK_FONT_PROP = None
+
+
+def _setup_cjk_font():
+    """尝试加载中文字体；成功则设置 matplotlib 全局字体并置 HAS_CJK=True。"""
+    global HAS_CJK, CJK_FONT_PROP
+    # 1) 优先用打包字体（仓库内，Actions 上也能用）
+    for p in _CJK_FONT_PATH_CANDIDATES:
+        if os.path.isfile(p):
+            try:
+                fm.fontManager.addfont(p)
+                name = fm.FontProperties(fname=p).get_name()
+                CJK_FONT_PROP = fm.FontProperties(fname=p)
+                plt.rcParams["font.sans-serif"] = [name]
+                plt.rcParams["axes.unicode_minus"] = False
+                HAS_CJK = True
+                logger.info(f"中文字体已加载: {name} ({p})")
+                return
+            except Exception as e:
+                logger.warning(f"加载字体失败 {p}: {e}")
+    # 2) 回退：系统已装的中文字体
+    for n in _CJK_FONT_NAMES:
+        try:
+            fm.findfont(n, fallback_to_default=False)
+            plt.rcParams["font.sans-serif"] = [n]
+            plt.rcParams["axes.unicode_minus"] = False
+            CJK_FONT_PROP = fm.FontProperties(family=n)
+            HAS_CJK = True
+            logger.info(f"中文字体(系统): {n}")
+            return
+        except Exception:
+            pass
+    logger.warning("未找到中文字体，图上回退英文标签")
+
+
+_setup_cjk_font()
+
+
+def _L(cn: str, en: str) -> str:
+    """有中文字体用中文，否则用英文（避免方块）。"""
+    return cn if HAS_CJK else en
+
+
+def _pivot_role_labels(pattern) -> list:
+    """返回 [(pivot, 中文角色名), ...]，用于在关键拐点旁标注。"""
+    pt = pattern.pattern_type
+    pv = pattern.pivots
+    if pt in ("head_shoulders_top", "head_shoulders_bottom"):
+        if len(pv) >= 5:
+            return [(pv[0], "左肩"), (pv[2], "头"), (pv[4], "右肩")]
+    elif pt == "double_top":
+        if len(pv) >= 3:
+            return [(pv[0], "左顶"), (pv[2], "右顶")]
+    elif pt == "double_bottom":
+        if len(pv) >= 3:
+            return [(pv[0], "左底"), (pv[2], "右底")]
+    return []
 
 
 # matplotlib 日期轴单位 = 天；1970-01-01 对应的日期数值
@@ -152,7 +239,24 @@ def render_pattern_chart(klines: List[Kline], pattern: Pattern,
 
 def _render(klines, pattern, candles, fig_w, fig_h, dpi) -> Optional[bytes]:
     """实际渲染逻辑"""
-    tail = klines[-candles:] if len(klines) > candles else klines
+    # 显示窗口：优先保证形态所有 pivot（含颈线/边界端点、突破点）都在图内，
+    # 避免"整张图无线"——例如 AAVE 头肩顶：左肩落在默认 tail(末尾 candles 根)
+    # 之前被裁掉，导致颈线/肩点全不显示。
+    if len(klines) > candles:
+        piv_idx = [p.index for p in pattern.pivots]
+        need_start = max(0, min(piv_idx) - 6)           # 左肩留 6 根余量
+        need_end = max(piv_idx)
+        if pattern.breakout_index >= 0:
+            need_end = max(need_end, pattern.breakout_index)
+        need_end = min(len(klines), need_end + 12)       # 突破后留 12 根余量
+        default_start = len(klines) - candles
+        # 默认 tail 已覆盖全部 pivot → 沿用默认；否则自动扩窗
+        if need_start >= default_start and need_end <= len(klines):
+            tail = klines[default_start:]
+        else:
+            tail = klines[need_start:need_end]
+    else:
+        tail = klines
     offset = len(klines) - len(tail)
 
     fig, (ax, ax_vol) = plt.subplots(
@@ -184,22 +288,29 @@ def _render(klines, pattern, candles, fig_w, fig_h, dpi) -> Optional[bytes]:
                   linewidth=0.7, alpha=0.7)
 
     # ---------- 2. 趋势线 / 边界 ----------
+    pt = pattern.pattern_type
+    is_tri = pt in ("ascending_triangle", "descending_triangle",
+                    "symmetrical_triangle")
+    is_wedge = "wedge" in pt
     if pattern.upper_boundary is not None:
+        ulbl = _L("上沿" if is_tri else ("上轨" if is_wedge else "上边界"),
+                 "Upper Boundary")
         _draw_line(ax, pattern.upper_boundary, times[0], times[-1],
-                   BOUND_COLOR, "Upper Boundary",
-                   linestyle="-", linewidth=2.0)
+                   BOUND_COLOR, ulbl, linestyle="-", linewidth=2.0)
     if pattern.lower_boundary is not None:
+        llbl = _L("下沿" if is_tri else ("下轨" if is_wedge else "下边界"),
+                 "Lower Boundary")
         _draw_line(ax, pattern.lower_boundary, times[0], times[-1],
-                   BOUND_COLOR, "Lower Boundary",
-                   linestyle="-", linewidth=2.0)
+                   BOUND_COLOR, llbl, linestyle="-", linewidth=2.0)
 
     # ---------- 3. 颈线 ----------
     if pattern.neckline is not None:
         _draw_line(ax, pattern.neckline, times[0], times[-1],
-                   NECK_COLOR, "Neckline",
+                   NECK_COLOR, _L("颈线", "Neckline"),
                    linestyle="--", linewidth=2.2)
 
-    # ---------- 4. 摆动点 ----------
+    # ---------- 4. 摆动点 + 关键角色标注 ----------
+    role_map = {id(p): lbl for p, lbl in _pivot_role_labels(pattern)}
     for p in pattern.pivots:
         rel = p.index - offset
         if 0 <= rel < n:
@@ -208,6 +319,16 @@ def _render(klines, pattern, candles, fig_w, fig_h, dpi) -> Optional[bytes]:
             ax.scatter(times[rel], p.price, s=28, color=color,
                        alpha=0.75, zorder=5, edgecolors="white",
                        linewidths=0.5)
+            # 在关键拐点旁标中文角色（左肩/头/右肩、左底/右底等）
+            if HAS_CJK and id(p) in role_map:
+                ax.annotate(role_map[id(p)], xy=(times[rel], p.price),
+                            xytext=(times[rel] + 1.2 * bar_width,
+                                    p.price),
+                            fontsize=7.5, fontweight="bold",
+                            color=color, va="center", ha="left",
+                            fontproperties=CJK_FONT_PROP,
+                            arrowprops=dict(arrowstyle="-", color=color,
+                                            lw=0.6, alpha=0.6))
 
     # ---------- 5. 突破点 ----------
     bo_rel = pattern.breakout_index - offset
@@ -218,30 +339,34 @@ def _render(klines, pattern, candles, fig_w, fig_h, dpi) -> Optional[bytes]:
         ax.scatter(times[bo_rel], pattern.breakout_price,
                    marker=marker, s=140, color=color, zorder=6,
                    edgecolors="white", linewidths=1.0,
-                   label=f"Breakout {pattern.breakout_price:.4f}")
+                   label=_L(f"突破 {pattern.breakout_price:.4f}",
+                            f"Breakout {pattern.breakout_price:.4f}"))
 
-        # 单K线确认标注（TA-Lib 形态名，英文标签——candles.py 返回中文，
-        # Actions runner 没中文字体，会渲染成方块。这里映射成英文）
+        # 单K线确认标注
         candle_cf = getattr(pattern, "candle_confirmations", [])
         if candle_cf:
-            parts = []
-            for c in candle_cf:
-                # c 形如 "锤子线(看涨)" / "十字星"
-                cn = c.split("(")[0].strip()
-                en = CANDLE_LABELS_EN.get(cn, cn)
-                if "(" in c and "看涨" in c:
-                    en += "(Bull)"
-                elif "(" in c and "看跌" in c:
-                    en += "(Bear)"
-                parts.append(en)
-            cf_en = ", ".join(parts)
+            if HAS_CJK:
+                cf_text = ", ".join(c for c in candle_cf)
+            else:
+                parts = []
+                for c in candle_cf:
+                    # c 形如 "锤子线(看涨)" / "十字星"
+                    cn = c.split("(")[0].strip()
+                    en = CANDLE_LABELS_EN.get(cn, cn)
+                    if "(" in c and "看涨" in c:
+                        en += "(Bull)"
+                    elif "(" in c and "看跌" in c:
+                        en += "(Bear)"
+                    parts.append(en)
+                cf_text = ", ".join(parts)
             ax.annotate(
-                cf_en,
+                cf_text,
                 xy=(times[bo_rel], pattern.breakout_price),
                 xytext=(times[bo_rel] + 0.9 * bar_width,
                         pattern.breakout_price),
                 fontsize=7.5, fontweight="bold", color=color,
                 va="center", ha="left",
+                fontproperties=CJK_FONT_PROP if HAS_CJK else None,
                 arrowprops=dict(arrowstyle="-", color=color,
                                 lw=0.6, alpha=0.6),
             )
@@ -251,47 +376,55 @@ def _render(klines, pattern, candles, fig_w, fig_h, dpi) -> Optional[bytes]:
     if pattern.entry_price > 0:
         ax.axhline(pattern.entry_price, color="#333333", linestyle="-",
                    linewidth=1.2, alpha=0.85,
-                   label=f"Entry {pattern.entry_price:.4f}")
+                   label=_L(f"入场 {pattern.entry_price:.4f}",
+                            f"Entry {pattern.entry_price:.4f}"))
     if pattern.stop_loss > 0:
         ax.axhline(pattern.stop_loss, color=SL_COLOR, linestyle="--",
                    linewidth=1.5, alpha=0.9,
-                   label=f"Stop {pattern.stop_loss:.4f}")
+                   label=_L(f"止损 {pattern.stop_loss:.4f}",
+                            f"Stop {pattern.stop_loss:.4f}"))
     if pattern.take_profit_1 > 0:
         ax.axhline(pattern.take_profit_1, color=TP1_COLOR, linestyle="-.",
                    linewidth=1.5, alpha=0.9,
-                   label=f"TP1 {pattern.take_profit_1:.4f}")
+                   label=_L(f"目标1 {pattern.take_profit_1:.4f}",
+                            f"TP1 {pattern.take_profit_1:.4f}"))
     if pattern.take_profit_2 > 0:
         ax.axhline(pattern.take_profit_2, color=TP2_COLOR, linestyle=":",
                    linewidth=1.5, alpha=0.75,
-                   label=f"TP2 {pattern.take_profit_2:.4f}")
+                   label=_L(f"目标2 {pattern.take_profit_2:.4f}",
+                            f"TP2 {pattern.take_profit_2:.4f}"))
 
     # ---------- 7. 三角形填充（让收敛形态一眼可辨）----------
+    # 只在两条边界都覆盖的时间段内填充（取两端 p1 较大者、p2 较小者），
+    # 避免对任一边界线做隐式外推导致区域被拉得很大。
     if (pattern.upper_boundary is not None and
             pattern.lower_boundary is not None):
-        # 只在两条边界都覆盖的时间段内填充
-        u_x_min = min(pattern.upper_boundary.p1.index,
-                      pattern.lower_boundary.p1.index)
-        u_x_max = max(pattern.upper_boundary.p2.index,
-                      pattern.lower_boundary.p2.index)
-        fill_x0 = epoch_to_num(klines[u_x_min].openTime)
-        fill_x1 = epoch_to_num(klines[min(u_x_max, len(klines) - 1)].openTime)
-        xs = [fill_x0, fill_x1]
-        upper_y = [pattern.upper_boundary.value_at(u_x_min),
-                   pattern.upper_boundary.value_at(min(u_x_max, len(klines) - 1))]
-        lower_y = [pattern.lower_boundary.value_at(u_x_min),
-                   pattern.lower_boundary.value_at(min(u_x_max, len(klines) - 1))]
-        ax.fill_between(xs, lower_y, upper_y,
-                         color=BOUND_COLOR, alpha=0.08, zorder=2)
+        u = pattern.upper_boundary
+        l = pattern.lower_boundary
+        x_start = max(u.p1.index, l.p1.index)
+        x_end = min(u.p2.index, l.p2.index)
+        if x_end > x_start:
+            xs = [epoch_to_num(klines[x_start].openTime),
+                  epoch_to_num(klines[min(x_end, len(klines) - 1)].openTime)]
+            upper_y = [u.value_at(x_start), u.value_at(x_end)]
+            lower_y = [l.value_at(x_start), l.value_at(x_end)]
+            ax.fill_between(xs, lower_y, upper_y,
+                             color=BOUND_COLOR, alpha=0.10, zorder=2)
 
     # ---------- 8. 装帧 ----------
-    label = PATTERN_LABELS_EN.get(pattern.pattern_type, pattern.pattern_type)
+    label = (_L(PATTERN_LABELS_CN.get(pattern.pattern_type, pattern.pattern_type),
+                PATTERN_LABELS_EN.get(pattern.pattern_type, pattern.pattern_type)))
+    direction_cn = "多" if pattern.direction == Direction.LONG else "空"
     direction_en = "LONG" if pattern.direction == Direction.LONG else "SHORT"
-    title = (f"{pattern.symbol}  {pattern.interval}  {label}  [{direction_en}]\n"
-             f"Strength {pattern.strength_score}/100   "
-             f"Confidence {pattern.confidence:.2f}   "
-             f"R:R 1:{pattern.risk_reward:.2f}")
-    ax.set_title(title, fontsize=11, fontweight="bold", pad=8)
-    ax.set_ylabel("Price", fontsize=9)
+    title = (f"{pattern.symbol}  {pattern.interval}  {label}  "
+             f"[{direction_cn if HAS_CJK else direction_en}]\n"
+             f"强度 {pattern.strength_score}/100   "
+             f"置信 {pattern.confidence:.2f}   "
+             f"盈亏比 1:{pattern.risk_reward:.2f}")
+    ax.set_title(title, fontsize=11, fontweight="bold", pad=8,
+                 fontproperties=CJK_FONT_PROP if HAS_CJK else None)
+    ax.set_ylabel(_L("价格", "Price"), fontsize=9,
+                  fontproperties=CJK_FONT_PROP if HAS_CJK else None)
     ax.grid(True, alpha=0.18, linewidth=0.5)
     # legend 放到图外右下角，避免遮 K 线
     ax.legend(loc="center left", bbox_to_anchor=(1.01, 0.5),
@@ -302,7 +435,8 @@ def _render(klines, pattern, candles, fig_w, fig_h, dpi) -> Optional[bytes]:
                   for k in tail]
     ax_vol.bar(times, [k.volume for k in tail], width=bar_width,
                color=vol_colors, alpha=0.6, edgecolor="none")
-    ax_vol.set_ylabel("Vol", fontsize=8)
+    ax_vol.set_ylabel(_L("量", "Vol"), fontsize=8,
+                       fontproperties=CJK_FONT_PROP if HAS_CJK else None)
     ax_vol.grid(True, alpha=0.15, linewidth=0.5)
     ax_vol.tick_params(labelsize=7)
 
@@ -326,25 +460,21 @@ def _render(klines, pattern, candles, fig_w, fig_h, dpi) -> Optional[bytes]:
 
 def _draw_line(ax, line, t_start, t_end, color, label, linestyle="-",
                linewidth=2.0):
-    """把 Line 对象画到指定时间范围上"""
+    """把 Line 对象画到指定时间范围上
+
+    关键：只画在 pivot 时间区间内 (p1.timestamp ~ p2.timestamp)，
+    不外推到图表左右两端 —— TradingView 风格，避免把价格轴拉到
+    不真实的范围。t_start/t_end 保留为参数签名兼容，但实际用
+    pivot 自身的时间戳决定端点。
+    """
     p1, p2 = line.p1, line.p2
     if p2.index == p1.index:
         return
     t1 = epoch_to_num(p1.timestamp)
     t2 = epoch_to_num(p2.timestamp)
-    # 延伸到图表左右边界
-    slope = (p2.price - p1.price) / (p2.index - p1.index)
-    # 用 K 线索引 -> 时间的近似映射
-    # （p1/p2 的 timestamp 已经是对应的 K 线时间，可直接用）
-    t_span = t2 - t1
-    if t_span == 0:
+    if t2 == t1:
         return
-    # 线性外推
-    price_slope = (p2.price - p1.price) / t_span
-    y_start = p1.price + price_slope * (t_start - t1)
-    y_end = p1.price + price_slope * (t_end - t1)
-
-    ax.plot([t_start, t_end], [y_start, y_end],
+    ax.plot([t1, t2], [p1.price, p2.price],
             color=color, linestyle=linestyle, linewidth=linewidth,
             alpha=0.9, label=label)
 

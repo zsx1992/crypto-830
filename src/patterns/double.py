@@ -36,7 +36,7 @@ from market_data import Kline
 from patterns.base import (
     BaseDetector, Pattern, Direction, PatternStatus, Line,
     horizontal_line, calc_trade_levels, find_breakout_index,
-    check_breakout, calc_volume_ratio,
+    check_breakout, calc_volume_ratio, prior_move,
 )
 
 
@@ -56,6 +56,13 @@ class DoubleTopBottomDetector(BaseDetector):
         "max_lookahead": 30,           # 从右峰开始最多往后看多少根找突破
         "min_height_atr": 1.0,         # 形态高度至少 1×ATR，否则无交易价值
         "pullback_bars": 0,            # 突破后回踩确认窗口（0=关闭，2026-09-01 新增）
+        # 反转形态结构性闸门：形态前必须有显著趋势（2026-09-03 新增）
+        # 实测：158 张人工标注的漏网误报里 AAVE 双顶 / ARB 双底 全是
+        # 「下跌中继里的小 H-L-H」，形态内部结构满足但前面没趋势。
+        # 头肩底早就有这道闸门（require_prior_trend=True），双底/双顶/头肩顶补齐。
+        "require_prior_trend": True,
+        "prior_trend_bars": 20,
+        "prior_trend_min_move": 0.05,
     }
 
     def __init__(self, params=None):
@@ -106,6 +113,13 @@ class DoubleTopBottomDetector(BaseDetector):
         peak_diff = abs(h1.price - h2.price) / max(h1.price, h2.price)
         if peak_diff > p["peak_tolerance"]:
             return None
+
+        # ①b 前置趋势：双顶是反转形态，前面必须有一段显著上涨。
+        # 否则下跌中继里"两个相邻小反弹"会过 ①③⑤ 但根本不是反转。
+        if p["require_prior_trend"]:
+            mv = prior_move(klines, h1.index, p["prior_trend_bars"])
+            if mv is None or mv < p["prior_trend_min_move"]:
+                return None
 
         # ② 中间谷足够深
         depth = (min(h1.price, h2.price) - l1.price) / min(h1.price, h2.price)
@@ -206,6 +220,12 @@ class DoubleTopBottomDetector(BaseDetector):
         trough_diff = abs(l1.price - l2.price) / max(l1.price, l2.price)
         if trough_diff > p["peak_tolerance"]:
             return None
+
+        # ①b 前置趋势：双底是反转形态，前面必须有一段显著下跌。
+        if p["require_prior_trend"]:
+            mv = prior_move(klines, l1.index, p["prior_trend_bars"])
+            if mv is None or mv > -p["prior_trend_min_move"]:
+                return None
 
         # ② 中间峰足够高
         peak_height = (h1.price - max(l1.price, l2.price)) / max(l1.price, l2.price)

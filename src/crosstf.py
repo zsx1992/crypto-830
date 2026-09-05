@@ -21,7 +21,7 @@ _SRC_DIR = os.path.dirname(os.path.abspath(__file__))
 if _SRC_DIR not in sys.path:
     sys.path.insert(0, _SRC_DIR)
 
-from patterns.base import Pattern, Direction, PatternStatus
+from patterns.base import Pattern, Direction, PatternStatus, validate_geometry
 
 logger = logging.getLogger(__name__)
 
@@ -65,7 +65,8 @@ class SignalScorer:
     """
 
     DEFAULT_WEIGHTS = {
-        "completeness": 0.25,
+        "completeness": 0.10,          # 形态完整度（检测器二值门槛后的几何分）
+        "symmetry": 0.15,              # 几何对称/结构质量（P2，借鉴 hunk77）
         "breakout_magnitude": 0.20,
         "volume_confirmation": 0.15,
         "multi_tf_resonance": 0.15,
@@ -82,6 +83,8 @@ class SignalScorer:
 
         self.threshold_strong = scoring.get("threshold_strong", 75)
         self.threshold_medium = scoring.get("threshold_medium", 60)
+        # ADX 阈值：低于此值视为"无显著趋势"（横盘），方向投票打折
+        self.adx_threshold = scoring.get("adx_threshold", 20)
 
     # ---------- 各维度打分函数 ----------
 
@@ -93,6 +96,24 @@ class SignalScorer:
         confidence 已包含：峰谷价差吻合度、形态深度、跨度合理性等几何因素。
         """
         return max(0.0, min(1.0, p.confidence))
+
+    @staticmethod
+    def score_symmetry(p: Pattern) -> float:
+        """
+        几何对称/结构质量（P2，借鉴 hunk77 的 symmetry + structure quality）。
+
+        直接用 validate_geometry() 算出的 geometry_score（0~1）：
+          - 反转形态：价格对称(两峰/两肩接近) + 时间对称(左右臂等长) + 结构
+          - 持续形态：边界收敛度/平行度 + 触点数量
+
+        这是【分级】分：检测器内部是二值门槛（差>3% 直接丢弃），
+        但"差 2.9%"和"差 0.1%"都算过——这里把"勉强过关"的压低，
+        让强度分真正反映"画得标不标准"。
+        """
+        g = getattr(p, "geometry_score", 0.0)
+        if g <= 0.0:
+            return 0.5          # 未计算时给中性，避免误杀
+        return max(0.0, min(1.0, g))
 
     @staticmethod
     def score_breakout_magnitude(p: Pattern) -> float:
@@ -175,19 +196,26 @@ class SignalScorer:
         # 120 根之后逐渐衰减
         return max(0.2, 1.0 - (span - 120) / 200)
 
-    @staticmethod
-    def score_trend_consistency(p: Pattern, trend: Optional[str] = None) -> float:
+    def score_trend_consistency(self, p: Pattern, trend: Optional[str] = None,
+                                momentum: Optional[dict] = None) -> float:
         """
-        与大趋势的一致性。
+        与大趋势的一致性（fantomluck 风格：趋势强度 + 动量同向投票）。
 
-        关键：持续形态和反转形态的评分方向【相反】。
-          - 持续形态（三角形/旗形/矩形）：与大趋势同向 = 高分
-          - 反转形态（头肩/双顶双底）：与大趋势反向 = 高分（反转本就该逆着来）
+        关键改进（对比原版只看 EMA 方向）：
+          - ADX 判定趋势是否"有效"：ADX < adx_threshold（默认20）视为横盘，
+            此时方向投票打折，避免把无趋势区间里的噪声形态误判。
+          - RSI / MACD 柱动能同向才给满分，否则略减——多源同意才信。
+          - 反转形态（头肩/双顶双底）顺势回调反转成功率高，略加分；
+            持续形态（三角/旗形/楔形）必须顺势。
 
         若趋势未知，给中性分 0.5。
         """
         if not trend or trend == "unknown":
             return 0.5
+
+        adx = momentum.get("adx", 0.0) if momentum else 0.0
+        rsi = momentum.get("rsi", 50.0) if momentum else 50.0
+        macd_hist = momentum.get("macd_hist", 0.0) if momentum else 0.0
 
         reversal_types = {
             "head_shoulders_top", "head_shoulders_bottom",
@@ -200,13 +228,26 @@ class SignalScorer:
         else:
             aligned = (trend == "down")
 
-        if is_reversal:
-            # 反转形态：逆着大趋势反而是"标准"的，但顺着更安全
-            # 给"顺势"略高分，因为顺势反转（回调后的反转）成功率更高
-            return 0.75 if aligned else 0.55
-        else:
-            # 持续形态：必须顺势
-            return 0.9 if aligned else 0.25
+        # 趋势不显著（横盘）：方向投票打折
+        if adx < self.adx_threshold:
+            # 横盘里反转形态（区间边界反转）相对合理，给中性偏上；
+            # 持续形态在横盘里偏弱。
+            return 0.6 if is_reversal else 0.4
+
+        # 趋势显著：方向对齐给基础分，动量同向再加成
+        base = 0.75 if aligned else 0.45
+        if momentum:
+            mom_aligned = (
+                (p.direction == Direction.LONG and rsi > 50 and macd_hist >= 0)
+                or (p.direction == Direction.SHORT and rsi < 50 and macd_hist <= 0)
+            )
+            if mom_aligned:
+                base = min(1.0, base + 0.15)
+            else:
+                base = max(0.2, base - 0.10)
+        if is_reversal and aligned:
+            base = min(1.0, base + 0.05)
+        return base
 
     @staticmethod
     def score_proximity(p: Pattern) -> float:
@@ -235,15 +276,17 @@ class SignalScorer:
 
     # ---------- 综合 ----------
 
-    def score(self, p: Pattern, trend: Optional[str] = None) -> int:
+    def score(self, p: Pattern, trend: Optional[str] = None,
+              momentum: Optional[dict] = None) -> int:
         """计算综合强度分 0~100"""
         dims = {
             "completeness": self.score_completeness(p),
+            "symmetry": self.score_symmetry(p),
             "breakout_magnitude": self.score_breakout_magnitude(p),
             "volume_confirmation": self.score_volume(p),
             "multi_tf_resonance": self.score_resonance(p),
             "duration_reasonableness": self.score_duration(p),
-            "trend_consistency": self.score_trend_consistency(p, trend),
+            "trend_consistency": self.score_trend_consistency(p, trend, momentum),
             "proximity_to_target": self.score_proximity(p),
         }
 
@@ -355,7 +398,8 @@ class CrossTimeframeConfirm:
         self.scorer = SignalScorer(cfg)
 
     def confirm(self, signals: List[Pattern],
-                trends: Optional[Dict[str, str]] = None) -> List[Pattern]:
+                trends: Optional[Dict[str, str]] = None,
+                momentum: Optional[Dict] = None) -> List[Pattern]:
         """
         对所有信号做交叉确认 + 打分。
 
@@ -385,7 +429,13 @@ class CrossTimeframeConfirm:
                 self._apply_resonance(s, by_interval)
 
                 trend = trends.get((s.symbol, s.interval))
-                self.scorer.score(s, trend)
+                mom = momentum.get((s.symbol, s.interval)) if momentum else None
+                # P2：先算几何质量分（对称+结构），供 symmetry 维度使用
+                try:
+                    s.geometry_score, s.geometry_reason = validate_geometry(s)
+                except Exception:
+                    s.geometry_score, s.geometry_reason = 0.5, "几何评估异常"
+                self.scorer.score(s, trend, mom)
 
         # 过滤掉过弱的和矛盾的
         result = []
