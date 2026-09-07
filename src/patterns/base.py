@@ -582,7 +582,15 @@ def validate_geometry(pattern: "Pattern", atr_value: float = 0.0):
         if pt in ("double_top", "double_bottom"):
             # 结构: [翼1, 中, 翼2]（峰-谷-峰 / 谷-峰-谷）
             w1, mid, w2 = pv[0], pv[1], pv[2]
-            price_sym = _price_symmetry(w1.price, w2.price, tol=0.05)
+            # 2026-09-07: 价对归零容差 0.05→0.10 (A+B 组合)。
+            # SOPHUSDT 4h age=1 双底 geo=0.001 根因: 确认容差(config
+            # double_top_bottom_price, 当时 0.05) 与几何归零容差 0.05 重合,
+            # 价差 4.99% 的形态"确认时算双底、打分时算完全不像"→悬崖 0 分。
+            # 现在确认已收严到 0.03(见 config 注释), 归零放宽到 0.10 后
+            # 确认线内形态有梯度: 价差 3%→0.70 / 1%→0.90, 不再一票否决。
+            # 注意: 时对 0.45 权重对"刚突破右臂极短"的形态天然≈0,
+            # 新鲜双底 geo 上限≈0.55×price_sym, 由 min_geometry 闸正常筛选。
+            price_sym = _price_symmetry(w1.price, w2.price, tol=0.10)
             time_sym = _time_symmetry(w1.index, mid.index, w2.index, tol=0.5)
             # 2026-09-05: 剔除「深」子分。实测 209 张人工标注（v4）：
             #   深分 ok 均值 0.957 vs bad 0.983，差值 -0.026 ≈ 0，无区分度。
