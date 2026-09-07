@@ -289,6 +289,15 @@ class Scanner:
         logger.info(f"完整过滤后 {len(result.after_scoring)} 个 "
                     f"(新鲜度+R:R≥{self.min_rr}+置信度+量能"
                     f"+趋势同向{'✓' if self.require_trend_alignment else '✗'})")
+        # 2026-09-07: kill 分布也打进日志（不只企微摘要），0 推送时
+        # 直接从 Actions logs 定位主闸，无需等企微截图。
+        _kb = result.kill_breakdown
+        logger.info("各闸被砍 ▶ freshness:%d strength:%d rr:%d volume:%d "
+                    "geometry:%d trend:%d (确认%d→过滤后%d)",
+                    _kb.get("freshness", 0), _kb.get("strength", 0),
+                    _kb.get("rr", 0), _kb.get("volume", 0),
+                    _kb.get("geometry", 0), _kb.get("trend", 0),
+                    len(scored), len(result.after_scoring))
 
         # ---- 5. 去重 ----
         self.state.cleanup()
