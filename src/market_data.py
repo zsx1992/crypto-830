@@ -202,15 +202,12 @@ class BinanceClient:
             for t in data
         ]
 
-    def get_top_symbols(self, top_n: int = 300,
-                        min_volume_usdt: float = 10_000_000) -> List[str]:
-        """
-        按 24h 成交额取前 N 个 USDT 本位永续合约。
+    def _sorted_usdt_perps(self,
+                           min_volume_usdt: float) -> List[Tuple[str, float]]:
+        """拉全市场 ticker，返回按 24h 成交额降序的 [(symbol, quoteVolume)]。
 
-        过滤规则：
-          - 仅 USDT 计价
-          - 仅永续合约（排除季度交割，如 BTCUSDT_240927）
-          - 24h 成交额 >= min_volume_usdt
+        过滤：USDT 本位永续（符号无 "_" 的 USDT 结尾）+ 成交额 >= min_volume_usdt。
+        weight ≈ 40（一次 /ticker/24hr）。供单池/分层选取共用。
         """
         tickers = self.get_all_tickers()
         if not tickers:
@@ -226,15 +223,59 @@ class BinanceClient:
                 continue
             if t.quoteVolume < min_volume_usdt:
                 continue
-            candidates.append(t)
+            candidates.append((t.symbol, t.quoteVolume))
 
-        candidates.sort(key=lambda x: x.quoteVolume, reverse=True)
-        result = [c.symbol for c in candidates[:top_n]]
+        candidates.sort(key=lambda x: x[1], reverse=True)
+        return candidates
+
+    def get_top_symbols(self, top_n: int = 300,
+                        min_volume_usdt: float = 10_000_000) -> List[str]:
+        """
+        按 24h 成交额取前 N 个 USDT 本位永续合约。
+
+        过滤规则：
+          - 仅 USDT 计价
+          - 仅永续合约（排除季度交割，如 BTCUSDT_240927）
+          - 24h 成交额 >= min_volume_usdt
+        """
+        cands = self._sorted_usdt_perps(min_volume_usdt)
+        result = [s for s, _ in cands[:top_n]]
 
         logger.info(f"[Binance] Top{len(result)} 标的选取完成，"
-                    f"最低成交额 {candidates[-1].quoteVolume / 1e6:.1f}M USDT"
-                    if candidates else "[Binance] 无候选标的")
+                    f"最低成交额 {cands[-1][1] / 1e6:.1f}M USDT"
+                    if cands else "[Binance] 无候选标的")
         return result
+
+    def get_symbols_tiered(self, core_top_n: int = 300,
+                           core_min_volume_usdt: float = 5_000_000,
+                           tail_top_n: int = 300,
+                           tail_min_volume_usdt: float = 1_000_000,
+                           ) -> Tuple[List[str], List[str]]:
+        """
+        分层标的池：一次 ticker 请求选出 (core, tail) 两组，按成交额区间划分无交集。
+
+          - core: 24h 成交额 >= core_min_volume_usdt，取前 core_top_n（全周期扫描）
+          - tail: [tail_min_volume_usdt, core_min_volume_usdt) 区间的长尾，
+                  取前 tail_top_n（只扫大周期，抗噪）
+
+        长尾池存在的意义：核心池的"新鲜形态"供给天然稀缺（近端检测盲区 +
+        市场事实），把长尾标的的大周期信号纳入扫描是最健康的提量方式——
+        扩供给而不动检测精度。低流动性标的小周期插针噪声大，故只放大周期。
+        """
+        # 一次拉取用较低的 tail 门槛做下界，两个池共用同一份排序列表
+        cands = self._sorted_usdt_perps(tail_min_volume_usdt)
+        if not cands:
+            logger.error("[Binance] 获取 ticker 失败")
+            return [], []
+
+        core = [s for s, v in cands
+                if v >= core_min_volume_usdt][:core_top_n]
+        tail = [s for s, v in cands
+                if tail_min_volume_usdt <= v < core_min_volume_usdt
+                ][:tail_top_n]
+
+        logger.info(f"[Binance] 分层选取 core={len(core)} tail={len(tail)}")
+        return core, tail
 
     def get_klines(self, symbol: str, interval: str,
                    limit: int = 500, end_time_ms: int = None) -> List[Kline]:
@@ -392,10 +433,9 @@ class OkxClient:
         all_data.sort(key=lambda x: int(x[0]))
         return [self._parse_kline(row) for row in all_data[:limit]]
 
-    def get_top_symbols(self, top_n: int = 300,
-                        min_volume_usdt: float = 10_000_000) -> List[str]:
-        """
-        按 24h 成交额取前 N 个 USDT 本位永续合约（SWAP）。
+    def _sorted_usdt_swaps(self,
+                           min_volume_usdt: float) -> List[Tuple[str, float]]:
+        """拉全市场 SWAP ticker，返回按 24h 成交额降序的 [(instId, vol)]。
 
         OKX tickers 返回 volCcy24h（报价币成交额，对 USDT-SWAP 即 USDT）。
         注意：在 GitHub Actions（美国 IP）上，若 OKX 也做地理屏蔽，
@@ -420,10 +460,47 @@ class OkxClient:
             candidates.append((inst, vol_quote))
 
         candidates.sort(key=lambda x: x[1], reverse=True)
+        return candidates
+
+    def get_top_symbols(self, top_n: int = 300,
+                        min_volume_usdt: float = 10_000_000) -> List[str]:
+        """
+        按 24h 成交额取前 N 个 USDT 本位永续合约（SWAP）。
+        """
+        cands = self._sorted_usdt_swaps(min_volume_usdt)
         result = [inst.replace("-USDT-SWAP", "USDT")
-                  for inst, _ in candidates[:top_n]]
+                  for inst, _ in cands[:top_n]]
         logger.info(f"[OKX] Top{len(result)} 标的选取完成")
         return result
+
+    def get_symbols_tiered(self, core_top_n: int = 300,
+                           core_min_volume_usdt: float = 5_000_000,
+                           tail_top_n: int = 300,
+                           tail_min_volume_usdt: float = 1_000_000,
+                           ) -> Tuple[List[str], List[str]]:
+        """
+        分层标的池：一次 /tickers 请求选出 (core, tail) 两组，
+        按成交额区间划分天然无交集。
+
+          - core: 成交额 >= core_min_volume_usdt，取前 core_top_n（全周期扫描）
+          - tail: [tail_min_volume_usdt, core_min_volume_usdt) 长尾，
+                  取前 tail_top_n（只扫大周期，抗噪）
+        """
+        # 一次拉取用较低的 tail 门槛做下界，两池共用同一份排序列表
+        cands = self._sorted_usdt_swaps(tail_min_volume_usdt)
+        if not cands:
+            logger.error("[OKX] 获取 ticker 失败")
+            return [], []
+
+        norm = lambda inst: inst.replace("-USDT-SWAP", "USDT")
+        core = [norm(i) for i, v in cands
+                if v >= core_min_volume_usdt][:core_top_n]
+        tail = [norm(i) for i, v in cands
+                if tail_min_volume_usdt <= v < core_min_volume_usdt
+                ][:tail_top_n]
+
+        logger.info(f"[OKX] 分层选取 core={len(core)} tail={len(tail)}")
+        return core, tail
 
     @staticmethod
     def _to_inst_id(symbol: str) -> str:
@@ -518,6 +595,37 @@ class MarketDataClient:
 
         logger.error("所有数据源的标的选取均失败")
         return []
+
+    def get_symbols_tiered(self, core_top_n: int = 300,
+                           core_min_volume_usdt: float = 5_000_000,
+                           tail_top_n: int = 300,
+                           tail_min_volume_usdt: float = 1_000_000,
+                           ) -> Tuple[List[str], List[str]]:
+        """
+        分层标的池 (core, tail)，按 primary 路由；主源失败自动切另一源。
+
+        core 全周期扫描；tail 只扫大周期（由 scanner 依据 tail_intervals 决定）。
+        核心池为空视为失败（tail 可以为空——市场可能没有达标的尾池）。
+        """
+        if self.primary == "okx":
+            sources = [("okx", self.okx), ("binance", self.binance)]
+        else:
+            sources = [("binance", self.binance), ("okx", self.okx)]
+
+        for name, client in sources:
+            try:
+                core, tail = client.get_symbols_tiered(
+                    core_top_n, core_min_volume_usdt,
+                    tail_top_n, tail_min_volume_usdt)
+                if core:
+                    logger.info(f"分层标的选取使用数据源: {name} "
+                                f"(core={len(core)} tail={len(tail)})")
+                    return core, tail
+            except Exception as e:
+                logger.warning(f"[{name}] 分层标的选取失败: {e}，尝试下一源")
+
+        logger.error("所有数据源的分层标的选取均失败")
+        return [], []
 
     def get_klines(self, symbol: str, interval: str,
                    limit: int = 500,

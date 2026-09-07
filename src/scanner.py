@@ -51,6 +51,9 @@ class ScanResult:
     errors: List[str] = field(default_factory=list)
     health_stats: Dict[str, int] = field(default_factory=dict)
     source_stats: Dict[str, int] = field(default_factory=dict)
+    # 2026-09-07: 分层标的池统计 {tier: {"symbols","scanned","confirmed"}}，
+    # 长尾池只扫大周期，用这个判断它对信号供给的真实贡献。
+    tier_stats: Dict[str, Dict[str, int]] = field(default_factory=dict)
 
 
 class Scanner:
@@ -133,16 +136,52 @@ class Scanner:
         result = ScanResult()
         t0 = time.time()
 
-        # ---- 1. 选标的 ----
-        logger.info(f"选取 24h 成交额前 {top_n} 的合约...")
-        symbols = self.client.get_top_symbols(top_n=top_n,
-                                              min_volume_usdt=min_volume)
-        if not symbols:
+        # ---- 1. 选标的（S3 分层）----
+        # core = 成交额>=min_volume 的头部（全周期扫描）；
+        # tail = 长尾区间 [tail_min_volume, min_volume)（只扫大周期，抗噪）。
+        # 动机：近端检测盲区 + 市场事实导致新鲜形态供给稀缺(0~1张/轮)，
+        # 与其放宽 freshness 推陈年突破，不如扩长尾标的的大周期供给。
+        # 低流动性标的小周期插针噪声大，故 tail 只扫 4h/1d。
+        tail_enabled = cfg_scan.get("tail_enabled", False)
+        tail_top_n = cfg_scan.get("tail_top_n", 300)
+        tail_min_vol = cfg_scan.get("tail_min_volume_usdt", 1_000_000)
+        tail_intervals = set(cfg_scan.get("tail_intervals", ["4h", "1d"]))
+
+        core_symbols: List[str] = []
+        tail_symbols: List[str] = []
+        try:
+            # tail 关闭时把 tail 下限提到与 core 相同 → 尾池区间为空，
+            # 一次请求即可，行为与 S3 前完全一致。
+            core_symbols, tail_symbols = self.client.get_symbols_tiered(
+                core_top_n=top_n, core_min_volume_usdt=min_volume,
+                tail_top_n=tail_top_n,
+                tail_min_volume_usdt=(tail_min_vol if tail_enabled
+                                      else min_volume))
+        except Exception as e:
+            logger.warning(f"分层标的选取失败({e})，退回单池 get_top_symbols")
+            try:
+                core_symbols = self.client.get_top_symbols(
+                    top_n=top_n, min_volume_usdt=min_volume)
+            except Exception as e2:
+                logger.error(f"单池标的选取也失败: {e2}")
+
+        if not core_symbols:
             result.errors.append("标的选取失败")
             result.duration_sec = time.time() - t0
             return result
-        result.symbols = symbols
-        logger.info(f"已选取 {len(symbols)} 个标的")
+        if not tail_enabled:
+            tail_symbols = []
+        result.symbols = core_symbols + tail_symbols
+        result.tier_stats = {
+            "core": {"symbols": len(core_symbols), "scanned": 0,
+                     "confirmed": 0},
+            "tail": {"symbols": len(tail_symbols), "scanned": 0,
+                     "confirmed": 0},
+        }
+        tail_set = set(tail_symbols)
+        logger.info(f"分层标的: core {len(core_symbols)} 个全周期扫, "
+                    f"tail {len(tail_symbols)} 个只扫 "
+                    f"{sorted(tail_intervals)}")
 
         # ---- 2. 逐周期扫描 ----
         # all_signals: 所有已确认信号（用于多周期交叉确认）
@@ -154,12 +193,21 @@ class Scanner:
 
         for interval in intervals:
             limit = kline_counts.get(interval, 240)
-            logger.info(f"--- 扫描周期 {interval} ---")
+            # 分层：core 全周期；tail 只在配置的大周期参与
+            if tail_symbols and interval in tail_intervals:
+                pool = core_symbols + tail_symbols
+            else:
+                pool = core_symbols
+            logger.info(f"--- 扫描周期 {interval} "
+                        f"(标的 {len(pool)} 个"
+                        f"{' = core+tail' if pool is not core_symbols else ''}) ---")
 
-            for batch_start in range(0, len(symbols), batch_size):
-                batch = symbols[batch_start: batch_start + batch_size]
+            for batch_start in range(0, len(pool), batch_size):
+                batch = pool[batch_start: batch_start + batch_size]
 
                 for symbol in batch:
+                    # 长尾池只扫大周期，这里不会与 core 重叠（区间划分）
+                    tier = "tail" if symbol in tail_set else "core"
                     try:
                         klines, source = self.client.get_klines(
                             symbol, interval, limit)
@@ -168,6 +216,7 @@ class Scanner:
                             continue
 
                         result.scanned_pairs += 1
+                        result.tier_stats[tier]["scanned"] += 1
                         result.source_stats[source] = \
                             result.source_stats.get(source, 0) + 1
 
@@ -199,6 +248,8 @@ class Scanner:
                         confirmed = [p for p in cands
                                      if p.status == PatternStatus.CONFIRMED]
                         all_signals.extend(confirmed)
+                        if confirmed:
+                            result.tier_stats[tier]["confirmed"] += len(confirmed)
 
                     except Exception as e:
                         result.failed_pairs += 1
@@ -206,15 +257,25 @@ class Scanner:
                         logger.error(f"扫描异常 {msg}")
                         result.errors.append(msg)
 
-                if batch_start + batch_size < len(symbols):
+                if batch_start + batch_size < len(pool):
                     time.sleep(batch_pause)
 
                 if self.verbose:
-                    done = min(batch_start + batch_size, len(symbols))
-                    logger.info(f"  {interval}: {done}/{len(symbols)}")
+                    done = min(batch_start + batch_size, len(pool))
+                    logger.info(f"  {interval}: {done}/{len(pool)}")
 
         logger.info(f"候选形态 {len(result.candidates)} 个，"
                     f"已确认 {len(all_signals)} 个")
+        # 2026-09-07: 分层统计——判断长尾池对供给的真实贡献
+        _tc, _tt = result.tier_stats.get("core", {}), \
+            result.tier_stats.get("tail", {})
+        if _tt.get("symbols"):
+            logger.info(f"分层供给 core: {_tc.get('symbols', 0)}标的 "
+                        f"scanned={_tc.get('scanned', 0)} "
+                        f"confirmed={_tc.get('confirmed', 0)} | "
+                        f"tail: {_tt.get('symbols', 0)}标的 "
+                        f"scanned={_tt.get('scanned', 0)} "
+                        f"confirmed={_tt.get('confirmed', 0)}")
 
         # ---- 3. 多周期交叉确认 + 评分 ----
         # 注意：这里传入的是【全部】已确认信号，包括不新鲜的。
