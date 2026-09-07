@@ -330,10 +330,17 @@ class Scanner:
         self.state.save()
 
         # ---- 9. 扫描摘要（确认服务存活；0 信号时给用户明确反馈）----
+        # 摘要里同步输出过滤漏斗 6 个数：candidates/confirmed/after_scoring/after_dedup/pushed
+        # 当 pushed=0 时这几段差值就是定位"哪道闸砍光了所有信号"的唯一线索
+        # ——否则只能从 Actions 日志看（logs 需认证）。
+        # 2026-09-07 增加：candidates=476 一连 40 次 0 推送时无法判断哪道闸手软
         if self.send_summary:
             self.notifier.push_summary(
                 scanned=result.scanned_pairs,
                 candidates=len(result.candidates),
+                confirmed=len(result.confirmed),
+                after_scoring=len(result.after_scoring),
+                after_dedup=len(result.after_dedup),
                 signals=len(result.pushed),
                 duration=result.duration_sec,
             )

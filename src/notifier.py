@@ -314,16 +314,30 @@ class WeComNotifier:
         return url[:80] + ("..." if len(url) > 80 else "")
 
     def push_summary(self, scanned: int, candidates: int,
-                     signals: int, duration: float):
-        """推送本次扫描摘要（确认服务存活，0 信号时也发）"""
+                     confirmed: int, after_scoring: int,
+                     after_dedup: int, signals: int,
+                     duration: float):
+        """推送本次扫描摘要（确认服务存活，0 信号时也发）
+
+        2026-09-07 增加过滤漏斗 6 段（candidates → confirmed → after_scoring
+        → after_dedup → signals）。当 signals=0 时，漏斗差值能直接定位
+        "哪道闸/哪段逻辑砍光了所有信号"——否则只能登 Actions 看日志
+        （logs 需要 token，公开仓库也匿名不可读）。
+        """
         signal_note = f"触发信号: `{signals}`"
         if signals == 0:
             signal_note += "（本次无满足条件的形态）"
+        # 漏斗单行紧凑（外层反引号作代码块；内部不能再嵌反引号，否则
+        # markdown 渲染会在第一个内反引号提前结束——踩过这个坑）。
+        funnel = (
+            f"候选:{candidates} 确认:{confirmed} "
+            f"过滤后:{after_scoring} 去重后:{after_dedup} 推送:{signals}"
+        )
         content = (
             f"扫描完成\n"
             f"> 时间: `{self.now_str()}`\n"
             f"> 扫描对数: `{scanned}`\n"
-            f"> 候选形态: `{candidates}`\n"
+            f"> 漏斗 ▶ `{funnel}`\n"
             f"> {signal_note}\n"
             f"> 耗时: `{duration:.1f}s`"
         )
