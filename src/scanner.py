@@ -311,20 +311,29 @@ class Scanner:
         # 直方图分布。freshness 放宽没生效(砍数不变)时, 用真实分布
         # 决定"放宽到几根"才有数, 不再盲调。
         _killed_ages: Dict[str, List[int]] = {}
+        # 2026-09-07: 被砍信号明细收集器 (gate, pattern)。用户肉眼在 OKX
+        # 上看到不少币种有形态、系统却 0 推送——age 分布显示 4h 有 age=1
+        # 的确认信号被砍，说明新鲜形态有、死在后续闸。收集每个被砍信号的
+        # 币/周期/形态/age/被哪闸砍/各分数，下轮日志直接定位"谁杀了新鲜信号"。
+        _killed_detail: List[Tuple[str, Pattern]] = []
         for p in scored:
             _killed_ages.setdefault(p.interval, []).append(p.breakout_age)
             max_age = self.engine.freshness_for(p.interval)
             if p.breakout_age > max_age:
                 result.kill_breakdown["freshness"] += 1
+                _killed_detail.append((p, "freshness"))
                 continue
             if p.strength_score < self.min_strength:
                 result.kill_breakdown["strength"] += 1
+                _killed_detail.append((p, "strength"))
                 continue
             if p.risk_reward < self.min_rr:
                 result.kill_breakdown["rr"] += 1
+                _killed_detail.append((p, "rr"))
                 continue
             if p.volume_ratio < self.min_volume:
                 result.kill_breakdown["volume"] += 1
+                _killed_detail.append((p, "volume"))
                 continue
             # 几何质量闸门：画得不像（几何分低）的直接不推。
             # 修正恒满子分后（2026-09-05）该分才有意义，见 __init__ 注释。
@@ -333,6 +342,7 @@ class Scanner:
             if getattr(p, "geometry_score", None) is not None:
                 if p.geometry_score < self.min_geometry:
                     result.kill_breakdown["geometry"] += 1
+                    _killed_detail.append((p, "geometry"))
                     continue
             # 趋势过滤（实测依据见 config.yaml 注释）
             # 仅当 ADX 显著（趋势存在）时才强制方向对齐；横盘不杀，
@@ -348,6 +358,7 @@ class Scanner:
                     )
                     if not aligned:
                         result.kill_breakdown["trend"] += 1
+                        _killed_detail.append((p, "trend"))
                         continue
             passed.append(p)
 
@@ -377,6 +388,15 @@ class Scanner:
                         "buckets=%s (当前窗口=%d)",
                         _iv, _n, _sorted[0], _med, _sorted[-1], _bk,
                         self.engine.freshness_for(_iv))
+        # 被砍信号逐条明细（gate, symbol, interval, pattern, dir, age, 分数）
+        # ——新鲜信号(age≤窗口)死在哪道闸，一眼可见。
+        for _gate, _p in _killed_detail:
+            logger.info("砍杀明细 %-10s %-18s %-5s %-16s %-5s age=%-5d "
+                        "strength=%s rr=%s vol=%s geo=%s",
+                        _gate, _p.symbol, _p.interval, _p.pattern_type,
+                        _p.direction.name if _p.direction else "?",
+                        _p.breakout_age, _p.strength_score, _p.risk_reward,
+                        _p.volume_ratio, getattr(_p, "geometry_score", None))
         logger.info(f"完整过滤后 {len(result.after_scoring)} 个 "
                     f"(新鲜度+R:R≥{self.min_rr}+置信度+量能"
                     f"+趋势同向{'✓' if self.require_trend_alignment else '✗'})")
