@@ -392,12 +392,14 @@ class Scanner:
         # ——新鲜信号(age≤窗口)死在哪道闸，一眼可见。
         # 注意 _killed_detail 元素是 (pattern, gate)，解包顺序勿反。
         for _p, _gate in _killed_detail:
+            _geo_r = getattr(_p, "geometry_reason", None)
             logger.info("砍杀明细 %-10s %-18s %-5s %-16s %-5s age=%-5d "
-                        "strength=%s rr=%s vol=%s geo=%s",
+                        "strength=%s rr=%s vol=%s geo=%s%s",
                         _gate, _p.symbol, _p.interval, _p.pattern_type,
                         _p.direction.name if _p.direction else "?",
                         _p.breakout_age, _p.strength_score, _p.risk_reward,
-                        _p.volume_ratio, getattr(_p, "geometry_score", None))
+                        _p.volume_ratio, getattr(_p, "geometry_score", None),
+                        f" [{_geo_r}]" if _geo_r else "")
         logger.info(f"完整过滤后 {len(result.after_scoring)} 个 "
                     f"(新鲜度+R:R≥{self.min_rr}+置信度+量能"
                     f"+趋势同向{'✓' if self.require_trend_alignment else '✗'})")
