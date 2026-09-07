@@ -315,7 +315,7 @@ class Scanner:
         # 上看到不少币种有形态、系统却 0 推送——age 分布显示 4h 有 age=1
         # 的确认信号被砍，说明新鲜形态有、死在后续闸。收集每个被砍信号的
         # 币/周期/形态/age/被哪闸砍/各分数，下轮日志直接定位"谁杀了新鲜信号"。
-        _killed_detail: List[Tuple[str, Pattern]] = []
+        _killed_detail: List[Tuple[Pattern, str]] = []  # (pattern, gate)
         for p in scored:
             _killed_ages.setdefault(p.interval, []).append(p.breakout_age)
             max_age = self.engine.freshness_for(p.interval)
@@ -390,7 +390,8 @@ class Scanner:
                         self.engine.freshness_for(_iv))
         # 被砍信号逐条明细（gate, symbol, interval, pattern, dir, age, 分数）
         # ——新鲜信号(age≤窗口)死在哪道闸，一眼可见。
-        for _gate, _p in _killed_detail:
+        # 注意 _killed_detail 元素是 (pattern, gate)，解包顺序勿反。
+        for _p, _gate in _killed_detail:
             logger.info("砍杀明细 %-10s %-18s %-5s %-16s %-5s age=%-5d "
                         "strength=%s rr=%s vol=%s geo=%s",
                         _gate, _p.symbol, _p.interval, _p.pattern_type,
