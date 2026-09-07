@@ -246,7 +246,12 @@ class Scanner:
             "volume": 0, "geometry": 0, "trend": 0,
         }
         passed = []
+        # 2026-09-07: 收集被 6 闸砍掉信号的 age, 循环结束后按周期打
+        # 直方图分布。freshness 放宽没生效(砍数不变)时, 用真实分布
+        # 决定"放宽到几根"才有数, 不再盲调。
+        _killed_ages: Dict[str, List[int]] = {}
         for p in scored:
+            _killed_ages.setdefault(p.interval, []).append(p.breakout_age)
             max_age = self.engine.freshness_for(p.interval)
             if p.breakout_age > max_age:
                 result.kill_breakdown["freshness"] += 1
@@ -286,6 +291,31 @@ class Scanner:
             passed.append(p)
 
         result.after_scoring = self._limit_per_symbol(passed)
+        # 2026-09-07: 被 6 闸砍的 age 分布（按周期）。freshness 放宽
+        # 后砍数没变时, 用真实年龄分布决定"放宽到几根"才靠谱。
+        _passed_keys = {(p.interval, p.breakout_age) for p in passed}
+        for _iv, _ages in _killed_ages.items():
+            _killed = [a for a in _ages if (_iv, a) not in _passed_keys]
+            if not _killed:
+                continue
+            _sorted = sorted(_killed)
+            _n = len(_sorted)
+            _med = _sorted[_n // 2] if _n % 2 else (
+                _sorted[_n // 2 - 1] + _sorted[_n // 2]) / 2
+            _bk = {"0-5": 0, "6-10": 0, "11-20": 0, "21-30": 0,
+                   "31-50": 0, "51-100": 0, "100+": 0}
+            for _a in _killed:
+                if _a <= 5:    _bk["0-5"] += 1
+                elif _a <= 10: _bk["6-10"] += 1
+                elif _a <= 20: _bk["11-20"] += 1
+                elif _a <= 30: _bk["21-30"] += 1
+                elif _a <= 50: _bk["31-50"] += 1
+                elif _a <= 100: _bk["51-100"] += 1
+                else:          _bk["100+"] += 1
+            logger.info("被6闸砍age分布 %s: n=%d min=%d median=%s max=%d "
+                        "buckets=%s (当前窗口=%d)",
+                        _iv, _n, _sorted[0], _med, _sorted[-1], _bk,
+                        self.engine.freshness_for(_iv))
         logger.info(f"完整过滤后 {len(result.after_scoring)} 个 "
                     f"(新鲜度+R:R≥{self.min_rr}+置信度+量能"
                     f"+趋势同向{'✓' if self.require_trend_alignment else '✗'})")
