@@ -22,7 +22,7 @@ import base64
 import hashlib
 import logging
 from datetime import datetime, timezone, timedelta
-from typing import List, Optional
+from typing import List, Optional, Dict
 
 _SRC_DIR = os.path.dirname(os.path.abspath(__file__))
 if _SRC_DIR not in sys.path:
@@ -316,13 +316,18 @@ class WeComNotifier:
     def push_summary(self, scanned: int, candidates: int,
                      confirmed: int, after_scoring: int,
                      after_dedup: int, signals: int,
-                     duration: float):
+                     duration: float,
+                     kill_breakdown: Optional[Dict[str, int]] = None):
         """推送本次扫描摘要（确认服务存活，0 信号时也发）
 
         2026-09-07 增加过滤漏斗 6 段（candidates → confirmed → after_scoring
         → after_dedup → signals）。当 signals=0 时，漏斗差值能直接定位
         "哪道闸/哪段逻辑砍光了所有信号"——否则只能登 Actions 看日志
         （logs 需要 token，公开仓库也匿名不可读）。
+
+        2026-09-07 增强：kill_breakdown 把 confirmed → after_scoring 这段损失
+        按 6 道闸展开（freshness/strength/rr/volume/geometry/trend）。
+        当 after_scoring=0 时一眼定位"是闸还是去重"。
         """
         signal_note = f"触发信号: `{signals}`"
         if signals == 0:
@@ -333,11 +338,19 @@ class WeComNotifier:
             f"候选:{candidates} 确认:{confirmed} "
             f"过滤后:{after_scoring} 去重后:{after_dedup} 推送:{signals}"
         )
+        # 闸门损失排序，从大到小展示，前两个为主嫌。
+        if kill_breakdown:
+            kills = sorted(kill_breakdown.items(), key=lambda x: -x[1])
+            breakdown_str = "  ".join(f"{k}:{v}" for k, v in kills if v > 0)
+            kill_line = f"> 各闸被砍 ▶ `{breakdown_str or '无'}`"
+        else:
+            kill_line = ""
         content = (
             f"扫描完成\n"
             f"> 时间: `{self.now_str()}`\n"
             f"> 扫描对数: `{scanned}`\n"
             f"> 漏斗 ▶ `{funnel}`\n"
+            f"{kill_line}\n"
             f"> {signal_note}\n"
             f"> 耗时: `{duration:.1f}s`"
         )

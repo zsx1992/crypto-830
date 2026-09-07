@@ -13,6 +13,7 @@ import sys
 import time
 import logging
 from dataclasses import dataclass, field
+from typing import Dict
 from typing import List, Dict, Optional, Tuple
 
 _SRC_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -43,6 +44,9 @@ class ScanResult:
     after_scoring: List[Pattern] = field(default_factory=list)
     after_dedup: List[Pattern] = field(default_factory=list)
     pushed: List[Pattern] = field(default_factory=list)
+    # 2026-09-07: 各过滤闸门被砍计数（6 道闸: fresh/strength/rr/vol/geo/trend）
+    # 用于摘要漏斗把 0 推送时的责任细化到单道闸，避免读 Actions 日志。
+    kill_breakdown: Dict[str, int] = field(default_factory=dict)
     duration_sec: float = 0.0
     errors: List[str] = field(default_factory=list)
     health_stats: Dict[str, int] = field(default_factory=dict)
@@ -236,21 +240,33 @@ class Scanner:
         # 这一步一个都不能漏。曾经只过滤了强度，结果推出去的信号里
         # 有"突破距今 201 根K线"的、也有 R:R 只有 1:0.6 的。
         # 新鲜度、风险回报比、置信度、量能、趋势同向，全部检查。
+        # 2026-09-07 增加各闸 kill 计数，让 0 推送摘要漏斗能定位是哪道闸最严。
+        result.kill_breakdown = {
+            "freshness": 0, "strength": 0, "rr": 0,
+            "volume": 0, "geometry": 0, "trend": 0,
+        }
         passed = []
         for p in scored:
             max_age = self.engine.freshness_for(p.interval)
             if p.breakout_age > max_age:
+                result.kill_breakdown["freshness"] += 1
                 continue
             if p.strength_score < self.min_strength:
+                result.kill_breakdown["strength"] += 1
                 continue
             if p.risk_reward < self.min_rr:
+                result.kill_breakdown["rr"] += 1
                 continue
             if p.volume_ratio < self.min_volume:
+                result.kill_breakdown["volume"] += 1
                 continue
             # 几何质量闸门：画得不像（几何分低）的直接不推。
             # 修正恒满子分后（2026-09-05）该分才有意义，见 __init__ 注释。
+            # 注意：geometry_score 没算出来时（多数量级形态的兜底分支）闸门自动
+            # 放行，不计入 kill——这是 by design，避免把未打分样本误杀。
             if getattr(p, "geometry_score", None) is not None:
                 if p.geometry_score < self.min_geometry:
+                    result.kill_breakdown["geometry"] += 1
                     continue
             # 趋势过滤（实测依据见 config.yaml 注释）
             # 仅当 ADX 显著（趋势存在）时才强制方向对齐；横盘不杀，
@@ -265,6 +281,7 @@ class Scanner:
                         or (p.direction == Direction.SHORT and trend == "down")
                     )
                     if not aligned:
+                        result.kill_breakdown["trend"] += 1
                         continue
             passed.append(p)
 
@@ -343,6 +360,7 @@ class Scanner:
                 after_dedup=len(result.after_dedup),
                 signals=len(result.pushed),
                 duration=result.duration_sec,
+                kill_breakdown=result.kill_breakdown,
             )
 
         return result
