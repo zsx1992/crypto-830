@@ -103,9 +103,12 @@ class StateStore:
     @staticmethod
     def _empty_state() -> dict:
         return {
-            "version": 1,
+            "version": 2,
             "lastScanAt": None,
             "pushedSignals": [],
+            # 2026-09-08: 观察流独立去重空间。观察过的形态不阻塞正式推送
+            # （之后达标仍可正式推），正式推过的也不进观察流（避免重复打扰）。
+            "observedSignals": [],
             "scanStats": {},
         }
 
@@ -123,14 +126,14 @@ class StateStore:
 
     # ---------- 去重 ----------
 
-    def is_in_cooldown(self, p: Pattern) -> bool:
-        """该信号是否应抑制推送（冷却期 + 同形态识别）"""
+    def _suppressed(self, p: Pattern, records: List[dict]) -> bool:
+        """核心检查：p 是否与 records 中某条命中（同形态端差 / 冷却期）"""
         h = signal_hash(p.symbol, p.pattern_type, p.interval)
         now = now_utc()
         # "同一形态"容差 = 同周期 2 根K线时长（毫秒）
         same_ms = INTERVAL_MINUTES.get(p.interval, 60) * 60_000 * 2
 
-        for rec in self.state.get("pushedSignals", []):
+        for rec in records:
             if rec.get("signalHash") != h:
                 continue
             # 方向翻转：结构已破坏 → 允许重推（原设计意图）
@@ -159,11 +162,31 @@ class StateStore:
                 return True
         return False
 
+    def is_in_cooldown(self, p: Pattern) -> bool:
+        """正式推送空间：该信号是否应抑制推送（冷却期 + 同形态识别）"""
+        return self._suppressed(p, self.state.get("pushedSignals", []))
+
+    def is_observed(self, p: Pattern) -> bool:
+        """观察空间：该信号是否已观察推送过（同形态/冷却期）"""
+        return self._suppressed(p, self.state.get("observedSignals", []))
+
     def record(self, p: Pattern):
-        """记录已推送的信号"""
+        """记录已正式推送的信号"""
+        rec = self._make_record(p)
+        self.state.setdefault("pushedSignals", []).append(rec)
+        self._dirty = True
+
+    def record_observe(self, p: Pattern):
+        """记录已观察推送的信号（独立空间，不阻塞正式推送）"""
+        rec = self._make_record(p)
+        self.state.setdefault("observedSignals", []).append(rec)
+        self._dirty = True
+
+    def _make_record(self, p: Pattern) -> dict:
+        """构造一条推送/观察记录（两空间共用字段）"""
         minutes = self.cooldown.get(p.interval, 60)
         now = now_utc()
-        rec = {
+        return {
             "symbol": p.symbol,
             "patternType": p.pattern_type,
             "interval": p.interval,
@@ -175,20 +198,19 @@ class StateStore:
             "signalHash": signal_hash(p.symbol, p.pattern_type, p.interval),
             "endMs": getattr(p, "end_ms", 0) or 0,
         }
-        self.state.setdefault("pushedSignals", []).append(rec)
-        self._dirty = True
 
     def cleanup(self):
-        """清理过期记录，防止 JSON 无限膨胀"""
+        """清理过期记录，防止 JSON 无限膨胀（正式 + 观察两空间）"""
         cutoff = now_utc() - timedelta(days=self.cleanup_days)
-        before = len(self.state.get("pushedSignals", []))
-        self.state["pushedSignals"] = [
-            r for r in self.state.get("pushedSignals", [])
-            if self._parse_dt(r.get("pushedAt")) > cutoff
-        ]
-        removed = before - len(self.state["pushedSignals"])
-        if removed:
-            logger.info(f"清理过期状态记录 {removed} 条")
+        for key in ("pushedSignals", "observedSignals"):
+            before = len(self.state.get(key, []))
+            self.state[key] = [
+                r for r in self.state.get(key, [])
+                if self._parse_dt(r.get("pushedAt")) > cutoff
+            ]
+            removed = before - len(self.state[key])
+            if removed:
+                logger.info(f"清理过期状态记录({key}) {removed} 条")
 
     @staticmethod
     def _parse_dt(s) -> datetime:
@@ -202,10 +224,19 @@ class StateStore:
     # ---------- 过滤入口 ----------
 
     def filter_new(self, patterns: List[Pattern]) -> List[Pattern]:
-        """剔除冷却期内的重复信号"""
+        """剔除正式推送空间冷却期内的重复信号"""
         fresh = []
         for p in patterns:
             if self.is_in_cooldown(p):
+                continue
+            fresh.append(p)
+        return fresh
+
+    def filter_new_observe(self, patterns: List[Pattern]) -> List[Pattern]:
+        """剔除观察空间已推送过的重复信号（独立于正式空间）"""
+        fresh = []
+        for p in patterns:
+            if self.is_observed(p):
                 continue
             fresh.append(p)
         return fresh

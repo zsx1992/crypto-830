@@ -229,6 +229,53 @@ class WeComNotifier:
             },
         }
 
+    def build_observe_markdown(self, p: Pattern, gate: str) -> dict:
+        """构造观察流 markdown（未达正式推送线的边界样本，供人眼验证）
+
+        与正式 build_markdown 的区别：
+          - 头部【观察】标记，明确"非交易信号"
+          - 指出被砍闸门（gate）与各分数，让人眼对照判断画得像不像
+          - 省略交易计划/价位——观察流不是入场建议，重点看形态图
+        """
+        name = PATTERN_NAMES_CN.get(p.pattern_type, p.pattern_type)
+        is_long = p.direction == Direction.LONG
+        icon = "\U0001F4C8" if is_long else "\U0001F4C9"
+        dir_cn = "做多" if is_long else "做空"
+
+        gate_hint = {
+            "strength": f"强度 {p.strength_score} 未达线",
+            "rr": f"盈亏比 1:{p.risk_reward:.2f} < 0.75",
+            "volume": f"量能 {p.volume_ratio:.1f}× < 1.5×",
+            "geometry": f"几何分 {getattr(p, 'geometry_score', None)} < 0.5",
+            "trend": "方向与趋势不符",
+        }.get(gate, f"被 {gate} 闸拦截")
+
+        geo_r = getattr(p, "geometry_reason", None)
+        lines = [
+            f"{icon} **【观察】{p.symbol} {name}**",
+            f"> 未达正式推送线，仅供人眼验证形态质量",
+            f"> 时间: `{self.now_str()}` | 周期: `{p.interval}`",
+            f"> 方向: **{dir_cn}** | 被闸: `{gate}` ({gate_hint})",
+            ">",
+            f"> 突破距今: `{p.breakout_age}` 根 | 强度: "
+            f"`{p.strength_score}` | 量能: `{p.volume_ratio:.1f}×`",
+        ]
+        geo_v = getattr(p, "geometry_score", None)
+        if geo_v is not None:
+            lines.append(f"> 几何分: `{geo_v:.2f}`"
+                         + (f" [{geo_r}]" if geo_r else ""))
+        if p.resonant_with:
+            lines.append("> 多周期共振: "
+                         f"`{', '.join(p.resonant_with)}`")
+        lines.extend([
+            ">",
+            f"> {self.disclaimer}",
+        ])
+        content = "\n".join(lines)
+        if len(content.encode("utf-8")) > 4000:
+            content = content[:1500]
+        return {"msgtype": "markdown", "markdown": {"content": content}}
+
     # ---------- 发送 ----------
 
     def push(self, p: Pattern, image_bytes: Optional[bytes] = None) -> bool:
@@ -278,6 +325,45 @@ class WeComNotifier:
             self.failed_count += 1
         return ok1 and ok2
 
+    def push_observe(self, p: Pattern, image_bytes: Optional[bytes],
+                     gate: str) -> bool:
+        """推送一条观察流信号（markdown + 图片），返回是否成功"""
+        md_payload = self.build_observe_markdown(p, gate)
+
+        if self.dry_run:
+            print("\n" + "=" * 60)
+            print(f"[DRY-RUN] 将观察推送: {p.symbol} {p.interval} "
+                  f"{p.pattern_type} {p.direction.value} (被闸={gate})")
+            print("=" * 60)
+            print(md_payload["markdown"]["content"])
+            if image_bytes:
+                print(f"\n[DRY-RUN] 附带图片: {len(image_bytes) / 1024:.1f} KB")
+            print()
+            self.sent_count += 1
+            return True
+
+        if not self.webhook_url:
+            logger.error("未配置 webhook_url，无法推送")
+            self.failed_count += 1
+            return False
+        if requests is None:
+            logger.error("requests 未安装，无法推送")
+            self.failed_count += 1
+            return False
+
+        self.limiter.acquire()
+        ok1 = self._post(md_payload)
+        ok2 = True
+        if image_bytes:
+            time.sleep(1)
+            self.limiter.acquire()
+            ok2 = self._post(self.build_image(image_bytes))
+        if ok1 and ok2:
+            self.sent_count += 1
+        else:
+            self.failed_count += 1
+        return ok1 and ok2
+
     def _post(self, payload: dict, retry: int = 2) -> bool:
         """实际发送，失败重试"""
         msg_type = payload.get("msgtype", "?")
@@ -317,7 +403,8 @@ class WeComNotifier:
                      confirmed: int, after_scoring: int,
                      after_dedup: int, signals: int,
                      duration: float,
-                     kill_breakdown: Optional[Dict[str, int]] = None):
+                     kill_breakdown: Optional[Dict[str, int]] = None,
+                     observed: int = 0):
         """推送本次扫描摘要（确认服务存活，0 信号时也发）
 
         2026-09-07 增加过滤漏斗 6 段（candidates → confirmed → after_scoring
@@ -328,6 +415,9 @@ class WeComNotifier:
         2026-09-07 增强：kill_breakdown 把 confirmed → after_scoring 这段损失
         按 6 道闸展开（freshness/strength/rr/volume/geometry/trend）。
         当 after_scoring=0 时一眼定位"是闸还是去重"。
+
+        2026-09-08 增强：observed=观察流推送数（穿过 freshness 但被后续闸
+        砍的边界样本，单独推送供人眼验证攒金标准样本）。
         """
         signal_note = f"触发信号: `{signals}`"
         if signals == 0:
@@ -345,13 +435,14 @@ class WeComNotifier:
             kill_line = f"> 各闸被砍 ▶ `{breakdown_str or '无'}`"
         else:
             kill_line = ""
+        observe_note = f" | 观察:{observed}" if observed else ""
         content = (
             f"扫描完成\n"
             f"> 时间: `{self.now_str()}`\n"
             f"> 扫描对数: `{scanned}`\n"
             f"> 漏斗 ▶ `{funnel}`\n"
             f"{kill_line}\n"
-            f"> {signal_note}\n"
+            f"> {signal_note}{observe_note}\n"
             f"> 耗时: `{duration:.1f}s`"
         )
         if self.dry_run:

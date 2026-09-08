@@ -44,6 +44,9 @@ class ScanResult:
     after_scoring: List[Pattern] = field(default_factory=list)
     after_dedup: List[Pattern] = field(default_factory=list)
     pushed: List[Pattern] = field(default_factory=list)
+    # 2026-09-08: 观察流推送的信号（穿过 freshness 但被后续闸砍的边界样本，
+    # 供人眼验证攒金标准样本；与正式 pushed 隔离）。
+    observed: List[Pattern] = field(default_factory=list)
     # 2026-09-07: 各过滤闸门被砍计数（6 道闸: fresh/strength/rr/vol/geo/trend）
     # 用于摘要漏斗把 0 推送时的责任细化到单道闸，避免读 Actions 日志。
     kill_breakdown: Dict[str, int] = field(default_factory=dict)
@@ -114,6 +117,14 @@ class Scanner:
         self.require_trend_alignment = filt.get("require_trend_alignment", True)
         # 趋势对齐的 ADX 门槛：低于此值视为横盘，不强制方向对齐
         self.adx_threshold = filt.get("trend_adx_threshold", 20)
+
+        # 观察流配置（2026-09-08）：穿过 freshness 但被后续闸砍的新鲜信号
+        # 单独推送供人眼验证/攒金标准样本。正式推送线不受影响。
+        obs = filt.get("observe", {})
+        self.observe_enabled = obs.get("enabled", False)
+        self.observe_max = obs.get("max_per_run", 5)
+        self.observe_min_strength = obs.get("min_strength", 45)
+        self.observe_min_geometry = obs.get("min_geometry", 0.30)
 
         # 是否每次运行后都发一条"扫描摘要"（确认服务存活 + 无信号时有反馈）
         self.send_summary = notif.get("send_summary", True)
@@ -400,6 +411,27 @@ class Scanner:
                         _p.breakout_age, _p.strength_score, _p.risk_reward,
                         _p.volume_ratio, getattr(_p, "geometry_score", None),
                         f" [{_geo_r}]" if _geo_r else "")
+
+        # ---- 4.5 观察流候选收集 (2026-09-08) ----
+        # 穿过 freshness 但被后续闸砍的新鲜信号 = "差一口气"的边界样本。
+        # 0 推送连续 10+ 轮 → 金标准样本停滞; 观察流单独推送供人眼验证。
+        # 结构下限: 太歪的(strength/geo 过低)不打扰, 聚焦接近推送线的边界案例。
+        # 注: 观察候选元素 (pattern, gate)，后续推送要带 gate 说明死因。
+        observe_candidates: List[Tuple[Pattern, str]] = []
+        if self.observe_enabled:
+            for _p, _gate in _killed_detail:
+                if _gate == "freshness":
+                    continue          # 只收新鲜突破，老突破无时效价值
+                if _p.strength_score < self.observe_min_strength:
+                    continue
+                _g = getattr(_p, "geometry_score", None)
+                if _g is not None and _g < self.observe_min_geometry:
+                    continue
+                observe_candidates.append((_p, _gate))
+            logger.info(f"观察流候选 {len(observe_candidates)} 个 "
+                        f"(穿freshness被后续闸砍, strength≥"
+                        f"{self.observe_min_strength}, geo≥"
+                        f"{self.observe_min_geometry})")
         logger.info(f"完整过滤后 {len(result.after_scoring)} 个 "
                     f"(新鲜度+R:R≥{self.min_rr}+置信度+量能"
                     f"+趋势同向{'✓' if self.require_trend_alignment else '✗'})")
@@ -453,6 +485,53 @@ class Scanner:
                 self.state.record(p)
                 result.pushed.append(p)
 
+        # ---- 7.5 观察流推送 (2026-09-08) ----
+        # 穿过 freshness 但被后续闸砍的边界样本，独立去重空间推送，
+        # 供人眼验证/攒金标准样本。观察过的不阻塞之后正式推送，
+        # 正式推过的也不进观察流（去重空间隔离，见 state_store）。
+        if self.observe_enabled and observe_candidates:
+            # 观察流自己也要限量 + 同形态去重（否则每轮刷屏同一批）
+            observe_candidates.sort(
+                key=lambda x: -x[0].strength_score)
+            to_observe = observe_candidates[:self.observe_max]
+            fresh_obs = self.state.filter_new_observe(
+                [p for p, _ in to_observe])
+            if len(fresh_obs) < len(to_observe):
+                logger.info(f"观察流去重拦下 "
+                            f"{len(to_observe) - len(fresh_obs)} 个")
+            for p in fresh_obs:
+                gate = next((g for cp, g in observe_candidates
+                             if cp is p), "?")
+                image = None
+                klines = klines_cache.get((p.symbol, p.interval))
+                if klines:
+                    try:
+                        chart_cfg = self.config.get(
+                            "notification", {}).get("chart", {})
+                        image = render_pattern_chart(
+                            klines, p,
+                            candles=chart_cfg.get("candles_displayed", 120),
+                            width_px=chart_cfg.get("width", 900),
+                            dpi=chart_cfg.get("dpi", 120),
+                        )
+                        if image:
+                            path = os.path.join(
+                                self.charts_dir,
+                                f"OBS_{p.symbol}_{p.interval}_"
+                                f"{p.pattern_type}.png")
+                            with open(path, "wb") as f:
+                                f.write(image)
+                    except Exception as e:
+                        logger.error(f"观察图表渲染失败 {p.symbol} "
+                                     f"{p.interval}: {e}")
+                ok = self.notifier.push_observe(p, image, gate)
+                if ok:
+                    self.state.record_observe(p)
+                    result.observed.append(p)
+                    logger.info(f"观察推送 {p.symbol} {p.interval} "
+                                f"{p.pattern_type} (gate={gate})")
+            logger.info(f"观察流推送 {len(result.observed)} 张")
+
         # ---- 8. 保存状态 ----
         result.duration_sec = time.time() - t0
         self.state.update_stats({
@@ -463,6 +542,7 @@ class Scanner:
             "after_scoring": len(result.after_scoring),
             "after_dedup": len(result.after_dedup),
             "pushed": len(result.pushed),
+            "observed": len(result.observed),
             "duration_seconds": round(result.duration_sec, 1),
             "source_stats": result.source_stats,
             "health_stats": result.health_stats,
@@ -484,6 +564,7 @@ class Scanner:
                 signals=len(result.pushed),
                 duration=result.duration_sec,
                 kill_breakdown=result.kill_breakdown,
+                observed=len(result.observed),
             )
 
         return result
