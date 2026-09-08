@@ -435,9 +435,22 @@ class OkxClient:
 
     def _sorted_usdt_swaps(self,
                            min_volume_usdt: float) -> List[Tuple[str, float]]:
-        """拉全市场 SWAP ticker，返回按 24h 成交额降序的 [(instId, vol)]。
+        """拉全市场 SWAP ticker，返回按 24h 成交额降序的 [(instId, volUsdt)]。
 
-        OKX tickers 返回 volCcy24h（报价币成交额，对 USDT-SWAP 即 USDT）。
+        【2026-09-08 严重 bug 修复】原实现把 volCcy24h 当成 USDT 成交额，
+        实际上对 U 本位合约 volCcy24h 的单位是【币数量(base currency)】，
+        不是 USDT。实测（2026-09-08）：
+            SATS-USDT-SWAP  volCcy24h = 61,357,400,000,000  ← 排第 1
+            SHIB-USDT-SWAP  volCcy24h =  2,253,887,100,000  ← 排第 3
+            BTC-USDT-SWAP   volCcy24h =             50,046  ← 排到几百名外
+        后果：按"成交额"选出的 top300 全是 SATS/SHIB/PEPE 这类超低价 meme 币
+        （真实成交额仅 0.01~0.12 亿美元），BTC/ETH/SOL 主力币被排挤出池子。
+        这直接解释了"连推几天没有一条像样的形态"——扫的全是流动性极差、
+        K线全是插针噪声的小币。
+
+        正确口径：USDT 成交额 = 币数量(volCcy24h) × 最新价(last)。
+        复核：BTC 50046.51 × 78364.9 ≈ 39.2 亿美元 ✓ 与行情站一致。
+
         注意：在 GitHub Actions（美国 IP）上，若 OKX 也做地理屏蔽，
         这里会返回空/异常，由 MarketDataClient 的兜底逻辑处理。
         """
@@ -452,14 +465,20 @@ class OkxClient:
             if not inst.endswith("-USDT-SWAP"):
                 continue
             try:
-                vol_quote = float(t.get("volCcy24h", 0))
+                vol_ccy = float(t.get("volCcy24h", 0))   # 币数量
+                last = float(t.get("last", 0))           # USDT 价格
             except (TypeError, ValueError):
-                vol_quote = 0.0
-            if vol_quote < min_volume_usdt:
                 continue
-            candidates.append((inst, vol_quote))
+            vol_usdt = vol_ccy * last                    # 真实 USDT 成交额
+            if vol_usdt < min_volume_usdt:
+                continue
+            candidates.append((inst, vol_usdt))
 
         candidates.sort(key=lambda x: x[1], reverse=True)
+        if candidates:
+            top = ", ".join(f"{i.replace('-USDT-SWAP','')}"
+                            f"{v/1e8:.1f}亿" for i, v in candidates[:8])
+            logger.info(f"[OKX] 成交额Top8: {top}")
         return candidates
 
     def get_top_symbols(self, top_n: int = 300,
