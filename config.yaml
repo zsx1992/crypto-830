@@ -104,12 +104,22 @@ patterns:
   # --- 价格容差 ---
   tolerance:
     peak_price: 0.08              # 头肩 两肩价差容差
-    double_top_bottom_price: 0.03 # 双顶/双底 两峰/两谷价差容差
+    double_top_bottom_price: 0.03 # [近距基准] 双顶/双底 两峰/两谷价差容差
     # 2026-09-01: 0.05(原更宽收严到5%), 标注 4 张双底 2 张两谷差 12%/7% 全误报。
     # 2026-09-07: 0.05→0.03 (A+B 组合)。SOPHUSDT 4h age=1 双底 geo=0.001 根因:
     #   确认容差 5% 与几何价对分归零容差 5%(base.py 写死)重合——价差 4.99% 的形态
     #   "确认时算双底、打分时算完全不像"。收严确认到 3%, 让 4~5% 略歪形态不进管线,
     #   与几何归零线(放宽到 10%)分层, 确认线内打分才有梯度。
+    # 2026-09-08 (C方案 边界灵活): 上述 3% 只适用于近距小形态。大 W 底两谷价差
+    #   天然大 (PIEVERSE 真实谷差 7.2% / ENAUSDT 7.4% = higher-low 结构非噪声),
+    #   固定 3% 会把大形态全拒。容差改为随跨度缩放:
+    #     span <= double_top_tol_span_lo(50根)  → double_top_tol_min (3% 严)
+    #     span >= double_top_tol_span_hi(200根) → double_top_tol_max (5% 宽)
+    #     中间线性过渡。cap 5%: 7%+ 谷差仍判为 higher-low 趋势而非标准双底。
+    double_top_tol_min: 0.03      # 近距小形态容差 (与 double_top_bottom_price 同值)
+    double_top_tol_max: 0.05      # 大跨度形态容差上限 (cap)
+    double_top_tol_span_lo: 50    # 跨度 <= 此根数用 tol_min
+    double_top_tol_span_hi: 200   # 跨度 >= 此根数用 tol_max
     shoulder_ratio: 0.03          # 双顶/双底 中间谷/峰最小深度（原0.05）
     neck_slope_max: 0.08          # 头肩 两谷/两峰高度差（原0.03）
     head_prominence: 0.01         # 头肩 头部突出度下限（原0.02）

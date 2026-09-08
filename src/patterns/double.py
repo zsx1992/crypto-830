@@ -46,7 +46,19 @@ class DoubleTopBottomDetector(BaseDetector):
     name = "double_top_bottom"
 
     DEFAULT_PARAMS = {
-        "peak_tolerance": 0.03,        # 两峰/两谷价差容差
+        "peak_tolerance": 0.03,        # [兼容] 两峰/两谷价差容差 (基准值)
+        # 【2026-09-08 C方案: 边界灵活】peak_tolerance 随形态跨度缩放:
+        #   span <= tol_span_lo(50)   → peak_tolerance_min (3%)  严值
+        #   span >= tol_span_hi(200)  → peak_tolerance_max (5%)  宽值
+        #   中间线性插值。动机: 大 W 底两谷价差天然大 (PIEVERSE 真实
+        #   谷差 7.2% = higher-low 结构非噪声), 固定 3% 把它们全拒;
+        #   但近距小形态 4~5% 价差是 9-07 误报重灾区 (A+B 收严成果),
+        #   不能整体放宽。故按跨度分层: 短形态严、长形态宽。
+        #   None = 未启用缩放: 全程用 peak_tolerance (旧接口/旧测试行为)。
+        "peak_tolerance_min": None,
+        "peak_tolerance_max": None,
+        "tol_span_lo": 50,
+        "tol_span_hi": 200,
         "min_depth": 0.05,             # 中间谷/峰的最小深度
         "min_span": 10,                # 两峰最小间距（根）
         "max_span": 120,               # 两峰最大间距（根）
@@ -109,6 +121,34 @@ class DoubleTopBottomDetector(BaseDetector):
 
     # ---------- 双顶 ----------
 
+    def _tolerance_for_span(self, span_bars: int) -> float:
+        """两峰/两谷价差容差随形态跨度缩放 (2026-09-08 C方案: 边界灵活)。
+
+        近距小形态 (span 小) 容差严 —— 保留 9-07 A+B 防误报成果:
+            (5% 容差时 4~5% 价差的速成双底灌进管线全误报, 收严 3%)
+        大跨度形态 (span 大) 容差宽 —— 大 W 两谷天然有差价:
+            (PIEVERSE 0.918/0.990 差 7.2% 是 higher-low 结构而非噪声)
+        50~200 根之间线性过渡。
+        兼容: 调用方只传 peak_tolerance (旧接口) 时, 它作为 tol_min 兜底。
+        """
+        p = self.params
+        tol_min = p.get("peak_tolerance_min")
+        if tol_min is None:
+            tol_min = p.get("peak_tolerance", 0.03)
+        tol_max = p.get("peak_tolerance_max")
+        if tol_max is None:
+            tol_max = tol_min
+        span_lo = p.get("tol_span_lo", 50)
+        span_hi = p.get("tol_span_hi", 200)
+        if span_hi <= span_lo:
+            return tol_max
+        if span_bars <= span_lo:
+            return tol_min
+        if span_bars >= span_hi:
+            return tol_max
+        frac = (span_bars - span_lo) / (span_hi - span_lo)
+        return tol_min + (tol_max - tol_min) * frac
+
     def _check_double_top(self, h1: Pivot, l1: Pivot, h2: Pivot,
                           klines: List[Kline], atr_value: float,
                           symbol: str, interval: str) -> "Pattern | None":
@@ -116,7 +156,8 @@ class DoubleTopBottomDetector(BaseDetector):
 
         # ① 两峰高度接近（用 max 做分母，避免左右顺序导致容差偏移）
         peak_diff = abs(h1.price - h2.price) / max(h1.price, h2.price)
-        if peak_diff > p["peak_tolerance"]:
+        tol = self._tolerance_for_span(h2.index - h1.index)
+        if peak_diff > tol:
             return None
 
         # ①b 前置趋势：双顶是反转形态，前面必须有一段显著上涨。
@@ -157,7 +198,7 @@ class DoubleTopBottomDetector(BaseDetector):
             neckline=horizontal_line(neck_price, l1.index,
                                      span=max(10, span), ptype=PivotType.LOW),
             height=height,
-            confidence=self._confidence(peak_diff, depth, span),
+            confidence=self._confidence(peak_diff, depth, span, tol),
         )
 
         # ⑥ 突破确认
@@ -223,7 +264,8 @@ class DoubleTopBottomDetector(BaseDetector):
 
         # ① 两谷高度接近（用 max 做分母，避免左右顺序导致容差偏移）
         trough_diff = abs(l1.price - l2.price) / max(l1.price, l2.price)
-        if trough_diff > p["peak_tolerance"]:
+        tol = self._tolerance_for_span(l2.index - l1.index)
+        if trough_diff > tol:
             return None
 
         # ①b 前置趋势：双底是反转形态，前面必须有一段显著下跌。
@@ -263,7 +305,7 @@ class DoubleTopBottomDetector(BaseDetector):
             neckline=horizontal_line(neck_price, h1.index,
                                      span=max(10, span), ptype=PivotType.HIGH),
             height=height,
-            confidence=self._confidence(trough_diff, peak_height, span),
+            confidence=self._confidence(trough_diff, peak_height, span, tol),
         )
 
         def boundary_fn(idx):
@@ -315,17 +357,18 @@ class DoubleTopBottomDetector(BaseDetector):
     # ---------- 置信度 ----------
 
     @staticmethod
-    def _confidence(price_diff: float, depth: float, span: int) -> float:
+    def _confidence(price_diff: float, depth: float, span: int,
+                    tol: float = 0.03) -> float:
         """
         几何完整度评分 0~1（只评价"长得像不像"，不含量能/共振）
 
         三项各占一部分：
-          价差越小越像   —— 0% 得满分，超过容差(3%)得 0
+          价差越小越像   —— 0% 得满分，超过容差(tol)得 0
           深度越深越像   —— 15% 以上得满分，5% 得 0.5
           间距适中       —— 20~60 根最理想
         """
-        # 价差项（0.4 权重）
-        diff_score = max(0.0, 1.0 - price_diff / 0.03)
+        # 价差项（0.4 权重）：按实际容差归一（大跨度形态容差宽）
+        diff_score = max(0.0, 1.0 - price_diff / max(tol, 1e-9))
         # 深度项（0.35 权重）
         depth_score = min(1.0, depth / 0.15)
         # 间距项（0.25 权重）：20~60 根最佳

@@ -93,8 +93,16 @@ class PatternEngine:
         self.detectors = [
             DoubleTopBottomDetector({
                 **common,
-                "peak_tolerance": tol.get("double_top_bottom_price",
-                                          tol.get("peak_price", 0.05)),
+                # 2026-09-08 C方案: 容差随跨度缩放。近距(<=span_lo)用 tol_min
+                # (旧 double_top_bottom_price 3% 值), 大跨度(>=span_hi)放宽到
+                # tol_max 5%。旧接口只传 peak_tolerance 时兜底为 tol_min。
+                "peak_tolerance": tol.get("double_top_bottom_price", 0.03),
+                "peak_tolerance_min": tol.get(
+                    "double_top_tol_min",
+                    tol.get("double_top_bottom_price", 0.03)),
+                "peak_tolerance_max": tol.get("double_top_tol_max", 0.05),
+                "tol_span_lo": tol.get("double_top_tol_span_lo", 50),
+                "tol_span_hi": tol.get("double_top_tol_span_hi", 200),
                 "min_depth": tol.get("shoulder_ratio", 0.03),
                 "min_span": span.get("double_top_min", 8),
                 "max_span": span.get("double_top_max", 150),
