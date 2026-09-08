@@ -148,7 +148,8 @@ class FlagDetector(BaseDetector):
         idx = find_breakout_index(klines, body_end, boundary_fn,
                                   pole_dir, p["max_lookahead"])
         if idx < 0:
-            return pattern
+            results.append(pattern)
+            return results
 
         ok, confirmed, magnitude = check_breakout(
             klines, idx, boundary_fn(idx), pole_dir, atr_value,
@@ -163,13 +164,16 @@ class FlagDetector(BaseDetector):
         pattern.volume_ratio = calc_volume_ratio(klines, idx)
 
         if pattern.volume_ratio < p["volume_ratio_min"]:
-            return pattern
+            results.append(pattern)
+            return results
         if not ok:
-            return pattern
+            results.append(pattern)
+            return results
 
         pattern.status = PatternStatus.CONFIRMED
         calc_trade_levels(pattern, klines, atr_value)
-        return pattern
+        results.append(pattern)
+        return results
 
     @staticmethod
     def _find_flagpole(klines: List[Kline], p: dict):

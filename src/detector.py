@@ -127,7 +127,15 @@ class PatternEngine:
             FlagDetector({
                 **common,
                 "pole_min_move": span.get("flag_pole_min_move", 0.03),
-                "pole_max_bars": span.get("flag_pole_min_bars", 3),
+                # 2026-09-08 修复: 原写 span.get("flag_pole_min_bars", 3) ——
+                # 把 config 的"旗杆最少K线数"当成"旗杆最多K线数"传入, 等于要求
+                # 旗杆必须 3 根内涨完; 真实旗杆(BTC 4h 08-19 那根用了 9 根)全被拒。
+                "pole_max_bars": span.get("flag_pole_max_bars", 15),
+                # 2026-09-08 修复: flag_body_min/max 在 config 里有值却从未传入,
+                # 一直用 DEFAULT 的 5/25 —— 25 根在 1h 上仅 1 天, 教科书旗形
+                # (1~3 天整理) 根本装不下, 是 1h/4h 旗形全线漏检的主因。
+                "flag_body_min": span.get("flag_body_min", 5),
+                "flag_body_max": span.get("flag_body_max", 60),
             }),
             WedgeDetector({
                 **common,
