@@ -717,13 +717,25 @@ def find_breakout_index(klines: List[Kline],
                         start_index: int,
                         boundary_fn,
                         direction: Direction,
-                        max_lookahead: int = 30) -> int:
+                        max_lookahead: Optional[int] = None) -> int:
     """
     从 start_index 往后找第一根突破边界的 K 线。
 
     boundary_fn: 接受 K 线索引，返回该位置的边界价格（支持斜线）
+
+    max_lookahead:
+      - None = 搜索到数据末端（用于"大形态慢突破"——右谷/右肩完成后
+        数天甚至数周才突破的大 W 底/大 H&S。旧值 30 根 @1h 只够 30 小时，
+        ENAUSDT 1h 大 W 底 2026-09-08 实测：右谷后 ~190 根才破颈线 0.190，
+        被 30 根窗口挡死永远 CANDIDATE。放宽后由 downstream 的
+        freshness / require_intact_breakout / pullback_bars 兜底，
+        不会把陈年假突破漏进推送线。）
+      - 数值 = 最多往后看多少根（老检测器行为，三角/旗形等中继形态保留）
     """
-    end = min(start_index + max_lookahead, len(klines))
+    if max_lookahead is None:
+        end = len(klines)
+    else:
+        end = min(start_index + max_lookahead, len(klines))
     for i in range(start_index, end):
         boundary = boundary_fn(i)
         close = klines[i].close

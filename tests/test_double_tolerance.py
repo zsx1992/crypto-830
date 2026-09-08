@@ -57,6 +57,10 @@ class TestDoubleTolerance(unittest.TestCase):
             "volume_ratio_min": 1.5,
             "max_lookahead": 30,
             "min_height_atr": 1.0,
+            # 本测试聚焦容差边界，不测前置趋势闸（9-03 引入）。
+            # 若开着 require_prior_trend，模拟数据（无下跌前置段）会在
+            # 价差检查前就被拦成 None，容差断言全部失真。
+            "require_prior_trend": False,
         })
 
     def _make_pivots(self, low1_price, h_price, low2_price):

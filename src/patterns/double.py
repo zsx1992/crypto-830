@@ -53,7 +53,12 @@ class DoubleTopBottomDetector(BaseDetector):
         "breakout_candles": 2,         # 连续确认根数
         "breakout_atr_ratio": 0.5,     # 突破幅度 / ATR
         "volume_ratio_min": 1.5,       # 量能确认
-        "max_lookahead": 30,           # 从右峰开始最多往后看多少根找突破
+        # 突破等待窗口。None = 从右谷/右峰搜索到数据末端。
+        # 【2026-09-08 朱哥金标准反馈】旧值 30 根只够 30 小时@1h，大 W 底
+        # (右谷后 ~100-200 根才破颈线, 如 ENAUSDT 右谷 08-31 破颈 09-08)
+        # 永远确认不了 → CANDIDATE 静默丢弃。放宽后由 freshness +
+        # require_intact_breakout + pullback_bars 兜底过滤陈年/假突破。
+        "max_lookahead": None,
         "min_height_atr": 1.0,         # 形态高度至少 1×ATR，否则无交易价值
         "pullback_bars": 0,            # 突破后回踩确认窗口（0=关闭，2026-09-01 新增）
         # 反转形态结构性闸门：形态前必须有显著趋势（2026-09-03 新增）

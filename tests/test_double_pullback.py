@@ -84,6 +84,8 @@ class TestDoublePullback(unittest.TestCase):
     def setUp(self):
         self.atr = 1.0
         # 关键参数：pullback_bars=3 开启回踩确认
+        # require_prior_trend=False：本测试聚焦回踩确认语义，模拟数据
+        # 无前置下跌段（9-03 引入 trend 闸后会把形态拦成 None 导致全挂）。
         self.detector = DoubleTopBottomDetector({
             "peak_tolerance": 0.05,
             "min_depth": 0.03,
@@ -95,6 +97,7 @@ class TestDoublePullback(unittest.TestCase):
             "max_lookahead": 30,
             "min_height_atr": 1.0,
             "pullback_bars": 3,
+            "require_prior_trend": False,
         })
         self.pivots = [
             Pivot(index=5, price=100.0, type=PivotType.LOW, timestamp=0),
@@ -145,6 +148,7 @@ class TestDoublePullback(unittest.TestCase):
             "breakout_candles": 2, "breakout_atr_ratio": 0.5,
             "volume_ratio_min": 0.0, "max_lookahead": 30,
             "min_height_atr": 1.0, "pullback_bars": 0,
+            "require_prior_trend": False,
         })
         # 即使有回踩，因关闭了，状态应仍是 CONFIRMED
         klines = build_long_scenario(pullback_at=18, pullback_bars=3, total=30)

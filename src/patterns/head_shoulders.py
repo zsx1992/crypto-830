@@ -56,7 +56,11 @@ class HeadShouldersDetector(BaseDetector):
         "breakout_candles": 2,
         "breakout_atr_ratio": 0.5,
         "volume_ratio_min": 1.5,
-        "max_lookahead": 30,            # 右肩之后最多看多少根找突破
+        # 突破等待窗口。None = 从右肩搜索到数据末端。
+        # 【2026-09-08 与 double 同步放宽】大 H&S 右肩完成后数天乃至数周才
+        # 破颈线（旧值 30 根 @1h 只够 30 小时），放宽后由 freshness +
+        # require_intact_breakout 兜底，不会把陈年假突破漏进推送线。
+        "max_lookahead": None,
         "min_height_atr": 1.0,
         # 反转形态结构性闸门：形态前必须有显著趋势（2026-09-03 共享给头肩顶）
         # 实测：158 张人工标注的漏网误报里 ENA 头肩顶 / CRV 头肩底 全是
