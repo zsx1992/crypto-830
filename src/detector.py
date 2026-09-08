@@ -26,7 +26,7 @@ from indicators import calc_indicators
 from patterns import (
     Pattern, Direction, PatternStatus,
     DoubleTopBottomDetector, HeadShouldersDetector,
-    TriangleDetector, FlagDetector, WedgeDetector,
+    TriangleDetector, FlagDetector, WedgeDetector, BoxDetector,
     set_trade_level_params,
 )
 
@@ -45,6 +45,11 @@ PATTERN_NAMES = {
     "flag": "旗形",
     "rising_wedge": "上升楔形",
     "falling_wedge": "下降楔形",
+    # B 阶段补充 (2026-09-08): 箱体/通道 —— 此前三角(要收敛)/楔形(要收敛+5触点)
+    # 都不收的空白区。水平箱体和斜平行通道是市场里最常见的震荡/趋势结构。
+    "rectangle": "箱体",
+    "ascending_channel": "上升通道",
+    "descending_channel": "下降通道",
 }
 
 
@@ -144,6 +149,19 @@ class PatternEngine:
                 "min_span": span.get("wedge_min_span", 15),
                 "max_span": span.get("wedge_max_span", 150),
                 "min_height_atr": span.get("wedge_min_height_atr", 2.0),
+            }),
+            # B 阶段补充 (2026-09-08): 箱体/通道检测器。
+            # 填补空白: 三角形要求收敛、楔形要求收敛+5触点, 水平箱体与
+            # 斜平行通道此前没有任何检测器认领。
+            BoxDetector({
+                **common,
+                "touch_tolerance": tol.get("touch_penetration", 0.02),
+                "min_touches": span.get("rectangle_min_touches", 2),
+                "min_span": span.get("rectangle_min_span", 30),
+                "max_span": span.get("rectangle_max_span", 200),
+                "min_height_atr": span.get("rectangle_min_height_atr", 3.0),
+                "flat_threshold": span.get("box_flat_threshold", 0.0004),
+                "max_slope_diff": span.get("box_max_slope_diff", 0.0008),
             }),
         ]
 

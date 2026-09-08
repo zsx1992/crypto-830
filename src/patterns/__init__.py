@@ -28,6 +28,7 @@ from .double import DoubleTopBottomDetector
 from .head_shoulders import HeadShouldersDetector
 from .triangle import TriangleDetector
 from .flag_wedge import FlagDetector, WedgeDetector
+from .box import BoxDetector
 
 __all__ = [
     "Pattern", "Line", "Direction", "PatternStatus", "BaseDetector",
@@ -36,5 +37,5 @@ __all__ = [
     "check_breakout", "find_breakout_index", "calc_volume_ratio",
     "calc_trade_levels", "set_trade_level_params",
     "DoubleTopBottomDetector", "HeadShouldersDetector",
-    "TriangleDetector", "FlagDetector", "WedgeDetector",
+    "TriangleDetector", "FlagDetector", "WedgeDetector", "BoxDetector",
 ]

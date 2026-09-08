@@ -173,6 +173,15 @@ patterns:
     wedge_min_height_atr: 2.0      # 楔形最小高度ATR倍数
     rectangle_min_height_atr: 3.0   # 箱体最小高度(ATR倍数)
 
+    # --- 箱体/通道 (2026-09-08 B阶段补充, BoxDetector) ---
+    # 填补空白: 三角形要求收敛、楔形要求收敛+5触点, 水平箱体与斜平行
+    # 通道此前没有任何检测器认领。rectangle_min_height_atr 上面已有。
+    rectangle_min_touches: 2       # 每条边界最少触点 (合计>=4)
+    rectangle_min_span: 30         # 箱体最小跨度 (与 wedge_min_span 同数量级)
+    rectangle_max_span: 200        # 箱体最大跨度
+    box_flat_threshold: 0.0004     # 箱体判定: 边界 |rel_slope| <= 此值 (每根K线相对变化0.04%)
+    box_max_slope_diff: 0.0008     # 平行判定: |上斜率-下斜率| <= 此值
+
   # --- 突破确认 ---
   confirmation:
     breakout_candles: 2            # 连续几根收盘在边界外才算确认
