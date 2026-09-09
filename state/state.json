@@ -1,40 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-09T17:49:38.084545+00:00",
+  "lastScanAt": "2026-09-09T18:53:36.727802+00:00",
   "pushedSignals": [
-    {
-      "symbol": "LABUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 80,
-      "detectedAt": "2026-09-02T17:51:03.219053+00:00",
-      "pushedAt": "2026-09-02T17:51:03.219053+00:00",
-      "cooldownUntil": "2026-09-02T19:51:03.219053+00:00",
-      "signalHash": "a7bb670c0ebd3089"
-    },
-    {
-      "symbol": "ARBUSDT",
-      "patternType": "double_bottom",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 75,
-      "detectedAt": "2026-09-02T17:51:09.279626+00:00",
-      "pushedAt": "2026-09-02T17:51:09.279626+00:00",
-      "cooldownUntil": "2026-09-02T18:21:09.279626+00:00",
-      "signalHash": "6cc7ebfff39b1bc5"
-    },
-    {
-      "symbol": "ENJUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 74,
-      "detectedAt": "2026-09-02T17:51:15.631701+00:00",
-      "pushedAt": "2026-09-02T17:51:15.631701+00:00",
-      "cooldownUntil": "2026-09-02T18:21:15.631701+00:00",
-      "signalHash": "e8e6878e2c4625e6"
-    },
     {
       "symbol": "ARBUSDT",
       "patternType": "double_bottom",
@@ -3133,21 +3100,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 723,
+    "scanned_pairs": 721,
     "failed_pairs": 17,
-    "candidates": 344,
-    "confirmed": 52,
+    "candidates": 347,
+    "confirmed": 53,
     "after_scoring": 13,
-    "after_dedup": 2,
-    "pushed": 2,
-    "observed": 1,
-    "duration_seconds": 515.9,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 530.0,
     "source_stats": {
-      "okx": 723
+      "okx": 721
     },
     "health_stats": {
-      "healthy": 668,
-      "sensitive": 55
+      "healthy": 662,
+      "sensitive": 59
     }
   },
   "observedSignals": [
