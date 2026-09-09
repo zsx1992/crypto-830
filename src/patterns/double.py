@@ -62,6 +62,17 @@ class DoubleTopBottomDetector(BaseDetector):
         "min_depth": 0.05,             # 中间谷/峰的最小深度
         "min_span": 10,                # 两峰最小间距（根）
         "max_span": 120,               # 两峰最大间距（根）
+        # 方向性硬闸 (2026-09-09, 用户金标准 CBRS 1h / RAY 1d / BNB):
+        #   peak_overshoot_max    — 双顶右峰最多比左峰高 2% (higher-high=趋势延续)
+        #   trough_undershoot_max — 双底右谷最多比左谷低 3% (lower-low=下跌延续)
+        # 注意: 这是"谁高谁低"的方向约束, 与 peak_tolerance(|差|≤tol) 正交——
+        # CBRS 右顶高 2.54% 在 3% 容差内通过价差检查, 但方向上是 higher-high。
+        # 两阈值不对称的依据 (真实金标准):
+        #   RAY 1d 双底右谷低 1.95% 是线上已推的真信号 (突破量48x) → 必须放行;
+        #   BNB 右谷低 5.7% 用户判"非教科书W底" → 必须拒绝。
+        #   双底右侧最后一跌挖坑(1~3%)常见, 双顶右侧更高(>2%)罕见且危险。
+        "peak_overshoot_max": 0.02,
+        "trough_undershoot_max": 0.03,
         "breakout_candles": 2,         # 连续确认根数
         "breakout_atr_ratio": 0.5,     # 突破幅度 / ATR
         "volume_ratio_min": 1.5,       # 量能确认
@@ -158,6 +169,17 @@ class DoubleTopBottomDetector(BaseDetector):
         peak_diff = abs(h1.price - h2.price) / max(h1.price, h2.price)
         tol = self._tolerance_for_span(h2.index - h1.index)
         if peak_diff > tol:
+            return None
+
+        # ①a 方向性硬闸：右峰不得显著高于左峰 (2026-09-09 用户金标准 CBRS 1h)
+        # 双顶的本质是"两次冲击同一压力位失败"。若右峰明显更高 (higher-high),
+        # 说明多方仍在推动 → 是趋势延续不是反转双顶。
+        # CBRSUSDT 1h 实测: 左顶216.65 / 右顶222.16 (右高2.54%) 被判双顶推送,
+        # 用户评"明显不是双顶, 什么也不是"——右峰冲高后单根长上影大阴线回落,
+        # 实际是趋势末端的插针而非 M 顶。
+        # 教科书允许右峰略高于左峰 (常见 ≤1~2%), 超限即拒。
+        peak_overshoot = p.get("peak_overshoot_max", 0.02)
+        if h2.price > h1.price * (1 + peak_overshoot):
             return None
 
         # ①b 前置趋势：双顶是反转形态，前面必须有一段显著上涨。
@@ -266,6 +288,14 @@ class DoubleTopBottomDetector(BaseDetector):
         trough_diff = abs(l1.price - l2.price) / max(l1.price, l2.price)
         tol = self._tolerance_for_span(l2.index - l1.index)
         if trough_diff > tol:
+            return None
+
+        # ①a 方向性硬闸：右谷不得显著低于左谷 (2026-09-09, 与双顶 peak_overshoot
+        # 镜像)。双底本质是"两次探底同一支撑成功"。若右谷明显更低 (lower-low),
+        # 说明空方仍在打压 → 是下跌延续不是反转 W 底。
+        # (对称案例: BNB 谷1 569 / 谷2 537 低 5.7%, 用户判非教科书 W 底)
+        trough_undershoot = p.get("trough_undershoot_max", 0.03)
+        if l2.price < l1.price * (1 - trough_undershoot):
             return None
 
         # ①b 前置趋势：双底是反转形态，前面必须有一段显著下跌。

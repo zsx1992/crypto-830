@@ -120,6 +120,14 @@ patterns:
     double_top_tol_max: 0.05      # 大跨度形态容差上限 (cap)
     double_top_tol_span_lo: 50    # 跨度 <= 此根数用 tol_min
     double_top_tol_span_hi: 200   # 跨度 >= 此根数用 tol_max
+    # 方向性硬闸 (2026-09-09, 用户金标准 CBRS 1h / RAY 1d / BNB):
+    #   双顶右峰最多比左峰高 2% (更高=higher-high 趋势延续, 非 M 顶失败;
+    #     CBRS 右顶高 2.54% 用户判"明显不是双顶")
+    #   双底右谷最多比左谷低 3% (更低=lower-low 下跌延续, 非 W 底;
+    #     RAY 右谷低 1.95% 是真信号须放行 / BNB 低 5.7% 用户判"非教科书W底")
+    # 与上面的 |价差| 容差正交。
+    double_peak_overshoot_max: 0.02
+    double_trough_undershoot_max: 0.03
     shoulder_ratio: 0.03          # 双顶/双底 中间谷/峰最小深度（原0.05）
     neck_slope_max: 0.08          # 头肩 两谷/两峰高度差（原0.03）
     head_prominence: 0.01         # 头肩 头部突出度下限（原0.02）
@@ -181,6 +189,11 @@ patterns:
     rectangle_max_span: 200        # 箱体最大跨度
     box_flat_threshold: 0.0004     # 箱体判定: 边界 |rel_slope| <= 此值 (每根K线相对变化0.04%)
     box_max_slope_diff: 0.0008     # 平行判定: |上斜率-下斜率| <= 此值
+    # 【2026-09-09 宽度收窄硬闸, 用户金标准 ZBT 4h】
+    # 平行判定盲区: 斜率差小但一缓一陡 → 右端显著收窄(收敛三角/楔形)。
+    # ZBT 实测 slope_diff=0.000475 过闸但收窄比仅 0.44, 用户判"上升三角"。
+    # 真通道两端近等宽, 右端 < 左端×0.75 = 收敛形态, box 让路给 triangle。
+    box_min_width_ratio: 0.75
     # 【2026-09-09 价格包住硬校验 + 边界同步, 用户金标准 BNB/CL/LAYER 案例】
     # 用户点评"瞎画"的根因: ① 边界只连孤立点, 中间价格完全跑飞(穿透大);
     # ② 上/下边界起点错位, 窗口并集前段只有单边"悬空"(BNB U从63起/L从25起,

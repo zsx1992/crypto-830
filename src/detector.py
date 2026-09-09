@@ -112,6 +112,12 @@ class PatternEngine:
                 "min_span": span.get("double_top_min", 8),
                 "max_span": span.get("double_top_max", 150),
                 "pullback_bars": self.double_pullback_bars,
+                # 方向性硬闸 (2026-09-09, 用户金标准 CBRS 1h / RAY 1d / BNB):
+                # 双顶右峰不得显著更高(>2%) / 双底右谷不得显著更低(>3%)
+                # (higher-high / lower-low = 趋势延续, 非反转)。与价差容差正交。
+                "peak_overshoot_max": tol.get("double_peak_overshoot_max", 0.02),
+                "trough_undershoot_max": tol.get(
+                    "double_trough_undershoot_max", 0.03),
             }),
             HeadShouldersDetector({
                 **common,
@@ -162,6 +168,7 @@ class PatternEngine:
                 "min_height_atr": span.get("rectangle_min_height_atr", 3.0),
                 "flat_threshold": span.get("box_flat_threshold", 0.0004),
                 "max_slope_diff": span.get("box_max_slope_diff", 0.0008),
+                "min_width_ratio": span.get("box_min_width_ratio", 0.75),
                 "contain_max_penetration": span.get(
                     "box_contain_max_penetration", 0.08),
                 "contain_max_close_escape": span.get(

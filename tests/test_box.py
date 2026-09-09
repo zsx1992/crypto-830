@@ -316,3 +316,68 @@ class TestReversalPriority(unittest.TestCase):
                 and types[("double_bottom", "LONG")] == "CONFIRMED":
             self.assertNotIn(("rectangle", "LONG"), types,
                              "双底已确认时同向矩形必须让路")
+
+
+class TestWidthConvergence(unittest.TestCase):
+    """右端收窄硬闸 (2026-09-09, ZBT 4h 金标准回归)"""
+
+    def _narrowing_channel(self):
+        """
+        构造"上缓下陡、右端收窄"的伪通道 (复刻 ZBTUSDT 4h):
+        上边界 p1 高、p2 略高 (缓升); 下边界 p1 低、p2 高得多 (陡升)。
+        两线右端间距 ≈ 左端的 40~50%, 视觉是收敛三角而非平行通道。
+        """
+        kl = []
+        i = 0
+        # 手动放置上下边界的触点, 中间用往返腿填充价格
+        # 上边界: (idx10, 100) -> (idx100, 110)   rel_slope ≈ +0.0001
+        # 下边界: (idx0,  80) -> (idx100, 105)   rel_slope ≈ +0.0003
+        # 左端 gap≈20, 右端 gap≈5 → 收窄比 0.25
+        def bar(o, h, l, c, v=1000.0):
+            nonlocal i
+            kl.append(make_kline(i, o, h, l, c, v=v))
+            i += 1
+
+        # 先造一段下边界起点 (0, 80)
+        bar(85, 86, 79, 80)
+        # 触下边界低点 ~80
+        price = 80.0
+        for _ in range(4):
+            bar(price, price + 1, price - 1, price); price += 1.0
+        # 逐步上行: 每 5 根触一次上边界(缓升), 每 10 根触一次下边界(陡升)
+        for k in range(10):
+            up = 100.0 + k * 1.0       # 上边界触点: 100 -> 110
+            lo = 80.0 + k * 2.5        # 下边界触点: 80 -> 105
+            # 上腿: 从下边界爬到上边界
+            start = lo
+            step = (up - start) / 4
+            for _ in range(4):
+                price = max(price, start)
+                bar(price, price + 0.5, price - 0.5, price)
+                start += step
+                price = start
+            # 下腿: 从上边界回到下边界(下边界在抬高, 故回落幅度减小)
+            start = up
+            step = (up - lo) / 4
+            for _ in range(4):
+                bar(start, start + 0.5, start - 0.5, start)
+                start -= step
+        # 尾部向下突破 (SHORT 方向)
+        price = lo
+        for _ in range(5):
+            bar(price, price + 0.2, price - 2.0, price - 1.5, v=3000.0)
+            price -= 1.5
+        return kl
+
+    def test_narrowing_rejected(self):
+        """右端收窄到 25% 的收敛形态不得被 box 当通道确认 (ZBT 回归)"""
+        kl = self._narrowing_channel()
+        det = BoxDetector(PARAMS)
+        piv = find_pivots(kl, left=2, right=2)
+        pats = det.detect(kl, piv, 1.0, "TEST", "4h")
+        confirmed = [p for p in pats if p.status == PatternStatus.CONFIRMED]
+        self.assertEqual(
+            confirmed, [],
+            f"右端收窄的收敛形态不应被确认为通道, 检出: "
+            f"{[(p.pattern_type, p.direction.value) for p in pats]}")
+

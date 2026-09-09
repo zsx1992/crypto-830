@@ -116,6 +116,8 @@ class BoxDetector(BaseDetector):
         "min_height_atr": 3.0,         # 左端最宽处的高度下限（ATR倍数）
         "flat_threshold": 0.0004,      # 箱体判定: 边界 |rel_slope| ≤ 此值
         "max_slope_diff": 0.0008,      # 平行判定: |上斜率-下斜率| ≤ 此值
+        "min_width_ratio": 0.75,       # 宽度收窄硬闸: 右端间距 ≥ 左端×此值
+                                       # (2026-09-09 ZBT 4h: 收窄比0.44被拒)
         "breakout_candles": 2,
         "breakout_atr_ratio": 0.5,
         "volume_ratio_min": 1.5,
@@ -205,6 +207,17 @@ class BoxDetector(BaseDetector):
         # --- 平行判定：两条边界斜率差必须足够小 ---
         slope_diff = abs(upper.rel_slope - lower.rel_slope)
         if slope_diff > p["max_slope_diff"]:
+            return results
+
+        # --- 宽度收窄硬闸 (2026-09-09, 用户金标准 ZBT 4h) ---
+        # 平行判定(斜率差)有个盲区: 长跨度下两条边界斜率差很小,
+        # 但一缓一陡 → 右端间距相对左端显著收窄, 视觉是收敛三角/楔形,
+        # 不是平行通道。ZBT 4h 实测: slope_diff=0.000475 < 0.0008 过闸,
+        # 但 收窄比=0.44 (右端间距只有左端 44%) —— 用户判"勉强算上升三角"。
+        # 真通道/箱体两端宽度应近似相等; 右端明显收窄 = 三角形/楔形的领地,
+        # box 让路 (triangle 检测器收敛判定 ≥15% 收窄, 此处放更宽的边界)。
+        right_gap = u_end - l_end
+        if right_gap < p["min_width_ratio"] * height:
             return results
 
         # --- 价格包住硬校验 (2026-09-09) ---
