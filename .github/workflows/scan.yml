@@ -42,6 +42,13 @@ concurrency:
   group: crypto-pattern-scanner
   cancel-in-progress: false
 
+# 【实测教训 2026-09-09】公开仓库的 GITHUB_TOKEN 默认只读,
+# "Persist state to repo" 步骤一直 403 (github-actions[bot] Permission denied)。
+# cache 主路径正常所以不 crash —— 但 cache 被 Actions 清理后去重状态就全丢,
+# 属于典型哑火故障。显式授予 contents:write 让 git 兜底真正生效。
+permissions:
+  contents: write
+
 jobs:
   scan:
     runs-on: ubuntu-latest
