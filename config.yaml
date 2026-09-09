@@ -129,7 +129,15 @@ patterns:
     double_peak_overshoot_max: 0.02
     double_trough_undershoot_max: 0.03
     shoulder_ratio: 0.03          # 双顶/双底 中间谷/峰最小深度（原0.05）
-    neck_slope_max: 0.08          # 头肩 两谷/两峰高度差（原0.03）
+    # 头肩 两谷/两峰高度差（确认容差上限）。
+    # 【2026-09-09 收紧 0.08 -> 0.05, 用户金标准 MINIMAX 15m H&S底"瞎画"】
+    #   原 0.08 比 validate_geometry 颈平归零容差(0.05)还宽 3 个点 →
+    #   "确认了但画出来颈平 0 分"的怪形态。MINIMAX 两颈峰 46.16 vs 42.51
+    #   差 7.9%, 颈线明显右倾塌陷, 用户判"什么也不是简直瞎画"。
+    #   收紧到 0.05 与几何归零线对齐(确认 = 评分非零), 形态确认后颈平不再归零。
+    #   全池审计(69 个 H&S): >8% 区间 0 个(8% 上沿从未被用到), 5~8% 区间
+    #   9 个(7 个 CANDIDATE 未突破 + SOL/ENA 1h H&S顶 CONFIRMED 未获认可)。
+    neck_slope_max: 0.05
     head_prominence: 0.01         # 头肩 头部突出度下限（原0.02）
     touch_penetration: 0.02        # 趋势线触点最大穿透容差 (2%)
     triple_peak_diff: 0.05        # 三重顶/底 三峰间最大价差 (5%)
