@@ -1,51 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-09T18:53:36.727802+00:00",
+  "lastScanAt": "2026-09-09T20:49:00.588133+00:00",
   "pushedSignals": [
-    {
-      "symbol": "ARBUSDT",
-      "patternType": "double_bottom",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 76,
-      "detectedAt": "2026-09-02T19:05:39.214979+00:00",
-      "pushedAt": "2026-09-02T19:05:39.214979+00:00",
-      "cooldownUntil": "2026-09-02T19:35:39.214979+00:00",
-      "signalHash": "6cc7ebfff39b1bc5"
-    },
-    {
-      "symbol": "ZAMAUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 74,
-      "detectedAt": "2026-09-02T19:05:43.331961+00:00",
-      "pushedAt": "2026-09-02T19:05:43.331961+00:00",
-      "cooldownUntil": "2026-09-02T21:05:43.331961+00:00",
-      "signalHash": "1fa64fbe0c627f16"
-    },
-    {
-      "symbol": "LABUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 80,
-      "detectedAt": "2026-09-02T20:03:03.893934+00:00",
-      "pushedAt": "2026-09-02T20:03:03.893934+00:00",
-      "cooldownUntil": "2026-09-02T22:03:03.893934+00:00",
-      "signalHash": "a7bb670c0ebd3089"
-    },
-    {
-      "symbol": "FILUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 73,
-      "detectedAt": "2026-09-02T20:03:07.132983+00:00",
-      "pushedAt": "2026-09-02T20:03:07.132983+00:00",
-      "cooldownUntil": "2026-09-03T04:03:07.132983+00:00",
-      "signalHash": "ee44641718810c24"
-    },
     {
       "symbol": "LABUSDT",
       "patternType": "head_shoulders_bottom",
@@ -3097,24 +3053,37 @@
       "cooldownUntil": "2026-09-09T19:49:34.234748+00:00",
       "signalHash": "f9e98f2cbba777db",
       "endMs": 1788883200000
+    },
+    {
+      "symbol": "ETHUSDT",
+      "patternType": "rectangle",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 65,
+      "detectedAt": "2026-09-09T20:49:00.587895+00:00",
+      "pushedAt": "2026-09-09T20:49:00.587895+00:00",
+      "cooldownUntil": "2026-09-09T21:19:00.587895+00:00",
+      "signalHash": "81bc447d43558347",
+      "endMs": 1788966900000
     }
   ],
   "scanStats": {
     "scanned_pairs": 721,
-    "failed_pairs": 17,
-    "candidates": 347,
-    "confirmed": 53,
+    "failed_pairs": 15,
+    "candidates": 338,
+    "confirmed": 57,
     "after_scoring": 13,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 530.0,
+    "duration_seconds": 505.6,
     "source_stats": {
       "okx": 721
     },
     "health_stats": {
       "healthy": 662,
-      "sensitive": 59
+      "sensitive": 58,
+      "over_smoothed": 1
     }
   },
   "observedSignals": [
