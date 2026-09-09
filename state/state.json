@@ -1,29 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-09T10:17:02.861517+00:00",
+  "lastScanAt": "2026-09-09T13:42:43.591695+00:00",
   "pushedSignals": [
-    {
-      "symbol": "FILUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 72,
-      "detectedAt": "2026-09-02T11:43:56.334975+00:00",
-      "pushedAt": "2026-09-02T11:43:56.334975+00:00",
-      "cooldownUntil": "2026-09-02T19:43:56.334975+00:00",
-      "signalHash": "ee44641718810c24"
-    },
-    {
-      "symbol": "PUMPUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 65,
-      "detectedAt": "2026-09-02T11:44:01.356752+00:00",
-      "pushedAt": "2026-09-02T11:44:01.356752+00:00",
-      "cooldownUntil": "2026-09-02T13:44:01.356752+00:00",
-      "signalHash": "b32bafdd9762e5ab"
-    },
     {
       "symbol": "LABUSDT",
       "patternType": "head_shoulders_bottom",
@@ -3197,21 +3175,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 719,
-    "failed_pairs": 15,
-    "candidates": 367,
-    "confirmed": 60,
+    "scanned_pairs": 717,
+    "failed_pairs": 17,
+    "candidates": 358,
+    "confirmed": 55,
     "after_scoring": 11,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 539.9,
+    "duration_seconds": 561.5,
     "source_stats": {
-      "okx": 719
+      "okx": 717
     },
     "health_stats": {
       "healthy": 668,
-      "sensitive": 51
+      "sensitive": 49
     }
   },
   "observedSignals": [
