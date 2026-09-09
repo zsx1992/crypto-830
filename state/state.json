@@ -1,40 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-09T22:04:01.163278+00:00",
+  "lastScanAt": "2026-09-09T23:09:53.011875+00:00",
   "pushedSignals": [
-    {
-      "symbol": "LABUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 80,
-      "detectedAt": "2026-09-02T22:10:36.929192+00:00",
-      "pushedAt": "2026-09-02T22:10:36.929192+00:00",
-      "cooldownUntil": "2026-09-03T00:10:36.929192+00:00",
-      "signalHash": "a7bb670c0ebd3089"
-    },
-    {
-      "symbol": "ZAMAUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 74,
-      "detectedAt": "2026-09-02T22:10:42.027304+00:00",
-      "pushedAt": "2026-09-02T22:10:42.027304+00:00",
-      "cooldownUntil": "2026-09-03T00:10:42.027304+00:00",
-      "signalHash": "1fa64fbe0c627f16"
-    },
-    {
-      "symbol": "RSRUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 73,
-      "detectedAt": "2026-09-02T22:10:47.053146+00:00",
-      "pushedAt": "2026-09-02T22:10:47.053146+00:00",
-      "cooldownUntil": "2026-09-03T00:10:47.053146+00:00",
-      "signalHash": "056e11cb738d1ee0"
-    },
     {
       "symbol": "LABUSDT",
       "patternType": "head_shoulders_bottom",
@@ -3065,24 +3032,36 @@
       "cooldownUntil": "2026-09-09T21:19:00.587895+00:00",
       "signalHash": "81bc447d43558347",
       "endMs": 1788966900000
+    },
+    {
+      "symbol": "ALLOUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 62,
+      "detectedAt": "2026-09-09T23:09:48.350300+00:00",
+      "pushedAt": "2026-09-09T23:09:48.350300+00:00",
+      "cooldownUntil": "2026-09-10T01:09:48.350300+00:00",
+      "signalHash": "402bd819af4728f4",
+      "endMs": 1788789600000
     }
   ],
   "scanStats": {
-    "scanned_pairs": 725,
+    "scanned_pairs": 753,
     "failed_pairs": 15,
-    "candidates": 343,
-    "confirmed": 55,
+    "candidates": 348,
+    "confirmed": 57,
     "after_scoring": 13,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 1,
-    "duration_seconds": 378.9,
+    "duration_seconds": 428.3,
     "source_stats": {
-      "okx": 725
+      "okx": 753
     },
     "health_stats": {
-      "healthy": 670,
-      "sensitive": 54,
+      "healthy": 693,
+      "sensitive": 59,
       "over_smoothed": 1
     }
   },
@@ -3374,6 +3353,18 @@
       "cooldownUntil": "2026-09-10T22:04:01.163050+00:00",
       "signalHash": "baf356176254aad0",
       "endMs": 1786982400000
+    },
+    {
+      "symbol": "BNBUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 68,
+      "detectedAt": "2026-09-09T23:09:53.011669+00:00",
+      "pushedAt": "2026-09-09T23:09:53.011669+00:00",
+      "cooldownUntil": "2026-09-10T01:09:53.011669+00:00",
+      "signalHash": "2a3f94ab30981b77",
+      "endMs": 1788854400000
     }
   ]
 }
