@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-09T03:20:45.834766+00:00",
+  "lastScanAt": "2026-09-09T05:25:18.796719+00:00",
   "pushedSignals": [
     {
       "symbol": "BLURUSDT",
@@ -3201,24 +3201,60 @@
       "cooldownUntil": "2026-09-09T04:19:09.718622+00:00",
       "signalHash": "11905a40f0b9ccdf",
       "endMs": 1788872400000
+    },
+    {
+      "symbol": "DOSUSDT",
+      "patternType": "descending_triangle",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 68,
+      "detectedAt": "2026-09-09T03:47:57.927553+00:00",
+      "pushedAt": "2026-09-09T03:47:57.927553+00:00",
+      "cooldownUntil": "2026-09-09T11:47:57.927553+00:00",
+      "signalHash": "1e825c5acd59cbab",
+      "endMs": 1788811200000
+    },
+    {
+      "symbol": "XIAOMIUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 82,
+      "detectedAt": "2026-09-09T05:08:44.275972+00:00",
+      "pushedAt": "2026-09-09T05:08:44.275972+00:00",
+      "cooldownUntil": "2026-09-09T13:08:44.275972+00:00",
+      "signalHash": "ac4ecd60e63a554d",
+      "endMs": 1788739200000
+    },
+    {
+      "symbol": "MINIMAXUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 70,
+      "detectedAt": "2026-09-09T05:08:50.376152+00:00",
+      "pushedAt": "2026-09-09T05:08:50.376152+00:00",
+      "cooldownUntil": "2026-09-09T05:38:50.376152+00:00",
+      "signalHash": "128a28e451284dfe",
+      "endMs": 1788917400000
     }
   ],
   "scanStats": {
-    "scanned_pairs": 710,
+    "scanned_pairs": 714,
     "failed_pairs": 16,
-    "candidates": 407,
-    "confirmed": 66,
-    "after_scoring": 10,
+    "candidates": 405,
+    "confirmed": 70,
+    "after_scoring": 13,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 570.9,
+    "duration_seconds": 380.5,
     "source_stats": {
-      "okx": 710
+      "okx": 714
     },
     "health_stats": {
-      "healthy": 665,
-      "sensitive": 45
+      "healthy": 666,
+      "sensitive": 48
     }
   },
   "observedSignals": [
@@ -3425,6 +3461,42 @@
       "cooldownUntil": "2026-09-10T03:10:50.870621+00:00",
       "signalHash": "75fe6c6ee96f5918",
       "endMs": 1788105600000
+    },
+    {
+      "symbol": "ZBTUSDT",
+      "patternType": "rising_wedge",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 51,
+      "detectedAt": "2026-09-09T03:47:59.279584+00:00",
+      "pushedAt": "2026-09-09T03:47:59.279584+00:00",
+      "cooldownUntil": "2026-09-09T11:47:59.279584+00:00",
+      "signalHash": "a5d4c231b6e6cca9",
+      "endMs": 1788854400000
+    },
+    {
+      "symbol": "NBISUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 70,
+      "detectedAt": "2026-09-09T05:08:55.115645+00:00",
+      "pushedAt": "2026-09-09T05:08:55.115645+00:00",
+      "cooldownUntil": "2026-09-09T13:08:55.115645+00:00",
+      "signalHash": "7a08c3f48fa6f42e",
+      "endMs": 1788854400000
+    },
+    {
+      "symbol": "LABUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 58,
+      "detectedAt": "2026-09-09T05:09:00.016826+00:00",
+      "pushedAt": "2026-09-09T05:09:00.016826+00:00",
+      "cooldownUntil": "2026-09-09T07:09:00.016826+00:00",
+      "signalHash": "ef4592d0fd8da107",
+      "endMs": 1788883200000
     }
   ]
 }
