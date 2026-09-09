@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-09T02:19:19.139348+00:00",
+  "lastScanAt": "2026-09-09T03:20:45.834766+00:00",
   "pushedSignals": [
     {
       "symbol": "BLURUSDT",
@@ -3204,21 +3204,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 714,
+    "scanned_pairs": 710,
     "failed_pairs": 16,
-    "candidates": 489,
-    "confirmed": 76,
-    "after_scoring": 12,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 2,
-    "duration_seconds": 542.2,
+    "candidates": 407,
+    "confirmed": 66,
+    "after_scoring": 10,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 570.9,
     "source_stats": {
-      "okx": 714
+      "okx": 710
     },
     "health_stats": {
-      "healthy": 666,
-      "sensitive": 48
+      "healthy": 665,
+      "sensitive": 45
     }
   },
   "observedSignals": [
@@ -3413,6 +3413,18 @@
       "cooldownUntil": "2026-09-09T10:19:19.139166+00:00",
       "signalHash": "58b55f32b95e7bd1",
       "endMs": 1788667200000
+    },
+    {
+      "symbol": "ATOMUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 55,
+      "detectedAt": "2026-09-09T03:10:50.870621+00:00",
+      "pushedAt": "2026-09-09T03:10:50.870621+00:00",
+      "cooldownUntil": "2026-09-10T03:10:50.870621+00:00",
+      "signalHash": "75fe6c6ee96f5918",
+      "endMs": 1788105600000
     }
   ]
 }
