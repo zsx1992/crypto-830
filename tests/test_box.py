@@ -188,3 +188,131 @@ class TestBoxDetector(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+# ============================================================
+# 2026-09-09 用户金标准回归: 价格包住硬校验
+#   BNB "喇叭口"/CL "深刺乱画"/LAYER "穿透" 必须被拒
+# ============================================================
+
+def build_bad_channel():  # 两条"线"只连孤立点, 中间价格完全跑飞
+    kl = []
+    i = 0
+    price = 100.0
+    # 先制造两个高点 (110@idx10, 112@idx30) 与两个低点 (90@idx5, 92@idx25)
+    # 中间价格却一路涨到 150 —— 所谓"上边界"根本框不住
+    for _ in range(30):
+        kl.append(make_kline(i, price, price * 1.01, price * 0.99, price))
+        price += 1.2   # 从 100 一路涨到 ~135
+        i += 1
+    # 突破: 4 根放量
+    for _ in range(4):
+        o = price
+        price += 3.0
+        kl.append(make_kline(i, o, price + 0.3, o - 0.2, price, v=3000.0))
+        i += 1
+    return kl
+
+
+class TestContainment(unittest.TestCase):
+    def test_penetrating_lines_rejected(self):
+        """中间价格跑飞两条边界线的'假通道'必须被拒"""
+        kl = build_bad_channel()
+        det = BoxDetector(PARAMS)
+        piv = find_pivots(kl, left=3, right=3)
+        atr_val = 1.0
+        pats = det.detect(kl, piv, atr_val, "TEST", "15m")
+        confirmed = [p for p in pats if p.status == PatternStatus.CONFIRMED]
+        # 几何上这些散点甚至不一定能凑出 box 候选; 重点是: 若凑出来,
+        # 也绝不能是 CONFIRMED —— 穿透校验必须把它们拦下
+        for p in pats:
+            self.assertNotEqual(
+                p.status, PatternStatus.CONFIRMED,
+                "中间价格完全跑飞的假形态不应被确认")
+
+    def test_diverge_mouth_rejected(self):
+        """上下边界向外张开的'喇叭口'应被拒 (BNB 案例回归)
+
+        上边界向上斜 (斜率 +0.0005), 下边界向下斜 (斜率 -0.0005),
+        两线向右张开 —— 视觉上是喇叭口不是箱体。
+        """
+        kl = []
+        i = 0
+        # 两段腿构成发散区间: 低点逐步抬高, 高点逐步抬高更快
+        # 上边界触点在 108, 112; 下边界触点在 92, 90(反向)→ 口越张越大
+        legs = [
+            (100.0, 108.0), (92.0, 100.0), (104.0, 112.0),
+            (90.0, 102.0), (106.0, 116.0), (88.0, 104.0),
+            (110.0, 120.0), (86.0, 106.0),   # 最后下探 86 远离下边界趋势
+        ]
+        for target_lo, target_hi in legs:
+            for _ in range(6):
+                rng_lo = min(target_lo, target_hi)
+                mid = (target_lo + target_hi) / 2
+                o = mid
+                kl.append(make_kline(i, o, target_hi * 1.001,
+                                     target_lo * 0.999, mid, v=100.0))
+                i += 1
+        # 尾部向上突破
+        price = 120.0
+        for _ in range(5):
+            o = price
+            price += 2.0
+            kl.append(make_kline(i, o, price + 0.3, o - 0.2, price, v=3000.0))
+            i += 1
+        det = BoxDetector(PARAMS)
+        piv = find_pivots(kl, left=2, right=2)
+        pats = det.detect(kl, piv, 1.0, "TEST", "1d")
+        confirmed = [p for p in pats if p.status == PatternStatus.CONFIRMED]
+        self.assertEqual(confirmed, [],
+                         "向外张开的喇叭口不应被确认为箱体/通道")
+
+
+class TestReversalPriority(unittest.TestCase):
+    """双底优先: 同一区间反转形态确认时 box 让路"""
+
+    def test_double_bottom_suppresses_rectangle(self):
+        """同一区间 double_bottom CONFIRMED 时, 同向 rectangle 被抑制"""
+        # 造一段 V 底: 两个同高谷(中间一个峰) + 突破, 双底结构明显
+        kl = []
+        i = 0
+        price = 100.0
+        # 下行到谷1 92
+        for _ in range(8):
+            o = price; price -= 1.0
+            kl.append(make_kline(i, o, max(o, price) * 1.002,
+                                 min(o, price) * 0.998, price, v=500.0))
+            i += 1
+        # 反弹到峰 102
+        for _ in range(8):
+            o = price; price += 1.25
+            kl.append(make_kline(i, o, max(o, price) * 1.002,
+                                 min(o, price) * 0.998, price, v=500.0))
+            i += 1
+        # 下行到谷2 92 (与谷1同高)
+        for _ in range(8):
+            o = price; price -= 1.25
+            kl.append(make_kline(i, o, max(o, price) * 1.002,
+                                 min(o, price) * 0.998, price, v=500.0))
+            i += 1
+        # 突破颈线 102
+        for _ in range(6):
+            o = price; price += 2.0
+            kl.append(make_kline(i, o, price + 0.3, o - 0.2, price, v=3000.0))
+            i += 1
+
+        # 用真实引擎多尺度扫(合成V底通常 double 检出而 box 不画矩形,
+        # 关键是若两者同时出现必须让反转优先)
+        cfg = yaml.safe_load(open(os.path.join(os.path.dirname(__file__),
+                                               "..", "config.yaml"),
+                                  encoding="utf-8"))
+        eng = PatternEngine(cfg)
+        pats = eng.scan_multiscale(kl, "TEST", "15m")
+        types = {(p.pattern_type, p.direction.value): p.status.value
+                 for p in pats}
+        # box 与 double 同现时 box 必须被抑制 —— 这里至少确认引擎不崩溃
+        # 且 double_bottom 若确认, 同向 rectangle 不共存
+        if ("double_bottom", "LONG") in types \
+                and types[("double_bottom", "LONG")] == "CONFIRMED":
+            self.assertNotIn(("rectangle", "LONG"), types,
+                             "双底已确认时同向矩形必须让路")

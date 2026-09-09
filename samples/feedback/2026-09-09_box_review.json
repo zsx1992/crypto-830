@@ -1,0 +1,23 @@
+{
+  "session": "2026-09-09 09:41 用户对 BoxDetector 首批推送的 4 条点评",
+  "source": "run#186/run#190 artifact 原图",
+  "reviews": [
+    {"symbol": "OPUSDT", "interval": "15m",
+     "detected": {"pattern_type": "rectangle", "direction": "LONG", "strength": 79, "run": 186},
+     "user_verdict": "reject_classification",
+     "user_comment": "很明显是个中继通道，不应该是你画的三角啊"},
+    {"symbol": "LAYERUSDT", "interval": "1d",
+     "detected": {"pattern_type": "descending_channel", "direction": "LONG", "obs": true, "run": 186},
+     "user_verdict": "reject_boundary",
+     "user_comment": "obs你画的完全不对，没有一丁点参考价值"},
+    {"symbol": "BNBUSDT", "interval": "1d",
+     "detected": {"pattern_type": "rectangle", "direction": "LONG", "strength": 82, "run": 186},
+     "user_verdict": "reject_classification_prefer_double_bottom",
+     "user_comment": "bnb 我更倾向于w底，你画的什么乱七八糟"},
+    {"symbol": "CLUSDT", "interval": "4h",
+     "detected": {"pattern_type": "ascending_channel", "direction": "LONG", "strength": 81, "run": 186},
+     "user_verdict": "reject_boundary",
+     "user_comment": "clusdt 简直瞎画"}
+  ],
+  "root_cause_hypothesis": "边界拟合为'全局最优点对枚举'，会在 150~200 根大窗口拉线：把 W 底两谷连下边界/反弹峰连上边界(BNB)、或边界起点错位一边悬空(CL)、或收敛形当平行通道(LAYER)。修复=价格包住硬校验(穿透8%/收盘15%/深刺15%) + 两边界时间重叠≥85% + 反转形态(双底/头肩)同区优先压制 box"
+}

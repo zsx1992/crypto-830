@@ -162,6 +162,13 @@ class PatternEngine:
                 "min_height_atr": span.get("rectangle_min_height_atr", 3.0),
                 "flat_threshold": span.get("box_flat_threshold", 0.0004),
                 "max_slope_diff": span.get("box_max_slope_diff", 0.0008),
+                "contain_max_penetration": span.get(
+                    "box_contain_max_penetration", 0.08),
+                "contain_max_close_escape": span.get(
+                    "box_contain_max_close_escape", 0.15),
+                "contain_max_deep_escape": span.get(
+                    "box_contain_max_deep_escape", 0.15),
+                "overlap_min": span.get("box_overlap_min", 0.85),
             }),
         ]
 
@@ -344,7 +351,62 @@ class PatternEngine:
 
         # 缓存本次指标（ADX/RSI/MACD 等），供 history_replay 复用算 strength_score
         self.last_indicators = indicators
-        return self._deduplicate(all_found)
+        deduped = self._deduplicate(all_found)
+        return self._suppress_box_by_reversal(deduped)
+
+    # ---------- 同族优先: 反转形态压过箱体/通道 ----------
+
+    REVERSAL_TYPES = ("double_bottom", "double_top",
+                      "head_shoulders_bottom", "head_shoulders_top")
+
+    def _suppress_box_by_reversal(
+            self, patterns: List[Pattern]) -> List[Pattern]:
+        """
+        【2026-09-09 用户金标准 "BNB 更倾向 W 底"】同族去重：
+        反转形态(双底/双顶/头肩)与箱体/通道(rectangle/channel)在同一
+        区间且同方向都确认时，反转形态优先 —— box 检测器让路。
+
+        为什么: 反转形态几何约束更严(需要 3-5 个关键点 + 颈线/两谷同高),
+        而箱体只要"两条近似平行的线框住价格"。同一段 V 形底部结构,
+        人眼先看到"W 底"而不是"矩形"(用户原话), 且反转型对入场/止损
+        的刻画更贴合反转交易。
+
+        抑制条件(全部满足才删 box):
+          1. 反转形态 CONFIRMED 且方向与 box 相同
+          2. 两者形态窗口 [min_idx, max_idx] 重叠 ≥ 50% (短窗口)
+        """
+        rev = [p for p in patterns
+               if p.pattern_type in self.REVERSAL_TYPES
+               and p.status == PatternStatus.CONFIRMED]
+        if not rev:
+            return patterns
+
+        box = [p for p in patterns
+               if p.pattern_type in ("rectangle", "ascending_channel",
+                                     "descending_channel")]
+        if not box:
+            return patterns
+
+        def _win(p):
+            idxs = [q.index for q in p.pivots]
+            return (min(idxs), max(idxs)) if idxs else (0, 0)
+
+        killed = set()
+        for b in box:
+            bs, be = _win(b)
+            for r in rev:
+                if r.direction != b.direction:
+                    continue
+                rs, re = _win(r)
+                ov = min(be, re) - max(bs, rs)
+                shorter = min(be - bs, re - rs)
+                if shorter > 0 and ov >= 0.5 * shorter:
+                    killed.add(id(b))
+                    break
+
+        if not killed:
+            return patterns
+        return [p for p in patterns if id(p) not in killed]
 
     # ---------- 去重 ----------
 

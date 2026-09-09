@@ -120,6 +120,21 @@ class BoxDetector(BaseDetector):
         "breakout_atr_ratio": 0.5,
         "volume_ratio_min": 1.5,
         "max_lookahead": 40,           # 从形态末端往后找突破
+        # 价格包住硬校验 (2026-09-09, 用户金标准反馈):
+        #   全量实测 23 个 CONFIRMED box 的边界穿透分布 —— 上/下边界各自
+        #   [p1,p2] 窗口内统计 K 线相对边界线的穿透。用户点评"瞎画"的案例
+        #   (CL 4h L线深刺19.6% / NEAR 10.4% / AAVE 38% / BNB 喇叭口等)
+        #   无一例外穿透极大, 而看起来干净的(EDGE/DOT/XAG)全部小穿透。
+        #   因此加三道硬闸, 任一超限直接拒掉, 杜绝"把孤立点连成线"的乱画:
+        #     max_penetration: 单根K线影线相对边界最大穿透 (0.08 = 8%)
+        #     max_close_escape: 收盘价跑出边界外的K线占比上限 (0.15 = 15%)
+        #     max_deep_escape: 影线深刺(>2%)的K线占比上限 (0.15 = 15%)
+        "contain_max_penetration": 0.08,
+        "contain_max_close_escape": 0.15,
+        "contain_max_deep_escape": 0.15,
+        # 两边界时间重叠下限 (原0.5, 2026-09-09 收紧至0.85)。
+        # 真箱体/通道两边界同起同止; 错位大=一边悬空=乱画。
+        "overlap_min": 0.85,
     }
 
     def __init__(self, params=None):
@@ -155,12 +170,16 @@ class BoxDetector(BaseDetector):
         if upper is None or lower is None:
             return results
 
-        # 两条边界必须在时间上真实共存（重叠 ≥ 短边跨度的 50%），
-        # 防止"50根前的压力线 × 300根后的支撑线"拼出假箱体
+        # 两条边界必须在时间上真实共存（重叠 ≥ 短边跨度的 overlap_min）。
+        # 【2026-09-09 收紧 50%→85%(默认), 用户金标准 BNB/CL 案例】
+        #   旧阈值允许两边界错位 50%: BNB U从idx63起/L从idx25起 → 窗口并集
+        #   前 38 根只有下边界"悬空"; CL L从93起/U从131起 → 前段悬空。
+        #   视觉上就是"一边线长一边线短、价格从没同时被两条线框住"的乱画。
+        #   真箱体/通道的两条边界必然同起同止(重叠≈100%), 错位明显=假形态。
         ov = min(upper.p2.index, lower.p2.index) - max(upper.p1.index,
                                                        lower.p1.index)
         shorter = min(upper.span, lower.span)
-        if ov <= 0 or ov < 0.5 * shorter:
+        if ov <= 0 or ov < p["overlap_min"] * shorter:
             return results
 
         # 形态跨度取两条边界的【并集】（与三角检测器同口径）
@@ -188,6 +207,13 @@ class BoxDetector(BaseDetector):
         if slope_diff > p["max_slope_diff"]:
             return results
 
+        # --- 价格包住硬校验 (2026-09-09) ---
+        # 边界线必须真实"框住"中间行情: 在每条边界自己的 [p1,p2] 窗口内,
+        # 统计 K 线影线相对边界线的穿透。任一超限即拒 —— 杜绝把孤立的
+        # 两个点连成线、中间价格完全跑飞的"假箱体/假通道"。
+        if not self._containment_ok(klines, upper, lower, p):
+            return results
+
         # --- 分类 ---
         flat_thr = p["flat_threshold"]
         upper_flat = abs(upper.rel_slope) <= flat_thr
@@ -213,6 +239,64 @@ class BoxDetector(BaseDetector):
                 results.append(pat)
 
         return results
+
+    # ---------- 价格包住硬校验 ----------
+
+    @staticmethod
+    def _containment_ok(klines: List[Kline], upper: Line, lower: Line,
+                        p: dict) -> bool:
+        """
+        校验两条边界线是否真实包住中间行情（视觉常识硬闸）。
+
+        对【每条边界各自】的 [p1, p2] 窗口内所有 K 线：
+          max_penetration  : 影线相对边界的最大单根穿透（>8% 视为乱画）
+          close_escape     : 收盘价跑出边界外的占比（>15% 视为没框住）
+          deep_escape      : 影线深刺（>2%）的占比（>15% 视为大量刺穿）
+
+        任一超限即拒。为什么按"每条边界自己的窗口"统计而不是形态并集：
+          形态窗口取上/下边界并集，若上边界比下边界晚出现（如 CL 4h：
+          L 从 93 根起、U 从 131 根才起），并集前段会"没有上边界"——
+          收盘/影线天然全在"悬空上边界"之上，造成假性高穿透。
+        """
+        cap = p["contain_max_penetration"]
+        ccap = p["contain_max_close_escape"]
+        dcap = p["contain_max_deep_escape"]
+
+        def _line_ok(line: Line, above: bool) -> bool:
+            s, e = line.p1.index, line.p2.index
+            n = e - s + 1
+            if n <= 0:
+                return False
+            close_out = deep = 0
+            max_pen = 0.0
+            for i in range(s, e + 1):
+                k = klines[i]
+                v = line.value_at(i)
+                if above:
+                    if k.close > v:
+                        close_out += 1
+                    if k.high > v:
+                        rel = (k.high - v) / v
+                        max_pen = max(max_pen, rel)
+                        if rel > 0.02:
+                            deep += 1
+                else:
+                    if k.close < v:
+                        close_out += 1
+                    if k.low < v:
+                        rel = (v - k.low) / v
+                        max_pen = max(max_pen, rel)
+                        if rel > 0.02:
+                            deep += 1
+            if max_pen > cap:
+                return False
+            if close_out / n > ccap:
+                return False
+            if deep / n > dcap:
+                return False
+            return True
+
+        return _line_ok(upper, True) and _line_ok(lower, False)
 
     # ---------- 构建与确认（与三角检测器同流程） ----------
 

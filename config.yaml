@@ -181,6 +181,14 @@ patterns:
     rectangle_max_span: 200        # 箱体最大跨度
     box_flat_threshold: 0.0004     # 箱体判定: 边界 |rel_slope| <= 此值 (每根K线相对变化0.04%)
     box_max_slope_diff: 0.0008     # 平行判定: |上斜率-下斜率| <= 此值
+    # 【2026-09-09 价格包住硬校验 + 边界同步, 用户金标准 BNB/CL/LAYER 案例】
+    # 用户点评"瞎画"的根因: ① 边界只连孤立点, 中间价格完全跑飞(穿透大);
+    # ② 上/下边界起点错位, 窗口并集前段只有单边"悬空"(BNB U从63起/L从25起,
+    #    CL L从93起/U从131起)。三道硬闸 + 重叠收紧, 任一超限直接拒:
+    box_overlap_min: 0.85          # 两边界时间重叠 ≥ 短边跨度的 85% (原0.5)
+    box_contain_max_penetration: 0.08    # 单根影线相对边界最大穿透 (8%)
+    box_contain_max_close_escape: 0.15   # 收盘跑出边界外的K线占比上限 (15%)
+    box_contain_max_deep_escape: 0.15    # 影线深刺(>2%)的占比上限 (15%)
 
   # --- 突破确认 ---
   confirmation:
