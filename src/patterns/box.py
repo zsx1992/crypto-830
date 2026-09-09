@@ -45,6 +45,7 @@ from zigzag import Pivot, PivotType
 from market_data import Kline
 from patterns.base import (
     BaseDetector, Pattern, Direction, PatternStatus, Line,
+    containment_ok,
     find_breakout_index, check_breakout, calc_volume_ratio, calc_trade_levels,
 )
 
@@ -224,7 +225,7 @@ class BoxDetector(BaseDetector):
         # 边界线必须真实"框住"中间行情: 在每条边界自己的 [p1,p2] 窗口内,
         # 统计 K 线影线相对边界线的穿透。任一超限即拒 —— 杜绝把孤立的
         # 两个点连成线、中间价格完全跑飞的"假箱体/假通道"。
-        if not self._containment_ok(klines, upper, lower, p):
+        if not containment_ok(klines, upper, lower, p):
             return results
 
         # --- 分类 ---
@@ -254,62 +255,8 @@ class BoxDetector(BaseDetector):
         return results
 
     # ---------- 价格包住硬校验 ----------
-
-    @staticmethod
-    def _containment_ok(klines: List[Kline], upper: Line, lower: Line,
-                        p: dict) -> bool:
-        """
-        校验两条边界线是否真实包住中间行情（视觉常识硬闸）。
-
-        对【每条边界各自】的 [p1, p2] 窗口内所有 K 线：
-          max_penetration  : 影线相对边界的最大单根穿透（>8% 视为乱画）
-          close_escape     : 收盘价跑出边界外的占比（>15% 视为没框住）
-          deep_escape      : 影线深刺（>2%）的占比（>15% 视为大量刺穿）
-
-        任一超限即拒。为什么按"每条边界自己的窗口"统计而不是形态并集：
-          形态窗口取上/下边界并集，若上边界比下边界晚出现（如 CL 4h：
-          L 从 93 根起、U 从 131 根才起），并集前段会"没有上边界"——
-          收盘/影线天然全在"悬空上边界"之上，造成假性高穿透。
-        """
-        cap = p["contain_max_penetration"]
-        ccap = p["contain_max_close_escape"]
-        dcap = p["contain_max_deep_escape"]
-
-        def _line_ok(line: Line, above: bool) -> bool:
-            s, e = line.p1.index, line.p2.index
-            n = e - s + 1
-            if n <= 0:
-                return False
-            close_out = deep = 0
-            max_pen = 0.0
-            for i in range(s, e + 1):
-                k = klines[i]
-                v = line.value_at(i)
-                if above:
-                    if k.close > v:
-                        close_out += 1
-                    if k.high > v:
-                        rel = (k.high - v) / v
-                        max_pen = max(max_pen, rel)
-                        if rel > 0.02:
-                            deep += 1
-                else:
-                    if k.close < v:
-                        close_out += 1
-                    if k.low < v:
-                        rel = (v - k.low) / v
-                        max_pen = max(max_pen, rel)
-                        if rel > 0.02:
-                            deep += 1
-            if max_pen > cap:
-                return False
-            if close_out / n > ccap:
-                return False
-            if deep / n > dcap:
-                return False
-            return True
-
-        return _line_ok(upper, True) and _line_ok(lower, False)
+    # (2026-09-09 已提取为 base.containment_ok 共享函数, box/triangle 复用;
+    #  历史: 用户金标准 BNB/CL/LAYER 瞎画后为 box 引入, DOS 误判后共享)
 
     # ---------- 构建与确认（与三角检测器同流程） ----------
 

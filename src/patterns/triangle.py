@@ -39,6 +39,7 @@ from market_data import Kline
 from patterns.base import (
     BaseDetector, Pattern, Direction, PatternStatus, Line,
     fit_trendline, is_flat, is_rising, is_falling, convergence,
+    containment_ok,
     find_breakout_index, check_breakout, calc_volume_ratio, calc_trade_levels,
 )
 
@@ -62,6 +63,15 @@ class TriangleDetector(BaseDetector):
         "volume_ratio_min": 1.5,
         "max_lookahead": 40,           # 从形态末端往后找突破
         "min_height_atr": 2.0,         # 三角形高度至少 2×ATR
+        # 价格包住硬校验 (2026-09-09, 用户金标准 DOSUSDT 4h 误判):
+        #   DOS 被画成 descending_triangle 推送, 用户判"中间涨那么多、一堆
+        #   K线在画的线之外且不是插针, 完全不是三角"。量化: 上边界窗口
+        #   144 根里收盘越界 20.1% / 深刺(>2%) 18.1% / 最大穿透 28.6% ——
+        #   视觉上是一段独立上涨行情, 不是边界内震荡。box 已有同款硬闸
+        #   (BNB/CL/LAYER 金标准), triangle 漏加; 此处提取 base 共享函数。
+        "contain_max_penetration": 0.08,
+        "contain_max_close_escape": 0.15,
+        "contain_max_deep_escape": 0.15,
     }
 
     def __init__(self, params=None):
@@ -128,6 +138,15 @@ class TriangleDetector(BaseDetector):
         # 只保证"方向对"，不保证收窄幅度够。必须在同一索引上量左右端间距。
         if convergence(upper, lower, start_index, end_index) \
                 < p["converge_ratio_min"]:
+            return results
+
+        # --- 价格包住硬校验 (2026-09-09, 用户金标准 DOSUSDT 4h) ---
+        # 触点校验只保证"每条边上有 ≥2 个摆动点贴近线"，不保证中间行情
+        # 真的被两条边界框住。DOS 上边界连了 08-15 与 09-08 两个高点，
+        # 中间 08-30 一波涨 28%+、连续 8 根 K 线整体在线外（收盘越界
+        # 20.1%/深刺 18.1%）——视觉是一段独立上涨，不是边界内收敛震荡。
+        # 与 box 同口径：每条边界自己的 [p1,p2] 窗口内统计穿透。
+        if not containment_ok(klines, upper, lower, p):
             return results
 
         # --- 分类 ---

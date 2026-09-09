@@ -166,6 +166,15 @@ patterns:
     triangle_min_span: 25          # 三角形最小跨度（原12，提至25）
     triangle_max_span: 160         # 三角形最大跨度
     triangle_min_height_atr: 1.0   # 三角形最小高度ATR倍数
+    # 【2026-09-09 价格包住硬校验, 用户金标准 DOSUSDT 4h 误判】
+    #   DOS 被画成 descending_triangle 推送, 用户判"中间涨那么多、一堆 K 线
+    #   在画的线之外且不是插针, 完全不是三角"。量化: 上边界窗口 144 根里
+    #   收盘越界 20.1% / 深刺(>2%) 18.1% / 最大穿透 28.6% —— 触点校验只保证
+    #   边界上有 >=2 个摆动点贴线, 从不保证中间行情被框住。box 已有同款闸
+    #   (BNB/CL/LAYER), triangle 漏加, 现补上 (共享 base.containment_ok):
+    triangle_contain_max_penetration: 0.08    # 单根影线相对边界最大穿透 (8%)
+    triangle_contain_max_close_escape: 0.15   # 收盘跑出边界外的K线占比上限 (15%)
+    triangle_contain_max_deep_escape: 0.15    # 影线深刺(>2%)的占比上限 (15%)
     # 2026-09-08 修复: flag_pole_min_bars 曾被误当作 "pole_max_bars" 传入检测器,
     # 等于要求旗杆 3 根内涨完 (真实旗杆如 BTC 4h 08-19 那根用了 9 根) → 全线漏检。
     # 检测器实际不使用 min_bars, 保留仅为说明; 生效的是下面的 max_bars。

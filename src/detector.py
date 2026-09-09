@@ -134,6 +134,12 @@ class PatternEngine:
                 "min_span": span.get("triangle_min_span", 12),
                 "max_span": span.get("triangle_max_span", 160),
                 "min_height_atr": span.get("triangle_min_height_atr", 1.0),
+                "contain_max_penetration": span.get(
+                    "triangle_contain_max_penetration", 0.08),
+                "contain_max_close_escape": span.get(
+                    "triangle_contain_max_close_escape", 0.15),
+                "contain_max_deep_escape": span.get(
+                    "triangle_contain_max_deep_escape", 0.15),
             }),
             FlagDetector({
                 **common,

@@ -564,6 +564,71 @@ def convergence(upper: "Line", lower: "Line",
     return max(0.0, min(1.0, (left_gap - right_gap) / left_gap))
 
 
+def containment_ok(klines: List["Kline"], upper: "Line", lower: "Line",
+                   p: dict) -> bool:
+    """
+    价格包住硬校验（box/triangle 共享，2026-09-09）。
+
+    边界线必须真实"框住"中间行情：在每条边界自己的 [p1, p2] 窗口内，
+    统计 K 线相对边界线的穿透。任一超限即拒 —— 杜绝把孤立的两个点
+    连成线、中间价格完全跑飞的"假形态"。
+
+    参数（p，均可从 config 覆盖）:
+      contain_max_penetration  单根K线影线相对边界的最大穿透 (0.08 = 8%)
+      contain_max_close_escape 收盘价跑出边界外的K线占比上限 (0.15 = 15%)
+      contain_max_deep_escape  影线深刺(>2%)的K线占比上限 (0.15 = 15%)
+
+    为什么按"每条边界自己的窗口"统计而不是形态并集：
+      形态窗口取上/下边界并集，若上边界比下边界晚出现，并集前段会
+      "没有上边界"——收盘/影线天然全在"悬空上边界"之上，假性高穿透。
+
+    背景: box 于 2026-09-09 用户金标准(BNB/CL/LAYER 瞎画)后引入;
+    triangle 同批漏加 → DOSUSDT 4h 被画成 descending_triangle 推送,
+    用户判"中间涨那么多、一堆K线在线外且不是插针, 完全不是三角"。
+    上边界窗口 144 根里收盘越界 20.1%/深刺 18.1%/最大穿透 28.6%,
+    正是本函数要拦的形状。提取为共享函数供两类检测器复用。
+    """
+    cap = p["contain_max_penetration"]
+    ccap = p["contain_max_close_escape"]
+    dcap = p["contain_max_deep_escape"]
+
+    def _line_ok(line: Line, above: bool) -> bool:
+        s, e = line.p1.index, line.p2.index
+        n = e - s + 1
+        if n <= 0:
+            return False
+        close_out = deep = 0
+        max_pen = 0.0
+        for i in range(s, e + 1):
+            k = klines[i]
+            v = line.value_at(i)
+            if above:
+                if k.close > v:
+                    close_out += 1
+                if k.high > v:
+                    rel = (k.high - v) / v
+                    max_pen = max(max_pen, rel)
+                    if rel > 0.02:
+                        deep += 1
+            else:
+                if k.close < v:
+                    close_out += 1
+                if k.low < v:
+                    rel = (v - k.low) / v
+                    max_pen = max(max_pen, rel)
+                    if rel > 0.02:
+                        deep += 1
+        if max_pen > cap:
+            return False
+        if close_out / n > ccap:
+            return False
+        if deep / n > dcap:
+            return False
+        return True
+
+    return _line_ok(upper, True) and _line_ok(lower, False)
+
+
 def validate_geometry(pattern: "Pattern", atr_value: float = 0.0):
     """
     评估形态"画得标不标准"的几何质量分 0~1（分级，非二值）。
