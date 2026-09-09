@@ -481,8 +481,13 @@ class Scanner:
                                  f"{p.interval}: {e}")
 
             ok = self.notifier.push(p, image)
-            if ok:
+            if ok and not self.dry_run:
+                # 2026-09-09 修复: dry-run 虚拟推送不得写入去重表。
+                # 根因: notifier.push 在 dry_run 返回 True(模拟成功),
+                # 旧代码无条件 state.record → run#202 dry-run 把 DOS 记入
+                # "已推送"冷却, run#203 真实轮判"同形态已推过"吞掉真信号。
                 self.state.record(p)
+            if ok:
                 result.pushed.append(p)
 
         # ---- 7.5 观察流推送 (2026-09-08) ----
@@ -525,8 +530,10 @@ class Scanner:
                         logger.error(f"观察图表渲染失败 {p.symbol} "
                                      f"{p.interval}: {e}")
                 ok = self.notifier.push_observe(p, image, gate)
-                if ok:
+                if ok and not self.dry_run:
+                    # 同上 (2026-09-09): dry-run 观察推送也不写观察去重表
                     self.state.record_observe(p)
+                if ok:
                     result.observed.append(p)
                     logger.info(f"观察推送 {p.symbol} {p.interval} "
                                 f"{p.pattern_type} (gate={gate})")
