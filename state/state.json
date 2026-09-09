@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-09T10:05:23.294610+00:00",
+  "lastScanAt": "2026-09-09T10:17:02.861517+00:00",
   "pushedSignals": [
     {
       "symbol": "FILUSDT",
@@ -3197,21 +3197,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 717,
+    "scanned_pairs": 719,
     "failed_pairs": 15,
-    "candidates": 366,
-    "confirmed": 59,
-    "after_scoring": 10,
+    "candidates": 367,
+    "confirmed": 60,
+    "after_scoring": 11,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 524.7,
+    "duration_seconds": 539.9,
     "source_stats": {
-      "okx": 717
+      "okx": 719
     },
     "health_stats": {
-      "healthy": 669,
-      "sensitive": 48
+      "healthy": 668,
+      "sensitive": 51
     }
   },
   "observedSignals": [
