@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-09T03:20:45.834766+00:00",
+  "lastScanAt": "2026-09-09T03:47:59.279829+00:00",
   "pushedSignals": [
     {
       "symbol": "BLURUSDT",
@@ -3201,24 +3201,36 @@
       "cooldownUntil": "2026-09-09T04:19:09.718622+00:00",
       "signalHash": "11905a40f0b9ccdf",
       "endMs": 1788872400000
+    },
+    {
+      "symbol": "DOSUSDT",
+      "patternType": "descending_triangle",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 68,
+      "detectedAt": "2026-09-09T03:47:57.927553+00:00",
+      "pushedAt": "2026-09-09T03:47:57.927553+00:00",
+      "cooldownUntil": "2026-09-09T11:47:57.927553+00:00",
+      "signalHash": "1e825c5acd59cbab",
+      "endMs": 1788811200000
     }
   ],
   "scanStats": {
     "scanned_pairs": 710,
     "failed_pairs": 16,
-    "candidates": 407,
+    "candidates": 392,
     "confirmed": 66,
-    "after_scoring": 10,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 570.9,
+    "after_scoring": 11,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 1,
+    "duration_seconds": 356.7,
     "source_stats": {
       "okx": 710
     },
     "health_stats": {
-      "healthy": 665,
-      "sensitive": 45
+      "healthy": 663,
+      "sensitive": 47
     }
   },
   "observedSignals": [
@@ -3425,6 +3437,18 @@
       "cooldownUntil": "2026-09-10T03:10:50.870621+00:00",
       "signalHash": "75fe6c6ee96f5918",
       "endMs": 1788105600000
+    },
+    {
+      "symbol": "ZBTUSDT",
+      "patternType": "rising_wedge",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 51,
+      "detectedAt": "2026-09-09T03:47:59.279584+00:00",
+      "pushedAt": "2026-09-09T03:47:59.279584+00:00",
+      "cooldownUntil": "2026-09-09T11:47:59.279584+00:00",
+      "signalHash": "a5d4c231b6e6cca9",
+      "endMs": 1788854400000
     }
   ]
 }
