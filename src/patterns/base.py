@@ -228,8 +228,17 @@ def fit_trendline(pivots: List[Pivot], use_type: PivotType,
             line = Line(p1, p2)
 
             # 统计落在这条线附近的摆动点数量
+            #
+            # 只统计线段两端界定的区间内的点 —— 端点之外的"触点"无几何意义：
+            # 趋势线外推到区间外可能得到负价格，abs(p.price - expected)/expected
+            # 除以负数恒为负 ≤ tolerance，会把区间外的点全部误计为触点，
+            # 让一条只真触 2 点的插针线拿到虚假的高 touches 抢占真实收敛边界
+            # （实测 ZBTUSDT 4h: 08-07 插针线 101→145 靠此 bug 拿到 touches=13,
+            #   真实上升三角的边界被挤掉, 形态无人认领）。
             touches = 0
             for p in pts:
+                if not (p1.index <= p.index <= p2.index):
+                    continue
                 expected = line.value_at(p.index)
                 if expected == 0:
                     continue
