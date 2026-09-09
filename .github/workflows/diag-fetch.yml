@@ -6,6 +6,19 @@ name: Diag Fetch Case Klines
 
 on:
   workflow_dispatch:
+    inputs:
+      syms:
+        description: '标的列表, 逗号分隔 (如 DOSUSDT,ABCUSDT)'
+        required: false
+        default: 'DOSUSDT'
+      iv:
+        description: '周期 (15m/1h/4h/1d)'
+        required: false
+        default: '4h'
+      limit:
+        description: 'K线根数'
+        required: false
+        default: '400'
 
 permissions:
   contents: read
@@ -33,20 +46,21 @@ jobs:
           sys.path.insert(0, "src")
           from market_data import OkxClient
 
-          NEED = {"15m": 600, "1h": 400, "4h": 300, "1d": 240}
+          SYMS = "${{ github.event.inputs.syms }}".split(",")
+          IV = "${{ github.event.inputs.iv }}"
+          LIMIT = int("${{ github.event.inputs.limit }}")
           cli = OkxClient()
           assert cli.ping(), "OKX ping fail"
-          for sym, iv in [("CBRSUSDT", "1h"), ("ZBTUSDT", "4h"),
-                          ("RKLBUSDT", "4h"), ("CBRSUSDT", "15m"),
-                          ("ZBTUSDT", "15m"), ("CBRSUSDT", "4h")]:
-              path = os.path.join("data", f"klines_{iv}", sym, f"{sym}.csv")
+          for sym in SYMS:
+              sym = sym.strip()
+              path = os.path.join("data", f"klines_{IV}", sym, f"{sym}.csv")
               os.makedirs(os.path.dirname(path), exist_ok=True)
               try:
-                  ks = cli.get_klines(sym, iv, limit=NEED[iv])
+                  ks = cli.get_klines(sym, IV, limit=LIMIT)
               except Exception as e:
-                  print(f"  !! {sym} {iv} 异常: {e}")
+                  print(f"  !! {sym} {IV} 异常: {e}")
                   continue
-              print(f"  {sym} {iv}: {len(ks)}")
+              print(f"  {sym} {IV}: {len(ks)}")
               with open(path, "w", encoding="utf-8", newline="") as f:
                   w = csv.writer(f)
                   for k in ks:
@@ -58,8 +72,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: case-klines
-          path: |
-            data/klines_*/CBRSUSDT/*.csv
-            data/klines_*/ZBTUSDT/*.csv
-            data/klines_4h/RKLBUSDT/*.csv
+          path: data/klines_*/
           retention-days: 3
