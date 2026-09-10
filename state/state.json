@@ -1,106 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-10T21:52:53.010801+00:00",
+  "lastScanAt": "2026-09-10T23:31:27.735442+00:00",
   "pushedSignals": [
-    {
-      "symbol": "RECALLUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 95,
-      "detectedAt": "2026-09-03T22:51:10.164300+00:00",
-      "pushedAt": "2026-09-03T22:51:10.164300+00:00",
-      "cooldownUntil": "2026-09-04T06:51:10.164300+00:00",
-      "signalHash": "ee848844f2b298ed"
-    },
-    {
-      "symbol": "PEPEUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 91,
-      "detectedAt": "2026-09-03T22:51:14.678794+00:00",
-      "pushedAt": "2026-09-03T22:51:14.678794+00:00",
-      "cooldownUntil": "2026-09-04T00:51:14.678794+00:00",
-      "signalHash": "ad11403b455bd708"
-    },
-    {
-      "symbol": "MEMEUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 87,
-      "detectedAt": "2026-09-03T22:51:18.922617+00:00",
-      "pushedAt": "2026-09-03T22:51:18.922617+00:00",
-      "cooldownUntil": "2026-09-04T00:51:18.922617+00:00",
-      "signalHash": "0c3129aaedebbca5"
-    },
-    {
-      "symbol": "CHZUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 80,
-      "detectedAt": "2026-09-03T22:51:23.122994+00:00",
-      "pushedAt": "2026-09-03T22:51:23.122994+00:00",
-      "cooldownUntil": "2026-09-04T00:51:23.122994+00:00",
-      "signalHash": "2554593e83830c8b"
-    },
-    {
-      "symbol": "XLMUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 74,
-      "detectedAt": "2026-09-03T22:51:27.297788+00:00",
-      "pushedAt": "2026-09-03T22:51:27.297788+00:00",
-      "cooldownUntil": "2026-09-04T00:51:27.297788+00:00",
-      "signalHash": "7d5f623dbf348efb"
-    },
-    {
-      "symbol": "ENAUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 72,
-      "detectedAt": "2026-09-03T22:51:31.847558+00:00",
-      "pushedAt": "2026-09-03T22:51:31.847558+00:00",
-      "cooldownUntil": "2026-09-04T00:51:31.847558+00:00",
-      "signalHash": "429a412f23d75096"
-    },
-    {
-      "symbol": "HBARUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 69,
-      "detectedAt": "2026-09-03T22:51:36.138207+00:00",
-      "pushedAt": "2026-09-03T22:51:36.138207+00:00",
-      "cooldownUntil": "2026-09-04T00:51:36.138207+00:00",
-      "signalHash": "adf1aea37ef7263f"
-    },
-    {
-      "symbol": "DOGEUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 92,
-      "detectedAt": "2026-09-03T23:11:55.764350+00:00",
-      "pushedAt": "2026-09-03T23:11:55.764350+00:00",
-      "cooldownUntil": "2026-09-04T01:11:55.764350+00:00",
-      "signalHash": "4bf672e65ae70a89"
-    },
-    {
-      "symbol": "RVNUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 60,
-      "detectedAt": "2026-09-03T23:11:59.988399+00:00",
-      "pushedAt": "2026-09-03T23:11:59.988399+00:00",
-      "cooldownUntil": "2026-09-04T01:11:59.988399+00:00",
-      "signalHash": "10505719eed4635c"
-    },
     {
       "symbol": "PEPEUSDT",
       "patternType": "double_bottom",
@@ -2908,21 +2809,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 751,
+    "scanned_pairs": 725,
     "failed_pairs": 15,
-    "candidates": 248,
-    "confirmed": 37,
-    "after_scoring": 19,
-    "after_dedup": 1,
-    "pushed": 1,
+    "candidates": 245,
+    "confirmed": 35,
+    "after_scoring": 17,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 577.9,
+    "duration_seconds": 384.3,
     "source_stats": {
-      "okx": 751
+      "okx": 725
     },
     "health_stats": {
-      "healthy": 695,
-      "sensitive": 54,
+      "healthy": 672,
+      "sensitive": 51,
       "over_smoothed": 2
     }
   },
