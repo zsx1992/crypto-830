@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-10T18:21:08.898943+00:00",
+  "lastScanAt": "2026-09-10T18:43:53.192424+00:00",
   "pushedSignals": [
     {
       "symbol": "DOGEUSDT",
@@ -2964,19 +2964,19 @@
   "scanStats": {
     "scanned_pairs": 763,
     "failed_pairs": 15,
-    "candidates": 262,
-    "confirmed": 39,
+    "candidates": 266,
+    "confirmed": 40,
     "after_scoring": 21,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 525.9,
+    "duration_seconds": 502.8,
     "source_stats": {
       "okx": 763
     },
     "health_stats": {
-      "healthy": 709,
-      "sensitive": 53,
+      "healthy": 708,
+      "sensitive": 54,
       "over_smoothed": 1
     }
   },
