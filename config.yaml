@@ -397,6 +397,30 @@ filter:
     min_strength: 45      # 结构下限: 强度分 0~100
     min_geometry: 0.30    # 结构下限: 几何分 0~1 (None 视为达标=兜底0.5语义)
 
+  # === 去重：状态跃迁可重推 (2026-09-10 P2) ===
+  # 旧逻辑：同一(symbol,patternType,interval) 结构未变时永久抑制(每形态一生只推1次)，
+  # 是"安静期0推送"主因之一。改为：形态发生"状态跃迁/新事件"时允许重推，
+  # 每个事件都有信息量(新突破腿/强度跳升/突破价位移)，既不把同一形态刷屏，
+  # 也不再把静态形态永久闷死。
+  #   reconfirm_cooldown_hours=0 时只靠事件重推(安全, 不会刷屏)；
+  #   设为>0 开启"形态仍在"周期重报(每N小时重推一次)，有刷屏风险，慎开。
+  dedup:
+    event_repush: true            # 允许状态跃迁重推(核心开关)
+    event_breakout_advance: 2     # 突破又延伸≥2根 → 算新事件
+    event_strength_delta: 8       # 强度提升≥8分 → 算新事件
+    event_price_delta: 0.02       # 突破价偏移≥2% → 算新事件
+    reconfirm_cooldown_hours: 0   # "形态仍在"周期重推(0=关)
+    max_repush_per_run: 6         # 单轮重推上限(防爆洪峰, 配PushLimiter)
+
+  # === 新鲜度：硬截断 → 加权 (2026-09-10 P3) ===
+  # 旧逻辑 age>窗口 直接砍(砍 65~70% 确认信号, 零推送主因之一)。
+  # 改为加权：老突破不被砍死, 而是降权排后; 仅当"新鲜供给不足"时,
+  # 用最强老突破做覆盖兜底(top-up), 文案标注"突破较旧"，不冒充新突破入场。
+  #   freshness_mode=hard     → 退回旧逻辑(age>窗口即砍)
+  #   freshness_mode=weighted → 降权+兜底(默认)
+  freshness_mode: "weighted"
+  freshness_topup_floor: 2        # 去重后剩余<此数时, 才允许填充最强老突破
+
 # === 信号强度打分权重 ===
 scoring:
   weights:
@@ -452,6 +476,17 @@ notification:
   # 每次运行后发一条"扫描摘要"（确认服务存活；0 信号时也发，
   # 否则群里静悄悄的你以为挂了）。嫌吵就改 false。
   send_summary: true
+
+  # 观察流独立 webhook (P0 治"乱")：观察样本推到单独的企微群机器人，
+  # 与主信号群物理隔离，群里只剩达标信号。未配置时观察流暂停推送(不污染主群)，
+  # 待在 GitHub Secrets 增加 WECOM_OBSERVE_WEBHOOK 后自动恢复。
+  observe_webhook_url_env: "WECOM_OBSERVE_WEBHOOK"
+
+  # 扫描摘要发送策略 (P0 治"乱")：
+  #   always    → 每轮都发(旧行为, 噪声大)
+  #   on_signal → 仅当有信号推送或本轮有异常时才发(默认, 群里安静)
+  #   daily     → 每天只发一条(最安静, 但丢每轮反馈)
+  summary_mode: "on_signal"
 
   # 图表渲染
   chart:

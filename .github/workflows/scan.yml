@@ -125,6 +125,8 @@ jobs:
         env:
           # Webhook 地址存在 Secrets 里，不出现在此文件的明文里
           WECOM_WEBHOOK: ${{ secrets.WECOM_WEBHOOK }}
+          # 观察流独立群（P0 隔离噪音）；未配置则观察流暂停推送，主群仍干净
+          WECOM_OBSERVE_WEBHOOK: ${{ secrets.WECOM_OBSERVE_WEBHOOK }}
         run: |
           ARGS="--config config.yaml --full"
           if [ -n "${{ github.event.inputs.top_n }}" ]; then

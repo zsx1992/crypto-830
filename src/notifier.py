@@ -114,8 +114,12 @@ class WeComNotifier:
                  dry_run: bool = False,
                  disclaimer: str = "仅供参考，不构成投资建议",
                  tz_name: str = DEFAULT_TZ_NAME,
-                 time_format: str = DEFAULT_TIME_FORMAT):
+                 time_format: str = DEFAULT_TIME_FORMAT,
+                 observe_webhook_url: Optional[str] = None,
+                 observe_fallback_same: bool = False):
         self.webhook_url = webhook_url
+        self.observe_webhook_url = observe_webhook_url
+        self.observe_fallback_same = observe_fallback_same
         self.dry_run = dry_run
         self.limiter = PushLimiter(max_per_minute)
         self.disclaimer = disclaimer
@@ -208,6 +212,11 @@ class WeComNotifier:
             ">",
             f"> {self.disclaimer}",
         ])
+
+        # 陈旧信号提示（2026-09-10 P3 加权新鲜度 top-up）：
+        # 突破距今较旧、作为"形态仍在"覆盖兜底推出，明确不是新突破入场。
+        if getattr(p, "is_stale", False):
+            lines.insert(-2, "> ⚠️ 突破距今较旧，仅作「形态仍在」提示，非新突破入场")
 
         content = "\n".join(lines)
 
@@ -327,13 +336,22 @@ class WeComNotifier:
 
     def push_observe(self, p: Pattern, image_bytes: Optional[bytes],
                      gate: str) -> bool:
-        """推送一条观察流信号（markdown + 图片），返回是否成功"""
+        """推送一条观察流信号（markdown + 图片），返回是否成功。
+
+        P0 隔离：优先发到独立观察流 webhook；未配置且不允许回退主群时，
+        为保持主群干净直接放弃（返回 False，调用方不会写观察去重表）。
+        """
         md_payload = self.build_observe_markdown(p, gate)
+
+        target = self.observe_webhook_url
+        if not target and self.observe_fallback_same:
+            target = self.webhook_url
 
         if self.dry_run:
             print("\n" + "=" * 60)
             print(f"[DRY-RUN] 将观察推送: {p.symbol} {p.interval} "
-                  f"{p.pattern_type} {p.direction.value} (被闸={gate})")
+                  f"{p.pattern_type} {p.direction.value} (被闸={gate})"
+                  f" -> {'观察群' if target else '无目标(跳过)'}")
             print("=" * 60)
             print(md_payload["markdown"]["content"])
             if image_bytes:
@@ -342,9 +360,10 @@ class WeComNotifier:
             self.sent_count += 1
             return True
 
-        if not self.webhook_url:
-            logger.error("未配置 webhook_url，无法推送")
-            self.failed_count += 1
+        if not target:
+            logger.warning("[notifier] 观察流未配置独立 webhook "
+                           "(WECOM_OBSERVE_WEBHOOK)，为保持主群干净已暂停"
+                           "观察推送（金标准收集待配置后恢复）")
             return False
         if requests is None:
             logger.error("requests 未安装，无法推送")
@@ -352,24 +371,26 @@ class WeComNotifier:
             return False
 
         self.limiter.acquire()
-        ok1 = self._post(md_payload)
+        ok1 = self._post(md_payload, url=target)
         ok2 = True
         if image_bytes:
             time.sleep(1)
             self.limiter.acquire()
-            ok2 = self._post(self.build_image(image_bytes))
+            ok2 = self._post(self.build_image(image_bytes), url=target)
         if ok1 and ok2:
             self.sent_count += 1
         else:
             self.failed_count += 1
         return ok1 and ok2
 
-    def _post(self, payload: dict, retry: int = 2) -> bool:
-        """实际发送，失败重试"""
+    def _post(self, payload: dict, retry: int = 2,
+              url: Optional[str] = None) -> bool:
+        """实际发送，失败重试（url 缺省用主 webhook）"""
         msg_type = payload.get("msgtype", "?")
+        post_url = url or self.webhook_url
         for attempt in range(retry + 1):
             try:
-                resp = requests.post(self.webhook_url, json=payload,
+                resp = requests.post(post_url, json=payload,
                                      timeout=10)
                 data = resp.json()
                 code = data.get("errcode")

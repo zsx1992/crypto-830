@@ -31,7 +31,7 @@ import json
 import hashlib
 import logging
 from datetime import datetime, timedelta, timezone
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Tuple
 
 _SRC_DIR = os.path.dirname(os.path.abspath(__file__))
 if _SRC_DIR not in sys.path:
@@ -75,12 +75,14 @@ class StateStore:
 
     def __init__(self, state_path: str = "state/state.json",
                  cooldown_minutes: Optional[dict] = None,
-                 cleanup_days: int = 7):
+                 cleanup_days: int = 7,
+                 dedup_cfg: Optional[dict] = None):
         self.state_path = state_path
         self.cooldown = dict(self.DEFAULT_COOLDOWN_MINUTES)
         if cooldown_minutes:
             self.cooldown.update(cooldown_minutes)
         self.cleanup_days = cleanup_days
+        self.dedup_cfg = dedup_cfg or {}
         self.state = self._load()
         self._dirty = False
 
@@ -124,51 +126,88 @@ class StateStore:
         except Exception as e:
             logger.error(f"状态保存失败: {e}")
 
-    # ---------- 去重 ----------
+    # ---------- 去重（状态跃迁可重推, 2026-09-10 P2）----------
 
-    def _suppressed(self, p: Pattern, records: List[dict]) -> bool:
-        """核心检查：p 是否与 records 中某条命中（同形态端差 / 冷却期）"""
+    def dedup_check(self, p: Pattern, records: List[dict]) -> str:
+        """去重判定，返回:
+          'allow_new'   → 首次 / 冷却已过且非同形态，放行（计入新推送）
+          'allow_event' → 同形态但发生状态跃迁（方向翻转 / 突破延伸 /
+                          强度跳升 / 突破价位移），放行（计入事件重推，
+                          受 max_repush_per_run 限速）
+          'cooldown'    → 不同形态但仍在冷却期，抑制
+          'suppress'    → 同形态无新事件（旧永久抑制行为）
+        """
         h = signal_hash(p.symbol, p.pattern_type, p.interval)
         now = now_utc()
-        # "同一形态"容差 = 同周期 2 根K线时长（毫秒）
         same_ms = INTERVAL_MINUTES.get(p.interval, 60) * 60_000 * 2
 
-        for rec in records:
-            if rec.get("signalHash") != h:
-                continue
-            # 方向翻转：结构已破坏 → 允许重推（原设计意图）
-            rec_dir = rec.get("direction")
-            if rec_dir and rec_dir != p.direction.value:
-                continue
-            # 形态身份识别：end_ms 相同 → 同一个形态还挂在图上。
-            # 冷却期只是粗粒度闸门，这里做细粒度拦截，
-            # 修复"冷却一过同一形态又刷一次"的重复推送。
-            rec_end = rec.get("endMs")
-            same_form = bool(rec_end and p.end_ms
-                             and abs(p.end_ms - rec_end) <= same_ms)
-            if same_form:
-                logger.info(f"同形态已推过(端差{abs(p.end_ms-rec_end)}ms): "
-                            f"{p.symbol} {p.pattern_type} {p.interval}")
-                return True
-            # 非同一形态（演化出新末端 / 旧记录无 endMs）→ 冷却期兜底
-            try:
-                until = datetime.fromisoformat(rec["cooldownUntil"])
-            except Exception:
-                continue
+        matching = [r for r in records if r.get("signalHash") == h]
+        if not matching:
+            return "allow_new"
+
+        latest = max(matching, key=lambda r: r.get("pushedAt", ""))
+
+        # 方向翻转：结构已破坏 → 重要信息，允许重推（视为新事件）
+        if latest.get("direction") and latest["direction"] != p.direction.value:
+            return "allow_event"
+
+        rec_end = latest.get("endMs")
+        same_form = bool(rec_end and getattr(p, "end_ms", 0)
+                         and abs(p.end_ms - rec_end) <= same_ms)
+        if not same_form:
+            # 不同形态（演化出新末端 / 旧记录无 endMs）→ 冷却期兜底
+            until = self._parse_dt(latest.get("cooldownUntil"))
             if until > now:
-                remain = (until - now).total_seconds() / 60
-                logger.info(f"冷却期内: {p.symbol} {p.pattern_type} "
-                            f"{p.interval}，剩余 {remain:.0f} 分钟")
+                return "cooldown"
+            return "allow_new"
+
+        # 同一形态仍挂在图上：检查是否发生"新事件"
+        cfg = self.dedup_cfg
+        if cfg.get("event_repush") and self._has_new_event(p, latest):
+            return "allow_event"
+
+        # 可选：开启"形态仍在"周期重推（有刷屏风险，默认关）
+        reconf_h = int(cfg.get("reconfirm_cooldown_hours", 0) or 0)
+        if reconf_h:
+            rat = self._parse_dt(latest.get("reconfirmAt"))
+            if rat > now:
+                return "suppress"
+            return "allow_event"
+
+        # 默认：同形态无新事件 → 抑制（旧永久抑制行为，安静期0推送主因）
+        return "suppress"
+
+    def _has_new_event(self, p: Pattern, rec: dict) -> bool:
+        """同形态是否发生值得重推的状态跃迁"""
+        cfg = self.dedup_cfg
+        # 突破又延伸了若干根（价格取得新进展）
+        adv = int(cfg.get("event_breakout_advance", 2))
+        rec_idx = rec.get("breakoutIndex")
+        if rec_idx is not None and p.breakout_index is not None:
+            if p.breakout_index - rec_idx >= adv:
+                return True
+        # 突破价明显偏移（入场位变了）
+        rec_px = rec.get("breakoutPrice")
+        if rec_px and getattr(p, "breakout_price", 0):
+            if abs(p.breakout_price - rec_px) / rec_px > \
+                    float(cfg.get("event_price_delta", 0.02)):
+                return True
+        # 强度明显提升
+        rec_s = rec.get("strength")
+        if rec_s is not None and p.strength_score is not None:
+            if p.strength_score - rec_s >= int(cfg.get("event_strength_delta", 8)):
                 return True
         return False
 
     def is_in_cooldown(self, p: Pattern) -> bool:
-        """正式推送空间：该信号是否应抑制推送（冷却期 + 同形态识别）"""
-        return self._suppressed(p, self.state.get("pushedSignals", []))
+        """正式推送空间：该信号是否应抑制推送（冷却期 / 同形态无事件）"""
+        r = self.dedup_check(p, self.state.get("pushedSignals", []))
+        return r in ("cooldown", "suppress")
 
     def is_observed(self, p: Pattern) -> bool:
-        """观察空间：该信号是否已观察推送过（同形态/冷却期）"""
-        return self._suppressed(p, self.state.get("observedSignals", []))
+        """观察空间：该信号是否已观察推送过（同形态 / 冷却期）"""
+        r = self.dedup_check(p, self.state.get("observedSignals", []))
+        return r in ("cooldown", "suppress")
 
     def record(self, p: Pattern):
         """记录已正式推送的信号"""
@@ -186,6 +225,7 @@ class StateStore:
         """构造一条推送/观察记录（两空间共用字段）"""
         minutes = self.cooldown.get(p.interval, 60)
         now = now_utc()
+        reconf_h = int(self.dedup_cfg.get("reconfirm_cooldown_hours", 0) or 0)
         return {
             "symbol": p.symbol,
             "patternType": p.pattern_type,
@@ -197,6 +237,10 @@ class StateStore:
             "cooldownUntil": (now + timedelta(minutes=minutes)).isoformat(),
             "signalHash": signal_hash(p.symbol, p.pattern_type, p.interval),
             "endMs": getattr(p, "end_ms", 0) or 0,
+            "breakoutIndex": getattr(p, "breakout_index", None),
+            "breakoutPrice": getattr(p, "breakout_price", None),
+            "reconfirmAt": ((now + timedelta(hours=reconf_h)).isoformat()
+                            if reconf_h else None),
         }
 
     def cleanup(self):
@@ -223,23 +267,28 @@ class StateStore:
 
     # ---------- 过滤入口 ----------
 
-    def filter_new(self, patterns: List[Pattern]) -> List[Pattern]:
-        """剔除正式推送空间冷却期内的重复信号"""
-        fresh = []
-        for p in patterns:
-            if self.is_in_cooldown(p):
-                continue
-            fresh.append(p)
-        return fresh
+    def filter_new(self, patterns: List[Pattern]) -> Tuple[List, List]:
+        """剔除重复信号，返回 (全新信号, 事件重推信号) 两个列表。
 
-    def filter_new_observe(self, patterns: List[Pattern]) -> List[Pattern]:
-        """剔除观察空间已推送过的重复信号（独立于正式空间）"""
+        事件重推信号需在调用方按 max_repush_per_run 限速后再合并进推送队列。
+        """
+        fresh_new, events = [], []
+        for p in patterns:
+            r = self.dedup_check(p, self.state.get("pushedSignals", []))
+            if r == "allow_new":
+                fresh_new.append(p)
+            elif r == "allow_event":
+                events.append(p)
+        return fresh_new, events
+
+    def filter_new_observe(self, patterns: List[Pattern]) -> Tuple[List, List]:
+        """观察空间：返回 (可观察信号, []) —— 观察流不区分新 / 事件"""
         fresh = []
         for p in patterns:
-            if self.is_observed(p):
-                continue
-            fresh.append(p)
-        return fresh
+            r = self.dedup_check(p, self.state.get("observedSignals", []))
+            if r in ("allow_new", "allow_event"):
+                fresh.append(p)
+        return fresh, []
 
     # ---------- 统计 ----------
 

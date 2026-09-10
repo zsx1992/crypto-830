@@ -25,7 +25,7 @@ ascending_channel (上升通道) / descending_channel (下降通道)
   触点只统计落在 [p1.index, p2.index] 窗口内的摆动点。
 
 判定阈值（默认，均可从 config.yaml 覆盖）:
-  水平判定        |rel_slope| ≤ 0.0004（每根K线相对变化 0.04%）
+  水平判定        跨度感知: 边界累计抬升 ÷ 箱高 ≤ 15%（旧 per-candle 0.0004 已弃用）
   平行判定        |上斜率 - 下斜率| ≤ 0.0008
   每条边界最少触点 2 个（合计 4）
   形态跨度        30 ~ 200 根
@@ -115,7 +115,10 @@ class BoxDetector(BaseDetector):
         "min_span": 30,                # 形态最小跨度
         "max_span": 200,               # 形态最大跨度
         "min_height_atr": 3.0,         # 左端最宽处的高度下限（ATR倍数）
-        "flat_threshold": 0.0004,      # 箱体判定: 边界 |rel_slope| ≤ 此值
+        # 水平判定: 旧逻辑用"每根 rel_slope ≤ 0.0004", 长跨度下累计倾斜失控
+        # (全池26矩形仅2真水平)。改为跨度感知: 边界累计抬升 ÷ 箱高 ≤ flat_ratio_max。
+        "flat_threshold": 0.0004,      # 保留(仅作极陡线兜底, 不参与主分类)
+        "flat_ratio_max": 0.15,       # 边界累计抬升 ÷ 箱高 ≤ 15% 才算"水平"
         "max_slope_diff": 0.0008,      # 平行判定: |上斜率-下斜率| ≤ 此值
         "min_width_ratio": 0.75,       # 宽度收窄硬闸: 右端间距 ≥ 左端×此值
                                        # (2026-09-09 ZBT 4h: 收窄比0.44被拒)
@@ -228,19 +231,32 @@ class BoxDetector(BaseDetector):
         if not containment_ok(klines, upper, lower, p):
             return results
 
-        # --- 分类 ---
-        flat_thr = p["flat_threshold"]
-        upper_flat = abs(upper.rel_slope) <= flat_thr
-        lower_flat = abs(lower.rel_slope) <= flat_thr
+        # --- 分类（跨度感知水平判定, 2026-09-10 P1 根因修复）---
+        # 旧逻辑 abs(rel_slope) <= 0.0004 对长跨度失效: 每根斜率极小,
+        # 但跨 100+ 根累计抬升可达箱高 100%~300% → 把斜线判成"水平矩形"。
+        # 改判: 边界在 [start_index, end_index] 上的累计抬升 ÷ 箱高 ≤ flat_ratio_max。
+        flat_gate = p["flat_ratio_max"]
+        upper_rise = upper.value_at(end_index) - upper.value_at(start_index)
+        lower_rise = lower.value_at(end_index) - lower.value_at(start_index)
+        # 用左右两端箱高的均值作分母, 比单端更稳(斜箱体两端高度不同)
+        box_h = (height + right_gap) / 2.0
+        if box_h <= 0:
+            return results
+        upper_flat = abs(upper_rise) / box_h <= flat_gate
+        lower_flat = abs(lower_rise) / box_h <= flat_gate
 
         if upper_flat and lower_flat:
             kind = "rectangle"
-        elif (upper.rel_slope > flat_thr and lower.rel_slope > flat_thr):
-            kind = "ascending_channel"
-        elif (upper.rel_slope < -flat_thr and lower.rel_slope < -flat_thr):
-            kind = "descending_channel"
+        elif (not upper_flat) and (not lower_flat):
+            # 两边都明显倾斜且同向 → 通道
+            if upper_rise > 0 and lower_rise > 0:
+                kind = "ascending_channel"
+            elif upper_rise < 0 and lower_rise < 0:
+                kind = "descending_channel"
+            else:
+                return results   # 两边反向倾斜 → 非平行, 交给三角形
         else:
-            return results   # 一平一斜 → 既非箱体也非通道，交给三角形
+            return results   # 一平一斜 → 既非箱体也非通道, 交给三角形
 
         # 双向尝试（箱体突破方向不定；通道顺向=延续、反向=衰竭）
         for direction in (Direction.LONG, Direction.SHORT):

@@ -84,13 +84,21 @@ class Scanner:
 
         filt = config.get("filter", {})
         st = config.get("state", {})
+        self.dedup_cfg = filt.get("dedup", {})
         self.state = StateStore(
             state_path=st.get("file", "state/state.json"),
             cooldown_minutes=filt.get("cooldown_minutes"),
             cleanup_days=st.get("cleanup_days", 7),
+            dedup_cfg=self.dedup_cfg,
         )
+        # P2/P3 派生参数
+        self.max_repush = int(self.dedup_cfg.get("max_repush_per_run", 6))
+        self.freshness_mode = filt.get("freshness_mode", "weighted")
+        self.freshness_topup_floor = int(filt.get("freshness_topup_floor", 2))
 
         notif = config.get("notification", {})
+        observe_env = notif.get("observe_webhook_url_env")
+        observe_webhook = os.environ.get(observe_env) if observe_env else None
         self.notifier = WeComNotifier(
             webhook_url=webhook_url,
             max_per_minute=notif.get("push_rate_limit_per_minute", 18),
@@ -99,6 +107,7 @@ class Scanner:
                 "disclaimer", "仅供参考，不构成投资建议"),
             tz_name=notif.get("timezone", "Asia/Shanghai"),
             time_format=notif.get("time_format", "%Y-%m-%d %H:%M"),
+            observe_webhook_url=observe_webhook,
         )
         self.max_push = filt.get("max_per_run",
                                  notif.get("max_per_run", 20))
@@ -126,8 +135,9 @@ class Scanner:
         self.observe_min_strength = obs.get("min_strength", 45)
         self.observe_min_geometry = obs.get("min_geometry", 0.30)
 
-        # 是否每次运行后都发一条"扫描摘要"（确认服务存活 + 无信号时有反馈）
+        # 是否每次运行后都发一条"扫描摘要"（P0：summary_mode 控制发送策略）
         self.send_summary = notif.get("send_summary", True)
+        self.summary_mode = notif.get("summary_mode", "on_signal")
 
     # ---------- 主流程 ----------
 
@@ -315,7 +325,7 @@ class Scanner:
         # 2026-09-07 增加各闸 kill 计数，让 0 推送摘要漏斗能定位是哪道闸最严。
         result.kill_breakdown = {
             "freshness": 0, "strength": 0, "rr": 0,
-            "volume": 0, "geometry": 0, "trend": 0,
+            "volume": 0, "geometry": 0, "trend": 0, "stale": 0,
         }
         passed = []
         # 2026-09-07: 收集被 6 闸砍掉信号的 age, 循环结束后按周期打
@@ -331,9 +341,14 @@ class Scanner:
             _killed_ages.setdefault(p.interval, []).append(p.breakout_age)
             max_age = self.engine.freshness_for(p.interval)
             if p.breakout_age > max_age:
-                result.kill_breakdown["freshness"] += 1
-                _killed_detail.append((p, "freshness"))
-                continue
+                if self.freshness_mode == "hard":
+                    result.kill_breakdown["freshness"] += 1
+                    _killed_detail.append((p, "freshness"))
+                    continue
+                # 加权模式(P3): 不砍死, 标记陈旧, 降权排后, 待供给不足时兜底
+                p.is_stale = True
+                result.kill_breakdown["stale"] += 1
+                # 仍继续走后续各闸(strength/rr/vol/geo/trend)
             if p.strength_score < self.min_strength:
                 result.kill_breakdown["strength"] += 1
                 _killed_detail.append((p, "strength"))
@@ -439,20 +454,28 @@ class Scanner:
         # 直接从 Actions logs 定位主闸，无需等企微截图。
         _kb = result.kill_breakdown
         logger.info("各闸被砍 ▶ freshness:%d strength:%d rr:%d volume:%d "
-                    "geometry:%d trend:%d (确认%d→过滤后%d)",
+                    "geometry:%d trend:%d stale:%d (确认%d→过滤后%d)",
                     _kb.get("freshness", 0), _kb.get("strength", 0),
                     _kb.get("rr", 0), _kb.get("volume", 0),
                     _kb.get("geometry", 0), _kb.get("trend", 0),
+                    _kb.get("stale", 0),
                     len(scored), len(result.after_scoring))
 
-        # ---- 5. 去重 ----
+        # ---- 5. 去重（状态跃迁可重推, P2）----
         self.state.cleanup()
-        result.after_dedup = self.state.filter_new(result.after_scoring)
-        logger.info(f"去重后 {len(result.after_dedup)} 个")
+        fresh_new, events = self.state.filter_new(result.after_scoring)
+        # 事件重推限速: 避免形态重分类/积压一次性洪峰(配 PushLimiter 18条/分)
+        if len(events) > self.max_repush:
+            events = sorted(events,
+                            key=lambda x: (-x.strength_score,
+                                           -x.risk_reward))[:self.max_repush]
+            logger.info(f"事件重推超限, 截断至 {self.max_repush} 个")
+        result.after_dedup = fresh_new + events
+        logger.info(f"去重后 {len(result.after_dedup)} 个 "
+                     f"(全新 {len(fresh_new)} + 事件重推 {len(events)})")
 
         # ---- 6. 排序 + 限量 ----
-        result.after_dedup.sort(key=lambda x: (-x.strength_score,
-                                               -x.risk_reward))
+        result.after_dedup = self._apply_freshness_ranking(result.after_dedup)
         to_push = result.after_dedup[:self.max_push]
 
         # ---- 7. 渲染图表 + 推送 ----
@@ -500,7 +523,7 @@ class Scanner:
                 key=lambda x: -x[0].strength_score)
             to_observe = observe_candidates[:self.observe_max]
             fresh_obs = self.state.filter_new_observe(
-                [p for p, _ in to_observe])
+                [p for p, _ in to_observe])[0]
             if len(fresh_obs) < len(to_observe):
                 logger.info(f"观察流去重拦下 "
                             f"{len(to_observe) - len(fresh_obs)} 个")
@@ -562,19 +585,65 @@ class Scanner:
         # ——否则只能从 Actions 日志看（logs 需认证）。
         # 2026-09-07 增加：candidates=476 一连 40 次 0 推送时无法判断哪道闸手软
         if self.send_summary:
-            self.notifier.push_summary(
-                scanned=result.scanned_pairs,
-                candidates=len(result.candidates),
-                confirmed=len(result.confirmed),
-                after_scoring=len(result.after_scoring),
-                after_dedup=len(result.after_dedup),
-                signals=len(result.pushed),
-                duration=result.duration_sec,
-                kill_breakdown=result.kill_breakdown,
-                observed=len(result.observed),
-            )
+            mode = self.summary_mode
+            has_signal = len(result.pushed) > 0
+            has_error = len(result.errors) > 0
+            do_summary = True
+            if mode == "on_signal":
+                do_summary = has_signal or has_error
+            elif mode == "daily":
+                last = self.state.get_last_scan()
+                today = datetime.now(timezone.utc).date()
+                do_summary = (last is None) or (last.date() != today)
+            # always → do_summary 保持 True
+            if do_summary:
+                self.notifier.push_summary(
+                    scanned=result.scanned_pairs,
+                    candidates=len(result.candidates),
+                    confirmed=len(result.confirmed),
+                    after_scoring=len(result.after_scoring),
+                    after_dedup=len(result.after_dedup),
+                    signals=len(result.pushed),
+                    duration=result.duration_sec,
+                    kill_breakdown=result.kill_breakdown,
+                    observed=len(result.observed),
+                )
 
         return result
+
+    def _apply_freshness_ranking(self, patterns: List[Pattern]) -> List[Pattern]:
+        """加权新鲜度排序 + top-up 兜底（P3）。
+
+        - freshness_mode=hard：旧逻辑，按强度降序。
+        - freshness_mode=weighted：新鲜信号永远排前，陈旧信号(突破较旧,
+          is_stale=True)排后；仅当新鲜供给 < freshness_topup_floor 时，
+          用最强陈旧信号补到 floor 个（覆盖兜底），且绝不把陈旧信号混进
+          新鲜供给充足的轮次。返回的是已排序 / 已裁剪的列表（待 max_push 截断）。
+        """
+        if not patterns:
+            return patterns
+
+        if self.freshness_mode != "weighted":
+            patterns.sort(key=lambda x: (-x.strength_score, -x.risk_reward))
+            return patterns
+
+        patterns.sort(
+            key=lambda x: (0 if not getattr(x, "is_stale", False) else 1,
+                           -x.strength_score, -x.risk_reward))
+        fresh_count = sum(1 for x in patterns
+                          if not getattr(x, "is_stale", False))
+        if fresh_count >= self.freshness_topup_floor:
+            # 新鲜供给充足 → 丢弃所有陈旧信号（不推陈年突破）
+            return [x for x in patterns if not getattr(x, "is_stale", False)]
+
+        # 新鲜供给不足 → 最多补 floor-fresh_count 个最强陈旧信号
+        keep = self.freshness_topup_floor - fresh_count
+        stale_sorted = sorted(
+            [x for x in patterns if getattr(x, "is_stale", False)],
+            key=lambda x: (-x.strength_score, -x.risk_reward))
+        keep_ids = {id(x) for x in stale_sorted[:keep]}
+        return [x for x in patterns
+                if (not getattr(x, "is_stale", False)) or id(x) in keep_ids]
 
     def _limit_per_symbol(self, patterns: List[Pattern]) -> List[Pattern]:
         """
