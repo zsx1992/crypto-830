@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-10T05:30:20.361781+00:00",
+  "lastScanAt": "2026-09-10T05:51:10.164008+00:00",
   "pushedSignals": [
     {
       "symbol": "LABUSDT",
@@ -3016,23 +3016,53 @@
       "breakoutIndex": 160,
       "breakoutPrice": 128.54,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "RKLBUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 78,
+      "detectedAt": "2026-09-10T05:51:00.094163+00:00",
+      "pushedAt": "2026-09-10T05:51:00.094163+00:00",
+      "cooldownUntil": "2026-09-10T13:51:00.094163+00:00",
+      "signalHash": "b4ddd9f76ba3fb77",
+      "endMs": 1785758400000,
+      "breakoutIndex": 74,
+      "breakoutPrice": 70.58,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "EDGEUSDT",
+      "patternType": "ascending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 74,
+      "detectedAt": "2026-09-10T05:51:05.933246+00:00",
+      "pushedAt": "2026-09-10T05:51:05.933246+00:00",
+      "cooldownUntil": "2026-09-10T06:21:05.933246+00:00",
+      "signalHash": "a6a163d42ab658da",
+      "endMs": 1788698700000,
+      "breakoutIndex": 253,
+      "breakoutPrice": 0.6236,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 768,
+    "scanned_pairs": 764,
     "failed_pairs": 12,
     "candidates": 272,
-    "confirmed": 42,
-    "after_scoring": 22,
+    "confirmed": 43,
+    "after_scoring": 23,
     "after_dedup": 2,
     "pushed": 2,
-    "observed": 0,
-    "duration_seconds": 614.8,
+    "observed": 1,
+    "duration_seconds": 535.9,
     "source_stats": {
-      "okx": 768
+      "okx": 764
     },
     "health_stats": {
-      "healthy": 711,
+      "healthy": 707,
       "sensitive": 56,
       "over_smoothed": 1
     }
@@ -3411,6 +3441,21 @@
       "endMs": 1785758400000,
       "breakoutIndex": 74,
       "breakoutPrice": 70.58,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "MERLUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 74,
+      "detectedAt": "2026-09-10T05:51:10.163826+00:00",
+      "pushedAt": "2026-09-10T05:51:10.163826+00:00",
+      "cooldownUntil": "2026-09-10T13:51:10.163826+00:00",
+      "signalHash": "d1ae1e32bc71e1be",
+      "endMs": 1786003200000,
+      "breakoutIndex": 103,
+      "breakoutPrice": 0.01955,
       "reconfirmAt": null
     }
   ]
