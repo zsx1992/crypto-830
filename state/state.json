@@ -1,95 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-10T18:43:53.192424+00:00",
+  "lastScanAt": "2026-09-10T21:21:57.417892+00:00",
   "pushedSignals": [
-    {
-      "symbol": "DOGEUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 92,
-      "detectedAt": "2026-09-03T20:09:16.430827+00:00",
-      "pushedAt": "2026-09-03T20:09:16.430827+00:00",
-      "cooldownUntil": "2026-09-03T22:09:16.430827+00:00",
-      "signalHash": "4bf672e65ae70a89"
-    },
-    {
-      "symbol": "PEPEUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 91,
-      "detectedAt": "2026-09-03T20:09:21.428307+00:00",
-      "pushedAt": "2026-09-03T20:09:21.428307+00:00",
-      "cooldownUntil": "2026-09-03T22:09:21.428307+00:00",
-      "signalHash": "ad11403b455bd708"
-    },
-    {
-      "symbol": "MEMEUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 87,
-      "detectedAt": "2026-09-03T20:09:26.312372+00:00",
-      "pushedAt": "2026-09-03T20:09:26.312372+00:00",
-      "cooldownUntil": "2026-09-03T22:09:26.312372+00:00",
-      "signalHash": "0c3129aaedebbca5"
-    },
-    {
-      "symbol": "CHZUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 81,
-      "detectedAt": "2026-09-03T20:09:31.490326+00:00",
-      "pushedAt": "2026-09-03T20:09:31.490326+00:00",
-      "cooldownUntil": "2026-09-03T22:09:31.490326+00:00",
-      "signalHash": "2554593e83830c8b"
-    },
-    {
-      "symbol": "XLMUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 74,
-      "detectedAt": "2026-09-03T20:09:36.424123+00:00",
-      "pushedAt": "2026-09-03T20:09:36.424123+00:00",
-      "cooldownUntil": "2026-09-03T22:09:36.424123+00:00",
-      "signalHash": "7d5f623dbf348efb"
-    },
-    {
-      "symbol": "ADAUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 74,
-      "detectedAt": "2026-09-03T20:09:41.137001+00:00",
-      "pushedAt": "2026-09-03T20:09:41.137001+00:00",
-      "cooldownUntil": "2026-09-03T22:09:41.137001+00:00",
-      "signalHash": "95b6bc09ceb01d37"
-    },
-    {
-      "symbol": "ENAUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 72,
-      "detectedAt": "2026-09-03T20:09:46.182403+00:00",
-      "pushedAt": "2026-09-03T20:09:46.182403+00:00",
-      "cooldownUntil": "2026-09-03T22:09:46.182403+00:00",
-      "signalHash": "429a412f23d75096"
-    },
-    {
-      "symbol": "HBARUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 69,
-      "detectedAt": "2026-09-03T20:09:51.002984+00:00",
-      "pushedAt": "2026-09-03T20:09:51.002984+00:00",
-      "cooldownUntil": "2026-09-03T22:09:51.002984+00:00",
-      "signalHash": "adf1aea37ef7263f"
-    },
     {
       "symbol": "BRETTUSDT",
       "patternType": "double_bottom",
@@ -2959,25 +2871,40 @@
       "breakoutIndex": 204,
       "breakoutPrice": 0.6236,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ADBEUSDT",
+      "patternType": "ascending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 74,
+      "detectedAt": "2026-09-10T21:21:57.417627+00:00",
+      "pushedAt": "2026-09-10T21:21:57.417627+00:00",
+      "cooldownUntil": "2026-09-11T05:21:57.417627+00:00",
+      "signalHash": "c0b48d44c2fa7a3c",
+      "endMs": 1788264000000,
+      "breakoutIndex": 261,
+      "breakoutPrice": 268.66,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 763,
+    "scanned_pairs": 751,
     "failed_pairs": 15,
-    "candidates": 266,
-    "confirmed": 40,
-    "after_scoring": 21,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 249,
+    "confirmed": 37,
+    "after_scoring": 18,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 502.8,
+    "duration_seconds": 528.3,
     "source_stats": {
-      "okx": 763
+      "okx": 751
     },
     "health_stats": {
-      "healthy": 708,
-      "sensitive": 54,
-      "over_smoothed": 1
+      "healthy": 696,
+      "sensitive": 53,
+      "over_smoothed": 2
     }
   },
   "observedSignals": [
