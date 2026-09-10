@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-10T23:31:27.735442+00:00",
+  "lastScanAt": "2026-09-10T23:56:35.917603+00:00",
   "pushedSignals": [
     {
       "symbol": "PEPEUSDT",
@@ -2809,20 +2809,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 725,
+    "scanned_pairs": 727,
     "failed_pairs": 15,
-    "candidates": 245,
+    "candidates": 246,
     "confirmed": 35,
-    "after_scoring": 17,
+    "after_scoring": 18,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 384.3,
+    "duration_seconds": 376.8,
     "source_stats": {
-      "okx": 725
+      "okx": 727
     },
     "health_stats": {
-      "healthy": 672,
+      "healthy": 674,
       "sensitive": 51,
       "over_smoothed": 2
     }
