@@ -488,6 +488,11 @@ notification:
   #   daily     → 每天只发一条(最安静, 但丢每轮反馈)
   summary_mode: "on_signal"
 
+  # 观察流回退策略 (P0 治"乱")：未配置独立观察 webhook 时的行为。
+  #   false → 观察流暂停，主群保持干净（默认，最稳妥）
+  #   true  → 观察样本退回主群 webhook（朱哥 2026-09-09 选定：先复用主群验证）
+  observe_fallback_same: true
+
   # 图表渲染
   chart:
     width: 1100                     # 图表宽度(px) — 基准宽，实际按K线数自适应

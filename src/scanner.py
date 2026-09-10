@@ -108,6 +108,7 @@ class Scanner:
             tz_name=notif.get("timezone", "Asia/Shanghai"),
             time_format=notif.get("time_format", "%Y-%m-%d %H:%M"),
             observe_webhook_url=observe_webhook,
+            observe_fallback_same=bool(notif.get("observe_fallback_same", False)),
         )
         self.max_push = filt.get("max_per_run",
                                  notif.get("max_per_run", 20))
