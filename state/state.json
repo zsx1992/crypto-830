@@ -1,40 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-10T00:38:38.320006+00:00",
+  "lastScanAt": "2026-09-10T01:08:03.888510+00:00",
   "pushedSignals": [
-    {
-      "symbol": "LABUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 80,
-      "detectedAt": "2026-09-03T00:52:54.690408+00:00",
-      "pushedAt": "2026-09-03T00:52:54.690408+00:00",
-      "cooldownUntil": "2026-09-03T02:52:54.690408+00:00",
-      "signalHash": "a7bb670c0ebd3089"
-    },
-    {
-      "symbol": "ZAMAUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 75,
-      "detectedAt": "2026-09-03T00:52:59.435177+00:00",
-      "pushedAt": "2026-09-03T00:52:59.435177+00:00",
-      "cooldownUntil": "2026-09-03T02:52:59.435177+00:00",
-      "signalHash": "1fa64fbe0c627f16"
-    },
-    {
-      "symbol": "RSRUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 74,
-      "detectedAt": "2026-09-03T00:53:04.560439+00:00",
-      "pushedAt": "2026-09-03T00:53:04.560439+00:00",
-      "cooldownUntil": "2026-09-03T02:53:04.560439+00:00",
-      "signalHash": "056e11cb738d1ee0"
-    },
     {
       "symbol": "LABUSDT",
       "patternType": "head_shoulders_bottom",
@@ -3047,21 +3014,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 759,
+    "scanned_pairs": 757,
     "failed_pairs": 15,
-    "candidates": 278,
+    "candidates": 280,
     "confirmed": 43,
     "after_scoring": 9,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 389.6,
+    "duration_seconds": 561.5,
     "source_stats": {
-      "okx": 759
+      "okx": 757
     },
     "health_stats": {
-      "healthy": 701,
-      "sensitive": 57,
+      "healthy": 696,
+      "sensitive": 60,
       "over_smoothed": 1
     }
   },
