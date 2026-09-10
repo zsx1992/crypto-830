@@ -1,29 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-10T05:09:04.218780+00:00",
+  "lastScanAt": "2026-09-10T05:30:20.361781+00:00",
   "pushedSignals": [
-    {
-      "symbol": "RECALLUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 90,
-      "detectedAt": "2026-09-03T05:18:32.968672+00:00",
-      "pushedAt": "2026-09-03T05:18:32.968672+00:00",
-      "cooldownUntil": "2026-09-03T13:18:32.968672+00:00",
-      "signalHash": "ee848844f2b298ed"
-    },
-    {
-      "symbol": "FILUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 72,
-      "detectedAt": "2026-09-03T05:18:37.510648+00:00",
-      "pushedAt": "2026-09-03T05:18:37.510648+00:00",
-      "cooldownUntil": "2026-09-03T13:18:37.510648+00:00",
-      "signalHash": "ee44641718810c24"
-    },
     {
       "symbol": "LABUSDT",
       "patternType": "head_shoulders_bottom",
@@ -3008,24 +2986,54 @@
       "breakoutIndex": 74,
       "breakoutPrice": 67.92,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SKHYUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 78,
+      "detectedAt": "2026-09-10T05:30:15.649404+00:00",
+      "pushedAt": "2026-09-10T05:30:15.649404+00:00",
+      "cooldownUntil": "2026-09-10T13:30:15.649404+00:00",
+      "signalHash": "63981041b0095854",
+      "endMs": 1786406400000,
+      "breakoutIndex": 133,
+      "breakoutPrice": 166.42,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "ZHIPUUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 77,
+      "detectedAt": "2026-09-10T05:30:20.361476+00:00",
+      "pushedAt": "2026-09-10T05:30:20.361476+00:00",
+      "cooldownUntil": "2026-09-10T13:30:20.361476+00:00",
+      "signalHash": "0f42f1bd40aa5216",
+      "endMs": 1786924800000,
+      "breakoutIndex": 160,
+      "breakoutPrice": 128.54,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
     "scanned_pairs": 768,
     "failed_pairs": 12,
-    "candidates": 274,
-    "confirmed": 43,
+    "candidates": 272,
+    "confirmed": 42,
     "after_scoring": 22,
     "after_dedup": 2,
     "pushed": 2,
-    "observed": 5,
-    "duration_seconds": 435.7,
+    "observed": 0,
+    "duration_seconds": 614.8,
     "source_stats": {
       "okx": 768
     },
     "health_stats": {
-      "healthy": 710,
-      "sensitive": 57,
+      "healthy": 711,
+      "sensitive": 56,
       "over_smoothed": 1
     }
   },
