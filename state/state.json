@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-11T03:51:13.224171+00:00",
+  "lastScanAt": "2026-09-11T05:04:08.628532+00:00",
   "pushedSignals": [
     {
       "symbol": "PEPEUSDT",
@@ -2744,25 +2744,40 @@
       "breakoutIndex": 389,
       "breakoutPrice": 973.92,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "XAGUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 69,
+      "detectedAt": "2026-09-11T05:03:58.912797+00:00",
+      "pushedAt": "2026-09-11T05:03:58.912797+00:00",
+      "cooldownUntil": "2026-09-11T13:03:58.912797+00:00",
+      "signalHash": "cd48edba33851991",
+      "endMs": 1787918400000,
+      "breakoutIndex": 218,
+      "breakoutPrice": 66.52,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
     "scanned_pairs": 725,
     "failed_pairs": 17,
     "candidates": 235,
-    "confirmed": 34,
-    "after_scoring": 18,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 496.6,
+    "confirmed": 36,
+    "after_scoring": 19,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 2,
+    "duration_seconds": 512.6,
     "source_stats": {
       "okx": 725
     },
     "health_stats": {
-      "healthy": 667,
-      "sensitive": 56,
-      "over_smoothed": 2
+      "healthy": 664,
+      "sensitive": 60,
+      "over_smoothed": 1
     }
   },
   "observedSignals": [
@@ -3229,6 +3244,36 @@
       "endMs": 1788879600000,
       "breakoutIndex": 376,
       "breakoutPrice": 0.3451,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "SUSHIUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 73,
+      "detectedAt": "2026-09-11T05:04:03.295942+00:00",
+      "pushedAt": "2026-09-11T05:04:03.295942+00:00",
+      "cooldownUntil": "2026-09-11T13:04:03.295942+00:00",
+      "signalHash": "40981be677b77310",
+      "endMs": 1788523200000,
+      "breakoutIndex": 266,
+      "breakoutPrice": 0.2636,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "AAVEUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-09-11T05:04:08.628323+00:00",
+      "pushedAt": "2026-09-11T05:04:08.628323+00:00",
+      "cooldownUntil": "2026-09-11T05:34:08.628323+00:00",
+      "signalHash": "c6e48a4724c69bdb",
+      "endMs": 1788971400000,
+      "breakoutIndex": 467,
+      "breakoutPrice": 126.0,
       "reconfirmAt": null
     }
   ]
