@@ -62,6 +62,17 @@ class DoubleTopBottomDetector(BaseDetector):
         "min_depth": 0.05,             # 中间谷/峰的最小深度
         "min_span": 10,                # 两峰最小间距（根）
         "max_span": 120,               # 两峰最大间距（根）
+        # 【2026-09-11 朱哥金标准 TAOUSDT 1h 双顶"仅凭这几根K线不足以构成
+        #   有效的双顶"】与头肩顶 min_pivot_gap 同构（见 head_shoulders.py）。
+        #   病灶：谷 → 右峰 只隔 ~4 根K线，右半形态被压成一根垂直插针
+        #   （该处右峰 269.78 还是一根长上影，实体仅 262.2）。
+        #   双顶的本质是"两次冲击同一压力位"，谷紧贴右峰说明第二次冲击
+        #   是瞬时脉冲而非独立的一次测试。
+        #   只查总跨度 span 拦不住这种（span 可正常却内部比例畸形）。
+        # 阈值依据（全池 56 个现存双顶/双底，15m/1h/4h/1d 实测）:
+        #   A-B(左峰→谷) 下界 4 / B-C(谷→右峰) 下界 9
+        #   取 5 → 砍掉 1/56 (1.8%)，新增 0。
+        "min_pivot_gap": 5,
         # 方向性硬闸 (2026-09-09, 用户金标准 CBRS 1h / RAY 1d / BNB):
         #   peak_overshoot_max    — 双顶右峰最多比左峰高 2% (higher-high=趋势延续)
         #   trough_undershoot_max — 双底右谷最多比左谷低 3% (lower-low=下跌延续)
@@ -199,6 +210,11 @@ class DoubleTopBottomDetector(BaseDetector):
         if not (p["min_span"] <= span <= p["max_span"]):
             return None
 
+        # ③b 相邻锚点最小间隔 (2026-09-11 朱哥 TAOUSDT 1h 金标准, 见 DEFAULT_PARAMS)
+        # 谷紧贴任一峰 → 半边的"冲击"被压成脉冲, 几何无约束力。
+        if min(l1.index - h1.index, h2.index - l1.index) < p["min_pivot_gap"]:
+            return None
+
         # ④ 形态高度要有交易价值
         height = min(h1.price, h2.price) - l1.price
         if height < p["min_height_atr"] * atr_value:
@@ -312,6 +328,10 @@ class DoubleTopBottomDetector(BaseDetector):
         # ③ 两谷间距合理
         span = l2.index - l1.index
         if not (p["min_span"] <= span <= p["max_span"]):
+            return None
+
+        # ③b 相邻锚点最小间隔 (与 _check_double_top 对称, 见 DEFAULT_PARAMS)
+        if min(h1.index - l1.index, l2.index - h1.index) < p["min_pivot_gap"]:
             return None
 
         # ④ 形态高度有交易价值

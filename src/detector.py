@@ -111,6 +111,9 @@ class PatternEngine:
                 "min_depth": tol.get("shoulder_ratio", 0.03),
                 "min_span": span.get("double_top_min", 8),
                 "max_span": span.get("double_top_max", 150),
+                # 2026-09-11 相邻锚点最小间隔（TAOUSDT 1h 双顶金标准，
+                # 谷紧贴右峰 = 右半形态被压成插针，见 double.py）
+                "min_pivot_gap": span.get("double_min_pivot_gap", 5),
                 "pullback_bars": self.double_pullback_bars,
                 # 方向性硬闸 (2026-09-09, 用户金标准 CBRS 1h / RAY 1d / BNB):
                 # 双顶右峰不得显著更高(>2%) / 双底右谷不得显著更低(>3%)
