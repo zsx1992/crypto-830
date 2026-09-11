@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-11T20:09:36.437029+00:00",
+  "lastScanAt": "2026-09-11T20:49:37.700830+00:00",
   "pushedSignals": [
     {
       "symbol": "POPCATUSDT",
@@ -1990,20 +1990,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 743,
+    "scanned_pairs": 741,
     "failed_pairs": 13,
     "candidates": 229,
     "confirmed": 35,
     "after_scoring": 20,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 397.6,
+    "duration_seconds": 521.9,
     "source_stats": {
-      "okx": 743
+      "okx": 741
     },
     "health_stats": {
-      "healthy": 693,
+      "healthy": 691,
       "sensitive": 50
     }
   },
