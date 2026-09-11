@@ -53,6 +53,17 @@ class HeadShouldersDetector(BaseDetector):
         "neck_tolerance": 0.03,         # 两谷高度差（颈线近似水平）
         "min_span": 20,                 # 形态最小跨度
         "max_span": 200,                # 形态最大跨度
+        # 相邻锚点最小间隔（2026-09-11 朱哥金标准 CRVUSDT 1h 头肩顶）。
+        #   病灶：5 个锚点 LS/N1/Head/N2/RS 全挤在 2.6 天（62 根）内，尤其
+        #   右颈锚 N2 与右肩 RS 只隔 ~2 根 —— 右半形态被压扁成一个 V 型急拉，
+        #   颈线右端钉在噪音点上，几何上毫无约束力。用户原话"所选几根K线
+        #   彼此距离太近，缺乏参考意义"。
+        #   全池 28 个 H&S 实测相邻间隔下界：LS-N1=4 / N1-Head=1 / Head-N2=3 /
+        #   N2-RS=5。取 4 会砍掉极端畸形态（SUI 4h N1-Head=1、DASH 1h
+        #   Head-N2=3），约占现存 7%，代价可控。
+        #   注：严格说"颈线两锚点"是 N1<->N2（CRV 图上隔 48 根，不算近），
+        #   真正要拦的是相邻锚点，此约束同时覆盖颈线两端。
+        "min_pivot_gap": 4,
         "breakout_candles": 2,
         "breakout_atr_ratio": 0.5,
         "volume_ratio_min": 1.5,
@@ -135,6 +146,13 @@ class HeadShouldersDetector(BaseDetector):
         # ④ 形态跨度合理
         span = rs.index - ls.index
         if not (p["min_span"] <= span <= p["max_span"]):
+            return None
+
+        # ④b 相邻锚点最小间隔（2026-09-11 CRVUSDT 1h 金标准，见 DEFAULT_PARAMS）
+        #     任一对相邻锚点靠得比 min_pivot_gap 还近 → 该"肩/谷"实为噪音，
+        #     形态右半或左半被压扁，颈线锚点也就失去约束力。
+        if min(n1.index - ls.index, head.index - n1.index,
+               n2.index - head.index, rs.index - n2.index) < p["min_pivot_gap"]:
             return None
 
         # ⑤ 形态高度有交易价值
@@ -228,6 +246,11 @@ class HeadShouldersDetector(BaseDetector):
         # ④ 形态跨度
         span = rs.index - ls.index
         if not (p["min_span"] <= span <= p["max_span"]):
+            return None
+
+        # ④b 相邻锚点最小间隔（2026-09-11 CRVUSDT 1h 金标准，见 DEFAULT_PARAMS）
+        if min(n1.index - ls.index, head.index - n1.index,
+               n2.index - head.index, rs.index - n2.index) < p["min_pivot_gap"]:
             return None
 
         # ⑤ 形态高度

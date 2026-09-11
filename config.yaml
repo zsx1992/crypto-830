@@ -183,6 +183,17 @@ patterns:
     #   注意：放宽后老突破变多，最终由 freshness + require_intact_breakout 兜底。
     head_shoulders_min: 35         # 头肩形态最小跨度（原15，提至35）
     head_shoulders_max: 420        # 头肩形态最大跨度（原220，放宽容纳大 H&S）
+    # 【2026-09-11 朱哥金标准 CRVUSDT 1h 头肩顶"标记点太挤"】
+    #   病灶：右颈锚 N2 与右肩 RS 只隔 ~2 根K线 → 右半形态压成 V 型急拉，
+    #   颈线右端钉在噪音点上。用户原话"所选几根K线彼此距离太近，缺乏参考意义"。
+    #   全池 28 个 H&S (15m/1h/4h/1d) 实测相邻间隔下界:
+    #     LS-N1=4 / N1-Head=1 / Head-N2=3 / N2-RS=5
+    #   取 4：砍掉 SUI 4h(N1-Head=1)、DASH 1h(Head-N2=3) 两个极端畸形态，
+    #   约占现存 7%；CRV 图上那个(2 根)会被拦下。
+    #   注意：真正约束的是"相邻锚点"，不是"颈线两锚点 N1<->N2"（CRV 图上隔
+    #   48 根，本身不近）——此约束同时覆盖颈线两端。
+    #   样本仅 28 个，阈值保守；若 15m 出现误伤，可在此按需放宽。
+    head_shoulders_min_gap: 4      # 相邻锚点(LS-N1-N2-RS 任一对)最小间隔
     triangle_min_touches: 4        # 三角形最少触点数
     triangle_min_span: 25          # 三角形最小跨度（原12，提至25）
     triangle_max_span: 160         # 三角形最大跨度

@@ -126,6 +126,8 @@ class PatternEngine:
                 "head_prominence": tol.get("head_prominence", 0.01),
                 "min_span": span.get("head_shoulders_min", 15),
                 "max_span": span.get("head_shoulders_max", 220),
+                # 2026-09-11 相邻锚点最小间隔（CRVUSDT 1h 金标准，见 head_shoulders.py）
+                "min_pivot_gap": span.get("head_shoulders_min_gap", 4),
             }),
             TriangleDetector({
                 **common,
