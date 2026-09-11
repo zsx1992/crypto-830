@@ -1,172 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-11T17:44:08.282282+00:00",
+  "lastScanAt": "2026-09-11T18:49:23.443268+00:00",
   "pushedSignals": [
-    {
-      "symbol": "POPCATUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 86,
-      "detectedAt": "2026-09-04T18:23:33.821888+00:00",
-      "pushedAt": "2026-09-04T18:23:33.821888+00:00",
-      "cooldownUntil": "2026-09-04T20:23:33.821888+00:00",
-      "signalHash": "e99ed8a69ea150e1"
-    },
-    {
-      "symbol": "DOTUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 84,
-      "detectedAt": "2026-09-04T18:23:39.102796+00:00",
-      "pushedAt": "2026-09-04T18:23:39.102796+00:00",
-      "cooldownUntil": "2026-09-04T20:23:39.102796+00:00",
-      "signalHash": "b8b637d81011d35f"
-    },
-    {
-      "symbol": "KITEUSDT",
-      "patternType": "symmetrical_triangle",
-      "interval": "1d",
-      "direction": "LONG",
-      "strength": 82,
-      "detectedAt": "2026-09-04T18:23:43.600329+00:00",
-      "pushedAt": "2026-09-04T18:23:43.600329+00:00",
-      "cooldownUntil": "2026-09-05T18:23:43.600329+00:00",
-      "signalHash": "1bd78f6647848ed0"
-    },
-    {
-      "symbol": "BOMEUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 82,
-      "detectedAt": "2026-09-04T18:23:48.706647+00:00",
-      "pushedAt": "2026-09-04T18:23:48.706647+00:00",
-      "cooldownUntil": "2026-09-04T20:23:48.706647+00:00",
-      "signalHash": "4c39ddb716a74d1c"
-    },
-    {
-      "symbol": "LINEAUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 80,
-      "detectedAt": "2026-09-04T18:23:53.933676+00:00",
-      "pushedAt": "2026-09-04T18:23:53.933676+00:00",
-      "cooldownUntil": "2026-09-04T20:23:53.933676+00:00",
-      "signalHash": "862d714cd559063a"
-    },
-    {
-      "symbol": "OPUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 78,
-      "detectedAt": "2026-09-04T18:23:59.056308+00:00",
-      "pushedAt": "2026-09-04T18:23:59.056308+00:00",
-      "cooldownUntil": "2026-09-04T20:23:59.056308+00:00",
-      "signalHash": "89e3430bd4e494b9"
-    },
-    {
-      "symbol": "NEIROUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 77,
-      "detectedAt": "2026-09-04T18:24:04.403892+00:00",
-      "pushedAt": "2026-09-04T18:24:04.403892+00:00",
-      "cooldownUntil": "2026-09-04T20:24:04.403892+00:00",
-      "signalHash": "af21eef3f881d73d"
-    },
-    {
-      "symbol": "ATHUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 77,
-      "detectedAt": "2026-09-04T18:24:09.793352+00:00",
-      "pushedAt": "2026-09-04T18:24:09.793352+00:00",
-      "cooldownUntil": "2026-09-04T20:24:09.793352+00:00",
-      "signalHash": "37d7068a899a2875"
-    },
-    {
-      "symbol": "VIRTUALUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 76,
-      "detectedAt": "2026-09-04T18:24:14.948403+00:00",
-      "pushedAt": "2026-09-04T18:24:14.948403+00:00",
-      "cooldownUntil": "2026-09-04T20:24:14.948403+00:00",
-      "signalHash": "5ebee5422ad531de"
-    },
-    {
-      "symbol": "SUIUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 75,
-      "detectedAt": "2026-09-04T18:24:33.805940+00:00",
-      "pushedAt": "2026-09-04T18:24:33.805940+00:00",
-      "cooldownUntil": "2026-09-04T20:24:33.805940+00:00",
-      "signalHash": "f9e98f2cbba777db"
-    },
-    {
-      "symbol": "SPKUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 73,
-      "detectedAt": "2026-09-04T18:24:39.201913+00:00",
-      "pushedAt": "2026-09-04T18:24:39.201913+00:00",
-      "cooldownUntil": "2026-09-04T20:24:39.201913+00:00",
-      "signalHash": "6aa5963f7cd6e49b"
-    },
-    {
-      "symbol": "LIGHTUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 72,
-      "detectedAt": "2026-09-04T18:24:44.098659+00:00",
-      "pushedAt": "2026-09-04T18:24:44.098659+00:00",
-      "cooldownUntil": "2026-09-04T20:24:44.098659+00:00",
-      "signalHash": "c7c280eca7a846ab"
-    },
-    {
-      "symbol": "SEIUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 67,
-      "detectedAt": "2026-09-04T18:24:49.113006+00:00",
-      "pushedAt": "2026-09-04T18:24:49.113006+00:00",
-      "cooldownUntil": "2026-09-04T20:24:49.113006+00:00",
-      "signalHash": "4806a77e694d3c2b"
-    },
-    {
-      "symbol": "YGGUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 66,
-      "detectedAt": "2026-09-04T18:24:54.224716+00:00",
-      "pushedAt": "2026-09-04T18:24:54.224716+00:00",
-      "cooldownUntil": "2026-09-04T20:24:54.224716+00:00",
-      "signalHash": "56a3322376e01cbb"
-    },
-    {
-      "symbol": "SKYUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 65,
-      "detectedAt": "2026-09-04T18:24:59.829598+00:00",
-      "pushedAt": "2026-09-04T18:24:59.829598+00:00",
-      "cooldownUntil": "2026-09-04T20:24:59.829598+00:00",
-      "signalHash": "0228b4f9f1505cdc"
-    },
     {
       "symbol": "RECALLUSDT",
       "patternType": "head_shoulders_top",
@@ -2162,20 +1997,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 734,
+    "scanned_pairs": 738,
     "failed_pairs": 14,
-    "candidates": 229,
-    "confirmed": 36,
-    "after_scoring": 19,
+    "candidates": 231,
+    "confirmed": 31,
+    "after_scoring": 16,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 381.0,
+    "duration_seconds": 508.3,
     "source_stats": {
-      "okx": 734
+      "okx": 738
     },
     "health_stats": {
-      "healthy": 678,
+      "healthy": 682,
       "sensitive": 56
     }
   },
