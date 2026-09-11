@@ -1,29 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-11T18:49:23.443268+00:00",
+  "lastScanAt": "2026-09-11T20:09:36.437029+00:00",
   "pushedSignals": [
-    {
-      "symbol": "RECALLUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 94,
-      "detectedAt": "2026-09-04T19:55:58.606817+00:00",
-      "pushedAt": "2026-09-04T19:55:58.606817+00:00",
-      "cooldownUntil": "2026-09-05T03:55:58.606817+00:00",
-      "signalHash": "ee848844f2b298ed"
-    },
-    {
-      "symbol": "SHIBUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 73,
-      "detectedAt": "2026-09-04T19:56:03.342986+00:00",
-      "pushedAt": "2026-09-04T19:56:03.342986+00:00",
-      "cooldownUntil": "2026-09-05T03:56:03.342986+00:00",
-      "signalHash": "b75dc484248cedb6"
-    },
     {
       "symbol": "POPCATUSDT",
       "patternType": "head_shoulders_top",
@@ -1994,24 +1972,39 @@
       "breakoutIndex": 202,
       "breakoutPrice": 0.1875,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ATOMUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 64,
+      "detectedAt": "2026-09-11T20:09:36.436702+00:00",
+      "pushedAt": "2026-09-11T20:09:36.436702+00:00",
+      "cooldownUntil": "2026-09-11T20:39:36.436702+00:00",
+      "signalHash": "6d2fa7548f854704",
+      "endMs": 1789135200000,
+      "breakoutIndex": 582,
+      "breakoutPrice": 1.697,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 738,
-    "failed_pairs": 14,
-    "candidates": 231,
-    "confirmed": 31,
-    "after_scoring": 16,
-    "after_dedup": 0,
-    "pushed": 0,
+    "scanned_pairs": 743,
+    "failed_pairs": 13,
+    "candidates": 229,
+    "confirmed": 35,
+    "after_scoring": 20,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 508.3,
+    "duration_seconds": 397.6,
     "source_stats": {
-      "okx": 738
+      "okx": 743
     },
     "health_stats": {
-      "healthy": 682,
-      "sensitive": 56
+      "healthy": 693,
+      "sensitive": 50
     }
   },
   "observedSignals": [
