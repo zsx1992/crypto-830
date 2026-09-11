@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-11T06:47:20.022119+00:00",
+  "lastScanAt": "2026-09-11T08:53:25.520230+00:00",
   "pushedSignals": [
     {
       "symbol": "RECALLUSDT",
@@ -2653,25 +2653,39 @@
       "breakoutIndex": 312,
       "breakoutPrice": 85.096,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "MERLUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 77,
+      "detectedAt": "2026-09-11T08:53:19.203869+00:00",
+      "pushedAt": "2026-09-11T08:53:19.203869+00:00",
+      "cooldownUntil": "2026-09-11T16:53:19.203869+00:00",
+      "signalHash": "d1ae1e32bc71e1be",
+      "endMs": 1786003200000,
+      "breakoutIndex": 96,
+      "breakoutPrice": 0.01955,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 721,
+    "scanned_pairs": 713,
     "failed_pairs": 17,
-    "candidates": 242,
-    "confirmed": 37,
-    "after_scoring": 20,
+    "candidates": 244,
+    "confirmed": 36,
+    "after_scoring": 21,
     "after_dedup": 1,
     "pushed": 1,
-    "observed": 0,
-    "duration_seconds": 523.1,
+    "observed": 1,
+    "duration_seconds": 525.8,
     "source_stats": {
-      "okx": 721
+      "okx": 713
     },
     "health_stats": {
-      "healthy": 660,
-      "sensitive": 60,
-      "over_smoothed": 1
+      "healthy": 655,
+      "sensitive": 58
     }
   },
   "observedSignals": [
@@ -3168,6 +3182,21 @@
       "endMs": 1788971400000,
       "breakoutIndex": 467,
       "breakoutPrice": 126.0,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "EGLDUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 72,
+      "detectedAt": "2026-09-11T08:53:25.520039+00:00",
+      "pushedAt": "2026-09-11T08:53:25.520039+00:00",
+      "cooldownUntil": "2026-09-11T09:23:25.520039+00:00",
+      "signalHash": "fafeaf5548138552",
+      "endMs": 1788768000000,
+      "breakoutIndex": 222,
+      "breakoutPrice": 4.536,
       "reconfirmAt": null
     }
   ]
