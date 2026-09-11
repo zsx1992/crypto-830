@@ -1,84 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-11T00:26:09.381446+00:00",
+  "lastScanAt": "2026-09-11T01:37:38.009836+00:00",
   "pushedSignals": [
-    {
-      "symbol": "PEPEUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 91,
-      "detectedAt": "2026-09-04T01:05:27.223822+00:00",
-      "pushedAt": "2026-09-04T01:05:27.223822+00:00",
-      "cooldownUntil": "2026-09-04T03:05:27.223822+00:00",
-      "signalHash": "ad11403b455bd708"
-    },
-    {
-      "symbol": "MEMEUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 88,
-      "detectedAt": "2026-09-04T01:05:32.037897+00:00",
-      "pushedAt": "2026-09-04T01:05:32.037897+00:00",
-      "cooldownUntil": "2026-09-04T03:05:32.037897+00:00",
-      "signalHash": "0c3129aaedebbca5"
-    },
-    {
-      "symbol": "CHZUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 81,
-      "detectedAt": "2026-09-04T01:05:36.944506+00:00",
-      "pushedAt": "2026-09-04T01:05:36.944506+00:00",
-      "cooldownUntil": "2026-09-04T03:05:36.944506+00:00",
-      "signalHash": "2554593e83830c8b"
-    },
-    {
-      "symbol": "XLMUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 75,
-      "detectedAt": "2026-09-04T01:05:42.100619+00:00",
-      "pushedAt": "2026-09-04T01:05:42.100619+00:00",
-      "cooldownUntil": "2026-09-04T03:05:42.100619+00:00",
-      "signalHash": "7d5f623dbf348efb"
-    },
-    {
-      "symbol": "SHIBUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 73,
-      "detectedAt": "2026-09-04T01:05:46.453833+00:00",
-      "pushedAt": "2026-09-04T01:05:46.453833+00:00",
-      "cooldownUntil": "2026-09-04T09:05:46.453833+00:00",
-      "signalHash": "b75dc484248cedb6"
-    },
-    {
-      "symbol": "DOGEUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 88,
-      "detectedAt": "2026-09-04T01:17:23.502961+00:00",
-      "pushedAt": "2026-09-04T01:17:23.502961+00:00",
-      "cooldownUntil": "2026-09-04T03:17:23.502961+00:00",
-      "signalHash": "4bf672e65ae70a89"
-    },
-    {
-      "symbol": "ENAUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 72,
-      "detectedAt": "2026-09-04T01:17:27.967829+00:00",
-      "pushedAt": "2026-09-04T01:17:27.967829+00:00",
-      "cooldownUntil": "2026-09-04T03:17:27.967829+00:00",
-      "signalHash": "429a412f23d75096"
-    },
     {
       "symbol": "PEPEUSDT",
       "patternType": "double_bottom",
@@ -2824,20 +2747,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 731,
+    "scanned_pairs": 723,
     "failed_pairs": 15,
-    "candidates": 249,
-    "confirmed": 37,
-    "after_scoring": 20,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 495.8,
+    "candidates": 242,
+    "confirmed": 34,
+    "after_scoring": 18,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 488.8,
     "source_stats": {
-      "okx": 731
+      "okx": 723
     },
     "health_stats": {
-      "healthy": 677,
+      "healthy": 669,
       "sensitive": 52,
       "over_smoothed": 2
     }
