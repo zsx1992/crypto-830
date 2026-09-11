@@ -1,29 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-11T21:58:01.979424+00:00",
+  "lastScanAt": "2026-09-11T22:54:55.242445+00:00",
   "pushedSignals": [
-    {
-      "symbol": "OPUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 79,
-      "detectedAt": "2026-09-04T22:35:59.436358+00:00",
-      "pushedAt": "2026-09-04T22:35:59.436358+00:00",
-      "cooldownUntil": "2026-09-05T00:35:59.436358+00:00",
-      "signalHash": "89e3430bd4e494b9"
-    },
-    {
-      "symbol": "RLSUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 61,
-      "detectedAt": "2026-09-04T22:36:04.067092+00:00",
-      "pushedAt": "2026-09-04T22:36:04.067092+00:00",
-      "cooldownUntil": "2026-09-05T00:36:04.067092+00:00",
-      "signalHash": "71496104c9413131"
-    },
     {
       "symbol": "POPCATUSDT",
       "patternType": "head_shoulders_top",
@@ -1849,19 +1827,19 @@
   "scanStats": {
     "scanned_pairs": 743,
     "failed_pairs": 13,
-    "candidates": 237,
-    "confirmed": 34,
-    "after_scoring": 19,
+    "candidates": 238,
+    "confirmed": 31,
+    "after_scoring": 17,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 570.7,
+    "observed": 1,
+    "duration_seconds": 402.8,
     "source_stats": {
       "okx": 743
     },
     "health_stats": {
-      "healthy": 689,
-      "sensitive": 54
+      "healthy": 688,
+      "sensitive": 55
     }
   },
   "observedSignals": [
@@ -2448,6 +2426,21 @@
       "endMs": 1789041600000,
       "breakoutIndex": 298,
       "breakoutPrice": 2557.76,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "DOTUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 68,
+      "detectedAt": "2026-09-11T22:54:55.242190+00:00",
+      "pushedAt": "2026-09-11T22:54:55.242190+00:00",
+      "cooldownUntil": "2026-09-12T00:54:55.242190+00:00",
+      "signalHash": "b8b637d81011d35f",
+      "endMs": 1789106400000,
+      "breakoutIndex": 391,
+      "breakoutPrice": 1.0685,
       "reconfirmAt": null
     }
   ]
