@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-10T23:56:35.917603+00:00",
+  "lastScanAt": "2026-09-11T00:26:09.381446+00:00",
   "pushedSignals": [
     {
       "symbol": "PEPEUSDT",
@@ -2806,24 +2806,39 @@
       "breakoutIndex": 136,
       "breakoutPrice": 0.26151,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "LITEUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 65,
+      "detectedAt": "2026-09-11T00:26:04.551498+00:00",
+      "pushedAt": "2026-09-11T00:26:04.551498+00:00",
+      "cooldownUntil": "2026-09-11T02:26:04.551498+00:00",
+      "signalHash": "861b0d6858c977fa",
+      "endMs": 1789045200000,
+      "breakoutIndex": 389,
+      "breakoutPrice": 973.92,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 727,
+    "scanned_pairs": 731,
     "failed_pairs": 15,
-    "candidates": 246,
-    "confirmed": 35,
-    "after_scoring": 18,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 376.8,
+    "candidates": 249,
+    "confirmed": 37,
+    "after_scoring": 20,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 1,
+    "duration_seconds": 495.8,
     "source_stats": {
-      "okx": 727
+      "okx": 731
     },
     "health_stats": {
-      "healthy": 674,
-      "sensitive": 51,
+      "healthy": 677,
+      "sensitive": 52,
       "over_smoothed": 2
     }
   },
@@ -3276,6 +3291,21 @@
       "endMs": 1785758400000,
       "breakoutIndex": 71,
       "breakoutPrice": 67.92,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "CRVUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-09-11T00:26:09.381246+00:00",
+      "pushedAt": "2026-09-11T00:26:09.381246+00:00",
+      "cooldownUntil": "2026-09-11T02:26:09.381246+00:00",
+      "signalHash": "dfcb56b3843ff3aa",
+      "endMs": 1788879600000,
+      "breakoutIndex": 376,
+      "breakoutPrice": 0.3451,
       "reconfirmAt": null
     }
   ]
