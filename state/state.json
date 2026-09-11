@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-11T08:53:25.520230+00:00",
+  "lastScanAt": "2026-09-11T09:58:35.586078+00:00",
   "pushedSignals": [
     {
       "symbol": "RECALLUSDT",
@@ -2671,21 +2671,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 713,
-    "failed_pairs": 17,
-    "candidates": 244,
-    "confirmed": 36,
-    "after_scoring": 21,
-    "after_dedup": 1,
-    "pushed": 1,
+    "scanned_pairs": 709,
+    "failed_pairs": 15,
+    "candidates": 224,
+    "confirmed": 31,
+    "after_scoring": 18,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 1,
-    "duration_seconds": 525.8,
+    "duration_seconds": 357.7,
     "source_stats": {
-      "okx": 713
+      "okx": 709
     },
     "health_stats": {
-      "healthy": 655,
-      "sensitive": 58
+      "healthy": 652,
+      "sensitive": 57
     }
   },
   "observedSignals": [
@@ -3197,6 +3197,21 @@
       "endMs": 1788768000000,
       "breakoutIndex": 222,
       "breakoutPrice": 4.536,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "TAOUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 69,
+      "detectedAt": "2026-09-11T09:58:35.585852+00:00",
+      "pushedAt": "2026-09-11T09:58:35.585852+00:00",
+      "cooldownUntil": "2026-09-11T11:58:35.585852+00:00",
+      "signalHash": "1dc3da1e052325e4",
+      "endMs": 1788883200000,
+      "breakoutIndex": 378,
+      "breakoutPrice": 243.6,
       "reconfirmAt": null
     }
   ]
