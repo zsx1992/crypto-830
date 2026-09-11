@@ -1,392 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-11T14:41:16.907608+00:00",
+  "lastScanAt": "2026-09-11T16:52:14.489723+00:00",
   "pushedSignals": [
-    {
-      "symbol": "BOMEUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 94,
-      "detectedAt": "2026-09-04T15:02:34.892108+00:00",
-      "pushedAt": "2026-09-04T15:02:34.892108+00:00",
-      "cooldownUntil": "2026-09-04T15:32:34.892108+00:00",
-      "signalHash": "734c2c05192f280d"
-    },
-    {
-      "symbol": "OPUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 92,
-      "detectedAt": "2026-09-04T15:02:40.923545+00:00",
-      "pushedAt": "2026-09-04T15:02:40.923545+00:00",
-      "cooldownUntil": "2026-09-04T15:32:40.923545+00:00",
-      "signalHash": "3713d362da0b5547"
-    },
-    {
-      "symbol": "SANDUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 92,
-      "detectedAt": "2026-09-04T15:02:46.679580+00:00",
-      "pushedAt": "2026-09-04T15:02:46.679580+00:00",
-      "cooldownUntil": "2026-09-04T15:32:46.679580+00:00",
-      "signalHash": "f918e691b8bb4b0c"
-    },
-    {
-      "symbol": "NEIROUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 91,
-      "detectedAt": "2026-09-04T15:02:52.537811+00:00",
-      "pushedAt": "2026-09-04T15:02:52.537811+00:00",
-      "cooldownUntil": "2026-09-04T15:32:52.537811+00:00",
-      "signalHash": "a2f7d048d0e98fae"
-    },
-    {
-      "symbol": "AZTECUSDT",
-      "patternType": "double_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 90,
-      "detectedAt": "2026-09-04T15:02:57.124064+00:00",
-      "pushedAt": "2026-09-04T15:02:57.124064+00:00",
-      "cooldownUntil": "2026-09-04T23:02:57.124064+00:00",
-      "signalHash": "59871ed5bd84e136"
-    },
-    {
-      "symbol": "LINEAUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 87,
-      "detectedAt": "2026-09-04T15:03:03.187628+00:00",
-      "pushedAt": "2026-09-04T15:03:03.187628+00:00",
-      "cooldownUntil": "2026-09-04T15:33:03.187628+00:00",
-      "signalHash": "e6a4a6c4723f54db"
-    },
-    {
-      "symbol": "POPCATUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 86,
-      "detectedAt": "2026-09-04T15:03:08.530866+00:00",
-      "pushedAt": "2026-09-04T15:03:08.530866+00:00",
-      "cooldownUntil": "2026-09-04T17:03:08.530866+00:00",
-      "signalHash": "e99ed8a69ea150e1"
-    },
-    {
-      "symbol": "BRETTUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 85,
-      "detectedAt": "2026-09-04T15:03:15.022326+00:00",
-      "pushedAt": "2026-09-04T15:03:15.022326+00:00",
-      "cooldownUntil": "2026-09-04T15:33:15.022326+00:00",
-      "signalHash": "5de9aee0f500601c"
-    },
-    {
-      "symbol": "STRKUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 85,
-      "detectedAt": "2026-09-04T15:03:20.765600+00:00",
-      "pushedAt": "2026-09-04T15:03:20.765600+00:00",
-      "cooldownUntil": "2026-09-04T15:33:20.765600+00:00",
-      "signalHash": "c4c5ff1ac1bccdc3"
-    },
-    {
-      "symbol": "PLUMEUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 84,
-      "detectedAt": "2026-09-04T15:03:34.892295+00:00",
-      "pushedAt": "2026-09-04T15:03:34.892295+00:00",
-      "cooldownUntil": "2026-09-04T15:33:34.892295+00:00",
-      "signalHash": "8487de516b62f576"
-    },
-    {
-      "symbol": "POPCATUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 84,
-      "detectedAt": "2026-09-04T15:03:40.737392+00:00",
-      "pushedAt": "2026-09-04T15:03:40.737392+00:00",
-      "cooldownUntil": "2026-09-04T15:33:40.737392+00:00",
-      "signalHash": "d23f9c18e962b2c6"
-    },
-    {
-      "symbol": "DOTUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 83,
-      "detectedAt": "2026-09-04T15:03:46.601595+00:00",
-      "pushedAt": "2026-09-04T15:03:46.601595+00:00",
-      "cooldownUntil": "2026-09-04T15:33:46.601595+00:00",
-      "signalHash": "702212464997bd94"
-    },
-    {
-      "symbol": "DOTUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 83,
-      "detectedAt": "2026-09-04T15:03:52.440591+00:00",
-      "pushedAt": "2026-09-04T15:03:52.440591+00:00",
-      "cooldownUntil": "2026-09-04T17:03:52.440591+00:00",
-      "signalHash": "b8b637d81011d35f"
-    },
-    {
-      "symbol": "VIRTUALUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 82,
-      "detectedAt": "2026-09-04T15:03:58.220543+00:00",
-      "pushedAt": "2026-09-04T15:03:58.220543+00:00",
-      "cooldownUntil": "2026-09-04T15:33:58.220543+00:00",
-      "signalHash": "ddf95743e68dbe55"
-    },
-    {
-      "symbol": "ATHUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 82,
-      "detectedAt": "2026-09-04T15:04:04.021440+00:00",
-      "pushedAt": "2026-09-04T15:04:04.021440+00:00",
-      "cooldownUntil": "2026-09-04T15:34:04.021440+00:00",
-      "signalHash": "3642fa857f6fe35d"
-    },
-    {
-      "symbol": "SUIUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 82,
-      "detectedAt": "2026-09-04T15:04:09.648952+00:00",
-      "pushedAt": "2026-09-04T15:04:09.648952+00:00",
-      "cooldownUntil": "2026-09-04T15:34:09.648952+00:00",
-      "signalHash": "e65a18e38abfb6a7"
-    },
-    {
-      "symbol": "BOMEUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 81,
-      "detectedAt": "2026-09-04T15:04:14.553136+00:00",
-      "pushedAt": "2026-09-04T15:04:14.553136+00:00",
-      "cooldownUntil": "2026-09-04T17:04:14.553136+00:00",
-      "signalHash": "4c39ddb716a74d1c"
-    },
-    {
-      "symbol": "LINEAUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 79,
-      "detectedAt": "2026-09-04T15:04:20.938417+00:00",
-      "pushedAt": "2026-09-04T15:04:20.938417+00:00",
-      "cooldownUntil": "2026-09-04T17:04:20.938417+00:00",
-      "signalHash": "862d714cd559063a"
-    },
-    {
-      "symbol": "OPUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 77,
-      "detectedAt": "2026-09-04T15:04:34.728306+00:00",
-      "pushedAt": "2026-09-04T15:04:34.728306+00:00",
-      "cooldownUntil": "2026-09-04T17:04:34.728306+00:00",
-      "signalHash": "89e3430bd4e494b9"
-    },
-    {
-      "symbol": "NEIROUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 76,
-      "detectedAt": "2026-09-04T15:04:40.740602+00:00",
-      "pushedAt": "2026-09-04T15:04:40.740602+00:00",
-      "cooldownUntil": "2026-09-04T17:04:40.740602+00:00",
-      "signalHash": "af21eef3f881d73d"
-    },
-    {
-      "symbol": "ATHUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 75,
-      "detectedAt": "2026-09-04T15:21:13.158952+00:00",
-      "pushedAt": "2026-09-04T15:21:13.158952+00:00",
-      "cooldownUntil": "2026-09-04T17:21:13.158952+00:00",
-      "signalHash": "37d7068a899a2875"
-    },
-    {
-      "symbol": "FARTCOINUSDT",
-      "patternType": "double_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 74,
-      "detectedAt": "2026-09-04T15:21:18.709747+00:00",
-      "pushedAt": "2026-09-04T15:21:18.709747+00:00",
-      "cooldownUntil": "2026-09-04T15:51:18.709747+00:00",
-      "signalHash": "733655dd90dd83bb"
-    },
-    {
-      "symbol": "SUIUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 74,
-      "detectedAt": "2026-09-04T15:21:23.877275+00:00",
-      "pushedAt": "2026-09-04T15:21:23.877275+00:00",
-      "cooldownUntil": "2026-09-04T17:21:23.877275+00:00",
-      "signalHash": "f9e98f2cbba777db"
-    },
-    {
-      "symbol": "VIRTUALUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 73,
-      "detectedAt": "2026-09-04T15:21:28.742967+00:00",
-      "pushedAt": "2026-09-04T15:21:28.742967+00:00",
-      "cooldownUntil": "2026-09-04T17:21:28.742967+00:00",
-      "signalHash": "5ebee5422ad531de"
-    },
-    {
-      "symbol": "SPKUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 72,
-      "detectedAt": "2026-09-04T15:21:33.818331+00:00",
-      "pushedAt": "2026-09-04T15:21:33.818331+00:00",
-      "cooldownUntil": "2026-09-04T17:21:33.818331+00:00",
-      "signalHash": "6aa5963f7cd6e49b"
-    },
-    {
-      "symbol": "ROBOUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 72,
-      "detectedAt": "2026-09-04T15:21:37.996561+00:00",
-      "pushedAt": "2026-09-04T15:21:37.996561+00:00",
-      "cooldownUntil": "2026-09-04T23:21:37.996561+00:00",
-      "signalHash": "87b425c032407815"
-    },
-    {
-      "symbol": "CRVUSDT",
-      "patternType": "double_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 69,
-      "detectedAt": "2026-09-04T15:21:43.668798+00:00",
-      "pushedAt": "2026-09-04T15:21:43.668798+00:00",
-      "cooldownUntil": "2026-09-04T15:51:43.668798+00:00",
-      "signalHash": "38963110ae2d0d71"
-    },
-    {
-      "symbol": "DGAIUSDT",
-      "patternType": "symmetrical_triangle",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 68,
-      "detectedAt": "2026-09-04T15:21:47.701054+00:00",
-      "pushedAt": "2026-09-04T15:21:47.701054+00:00",
-      "cooldownUntil": "2026-09-04T15:51:47.701054+00:00",
-      "signalHash": "75afb4a5e878440a"
-    },
-    {
-      "symbol": "PENGUUSDT",
-      "patternType": "double_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 68,
-      "detectedAt": "2026-09-04T15:21:53.474724+00:00",
-      "pushedAt": "2026-09-04T15:21:53.474724+00:00",
-      "cooldownUntil": "2026-09-04T15:51:53.474724+00:00",
-      "signalHash": "7448c142cf0b286d"
-    },
-    {
-      "symbol": "CHZUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 66,
-      "detectedAt": "2026-09-04T15:22:13.004415+00:00",
-      "pushedAt": "2026-09-04T15:22:13.004415+00:00",
-      "cooldownUntil": "2026-09-04T15:52:13.004415+00:00",
-      "signalHash": "0ec4f76b82a4bed7"
-    },
-    {
-      "symbol": "SEIUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 66,
-      "detectedAt": "2026-09-04T15:22:18.672162+00:00",
-      "pushedAt": "2026-09-04T15:22:18.672162+00:00",
-      "cooldownUntil": "2026-09-04T17:22:18.672162+00:00",
-      "signalHash": "4806a77e694d3c2b"
-    },
-    {
-      "symbol": "SKYUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 63,
-      "detectedAt": "2026-09-04T15:22:23.841458+00:00",
-      "pushedAt": "2026-09-04T15:22:23.841458+00:00",
-      "cooldownUntil": "2026-09-04T17:22:23.841458+00:00",
-      "signalHash": "0228b4f9f1505cdc"
-    },
-    {
-      "symbol": "YGGUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 62,
-      "detectedAt": "2026-09-04T15:22:28.636401+00:00",
-      "pushedAt": "2026-09-04T15:22:28.636401+00:00",
-      "cooldownUntil": "2026-09-04T17:22:28.636401+00:00",
-      "signalHash": "56a3322376e01cbb"
-    },
-    {
-      "symbol": "RLSUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 60,
-      "detectedAt": "2026-09-04T15:22:33.802368+00:00",
-      "pushedAt": "2026-09-04T15:22:33.802368+00:00",
-      "cooldownUntil": "2026-09-04T17:22:33.802368+00:00",
-      "signalHash": "71496104c9413131"
-    },
-    {
-      "symbol": "SUSHIUSDT",
-      "patternType": "rising_wedge",
-      "interval": "1d",
-      "direction": "SHORT",
-      "strength": 73,
-      "detectedAt": "2026-09-04T16:38:55.438906+00:00",
-      "pushedAt": "2026-09-04T16:38:55.438906+00:00",
-      "cooldownUntil": "2026-09-05T16:38:55.438906+00:00",
-      "signalHash": "63880dd3189a643d"
-    },
     {
       "symbol": "POPCATUSDT",
       "patternType": "head_shoulders_top",
@@ -2514,24 +2129,54 @@
       "breakoutIndex": 96,
       "breakoutPrice": 0.01955,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "MINAUSDT",
+      "patternType": "double_bottom",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 80,
+      "detectedAt": "2026-09-11T16:52:06.262582+00:00",
+      "pushedAt": "2026-09-11T16:52:06.262582+00:00",
+      "cooldownUntil": "2026-09-11T17:22:06.262582+00:00",
+      "signalHash": "5b5b362216e23fdb",
+      "endMs": 1789043400000,
+      "breakoutIndex": 588,
+      "breakoutPrice": 0.10465,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "CASHCATUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 65,
+      "detectedAt": "2026-09-11T16:52:10.263735+00:00",
+      "pushedAt": "2026-09-11T16:52:10.263735+00:00",
+      "cooldownUntil": "2026-09-11T18:52:10.263735+00:00",
+      "signalHash": "25b6cbd3a7a3e6b2",
+      "endMs": 1789124400000,
+      "breakoutIndex": 202,
+      "breakoutPrice": 0.1875,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 722,
+    "scanned_pairs": 734,
     "failed_pairs": 14,
-    "candidates": 216,
-    "confirmed": 28,
-    "after_scoring": 18,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 225,
+    "confirmed": 36,
+    "after_scoring": 20,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 1,
-    "duration_seconds": 563.9,
+    "duration_seconds": 367.3,
     "source_stats": {
-      "okx": 722
+      "okx": 734
     },
     "health_stats": {
-      "healthy": 666,
-      "sensitive": 56
+      "healthy": 679,
+      "sensitive": 55
     }
   },
   "observedSignals": [
@@ -3103,6 +2748,21 @@
       "endMs": 1786147200000,
       "breakoutIndex": 102,
       "breakoutPrice": 0.04345,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "ETHUSDT",
+      "patternType": "symmetrical_triangle",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 71,
+      "detectedAt": "2026-09-11T16:52:14.489551+00:00",
+      "pushedAt": "2026-09-11T16:52:14.489551+00:00",
+      "cooldownUntil": "2026-09-12T00:52:14.489551+00:00",
+      "signalHash": "241f4e8506a0e2fe",
+      "endMs": 1789041600000,
+      "breakoutIndex": 298,
+      "breakoutPrice": 2557.76,
       "reconfirmAt": null
     }
   ]
