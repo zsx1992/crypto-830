@@ -1,128 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-12T01:42:57.222494+00:00",
+  "lastScanAt": "2026-09-12T05:44:33.405189+00:00",
   "pushedSignals": [
-    {
-      "symbol": "POPCATUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 90,
-      "detectedAt": "2026-09-05T03:44:11.466017+00:00",
-      "pushedAt": "2026-09-05T03:44:11.466017+00:00",
-      "cooldownUntil": "2026-09-05T05:44:11.466017+00:00",
-      "signalHash": "e99ed8a69ea150e1"
-    },
-    {
-      "symbol": "NEIROUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 81,
-      "detectedAt": "2026-09-05T03:44:16.228827+00:00",
-      "pushedAt": "2026-09-05T03:44:16.228827+00:00",
-      "cooldownUntil": "2026-09-05T05:44:16.228827+00:00",
-      "signalHash": "af21eef3f881d73d"
-    },
-    {
-      "symbol": "IRYSUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 81,
-      "detectedAt": "2026-09-05T03:44:20.945881+00:00",
-      "pushedAt": "2026-09-05T03:44:20.945881+00:00",
-      "cooldownUntil": "2026-09-05T05:44:20.945881+00:00",
-      "signalHash": "a79fff5135d1aee3"
-    },
-    {
-      "symbol": "BOMEUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 78,
-      "detectedAt": "2026-09-05T03:44:25.754305+00:00",
-      "pushedAt": "2026-09-05T03:44:25.754305+00:00",
-      "cooldownUntil": "2026-09-05T05:44:25.754305+00:00",
-      "signalHash": "4c39ddb716a74d1c"
-    },
-    {
-      "symbol": "SUIUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 78,
-      "detectedAt": "2026-09-05T03:44:30.468691+00:00",
-      "pushedAt": "2026-09-05T03:44:30.468691+00:00",
-      "cooldownUntil": "2026-09-05T05:44:30.468691+00:00",
-      "signalHash": "f9e98f2cbba777db"
-    },
-    {
-      "symbol": "AIXBTUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 78,
-      "detectedAt": "2026-09-05T03:44:35.239051+00:00",
-      "pushedAt": "2026-09-05T03:44:35.239051+00:00",
-      "cooldownUntil": "2026-09-05T05:44:35.239051+00:00",
-      "signalHash": "3e9f90c203745414"
-    },
-    {
-      "symbol": "ATHUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 78,
-      "detectedAt": "2026-09-05T03:44:40.044763+00:00",
-      "pushedAt": "2026-09-05T03:44:40.044763+00:00",
-      "cooldownUntil": "2026-09-05T05:44:40.044763+00:00",
-      "signalHash": "37d7068a899a2875"
-    },
-    {
-      "symbol": "SPKUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 75,
-      "detectedAt": "2026-09-05T03:44:44.781035+00:00",
-      "pushedAt": "2026-09-05T03:44:44.781035+00:00",
-      "cooldownUntil": "2026-09-05T05:44:44.781035+00:00",
-      "signalHash": "6aa5963f7cd6e49b"
-    },
-    {
-      "symbol": "SEIUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 72,
-      "detectedAt": "2026-09-05T03:44:49.689719+00:00",
-      "pushedAt": "2026-09-05T03:44:49.689719+00:00",
-      "cooldownUntil": "2026-09-05T05:44:49.689719+00:00",
-      "signalHash": "4806a77e694d3c2b"
-    },
-    {
-      "symbol": "LIGHTUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 72,
-      "detectedAt": "2026-09-05T03:45:10.893013+00:00",
-      "pushedAt": "2026-09-05T03:45:10.893013+00:00",
-      "cooldownUntil": "2026-09-05T05:45:10.893013+00:00",
-      "signalHash": "c7c280eca7a846ab"
-    },
-    {
-      "symbol": "SKYUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 67,
-      "detectedAt": "2026-09-05T03:45:16.252364+00:00",
-      "pushedAt": "2026-09-05T03:45:16.252364+00:00",
-      "cooldownUntil": "2026-09-05T05:45:16.252364+00:00",
-      "signalHash": "0228b4f9f1505cdc"
-    },
     {
       "symbol": "POPCATUSDT",
       "patternType": "head_shoulders_top",
@@ -1614,18 +1493,48 @@
       "breakoutIndex": 260,
       "breakoutPrice": 0.2407,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "AMDUSDT",
+      "patternType": "descending_channel",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 64,
+      "detectedAt": "2026-09-12T05:44:23.958052+00:00",
+      "pushedAt": "2026-09-12T05:44:23.958052+00:00",
+      "cooldownUntil": "2026-09-12T07:44:23.958052+00:00",
+      "signalHash": "55fb7c8885ca4e76",
+      "endMs": 1788440400000,
+      "breakoutIndex": 194,
+      "breakoutPrice": 459.31,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "LDOUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 61,
+      "detectedAt": "2026-09-12T05:44:28.955751+00:00",
+      "pushedAt": "2026-09-12T05:44:28.955751+00:00",
+      "cooldownUntil": "2026-09-12T07:44:28.955751+00:00",
+      "signalHash": "4daa4ed9c7ecb736",
+      "endMs": 1788343200000,
+      "breakoutIndex": 189,
+      "breakoutPrice": 0.3809,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
     "scanned_pairs": 727,
     "failed_pairs": 13,
-    "candidates": 231,
-    "confirmed": 33,
-    "after_scoring": 21,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 497.4,
+    "candidates": 243,
+    "confirmed": 38,
+    "after_scoring": 27,
+    "after_dedup": 2,
+    "pushed": 2,
+    "observed": 1,
+    "duration_seconds": 473.7,
     "source_stats": {
       "okx": 727
     },
@@ -2233,6 +2142,21 @@
       "endMs": 1789106400000,
       "breakoutIndex": 391,
       "breakoutPrice": 1.0685,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "WLDUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 68,
+      "detectedAt": "2026-09-12T05:44:33.404979+00:00",
+      "pushedAt": "2026-09-12T05:44:33.404979+00:00",
+      "cooldownUntil": "2026-09-12T13:44:33.404979+00:00",
+      "signalHash": "296b266953156654",
+      "endMs": 1786075200000,
+      "breakoutIndex": 101,
+      "breakoutPrice": 0.3515,
       "reconfirmAt": null
     }
   ]
