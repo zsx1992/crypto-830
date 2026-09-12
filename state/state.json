@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-12T06:10:25.759828+00:00",
+  "lastScanAt": "2026-09-12T06:40:39.585910+00:00",
   "pushedSignals": [
     {
       "symbol": "POPCATUSDT",
@@ -1395,24 +1395,39 @@
       "breakoutIndex": 398,
       "breakoutPrice": 0.34359,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ATOMUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-09-12T06:40:39.585641+00:00",
+      "pushedAt": "2026-09-12T06:40:39.585641+00:00",
+      "cooldownUntil": "2026-09-12T07:10:39.585641+00:00",
+      "signalHash": "6d2fa7548f854704",
+      "endMs": 1789135200000,
+      "breakoutIndex": 540,
+      "breakoutPrice": 1.697,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 727,
+    "scanned_pairs": 717,
     "failed_pairs": 13,
-    "candidates": 245,
-    "confirmed": 40,
-    "after_scoring": 28,
+    "candidates": 241,
+    "confirmed": 39,
+    "after_scoring": 27,
     "after_dedup": 1,
     "pushed": 1,
     "observed": 0,
-    "duration_seconds": 520.2,
+    "duration_seconds": 538.0,
     "source_stats": {
-      "okx": 727
+      "okx": 717
     },
     "health_stats": {
-      "healthy": 675,
-      "sensitive": 52
+      "healthy": 667,
+      "sensitive": 50
     }
   },
   "observedSignals": [
