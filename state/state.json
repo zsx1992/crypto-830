@@ -1,150 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-12T05:44:33.405189+00:00",
+  "lastScanAt": "2026-09-12T06:10:25.759828+00:00",
   "pushedSignals": [
-    {
-      "symbol": "POPCATUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 90,
-      "detectedAt": "2026-09-05T06:05:26.156704+00:00",
-      "pushedAt": "2026-09-05T06:05:26.156704+00:00",
-      "cooldownUntil": "2026-09-05T08:05:26.156704+00:00",
-      "signalHash": "e99ed8a69ea150e1"
-    },
-    {
-      "symbol": "GALAUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 83,
-      "detectedAt": "2026-09-05T06:05:30.790714+00:00",
-      "pushedAt": "2026-09-05T06:05:30.790714+00:00",
-      "cooldownUntil": "2026-09-05T08:05:30.790714+00:00",
-      "signalHash": "8d30af9cca11c600"
-    },
-    {
-      "symbol": "NEIROUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 82,
-      "detectedAt": "2026-09-05T06:05:35.496987+00:00",
-      "pushedAt": "2026-09-05T06:05:35.496987+00:00",
-      "cooldownUntil": "2026-09-05T08:05:35.496987+00:00",
-      "signalHash": "af21eef3f881d73d"
-    },
-    {
-      "symbol": "IRYSUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 81,
-      "detectedAt": "2026-09-05T06:05:40.209259+00:00",
-      "pushedAt": "2026-09-05T06:05:40.209259+00:00",
-      "cooldownUntil": "2026-09-05T08:05:40.209259+00:00",
-      "signalHash": "a79fff5135d1aee3"
-    },
-    {
-      "symbol": "ATHUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 79,
-      "detectedAt": "2026-09-05T06:05:45.152646+00:00",
-      "pushedAt": "2026-09-05T06:05:45.152646+00:00",
-      "cooldownUntil": "2026-09-05T08:05:45.152646+00:00",
-      "signalHash": "37d7068a899a2875"
-    },
-    {
-      "symbol": "BOMEUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 78,
-      "detectedAt": "2026-09-05T06:05:49.725721+00:00",
-      "pushedAt": "2026-09-05T06:05:49.725721+00:00",
-      "cooldownUntil": "2026-09-05T08:05:49.725721+00:00",
-      "signalHash": "4c39ddb716a74d1c"
-    },
-    {
-      "symbol": "AIXBTUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 78,
-      "detectedAt": "2026-09-05T06:05:54.240410+00:00",
-      "pushedAt": "2026-09-05T06:05:54.240410+00:00",
-      "cooldownUntil": "2026-09-05T08:05:54.240410+00:00",
-      "signalHash": "3e9f90c203745414"
-    },
-    {
-      "symbol": "SPKUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 76,
-      "detectedAt": "2026-09-05T06:05:58.925059+00:00",
-      "pushedAt": "2026-09-05T06:05:58.925059+00:00",
-      "cooldownUntil": "2026-09-05T08:05:58.925059+00:00",
-      "signalHash": "6aa5963f7cd6e49b"
-    },
-    {
-      "symbol": "SEIUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 74,
-      "detectedAt": "2026-09-05T06:06:03.570037+00:00",
-      "pushedAt": "2026-09-05T06:06:03.570037+00:00",
-      "cooldownUntil": "2026-09-05T08:06:03.570037+00:00",
-      "signalHash": "4806a77e694d3c2b"
-    },
-    {
-      "symbol": "SHIBUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 74,
-      "detectedAt": "2026-09-05T06:06:25.984719+00:00",
-      "pushedAt": "2026-09-05T06:06:25.984719+00:00",
-      "cooldownUntil": "2026-09-05T14:06:25.984719+00:00",
-      "signalHash": "b75dc484248cedb6"
-    },
-    {
-      "symbol": "AIXBTUSDT",
-      "patternType": "double_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 69,
-      "detectedAt": "2026-09-05T06:06:30.788219+00:00",
-      "pushedAt": "2026-09-05T06:06:30.788219+00:00",
-      "cooldownUntil": "2026-09-05T14:06:30.788219+00:00",
-      "signalHash": "6999fee0800d73c6"
-    },
-    {
-      "symbol": "SKYUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 68,
-      "detectedAt": "2026-09-05T06:06:35.490086+00:00",
-      "pushedAt": "2026-09-05T06:06:35.490086+00:00",
-      "cooldownUntil": "2026-09-05T08:06:35.490086+00:00",
-      "signalHash": "0228b4f9f1505cdc"
-    },
-    {
-      "symbol": "RLSUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 60,
-      "detectedAt": "2026-09-05T06:06:40.259301+00:00",
-      "pushedAt": "2026-09-05T06:06:40.259301+00:00",
-      "cooldownUntil": "2026-09-05T08:06:40.259301+00:00",
-      "signalHash": "71496104c9413131"
-    },
     {
       "symbol": "POPCATUSDT",
       "patternType": "head_shoulders_top",
@@ -1523,24 +1380,39 @@
       "breakoutIndex": 189,
       "breakoutPrice": 0.3809,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "TRXUSDT",
+      "patternType": "ascending_channel",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 71,
+      "detectedAt": "2026-09-12T06:10:25.759588+00:00",
+      "pushedAt": "2026-09-12T06:10:25.759588+00:00",
+      "cooldownUntil": "2026-09-12T08:10:25.759588+00:00",
+      "signalHash": "ed6976005aa2a866",
+      "endMs": 1789128000000,
+      "breakoutIndex": 398,
+      "breakoutPrice": 0.34359,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
     "scanned_pairs": 727,
     "failed_pairs": 13,
-    "candidates": 243,
-    "confirmed": 38,
-    "after_scoring": 27,
-    "after_dedup": 2,
-    "pushed": 2,
-    "observed": 1,
-    "duration_seconds": 473.7,
+    "candidates": 245,
+    "confirmed": 40,
+    "after_scoring": 28,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 0,
+    "duration_seconds": 520.2,
     "source_stats": {
       "okx": 727
     },
     "health_stats": {
-      "healthy": 676,
-      "sensitive": 51
+      "healthy": 675,
+      "sensitive": 52
     }
   },
   "observedSignals": [
