@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-12T17:31:33.199786+00:00",
+  "lastScanAt": "2026-09-12T19:06:33.510371+00:00",
   "pushedSignals": [
     {
       "symbol": "BONKUSDT",
@@ -1345,24 +1345,39 @@
       "breakoutIndex": 95,
       "breakoutPrice": 0.04345,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "NEARUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 68,
+      "detectedAt": "2026-09-12T19:06:28.889043+00:00",
+      "pushedAt": "2026-09-12T19:06:28.889043+00:00",
+      "cooldownUntil": "2026-09-12T19:36:28.889043+00:00",
+      "signalHash": "b9b03a998a4891bd",
+      "endMs": 1788874200000,
+      "breakoutIndex": 198,
+      "breakoutPrice": 2.357,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 531,
-    "failed_pairs": 9,
+    "scanned_pairs": 514,
+    "failed_pairs": 8,
     "candidates": 184,
-    "confirmed": 33,
+    "confirmed": 34,
     "after_scoring": 18,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 277.4,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 1,
+    "duration_seconds": 279.0,
     "source_stats": {
-      "okx": 531
+      "okx": 514
     },
     "health_stats": {
-      "healthy": 493,
-      "sensitive": 38
+      "healthy": 477,
+      "sensitive": 37
     }
   },
   "observedSignals": [
@@ -1994,6 +2009,21 @@
       "endMs": 1789124400000,
       "breakoutIndex": 508,
       "breakoutPrice": 1120.86,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "MINAUSDT",
+      "patternType": "double_bottom",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 76,
+      "detectedAt": "2026-09-12T19:06:33.510207+00:00",
+      "pushedAt": "2026-09-12T19:06:33.510207+00:00",
+      "cooldownUntil": "2026-09-12T19:36:33.510207+00:00",
+      "signalHash": "5b5b362216e23fdb",
+      "endMs": 1789043400000,
+      "breakoutIndex": 483,
+      "breakoutPrice": 0.10465,
       "reconfirmAt": null
     }
   ]
