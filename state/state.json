@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-12T11:24:04.997081+00:00",
+  "lastScanAt": "2026-09-12T14:00:29.154185+00:00",
   "pushedSignals": [
     {
       "symbol": "BONKUSDT",
@@ -1315,24 +1315,39 @@
       "breakoutIndex": 441,
       "breakoutPrice": 0.028317,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "WDCUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 74,
+      "detectedAt": "2026-09-12T14:00:29.153964+00:00",
+      "pushedAt": "2026-09-12T14:00:29.153964+00:00",
+      "cooldownUntil": "2026-09-12T22:00:29.153964+00:00",
+      "signalHash": "372cc0d1b3d20b26",
+      "endMs": 1787284800000,
+      "breakoutIndex": 182,
+      "breakoutPrice": 449.5,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 691,
-    "failed_pairs": 13,
-    "candidates": 253,
+    "scanned_pairs": 619,
+    "failed_pairs": 11,
+    "candidates": 240,
     "confirmed": 37,
-    "after_scoring": 25,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_scoring": 22,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 454.7,
+    "duration_seconds": 302.5,
     "source_stats": {
-      "okx": 691
+      "okx": 619
     },
     "health_stats": {
-      "healthy": 639,
-      "sensitive": 52
+      "healthy": 576,
+      "sensitive": 43
     }
   },
   "observedSignals": [
