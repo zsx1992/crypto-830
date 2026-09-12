@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-12T21:27:05.805556+00:00",
+  "lastScanAt": "2026-09-12T21:45:23.179412+00:00",
   "pushedSignals": [
     {
       "symbol": "BONKUSDT",
@@ -1363,21 +1363,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 498,
+    "scanned_pairs": 500,
     "failed_pairs": 8,
-    "candidates": 181,
+    "candidates": 183,
     "confirmed": 32,
     "after_scoring": 15,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 341.0,
+    "duration_seconds": 257.7,
     "source_stats": {
-      "okx": 498
+      "okx": 500
     },
     "health_stats": {
       "healthy": 462,
-      "sensitive": 36
+      "sensitive": 38
     }
   },
   "observedSignals": [
