@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-13T04:01:00.973126+00:00",
+  "lastScanAt": "2026-09-13T06:31:33.131299+00:00",
   "pushedSignals": [
     {
       "symbol": "BONKUSDT",
@@ -1390,23 +1390,53 @@
       "breakoutIndex": 396,
       "breakoutPrice": 0.11415,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "UPUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 68,
+      "detectedAt": "2026-09-13T06:31:21.545501+00:00",
+      "pushedAt": "2026-09-13T06:31:21.545501+00:00",
+      "cooldownUntil": "2026-09-13T07:01:21.545501+00:00",
+      "signalHash": "97edb84ddb867f2b",
+      "endMs": 1789272000000,
+      "breakoutIndex": 592,
+      "breakoutPrice": 0.3487,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "ZECUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 77,
+      "detectedAt": "2026-09-13T06:31:27.309367+00:00",
+      "pushedAt": "2026-09-13T06:31:27.309367+00:00",
+      "cooldownUntil": "2026-09-13T07:01:27.309367+00:00",
+      "signalHash": "b4010ab5cfcdd1bc",
+      "endMs": 1789124400000,
+      "breakoutIndex": 431,
+      "breakoutPrice": 1120.86,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 490,
+    "scanned_pairs": 498,
     "failed_pairs": 8,
-    "candidates": 180,
-    "confirmed": 31,
-    "after_scoring": 17,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 0,
-    "duration_seconds": 377.4,
+    "candidates": 199,
+    "confirmed": 32,
+    "after_scoring": 19,
+    "after_dedup": 2,
+    "pushed": 2,
+    "observed": 1,
+    "duration_seconds": 341.5,
     "source_stats": {
-      "okx": 490
+      "okx": 498
     },
     "health_stats": {
-      "healthy": 459,
+      "healthy": 467,
       "sensitive": 31
     }
   },
@@ -2099,6 +2129,21 @@
       "endMs": 1789106400000,
       "breakoutIndex": 364,
       "breakoutPrice": 1.0685,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 77,
+      "detectedAt": "2026-09-13T06:31:33.131112+00:00",
+      "pushedAt": "2026-09-13T06:31:33.131112+00:00",
+      "cooldownUntil": "2026-09-13T07:01:33.131112+00:00",
+      "signalHash": "5c2aaf432c733391",
+      "endMs": 1788966900000,
+      "breakoutIndex": 278,
+      "breakoutPrice": 7.735,
       "reconfirmAt": null
     }
   ]
