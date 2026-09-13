@@ -1,19 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-13T14:16:49.657978+00:00",
+  "lastScanAt": "2026-09-13T17:06:48.400170+00:00",
   "pushedSignals": [
-    {
-      "symbol": "BONKUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 62,
-      "detectedAt": "2026-09-06T16:12:52.325481+00:00",
-      "pushedAt": "2026-09-06T16:12:52.325481+00:00",
-      "cooldownUntil": "2026-09-07T00:12:52.325481+00:00",
-      "signalHash": "d2c3c705cfed595b",
-      "endMs": 1788393600000
-    },
     {
       "symbol": "PIEVERSEUSDT",
       "patternType": "double_bottom",
@@ -1480,23 +1468,53 @@
       "breakoutIndex": 296,
       "breakoutPrice": 0.12145,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "NESUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 91,
+      "detectedAt": "2026-09-13T17:06:42.319391+00:00",
+      "pushedAt": "2026-09-13T17:06:42.319391+00:00",
+      "cooldownUntil": "2026-09-13T17:36:42.319391+00:00",
+      "signalHash": "e9df8d33cecd29ea",
+      "endMs": 1789299900000,
+      "breakoutIndex": 590,
+      "breakoutPrice": 0.1448,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "TRUMPUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 76,
+      "detectedAt": "2026-09-13T17:06:48.399875+00:00",
+      "pushedAt": "2026-09-13T17:06:48.399875+00:00",
+      "cooldownUntil": "2026-09-13T17:36:48.399875+00:00",
+      "signalHash": "6fb8d405e60fdf7f",
+      "endMs": 1788956100000,
+      "breakoutIndex": 208,
+      "breakoutPrice": 2.178,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 560,
-    "failed_pairs": 8,
-    "candidates": 203,
-    "confirmed": 35,
-    "after_scoring": 20,
-    "after_dedup": 0,
-    "pushed": 0,
+    "scanned_pairs": 573,
+    "failed_pairs": 7,
+    "candidates": 209,
+    "confirmed": 37,
+    "after_scoring": 23,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 396.9,
+    "duration_seconds": 426.9,
     "source_stats": {
-      "okx": 560
+      "okx": 573
     },
     "health_stats": {
-      "healthy": 523,
+      "healthy": 536,
       "sensitive": 37
     }
   },
