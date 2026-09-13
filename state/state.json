@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-13T01:32:15.879211+00:00",
+  "lastScanAt": "2026-09-13T04:01:00.973126+00:00",
   "pushedSignals": [
     {
       "symbol": "BONKUSDT",
@@ -1375,24 +1375,39 @@
       "breakoutIndex": 162,
       "breakoutPrice": 0.1257,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ZRXUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 78,
+      "detectedAt": "2026-09-13T04:01:00.972884+00:00",
+      "pushedAt": "2026-09-13T04:01:00.972884+00:00",
+      "cooldownUntil": "2026-09-13T06:01:00.972884+00:00",
+      "signalHash": "13d152fdfd568179",
+      "endMs": 1789056000000,
+      "breakoutIndex": 396,
+      "breakoutPrice": 0.11415,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 494,
+    "scanned_pairs": 490,
     "failed_pairs": 8,
-    "candidates": 185,
-    "confirmed": 29,
-    "after_scoring": 15,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 180,
+    "confirmed": 31,
+    "after_scoring": 17,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 376.5,
+    "duration_seconds": 377.4,
     "source_stats": {
-      "okx": 494
+      "okx": 490
     },
     "health_stats": {
-      "healthy": 461,
-      "sensitive": 33
+      "healthy": 459,
+      "sensitive": 31
     }
   },
   "observedSignals": [
