@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-13T19:40:35.430830+00:00",
+  "lastScanAt": "2026-09-13T19:57:16.042667+00:00",
   "pushedSignals": [
     {
       "symbol": "PIEVERSEUSDT",
@@ -1528,23 +1528,38 @@
       "breakoutIndex": 384,
       "breakoutPrice": 0.08356,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "BCHUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 77,
+      "detectedAt": "2026-09-13T19:57:16.042433+00:00",
+      "pushedAt": "2026-09-13T19:57:16.042433+00:00",
+      "cooldownUntil": "2026-09-13T20:27:16.042433+00:00",
+      "signalHash": "c0c7fc9d68bf0da1",
+      "endMs": 1788972300000,
+      "breakoutIndex": 224,
+      "breakoutPrice": 249.7,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 586,
+    "scanned_pairs": 584,
     "failed_pairs": 8,
-    "candidates": 213,
-    "confirmed": 36,
+    "candidates": 212,
+    "confirmed": 35,
     "after_scoring": 25,
     "after_dedup": 1,
     "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 296.6,
+    "observed": 0,
+    "duration_seconds": 413.4,
     "source_stats": {
-      "okx": 586
+      "okx": 584
     },
     "health_stats": {
-      "healthy": 551,
+      "healthy": 549,
       "sensitive": 35
     }
   },
