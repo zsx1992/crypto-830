@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-13T17:06:48.400170+00:00",
+  "lastScanAt": "2026-09-13T18:04:24.043107+00:00",
   "pushedSignals": [
     {
       "symbol": "PIEVERSEUSDT",
@@ -1498,24 +1498,39 @@
       "breakoutIndex": 208,
       "breakoutPrice": 2.178,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "KORUUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 71,
+      "detectedAt": "2026-09-13T17:13:35.605126+00:00",
+      "pushedAt": "2026-09-13T17:13:35.605126+00:00",
+      "cooldownUntil": "2026-09-13T19:13:35.605126+00:00",
+      "signalHash": "72774a7488b55bb3",
+      "endMs": 1788962400000,
+      "breakoutIndex": 322,
+      "breakoutPrice": 22.7,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 573,
-    "failed_pairs": 7,
-    "candidates": 209,
+    "scanned_pairs": 580,
+    "failed_pairs": 8,
+    "candidates": 208,
     "confirmed": 37,
-    "after_scoring": 23,
-    "after_dedup": 2,
-    "pushed": 2,
+    "after_scoring": 24,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 426.9,
+    "duration_seconds": 309.7,
     "source_stats": {
-      "okx": 573
+      "okx": 580
     },
     "health_stats": {
-      "healthy": 536,
-      "sensitive": 37
+      "healthy": 545,
+      "sensitive": 35
     }
   },
   "observedSignals": [
