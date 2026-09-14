@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-14T18:34:42.546772+00:00",
+  "lastScanAt": "2026-09-14T19:38:26.367642+00:00",
   "pushedSignals": [
     {
       "symbol": "RAYUSDT",
@@ -1609,21 +1609,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 678,
+    "scanned_pairs": 680,
     "failed_pairs": 12,
-    "candidates": 240,
-    "confirmed": 37,
-    "after_scoring": 23,
-    "after_dedup": 2,
-    "pushed": 2,
-    "observed": 0,
-    "duration_seconds": 519.6,
+    "candidates": 238,
+    "confirmed": 38,
+    "after_scoring": 22,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 1,
+    "duration_seconds": 480.3,
     "source_stats": {
-      "okx": 678
+      "okx": 680
     },
     "health_stats": {
-      "healthy": 633,
-      "sensitive": 45
+      "healthy": 637,
+      "sensitive": 43
     }
   },
   "observedSignals": [
@@ -2375,6 +2375,21 @@
       "endMs": 1789128000000,
       "breakoutIndex": 298,
       "breakoutPrice": 345.12,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "RIVERUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 74,
+      "detectedAt": "2026-09-14T19:38:26.367404+00:00",
+      "pushedAt": "2026-09-14T19:38:26.367404+00:00",
+      "cooldownUntil": "2026-09-14T21:38:26.367404+00:00",
+      "signalHash": "eb7e446bd14ec613",
+      "endMs": 1789128000000,
+      "breakoutIndex": 321,
+      "breakoutPrice": 1.139,
       "reconfirmAt": null
     }
   ]
