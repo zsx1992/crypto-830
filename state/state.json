@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-13T23:06:18.681878+00:00",
+  "lastScanAt": "2026-09-14T00:35:48.229172+00:00",
   "pushedSignals": [
     {
       "symbol": "PIEVERSEUSDT",
@@ -1543,24 +1543,39 @@
       "breakoutIndex": 224,
       "breakoutPrice": 249.7,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "UPUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 76,
+      "detectedAt": "2026-09-14T00:35:48.228889+00:00",
+      "pushedAt": "2026-09-14T00:35:48.228889+00:00",
+      "cooldownUntil": "2026-09-14T01:05:48.228889+00:00",
+      "signalHash": "97edb84ddb867f2b",
+      "endMs": 1789272000000,
+      "breakoutIndex": 520,
+      "breakoutPrice": 0.3487,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 596,
-    "failed_pairs": 12,
-    "candidates": 207,
+    "scanned_pairs": 617,
+    "failed_pairs": 11,
+    "candidates": 218,
     "confirmed": 34,
-    "after_scoring": 22,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_scoring": 23,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 398.3,
+    "duration_seconds": 443.4,
     "source_stats": {
-      "okx": 596
+      "okx": 617
     },
     "health_stats": {
-      "healthy": 561,
-      "sensitive": 35
+      "healthy": 579,
+      "sensitive": 38
     }
   },
   "observedSignals": [
