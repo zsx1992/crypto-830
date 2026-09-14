@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-14T06:02:52.038157+00:00",
+  "lastScanAt": "2026-09-14T06:43:09.963730+00:00",
   "pushedSignals": [
     {
       "symbol": "RAYUSDT",
@@ -1546,24 +1546,39 @@
       "breakoutIndex": 520,
       "breakoutPrice": 0.3487,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "LITEUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 73,
+      "detectedAt": "2026-09-14T06:43:09.963461+00:00",
+      "pushedAt": "2026-09-14T06:43:09.963461+00:00",
+      "cooldownUntil": "2026-09-14T08:43:09.963461+00:00",
+      "signalHash": "861b0d6858c977fa",
+      "endMs": 1789045200000,
+      "breakoutIndex": 311,
+      "breakoutPrice": 973.92,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 633,
+    "scanned_pairs": 637,
     "failed_pairs": 11,
     "candidates": 220,
-    "confirmed": 34,
-    "after_scoring": 21,
-    "after_dedup": 0,
-    "pushed": 0,
+    "confirmed": 35,
+    "after_scoring": 23,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 413.3,
+    "duration_seconds": 433.0,
     "source_stats": {
-      "okx": 633
+      "okx": 637
     },
     "health_stats": {
-      "healthy": 596,
-      "sensitive": 37
+      "healthy": 598,
+      "sensitive": 39
     }
   },
   "observedSignals": [
