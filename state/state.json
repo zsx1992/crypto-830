@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-14T22:28:33.499396+00:00",
+  "lastScanAt": "2026-09-14T23:20:05.913975+00:00",
   "pushedSignals": [
     {
       "symbol": "RAYUSDT",
@@ -1636,24 +1636,39 @@
       "breakoutIndex": 175,
       "breakoutPrice": 0.3298,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "RIVERUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 69,
+      "detectedAt": "2026-09-14T23:20:05.913725+00:00",
+      "pushedAt": "2026-09-14T23:20:05.913725+00:00",
+      "cooldownUntil": "2026-09-15T01:20:05.913725+00:00",
+      "signalHash": "eb7e446bd14ec613",
+      "endMs": 1789128000000,
+      "breakoutIndex": 317,
+      "breakoutPrice": 1.139,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 682,
+    "scanned_pairs": 674,
     "failed_pairs": 12,
-    "candidates": 237,
-    "confirmed": 36,
-    "after_scoring": 24,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 228,
+    "confirmed": 35,
+    "after_scoring": 23,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 463.2,
+    "duration_seconds": 323.9,
     "source_stats": {
-      "okx": 682
+      "okx": 674
     },
     "health_stats": {
-      "healthy": 636,
-      "sensitive": 46
+      "healthy": 626,
+      "sensitive": 48
     }
   },
   "observedSignals": [
