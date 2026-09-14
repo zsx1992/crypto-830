@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-14T17:12:22.180396+00:00",
+  "lastScanAt": "2026-09-14T18:34:42.546772+00:00",
   "pushedSignals": [
     {
       "symbol": "RAYUSDT",
@@ -1576,24 +1576,54 @@
       "breakoutIndex": 372,
       "breakoutPrice": 183.28,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ARBUSDT",
+      "patternType": "descending_channel",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 68,
+      "detectedAt": "2026-09-14T18:34:36.401501+00:00",
+      "pushedAt": "2026-09-14T18:34:36.401501+00:00",
+      "cooldownUntil": "2026-09-14T20:34:36.401501+00:00",
+      "signalHash": "1090361b6793f642",
+      "endMs": 1789354800000,
+      "breakoutIndex": 398,
+      "breakoutPrice": 0.14026,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "RIVERUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 84,
+      "detectedAt": "2026-09-14T18:34:42.546462+00:00",
+      "pushedAt": "2026-09-14T18:34:42.546462+00:00",
+      "cooldownUntil": "2026-09-14T19:04:42.546462+00:00",
+      "signalHash": "ccb004d51c90afab",
+      "endMs": 1789129800000,
+      "breakoutIndex": 289,
+      "breakoutPrice": 1.102,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 664,
+    "scanned_pairs": 678,
     "failed_pairs": 12,
-    "candidates": 227,
-    "confirmed": 35,
-    "after_scoring": 22,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 240,
+    "confirmed": 37,
+    "after_scoring": 23,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 534.6,
+    "duration_seconds": 519.6,
     "source_stats": {
-      "okx": 664
+      "okx": 678
     },
     "health_stats": {
-      "healthy": 620,
-      "sensitive": 44
+      "healthy": 633,
+      "sensitive": 45
     }
   },
   "observedSignals": [
