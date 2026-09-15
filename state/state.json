@@ -1,91 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-15T13:49:01.633389+00:00",
+  "lastScanAt": "2026-09-15T15:25:29.284175+00:00",
   "pushedSignals": [
-    {
-      "symbol": "CRDOUSDT",
-      "patternType": "descending_channel",
-      "interval": "1d",
-      "direction": "SHORT",
-      "strength": 85,
-      "detectedAt": "2026-09-08T14:49:41.957235+00:00",
-      "pushedAt": "2026-09-08T14:49:41.957235+00:00",
-      "cooldownUntil": "2026-09-09T14:49:41.957235+00:00",
-      "signalHash": "85a1773ddde218bb",
-      "endMs": 1787500800000
-    },
-    {
-      "symbol": "INTWUSDT",
-      "patternType": "double_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 72,
-      "detectedAt": "2026-09-08T14:49:46.289971+00:00",
-      "pushedAt": "2026-09-08T14:49:46.289971+00:00",
-      "cooldownUntil": "2026-09-08T22:49:46.289971+00:00",
-      "signalHash": "d88195d92bf8e1ff",
-      "endMs": 1788264000000
-    },
-    {
-      "symbol": "ZENUSDT",
-      "patternType": "rectangle",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 66,
-      "detectedAt": "2026-09-08T14:49:51.949649+00:00",
-      "pushedAt": "2026-09-08T14:49:51.949649+00:00",
-      "cooldownUntil": "2026-09-08T15:19:51.949649+00:00",
-      "signalHash": "f6b71035f0a41480",
-      "endMs": 1788865200000
-    },
-    {
-      "symbol": "KORUUSDT",
-      "patternType": "ascending_channel",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 64,
-      "detectedAt": "2026-09-08T14:49:56.741579+00:00",
-      "pushedAt": "2026-09-08T14:49:56.741579+00:00",
-      "cooldownUntil": "2026-09-08T22:49:56.741579+00:00",
-      "signalHash": "3f1180ffd8a6ce9e",
-      "endMs": 1788537600000
-    },
-    {
-      "symbol": "AVGOUSDT",
-      "patternType": "rectangle",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 79,
-      "detectedAt": "2026-09-08T15:09:03.676745+00:00",
-      "pushedAt": "2026-09-08T15:09:03.676745+00:00",
-      "cooldownUntil": "2026-09-08T17:09:03.676745+00:00",
-      "signalHash": "240c49380c3a3e41",
-      "endMs": 1788840000000
-    },
-    {
-      "symbol": "CHIPUSDT",
-      "patternType": "double_bottom",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 74,
-      "detectedAt": "2026-09-08T15:09:09.832366+00:00",
-      "pushedAt": "2026-09-08T15:09:09.832366+00:00",
-      "cooldownUntil": "2026-09-08T15:39:09.832366+00:00",
-      "signalHash": "61f65284b9277e96",
-      "endMs": 1788858000000
-    },
-    {
-      "symbol": "NEARUSDT",
-      "patternType": "rectangle",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 72,
-      "detectedAt": "2026-09-08T15:09:16.198480+00:00",
-      "pushedAt": "2026-09-08T15:09:16.198480+00:00",
-      "cooldownUntil": "2026-09-08T15:39:16.198480+00:00",
-      "signalHash": "43a068c29578e47d",
-      "endMs": 1788860700000
-    },
     {
       "symbol": "GLWUSDT",
       "patternType": "double_bottom",
@@ -1465,60 +1381,24 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 660,
+    "scanned_pairs": 666,
     "failed_pairs": 12,
-    "candidates": 226,
-    "confirmed": 35,
-    "after_scoring": 22,
-    "after_dedup": 2,
-    "pushed": 2,
-    "observed": 1,
-    "duration_seconds": 338.3,
+    "candidates": 219,
+    "confirmed": 34,
+    "after_scoring": 21,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 513.5,
     "source_stats": {
-      "okx": 660
+      "okx": 666
     },
     "health_stats": {
-      "healthy": 621,
-      "sensitive": 39
+      "healthy": 625,
+      "sensitive": 41
     }
   },
   "observedSignals": [
-    {
-      "symbol": "AVGOUSDT",
-      "patternType": "rectangle",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 76,
-      "detectedAt": "2026-09-08T14:50:01.645064+00:00",
-      "pushedAt": "2026-09-08T14:50:01.645064+00:00",
-      "cooldownUntil": "2026-09-08T16:50:01.645064+00:00",
-      "signalHash": "240c49380c3a3e41",
-      "endMs": 1788840000000
-    },
-    {
-      "symbol": "MOVEUSDT",
-      "patternType": "descending_channel",
-      "interval": "1d",
-      "direction": "LONG",
-      "strength": 73,
-      "detectedAt": "2026-09-08T14:50:06.636510+00:00",
-      "pushedAt": "2026-09-08T14:50:06.636510+00:00",
-      "cooldownUntil": "2026-09-09T14:50:06.636510+00:00",
-      "signalHash": "3f91d7102d0d2087",
-      "endMs": 1787068800000
-    },
-    {
-      "symbol": "BEUSDT",
-      "patternType": "descending_channel",
-      "interval": "1d",
-      "direction": "LONG",
-      "strength": 70,
-      "detectedAt": "2026-09-08T14:50:11.103747+00:00",
-      "pushedAt": "2026-09-08T14:50:11.103747+00:00",
-      "cooldownUntil": "2026-09-09T14:50:11.103747+00:00",
-      "signalHash": "baa560c909f68969",
-      "endMs": 1788192000000
-    },
     {
       "symbol": "NBISUSDT",
       "patternType": "head_shoulders_bottom",
