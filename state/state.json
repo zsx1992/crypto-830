@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-15T15:25:29.284175+00:00",
+  "lastScanAt": "2026-09-15T18:10:30.284962+00:00",
   "pushedSignals": [
     {
       "symbol": "GLWUSDT",
@@ -1378,24 +1378,39 @@
       "breakoutIndex": 214,
       "breakoutPrice": 0.07786,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "WDCUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 83,
+      "detectedAt": "2026-09-15T18:10:30.284706+00:00",
+      "pushedAt": "2026-09-15T18:10:30.284706+00:00",
+      "cooldownUntil": "2026-09-16T02:10:30.284706+00:00",
+      "signalHash": "bc7d00cdc344636c",
+      "endMs": 1788969600000,
+      "breakoutIndex": 298,
+      "breakoutPrice": 416.41,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 666,
-    "failed_pairs": 12,
+    "scanned_pairs": 669,
+    "failed_pairs": 11,
     "candidates": 219,
-    "confirmed": 34,
-    "after_scoring": 21,
-    "after_dedup": 0,
-    "pushed": 0,
+    "confirmed": 35,
+    "after_scoring": 23,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 513.5,
+    "duration_seconds": 507.7,
     "source_stats": {
-      "okx": 666
+      "okx": 669
     },
     "health_stats": {
-      "healthy": 625,
-      "sensitive": 41
+      "healthy": 627,
+      "sensitive": 42
     }
   },
   "observedSignals": [
