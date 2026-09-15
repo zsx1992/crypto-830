@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-15T07:34:08.974286+00:00",
+  "lastScanAt": "2026-09-15T08:03:48.799110+00:00",
   "pushedSignals": [
     {
       "symbol": "PNUTUSDT",
@@ -1687,36 +1687,24 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 652,
+    "scanned_pairs": 656,
     "failed_pairs": 12,
-    "candidates": 206,
+    "candidates": 217,
     "confirmed": 34,
-    "after_scoring": 23,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_scoring": 22,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 512.9,
+    "duration_seconds": 507.1,
     "source_stats": {
-      "okx": 652
+      "okx": 656
     },
     "health_stats": {
-      "healthy": 613,
+      "healthy": 617,
       "sensitive": 39
     }
   },
   "observedSignals": [
-    {
-      "symbol": "SYRUPUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 67,
-      "detectedAt": "2026-09-08T08:00:34.556382+00:00",
-      "pushedAt": "2026-09-08T08:00:34.556382+00:00",
-      "cooldownUntil": "2026-09-08T10:00:34.556382+00:00",
-      "signalHash": "d4f2ee0361e1ec65",
-      "endMs": 1788764400000
-    },
     {
       "symbol": "LAYERUSDT",
       "patternType": "descending_channel",
