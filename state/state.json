@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-15T19:22:15.147941+00:00",
+  "lastScanAt": "2026-09-15T21:19:54.443639+00:00",
   "pushedSignals": [
     {
       "symbol": "IOTAUSDT",
@@ -1267,21 +1267,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 697,
+    "scanned_pairs": 693,
     "failed_pairs": 11,
-    "candidates": 213,
-    "confirmed": 33,
+    "candidates": 217,
+    "confirmed": 34,
     "after_scoring": 21,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 1,
-    "duration_seconds": 494.0,
+    "duration_seconds": 552.2,
     "source_stats": {
-      "okx": 697
+      "okx": 693
     },
     "health_stats": {
-      "healthy": 652,
-      "sensitive": 45
+      "healthy": 647,
+      "sensitive": 46
     }
   },
   "observedSignals": [
@@ -1952,6 +1952,21 @@
       "endMs": 1786406400000,
       "breakoutIndex": 100,
       "breakoutPrice": 166.42,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "MRVLUSDT",
+      "patternType": "ascending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 79,
+      "detectedAt": "2026-09-15T21:19:54.443466+00:00",
+      "pushedAt": "2026-09-15T21:19:54.443466+00:00",
+      "cooldownUntil": "2026-09-16T05:19:54.443466+00:00",
+      "signalHash": "38d5d26fc4c4587c",
+      "endMs": 1787817600000,
+      "breakoutIndex": 185,
+      "breakoutPrice": 222.99,
       "reconfirmAt": null
     }
   ]
