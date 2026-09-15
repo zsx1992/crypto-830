@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-15T13:25:56.477448+00:00",
+  "lastScanAt": "2026-09-15T13:49:01.633389+00:00",
   "pushedSignals": [
     {
       "symbol": "CRDOUSDT",
@@ -1432,24 +1432,54 @@
       "breakoutIndex": 214,
       "breakoutPrice": 110.47,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 70,
+      "detectedAt": "2026-09-15T13:48:51.953791+00:00",
+      "pushedAt": "2026-09-15T13:48:51.953791+00:00",
+      "cooldownUntil": "2026-09-16T13:48:51.953791+00:00",
+      "signalHash": "5abc727d303ed99e",
+      "endMs": 1783785600000,
+      "breakoutIndex": 214,
+      "breakoutPrice": 7.619,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "HBARUSDT",
+      "patternType": "double_bottom",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 64,
+      "detectedAt": "2026-09-15T13:48:56.012963+00:00",
+      "pushedAt": "2026-09-15T13:48:56.012963+00:00",
+      "cooldownUntil": "2026-09-16T13:48:56.012963+00:00",
+      "signalHash": "d76dfa6cef63bd91",
+      "endMs": 1786896000000,
+      "breakoutIndex": 214,
+      "breakoutPrice": 0.07786,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 656,
+    "scanned_pairs": 660,
     "failed_pairs": 12,
-    "candidates": 224,
+    "candidates": 226,
     "confirmed": 35,
-    "after_scoring": 23,
+    "after_scoring": 22,
     "after_dedup": 2,
     "pushed": 2,
-    "observed": 0,
-    "duration_seconds": 494.4,
+    "observed": 1,
+    "duration_seconds": 338.3,
     "source_stats": {
-      "okx": 656
+      "okx": 660
     },
     "health_stats": {
-      "healthy": 618,
-      "sensitive": 38
+      "healthy": 621,
+      "sensitive": 39
     }
   },
   "observedSignals": [
@@ -2150,6 +2180,21 @@
       "endMs": 1788739200000,
       "breakoutIndex": 167,
       "breakoutPrice": 3.361,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "USELESSUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 75,
+      "detectedAt": "2026-09-15T13:49:01.633169+00:00",
+      "pushedAt": "2026-09-15T13:49:01.633169+00:00",
+      "cooldownUntil": "2026-09-15T14:19:01.633169+00:00",
+      "signalHash": "e0f29758d148bd0d",
+      "endMs": 1789391700000,
+      "breakoutIndex": 517,
+      "breakoutPrice": 0.20976,
       "reconfirmAt": null
     }
   ]
