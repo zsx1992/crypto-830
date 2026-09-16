@@ -1,31 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-15T22:34:58.522815+00:00",
+  "lastScanAt": "2026-09-16T00:11:32.207963+00:00",
   "pushedSignals": [
-    {
-      "symbol": "AVGOUSDT",
-      "patternType": "rectangle",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 81,
-      "detectedAt": "2026-09-09T00:05:12.451048+00:00",
-      "pushedAt": "2026-09-09T00:05:12.451048+00:00",
-      "cooldownUntil": "2026-09-09T02:05:12.451048+00:00",
-      "signalHash": "240c49380c3a3e41",
-      "endMs": 1788825600000
-    },
-    {
-      "symbol": "BBUSDT",
-      "patternType": "descending_channel",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 74,
-      "detectedAt": "2026-09-09T00:05:17.606505+00:00",
-      "pushedAt": "2026-09-09T00:05:17.606505+00:00",
-      "cooldownUntil": "2026-09-09T08:05:17.606505+00:00",
-      "signalHash": "22c1e2819f2b8512",
-      "endMs": 1788868800000
-    },
     {
       "symbol": "CBRSUSDT",
       "patternType": "double_top",
@@ -1228,24 +1204,54 @@
       "breakoutIndex": 212,
       "breakoutPrice": 3.209e-06,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "STXUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 63,
+      "detectedAt": "2026-09-16T00:11:25.945190+00:00",
+      "pushedAt": "2026-09-16T00:11:25.945190+00:00",
+      "cooldownUntil": "2026-09-16T08:11:25.945190+00:00",
+      "signalHash": "1a959deea0bb9692",
+      "endMs": 1789272000000,
+      "breakoutIndex": 298,
+      "breakoutPrice": 0.2346,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "EIGENUSDT",
+      "patternType": "double_top",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-09-16T00:11:32.207695+00:00",
+      "pushedAt": "2026-09-16T00:11:32.207695+00:00",
+      "cooldownUntil": "2026-09-16T00:41:32.207695+00:00",
+      "signalHash": "5aa2a8d669a3de61",
+      "endMs": 1789200900000,
+      "breakoutIndex": 345,
+      "breakoutPrice": 0.2057,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 689,
+    "scanned_pairs": 691,
     "failed_pairs": 11,
-    "candidates": 216,
-    "confirmed": 32,
-    "after_scoring": 20,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 215,
+    "confirmed": 33,
+    "after_scoring": 21,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 480.4,
+    "duration_seconds": 539.8,
     "source_stats": {
-      "okx": 689
+      "okx": 691
     },
     "health_stats": {
-      "healthy": 644,
-      "sensitive": 45
+      "healthy": 651,
+      "sensitive": 40
     }
   },
   "observedSignals": [
