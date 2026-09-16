@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-16T12:58:40.249342+00:00",
+  "lastScanAt": "2026-09-16T14:49:59.990055+00:00",
   "pushedSignals": [
     {
       "symbol": "AXTIUSDT",
@@ -1252,21 +1252,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 675,
-    "failed_pairs": 15,
-    "candidates": 221,
-    "confirmed": 39,
-    "after_scoring": 24,
-    "after_dedup": 1,
-    "pushed": 1,
+    "scanned_pairs": 659,
+    "failed_pairs": 13,
+    "candidates": 209,
+    "confirmed": 36,
+    "after_scoring": 20,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 467.8,
+    "duration_seconds": 454.3,
     "source_stats": {
-      "okx": 675
+      "okx": 659
     },
     "health_stats": {
-      "healthy": 631,
-      "sensitive": 44
+      "healthy": 614,
+      "sensitive": 45
     }
   },
   "observedSignals": [
