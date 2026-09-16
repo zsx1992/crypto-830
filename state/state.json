@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-16T06:23:18.497276+00:00",
+  "lastScanAt": "2026-09-16T06:55:17.241245+00:00",
   "pushedSignals": [
     {
       "symbol": "RKLBUSDT",
@@ -1249,20 +1249,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 687,
+    "scanned_pairs": 691,
     "failed_pairs": 11,
-    "candidates": 224,
+    "candidates": 227,
     "confirmed": 38,
     "after_scoring": 24,
-    "after_dedup": 2,
-    "pushed": 2,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 371.9,
+    "duration_seconds": 455.1,
     "source_stats": {
-      "okx": 687
+      "okx": 691
     },
     "health_stats": {
-      "healthy": 647,
+      "healthy": 651,
       "sensitive": 40
     }
   },
