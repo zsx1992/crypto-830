@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-17T20:10:24.111101+00:00",
+  "lastScanAt": "2026-09-17T20:40:07.409728+00:00",
   "pushedSignals": [
     {
       "symbol": "ADBEUSDT",
@@ -1036,24 +1036,39 @@
       "breakoutIndex": 243,
       "breakoutPrice": 67.02,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 66,
+      "detectedAt": "2026-09-17T20:40:07.409489+00:00",
+      "pushedAt": "2026-09-17T20:40:07.409489+00:00",
+      "cooldownUntil": "2026-09-18T04:40:07.409489+00:00",
+      "signalHash": "0ace8caa51914d1a",
+      "endMs": 1786449600000,
+      "breakoutIndex": 129,
+      "breakoutPrice": 7.055,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 672,
+    "scanned_pairs": 670,
     "failed_pairs": 12,
-    "candidates": 209,
+    "candidates": 206,
     "confirmed": 32,
     "after_scoring": 20,
-    "after_dedup": 2,
-    "pushed": 2,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 353.1,
+    "duration_seconds": 350.1,
     "source_stats": {
-      "okx": 672
+      "okx": 670
     },
     "health_stats": {
-      "healthy": 631,
-      "sensitive": 40,
+      "healthy": 630,
+      "sensitive": 39,
       "over_smoothed": 1
     }
   },
