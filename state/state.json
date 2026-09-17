@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-17T11:20:45.310957+00:00",
+  "lastScanAt": "2026-09-17T12:17:16.221227+00:00",
   "pushedSignals": [
     {
       "symbol": "FOGOUSDT",
@@ -1081,24 +1081,54 @@
       "breakoutIndex": 84,
       "breakoutPrice": 268.26,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "INTCUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 72,
+      "detectedAt": "2026-09-17T12:17:08.111240+00:00",
+      "pushedAt": "2026-09-17T12:17:08.111240+00:00",
+      "cooldownUntil": "2026-09-17T20:17:08.111240+00:00",
+      "signalHash": "95080bfa3cd51458",
+      "endMs": 1788264000000,
+      "breakoutIndex": 221,
+      "breakoutPrice": 94.97,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "0GUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 62,
+      "detectedAt": "2026-09-17T12:17:12.553788+00:00",
+      "pushedAt": "2026-09-17T12:17:12.553788+00:00",
+      "cooldownUntil": "2026-09-17T14:17:12.553788+00:00",
+      "signalHash": "ea11a072efa39eff",
+      "endMs": 1788523200000,
+      "breakoutIndex": 90,
+      "breakoutPrice": 0.1988,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 680,
-    "failed_pairs": 12,
-    "candidates": 199,
-    "confirmed": 32,
-    "after_scoring": 18,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 0,
-    "duration_seconds": 337.9,
+    "scanned_pairs": 683,
+    "failed_pairs": 11,
+    "candidates": 206,
+    "confirmed": 34,
+    "after_scoring": 19,
+    "after_dedup": 2,
+    "pushed": 2,
+    "observed": 1,
+    "duration_seconds": 369.7,
     "source_stats": {
-      "okx": 680
+      "okx": 683
     },
     "health_stats": {
-      "healthy": 639,
-      "sensitive": 40,
+      "healthy": 641,
+      "sensitive": 41,
       "over_smoothed": 1
     }
   },
@@ -1596,6 +1626,21 @@
       "endMs": 1787025600000,
       "breakoutIndex": 127,
       "breakoutPrice": 0.07248,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "TSLAUSDT",
+      "patternType": "double_top",
+      "interval": "1d",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-09-17T12:17:16.221036+00:00",
+      "pushedAt": "2026-09-17T12:17:16.221036+00:00",
+      "cooldownUntil": "2026-09-18T12:17:16.221036+00:00",
+      "signalHash": "81c64e3aa8331659",
+      "endMs": 1782921600000,
+      "breakoutIndex": 148,
+      "breakoutPrice": 325.16,
       "reconfirmAt": null
     }
   ]
