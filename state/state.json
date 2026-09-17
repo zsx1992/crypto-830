@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-17T20:40:07.409728+00:00",
+  "lastScanAt": "2026-09-17T21:43:30.462077+00:00",
   "pushedSignals": [
-    {
-      "symbol": "ADBEUSDT",
-      "patternType": "ascending_channel",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 74,
-      "detectedAt": "2026-09-10T21:21:57.417627+00:00",
-      "pushedAt": "2026-09-10T21:21:57.417627+00:00",
-      "cooldownUntil": "2026-09-11T05:21:57.417627+00:00",
-      "signalHash": "c0b48d44c2fa7a3c",
-      "endMs": 1788264000000,
-      "breakoutIndex": 261,
-      "breakoutPrice": 268.66,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "ZHIPUUSDT",
-      "patternType": "ascending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 83,
-      "detectedAt": "2026-09-10T21:35:44.368457+00:00",
-      "pushedAt": "2026-09-10T21:35:44.368457+00:00",
-      "cooldownUntil": "2026-09-10T22:05:44.368457+00:00",
-      "signalHash": "75790c75eae16aad",
-      "endMs": 1788742800000,
-      "breakoutIndex": 230,
-      "breakoutPrice": 140.54,
-      "reconfirmAt": null
-    },
     {
       "symbol": "GRVTUSDT",
       "patternType": "head_shoulders_top",
@@ -1054,21 +1024,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 670,
+    "scanned_pairs": 666,
     "failed_pairs": 12,
     "candidates": 206,
-    "confirmed": 32,
-    "after_scoring": 20,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 0,
-    "duration_seconds": 350.1,
+    "confirmed": 31,
+    "after_scoring": 17,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 1,
+    "duration_seconds": 452.9,
     "source_stats": {
-      "okx": 670
+      "okx": 666
     },
     "health_stats": {
-      "healthy": 630,
-      "sensitive": 39,
+      "healthy": 628,
+      "sensitive": 37,
       "over_smoothed": 1
     }
   },
@@ -1566,6 +1536,21 @@
       "endMs": 1788854400000,
       "breakoutIndex": 245,
       "breakoutPrice": 67.02,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "PIEVERSEUSDT",
+      "patternType": "descending_channel",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 71,
+      "detectedAt": "2026-09-17T21:43:30.461851+00:00",
+      "pushedAt": "2026-09-17T21:43:30.461851+00:00",
+      "cooldownUntil": "2026-09-17T23:43:30.461851+00:00",
+      "signalHash": "96a8a964462a3801",
+      "endMs": 1789606800000,
+      "breakoutIndex": 397,
+      "breakoutPrice": 1.2645,
       "reconfirmAt": null
     }
   ]
