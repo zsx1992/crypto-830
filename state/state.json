@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-17T16:41:21.205952+00:00",
+  "lastScanAt": "2026-09-17T17:25:57.801489+00:00",
   "pushedSignals": [
     {
       "symbol": "EDGEUSDT",
@@ -1021,24 +1021,39 @@
       "breakoutIndex": 90,
       "breakoutPrice": 0.1988,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "MONUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 60,
+      "detectedAt": "2026-09-17T17:25:57.801208+00:00",
+      "pushedAt": "2026-09-17T17:25:57.801208+00:00",
+      "cooldownUntil": "2026-09-18T01:25:57.801208+00:00",
+      "signalHash": "14348021a0bbd12b",
+      "endMs": 1786953600000,
+      "breakoutIndex": 127,
+      "breakoutPrice": 0.02373,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 710,
+    "scanned_pairs": 714,
     "failed_pairs": 12,
-    "candidates": 219,
-    "confirmed": 28,
-    "after_scoring": 16,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 216,
+    "confirmed": 29,
+    "after_scoring": 17,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 547.6,
+    "duration_seconds": 545.5,
     "source_stats": {
-      "okx": 710
+      "okx": 714
     },
     "health_stats": {
       "healthy": 670,
-      "sensitive": 39,
+      "sensitive": 43,
       "over_smoothed": 1
     }
   },
