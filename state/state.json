@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-17T01:42:12.498312+00:00",
+  "lastScanAt": "2026-09-17T01:49:33.127761+00:00",
   "pushedSignals": [
     {
       "symbol": "RENDERUSDT",
@@ -1208,11 +1208,11 @@
     "failed_pairs": 13,
     "candidates": 208,
     "confirmed": 29,
-    "after_scoring": 15,
+    "after_scoring": 16,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 519.7,
+    "duration_seconds": 340.0,
     "source_stats": {
       "okx": 667
     },
