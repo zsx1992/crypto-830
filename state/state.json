@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-18T22:33:19.347745+00:00",
+  "lastScanAt": "2026-09-18T22:52:19.135877+00:00",
   "pushedSignals": [
     {
       "symbol": "CBRSUSDT",
@@ -1066,23 +1066,38 @@
       "breakoutIndex": 82,
       "breakoutPrice": 0.2071,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "BMNRUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 69,
+      "detectedAt": "2026-09-18T22:52:19.135614+00:00",
+      "pushedAt": "2026-09-18T22:52:19.135614+00:00",
+      "cooldownUntil": "2026-09-19T00:52:19.135614+00:00",
+      "signalHash": "697f3ef4a6079dca",
+      "endMs": 1789689600000,
+      "breakoutIndex": 390,
+      "breakoutPrice": 25.45,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 778,
+    "scanned_pairs": 782,
     "failed_pairs": 10,
-    "candidates": 223,
-    "confirmed": 36,
-    "after_scoring": 14,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 227,
+    "confirmed": 37,
+    "after_scoring": 15,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 588.3,
+    "duration_seconds": 622.6,
     "source_stats": {
-      "okx": 778
+      "okx": 782
     },
     "health_stats": {
-      "healthy": 736,
+      "healthy": 740,
       "sensitive": 41,
       "over_smoothed": 1
     }
