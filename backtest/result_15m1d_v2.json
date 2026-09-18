@@ -1,0 +1,441 @@
+{
+ "detail": [
+  {
+   "symbol": "ZECUSDT",
+   "interval": "15m",
+   "type": "ascending_channel",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.1,
+   "multi": {
+    "0.5": "tp",
+    "0.75": "tp",
+    "1.0": "tp",
+    "1.25": "tp",
+    "1.5": "sl",
+    "2.0": "sl",
+    "100": "tp"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "ZECUSDT",
+   "interval": "15m",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": 2.07,
+   "multi": {
+    "0.5": "tp",
+    "0.75": "tp",
+    "1.0": "tp",
+    "1.25": "sl",
+    "1.5": "sl",
+    "2.0": "sl",
+    "100": "sl"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "ZECUSDT",
+   "interval": "15m",
+   "type": "descending_channel",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.99,
+   "multi": {
+    "0.5": "tp",
+    "0.75": "tp",
+    "1.0": "tp",
+    "1.25": "sl",
+    "1.5": "sl",
+    "2.0": "sl",
+    "100": "tp"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "ZECUSDT",
+   "interval": "15m",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": 3.26,
+   "multi": {
+    "0.5": "tp",
+    "0.75": "tp",
+    "1.0": "tp",
+    "1.25": "tp",
+    "1.5": "tp",
+    "2.0": "tp",
+    "100": "sl"
+   },
+   "prom": 0.0201,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "15m",
+   "type": "ascending_channel",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": 0.92,
+   "multi": {
+    "0.5": "sl",
+    "0.75": "sl",
+    "1.0": "sl",
+    "1.25": "sl",
+    "1.5": "sl",
+    "2.0": "sl",
+    "100": "sl"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "ARBUSDT",
+   "interval": "15m",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": 0.46,
+   "multi": {
+    "0.5": "sl",
+    "0.75": "sl",
+    "1.0": "sl",
+    "1.25": "sl",
+    "1.5": "sl",
+    "2.0": "sl",
+    "100": "sl"
+   },
+   "prom": 0.0433,
+   "strength": null
+  },
+  {
+   "symbol": "ARBUSDT",
+   "interval": "15m",
+   "type": "descending_channel",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 6.83,
+   "multi": {
+    "0.5": "tp",
+    "0.75": "tp",
+    "1.0": "tp",
+    "1.25": "tp",
+    "1.5": "tp",
+    "2.0": "tp",
+    "100": "tp"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "SPCXUSDT",
+   "interval": "15m",
+   "type": "descending_channel",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.05,
+   "multi": {
+    "0.5": "tp",
+    "0.75": "tp",
+    "1.0": "tp",
+    "1.25": "tp",
+    "1.5": "tp",
+    "2.0": "sl",
+    "100": "tp"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "USELESSUSDT",
+   "interval": "15m",
+   "type": "descending_channel",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.92,
+   "multi": {
+    "0.5": "tp",
+    "0.75": "tp",
+    "1.0": "tp",
+    "1.25": "tp",
+    "1.5": "tp",
+    "2.0": "tp",
+    "100": "tp"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "PUMPUSDT",
+   "interval": "15m",
+   "type": "descending_channel",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.23,
+   "multi": {
+    "0.5": "tp",
+    "0.75": "tp",
+    "1.0": "tp",
+    "1.25": "tp",
+    "1.5": "tp",
+    "2.0": "tp",
+    "100": "tp"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "TRUMPUSDT",
+   "interval": "15m",
+   "type": "descending_channel",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.42,
+   "multi": {
+    "0.5": "tp",
+    "0.75": "tp",
+    "1.0": "tp",
+    "1.25": "tp",
+    "1.5": "tp",
+    "2.0": "tp",
+    "100": "tp"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "MUUSDT",
+   "interval": "15m",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": 1.88,
+   "multi": {
+    "0.5": "sl",
+    "0.75": "sl",
+    "1.0": "sl",
+    "1.25": "sl",
+    "1.5": "sl",
+    "2.0": "sl",
+    "100": "sl"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "FILUSDT",
+   "interval": "15m",
+   "type": "descending_channel",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.33,
+   "multi": {
+    "0.5": "tp",
+    "0.75": "tp",
+    "1.0": "tp",
+    "1.25": "tp",
+    "1.5": "tp",
+    "2.0": "tp",
+    "100": "tp"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "SNXXUSDT",
+   "interval": "15m",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": 0.97,
+   "multi": {
+    "0.5": "sl",
+    "0.75": "sl",
+    "1.0": "sl",
+    "1.25": "sl",
+    "1.5": "sl",
+    "2.0": "sl",
+    "100": "sl"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "AAVEUSDT",
+   "interval": "15m",
+   "type": "descending_channel",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 0.89,
+   "multi": {
+    "0.5": "tp",
+    "0.75": "tp",
+    "1.0": "tp",
+    "1.25": "tp",
+    "1.5": "tp",
+    "2.0": "tp",
+    "100": "tp"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "MSTRUSDT",
+   "interval": "15m",
+   "type": "descending_channel",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": 1.79,
+   "multi": {
+    "0.5": "tp",
+    "0.75": "sl",
+    "1.0": "sl",
+    "1.25": "sl",
+    "1.5": "sl",
+    "2.0": "sl",
+    "100": "sl"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "SAMSUNGUSDT",
+   "interval": "15m",
+   "type": "descending_channel",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": 1.52,
+   "multi": {
+    "0.5": "sl",
+    "0.75": "sl",
+    "1.0": "sl",
+    "1.25": "sl",
+    "1.5": "sl",
+    "2.0": "sl",
+    "100": "sl"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "XLMUSDT",
+   "interval": "15m",
+   "type": "descending_channel",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": 1.3,
+   "multi": {
+    "0.5": "tp",
+    "0.75": "tp",
+    "1.0": "tp",
+    "1.25": "tp",
+    "1.5": "sl",
+    "2.0": "sl",
+    "100": "sl"
+   },
+   "prom": null,
+   "strength": null
+  },
+  {
+   "symbol": "BTCUSDT",
+   "interval": "1d",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.44,
+   "multi": {
+    "0.5": "tp",
+    "0.75": "tp",
+    "1.0": "tp",
+    "1.25": "tp",
+    "1.5": "tp",
+    "2.0": "sl",
+    "100": "tp"
+   },
+   "prom": 0.1847,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "1d",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": 0.66,
+   "multi": {
+    "0.5": "sl",
+    "0.75": "sl",
+    "1.0": "sl",
+    "1.25": "sl",
+    "1.5": "sl",
+    "2.0": "sl",
+    "100": "sl"
+   },
+   "prom": 0.4849,
+   "strength": null
+  },
+  {
+   "symbol": "AAVEUSDT",
+   "interval": "1d",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.39,
+   "multi": {
+    "0.5": "sl",
+    "0.75": "sl",
+    "1.0": "sl",
+    "1.25": "sl",
+    "1.5": "sl",
+    "2.0": "sl",
+    "100": "tp"
+   },
+   "prom": 0.1031,
+   "strength": null
+  },
+  {
+   "symbol": "LINKUSDT",
+   "interval": "1d",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": 2.01,
+   "multi": {
+    "0.5": "sl",
+    "0.75": "sl",
+    "1.0": "sl",
+    "1.25": "sl",
+    "1.5": "sl",
+    "2.0": "sl",
+    "100": "sl"
+   },
+   "prom": 0.1008,
+   "strength": null
+  },
+  {
+   "symbol": "DOTUSDT",
+   "interval": "1d",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.18,
+   "multi": {
+    "0.5": "tp",
+    "0.75": "tp",
+    "1.0": "tp",
+    "1.25": "tp",
+    "1.5": "tp",
+    "2.0": "tp",
+    "100": "tp"
+   },
+   "prom": 0.1189,
+   "strength": null
+  }
+ ]
+}
