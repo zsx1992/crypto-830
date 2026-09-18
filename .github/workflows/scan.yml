@@ -35,6 +35,19 @@ on:
         default: false
         type: boolean
 
+  # 【实测教训 2026-09-18】schedule 连 5 档不触发（GitHub 抽风期最长 5 小时）。
+  # 加 push 触发：代码上线即跑一轮验证，不依赖 schedule 恢复。
+  # paths-ignore 排除所有会被 workflow 自己 commit 回来的目录，
+  # 防止 "scan state" 提交再次触发本 workflow 造成死循环。
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'state/**'
+      - 'backtest/**'
+      - 'charts_golden/**'
+      - '**.md'
+
 # 防止同一 job 重叠运行。
 # cancel-in-progress 设为 false：正在跑的扫描不该被新触发取消，
 # 否则会丢失本轮信号。
