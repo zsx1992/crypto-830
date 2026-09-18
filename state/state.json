@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-18T00:40:35.212935+00:00",
+  "lastScanAt": "2026-09-18T01:14:45.457110+00:00",
   "pushedSignals": [
     {
       "symbol": "XAGUSDT",
@@ -1024,20 +1024,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 670,
+    "scanned_pairs": 668,
     "failed_pairs": 12,
-    "candidates": 214,
-    "confirmed": 33,
-    "after_scoring": 21,
-    "after_dedup": 1,
-    "pushed": 1,
+    "candidates": 213,
+    "confirmed": 36,
+    "after_scoring": 22,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 525.5,
+    "duration_seconds": 468.5,
     "source_stats": {
-      "okx": 670
+      "okx": 668
     },
     "health_stats": {
-      "healthy": 634,
+      "healthy": 632,
       "sensitive": 35,
       "over_smoothed": 1
     }
