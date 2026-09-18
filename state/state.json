@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-18T22:04:04.130446+00:00",
+  "lastScanAt": "2026-09-18T22:33:19.347745+00:00",
   "pushedSignals": [
     {
       "symbol": "CBRSUSDT",
@@ -1069,21 +1069,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 774,
+    "scanned_pairs": 778,
     "failed_pairs": 10,
-    "candidates": 219,
+    "candidates": 223,
     "confirmed": 36,
     "after_scoring": 14,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 641.6,
+    "duration_seconds": 588.3,
     "source_stats": {
-      "okx": 774
+      "okx": 778
     },
     "health_stats": {
-      "healthy": 734,
-      "sensitive": 39,
+      "healthy": 736,
+      "sensitive": 41,
       "over_smoothed": 1
     }
   },
