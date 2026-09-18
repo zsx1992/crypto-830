@@ -288,8 +288,14 @@ def main():
                         # 验证"评分高低是否预测胜负", 决定推送排序是否有效
                         "conf": round(getattr(p, "confidence", 0) or 0, 3),
                         "sco": getattr(p, "strength_score", None),
-                        # 高周期趋势背景(up/down)：检验大小周期共振/冲突
-                        "hctx": trend_ctx(hks, ks[st + W - 1].openTime),
+                        # 高周期趋势背景(up/down)，三个回看口径：
+                        # 检验"逆势效应"对参数是否稳健（只在一个口径出现=过拟合）
+                        "hctx20": trend_ctx(hks, ks[st + W - 1].openTime,
+                                            n=20),
+                        "hctx10": trend_ctx(hks, ks[st + W - 1].openTime,
+                                            n=10),
+                        "hctx50": trend_ctx(hks, ks[st + W - 1].openTime,
+                                            n=50),
                         "multi": {str(k): v for k, v in multi.items()
                                   if v is not None},
                         "prom": (round(prominence(p), 4)

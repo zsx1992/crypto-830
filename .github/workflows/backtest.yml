@@ -27,12 +27,12 @@ on:
       histper:
         description: '按周期覆盖 history'
         required: false
-        default: '15m=6000,1d=1200'
+        default: '15m=8000,1h=4000,4h=3600,1d=1200'
         type: string
       jsonfile:
         description: '结果文件名'
         required: false
-        default: 'result_full_v4.json'
+        default: 'result_full_v5.json'
         type: string
 
 concurrency:
@@ -74,9 +74,9 @@ jobs:
           python tools/backtest_patterns.py \
             --intervals "${{ github.event.inputs.intervals || '4h,1h,15m,1d' }}" \
             --symbols "${{ github.event.inputs.symbols || '60' }}" \
-            --history-per "${{ github.event.inputs.histper || '15m=6000,1d=1200' }}" \
+            --history-per "${{ github.event.inputs.histper || '15m=8000,1h=4000,4h=3600,1d=1200' }}" \
             --history 2400 --step 40 --hold 100 --min-n 5 \
-            --json "backtest/${{ github.event.inputs.jsonfile || 'result_full_v4.json' }}"
+            --json "backtest/${{ github.event.inputs.jsonfile || 'result_full_v5.json' }}"
         continue-on-error: true
 
       - name: Commit result
