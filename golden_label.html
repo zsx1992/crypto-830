@@ -64,9 +64,11 @@ textarea{width:100%;height:150px;font-family:ui-monospace,Consolas,monospace;fon
   <div class="hint">键盘：1 / 2 / 3 打分，← → 切换。结果自动存在浏览器本地。</div>
 </div>
 <div class="card" id="done">
-  <h2 style="margin:0 0 10px;font-size:16px">标注完成</h2>
+  <h2 style="margin:0 0 10px;font-size:16px">标注完成 ✓</h2>
   <div id="sum" style="margin-bottom:12px"></div>
+  <div class="nav" style="margin:0 0 10px"><button id="exp2">⬇ 下载 golden_labels.json</button></div>
   <textarea id="json" readonly></textarea>
+  <div class="hint">如果下载没反应：全选上方文本框内容复制发给老K即可。</div>
 </div>
 <div class="card"><div class="grid" id="grid"></div></div>
 </main>
@@ -123,7 +125,9 @@ function paintGrid(){
 function showDone(){
   document.getElementById('card').style.display='none';
   const d = document.getElementById('done');
-  d.style.display='';
+  // 注意: CSS 里 #done{display:none} 是样式表规则, style.display='' 清不掉,
+  // 必须显式设为 'block' —— 否则标完后页面一片空白(已踩坑)
+  d.style.display='block';
   const c = {good:0, ok:0, bad:0};
   ITEMS.forEach(i=>{ if(ans[i.id]) c[ans[i.id]]++; });
   const tot = ITEMS.length;
@@ -133,6 +137,16 @@ function showDone(){
     '<b>瞎画</b> '+c.bad+'（'+Math.round(100*c.bad/tot)+'%）';
   document.getElementById('json').value = JSON.stringify(
     {total:tot, counts:c, labels:ans}, null, 1);
+  paintGrid();
+}
+
+function doExport(){
+  const blob = new Blob([JSON.stringify({
+    total:ITEMS.length, labels:ans}, null, 1)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'golden_labels.json';
+  a.click();
 }
 
 document.querySelectorAll('.btns button').forEach(b=>{
@@ -149,14 +163,8 @@ document.getElementById('next').onclick = ()=>{
 document.getElementById('clr').onclick = ()=>{
   if(confirm('清空所有标注？')){ ans={}; save(); cur=0; render(); }
 };
-document.getElementById('exp').onclick = ()=>{
-  const blob = new Blob([JSON.stringify({
-    total:ITEMS.length, labels:ans}, null, 1)], {type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'golden_labels.json';
-  a.click();
-};
+document.getElementById('exp').onclick = doExport;
+document.getElementById('exp2').onclick = doExport;
 document.addEventListener('keydown', e=>{
   const m = {'1':'good','2':'ok','3':'bad'};
   if(m[e.key]){
