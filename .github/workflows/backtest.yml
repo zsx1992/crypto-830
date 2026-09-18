@@ -22,7 +22,7 @@ on:
       symbols:
         description: '标的数'
         required: false
-        default: '60'
+        default: '40'
         type: string
       histper:
         description: '按周期覆盖 history'

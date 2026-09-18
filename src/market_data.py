@@ -412,6 +412,12 @@ class OkxClient:
         remaining = limit
         # end_time_ms 即首次请求的翻页起点（向更早的时间取）
         after = end_time_ms
+        # 【2026-09-18 关键修复】/candles 只返回最近约1440根，更老的数据
+        # 必须走 /history-candles。此前回测请求 2400/6000/8000 根实际都被
+        # 静默截断在 1440 根 —— "拉长历史"从未真正生效。
+        # 策略：先走 /candles（快、限速宽），拿不到更早的了自动切
+        # /history-candles 续页。线上扫描 limit<=400 永远不会触发切换。
+        use_history = False
 
         while remaining > 0:
             batch_size = min(remaining, self.MAX_CANDLES_PER_REQUEST)
@@ -419,15 +425,19 @@ class OkxClient:
             if after:
                 params["after"] = str(after)
 
-            data = self._request("/candles", params)
+            endpoint = "/history-candles" if use_history else "/candles"
+            data = self._request(endpoint, params)
             if not data:
+                if not use_history:
+                    use_history = True   # candles 到头了，换 history 端点续
+                    continue
                 break
 
             all_data.extend(data)
             remaining -= len(data)
 
-            if len(data) < batch_size:
-                break      # 没有更多历史数据了
+            if len(data) < batch_size and not use_history:
+                use_history = True   # candles 提前给少了，切 history 补齐
 
             # OKX 用 after 取更早的数据：传当前最早那根的毫秒时间戳
             after = int(data[-1][0])
@@ -435,9 +445,18 @@ class OkxClient:
         if not all_data:
             return []
 
+        # 双端点拼接可能出现边界重复，按 ts 去重兜底
+        seen_ts = set()
+        uniq = []
+        for row in all_data:
+            if row[0] in seen_ts:
+                continue
+            seen_ts.add(row[0])
+            uniq.append(row)
+
         # OKX 返回倒序，转成升序
-        all_data.sort(key=lambda x: int(x[0]))
-        return [self._parse_kline(row) for row in all_data[:limit]]
+        uniq.sort(key=lambda x: int(x[0]))
+        return [self._parse_kline(row) for row in uniq[:limit]]
 
     def _sorted_usdt_swaps(self,
                            min_volume_usdt: float) -> List[Tuple[str, float]]:
