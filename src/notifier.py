@@ -257,6 +257,9 @@ class WeComNotifier:
             "volume": f"量能 {p.volume_ratio:.1f}× < 1.5×",
             "geometry": f"几何分 {getattr(p, 'geometry_score', None)} < 0.5",
             "trend": "方向与趋势不符",
+            # 降级闸 (2026-09-18, 金标准标注+回测双证据, 用户拍板)
+            "demote_hs_top": "头肩顶: 标注瞎画43%+回测期望-0.11, 降级观察",
+            "demote_counter1h": "15m信号逆1h趋势: 回测胜率35% vs 顺势61%",
         }.get(gate, f"被 {gate} 闸拦截")
 
         geo_r = getattr(p, "geometry_reason", None)

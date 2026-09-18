@@ -136,6 +136,17 @@ class Scanner:
         self.observe_min_strength = obs.get("min_strength", 45)
         self.observe_min_geometry = obs.get("min_geometry", 0.30)
 
+        # 降级规则（2026-09-18）：不删形态，只分流进观察流。
+        # 依据 = 金标准 57 张人工标注 × 330 样本回测 的双证据交叉，用户拍板上线：
+        #   1) head_shoulders_top —— 唯一双证据同向为负的形态
+        #      （标注瞎画 43% + 回测 1R 期望 -0.11）
+        #   2) 15m 信号逆 1h 趋势 —— 回测顺势 61%(99样) vs 逆势 35%(23样),
+        #      z=+2.25, 三口径(hctx10/20/50)方向一致
+        # 关闭开关即回到旧行为，两规则互不影响。
+        dem = filt.get("demote", {})
+        self.demote_hs_top = dem.get("hs_top_to_observe", False)
+        self.demote_counter_1h_15m = dem.get("counter_trend_1h_15m", False)
+
         # 是否每次运行后都发一条"扫描摘要"（P0：summary_mode 控制发送策略）
         self.send_summary = notif.get("send_summary", True)
         self.summary_mode = notif.get("summary_mode", "on_signal")
@@ -327,6 +338,7 @@ class Scanner:
         result.kill_breakdown = {
             "freshness": 0, "strength": 0, "rr": 0,
             "volume": 0, "geometry": 0, "trend": 0, "stale": 0,
+            "demote_hs_top": 0, "demote_counter1h": 0,
         }
         passed = []
         # 2026-09-07: 收集被 6 闸砍掉信号的 age, 循环结束后按周期打
@@ -386,6 +398,26 @@ class Scanner:
                     if not aligned:
                         result.kill_breakdown["trend"] += 1
                         _killed_detail.append((p, "trend"))
+                        continue
+            # ---- 降级闸（2026-09-18）：过全闸但命中降级规则 → 进观察流 ----
+            # 规则1: 头肩顶全周期降级（标注瞎画43% + 回测期望-0.11 双证据同向）
+            if self.demote_hs_top and p.pattern_type == "head_shoulders_top":
+                result.kill_breakdown["demote_hs_top"] += 1
+                _killed_detail.append((p, "demote_hs_top"))
+                continue
+            # 规则2: 15m 信号逆 1h 趋势降级（回测顺势61% vs 逆势35%, z=+2.25）。
+            # 1h 背景取本轮回测同款口径: 1h 收盘价 vs 20 根前（回测 hctx20）。
+            # 1h 数据缺失时不动刀（宁放勿杀, 与 geometry 闸的兜底语义一致）。
+            if self.demote_counter_1h_15m and p.interval == "15m":
+                hks = klines_cache.get((p.symbol, "1h"))
+                if hks and len(hks) >= 21:
+                    h1_up = hks[-1].close > hks[-20].close
+                    h1_aligned = (
+                        (p.direction == Direction.LONG and h1_up)
+                        or (p.direction == Direction.SHORT and not h1_up))
+                    if not h1_aligned:
+                        result.kill_breakdown["demote_counter1h"] += 1
+                        _killed_detail.append((p, "demote_counter1h"))
                         continue
             passed.append(p)
 
@@ -461,6 +493,10 @@ class Scanner:
                     _kb.get("geometry", 0), _kb.get("trend", 0),
                     _kb.get("stale", 0),
                     len(scored), len(result.after_scoring))
+        if _kb.get("demote_hs_top") or _kb.get("demote_counter1h"):
+            logger.info("降级闸 ▶ 头肩顶:%d 15m逆1h趋势:%d (均转观察流, 不删形态)",
+                        _kb.get("demote_hs_top", 0),
+                        _kb.get("demote_counter1h", 0))
 
         # ---- 5. 去重（状态跃迁可重推, P2）----
         self.state.cleanup()
