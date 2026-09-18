@@ -144,6 +144,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--intervals", default="4h,1h")
     ap.add_argument("--history", type=int, default=2000)
+    ap.add_argument("--history-per", default="",
+                    help="按周期覆盖 history，如 '1d=1200,15m=2400'")
     ap.add_argument("--window", type=int, default=0, help="0=用配置的 kline_counts")
     ap.add_argument("--hold", type=int, default=100, help="最多持有多少根看结果")
     ap.add_argument("--step", type=int, default=40, help="滑动步长")
@@ -158,6 +160,14 @@ def main():
                               encoding="utf-8"))
     kc = cfg.get("data", {}).get("kline_counts", {}) or \
         cfg.get("kline_counts", {})
+    # 按周期覆盖 history：1d 拉 2400 根(6.5年)既慢又拉不全，1200 足够
+    # （窗口 240 + 持有 100 + 扫描余量）；15m 用默认 2400 即可。
+    hmap = {}
+    for kv in args.history_per.split(","):
+        if "=" in kv:
+            k, v = kv.split("=", 1)
+            hmap[k.strip()] = int(v)
+
     eng = PatternEngine(cfg)
     client = None if args.cache_dir else OkxClient(timeout=30)
 
@@ -186,7 +196,7 @@ def main():
                                            s, "%s.csv" % s))
             else:
                 try:
-                    ks = client.get_klines(s, iv, args.history)
+                    ks = client.get_klines(s, iv, hmap.get(iv, args.history))
                 except Exception as e:
                     continue
             if len(ks) < W + args.hold + 20:
