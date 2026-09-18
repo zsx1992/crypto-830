@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-09-18T02:11:45.608195+00:00",
+ "generated_at": "2026-09-18T02:15:07.547944+00:00",
  "source_state": "state/state.json",
  "final": true,
  "total": 68,
- "ok": 44,
+ "ok": 57,
  "items": [
   {
    "id": "0001",
@@ -53,9 +53,9 @@
    "strength": 80,
    "pushedAt": "2026-09-11T16:52:06.262582+00:00",
    "breakoutPrice": 0.10465,
-   "status": "crash",
-   "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "status": "ok",
+   "image": "charts_golden/0004_MINAUSDT_15m_double_bottom.png",
+   "match_err": 0.0
   },
   {
    "id": "0005",
@@ -92,9 +92,9 @@
    "strength": 80,
    "pushedAt": "2026-09-12T00:31:54.914346+00:00",
    "breakoutPrice": 221.58,
-   "status": "crash",
+   "status": "no_match",
    "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "match_err": 2.0
   },
   {
    "id": "0008",
@@ -118,9 +118,9 @@
    "strength": 61,
    "pushedAt": "2026-09-12T01:12:39.347707+00:00",
    "breakoutPrice": 0.2407,
-   "status": "crash",
-   "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "status": "ok",
+   "image": "charts_golden/0009_JUPUSDT_1h_double_bottom.png",
+   "match_err": 0.0
   },
   {
    "id": "0010",
@@ -144,9 +144,9 @@
    "strength": 61,
    "pushedAt": "2026-09-12T05:44:28.955751+00:00",
    "breakoutPrice": 0.3809,
-   "status": "crash",
-   "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "status": "ok",
+   "image": "charts_golden/0011_LDOUSDT_1h_double_bottom.png",
+   "match_err": 0.0
   },
   {
    "id": "0012",
@@ -248,9 +248,9 @@
    "strength": 78,
    "pushedAt": "2026-09-13T04:01:00.972884+00:00",
    "breakoutPrice": 0.11415,
-   "status": "crash",
-   "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "status": "ok",
+   "image": "charts_golden/0019_ZRXUSDT_1h_double_bottom.png",
+   "match_err": 0.0
   },
   {
    "id": "0020",
@@ -313,9 +313,9 @@
    "strength": 83,
    "pushedAt": "2026-09-13T12:53:44.829224+00:00",
    "breakoutPrice": 38.27,
-   "status": "crash",
+   "status": "no_match",
    "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "match_err": 4.0
   },
   {
    "id": "0025",
@@ -430,9 +430,9 @@
    "strength": 66,
    "pushedAt": "2026-09-14T11:04:29.990859+00:00",
    "breakoutPrice": 183.28,
-   "status": "crash",
-   "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "status": "ok",
+   "image": "charts_golden/0033_SKHYUSDT_1h_double_top.png",
+   "match_err": 0.0
   },
   {
    "id": "0034",
@@ -443,9 +443,9 @@
    "strength": 68,
    "pushedAt": "2026-09-14T18:34:36.401501+00:00",
    "breakoutPrice": 0.14026,
-   "status": "crash",
+   "status": "no_match",
    "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "match_err": 0.2083
   },
   {
    "id": "0035",
@@ -482,9 +482,9 @@
    "strength": 77,
    "pushedAt": "2026-09-14T21:10:24.831611+00:00",
    "breakoutPrice": 0.3298,
-   "status": "crash",
-   "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "status": "ok",
+   "image": "charts_golden/0037_CNPYUSDT_1h_ascending_channel.png",
+   "match_err": 0.0
   },
   {
    "id": "0038",
@@ -521,9 +521,9 @@
    "strength": 78,
    "pushedAt": "2026-09-15T05:32:20.985497+00:00",
    "breakoutPrice": 1.3258,
-   "status": "crash",
-   "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "status": "ok",
+   "image": "charts_golden/0040_RAYUSDT_1d_double_bottom.png",
+   "match_err": 0.0
   },
   {
    "id": "0041",
@@ -586,9 +586,9 @@
    "strength": 72,
    "pushedAt": "2026-09-15T13:25:56.477181+00:00",
    "breakoutPrice": 110.47,
-   "status": "crash",
-   "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "status": "ok",
+   "image": "charts_golden/0045_AAVEUSDT_1d_head_shoulders_bottom.png",
+   "match_err": 0.0
   },
   {
    "id": "0046",
@@ -599,9 +599,9 @@
    "strength": 70,
    "pushedAt": "2026-09-15T13:48:51.953791+00:00",
    "breakoutPrice": 7.619,
-   "status": "crash",
-   "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "status": "ok",
+   "image": "charts_golden/0046_AVAXUSDT_1d_head_shoulders_bottom.png",
+   "match_err": 0.0
   },
   {
    "id": "0047",
@@ -664,9 +664,9 @@
    "strength": 72,
    "pushedAt": "2026-09-16T00:11:32.207695+00:00",
    "breakoutPrice": 0.2057,
-   "status": "crash",
-   "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "status": "ok",
+   "image": "charts_golden/0051_EIGENUSDT_15m_double_top.png",
+   "match_err": 0.0
   },
   {
    "id": "0052",
@@ -690,9 +690,9 @@
    "strength": 74,
    "pushedAt": "2026-09-16T04:46:45.377654+00:00",
    "breakoutPrice": 248.6,
-   "status": "crash",
-   "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "status": "ok",
+   "image": "charts_golden/0053_BCHUSDT_1h_ascending_channel.png",
+   "match_err": 0.0
   },
   {
    "id": "0054",
@@ -729,9 +729,9 @@
    "strength": 81,
    "pushedAt": "2026-09-16T12:58:40.249054+00:00",
    "breakoutPrice": 144.77,
-   "status": "crash",
-   "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "status": "ok",
+   "image": "charts_golden/0056_SPCXUSDT_4h_ascending_channel.png",
+   "match_err": 0.0
   },
   {
    "id": "0057",
@@ -885,9 +885,9 @@
    "strength": 69,
    "pushedAt": "2026-09-18T00:40:35.212669+00:00",
    "breakoutPrice": 0.7871,
-   "status": "crash",
-   "image": null,
-   "error": "Traceback (most recent call last):\n  File \"/home/runner/work/crypto-830/crypto-830/tools/render_golden_charts.py\", line 197, in main\n    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0\n              ^^^^^^^^^^^^^^^^^\nAttributeError: 'Pivot' object has no attribute 'time'\n"
+   "status": "ok",
+   "image": "charts_golden/0068_FILUSDT_4h_head_shoulders_bottom.png",
+   "match_err": 0.0
   }
  ]
 }
