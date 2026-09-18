@@ -1,0 +1,91 @@
+name: Backtest Patterns
+
+# 形态胜率回测：把"质量"从主观的"像不像"推进到客观的"有没有用"。
+#
+# 为什么必须在云端跑：
+#   本机缓存长度**正好等于一次扫描的窗口**（15m=600 / 1h=400 / 4h=300 / 1d=240），
+#   没有"窗口之后"的数据可验证。云端可从 OKX 拉长历史（已支持分页 + end_time_ms）。
+#
+# 触发：git push origin backtest-<任意>  （本机无 gh / 无 PAT，只能靠 tag）
+
+on:
+  push:
+    tags:
+      - 'backtest-*'
+  workflow_dispatch:
+    inputs:
+      intervals:
+        description: '周期'
+        required: false
+        default: '4h,1h'
+        type: string
+      symbols:
+        description: '标的数'
+        required: false
+        default: '40'
+        type: string
+
+concurrency:
+  group: backtest-patterns
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      PYTHONUNBUFFERED: "1"
+      TZ: "UTC"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pyyaml matplotlib numpy TA-Lib tzdata || \
+            pip install requests pyyaml matplotlib numpy tzdata
+
+      - name: Run backtest
+        run: |
+          mkdir -p backtest
+          python tools/backtest_patterns.py \
+            --intervals "${{ github.event.inputs.intervals || '4h,1h' }}" \
+            --symbols "${{ github.event.inputs.symbols || '40' }}" \
+            --history 2400 --step 40 --hold 100 --min-n 5 \
+            --json backtest/result.json
+        continue-on-error: true
+
+      - name: Commit result
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main || true
+          git add backtest || true
+          if git diff --cached --quiet; then
+            echo "无结果文件"
+          else
+            git commit -m "chore: backtest result $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push || echo "推送失败，artifact 仍有副本"
+          fi
+
+      - name: Upload artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backtest-${{ github.run_id }}
+          path: backtest
+          retention-days: 14
