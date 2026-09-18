@@ -65,6 +65,11 @@ def main():
     det = json.load(open(sys.argv[1], encoding="utf-8"))["detail"]
     cat = lambda t: "box" if ("channel" in t or "rectangle" in t) else "classic"
     print("样本总数: %d" % len(det))
+    # 兼容旧字段名: v4 只有 hctx(=20根口径)
+    main_key = "hctx20"
+    if det and "hctx20" not in det[0] and "hctx" in det[0]:
+        main_key = "hctx"
+        print("(旧数据无三口径, 用 hctx 作为主口径)")
     for k in ("hctx10", "hctx20", "hctx50"):
         have = sum(1 for x in det if x.get(k))
         print("  %s 有值: %d" % (k, have))
@@ -82,20 +87,20 @@ def main():
     else:
         print("  -> 均不显著")
 
-    # 2. 主口径 (hctx20) 分大类
-    print("\n=== 主口径 hctx20 分大类 ===")
+    # 2. 主口径 分大类
+    print("\n=== 主口径 %s 分大类 ===" % main_key)
     for c in ("box", "classic"):
         v = [x for x in det if cat(x["type"]) == c]
-        report(v, "hctx20", c)
+        report(v, main_key, c)
 
     # 3. 主口径按低周期细分
-    print("\n=== 主口径 hctx20 按低周期 ===")
+    print("\n=== 主口径 %s 按低周期 ===" % main_key)
     for iv in ("1h", "15m"):
         v = [x for x in det if x["interval"] == iv]
-        report(v, "hctx20", iv)
+        report(v, main_key, iv)
 
     # 4. 逆势样本池（供跨轮累计监控）
-    a, r = split(det, "hctx20")
+    a, r = split(det, main_key)
     print("\n逆势样本池: %d 个 (目标: 30+ 再下结论)" % len(r))
     if r:
         by = defaultdict(int)
