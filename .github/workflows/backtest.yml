@@ -17,7 +17,7 @@ on:
       intervals:
         description: '周期'
         required: false
-        default: '15m,1d'
+        default: '4h,1h,15m,1d'
         type: string
       symbols:
         description: '标的数'
@@ -32,7 +32,7 @@ on:
       jsonfile:
         description: '结果文件名'
         required: false
-        default: 'result_15m1d_v2.json'
+        default: 'result_full_v3.json'
         type: string
 
 concurrency:
@@ -72,11 +72,11 @@ jobs:
         run: |
           mkdir -p backtest
           python tools/backtest_patterns.py \
-            --intervals "${{ github.event.inputs.intervals || '15m,1d' }}" \
+            --intervals "${{ github.event.inputs.intervals || '4h,1h,15m,1d' }}" \
             --symbols "${{ github.event.inputs.symbols || '60' }}" \
             --history-per "${{ github.event.inputs.histper || '15m=6000,1d=1200' }}" \
             --history 2400 --step 40 --hold 100 --min-n 5 \
-            --json "backtest/${{ github.event.inputs.jsonfile || 'result_15m1d_v2.json' }}"
+            --json "backtest/${{ github.event.inputs.jsonfile || 'result_full_v3.json' }}"
         continue-on-error: true
 
       - name: Commit result
