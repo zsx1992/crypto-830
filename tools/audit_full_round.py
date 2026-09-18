@@ -61,12 +61,19 @@ def main():
         lo = [x for x in new if x.get("conf") and x["conf"] < 0.5]
         hi = [x for x in new if x.get("conf") and x["conf"] >= 0.5]
         if lo and hi:
+            import math
             wl = sum(1 for x in lo if x["res"] == "tp") / len(lo)
             wh = sum(1 for x in hi if x["res"] == "tp") / len(hi)
             print("  低conf(<0.5) %.0f%% vs 高conf(>=0.5) %.0f%%"
                   % (100 * wl, 100 * wh))
-            print("  -> %s" % ("高conf更好, 排序有依据" if wh > wl + 0.05
-                              else "无明确区分度, 排序依据存疑"))
+            # 两比例 z 检验: 差距不够显著就明说无区分度, 别给虚假安慰
+            pp = (sum(1 for x in lo if x["res"] == "tp")
+                  + sum(1 for x in hi if x["res"] == "tp")) / (len(lo) + len(hi))
+            se = math.sqrt(pp * (1 - pp) * (1 / len(lo) + 1 / len(hi)))
+            z = (wh - wl) / se if se else 0
+            verdict = ("高conf更好, 排序有依据" if z >= 1.65 else
+                       "无统计学区分度 — 排序依据存疑, 不能拿conf当质量分")
+            print("  -> z=%.2f: %s" % (z, verdict))
 
     # ---- 3. 头肩样本量 ----
     hs = [x for x in new if x["type"].startswith("head_shoulders")]
