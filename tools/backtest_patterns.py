@@ -140,6 +140,27 @@ def judge_multi(p, future):
     return out
 
 
+def trend_ctx(hks, ts_ms, n=20):
+    """
+    高周期趋势背景：end_ts 时刻高周期收盘价相对 n 根前的方向。
+    动机：CONFIRMED 太稀有（~2.9%），等高周期自己出 CONFIRMED 来判断
+    "大小周期共振/冲突"在回测里几乎配不上对（实测最近对相距 7.7 天）。
+    改为直接记录低周期形态结束时的高周期趋势方向，才能检验：
+    顺大周期趋势的小周期形态 vs 逆大周期趋势的，胜率差多少。
+    """
+    if not hks:
+        return None
+    closes = [k.close for k in hks if k.openTime <= ts_ms]
+    if len(closes) < n + 5:
+        return None
+    return "up" if closes[-1] > closes[-n] else "down"
+
+
+# 低周期 -> 高周期 映射（用于趋势背景）
+HI_MAP = {"15m": "1h", "1h": "4h"}
+HI_HIST = {"1h": 2000, "4h": 1200}  # 高周期拉多少根够算背景
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--intervals", default="4h,1h")
@@ -191,6 +212,15 @@ def main():
 
         n_sym = 0
         for s in syms:
+            hks = None
+            hiv = HI_MAP.get(iv)
+            if hiv and not args.cache_dir:
+                # 高周期趋势背景（一次性拉好, 供本周期全部样本共用）
+                try:
+                    hks = client.get_klines(s, hiv,
+                                            HI_HIST.get(hiv, 1200))
+                except Exception:
+                    hks = None
             if args.cache_dir:
                 ks = load_csv(os.path.join(args.cache_dir, "klines_%s" % iv,
                                            s, "%s.csv" % s))
@@ -258,6 +288,8 @@ def main():
                         # 验证"评分高低是否预测胜负", 决定推送排序是否有效
                         "conf": round(getattr(p, "confidence", 0) or 0, 3),
                         "sco": getattr(p, "strength_score", None),
+                        # 高周期趋势背景(up/down)：检验大小周期共振/冲突
+                        "hctx": trend_ctx(hks, ks[st + W - 1].openTime),
                         "multi": {str(k): v for k, v in multi.items()
                                   if v is not None},
                         "prom": (round(prominence(p), 4)
