@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-18T19:55:50.646267+00:00",
+  "lastScanAt": "2026-09-18T22:04:04.130446+00:00",
   "pushedSignals": [
-    {
-      "symbol": "ATOMUSDT",
-      "patternType": "descending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 64,
-      "detectedAt": "2026-09-11T20:09:36.436702+00:00",
-      "pushedAt": "2026-09-11T20:09:36.436702+00:00",
-      "cooldownUntil": "2026-09-11T20:39:36.436702+00:00",
-      "signalHash": "6d2fa7548f854704",
-      "endMs": 1789135200000,
-      "breakoutIndex": 582,
-      "breakoutPrice": 1.697,
-      "reconfirmAt": null
-    },
     {
       "symbol": "CBRSUSDT",
       "patternType": "ascending_channel",
@@ -1084,21 +1069,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 764,
+    "scanned_pairs": 774,
     "failed_pairs": 10,
     "candidates": 219,
-    "confirmed": 34,
-    "after_scoring": 15,
+    "confirmed": 36,
+    "after_scoring": 14,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 426.2,
+    "duration_seconds": 641.6,
     "source_stats": {
-      "okx": 764
+      "okx": 774
     },
     "health_stats": {
-      "healthy": 725,
-      "sensitive": 38,
+      "healthy": 734,
+      "sensitive": 39,
       "over_smoothed": 1
     }
   },
