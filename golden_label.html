@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>形态标注 · 金标准</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#F7F6F3;color:#2C2C2A;
+ font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;font-size:14px}
+header{position:sticky;top:0;z-index:10;background:#fff;
+ border-bottom:1px solid rgba(0,0,0,.1);padding:10px 18px;
+ display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.bar{height:6px;background:#E8E6E0;border-radius:3px;overflow:hidden;flex:1;min-width:160px}
+.bar>i{display:block;height:100%;width:0;background:#378ADD;transition:width .2s}
+.st{min-width:96px;text-align:right;color:#5F5E5A;font-size:13px}
+main{max-width:1080px;margin:0 auto;padding:18px}
+.card{background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:12px;
+ padding:14px;margin-bottom:14px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.tag{background:#F1EFE8;border-radius:6px;padding:3px 9px;font-size:12px;color:#444441}
+.tag.b{background:#E6F1FB;color:#185FA5}
+.tag.r{background:#FCEBEB;color:#A32D2D}
+.tag.g{background:#EAF3DE;color:#3B6D11}
+img{width:100%;display:block;border-radius:8px;background:#FAFAF8}
+.btns{display:flex;gap:10px;margin-top:12px}
+button{flex:1;padding:11px 0;font-size:15px;border-radius:8px;cursor:pointer;
+ border:1px solid rgba(0,0,0,.18);background:#fff;color:#2C2C2A}
+button:hover{background:#F1EFE8}
+button.on{color:#fff;border-color:transparent}
+button.g.on{background:#639922}button.a.on{background:#BA7517}button.r.on{background:#E24B4A}
+.nav{display:flex;gap:8px;margin-top:10px}
+.nav button{flex:0 0 auto;padding:7px 16px;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px;margin-top:12px}
+.grid div{border:2px solid transparent;border-radius:6px;overflow:hidden;cursor:pointer;
+ background:#F1EFE8;font-size:11px;text-align:center;padding:4px}
+.grid div.done{border-color:#378ADD}
+.grid div.cur{border-color:#185FA5;background:#E6F1FB}
+.hint{color:#888780;font-size:12px;margin-top:8px}
+#done{display:none;padding:18px}
+textarea{width:100%;height:150px;font-family:ui-monospace,Consolas,monospace;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+<span style="font-weight:500">形态标注</span>
+<div class="bar"><i id="bar"></i></div>
+<span class="st" id="st"></span>
+</header>
+<main>
+<div class="card" id="card">
+  <div class="meta" id="meta"></div>
+  <img id="img" alt="形态图">
+  <div class="btns">
+    <button class="g" data-v="good">像 <span style="color:#888780">1</span></button>
+    <button class="a" data-v="ok">勉强 <span style="color:#888780">2</span></button>
+    <button class="r" data-v="bad">瞎画 <span style="color:#888780">3</span></button>
+  </div>
+  <div class="nav">
+    <button id="prev">← 上一张</button>
+    <button id="next">下一张 →</button>
+    <button id="exp">导出结果</button>
+    <button id="clr">清空</button>
+  </div>
+  <div class="hint">键盘：1 / 2 / 3 打分，← → 切换。结果自动存在浏览器本地。</div>
+</div>
+<div class="card" id="done">
+  <h2 style="margin:0 0 10px;font-size:16px">标注完成</h2>
+  <div id="sum" style="margin-bottom:12px"></div>
+  <textarea id="json" readonly></textarea>
+</div>
+<div class="card"><div class="grid" id="grid"></div></div>
+</main>
+<script>
+const ITEMS = [{"id": "0002", "symbol": "HYPEUSDT", "interval": "1h", "patternType": "ascending_channel", "direction": "SHORT", "strength": 73, "pushedAt": "2026-09-11T06:47:20.021876+00:00", "breakoutPrice": 85.096, "status": "ok", "image": "charts_golden/0002_HYPEUSDT_1h_ascending_channel.png", "match_err": 0.0}, {"id": "0003", "symbol": "MERLUSDT", "interval": "4h", "patternType": "double_bottom", "direction": "LONG", "strength": 77, "pushedAt": "2026-09-11T08:53:19.203869+00:00", "breakoutPrice": 0.01955, "status": "ok", "image": "charts_golden/0003_MERLUSDT_4h_double_bottom.png", "match_err": 0.0}, {"id": "0004", "symbol": "MINAUSDT", "interval": "15m", "patternType": "double_bottom", "direction": "LONG", "strength": 80, "pushedAt": "2026-09-11T16:52:06.262582+00:00", "breakoutPrice": 0.10465, "status": "ok", "image": "charts_golden/0004_MINAUSDT_15m_double_bottom.png", "match_err": 0.0}, {"id": "0005", "symbol": "CASHCATUSDT", "interval": "1h", "patternType": "head_shoulders_bottom", "direction": "LONG", "strength": 65, "pushedAt": "2026-09-11T16:52:10.263735+00:00", "breakoutPrice": 0.1875, "status": "ok", "image": "charts_golden/0005_CASHCATUSDT_1h_head_shoulders_bottom.png", "match_err": 0.0}, {"id": "0006", "symbol": "ATOMUSDT", "interval": "15m", "patternType": "descending_channel", "direction": "SHORT", "strength": 64, "pushedAt": "2026-09-11T20:09:36.436702+00:00", "breakoutPrice": 1.697, "status": "ok", "image": "charts_golden/0006_ATOMUSDT_15m_descending_channel.png", "match_err": 0.0}, {"id": "0008", "symbol": "ZECUSDT", "interval": "15m", "patternType": "head_shoulders_bottom", "direction": "LONG", "strength": 66, "pushedAt": "2026-09-12T01:12:32.705248+00:00", "breakoutPrice": 1120.86, "status": "ok", "image": "charts_golden/0008_ZECUSDT_15m_head_shoulders_bottom.png", "match_err": 0.0}, {"id": "0009", "symbol": "JUPUSDT", "interval": "1h", "patternType": "double_bottom", "direction": "LONG", "strength": 61, "pushedAt": "2026-09-12T01:12:39.347707+00:00", "breakoutPrice": 0.2407, "status": "ok", "image": "charts_golden/0009_JUPUSDT_1h_double_bottom.png", "match_err": 0.0}, {"id": "0010", "symbol": "AMDUSDT", "interval": "1h", "patternType": "descending_channel", "direction": "LONG", "strength": 64, "pushedAt": "2026-09-12T05:44:23.958052+00:00", "breakoutPrice": 459.31, "status": "ok", "image": "charts_golden/0010_AMDUSDT_1h_descending_channel.png", "match_err": 0.00128}, {"id": "0011", "symbol": "LDOUSDT", "interval": "1h", "patternType": "double_bottom", "direction": "LONG", "strength": 61, "pushedAt": "2026-09-12T05:44:28.955751+00:00", "breakoutPrice": 0.3809, "status": "ok", "image": "charts_golden/0011_LDOUSDT_1h_double_bottom.png", "match_err": 0.0}, {"id": "0012", "symbol": "TRXUSDT", "interval": "1h", "patternType": "ascending_channel", "direction": "LONG", "strength": 71, "pushedAt": "2026-09-12T06:10:25.759588+00:00", "breakoutPrice": 0.34359, "status": "ok", "image": "charts_golden/0012_TRXUSDT_1h_ascending_channel.png", "match_err": 0.0}, {"id": "0013", "symbol": "ATOMUSDT", "interval": "15m", "patternType": "descending_channel", "direction": "SHORT", "strength": 72, "pushedAt": "2026-09-12T06:40:39.585641+00:00", "breakoutPrice": 1.697, "status": "ok", "image": "charts_golden/0013_ATOMUSDT_15m_descending_channel.png", "match_err": 0.0}, {"id": "0014", "symbol": "MUBARAKUSDT", "interval": "15m", "patternType": "double_bottom", "direction": "LONG", "strength": 62, "pushedAt": "2026-09-12T10:27:29.870563+00:00", "breakoutPrice": 0.028317, "status": "ok", "image": "charts_golden/0014_MUBARAKUSDT_15m_double_bottom.png", "match_err": 0.0}, {"id": "0015", "symbol": "WDCUSDT", "interval": "4h", "patternType": "head_shoulders_top", "direction": "SHORT", "strength": 74, "pushedAt": "2026-09-12T14:00:29.153964+00:00", "breakoutPrice": 449.5, "status": "ok", "image": "charts_golden/0015_WDCUSDT_4h_head_shoulders_top.png", "match_err": 0.0}, {"id": "0016", "symbol": "PNUTUSDT", "interval": "4h", "patternType": "double_bottom", "direction": "LONG", "strength": 75, "pushedAt": "2026-09-12T16:56:11.343654+00:00", "breakoutPrice": 0.04345, "status": "ok", "image": "charts_golden/0016_PNUTUSDT_4h_double_bottom.png", "match_err": 0.0}, {"id": "0018", "symbol": "ARXUSDT", "interval": "4h", "patternType": "head_shoulders_bottom", "direction": "LONG", "strength": 71, "pushedAt": "2026-09-13T01:20:55.003405+00:00", "breakoutPrice": 0.1257, "status": "ok", "image": "charts_golden/0018_ARXUSDT_4h_head_shoulders_bottom.png", "match_err": 0.0}, {"id": "0019", "symbol": "ZRXUSDT", "interval": "1h", "patternType": "double_bottom", "direction": "LONG", "strength": 78, "pushedAt": "2026-09-13T04:01:00.972884+00:00", "breakoutPrice": 0.11415, "status": "ok", "image": "charts_golden/0019_ZRXUSDT_1h_double_bottom.png", "match_err": 0.0}, {"id": "0020", "symbol": "UPUSDT", "interval": "15m", "patternType": "head_shoulders_bottom", "direction": "LONG", "strength": 68, "pushedAt": "2026-09-13T06:31:21.545501+00:00", "breakoutPrice": 0.3487, "status": "ok", "image": "charts_golden/0020_UPUSDT_15m_head_shoulders_bottom.png", "match_err": 0.0}, {"id": "0021", "symbol": "ZECUSDT", "interval": "15m", "patternType": "head_shoulders_bottom", "direction": "LONG", "strength": 77, "pushedAt": "2026-09-13T06:31:27.309367+00:00", "breakoutPrice": 1120.86, "status": "ok", "image": "charts_golden/0021_ZECUSDT_15m_head_shoulders_bottom.png", "match_err": 0.0}, {"id": "0022", "symbol": "HYPEUSDT", "interval": "1h", "patternType": "ascending_channel", "direction": "SHORT", "strength": 81, "pushedAt": "2026-09-13T09:21:46.376814+00:00", "breakoutPrice": 85.096, "status": "ok", "image": "charts_golden/0022_HYPEUSDT_1h_ascending_channel.png", "match_err": 0.0}, {"id": "0025", "symbol": "GLMUSDT", "interval": "4h", "patternType": "double_bottom", "direction": "LONG", "strength": 77, "pushedAt": "2026-09-13T12:53:48.710200+00:00", "breakoutPrice": 0.12145, "status": "ok", "image": "charts_golden/0025_GLMUSDT_4h_double_bottom.png", "match_err": 0.0}, {"id": "0026", "symbol": "NESUSDT", "interval": "15m", "patternType": "head_shoulders_top", "direction": "SHORT", "strength": 91, "pushedAt": "2026-09-13T17:06:42.319391+00:00", "breakoutPrice": 0.1448, "status": "ok", "image": "charts_golden/0026_NESUSDT_15m_head_shoulders_top.png", "match_err": 0.0}, {"id": "0027", "symbol": "TRUMPUSDT", "interval": "15m", "patternType": "descending_channel", "direction": "SHORT", "strength": 76, "pushedAt": "2026-09-13T17:06:48.399875+00:00", "breakoutPrice": 2.178, "status": "ok", "image": "charts_golden/0027_TRUMPUSDT_15m_descending_channel.png", "match_err": 0.0}, {"id": "0028", "symbol": "KORUUSDT", "interval": "1h", "patternType": "double_top", "direction": "SHORT", "strength": 71, "pushedAt": "2026-09-13T17:13:35.605126+00:00", "breakoutPrice": 22.7, "status": "ok", "image": "charts_golden/0028_KORUUSDT_1h_double_top.png", "match_err": 0.0}, {"id": "0029", "symbol": "HUSDT", "interval": "15m", "patternType": "ascending_channel", "direction": "LONG", "strength": 67, "pushedAt": "2026-09-13T19:40:31.197359+00:00", "breakoutPrice": 0.08356, "status": "ok", "image": "charts_golden/0029_HUSDT_15m_ascending_channel.png", "match_err": 0.0}, {"id": "0030", "symbol": "BCHUSDT", "interval": "15m", "patternType": "descending_channel", "direction": "SHORT", "strength": 77, "pushedAt": "2026-09-13T19:57:16.042433+00:00", "breakoutPrice": 249.7, "status": "ok", "image": "charts_golden/0030_BCHUSDT_15m_descending_channel.png", "match_err": 0.0}, {"id": "0031", "symbol": "UPUSDT", "interval": "15m", "patternType": "head_shoulders_bottom", "direction": "LONG", "strength": 76, "pushedAt": "2026-09-14T00:35:48.228889+00:00", "breakoutPrice": 0.3487, "status": "ok", "image": "charts_golden/0031_UPUSDT_15m_head_shoulders_bottom.png", "match_err": 0.0}, {"id": "0032", "symbol": "LITEUSDT", "interval": "1h", "patternType": "head_shoulders_top", "direction": "SHORT", "strength": 73, "pushedAt": "2026-09-14T06:43:09.963461+00:00", "breakoutPrice": 973.92, "status": "ok", "image": "charts_golden/0032_LITEUSDT_1h_head_shoulders_top.png", "match_err": 0.0}, {"id": "0033", "symbol": "SKHYUSDT", "interval": "1h", "patternType": "double_top", "direction": "SHORT", "strength": 66, "pushedAt": "2026-09-14T11:04:29.990859+00:00", "breakoutPrice": 183.28, "status": "ok", "image": "charts_golden/0033_SKHYUSDT_1h_double_top.png", "match_err": 0.0}, {"id": "0036", "symbol": "GOOGLUSDT", "interval": "4h", "patternType": "descending_channel", "direction": "LONG", "strength": 80, "pushedAt": "2026-09-14T21:10:20.900678+00:00", "breakoutPrice": 345.12, "status": "ok", "image": "charts_golden/0036_GOOGLUSDT_4h_descending_channel.png", "match_err": 0.0}, {"id": "0037", "symbol": "CNPYUSDT", "interval": "1h", "patternType": "ascending_channel", "direction": "LONG", "strength": 77, "pushedAt": "2026-09-14T21:10:24.831611+00:00", "breakoutPrice": 0.3298, "status": "ok", "image": "charts_golden/0037_CNPYUSDT_1h_ascending_channel.png", "match_err": 0.0}, {"id": "0040", "symbol": "RAYUSDT", "interval": "1d", "patternType": "double_bottom", "direction": "LONG", "strength": 78, "pushedAt": "2026-09-15T05:32:20.985497+00:00", "breakoutPrice": 1.3258, "status": "ok", "image": "charts_golden/0040_RAYUSDT_1d_double_bottom.png", "match_err": 0.0}, {"id": "0041", "symbol": "ZROUSDT", "interval": "1h", "patternType": "double_top", "direction": "SHORT", "strength": 75, "pushedAt": "2026-09-15T07:34:08.974013+00:00", "breakoutPrice": 1.068, "status": "ok", "image": "charts_golden/0041_ZROUSDT_1h_double_top.png", "match_err": 0.0}, {"id": "0042", "symbol": "GOOGLUSDT", "interval": "4h", "patternType": "descending_channel", "direction": "LONG", "strength": 80, "pushedAt": "2026-09-15T10:35:28.300084+00:00", "breakoutPrice": 345.12, "status": "ok", "image": "charts_golden/0042_GOOGLUSDT_4h_descending_channel.png", "match_err": 0.0}, {"id": "0043", "symbol": "ZHIPUUSDT", "interval": "4h", "patternType": "head_shoulders_top", "direction": "SHORT", "strength": 75, "pushedAt": "2026-09-15T10:35:33.289113+00:00", "breakoutPrice": 130.21, "status": "ok", "image": "charts_golden/0043_ZHIPUUSDT_4h_head_shoulders_top.png", "match_err": 0.0}, {"id": "0044", "symbol": "DYDXUSDT", "interval": "4h", "patternType": "head_shoulders_top", "direction": "SHORT", "strength": 71, "pushedAt": "2026-09-15T13:25:52.789801+00:00", "breakoutPrice": 0.10973, "status": "ok", "image": "charts_golden/0044_DYDXUSDT_4h_head_shoulders_top.png", "match_err": 0.0}, {"id": "0045", "symbol": "AAVEUSDT", "interval": "1d", "patternType": "head_shoulders_bottom", "direction": "LONG", "strength": 72, "pushedAt": "2026-09-15T13:25:56.477181+00:00", "breakoutPrice": 110.47, "status": "ok", "image": "charts_golden/0045_AAVEUSDT_1d_head_shoulders_bottom.png", "match_err": 0.0}, {"id": "0046", "symbol": "AVAXUSDT", "interval": "1d", "patternType": "head_shoulders_bottom", "direction": "LONG", "strength": 70, "pushedAt": "2026-09-15T13:48:51.953791+00:00", "breakoutPrice": 7.619, "status": "ok", "image": "charts_golden/0046_AVAXUSDT_1d_head_shoulders_bottom.png", "match_err": 0.0}, {"id": "0047", "symbol": "HBARUSDT", "interval": "1d", "patternType": "double_bottom", "direction": "LONG", "strength": 64, "pushedAt": "2026-09-15T13:48:56.012963+00:00", "breakoutPrice": 0.07786, "status": "ok", "image": "charts_golden/0047_HBARUSDT_1d_double_bottom.png", "match_err": 0.0}, {"id": "0049", "symbol": "PEPEUSDT", "interval": "1d", "patternType": "head_shoulders_bottom", "direction": "LONG", "strength": 63, "pushedAt": "2026-09-15T19:22:11.321715+00:00", "breakoutPrice": 3.209e-06, "status": "ok", "image": "charts_golden/0049_PEPEUSDT_1d_head_shoulders_bottom.png", "match_err": 0.0}, {"id": "0050", "symbol": "STXUSDT", "interval": "4h", "patternType": "head_shoulders_top", "direction": "SHORT", "strength": 63, "pushedAt": "2026-09-16T00:11:25.945190+00:00", "breakoutPrice": 0.2346, "status": "ok", "image": "charts_golden/0050_STXUSDT_4h_head_shoulders_top.png", "match_err": 0.0}, {"id": "0051", "symbol": "EIGENUSDT", "interval": "15m", "patternType": "double_top", "direction": "SHORT", "strength": 72, "pushedAt": "2026-09-16T00:11:32.207695+00:00", "breakoutPrice": 0.2057, "status": "ok", "image": "charts_golden/0051_EIGENUSDT_15m_double_top.png", "match_err": 0.0}, {"id": "0052", "symbol": "LABUSDT", "interval": "15m", "patternType": "descending_channel", "direction": "LONG", "strength": 69, "pushedAt": "2026-09-16T04:46:39.685922+00:00", "breakoutPrice": 0.05067, "status": "ok", "image": "charts_golden/0052_LABUSDT_15m_descending_channel.png", "match_err": 0.0}, {"id": "0053", "symbol": "BCHUSDT", "interval": "1h", "patternType": "ascending_channel", "direction": "SHORT", "strength": 74, "pushedAt": "2026-09-16T04:46:45.377654+00:00", "breakoutPrice": 248.6, "status": "ok", "image": "charts_golden/0053_BCHUSDT_1h_ascending_channel.png", "match_err": 0.0}, {"id": "0054", "symbol": "XIAOMIUSDT", "interval": "4h", "patternType": "double_top", "direction": "SHORT", "strength": 85, "pushedAt": "2026-09-16T06:23:12.586493+00:00", "breakoutPrice": 3.361, "status": "ok", "image": "charts_golden/0054_XIAOMIUSDT_4h_double_top.png", "match_err": 0.0}, {"id": "0055", "symbol": "KAITOUSDT", "interval": "15m", "patternType": "descending_channel", "direction": "SHORT", "strength": 76, "pushedAt": "2026-09-16T06:23:18.497025+00:00", "breakoutPrice": 0.2883, "status": "ok", "image": "charts_golden/0055_KAITOUSDT_15m_descending_channel.png", "match_err": 0.0}, {"id": "0056", "symbol": "SPCXUSDT", "interval": "4h", "patternType": "ascending_channel", "direction": "SHORT", "strength": 81, "pushedAt": "2026-09-16T12:58:40.249054+00:00", "breakoutPrice": 144.77, "status": "ok", "image": "charts_golden/0056_SPCXUSDT_4h_ascending_channel.png", "match_err": 0.0}, {"id": "0057", "symbol": "ZHIPUUSDT", "interval": "4h", "patternType": "double_top", "direction": "SHORT", "strength": 74, "pushedAt": "2026-09-17T06:01:26.054711+00:00", "breakoutPrice": 128.54, "status": "ok", "image": "charts_golden/0057_ZHIPUUSDT_4h_double_top.png", "match_err": 0.0}, {"id": "0058", "symbol": "PIEVERSEUSDT", "interval": "1h", "patternType": "double_bottom", "direction": "LONG", "strength": 67, "pushedAt": "2026-09-17T07:57:59.270245+00:00", "breakoutPrice": 1.111, "status": "ok", "image": "charts_golden/0058_PIEVERSEUSDT_1h_double_bottom.png", "match_err": 0.0}, {"id": "0059", "symbol": "PENDLEUSDT", "interval": "15m", "patternType": "descending_channel", "direction": "LONG", "strength": 65, "pushedAt": "2026-09-17T07:58:04.765679+00:00", "breakoutPrice": 2.223, "status": "ok", "image": "charts_golden/0059_PENDLEUSDT_15m_descending_channel.png", "match_err": 0.0}, {"id": "0060", "symbol": "AMZNUSDT", "interval": "4h", "patternType": "double_top", "direction": "SHORT", "strength": 69, "pushedAt": "2026-09-17T11:20:45.310677+00:00", "breakoutPrice": 268.26, "status": "ok", "image": "charts_golden/0060_AMZNUSDT_4h_double_top.png", "match_err": 0.0}, {"id": "0061", "symbol": "INTCUSDT", "interval": "4h", "patternType": "double_bottom", "direction": "LONG", "strength": 72, "pushedAt": "2026-09-17T12:17:08.111240+00:00", "breakoutPrice": 94.97, "status": "ok", "image": "charts_golden/0061_INTCUSDT_4h_double_bottom.png", "match_err": 0.0}, {"id": "0062", "symbol": "0GUSDT", "interval": "1h", "patternType": "double_bottom", "direction": "LONG", "strength": 62, "pushedAt": "2026-09-17T12:17:12.553788+00:00", "breakoutPrice": 0.1988, "status": "ok", "image": "charts_golden/0062_0GUSDT_1h_double_bottom.png", "match_err": 0.0}, {"id": "0063", "symbol": "MONUSDT", "interval": "4h", "patternType": "double_bottom", "direction": "LONG", "strength": 60, "pushedAt": "2026-09-17T17:25:57.801208+00:00", "breakoutPrice": 0.02373, "status": "ok", "image": "charts_golden/0063_MONUSDT_4h_double_bottom.png", "match_err": 0.0}, {"id": "0065", "symbol": "RKLBUSDT", "interval": "4h", "patternType": "head_shoulders_bottom", "direction": "LONG", "strength": 75, "pushedAt": "2026-09-17T20:10:24.110844+00:00", "breakoutPrice": 67.02, "status": "ok", "image": "charts_golden/0065_RKLBUSDT_4h_head_shoulders_bottom.png", "match_err": 0.0}, {"id": "0066", "symbol": "AVAXUSDT", "interval": "4h", "patternType": "double_bottom", "direction": "LONG", "strength": 66, "pushedAt": "2026-09-17T20:40:07.409489+00:00", "breakoutPrice": 7.055, "status": "ok", "image": "charts_golden/0066_AVAXUSDT_4h_double_bottom.png", "match_err": 0.02693}, {"id": "0067", "symbol": "GRVTUSDT", "interval": "4h", "patternType": "head_shoulders_top", "direction": "SHORT", "strength": 79, "pushedAt": "2026-09-17T22:57:29.860268+00:00", "breakoutPrice": 0.26151, "status": "ok", "image": "charts_golden/0067_GRVTUSDT_4h_head_shoulders_top.png", "match_err": 0.0}, {"id": "0068", "symbol": "FILUSDT", "interval": "4h", "patternType": "head_shoulders_bottom", "direction": "LONG", "strength": 69, "pushedAt": "2026-09-18T00:40:35.212669+00:00", "breakoutPrice": 0.7871, "status": "ok", "image": "charts_golden/0068_FILUSDT_4h_head_shoulders_bottom.png", "match_err": 0.0}];
+const KEY = 'golden_label_v1';
+let ans = JSON.parse(localStorage.getItem(KEY) || '{}');
+let cur = 0;
+const IMGDIR = 'charts_golden/';
+
+function save(){ localStorage.setItem(KEY, JSON.stringify(ans)); }
+
+function render(){
+  const n = ITEMS.length;
+  const doneN = Object.keys(ans).length;
+  document.getElementById('bar').style.width = (100*doneN/n)+'%';
+  document.getElementById('st').textContent = doneN+' / '+n;
+  if(doneN >= n){ showDone(); return; }
+  document.getElementById('done').style.display='none';
+  document.getElementById('card').style.display='';
+  while(cur < n && ans[ITEMS[cur].id]) cur++;
+  if(cur >= n){ cur = 0; while(cur < n && ans[ITEMS[cur].id]) cur++; }
+  const it = ITEMS[cur];
+  if(!it){ showDone(); return; }
+  document.getElementById('img').src = IMGDIR + it.image.split('/').pop();
+  document.getElementById('meta').innerHTML =
+    '<span class="tag b">'+it.symbol+'</span>'+
+    '<span class="tag">'+it.interval+'</span>'+
+    '<span class="tag">'+it.patternType+'</span>'+
+    '<span class="tag '+(it.direction==='LONG'?'g':'r')+'">'+it.direction+'</span>'+
+    '<span class="tag">强度 '+it.strength+'</span>'+
+    '<span class="tag">'+(it.pushedAt||'').slice(0,16).replace('T',' ')+'</span>'+
+    '<span class="tag">#'+it.id+'</span>';
+  document.querySelectorAll('.btns button').forEach(b=>b.classList.remove('on'));
+  if(ans[it.id]){
+    document.querySelector('.btns button[data-v="'+ans[it.id]+'"]').classList.add('on');
+  }
+  paintGrid();
+}
+
+function paintGrid(){
+  const g = document.getElementById('grid');
+  g.innerHTML = ITEMS.map((it,i)=>{
+    const v = ans[it.id];
+    const cls = (v?'done':'') + (i===cur?' cur':'');
+    const mk = v==='good'?'像':v==='ok'?'勉强':v==='bad'?'瞎':'';
+    return '<div class="'+cls+'" data-i="'+i+'">'+it.symbol+'<br>'+it.interval+'<br><b>'+mk+'</b></div>';
+  }).join('');
+  g.querySelectorAll('div').forEach(d=>{
+    d.onclick = ()=>{ cur = +d.dataset.i; render(); window.scrollTo(0,0); };
+  });
+}
+
+function showDone(){
+  document.getElementById('card').style.display='none';
+  const d = document.getElementById('done');
+  d.style.display='';
+  const c = {good:0, ok:0, bad:0};
+  ITEMS.forEach(i=>{ if(ans[i.id]) c[ans[i.id]]++; });
+  const tot = ITEMS.length;
+  document.getElementById('sum').innerHTML =
+    '<b>像</b> '+c.good+'（'+Math.round(100*c.good/tot)+'%）　'+
+    '<b>勉强</b> '+c.ok+'（'+Math.round(100*c.ok/tot)+'%）　'+
+    '<b>瞎画</b> '+c.bad+'（'+Math.round(100*c.bad/tot)+'%）';
+  document.getElementById('json').value = JSON.stringify(
+    {total:tot, counts:c, labels:ans}, null, 1);
+}
+
+document.querySelectorAll('.btns button').forEach(b=>{
+  b.onclick = ()=>{
+    const it = ITEMS[cur];
+    ans[it.id] = b.dataset.v; save();
+    cur++; render(); window.scrollTo(0,0);
+  };
+});
+document.getElementById('prev').onclick = ()=>{ if(cur>0){cur--;render();} };
+document.getElementById('next').onclick = ()=>{
+  if(cur<ITEMS.length-1){cur++;render();} window.scrollTo(0,0);
+};
+document.getElementById('clr').onclick = ()=>{
+  if(confirm('清空所有标注？')){ ans={}; save(); cur=0; render(); }
+};
+document.getElementById('exp').onclick = ()=>{
+  const blob = new Blob([JSON.stringify({
+    total:ITEMS.length, labels:ans}, null, 1)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'golden_labels.json';
+  a.click();
+};
+document.addEventListener('keydown', e=>{
+  const m = {'1':'good','2':'ok','3':'bad'};
+  if(m[e.key]){
+    const it = ITEMS[cur];
+    if(it){ ans[it.id]=m[e.key]; save(); cur++; render(); window.scrollTo(0,0); }
+  } else if(e.key==='ArrowLeft'){ if(cur>0){cur--;render();} }
+  else if(e.key==='ArrowRight'){ if(cur<ITEMS.length-1){cur++;render();} }
+});
+render();
+</script>
+</body>
+</html>
