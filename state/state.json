@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-18T06:17:26.553482+00:00",
+  "lastScanAt": "2026-09-18T06:48:17.195050+00:00",
   "pushedSignals": [
-    {
-      "symbol": "HYPEUSDT",
-      "patternType": "ascending_channel",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 73,
-      "detectedAt": "2026-09-11T06:47:20.021876+00:00",
-      "pushedAt": "2026-09-11T06:47:20.021876+00:00",
-      "cooldownUntil": "2026-09-11T08:47:20.021876+00:00",
-      "signalHash": "926c22204a263308",
-      "endMs": 1788750000000,
-      "breakoutIndex": 312,
-      "breakoutPrice": 85.096,
-      "reconfirmAt": null
-    },
     {
       "symbol": "MERLUSDT",
       "patternType": "double_bottom",
@@ -1036,24 +1021,39 @@
       "breakoutIndex": 328,
       "breakoutPrice": 0.2054,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "AKEUSDT",
+      "patternType": "ascending_triangle",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 82,
+      "detectedAt": "2026-09-18T06:48:13.323407+00:00",
+      "pushedAt": "2026-09-18T06:48:13.323407+00:00",
+      "cooldownUntil": "2026-09-18T07:18:13.323407+00:00",
+      "signalHash": "c30b28bde31eb772",
+      "endMs": 1789706700000,
+      "breakoutIndex": 189,
+      "breakoutPrice": 0.02338,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 704,
+    "scanned_pairs": 702,
     "failed_pairs": 12,
-    "candidates": 216,
-    "confirmed": 31,
+    "candidates": 215,
+    "confirmed": 32,
     "after_scoring": 19,
-    "after_dedup": 2,
-    "pushed": 2,
-    "observed": 2,
-    "duration_seconds": 482.0,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 1,
+    "duration_seconds": 396.7,
     "source_stats": {
-      "okx": 704
+      "okx": 702
     },
     "health_stats": {
-      "healthy": 669,
-      "sensitive": 34,
+      "healthy": 666,
+      "sensitive": 35,
       "over_smoothed": 1
     }
   },
@@ -1551,6 +1551,21 @@
       "endMs": 1788523200000,
       "breakoutIndex": 224,
       "breakoutPrice": 0.2636,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "RAYUSDT",
+      "patternType": "double_bottom",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 78,
+      "detectedAt": "2026-09-18T06:48:17.194883+00:00",
+      "pushedAt": "2026-09-18T06:48:17.194883+00:00",
+      "cooldownUntil": "2026-09-19T06:48:17.194883+00:00",
+      "signalHash": "90e3f33d1ec5663a",
+      "endMs": 1780675200000,
+      "breakoutIndex": 227,
+      "breakoutPrice": 1.3258,
       "reconfirmAt": null
     }
   ]
