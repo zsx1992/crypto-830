@@ -194,7 +194,8 @@ def main():
                 if bp and getattr(p, "breakout_price", None):
                     err = abs(p.breakout_price - bp) / bp
                 elif end_ms and p.pivots:
-                    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0
+                    # 注意：Pivot 的时间字段是 timestamp，不是 time
+                    err = abs(p.pivots[-1].timestamp - end_ms) / 86_400_000.0
                 else:
                     err = 9.9
                 if best_err is None or err < best_err:
