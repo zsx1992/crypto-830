@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-18T17:09:07.846639+00:00",
+  "lastScanAt": "2026-09-18T19:21:49.133438+00:00",
   "pushedSignals": [
     {
       "symbol": "ATOMUSDT",
@@ -1051,24 +1051,54 @@
       "breakoutIndex": 202,
       "breakoutPrice": 0.1875,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ACHUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 75,
+      "detectedAt": "2026-09-18T19:21:44.751559+00:00",
+      "pushedAt": "2026-09-18T19:21:44.751559+00:00",
+      "cooldownUntil": "2026-09-19T03:21:44.751559+00:00",
+      "signalHash": "727eb2d3ecd7b41b",
+      "endMs": 1789113600000,
+      "breakoutIndex": 298,
+      "breakoutPrice": 0.005708,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "SUSHIUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 71,
+      "detectedAt": "2026-09-18T19:21:49.133127+00:00",
+      "pushedAt": "2026-09-18T19:21:49.133127+00:00",
+      "cooldownUntil": "2026-09-18T21:21:49.133127+00:00",
+      "signalHash": "8820ee5fcf41b2b2",
+      "endMs": 1788530400000,
+      "breakoutIndex": 82,
+      "breakoutPrice": 0.2071,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 756,
+    "scanned_pairs": 766,
     "failed_pairs": 10,
     "candidates": 220,
-    "confirmed": 34,
-    "after_scoring": 13,
-    "after_dedup": 0,
-    "pushed": 0,
+    "confirmed": 35,
+    "after_scoring": 15,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 615.6,
+    "duration_seconds": 445.3,
     "source_stats": {
-      "okx": 756
+      "okx": 766
     },
     "health_stats": {
-      "healthy": 716,
-      "sensitive": 39,
+      "healthy": 725,
+      "sensitive": 40,
       "over_smoothed": 1
     }
   },
