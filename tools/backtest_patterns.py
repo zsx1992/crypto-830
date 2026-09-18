@@ -254,6 +254,10 @@ def main():
                         # 形态末端时间戳(ms)：用于审计样本是否挤在同一段行情
                         # （同 regime 样本相关, 不算独立试验）
                         "end_ts": ks[st + W - 1].openTime,
+                        # 识别阶段几何吻合度(0~1) + 线上评分(若有)：
+                        # 验证"评分高低是否预测胜负", 决定推送排序是否有效
+                        "conf": round(getattr(p, "confidence", 0) or 0, 3),
+                        "sco": getattr(p, "strength_score", None),
                         "multi": {str(k): v for k, v in multi.items()
                                   if v is not None},
                         "prom": (round(prominence(p), 4)
