@@ -1,0 +1,116 @@
+name: Render Golden Charts
+
+# 复盘渲染：把 state.json 里的推送记录还原成当时的形态标注图，
+# 供人工金标准标注（评估"推送质量"用）。
+#
+# 为什么需要这个 workflow：
+#   推送时的 PNG 只存在于 Actions 临时 runner 上，扫描结束即丢弃；
+#   state.json 只存 endMs / breakoutIndex / breakoutPrice 等摘要，没存形态边界线，
+#   本机又连不上 OKX（无梯子）。所以图只能在云端重新渲染后 commit 回仓库。
+#
+# 用法：Actions 页面 → Render Golden Charts → Run workflow → 设置 limit → 跑。
+# 跑完会把 charts_golden/（含 manifest.json）commit 回 main，本地 git pull 即可拿到。
+
+on:
+  # 推一个 golden-* tag 即可触发（本机无 gh / 无 PAT，只能靠 git push tag 触发）
+  push:
+    tags:
+      - 'golden-*'
+  # 也可以在 Actions 页面手动触发
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: '只渲染前 N 条推送（0 = 全部，约 68 条）'
+        required: false
+        default: '0'
+        type: string
+      out_dir:
+        description: '输出目录（会被 commit 回仓库）'
+        required: false
+        default: 'charts_golden'
+        type: string
+
+# 与扫描 job 用不同的 group：渲染是重活（约 5~10 分钟），
+# 但不应阻塞/被阻塞扫描。
+concurrency:
+  group: render-golden-charts
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      PYTHONUNBUFFERED: "1"
+      TZ: "UTC"
+
+    steps:
+      # 固定 checkout main：tag 触发时默认是 detached HEAD，
+      # 那样拿到的 state.json 可能落后几轮，且 commit 回写更麻烦。
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pyyaml matplotlib numpy TA-Lib tzdata || \
+            pip install requests pyyaml matplotlib numpy tzdata
+
+      - name: Render charts from pushed signals
+        run: |
+          python tools/render_golden_charts.py \
+            --state state/state.json \
+            --out "${{ github.event.inputs.out_dir || 'charts_golden' }}" \
+            --limit "${{ github.event.inputs.limit || '0' }}"
+        continue-on-error: true
+
+      - name: Summary
+        if: always()
+        run: |
+          D="${{ github.event.inputs.out_dir || 'charts_golden' }}"
+          if [ -f "$D/manifest.json" ]; then
+            python -c "
+          import json,sys
+          m=json.load(open('$D/manifest.json'))
+          print('渲染成功 %d / %d' % (m['ok'], m['total']))
+          from collections import Counter
+          print('状态分布:', dict(Counter(i['status'] for i in m['items'])))
+          "
+          else
+            echo "manifest.json 未生成"
+          fi
+
+      - name: Commit charts back to repo
+        if: always()
+        run: |
+          D="${{ github.event.inputs.out_dir || 'charts_golden' }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # 扫描 job 会高频回写 state/，这里先 rebase 避免非快进
+          git pull --rebase origin main || true
+          git add "$D" || true
+          if git diff --cached --quiet; then
+            echo "无新图表，跳过提交"
+          else
+            git commit -m "chore: golden charts $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push || echo "推送失败（可能是并发冲突），artifact 里仍有副本"
+          fi
+
+      - name: Upload charts artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: golden-charts-${{ github.run_id }}
+          path: ${{ github.event.inputs.out_dir || 'charts_golden' }}
+          retention-days: 14

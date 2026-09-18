@@ -391,7 +391,7 @@ class OkxClient:
         return None
 
     def get_klines(self, symbol: str, interval: str,
-                   limit: int = 100) -> List[Kline]:
+                   limit: int = 100, end_time_ms: int = None) -> List[Kline]:
         """
         获取 K 线。OKX 单次上限 100 根，超过需分页。
 
@@ -399,13 +399,19 @@ class OkxClient:
           - symbol 需转换：BTCUSDT -> BTC-USDT-SWAP
           - interval 需大写：15m -> 15m, 1h -> 1H, 4h -> 4H, 1d -> 1D
           - 返回按时间【倒序】（最新的在前）
+
+        end_time_ms (2026-09-18 新增，供回测/复盘用):
+          只取该毫秒时间戳【之前】的 K 线。不传则取最新的 limit 根（原行为不变）。
+          关键：复盘旧信号时必须用这个参数锁定当时的窗口 —— 否则会拿到"未来"
+          数据，复现出的形态与当初推送的那张图不是一回事（前视偏差）。
         """
         inst_id = self._to_inst_id(symbol)
         bar = self._to_bar(interval)
 
         all_data = []
         remaining = limit
-        after = None       # 用于翻页（向更早的时间取）
+        # end_time_ms 即首次请求的翻页起点（向更早的时间取）
+        after = end_time_ms
 
         while remaining > 0:
             batch_size = min(remaining, self.MAX_CANDLES_PER_REQUEST)
