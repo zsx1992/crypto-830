@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-18T16:45:47.304093+00:00",
+  "lastScanAt": "2026-09-18T17:09:07.846639+00:00",
   "pushedSignals": [
-    {
-      "symbol": "MINAUSDT",
-      "patternType": "double_bottom",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 80,
-      "detectedAt": "2026-09-11T16:52:06.262582+00:00",
-      "pushedAt": "2026-09-11T16:52:06.262582+00:00",
-      "cooldownUntil": "2026-09-11T17:22:06.262582+00:00",
-      "signalHash": "5b5b362216e23fdb",
-      "endMs": 1789043400000,
-      "breakoutIndex": 588,
-      "breakoutPrice": 0.10465,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "CASHCATUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 65,
-      "detectedAt": "2026-09-11T16:52:10.263735+00:00",
-      "pushedAt": "2026-09-11T16:52:10.263735+00:00",
-      "cooldownUntil": "2026-09-11T18:52:10.263735+00:00",
-      "signalHash": "25b6cbd3a7a3e6b2",
-      "endMs": 1789124400000,
-      "breakoutIndex": 202,
-      "breakoutPrice": 0.1875,
-      "reconfirmAt": null
-    },
     {
       "symbol": "ATOMUSDT",
       "patternType": "descending_channel",
@@ -1066,43 +1036,43 @@
       "breakoutIndex": 228,
       "breakoutPrice": 2628.84,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "CASHCATUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 70,
+      "detectedAt": "2026-09-18T16:55:45.391052+00:00",
+      "pushedAt": "2026-09-18T16:55:45.391052+00:00",
+      "cooldownUntil": "2026-09-18T18:55:45.391052+00:00",
+      "signalHash": "25b6cbd3a7a3e6b2",
+      "endMs": 1789124400000,
+      "breakoutIndex": 202,
+      "breakoutPrice": 0.1875,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 754,
+    "scanned_pairs": 756,
     "failed_pairs": 10,
-    "candidates": 214,
+    "candidates": 220,
     "confirmed": 34,
     "after_scoring": 13,
-    "after_dedup": 2,
-    "pushed": 2,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 556.2,
+    "duration_seconds": 615.6,
     "source_stats": {
-      "okx": 754
+      "okx": 756
     },
     "health_stats": {
-      "healthy": 714,
+      "healthy": 716,
       "sensitive": 39,
       "over_smoothed": 1
     }
   },
   "observedSignals": [
-    {
-      "symbol": "ETHUSDT",
-      "patternType": "symmetrical_triangle",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 71,
-      "detectedAt": "2026-09-11T16:52:14.489551+00:00",
-      "pushedAt": "2026-09-11T16:52:14.489551+00:00",
-      "cooldownUntil": "2026-09-12T00:52:14.489551+00:00",
-      "signalHash": "241f4e8506a0e2fe",
-      "endMs": 1789041600000,
-      "breakoutIndex": 298,
-      "breakoutPrice": 2557.76,
-      "reconfirmAt": null
-    },
     {
       "symbol": "DOTUSDT",
       "patternType": "head_shoulders_top",
