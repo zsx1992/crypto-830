@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-18T19:37:50.142567+00:00",
+  "lastScanAt": "2026-09-18T19:55:50.646267+00:00",
   "pushedSignals": [
     {
       "symbol": "ATOMUSDT",
@@ -1084,21 +1084,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 768,
+    "scanned_pairs": 764,
     "failed_pairs": 10,
-    "candidates": 218,
-    "confirmed": 35,
+    "candidates": 219,
+    "confirmed": 34,
     "after_scoring": 15,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 570.8,
+    "duration_seconds": 426.2,
     "source_stats": {
-      "okx": 768
+      "okx": 764
     },
     "health_stats": {
-      "healthy": 728,
-      "sensitive": 39,
+      "healthy": 725,
+      "sensitive": 38,
       "over_smoothed": 1
     }
   },
