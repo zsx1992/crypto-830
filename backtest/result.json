@@ -1,0 +1,1210 @@
+{
+ "detail": [
+  {
+   "symbol": "BTCUSDT",
+   "interval": "4h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 0.69,
+   "strength": null
+  },
+  {
+   "symbol": "BTCUSDT",
+   "interval": "4h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "BTCUSDT",
+   "interval": "4h",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SOLUSDT",
+   "interval": "4h",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SOLUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.92,
+   "strength": null
+  },
+  {
+   "symbol": "SOLUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.63,
+   "strength": null
+  },
+  {
+   "symbol": "SOLUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 2.07,
+   "strength": null
+  },
+  {
+   "symbol": "SOLUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SOLUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SOLUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SOLUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SOLUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SOLUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SOLUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SNDKUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.71,
+   "strength": null
+  },
+  {
+   "symbol": "SNDKUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.23,
+   "strength": null
+  },
+  {
+   "symbol": "SNDKUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.86,
+   "strength": null
+  },
+  {
+   "symbol": "SNDKUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SNDKUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.18,
+   "strength": null
+  },
+  {
+   "symbol": "SNDKUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "4h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "4h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "4h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "4h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "4h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.94,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "4h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.78,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "4h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "4h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "4h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.75,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "4h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "DOGEUSDT",
+   "interval": "4h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.48,
+   "strength": null
+  },
+  {
+   "symbol": "DOGEUSDT",
+   "interval": "4h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.88,
+   "strength": null
+  },
+  {
+   "symbol": "DOGEUSDT",
+   "interval": "4h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.53,
+   "strength": null
+  },
+  {
+   "symbol": "DOGEUSDT",
+   "interval": "4h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 2.11,
+   "strength": null
+  },
+  {
+   "symbol": "DOGEUSDT",
+   "interval": "4h",
+   "type": "descending_channel",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SPCXUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SPCXUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "none",
+   "rr": 0.0,
+   "strength": null
+  },
+  {
+   "symbol": "USELESSUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "USELESSUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 2.76,
+   "strength": null
+  },
+  {
+   "symbol": "USELESSUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "USELESSUSDT",
+   "interval": "4h",
+   "type": "descending_channel",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.93,
+   "strength": null
+  },
+  {
+   "symbol": "PEPEUSDT",
+   "interval": "4h",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.17,
+   "strength": null
+  },
+  {
+   "symbol": "PUMPUSDT",
+   "interval": "4h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "PUMPUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "PUMPUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "PUMPUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.39,
+   "strength": null
+  },
+  {
+   "symbol": "PUMPUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "PUMPUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.22,
+   "strength": null
+  },
+  {
+   "symbol": "PUMPUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.96,
+   "strength": null
+  },
+  {
+   "symbol": "TRUMPUSDT",
+   "interval": "4h",
+   "type": "rectangle",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 0.88,
+   "strength": null
+  },
+  {
+   "symbol": "TRUMPUSDT",
+   "interval": "4h",
+   "type": "rectangle",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "TRUMPUSDT",
+   "interval": "4h",
+   "type": "rectangle",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "TRUMPUSDT",
+   "interval": "4h",
+   "type": "rectangle",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.75,
+   "strength": null
+  },
+  {
+   "symbol": "TRUMPUSDT",
+   "interval": "4h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.73,
+   "strength": null
+  },
+  {
+   "symbol": "TRUMPUSDT",
+   "interval": "4h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SUIUSDT",
+   "interval": "4h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.1,
+   "strength": null
+  },
+  {
+   "symbol": "SUIUSDT",
+   "interval": "4h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SUIUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SUIUSDT",
+   "interval": "4h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SUIUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SUIUSDT",
+   "interval": "4h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.42,
+   "strength": null
+  },
+  {
+   "symbol": "SUIUSDT",
+   "interval": "4h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "WLDUSDT",
+   "interval": "4h",
+   "type": "descending_channel",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.98,
+   "strength": null
+  },
+  {
+   "symbol": "WLDUSDT",
+   "interval": "4h",
+   "type": "descending_channel",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 2.03,
+   "strength": null
+  },
+  {
+   "symbol": "WLDUSDT",
+   "interval": "4h",
+   "type": "descending_channel",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.36,
+   "strength": null
+  },
+  {
+   "symbol": "WLDUSDT",
+   "interval": "4h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.07,
+   "strength": null
+  },
+  {
+   "symbol": "WLDUSDT",
+   "interval": "4h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.52,
+   "strength": null
+  },
+  {
+   "symbol": "ADAUSDT",
+   "interval": "4h",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "ADAUSDT",
+   "interval": "4h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "BNBUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 2.33,
+   "strength": null
+  },
+  {
+   "symbol": "BNBUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "BNBUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "BNBUSDT",
+   "interval": "4h",
+   "type": "descending_channel",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.25,
+   "strength": null
+  },
+  {
+   "symbol": "BNBUSDT",
+   "interval": "4h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "BCHUSDT",
+   "interval": "4h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "BCHUSDT",
+   "interval": "4h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SOLUSDT",
+   "interval": "1h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.4,
+   "strength": null
+  },
+  {
+   "symbol": "SNDKUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.55,
+   "strength": null
+  },
+  {
+   "symbol": "SNDKUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.61,
+   "strength": null
+  },
+  {
+   "symbol": "SNDKUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.29,
+   "strength": null
+  },
+  {
+   "symbol": "SNDKUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.34,
+   "strength": null
+  },
+  {
+   "symbol": "SNDKUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SNDKUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SNDKUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 2.34,
+   "strength": null
+  },
+  {
+   "symbol": "XAUUSDT",
+   "interval": "1h",
+   "type": "descending_channel",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "1h",
+   "type": "ascending_triangle",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.33,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "1h",
+   "type": "ascending_triangle",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.4,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "1h",
+   "type": "ascending_triangle",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.5,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "UNIUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.94,
+   "strength": null
+  },
+  {
+   "symbol": "HYPEUSDT",
+   "interval": "1h",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "HYPEUSDT",
+   "interval": "1h",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.33,
+   "strength": null
+  },
+  {
+   "symbol": "SPCXUSDT",
+   "interval": "1h",
+   "type": "ascending_channel",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.38,
+   "strength": null
+  },
+  {
+   "symbol": "SKHYNIXUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.21,
+   "strength": null
+  },
+  {
+   "symbol": "SKHYNIXUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.33,
+   "strength": null
+  },
+  {
+   "symbol": "SKHYNIXUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 4.0,
+   "strength": null
+  },
+  {
+   "symbol": "SKHYNIXUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "PEPEUSDT",
+   "interval": "1h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "PEPEUSDT",
+   "interval": "1h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "PEPEUSDT",
+   "interval": "1h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.35,
+   "strength": null
+  },
+  {
+   "symbol": "PEPEUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "PEPEUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "LITUSDT",
+   "interval": "1h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "CLUSDT",
+   "interval": "1h",
+   "type": "descending_channel",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.93,
+   "strength": null
+  },
+  {
+   "symbol": "PUMPUSDT",
+   "interval": "1h",
+   "type": "head_shoulders_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "MUUSDT",
+   "interval": "1h",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 0.9,
+   "strength": null
+  },
+  {
+   "symbol": "TRUMPUSDT",
+   "interval": "1h",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.49,
+   "strength": null
+  },
+  {
+   "symbol": "TRUMPUSDT",
+   "interval": "1h",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.42,
+   "strength": null
+  },
+  {
+   "symbol": "SUIUSDT",
+   "interval": "1h",
+   "type": "descending_channel",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "DASHUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "DASHUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.24,
+   "strength": null
+  },
+  {
+   "symbol": "DASHUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "DASHUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.2,
+   "strength": null
+  },
+  {
+   "symbol": "DASHUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "XAGUSDT",
+   "interval": "1h",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "XAGUSDT",
+   "interval": "1h",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 0.82,
+   "strength": null
+  },
+  {
+   "symbol": "XAGUSDT",
+   "interval": "1h",
+   "type": "descending_channel",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "ENAUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "ENAUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "ENAUSDT",
+   "interval": "1h",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "ADAUSDT",
+   "interval": "1h",
+   "type": "symmetrical_triangle",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SNXXUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.56,
+   "strength": null
+  },
+  {
+   "symbol": "SNXXUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.6,
+   "strength": null
+  },
+  {
+   "symbol": "SNXXUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.28,
+   "strength": null
+  },
+  {
+   "symbol": "SNXXUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 1.14,
+   "strength": null
+  },
+  {
+   "symbol": "SNXXUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SNXXUSDT",
+   "interval": "1h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "SNXXUSDT",
+   "interval": "1h",
+   "type": "double_bottom",
+   "dir": "LONG",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "BNBUSDT",
+   "interval": "1h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "BNBUSDT",
+   "interval": "1h",
+   "type": "double_top",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.67,
+   "strength": null
+  },
+  {
+   "symbol": "BCHUSDT",
+   "interval": "1h",
+   "type": "symmetrical_triangle",
+   "dir": "LONG",
+   "res": "tp",
+   "rr": 0.57,
+   "strength": null
+  },
+  {
+   "symbol": "BCHUSDT",
+   "interval": "1h",
+   "type": "descending_triangle",
+   "dir": "SHORT",
+   "res": "sl",
+   "rr": -1.0,
+   "strength": null
+  },
+  {
+   "symbol": "BCHUSDT",
+   "interval": "1h",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 0.89,
+   "strength": null
+  },
+  {
+   "symbol": "KORUUSDT",
+   "interval": "1h",
+   "type": "ascending_channel",
+   "dir": "SHORT",
+   "res": "tp",
+   "rr": 1.3,
+   "strength": null
+  }
+ ]
+}
