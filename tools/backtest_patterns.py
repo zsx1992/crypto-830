@@ -192,6 +192,7 @@ def main():
             if len(ks) < W + args.hold + 20:
                 continue
             n_sym += 1
+            seen = {}      # 去重：(type, 绝对末端位置) -> 已计入
             starts = range(0, len(ks) - W - args.hold, args.step)
             for st in starts:
                 win = ks[st:st + W]
@@ -204,6 +205,22 @@ def main():
                     if str(p.status).replace("PatternStatus.", "") \
                             != "CONFIRMED":
                         continue
+                    # 【去重】相邻滑动窗口高度重叠（窗口300根、步长40 → 87%重叠），
+                    # 同一形态会被反复检出，导致样本不独立、夸大样本量、低估方差。
+                    # 实测：4h 的 HS_bottom 2.7% 竟出现 6 次，实为同一形态。
+                    # 判据：同 type 且绝对末端位置相差 <= step+tol 视为同一个。
+                    e_abs = st + max((v.index for v in p.pivots),
+                                     default=0)
+                    dup = False
+                    for (tt, ee) in seen:
+                        if tt == p.pattern_type and abs(ee - e_abs) <= \
+                                args.step + 5:
+                            dup = True
+                            break
+                    if dup:
+                        continue
+                    seen[(p.pattern_type, e_abs)] = True
+
                     multi = judge_multi(p, fut)
                     res = multi.get(100)
                     if res is None:
