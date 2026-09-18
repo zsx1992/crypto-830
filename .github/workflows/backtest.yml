@@ -32,7 +32,7 @@ on:
       jsonfile:
         description: '结果文件名'
         required: false
-        default: 'result_full_v3.json'
+        default: 'result_full_v4.json'
         type: string
 
 concurrency:
@@ -76,7 +76,7 @@ jobs:
             --symbols "${{ github.event.inputs.symbols || '60' }}" \
             --history-per "${{ github.event.inputs.histper || '15m=6000,1d=1200' }}" \
             --history 2400 --step 40 --hold 100 --min-n 5 \
-            --json "backtest/${{ github.event.inputs.jsonfile || 'result_full_v3.json' }}"
+            --json "backtest/${{ github.event.inputs.jsonfile || 'result_full_v4.json' }}"
         continue-on-error: true
 
       - name: Commit result
