@@ -65,6 +65,35 @@ def load_csv(path):
 R_TARGETS = [0.5, 0.75, 1.0, 1.25, 1.5, 2.0]
 
 
+def prominence(p):
+    """
+    形态显著性：头肩 = 头相对两肩均值的高出幅度；双顶/底 = 中间谷/峰深度。
+    其余形态返回 None。
+
+    动机：全池诊断发现头肩 prominence 中位 6.8%，而双顶/底 depth 中位 11.3%
+    —— 头肩的"形态显著性"只有双顶的一半，可能是它回测最差的原因。
+    """
+    pv = sorted(p.pivots or [], key=lambda v: v.index)
+    if len(pv) < 3:
+        return None
+    t = p.pattern_type
+    if t.startswith("head_shoulders") and len(pv) >= 5:
+        mid = sorted(v.price for v in pv)[len(pv) // 2]
+        tops = [v for v in pv if v.price >= mid]
+        if len(tops) != 3:
+            return None
+        head = max(tops, key=lambda v: v.price) if t.endswith("top") \
+            else min(tops, key=lambda v: v.price)
+        sh = [v for v in tops if v is not head]
+        m = (sh[0].price + sh[1].price) / 2.0
+        return abs(head.price - m) / abs(m) if m else None
+    if t.startswith("double") and len(pv) >= 3:
+        a, b, c = pv[0], pv[1], pv[2]
+        m = (a.price + c.price) / 2.0
+        return abs(m - b.price) / abs(m) if m else None
+    return None
+
+
 def judge(p, future):
     """判定一段形态的后续结果：'tp' 达标 / 'sl' 止损 / 'none' 超时"""
     r = judge_multi(p, future)
@@ -197,6 +226,8 @@ def main():
                         "res": res, "rr": round(rmult, 2),
                         "multi": {str(k): v for k, v in multi.items()
                                   if v is not None},
+                        "prom": (round(prominence(p), 4)
+                                 if prominence(p) is not None else None),
                         "strength": getattr(p, "score", None),
                     })
         print("  %-4s 回测 %d 个标的 (窗口%d 持有%d 步长%d)"
