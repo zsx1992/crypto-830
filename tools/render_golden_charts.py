@@ -28,6 +28,7 @@ import json
 import time
 import argparse
 import datetime
+import traceback
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(_ROOT, "src"))
@@ -83,6 +84,7 @@ def main():
     ap.add_argument("--state", default="state/state.json")
     ap.add_argument("--out", default="charts_golden")
     ap.add_argument("--limit", type=int, default=0, help="只渲染前 N 条(0=全部)")
+    ap.add_argument("--offset", type=int, default=0, help="从第 N 条开始")
     ap.add_argument("--cache-dir", default="", help="离线模式: 从该目录读缓存")
     ap.add_argument("--no-end-time", action="store_true",
                     help="离线冒烟: 忽略 endMs, 直接取最新窗口")
@@ -99,13 +101,34 @@ def main():
     eng = PatternEngine(cfg)
 
     recs = json.load(open(args.state, encoding="utf-8")).get("pushedSignals", [])
+    if args.offset:
+        recs = recs[args.offset:]
     if args.limit:
         recs = recs[:args.limit]
-    print("待渲染推送记录: %d 条" % len(recs))
+    print("待渲染推送记录: %d 条 (offset=%d limit=%d)"
+          % (len(recs), args.offset, args.limit), flush=True)
 
     os.makedirs(args.out, exist_ok=True)
     items = []
     cache = {}       # (symbol, interval) -> List[Kline]
+
+    def write_manifest(final=True):
+        """增量写盘：脚本中途崩掉也能保留已完成部分 + 崩溃原因。"""
+        m = {
+            "generated_at": datetime.datetime.now(
+                datetime.timezone.utc).isoformat(),
+            "source_state": args.state,
+            "final": final,
+            "total": len(items),
+            "ok": sum(1 for x in items if x["status"] == "ok"),
+            "items": items,
+        }
+        try:
+            json.dump(m, open(os.path.join(args.out, "manifest.json"),
+                              "w", encoding="utf-8"),
+                      ensure_ascii=False, indent=1)
+        except Exception as e:
+            print("  manifest 写盘失败:", str(e)[:80])
 
     for i, r in enumerate(recs, 1):
         sym, iv = r.get("symbol"), r.get("interval")
@@ -113,104 +136,126 @@ def main():
         end_ms = r.get("endMs")
         bp = r.get("breakoutPrice")
         key = (sym, iv)
-
-        if key not in cache:
-            limit = int(kline_counts.get(iv, 240))
-            if args.cache_dir:
-                ks = load_cache_klines(args.cache_dir, sym, iv, limit)
-            else:
-                end_at = None
-                if end_ms and not args.no_end_time:
-                    end_at = end_ms + LOOKAHEAD_BARS * BAR_MS.get(iv, 3_600_000)
-                try:
-                    ks = client.get_klines(sym, iv, limit, end_time_ms=end_at)
-                except Exception as e:
-                    print("  取数失败 %s %s: %s" % (sym, iv, str(e)[:60]))
-                    ks = []
-            cache[key] = ks or []
-            time.sleep(0.12)
-
-        ks = cache[key]
         item = {
             "id": "%04d" % i, "symbol": sym, "interval": iv,
             "patternType": ptype, "direction": r.get("direction"),
             "strength": r.get("strength"), "pushedAt": r.get("pushedAt"),
-            "breakoutPrice": bp, "status": "no_data", "image": None,
+            "breakoutPrice": bp, "status": "crash", "image": None,
         }
-        if len(ks) < 60:
-            items.append(item)
-            print("  [%04d] %-14s %-4s 数据不足(%d根)" % (i, sym, iv, len(ks)))
-            continue
-
         try:
-            pats = eng.scan_multiscale(ks, symbol=sym, interval=iv)
-        except Exception as e:
+            if key not in cache:
+                limit = int(kline_counts.get(iv, 240))
+                if args.cache_dir:
+                    ks = load_cache_klines(args.cache_dir, sym, iv, limit)
+                else:
+                    end_at = None
+                    if end_ms and not args.no_end_time:
+                        end_at = (end_ms +
+                                  LOOKAHEAD_BARS * BAR_MS.get(iv, 3_600_000))
+                    try:
+                        ks = client.get_klines(sym, iv, limit,
+                                               end_time_ms=end_at)
+                    except Exception as e:
+                        print("  取数失败 %s %s: %s" % (sym, iv, str(e)[:60]))
+                        ks = []
+                cache[key] = ks or []
+                time.sleep(0.12)
+
+            ks = cache[key]
+            item["status"] = "no_data"
+            if len(ks) < 60:
+                items.append(item)
+                print("  [%04d] %-14s %-4s 数据不足(%d根)"
+                      % (i, sym, iv, len(ks)))
+                if i % 5 == 0:
+                    write_manifest(final=False)
+                continue
+
+            try:
+                pats = eng.scan_multiscale(ks, symbol=sym, interval=iv)
+            except Exception as e:
+                item["status"] = "detect_fail"
+                item["error"] = "%s: %s" % (type(e).__name__, str(e)[:200])
+                items.append(item)
+                print("  [%04d] %-14s %-4s 检测异常 %s"
+                      % (i, sym, iv, str(e)[:50]))
+                if i % 5 == 0:
+                    write_manifest(final=False)
+                continue
+
+            cands = [p for p in pats
+                     if p.pattern_type == ptype
+                     and str(p.direction).replace("Direction.", "") ==
+                     str(r.get("direction"))]
+            pool = cands or [p for p in pats if p.pattern_type == ptype]
+
+            best, best_err = None, None
+            for p in pool:
+                if bp and getattr(p, "breakout_price", None):
+                    err = abs(p.breakout_price - bp) / bp
+                elif end_ms and p.pivots:
+                    err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0
+                else:
+                    err = 9.9
+                if best_err is None or err < best_err:
+                    best, best_err = p, err
+
+            if best is None or (best_err is not None and best_err > 0.05):
+                item["status"] = "no_match"
+                item["match_err"] = round(best_err, 4) if best_err else None
+                items.append(item)
+                print("  [%04d] %-14s %-4s %-18s 未匹配(err=%s)"
+                      % (i, sym, iv, ptype, best_err))
+                if i % 5 == 0:
+                    write_manifest(final=False)
+                continue
+
+            try:
+                png = render_pattern_chart(ks, best,
+                                           candles=chart_candles or 120)
+            except Exception as e:
+                item["status"] = "render_fail"
+                item["error"] = "%s: %s" % (type(e).__name__, str(e)[:200])
+                items.append(item)
+                print("  [%04d] %-14s %-4s 渲染异常 %s"
+                      % (i, sym, iv, str(e)[:50]))
+                if i % 5 == 0:
+                    write_manifest(final=False)
+                continue
+
+            if not png:
+                item["status"] = "render_empty"
+                items.append(item)
+                if i % 5 == 0:
+                    write_manifest(final=False)
+                continue
+
+            fn = "%s_%s_%s_%s.png" % (item["id"], sym, iv, ptype)
+            path = os.path.join(args.out, fn)
+            with open(path, "wb") as f:
+                f.write(png)
+            item["image"] = path.replace("\\", "/")
+            item["status"] = "ok"
+            item["match_err"] = round(best_err, 5)
             items.append(item)
-            print("  [%04d] %-14s %-4s 检测异常 %s" % (i, sym, iv, str(e)[:50]))
-            continue
-
-        cands = [p for p in pats
-                 if p.pattern_type == ptype
-                 and str(p.direction).replace("Direction.", "") ==
-                 str(r.get("direction"))]
-        pool = cands or [p for p in pats if p.pattern_type == ptype]
-
-        best, best_err = None, None
-        for p in pool:
-            if bp and getattr(p, "breakout_price", None):
-                err = abs(p.breakout_price - bp) / bp
-            elif end_ms and p.pivots:
-                err = abs(p.pivots[-1].time - end_ms) / 86_400_000.0
-            else:
-                err = 9.9
-            if best_err is None or err < best_err:
-                best, best_err = p, err
-
-        if best is None or (best_err is not None and best_err > 0.05):
-            item["status"] = "no_match"
-            item["match_err"] = round(best_err, 4) if best_err else None
-            items.append(item)
-            print("  [%04d] %-14s %-4s %-18s 未匹配(err=%s)"
+            print("  [%04d] %-14s %-4s %-18s OK err=%.4f"
                   % (i, sym, iv, ptype, best_err))
-            continue
+            if i % 5 == 0:
+                write_manifest(final=False)
 
-        try:
-            png = render_pattern_chart(ks, best,
-                                       candles=chart_candles or 120)
         except Exception as e:
-            item["status"] = "render_fail"
+            # 兜底：任何未预料异常都记下来，而不是让整个脚本静默死掉
+            item["status"] = "crash"
+            item["error"] = traceback.format_exc()[-800:]
             items.append(item)
-            print("  [%04d] %-14s %-4s 渲染异常 %s" % (i, sym, iv, str(e)[:50]))
-            continue
+            print("  [%04d] %-14s %-4s 未捕获异常 %s: %s"
+                  % (i, sym, iv, type(e).__name__, str(e)[:120]))
+            write_manifest(final=False)
 
-        if not png:
-            item["status"] = "render_empty"
-            items.append(item)
-            continue
-
-        fn = "%s_%s_%s_%s.png" % (item["id"], sym, iv, ptype)
-        path = os.path.join(args.out, fn)
-        with open(path, "wb") as f:
-            f.write(png)
-        item["image"] = path.replace("\\", "/")
-        item["status"] = "ok"
-        item["match_err"] = round(best_err, 5)
-        items.append(item)
-        print("  [%04d] %-14s %-4s %-18s OK err=%.4f"
-              % (i, sym, iv, ptype, best_err))
-
-    manifest = {
-        "generated_at": datetime.datetime.now(
-            datetime.timezone.utc).isoformat(),
-        "source_state": args.state,
-        "total": len(items),
-        "ok": sum(1 for x in items if x["status"] == "ok"),
-        "items": items,
-    }
+    write_manifest(final=True)
     mp = os.path.join(args.out, "manifest.json")
-    json.dump(manifest, open(mp, "w", encoding="utf-8"),
-              ensure_ascii=False, indent=1)
-    print("\n成功 %d / %d  -> %s" % (manifest["ok"], len(items), mp))
+    m = json.load(open(mp, encoding="utf-8"))
+    print("\n成功 %d / %d  -> %s" % (m["ok"], len(items), mp))
 
 
 if __name__ == "__main__":
