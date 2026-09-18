@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-18T06:48:17.195050+00:00",
+  "lastScanAt": "2026-09-18T07:19:58.644090+00:00",
   "pushedSignals": [
     {
       "symbol": "MERLUSDT",
@@ -1041,19 +1041,19 @@
   "scanStats": {
     "scanned_pairs": 702,
     "failed_pairs": 12,
-    "candidates": 215,
+    "candidates": 214,
     "confirmed": 32,
     "after_scoring": 19,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 396.7,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 511.8,
     "source_stats": {
       "okx": 702
     },
     "health_stats": {
-      "healthy": 666,
-      "sensitive": 35,
+      "healthy": 667,
+      "sensitive": 34,
       "over_smoothed": 1
     }
   },
