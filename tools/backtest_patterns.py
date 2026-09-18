@@ -251,6 +251,9 @@ def main():
                         "symbol": s, "interval": iv, "type": p.pattern_type,
                         "dir": str(p.direction).replace("Direction.", ""),
                         "res": res, "rr": round(rmult, 2),
+                        # 形态末端时间戳(ms)：用于审计样本是否挤在同一段行情
+                        # （同 regime 样本相关, 不算独立试验）
+                        "end_ts": ks[st + W - 1].openTime,
                         "multi": {str(k): v for k, v in multi.items()
                                   if v is not None},
                         "prom": (round(prominence(p), 4)
