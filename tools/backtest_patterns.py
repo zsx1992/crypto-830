@@ -60,31 +60,55 @@ def load_csv(path):
     return rows
 
 
+# 首轮回测发现"均R 越高、胜率越低"，说明问题可能不在形态识别，而在 TP1 设太远。
+# 所以一次扫描同时评估多个目标距离，直接看出最优档位。
+R_TARGETS = [0.5, 0.75, 1.0, 1.25, 1.5, 2.0]
+
+
 def judge(p, future):
     """判定一段形态的后续结果：'tp' 达标 / 'sl' 止损 / 'none' 超时"""
+    r = judge_multi(p, future)
+    return (r[100], r[100])
+
+
+def judge_multi(p, future):
+    """
+    同时评估多个目标距离（单位 R = 风险倍数）。
+    返回 {R: 'tp'|'sl'|'none'}；key=100 表示用形态自带的 tp1。
+    """
     entry = getattr(p, "entry_price", 0) or 0
     sl = getattr(p, "stop_loss", 0) or 0
-    tp = getattr(p, "take_profit_1", 0) or 0
-    if not (entry > 0 and sl > 0 and tp > 0):
-        return None
+    if not (entry > 0 and sl > 0):
+        return {R: None for R in R_TARGETS + [100]}
     long = str(p.direction).replace("Direction.", "") == "LONG"
     risk = abs(entry - sl)
     if risk <= 0:
-        return None
+        return {R: None for R in R_TARGETS + [100]}
+
+    tp1 = getattr(p, "take_profit_1", 0) or 0
+    own_r = abs(tp1 - entry) / risk if tp1 > 0 else None
+
+    out = {R: "none" for R in R_TARGETS}
+    out[100] = "none"
+
     for k in future:
-        if long:
-            hit_sl = k.low <= sl
-            hit_tp = k.high >= tp
-        else:
-            hit_sl = k.high >= sl
-            hit_tp = k.low <= tp
-        if hit_sl and hit_tp:
-            return ("sl", -1.0)      # 同根双触，保守判负
+        adv = (entry - k.low) / risk if long else (k.high - entry) / risk
+        fav = (k.high - entry) / risk if long else (entry - k.low) / risk
+        hit_sl = adv >= 1.0
+        for R in R_TARGETS:
+            if out[R] == "none" and fav >= R:
+                out[R] = "sl" if hit_sl else "tp"
+        if own_r is not None and out[100] == "none" and fav >= own_r:
+            out[100] = "sl" if hit_sl else "tp"
         if hit_sl:
-            return ("sl", -1.0)
-        if hit_tp:
-            return ("tp", abs(tp - entry) / risk)
-    return ("none", 0.0)
+            # 已止损：所有尚未达标的目标都判负
+            for R in R_TARGETS:
+                if out[R] == "none":
+                    out[R] = "sl"
+            if out[100] == "none":
+                out[100] = "sl"
+            break
+    return out
 
 
 def main():
@@ -151,10 +175,15 @@ def main():
                     if str(p.status).replace("PatternStatus.", "") \
                             != "CONFIRMED":
                         continue
-                    r = judge(p, fut)
-                    if not r:
+                    multi = judge_multi(p, fut)
+                    res = multi.get(100)
+                    if res is None:
                         continue
-                    res, rmult = r
+                    tp1 = getattr(p, "take_profit_1", 0) or 0
+                    ent = getattr(p, "entry_price", 0) or 0
+                    slp = getattr(p, "stop_loss", 0) or 0
+                    rmult = (abs(tp1 - ent) / abs(ent - slp)
+                             if (tp1 > 0 and abs(ent - slp) > 0) else 0)
                     cat = ("channel" if "channel" in p.pattern_type
                            else "classic")
                     for key in ((iv, p.pattern_type), (iv, cat),
@@ -166,6 +195,8 @@ def main():
                         "symbol": s, "interval": iv, "type": p.pattern_type,
                         "dir": str(p.direction).replace("Direction.", ""),
                         "res": res, "rr": round(rmult, 2),
+                        "multi": {str(k): v for k, v in multi.items()
+                                  if v is not None},
                         "strength": getattr(p, "score", None),
                     })
         print("  %-4s 回测 %d 个标的 (窗口%d 持有%d 步长%d)"
@@ -185,6 +216,37 @@ def main():
               % (iv, name, n,
                  100.0 * c["tp"] / n, 100.0 * c["sl"] / n,
                  100.0 * c["none"] / n, avg))
+
+    # ---- 目标距离扫描：同一批样本，TP1 设在不同 R 档位的表现 ----
+    print("\n=== 目标距离扫描（TP1 设在 N×R 处的表现）===")
+    print("  期望 = 胜率×R − 止损率×1；越大越好")
+    print("  %-22s %5s  %s" % ("分组", "样本",
+                               "  ".join("%5.2fR" % R for R in R_TARGETS)))
+    groups = defaultdict(list)
+    for x in detail:
+        m = x.get("multi", {})
+        if not m:
+            continue
+        groups[("ALL", "全部")].append(x)
+        groups[("ALL", x["type"])].append(x)
+        groups[(x["interval"], "全部")].append(x)
+        cat = "channel" if "channel" in x["type"] else "classic"
+        groups[("ALL", cat)].append(x)
+    for (iv, name) in sorted(groups, key=lambda k: (k[0] != "ALL", k[0], k[1])):
+        v = groups[(iv, name)]
+        if len(v) < args.min_n or name == "全部":
+            continue
+        cells = []
+        for R in R_TARGETS:
+            rs = [x["multi"].get(str(R)) for x in v]
+            rs = [r for r in rs if r]
+            if not rs:
+                cells.append("    -")
+                continue
+            n = len(rs)
+            w = sum(1 for r in rs if r == "tp") / n
+            cells.append("%+5.2f" % (w * R - (1 - w)))
+        print("  %-22s %5d  %s" % (name, len(v), "  ".join(cells)))
 
     os.makedirs(os.path.dirname(args.json), exist_ok=True)
     json.dump({"detail": detail}, open(args.json, "w", encoding="utf-8"),
