@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-19T01:12:02.296680+00:00",
+  "lastScanAt": "2026-09-19T01:30:47.206531+00:00",
   "pushedSignals": [
-    {
-      "symbol": "ZECUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 66,
-      "detectedAt": "2026-09-12T01:12:32.705248+00:00",
-      "pushedAt": "2026-09-12T01:12:32.705248+00:00",
-      "cooldownUntil": "2026-09-12T01:42:32.705248+00:00",
-      "signalHash": "b4010ab5cfcdd1bc",
-      "endMs": 1789124400000,
-      "breakoutIndex": 548,
-      "breakoutPrice": 1120.86,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "JUPUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 61,
-      "detectedAt": "2026-09-12T01:12:39.347707+00:00",
-      "pushedAt": "2026-09-12T01:12:39.347707+00:00",
-      "cooldownUntil": "2026-09-12T03:12:39.347707+00:00",
-      "signalHash": "a4cd5f5c85b8fe1b",
-      "endMs": 1788523200000,
-      "breakoutIndex": 260,
-      "breakoutPrice": 0.2407,
-      "reconfirmAt": null
-    },
     {
       "symbol": "AMDUSDT",
       "patternType": "descending_channel",
@@ -1087,18 +1057,18 @@
     "scanned_pairs": 786,
     "failed_pairs": 10,
     "candidates": 225,
-    "confirmed": 38,
-    "after_scoring": 17,
+    "confirmed": 37,
+    "after_scoring": 16,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 631.4,
+    "duration_seconds": 625.8,
     "source_stats": {
       "okx": 786
     },
     "health_stats": {
-      "healthy": 743,
-      "sensitive": 42,
+      "healthy": 739,
+      "sensitive": 46,
       "over_smoothed": 1
     }
   },
