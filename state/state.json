@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-19T11:26:14.409751+00:00",
+  "lastScanAt": "2026-09-19T13:39:37.494846+00:00",
   "pushedSignals": [
     {
       "symbol": "WDCUSDT",
@@ -1021,24 +1021,39 @@
       "breakoutIndex": 78,
       "breakoutPrice": 166.42,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "OKBUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 85,
+      "detectedAt": "2026-09-19T13:39:37.494551+00:00",
+      "pushedAt": "2026-09-19T13:39:37.494551+00:00",
+      "cooldownUntil": "2026-09-19T21:39:37.494551+00:00",
+      "signalHash": "6ca93e5ced44f391",
+      "endMs": 1789099200000,
+      "breakoutIndex": 298,
+      "breakoutPrice": 122.97,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 751,
+    "scanned_pairs": 731,
     "failed_pairs": 9,
-    "candidates": 213,
-    "confirmed": 33,
+    "candidates": 202,
+    "confirmed": 34,
     "after_scoring": 15,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 589.0,
+    "duration_seconds": 592.9,
     "source_stats": {
-      "okx": 751
+      "okx": 731
     },
     "health_stats": {
-      "healthy": 704,
-      "sensitive": 46,
+      "healthy": 689,
+      "sensitive": 41,
       "over_smoothed": 1
     }
   },
