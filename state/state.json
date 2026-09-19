@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-19T20:59:51.726544+00:00",
+  "lastScanAt": "2026-09-19T21:54:58.344882+00:00",
   "pushedSignals": [
     {
       "symbol": "ARXUSDT",
@@ -1039,20 +1039,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 643,
+    "scanned_pairs": 645,
     "failed_pairs": 11,
-    "candidates": 164,
+    "candidates": 161,
     "confirmed": 30,
-    "after_scoring": 15,
+    "after_scoring": 14,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 449.4,
+    "observed": 1,
+    "duration_seconds": 483.8,
     "source_stats": {
-      "okx": 643
+      "okx": 645
     },
     "health_stats": {
-      "healthy": 605,
+      "healthy": 607,
       "sensitive": 38
     }
   },
@@ -1460,6 +1460,21 @@
       "endMs": 1789790400000,
       "breakoutIndex": 596,
       "breakoutPrice": 0.5223,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "PNUTUSDT",
+      "patternType": "double_bottom",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 77,
+      "detectedAt": "2026-09-19T21:54:58.344694+00:00",
+      "pushedAt": "2026-09-19T21:54:58.344694+00:00",
+      "cooldownUntil": "2026-09-20T21:54:58.344694+00:00",
+      "signalHash": "dde0db9ad7a38603",
+      "endMs": 1785340800000,
+      "breakoutIndex": 208,
+      "breakoutPrice": 0.05243,
       "reconfirmAt": null
     }
   ]
