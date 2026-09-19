@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-19T05:49:10.726189+00:00",
+  "lastScanAt": "2026-09-19T06:18:24.162410+00:00",
   "pushedSignals": [
-    {
-      "symbol": "TRXUSDT",
-      "patternType": "ascending_channel",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 71,
-      "detectedAt": "2026-09-12T06:10:25.759588+00:00",
-      "pushedAt": "2026-09-12T06:10:25.759588+00:00",
-      "cooldownUntil": "2026-09-12T08:10:25.759588+00:00",
-      "signalHash": "ed6976005aa2a866",
-      "endMs": 1789128000000,
-      "breakoutIndex": 398,
-      "breakoutPrice": 0.34359,
-      "reconfirmAt": null
-    },
     {
       "symbol": "ATOMUSDT",
       "patternType": "descending_channel",
@@ -1057,18 +1042,18 @@
     "scanned_pairs": 780,
     "failed_pairs": 10,
     "candidates": 224,
-    "confirmed": 36,
-    "after_scoring": 16,
+    "confirmed": 34,
+    "after_scoring": 15,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 606.0,
+    "duration_seconds": 607.0,
     "source_stats": {
       "okx": 780
     },
     "health_stats": {
-      "healthy": 735,
-      "sensitive": 44,
+      "healthy": 736,
+      "sensitive": 43,
       "over_smoothed": 1
     }
   },
