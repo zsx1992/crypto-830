@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-19T18:14:00.998442+00:00",
+  "lastScanAt": "2026-09-19T19:45:15.667877+00:00",
   "pushedSignals": [
-    {
-      "symbol": "NEARUSDT",
-      "patternType": "descending_channel",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 68,
-      "detectedAt": "2026-09-12T19:06:28.889043+00:00",
-      "pushedAt": "2026-09-12T19:06:28.889043+00:00",
-      "cooldownUntil": "2026-09-12T19:36:28.889043+00:00",
-      "signalHash": "b9b03a998a4891bd",
-      "endMs": 1788874200000,
-      "breakoutIndex": 198,
-      "breakoutPrice": 2.357,
-      "reconfirmAt": null
-    },
     {
       "symbol": "ARXUSDT",
       "patternType": "head_shoulders_bottom",
@@ -1054,54 +1039,24 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 672,
-    "failed_pairs": 10,
-    "candidates": 168,
-    "confirmed": 30,
-    "after_scoring": 16,
+    "scanned_pairs": 661,
+    "failed_pairs": 11,
+    "candidates": 162,
+    "confirmed": 29,
+    "after_scoring": 15,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 353.2,
+    "duration_seconds": 532.8,
     "source_stats": {
-      "okx": 672
+      "okx": 661
     },
     "health_stats": {
-      "healthy": 631,
-      "sensitive": 41
+      "healthy": 622,
+      "sensitive": 39
     }
   },
   "observedSignals": [
-    {
-      "symbol": "MINAUSDT",
-      "patternType": "double_bottom",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 76,
-      "detectedAt": "2026-09-12T19:06:33.510207+00:00",
-      "pushedAt": "2026-09-12T19:06:33.510207+00:00",
-      "cooldownUntil": "2026-09-12T19:36:33.510207+00:00",
-      "signalHash": "5b5b362216e23fdb",
-      "endMs": 1789043400000,
-      "breakoutIndex": 483,
-      "breakoutPrice": 0.10465,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "PNUTUSDT",
-      "patternType": "double_bottom",
-      "interval": "1d",
-      "direction": "LONG",
-      "strength": 81,
-      "detectedAt": "2026-09-12T19:35:13.016928+00:00",
-      "pushedAt": "2026-09-12T19:35:13.016928+00:00",
-      "cooldownUntil": "2026-09-13T19:35:13.016928+00:00",
-      "signalHash": "dde0db9ad7a38603",
-      "endMs": 1785340800000,
-      "breakoutIndex": 215,
-      "breakoutPrice": 0.05243,
-      "reconfirmAt": null
-    },
     {
       "symbol": "ETHUSDT",
       "patternType": "symmetrical_triangle",
