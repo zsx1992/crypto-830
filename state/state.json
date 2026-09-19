@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-19T14:42:57.986871+00:00",
+  "lastScanAt": "2026-09-19T16:56:56.789128+00:00",
   "pushedSignals": [
-    {
-      "symbol": "PNUTUSDT",
-      "patternType": "double_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 75,
-      "detectedAt": "2026-09-12T16:56:11.343654+00:00",
-      "pushedAt": "2026-09-12T16:56:11.343654+00:00",
-      "cooldownUntil": "2026-09-13T00:56:11.343654+00:00",
-      "signalHash": "66dc8c5c36d21cb8",
-      "endMs": 1786147200000,
-      "breakoutIndex": 95,
-      "breakoutPrice": 0.04345,
-      "reconfirmAt": null
-    },
     {
       "symbol": "NEARUSDT",
       "patternType": "descending_channel",
@@ -1021,24 +1006,54 @@
       "breakoutIndex": 298,
       "breakoutPrice": 122.97,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "CROUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 88,
+      "detectedAt": "2026-09-19T16:56:52.329100+00:00",
+      "pushedAt": "2026-09-19T16:56:52.329100+00:00",
+      "cooldownUntil": "2026-09-20T00:56:52.329100+00:00",
+      "signalHash": "2370b1b9b58a9a7c",
+      "endMs": 1787011200000,
+      "breakoutIndex": 117,
+      "breakoutPrice": 0.05428,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "PNUTUSDT",
+      "patternType": "double_bottom",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 81,
+      "detectedAt": "2026-09-19T16:56:56.788859+00:00",
+      "pushedAt": "2026-09-19T16:56:56.788859+00:00",
+      "cooldownUntil": "2026-09-20T16:56:56.788859+00:00",
+      "signalHash": "dde0db9ad7a38603",
+      "endMs": 1785340800000,
+      "breakoutIndex": 208,
+      "breakoutPrice": 0.05243,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 695,
+    "scanned_pairs": 683,
     "failed_pairs": 9,
-    "candidates": 182,
+    "candidates": 176,
     "confirmed": 32,
-    "after_scoring": 15,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_scoring": 16,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 488.7,
+    "duration_seconds": 479.3,
     "source_stats": {
-      "okx": 695
+      "okx": 683
     },
     "health_stats": {
-      "healthy": 653,
-      "sensitive": 41,
+      "healthy": 643,
+      "sensitive": 39,
       "over_smoothed": 1
     }
   },
