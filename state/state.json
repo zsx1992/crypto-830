@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-19T09:52:41.999568+00:00",
+  "lastScanAt": "2026-09-19T10:41:38.490181+00:00",
   "pushedSignals": [
-    {
-      "symbol": "MUBARAKUSDT",
-      "patternType": "double_bottom",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 62,
-      "detectedAt": "2026-09-12T10:27:29.870563+00:00",
-      "pushedAt": "2026-09-12T10:27:29.870563+00:00",
-      "cooldownUntil": "2026-09-12T10:57:29.870563+00:00",
-      "signalHash": "0bf439725afb1e92",
-      "endMs": 1789057800000,
-      "breakoutIndex": 441,
-      "breakoutPrice": 0.028317,
-      "reconfirmAt": null
-    },
     {
       "symbol": "WDCUSDT",
       "patternType": "head_shoulders_top",
@@ -1039,21 +1024,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 765,
+    "scanned_pairs": 761,
     "failed_pairs": 9,
-    "candidates": 215,
-    "confirmed": 33,
+    "candidates": 217,
+    "confirmed": 34,
     "after_scoring": 15,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 1,
-    "duration_seconds": 532.7,
+    "duration_seconds": 560.8,
     "source_stats": {
-      "okx": 765
+      "okx": 761
     },
     "health_stats": {
-      "healthy": 718,
-      "sensitive": 46,
+      "healthy": 713,
+      "sensitive": 47,
       "over_smoothed": 1
     }
   },
@@ -1491,6 +1476,21 @@
       "endMs": 1788739200000,
       "breakoutIndex": 226,
       "breakoutPrice": 130.21,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "CNPYUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 81,
+      "detectedAt": "2026-09-19T10:41:38.490016+00:00",
+      "pushedAt": "2026-09-19T10:41:38.490016+00:00",
+      "cooldownUntil": "2026-09-19T11:11:38.490016+00:00",
+      "signalHash": "a3a29bc3ba7576f2",
+      "endMs": 1789790400000,
+      "breakoutIndex": 596,
+      "breakoutPrice": 0.5223,
       "reconfirmAt": null
     }
   ]
