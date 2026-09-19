@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-19T01:30:47.206531+00:00",
+  "lastScanAt": "2026-09-19T05:17:30.594343+00:00",
   "pushedSignals": [
     {
       "symbol": "AMDUSDT",
@@ -1051,24 +1051,54 @@
       "breakoutIndex": 298,
       "breakoutPrice": 0.7308,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "DGAIUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 82,
+      "detectedAt": "2026-09-19T05:17:21.158547+00:00",
+      "pushedAt": "2026-09-19T05:17:21.158547+00:00",
+      "cooldownUntil": "2026-09-19T13:17:21.158547+00:00",
+      "signalHash": "ace9dd3d62fd48c4",
+      "endMs": 1789545600000,
+      "breakoutIndex": 81,
+      "breakoutPrice": 0.9054,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "RECALLUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 66,
+      "detectedAt": "2026-09-19T05:17:26.013939+00:00",
+      "pushedAt": "2026-09-19T05:17:26.013939+00:00",
+      "cooldownUntil": "2026-09-19T13:17:26.013939+00:00",
+      "signalHash": "83d127c00e0f8529",
+      "endMs": 1789128000000,
+      "breakoutIndex": 297,
+      "breakoutPrice": 0.04427,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 786,
+    "scanned_pairs": 780,
     "failed_pairs": 10,
     "candidates": 225,
     "confirmed": 37,
     "after_scoring": 16,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 625.8,
+    "after_dedup": 2,
+    "pushed": 2,
+    "observed": 1,
+    "duration_seconds": 628.1,
     "source_stats": {
-      "okx": 786
+      "okx": 780
     },
     "health_stats": {
-      "healthy": 739,
-      "sensitive": 46,
+      "healthy": 735,
+      "sensitive": 44,
       "over_smoothed": 1
     }
   },
@@ -1491,6 +1521,21 @@
       "endMs": 1787155200000,
       "breakoutIndex": 136,
       "breakoutPrice": 0.26151,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "RECALLUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 83,
+      "detectedAt": "2026-09-19T05:17:30.594165+00:00",
+      "pushedAt": "2026-09-19T05:17:30.594165+00:00",
+      "cooldownUntil": "2026-09-19T13:17:30.594165+00:00",
+      "signalHash": "ee848844f2b298ed",
+      "endMs": 1788048000000,
+      "breakoutIndex": 202,
+      "breakoutPrice": 0.03978,
       "reconfirmAt": null
     }
   ]
