@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-19T05:17:30.594343+00:00",
+  "lastScanAt": "2026-09-19T05:49:10.726189+00:00",
   "pushedSignals": [
-    {
-      "symbol": "AMDUSDT",
-      "patternType": "descending_channel",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 64,
-      "detectedAt": "2026-09-12T05:44:23.958052+00:00",
-      "pushedAt": "2026-09-12T05:44:23.958052+00:00",
-      "cooldownUntil": "2026-09-12T07:44:23.958052+00:00",
-      "signalHash": "55fb7c8885ca4e76",
-      "endMs": 1788440400000,
-      "breakoutIndex": 194,
-      "breakoutPrice": 459.31,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "LDOUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 61,
-      "detectedAt": "2026-09-12T05:44:28.955751+00:00",
-      "pushedAt": "2026-09-12T05:44:28.955751+00:00",
-      "cooldownUntil": "2026-09-12T07:44:28.955751+00:00",
-      "signalHash": "4daa4ed9c7ecb736",
-      "endMs": 1788343200000,
-      "breakoutIndex": 189,
-      "breakoutPrice": 0.3809,
-      "reconfirmAt": null
-    },
     {
       "symbol": "TRXUSDT",
       "patternType": "ascending_channel",
@@ -1086,13 +1056,13 @@
   "scanStats": {
     "scanned_pairs": 780,
     "failed_pairs": 10,
-    "candidates": 225,
-    "confirmed": 37,
+    "candidates": 224,
+    "confirmed": 36,
     "after_scoring": 16,
-    "after_dedup": 2,
-    "pushed": 2,
-    "observed": 1,
-    "duration_seconds": 628.1,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 606.0,
     "source_stats": {
       "okx": 780
     },
@@ -1103,21 +1073,6 @@
     }
   },
   "observedSignals": [
-    {
-      "symbol": "WLDUSDT",
-      "patternType": "double_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 68,
-      "detectedAt": "2026-09-12T05:44:33.404979+00:00",
-      "pushedAt": "2026-09-12T05:44:33.404979+00:00",
-      "cooldownUntil": "2026-09-12T13:44:33.404979+00:00",
-      "signalHash": "296b266953156654",
-      "endMs": 1786075200000,
-      "breakoutIndex": 101,
-      "breakoutPrice": 0.3515,
-      "reconfirmAt": null
-    },
     {
       "symbol": "ZECUSDT",
       "patternType": "head_shoulders_bottom",
