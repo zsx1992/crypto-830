@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-19T00:49:50.794792+00:00",
+  "lastScanAt": "2026-09-19T01:12:02.296680+00:00",
   "pushedSignals": [
     {
       "symbol": "ZECUSDT",
@@ -1084,21 +1084,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 784,
+    "scanned_pairs": 786,
     "failed_pairs": 10,
-    "candidates": 226,
-    "confirmed": 37,
-    "after_scoring": 16,
-    "after_dedup": 1,
-    "pushed": 1,
+    "candidates": 225,
+    "confirmed": 38,
+    "after_scoring": 17,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 625.4,
+    "duration_seconds": 631.4,
     "source_stats": {
-      "okx": 784
+      "okx": 786
     },
     "health_stats": {
-      "healthy": 740,
-      "sensitive": 43,
+      "healthy": 743,
+      "sensitive": 42,
       "over_smoothed": 1
     }
   },
