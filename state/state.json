@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-19T20:23:26.238898+00:00",
+  "lastScanAt": "2026-09-19T20:59:51.726544+00:00",
   "pushedSignals": [
     {
       "symbol": "ARXUSDT",
@@ -1039,20 +1039,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 653,
+    "scanned_pairs": 643,
     "failed_pairs": 11,
-    "candidates": 165,
-    "confirmed": 31,
+    "candidates": 164,
+    "confirmed": 30,
     "after_scoring": 15,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 511.5,
+    "duration_seconds": 449.4,
     "source_stats": {
-      "okx": 653
+      "okx": 643
     },
     "health_stats": {
-      "healthy": 615,
+      "healthy": 605,
       "sensitive": 38
     }
   },
