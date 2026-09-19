@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-19T10:41:38.490181+00:00",
+  "lastScanAt": "2026-09-19T11:26:14.409751+00:00",
   "pushedSignals": [
     {
       "symbol": "WDCUSDT",
@@ -1024,40 +1024,25 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 761,
+    "scanned_pairs": 751,
     "failed_pairs": 9,
-    "candidates": 217,
-    "confirmed": 34,
+    "candidates": 213,
+    "confirmed": 33,
     "after_scoring": 15,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 1,
-    "duration_seconds": 560.8,
+    "observed": 0,
+    "duration_seconds": 589.0,
     "source_stats": {
-      "okx": 761
+      "okx": 751
     },
     "health_stats": {
-      "healthy": 713,
-      "sensitive": 47,
+      "healthy": 704,
+      "sensitive": 46,
       "over_smoothed": 1
     }
   },
   "observedSignals": [
-    {
-      "symbol": "ZECUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 73,
-      "detectedAt": "2026-09-12T11:06:45.363930+00:00",
-      "pushedAt": "2026-09-12T11:06:45.363930+00:00",
-      "cooldownUntil": "2026-09-12T11:36:45.363930+00:00",
-      "signalHash": "b4010ab5cfcdd1bc",
-      "endMs": 1789124400000,
-      "breakoutIndex": 508,
-      "breakoutPrice": 1120.86,
-      "reconfirmAt": null
-    },
     {
       "symbol": "MINAUSDT",
       "patternType": "double_bottom",
