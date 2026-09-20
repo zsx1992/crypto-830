@@ -84,13 +84,20 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main || true
           git add backtest || true
           if git diff --cached --quiet; then
             echo "无结果文件"
           else
             git commit -m "chore: backtest result $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            git push || echo "推送失败，artifact 仍有副本"
+            # 带重试的推送：rebase 最新 main 再 push，撞车时退避重试（2026-09-20 踩坑：
+            # 与渲染任务同时推送被拒，失败被 || echo 吞掉，结果只留在 artifact 里）
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin main && git push && exit 0
+              echo "push 撞车，20s 后重试($i/5)"
+              sleep 20
+            done
+            echo "推送失败，artifact 仍有副本"
+            exit 1
           fi
 
       - name: Upload artifact
