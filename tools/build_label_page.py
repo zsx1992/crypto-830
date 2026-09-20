@@ -91,7 +91,7 @@ textarea{width:100%;height:150px;font-family:ui-monospace,Consolas,monospace;fon
 </main>
 <script>
 const ITEMS = __ITEMS__;
-const KEY = 'golden_label_v1';
+const KEY = 'golden_label_v2';
 let ans = JSON.parse(localStorage.getItem(KEY) || '{}');
 let cur = 0;
 const IMGDIR = '__IMGDIR__';
@@ -118,6 +118,7 @@ function render(){
     '<span class="tag '+(it.direction==='LONG'?'g':'r')+'">'+it.direction+'</span>'+
     '<span class="tag">强度 '+it.strength+'</span>'+
     '<span class="tag">'+(it.pushedAt||'').slice(0,16).replace('T',' ')+'</span>'+
+    '<span class="tag '+(it.stream==='observed'?'r':'g')+'">'+(it.stream==='observed'?'观察流(被拦)':'推送流')+'</span>'+
     '<span class="tag">#'+it.id+'</span>';
   document.querySelectorAll('.btns button').forEach(b=>b.classList.remove('on'));
   if(ans[it.id]){

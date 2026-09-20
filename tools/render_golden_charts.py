@@ -96,7 +96,13 @@ def main():
                               encoding="utf-8"))
     kline_counts = cfg.get("data", {}).get("kline_counts", {}) or \
         cfg.get("kline_counts", {})
-    chart_candles = cfg.get("notification", {}).get("chart_candles", {}) or {}
+    # 2026-09-20: 原来读的 notification.chart_candles 在 config 里不存在，
+    # 一直兜底成 120 根 → 标注图历史太短没参考价值。
+    # 正确来源是 notification.chart.candles_displayed（与企微推送图一致：
+    # 15m=600 / 1h=400 / 4h=300 / 1d=240），保留旧键做兼容。
+    chart_candles = (cfg.get("notification", {}).get("chart_candles", {})
+                     or cfg.get("notification", {}).get("chart", {})
+                     .get("candles_displayed", {}) or {})
     # 直接用 OKX：云端 Binance 被 451 封禁，走 MarketDataClient 会每个标的
     # 先白试一次 Binance 再回退，60 个标的纯属浪费。线上 source_stats 也全是 okx。
     client = None if args.cache_dir else OkxClient(timeout=30)
