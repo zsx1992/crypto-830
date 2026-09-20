@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-20T06:40:17.878700+00:00",
+  "lastScanAt": "2026-09-20T09:29:24.723629+00:00",
   "pushedSignals": [
-    {
-      "symbol": "HYPEUSDT",
-      "patternType": "ascending_channel",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 81,
-      "detectedAt": "2026-09-13T09:21:46.376814+00:00",
-      "pushedAt": "2026-09-13T09:21:46.376814+00:00",
-      "cooldownUntil": "2026-09-13T11:21:46.376814+00:00",
-      "signalHash": "926c22204a263308",
-      "endMs": 1788750000000,
-      "breakoutIndex": 261,
-      "breakoutPrice": 85.096,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "INJUSDT",
-      "patternType": "descending_channel",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 68,
-      "detectedAt": "2026-09-13T09:21:50.435519+00:00",
-      "pushedAt": "2026-09-13T09:21:50.435519+00:00",
-      "cooldownUntil": "2026-09-13T11:21:50.435519+00:00",
-      "signalHash": "0aa261921568c263",
-      "endMs": 1788530400000,
-      "breakoutIndex": 222,
-      "breakoutPrice": 5.023,
-      "reconfirmAt": null
-    },
     {
       "symbol": "MINIMAXUSDT",
       "patternType": "ascending_channel",
@@ -991,24 +961,39 @@
       "breakoutIndex": 589,
       "breakoutPrice": 1.0755,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "CCUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 74,
+      "detectedAt": "2026-09-20T08:29:42.789474+00:00",
+      "pushedAt": "2026-09-20T08:29:42.789474+00:00",
+      "cooldownUntil": "2026-09-20T16:29:42.789474+00:00",
+      "signalHash": "f9b0d6d87107c276",
+      "endMs": 1789560000000,
+      "breakoutIndex": 278,
+      "breakoutPrice": 0.10026,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 669,
+    "scanned_pairs": 647,
     "failed_pairs": 9,
-    "candidates": 165,
-    "confirmed": 29,
-    "after_scoring": 11,
+    "candidates": 169,
+    "confirmed": 28,
+    "after_scoring": 13,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 472.6,
+    "duration_seconds": 430.6,
     "source_stats": {
-      "okx": 669
+      "okx": 647
     },
     "health_stats": {
-      "healthy": 629,
-      "sensitive": 40
+      "sensitive": 37,
+      "healthy": 610
     }
   },
   "observedSignals": [
