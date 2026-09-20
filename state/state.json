@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-20T14:44:24.029179+00:00",
+  "lastScanAt": "2026-09-20T17:02:44.031997+00:00",
   "pushedSignals": [
     {
       "symbol": "NESUSDT",
@@ -964,21 +964,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 651,
+    "scanned_pairs": 667,
     "failed_pairs": 9,
-    "candidates": 172,
-    "confirmed": 27,
+    "candidates": 173,
+    "confirmed": 26,
     "after_scoring": 14,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 476.8,
+    "duration_seconds": 536.6,
     "source_stats": {
-      "okx": 651
+      "okx": 667
     },
     "health_stats": {
-      "sensitive": 36,
-      "healthy": 615
+      "sensitive": 38,
+      "healthy": 629
     }
   },
   "observedSignals": [
