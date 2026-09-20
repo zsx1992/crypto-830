@@ -85,6 +85,8 @@ def main():
     ap.add_argument("--out", default="charts_golden")
     ap.add_argument("--limit", type=int, default=0, help="只渲染前 N 条(0=全部)")
     ap.add_argument("--offset", type=int, default=0, help="从第 N 条开始")
+    ap.add_argument("--since", default="",
+                    help="只渲染 pushedAt >= 该时间的信号 (ISO, 如 2026-09-18T09:23)")
     ap.add_argument("--cache-dir", default="", help="离线模式: 从该目录读缓存")
     ap.add_argument("--no-end-time", action="store_true",
                     help="离线冒烟: 忽略 endMs, 直接取最新窗口")
@@ -100,13 +102,21 @@ def main():
     client = None if args.cache_dir else OkxClient(timeout=30)
     eng = PatternEngine(cfg)
 
-    recs = json.load(open(args.state, encoding="utf-8")).get("pushedSignals", [])
+    st_data = json.load(open(args.state, encoding="utf-8"))
+    # 2026-09-20: 观察流(含降级信号)也渲染 — 攒"像不像"对比数据:
+    # 被降级的信号画得是否更不像? stream 字段进 manifest 供标注页分组。
+    recs = [(x, "pushed") for x in st_data.get("pushedSignals", [])]
+    recs += [(x, "observed") for x in st_data.get("observedSignals", [])]
+    if getattr(args, "since", None):
+        recs = [(x, g) for x, g in recs
+                if str(x.get("pushedAt", "")) >= args.since]
     if args.offset:
         recs = recs[args.offset:]
     if args.limit:
         recs = recs[:args.limit]
-    print("待渲染推送记录: %d 条 (offset=%d limit=%d)"
-          % (len(recs), args.offset, args.limit), flush=True)
+    print("待渲染记录: %d 条 (pushed+observed, since=%s offset=%s limit=%s)"
+          % (len(recs), getattr(args, "since", None),
+             args.offset, args.limit), flush=True)
 
     os.makedirs(args.out, exist_ok=True)
     items = []
@@ -130,7 +140,7 @@ def main():
         except Exception as e:
             print("  manifest 写盘失败:", str(e)[:80])
 
-    for i, r in enumerate(recs, 1):
+    for i, (r, stream) in enumerate(recs, 1):
         sym, iv = r.get("symbol"), r.get("interval")
         ptype = r.get("patternType")
         end_ms = r.get("endMs")
@@ -140,6 +150,7 @@ def main():
             "id": "%04d" % i, "symbol": sym, "interval": iv,
             "patternType": ptype, "direction": r.get("direction"),
             "strength": r.get("strength"), "pushedAt": r.get("pushedAt"),
+            "stream": stream,
             "breakoutPrice": bp, "status": "crash", "image": None,
         }
         try:

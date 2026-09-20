@@ -27,7 +27,12 @@ on:
       out_dir:
         description: '输出目录（会被 commit 回仓库）'
         required: false
-        default: 'charts_golden'
+        default: 'charts_golden2'
+        type: string
+      since:
+        description: '只渲染 pushedAt >= 该时间的信号 (如 2026-09-18T09:23, 留空=全部)'
+        required: false
+        default: ''
         type: string
 
 # 与扫描 job 用不同的 group：渲染是重活（约 5~10 分钟），
@@ -71,14 +76,15 @@ jobs:
         run: |
           python tools/render_golden_charts.py \
             --state state/state.json \
-            --out "${{ github.event.inputs.out_dir || 'charts_golden' }}" \
-            --limit "${{ github.event.inputs.limit || '0' }}"
+            --out "${{ github.event.inputs.out_dir || 'charts_golden2' }}" \
+            --limit "${{ github.event.inputs.limit || '0' }}" \
+            --since "${{ github.event.inputs.since || '2026-09-18T09:23' }}"
         continue-on-error: true
 
       - name: Summary
         if: always()
         run: |
-          D="${{ github.event.inputs.out_dir || 'charts_golden' }}"
+          D="${{ github.event.inputs.out_dir || 'charts_golden2' }}"
           if [ -f "$D/manifest.json" ]; then
             python -c "
           import json,sys
@@ -94,7 +100,7 @@ jobs:
       - name: Commit charts back to repo
         if: always()
         run: |
-          D="${{ github.event.inputs.out_dir || 'charts_golden' }}"
+          D="${{ github.event.inputs.out_dir || 'charts_golden2' }}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           # 扫描 job 会高频回写 state/，这里先 rebase 避免非快进
@@ -112,5 +118,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: golden-charts-${{ github.run_id }}
-          path: ${{ github.event.inputs.out_dir || 'charts_golden' }}
+          path: ${{ github.event.inputs.out_dir || 'charts_golden2' }}
           retention-days: 14
