@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-20T01:27:40.189336+00:00",
+  "lastScanAt": "2026-09-20T05:32:20.746683+00:00",
   "pushedSignals": [
-    {
-      "symbol": "ZRXUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 78,
-      "detectedAt": "2026-09-13T04:01:00.972884+00:00",
-      "pushedAt": "2026-09-13T04:01:00.972884+00:00",
-      "cooldownUntil": "2026-09-13T06:01:00.972884+00:00",
-      "signalHash": "13d152fdfd568179",
-      "endMs": 1789056000000,
-      "breakoutIndex": 396,
-      "breakoutPrice": 0.11415,
-      "reconfirmAt": null
-    },
     {
       "symbol": "UPUSDT",
       "patternType": "head_shoulders_bottom",
@@ -1021,24 +1006,39 @@
       "breakoutIndex": 508,
       "breakoutPrice": 104.73,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "DOTUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 88,
+      "detectedAt": "2026-09-20T05:32:20.746410+00:00",
+      "pushedAt": "2026-09-20T05:32:20.746410+00:00",
+      "cooldownUntil": "2026-09-20T06:02:20.746410+00:00",
+      "signalHash": "5c1caf30372935c5",
+      "endMs": 1789864200000,
+      "breakoutIndex": 589,
+      "breakoutPrice": 1.0755,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 641,
+    "scanned_pairs": 667,
     "failed_pairs": 9,
-    "candidates": 167,
+    "candidates": 162,
     "confirmed": 30,
-    "after_scoring": 14,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_scoring": 13,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 449.2,
+    "duration_seconds": 359.1,
     "source_stats": {
-      "okx": 641
+      "okx": 667
     },
     "health_stats": {
-      "healthy": 604,
-      "sensitive": 37
+      "healthy": 632,
+      "sensitive": 35
     }
   },
   "observedSignals": [
