@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-20T17:47:02.116397+00:00",
+  "lastScanAt": "2026-09-20T18:14:15.947970+00:00",
   "pushedSignals": [
     {
       "symbol": "HUSDT",
@@ -949,21 +949,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 669,
+    "scanned_pairs": 663,
     "failed_pairs": 9,
-    "candidates": 173,
-    "confirmed": 27,
+    "candidates": 171,
+    "confirmed": 28,
     "after_scoring": 15,
-    "after_dedup": 2,
-    "pushed": 2,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 379.6,
+    "duration_seconds": 530.9,
     "source_stats": {
-      "okx": 669
+      "okx": 663
     },
     "health_stats": {
-      "healthy": 633,
-      "sensitive": 36
+      "sensitive": 35,
+      "healthy": 628
     }
   },
   "observedSignals": [
