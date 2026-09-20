@@ -1,52 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-20T17:02:44.031997+00:00",
+  "lastScanAt": "2026-09-20T17:47:02.116397+00:00",
   "pushedSignals": [
-    {
-      "symbol": "NESUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 91,
-      "detectedAt": "2026-09-13T17:06:42.319391+00:00",
-      "pushedAt": "2026-09-13T17:06:42.319391+00:00",
-      "cooldownUntil": "2026-09-13T17:36:42.319391+00:00",
-      "signalHash": "e9df8d33cecd29ea",
-      "endMs": 1789299900000,
-      "breakoutIndex": 590,
-      "breakoutPrice": 0.1448,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "TRUMPUSDT",
-      "patternType": "descending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 76,
-      "detectedAt": "2026-09-13T17:06:48.399875+00:00",
-      "pushedAt": "2026-09-13T17:06:48.399875+00:00",
-      "cooldownUntil": "2026-09-13T17:36:48.399875+00:00",
-      "signalHash": "6fb8d405e60fdf7f",
-      "endMs": 1788956100000,
-      "breakoutIndex": 208,
-      "breakoutPrice": 2.178,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "KORUUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 71,
-      "detectedAt": "2026-09-13T17:13:35.605126+00:00",
-      "pushedAt": "2026-09-13T17:13:35.605126+00:00",
-      "cooldownUntil": "2026-09-13T19:13:35.605126+00:00",
-      "signalHash": "72774a7488b55bb3",
-      "endMs": 1788962400000,
-      "breakoutIndex": 322,
-      "breakoutPrice": 22.7,
-      "reconfirmAt": null
-    },
     {
       "symbol": "HUSDT",
       "patternType": "ascending_channel",
@@ -961,24 +916,54 @@
       "breakoutIndex": 162,
       "breakoutPrice": 66.52,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ARUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 63,
+      "detectedAt": "2026-09-20T17:46:58.084213+00:00",
+      "pushedAt": "2026-09-20T17:46:58.084213+00:00",
+      "cooldownUntil": "2026-09-20T18:16:58.084213+00:00",
+      "signalHash": "ad4eb1d3b90665f7",
+      "endMs": 1789918200000,
+      "breakoutIndex": 593,
+      "breakoutPrice": 4.402,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "KORUUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-09-20T17:47:02.116184+00:00",
+      "pushedAt": "2026-09-20T17:47:02.116184+00:00",
+      "cooldownUntil": "2026-09-20T19:47:02.116184+00:00",
+      "signalHash": "72774a7488b55bb3",
+      "endMs": 1788962400000,
+      "breakoutIndex": 154,
+      "breakoutPrice": 22.7,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 667,
+    "scanned_pairs": 669,
     "failed_pairs": 9,
     "candidates": 173,
-    "confirmed": 26,
-    "after_scoring": 14,
-    "after_dedup": 0,
-    "pushed": 0,
+    "confirmed": 27,
+    "after_scoring": 15,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 536.6,
+    "duration_seconds": 379.6,
     "source_stats": {
-      "okx": 667
+      "okx": 669
     },
     "health_stats": {
-      "sensitive": 38,
-      "healthy": 629
+      "healthy": 633,
+      "sensitive": 36
     }
   },
   "observedSignals": [
