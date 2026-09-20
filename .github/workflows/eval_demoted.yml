@@ -1,0 +1,70 @@
+name: Eval Demoted
+
+# 降级规则实战复盘：被降级(头肩顶/15m逆势)的信号, 之后的走势是否真的
+# 比正式推送的差? 用真实K线回答 (本机无梯子, 只能在云端拉 OKX 数据)。
+#
+# 触发：git push origin eval-<任意>  (本机无 gh / 无 PAT, 只能靠 tag)
+
+on:
+  push:
+    tags:
+      - 'eval-*'
+  workflow_dispatch:
+
+concurrency:
+  group: eval-demoted
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONUNBUFFERED: "1"
+      TZ: "UTC"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests pyyaml
+
+      - name: Run eval
+        run: |
+          mkdir -p eval
+          python tools/eval_demoted.py \
+            --state state/state.json --days 2 \
+            --out eval/demoted_report.json
+
+      - name: Commit result
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main || true
+          git add eval || true
+          if git diff --cached --quiet; then
+            echo "无结果文件"
+          else
+            git commit -m "chore: eval demoted result $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push || echo "推送失败"
+          fi
+
+      - name: Upload artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-demoted-${{ github.run_id }}
+          path: eval
+          retention-days: 14
