@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-21T06:45:09.327212+00:00",
+  "lastScanAt": "2026-09-21T09:57:14.470949+00:00",
   "pushedSignals": [
     {
       "symbol": "SKHYUSDT",
@@ -901,24 +901,39 @@
       "breakoutIndex": 281,
       "breakoutPrice": 0.10986,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ZBTUSDT",
+      "patternType": "double_bottom",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 67,
+      "detectedAt": "2026-09-21T09:57:09.461796+00:00",
+      "pushedAt": "2026-09-21T09:57:09.461796+00:00",
+      "cooldownUntil": "2026-09-22T09:57:09.461796+00:00",
+      "signalHash": "4dd5ee95b6ace55f",
+      "endMs": 1774540800000,
+      "breakoutIndex": 65,
+      "breakoutPrice": 0.09679,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 681,
+    "scanned_pairs": 725,
     "failed_pairs": 9,
-    "candidates": 168,
-    "confirmed": 24,
-    "after_scoring": 15,
+    "candidates": 182,
+    "confirmed": 29,
+    "after_scoring": 17,
     "after_dedup": 1,
     "pushed": 1,
-    "observed": 0,
-    "duration_seconds": 352.8,
+    "observed": 1,
+    "duration_seconds": 564.1,
     "source_stats": {
-      "okx": 681
+      "okx": 725
     },
     "health_stats": {
-      "sensitive": 35,
-      "healthy": 646
+      "sensitive": 41,
+      "healthy": 684
     }
   },
   "observedSignals": [
@@ -1295,6 +1310,21 @@
       "endMs": 1787068800000,
       "breakoutIndex": 103,
       "breakoutPrice": 0.07248,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "WDCUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 69,
+      "detectedAt": "2026-09-21T09:57:14.470765+00:00",
+      "pushedAt": "2026-09-21T09:57:14.470765+00:00",
+      "cooldownUntil": "2026-09-21T17:57:14.470765+00:00",
+      "signalHash": "372cc0d1b3d20b26",
+      "endMs": 1787284800000,
+      "breakoutIndex": 129,
+      "breakoutPrice": 449.5,
       "reconfirmAt": null
     }
   ]
