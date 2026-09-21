@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-21T11:13:45.971423+00:00",
+  "lastScanAt": "2026-09-21T14:34:29.308784+00:00",
   "pushedSignals": [
     {
       "symbol": "ARBUSDT",
@@ -916,42 +916,87 @@
       "breakoutIndex": 597,
       "breakoutPrice": 0.23304,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ETHUSDT",
+      "patternType": "ascending_channel",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 80,
+      "detectedAt": "2026-09-21T14:34:12.376222+00:00",
+      "pushedAt": "2026-09-21T14:34:12.376222+00:00",
+      "cooldownUntil": "2026-09-21T22:34:12.376222+00:00",
+      "signalHash": "7100cdd4be737112",
+      "endMs": 1789833600000,
+      "breakoutIndex": 298,
+      "breakoutPrice": 2723.96,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "BNBUSDT",
+      "patternType": "ascending_channel",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 71,
+      "detectedAt": "2026-09-21T14:34:16.646252+00:00",
+      "pushedAt": "2026-09-21T14:34:16.646252+00:00",
+      "cooldownUntil": "2026-09-21T22:34:16.646252+00:00",
+      "signalHash": "ee8e44efecfc0ec7",
+      "endMs": 1789819200000,
+      "breakoutIndex": 298,
+      "breakoutPrice": 790.2,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "MEMEUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 69,
+      "detectedAt": "2026-09-21T14:34:20.883597+00:00",
+      "pushedAt": "2026-09-21T14:34:20.883597+00:00",
+      "cooldownUntil": "2026-09-21T22:34:20.883597+00:00",
+      "signalHash": "09460c20938cfd75",
+      "endMs": 1789041600000,
+      "breakoutIndex": 298,
+      "breakoutPrice": 0.0005907,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "AIXBTUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 65,
+      "detectedAt": "2026-09-21T14:34:25.160345+00:00",
+      "pushedAt": "2026-09-21T14:34:25.160345+00:00",
+      "cooldownUntil": "2026-09-21T22:34:25.160345+00:00",
+      "signalHash": "990d48a2d7c736c7",
+      "endMs": 1789891200000,
+      "breakoutIndex": 298,
+      "breakoutPrice": 0.02217,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 729,
+    "scanned_pairs": 803,
     "failed_pairs": 9,
-    "candidates": 179,
-    "confirmed": 28,
-    "after_scoring": 17,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 0,
-    "duration_seconds": 365.4,
+    "candidates": 206,
+    "confirmed": 35,
+    "after_scoring": 20,
+    "after_dedup": 4,
+    "pushed": 4,
+    "observed": 1,
+    "duration_seconds": 634.7,
     "source_stats": {
-      "okx": 729
+      "okx": 803
     },
     "health_stats": {
-      "sensitive": 39,
-      "healthy": 690
+      "sensitive": 45,
+      "healthy": 758
     }
   },
   "observedSignals": [
-    {
-      "symbol": "GOOGLUSDT",
-      "patternType": "descending_channel",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 79,
-      "detectedAt": "2026-09-14T12:18:47.216652+00:00",
-      "pushedAt": "2026-09-14T12:18:47.216652+00:00",
-      "cooldownUntil": "2026-09-14T20:18:47.216652+00:00",
-      "signalHash": "282518c8f5769eae",
-      "endMs": 1789128000000,
-      "breakoutIndex": 298,
-      "breakoutPrice": 345.12,
-      "reconfirmAt": null
-    },
     {
       "symbol": "RIVERUSDT",
       "patternType": "double_bottom",
@@ -1325,6 +1370,21 @@
       "endMs": 1787284800000,
       "breakoutIndex": 129,
       "breakoutPrice": 449.5,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "ZHIPUUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-09-21T14:34:29.308592+00:00",
+      "pushedAt": "2026-09-21T14:34:29.308592+00:00",
+      "cooldownUntil": "2026-09-21T22:34:29.308592+00:00",
+      "signalHash": "0f42f1bd40aa5216",
+      "endMs": 1786924800000,
+      "breakoutIndex": 92,
+      "breakoutPrice": 128.54,
       "reconfirmAt": null
     }
   ]
