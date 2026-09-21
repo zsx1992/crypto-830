@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-21T00:38:47.668944+00:00",
+  "lastScanAt": "2026-09-21T01:27:14.382828+00:00",
   "pushedSignals": [
     {
       "symbol": "LITEUSDT",
@@ -904,21 +904,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 678,
-    "failed_pairs": 8,
-    "candidates": 186,
+    "scanned_pairs": 691,
+    "failed_pairs": 9,
+    "candidates": 178,
     "confirmed": 29,
     "after_scoring": 14,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 383.5,
+    "duration_seconds": 551.8,
     "source_stats": {
-      "okx": 678
+      "okx": 691
     },
     "health_stats": {
-      "sensitive": 35,
-      "healthy": 643
+      "sensitive": 37,
+      "healthy": 654
     }
   },
   "observedSignals": [
