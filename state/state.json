@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-21T21:26:40.820814+00:00",
+  "lastScanAt": "2026-09-21T23:36:29.699410+00:00",
   "pushedSignals": [
-    {
-      "symbol": "RIVERUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 69,
-      "detectedAt": "2026-09-14T23:20:05.913725+00:00",
-      "pushedAt": "2026-09-14T23:20:05.913725+00:00",
-      "cooldownUntil": "2026-09-15T01:20:05.913725+00:00",
-      "signalHash": "eb7e446bd14ec613",
-      "endMs": 1789128000000,
-      "breakoutIndex": 317,
-      "breakoutPrice": 1.139,
-      "reconfirmAt": null
-    },
     {
       "symbol": "USELESSUSDT",
       "patternType": "descending_channel",
@@ -961,24 +946,39 @@
       "breakoutIndex": 298,
       "breakoutPrice": 0.0010712,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "GLWUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 86,
+      "detectedAt": "2026-09-21T23:36:23.837500+00:00",
+      "pushedAt": "2026-09-21T23:36:23.837500+00:00",
+      "cooldownUntil": "2026-09-22T07:36:23.837500+00:00",
+      "signalHash": "8eac33d9459c5dfa",
+      "endMs": 1788436800000,
+      "breakoutIndex": 219,
+      "breakoutPrice": 169.35,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 839,
+    "scanned_pairs": 853,
     "failed_pairs": 11,
-    "candidates": 244,
+    "candidates": 243,
     "confirmed": 38,
-    "after_scoring": 21,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 712.8,
+    "after_scoring": 23,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 1,
+    "duration_seconds": 644.2,
     "source_stats": {
-      "okx": 839
+      "okx": 853
     },
     "health_stats": {
-      "healthy": 786,
-      "sensitive": 53
+      "healthy": 801,
+      "sensitive": 52
     }
   },
   "observedSignals": [
@@ -1400,6 +1400,21 @@
       "endMs": 1788105600000,
       "breakoutIndex": 238,
       "breakoutPrice": 1.779,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "ARUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 73,
+      "detectedAt": "2026-09-21T23:36:29.699219+00:00",
+      "pushedAt": "2026-09-21T23:36:29.699219+00:00",
+      "cooldownUntil": "2026-09-22T00:06:29.699219+00:00",
+      "signalHash": "ad4eb1d3b90665f7",
+      "endMs": 1789918200000,
+      "breakoutIndex": 474,
+      "breakoutPrice": 4.402,
       "reconfirmAt": null
     }
   ]
