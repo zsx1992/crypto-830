@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-21T14:34:29.308784+00:00",
+  "lastScanAt": "2026-09-21T16:29:28.688724+00:00",
   "pushedSignals": [
     {
       "symbol": "ARBUSDT",
@@ -976,24 +976,69 @@
       "breakoutIndex": 298,
       "breakoutPrice": 0.02217,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "MRNAUSDT",
+      "patternType": "ascending_channel",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 84,
+      "detectedAt": "2026-09-21T16:29:04.925937+00:00",
+      "pushedAt": "2026-09-21T16:29:04.925937+00:00",
+      "cooldownUntil": "2026-09-22T00:29:04.925937+00:00",
+      "signalHash": "61da54fe96d31117",
+      "endMs": 1789718400000,
+      "breakoutIndex": 187,
+      "breakoutPrice": 168.62,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "CBRSUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 75,
+      "detectedAt": "2026-09-21T16:29:09.496967+00:00",
+      "pushedAt": "2026-09-21T16:29:09.496967+00:00",
+      "cooldownUntil": "2026-09-22T00:29:09.496967+00:00",
+      "signalHash": "9ee34be1f3620902",
+      "endMs": 1789862400000,
+      "breakoutIndex": 298,
+      "breakoutPrice": 208.76,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "TURBOUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 66,
+      "detectedAt": "2026-09-21T16:29:13.887175+00:00",
+      "pushedAt": "2026-09-21T16:29:13.887175+00:00",
+      "cooldownUntil": "2026-09-22T00:29:13.887175+00:00",
+      "signalHash": "740f850b1dab7422",
+      "endMs": 1789891200000,
+      "breakoutIndex": 298,
+      "breakoutPrice": 0.0010712,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 803,
-    "failed_pairs": 9,
-    "candidates": 206,
-    "confirmed": 35,
-    "after_scoring": 20,
-    "after_dedup": 4,
-    "pushed": 4,
-    "observed": 1,
-    "duration_seconds": 634.7,
+    "scanned_pairs": 835,
+    "failed_pairs": 11,
+    "candidates": 229,
+    "confirmed": 40,
+    "after_scoring": 24,
+    "after_dedup": 3,
+    "pushed": 3,
+    "observed": 3,
+    "duration_seconds": 605.0,
     "source_stats": {
-      "okx": 803
+      "okx": 835
     },
     "health_stats": {
-      "sensitive": 45,
-      "healthy": 758
+      "healthy": 780,
+      "sensitive": 55
     }
   },
   "observedSignals": [
@@ -1385,6 +1430,51 @@
       "endMs": 1786924800000,
       "breakoutIndex": 92,
       "breakoutPrice": 128.54,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "CNPYUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 89,
+      "detectedAt": "2026-09-21T16:29:19.731180+00:00",
+      "pushedAt": "2026-09-21T16:29:19.731180+00:00",
+      "cooldownUntil": "2026-09-21T16:59:19.731180+00:00",
+      "signalHash": "a3a29bc3ba7576f2",
+      "endMs": 1789790400000,
+      "breakoutIndex": 381,
+      "breakoutPrice": 0.5223,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "GLWUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 83,
+      "detectedAt": "2026-09-21T16:29:24.407441+00:00",
+      "pushedAt": "2026-09-21T16:29:24.407441+00:00",
+      "cooldownUntil": "2026-09-22T00:29:24.407441+00:00",
+      "signalHash": "8eac33d9459c5dfa",
+      "endMs": 1788436800000,
+      "breakoutIndex": 220,
+      "breakoutPrice": 169.35,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "RENDERUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 74,
+      "detectedAt": "2026-09-21T16:29:28.688498+00:00",
+      "pushedAt": "2026-09-21T16:29:28.688498+00:00",
+      "cooldownUntil": "2026-09-22T16:29:28.688498+00:00",
+      "signalHash": "277a22c60d73e0f8",
+      "endMs": 1788105600000,
+      "breakoutIndex": 238,
+      "breakoutPrice": 1.779,
       "reconfirmAt": null
     }
   ]
