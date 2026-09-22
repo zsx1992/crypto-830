@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-22T19:22:29.157305+00:00",
+  "lastScanAt": "2026-09-22T21:59:33.237940+00:00",
   "pushedSignals": [
     {
       "symbol": "STXUSDT",
@@ -916,54 +916,69 @@
       "breakoutIndex": 399,
       "breakoutPrice": 7.714,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "YGGUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 79,
+      "detectedAt": "2026-09-22T21:59:29.029594+00:00",
+      "pushedAt": "2026-09-22T21:59:29.029594+00:00",
+      "cooldownUntil": "2026-09-23T05:59:29.029594+00:00",
+      "signalHash": "9438a200414bf81f",
+      "endMs": 1789128000000,
+      "breakoutIndex": 298,
+      "breakoutPrice": 0.028,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "TIAUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 77,
+      "detectedAt": "2026-09-22T21:59:33.237502+00:00",
+      "pushedAt": "2026-09-22T21:59:33.237502+00:00",
+      "cooldownUntil": "2026-09-23T05:59:33.237502+00:00",
+      "signalHash": "a611c74e42194896",
+      "endMs": 1789488000000,
+      "breakoutIndex": 298,
+      "breakoutPrice": 0.4957,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
     "scanned_pairs": 847,
     "failed_pairs": 9,
-    "candidates": 240,
-    "confirmed": 36,
-    "after_scoring": 24,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 243,
+    "confirmed": 39,
+    "after_scoring": 26,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 586.7,
+    "duration_seconds": 445.7,
     "source_stats": {
       "okx": 847
     },
     "health_stats": {
-      "healthy": 798,
-      "sensitive": 49
+      "sensitive": 49,
+      "healthy": 798
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 1,
-      "rr": 2,
+      "strength": 2,
+      "rr": 3,
       "volume": 0,
       "geometry": 3,
-      "trend": 2,
-      "stale": 24,
-      "demote_hs_top": 3,
+      "trend": 0,
+      "stale": 26,
+      "demote_hs_top": 4,
       "demote_counter1h": 1,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "MRVLUSDT",
-      "patternType": "ascending_channel",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 79,
-      "detectedAt": "2026-09-15T21:19:54.443466+00:00",
-      "pushedAt": "2026-09-15T21:19:54.443466+00:00",
-      "cooldownUntil": "2026-09-16T05:19:54.443466+00:00",
-      "signalHash": "38d5d26fc4c4587c",
-      "endMs": 1787817600000,
-      "breakoutIndex": 185,
-      "breakoutPrice": 222.99,
-      "reconfirmAt": null
-    },
     {
       "symbol": "DASHUSDT",
       "patternType": "double_bottom",
