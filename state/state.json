@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-22T18:48:06.847975+00:00",
+  "lastScanAt": "2026-09-22T19:08:33.904090+00:00",
   "pushedSignals": [
     {
       "symbol": "PEPEUSDT",
@@ -934,21 +934,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 847,
+    "scanned_pairs": 845,
     "failed_pairs": 9,
-    "candidates": 242,
+    "candidates": 240,
     "confirmed": 36,
-    "after_scoring": 22,
-    "after_dedup": 2,
-    "pushed": 2,
+    "after_scoring": 23,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 716.5,
+    "duration_seconds": 488.5,
     "source_stats": {
-      "okx": 847
+      "okx": 845
     },
     "health_stats": {
-      "healthy": 794,
-      "sensitive": 53
+      "healthy": 796,
+      "sensitive": 49
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -960,7 +960,7 @@
       "stale": 24,
       "demote_hs_top": 3,
       "demote_counter1h": 1,
-      "demote_counter1d": 1
+      "demote_counter1d": 0
     }
   },
   "observedSignals": [
