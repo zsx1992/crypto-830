@@ -215,9 +215,16 @@ class StateStore:
         self.state.setdefault("pushedSignals", []).append(rec)
         self._dirty = True
 
-    def record_observe(self, p: Pattern):
-        """记录已观察推送的信号（独立空间，不阻塞正式推送）"""
+    def record_observe(self, p: Pattern, gate: str = ""):
+        """记录已观察推送的信号（独立空间，不阻塞正式推送）
+
+        gate: 死因闸名（如 demote_hs_top / demote_counter1h / trend），
+        2026-09-22 起写入记录 —— 周度复盘要区分"降级规则拦的"和
+        "其他闸拦的"，混在一起没法验证降级规则本身。
+        """
         rec = self._make_record(p)
+        if gate:
+            rec["gate"] = gate
         self.state.setdefault("observedSignals", []).append(rec)
         self._dirty = True
 

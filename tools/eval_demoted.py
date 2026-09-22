@@ -98,6 +98,8 @@ def main():
         rows.append({
             "symbol": sym, "interval": iv, "type": x["patternType"],
             "dir": x["direction"], "group": grp,
+            # 2026-09-22: gate=死因(降级规则名/其他闸名), scanner 已写入 state
+            "gate": x.get("gate", ""),
             "pushed_at": x["pushedAt"][:16], "entry": entry,
             "bars": len(bars) - 1,
             "ret_pct": round(100 * sign * (last - entry) / entry, 2),

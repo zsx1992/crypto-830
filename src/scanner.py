@@ -592,7 +592,8 @@ class Scanner:
                 ok = self.notifier.push_observe(p, image, gate)
                 if ok and not self.dry_run:
                     # 同上 (2026-09-09): dry-run 观察推送也不写观察去重表
-                    self.state.record_observe(p)
+                    # 2026-09-22: gate(死因)入state, 供周度复盘区分降级规则与其他闸
+                    self.state.record_observe(p, gate=gate)
                 if ok:
                     result.observed.append(p)
                     logger.info(f"观察推送 {p.symbol} {p.interval} "
