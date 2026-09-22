@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-22T09:20:37.923325+00:00",
+  "lastScanAt": "2026-09-22T10:18:47.298904+00:00",
   "pushedSignals": [
     {
       "symbol": "GOOGLUSDT",
@@ -934,21 +934,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 865,
+    "scanned_pairs": 859,
     "failed_pairs": 9,
-    "candidates": 248,
-    "confirmed": 35,
-    "after_scoring": 18,
+    "candidates": 251,
+    "confirmed": 37,
+    "after_scoring": 20,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 622.8,
+    "duration_seconds": 614.2,
     "source_stats": {
-      "okx": 865
+      "okx": 859
     },
     "health_stats": {
-      "healthy": 806,
-      "sensitive": 59
+      "healthy": 798,
+      "sensitive": 61
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -956,10 +956,10 @@
       "rr": 3,
       "volume": 0,
       "geometry": 3,
-      "trend": 4,
-      "stale": 24,
+      "trend": 3,
+      "stale": 25,
       "demote_hs_top": 3,
-      "demote_counter1h": 0,
+      "demote_counter1h": 1,
       "demote_counter1d": 2
     }
   },
