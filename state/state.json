@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-21T23:36:29.699410+00:00",
+  "lastScanAt": "2026-09-22T00:05:08.275663+00:00",
   "pushedSignals": [
     {
       "symbol": "USELESSUSDT",
@@ -961,24 +961,39 @@
       "breakoutIndex": 219,
       "breakoutPrice": 169.35,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SPACEUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 75,
+      "detectedAt": "2026-09-22T00:05:08.275352+00:00",
+      "pushedAt": "2026-09-22T00:05:08.275352+00:00",
+      "cooldownUntil": "2026-09-22T08:05:08.275352+00:00",
+      "signalHash": "6860237b9db4ccf1",
+      "endMs": 1789905600000,
+      "breakoutIndex": 295,
+      "breakoutPrice": 0.005006,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 853,
+    "scanned_pairs": 855,
     "failed_pairs": 11,
-    "candidates": 243,
-    "confirmed": 38,
-    "after_scoring": 23,
+    "candidates": 248,
+    "confirmed": 41,
+    "after_scoring": 26,
     "after_dedup": 1,
     "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 644.2,
+    "observed": 0,
+    "duration_seconds": 610.8,
     "source_stats": {
-      "okx": 853
+      "okx": 855
     },
     "health_stats": {
-      "healthy": 801,
-      "sensitive": 52
+      "healthy": 805,
+      "sensitive": 50
     }
   },
   "observedSignals": [
