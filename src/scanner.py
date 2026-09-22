@@ -33,6 +33,31 @@ from patterns.base import Pattern, PatternStatus, Direction
 logger = logging.getLogger(__name__)
 
 
+def counter_1d_long_gate(klines_1d, direction, interval):
+    """规则3 判定（2026-09-22）: LONG 信号是否逆 1d 趋势, 该降级观察。
+
+    抽成纯函数是为了能离线单测（见 tests/test_demote_counter_1d.py）——
+    闸门逻辑写在 run() 里没法单独验证。
+
+    返回:
+      True  → 命中降级（逆 1d 趋势的多单）
+      False → 放行
+      None  → 不适用（非 LONG / 非 15m-1h-4h / 1d 数据不足）→ 调用方放行
+
+    口径与回测 hctx20 一致: 1d 收盘价 vs 20 根前。根数下限也对齐回测的
+    `len(closes) < n + 5` 判据（需 ≥25 根），避免实盘与回测口径出现缝。
+    （实盘 1d 取 240 根，正常情况远超这个下限。）
+    仅覆盖回测验证过的 15m/1h/4h；1d 形态自身不适用。
+    SHORT 侧刻意不拦: 回测里 SHORT 顺逆无差异(39.4% vs 39.1%, z=0.02)。
+    """
+    if direction != Direction.LONG or interval not in ("15m", "1h", "4h"):
+        return None
+    if not klines_1d or len(klines_1d) < 25:
+        return None
+    # 与回测 trend_ctx 同款: closes[-1] > closes[-20] 才算 up, 相等归 down
+    return klines_1d[-1].close <= klines_1d[-20].close
+
+
 @dataclass
 class ScanResult:
     """一次完整扫描的结果"""
@@ -143,9 +168,12 @@ class Scanner:
         #   2) 15m 信号逆 1h 趋势 —— 回测顺势 61%(99样) vs 逆势 35%(23样),
         #      z=+2.25, 三口径(hctx10/20/50)方向一致
         # 关闭开关即回到旧行为，两规则互不影响。
+        #   3) LONG 信号逆 1d 趋势 —— 回测胜率 23.1%(26样) vs 顺势 50.4%(137样),
+        #      z=+2.56, 15m/1h/4h 三周期方向一致; SHORT 侧无差异(z=0.02)故只拦 LONG
         dem = filt.get("demote", {})
         self.demote_hs_top = dem.get("hs_top_to_observe", False)
         self.demote_counter_1h_15m = dem.get("counter_trend_1h_15m", False)
+        self.demote_counter_1d_long = dem.get("counter_trend_1d_long", False)
 
         # 是否每次运行后都发一条"扫描摘要"（P0：summary_mode 控制发送策略）
         self.send_summary = notif.get("send_summary", True)
@@ -338,7 +366,7 @@ class Scanner:
         result.kill_breakdown = {
             "freshness": 0, "strength": 0, "rr": 0,
             "volume": 0, "geometry": 0, "trend": 0, "stale": 0,
-            "demote_hs_top": 0, "demote_counter1h": 0,
+            "demote_hs_top": 0, "demote_counter1h": 0, "demote_counter1d": 0,
         }
         passed = []
         # 2026-09-07: 收集被 6 闸砍掉信号的 age, 循环结束后按周期打
@@ -419,6 +447,21 @@ class Scanner:
                         result.kill_breakdown["demote_counter1h"] += 1
                         _killed_detail.append((p, "demote_counter1h"))
                         continue
+            # 规则3 (2026-09-22): LONG 信号逆 1d 趋势降级。
+            # 依据: 348 样本回测, LONG 逆 1d 胜率 23.1%(26样) vs 顺势 50.4%(
+            #   137样), z=+2.56 (高于规则2上线时的 2.25)。
+            #   15m/1h/4h 三周期方向一致: 逆势 15.4% / 25.0% / 33.3%。
+            #   SHORT 侧顺逆无差异(39.4% vs 39.1%, z=0.02) → 只拦 LONG, 不对称是
+            #   数据结论而非偏好, 不要顺手补上 SHORT 侧。
+            # 口径与回测 hctx20 一致: 1d 收盘价 vs 20 根前。仅覆盖回测验证过的
+            #   15m/1h/4h; 1d 形态自身不适用(未验证)。1d 数据缺失时不动刀(宁放勿杀)。
+            if self.demote_counter_1d_long:
+                _hit = counter_1d_long_gate(
+                    klines_cache.get((p.symbol, "1d")), p.direction, p.interval)
+                if _hit:
+                    result.kill_breakdown["demote_counter1d"] += 1
+                    _killed_detail.append((p, "demote_counter1d"))
+                    continue
             passed.append(p)
 
         result.after_scoring = self._limit_per_symbol(passed)
@@ -493,10 +536,13 @@ class Scanner:
                     _kb.get("geometry", 0), _kb.get("trend", 0),
                     _kb.get("stale", 0),
                     len(scored), len(result.after_scoring))
-        if _kb.get("demote_hs_top") or _kb.get("demote_counter1h"):
-            logger.info("降级闸 ▶ 头肩顶:%d 15m逆1h趋势:%d (均转观察流, 不删形态)",
+        if (_kb.get("demote_hs_top") or _kb.get("demote_counter1h")
+                or _kb.get("demote_counter1d")):
+            logger.info("降级闸 ▶ 头肩顶:%d 15m逆1h趋势:%d LONG逆1d趋势:%d "
+                        "(均转观察流, 不删形态)",
                         _kb.get("demote_hs_top", 0),
-                        _kb.get("demote_counter1h", 0))
+                        _kb.get("demote_counter1h", 0),
+                        _kb.get("demote_counter1d", 0))
 
         # ---- 5. 去重（状态跃迁可重推, P2）----
         self.state.cleanup()
