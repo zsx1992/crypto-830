@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-22T19:08:33.904090+00:00",
+  "lastScanAt": "2026-09-22T19:22:29.157305+00:00",
   "pushedSignals": [
-    {
-      "symbol": "PEPEUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "1d",
-      "direction": "LONG",
-      "strength": 63,
-      "detectedAt": "2026-09-15T19:22:11.321715+00:00",
-      "pushedAt": "2026-09-15T19:22:11.321715+00:00",
-      "cooldownUntil": "2026-09-16T19:22:11.321715+00:00",
-      "signalHash": "1041866f72c8f5c7",
-      "endMs": 1786896000000,
-      "breakoutIndex": 212,
-      "breakoutPrice": 3.209e-06,
-      "reconfirmAt": null
-    },
     {
       "symbol": "STXUSDT",
       "patternType": "head_shoulders_top",
@@ -934,20 +919,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 845,
+    "scanned_pairs": 847,
     "failed_pairs": 9,
     "candidates": 240,
     "confirmed": 36,
-    "after_scoring": 23,
+    "after_scoring": 24,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 488.5,
+    "duration_seconds": 586.7,
     "source_stats": {
-      "okx": 845
+      "okx": 847
     },
     "health_stats": {
-      "healthy": 796,
+      "healthy": 798,
       "sensitive": 49
     },
     "kill_breakdown": {
@@ -956,7 +941,7 @@
       "rr": 2,
       "volume": 0,
       "geometry": 3,
-      "trend": 3,
+      "trend": 2,
       "stale": 24,
       "demote_hs_top": 3,
       "demote_counter1h": 1,
@@ -964,21 +949,6 @@
     }
   },
   "observedSignals": [
-    {
-      "symbol": "SKHYUSDT",
-      "patternType": "double_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 68,
-      "detectedAt": "2026-09-15T19:22:15.147795+00:00",
-      "pushedAt": "2026-09-15T19:22:15.147795+00:00",
-      "cooldownUntil": "2026-09-16T03:22:15.147795+00:00",
-      "signalHash": "63981041b0095854",
-      "endMs": 1786406400000,
-      "breakoutIndex": 100,
-      "breakoutPrice": 166.42,
-      "reconfirmAt": null
-    },
     {
       "symbol": "MRVLUSDT",
       "patternType": "ascending_channel",
