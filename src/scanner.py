@@ -660,6 +660,10 @@ class Scanner:
             "duration_seconds": round(result.duration_sec, 1),
             "source_stats": result.source_stats,
             "health_stats": result.health_stats,
+            # 2026-09-22: 闸门计数落盘。动机——验证新降级规则有没有真的开火时,
+            # Actions 日志要 PAT 才能下（403）, 只能靠 state 判断。之前
+            # 21 过闸 / 0 去重 这种漏斗看不出"是哪道闸拦的、拦了几条"。
+            "kill_breakdown": dict(result.kill_breakdown),
         })
         self.state.save()
 
