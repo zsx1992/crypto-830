@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-22T00:05:08.275663+00:00",
+  "lastScanAt": "2026-09-22T00:26:09.302369+00:00",
   "pushedSignals": [
     {
       "symbol": "USELESSUSDT",
@@ -979,21 +979,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 855,
+    "scanned_pairs": 851,
     "failed_pairs": 11,
-    "candidates": 248,
-    "confirmed": 41,
+    "candidates": 250,
+    "confirmed": 40,
     "after_scoring": 26,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 610.8,
+    "duration_seconds": 477.3,
     "source_stats": {
-      "okx": 855
+      "okx": 851
     },
     "health_stats": {
-      "healthy": 805,
-      "sensitive": 50
+      "healthy": 799,
+      "sensitive": 52
     }
   },
   "observedSignals": [
