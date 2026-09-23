@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-23T23:00:29.491568+00:00",
+  "lastScanAt": "2026-09-23T23:21:08.306446+00:00",
   "pushedSignals": [
     {
       "symbol": "ZHIPUUSDT",
@@ -991,24 +991,39 @@
       "breakoutIndex": 564,
       "breakoutPrice": 0.09632,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "LABUSDT",
+      "patternType": "ascending_channel",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-09-23T23:21:08.306158+00:00",
+      "pushedAt": "2026-09-23T23:21:08.306158+00:00",
+      "cooldownUntil": "2026-09-24T01:21:08.306158+00:00",
+      "signalHash": "3656545d21db0768",
+      "endMs": 1790103600000,
+      "breakoutIndex": 390,
+      "breakoutPrice": 0.05718,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 858,
+    "scanned_pairs": 854,
     "failed_pairs": 16,
-    "candidates": 252,
+    "candidates": 258,
     "confirmed": 43,
     "after_scoring": 22,
     "after_dedup": 1,
     "pushed": 1,
     "observed": 0,
-    "duration_seconds": 687.8,
+    "duration_seconds": 502.9,
     "source_stats": {
-      "okx": 858
+      "okx": 854
     },
     "health_stats": {
-      "healthy": 821,
-      "sensitive": 37
+      "healthy": 818,
+      "sensitive": 36
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1016,11 +1031,11 @@
       "rr": 4,
       "volume": 0,
       "geometry": 3,
-      "trend": 8,
-      "stale": 32,
+      "trend": 7,
+      "stale": 31,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
-      "demote_counter1d": 0
+      "demote_counter1d": 1
     }
   },
   "observedSignals": [
