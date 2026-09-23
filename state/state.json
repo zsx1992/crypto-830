@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-23T06:22:42.213331+00:00",
+  "lastScanAt": "2026-09-23T06:51:21.287299+00:00",
   "pushedSignals": [
-    {
-      "symbol": "XIAOMIUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 85,
-      "detectedAt": "2026-09-16T06:23:12.586493+00:00",
-      "pushedAt": "2026-09-16T06:23:12.586493+00:00",
-      "cooldownUntil": "2026-09-16T14:23:12.586493+00:00",
-      "signalHash": "ac4ecd60e63a554d",
-      "endMs": 1788739200000,
-      "breakoutIndex": 167,
-      "breakoutPrice": 3.361,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "KAITOUSDT",
-      "patternType": "descending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 76,
-      "detectedAt": "2026-09-16T06:23:18.497025+00:00",
-      "pushedAt": "2026-09-16T06:23:18.497025+00:00",
-      "cooldownUntil": "2026-09-16T06:53:18.497025+00:00",
-      "signalHash": "b9f6beb2100b780b",
-      "endMs": 1789493400000,
-      "breakoutIndex": 552,
-      "breakoutPrice": 0.2883,
-      "reconfirmAt": null
-    },
     {
       "symbol": "SPCXUSDT",
       "patternType": "ascending_channel",
@@ -904,33 +874,33 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 831,
+    "scanned_pairs": 833,
     "failed_pairs": 9,
-    "candidates": 237,
+    "candidates": 241,
     "confirmed": 43,
-    "after_scoring": 25,
+    "after_scoring": 27,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 665.4,
+    "duration_seconds": 553.0,
     "source_stats": {
-      "okx": 831
+      "okx": 833
     },
     "health_stats": {
-      "sensitive": 45,
-      "healthy": 786
+      "sensitive": 46,
+      "healthy": 787
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 2,
       "rr": 3,
       "volume": 0,
-      "geometry": 4,
+      "geometry": 3,
       "trend": 6,
-      "stale": 30,
+      "stale": 29,
       "demote_hs_top": 1,
       "demote_counter1h": 0,
-      "demote_counter1d": 2
+      "demote_counter1d": 1
     }
   },
   "observedSignals": [
