@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-23T23:21:08.306446+00:00",
+  "lastScanAt": "2026-09-23T23:59:08.634975+00:00",
   "pushedSignals": [
     {
       "symbol": "ZHIPUUSDT",
@@ -1009,21 +1009,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 854,
+    "scanned_pairs": 856,
     "failed_pairs": 16,
-    "candidates": 258,
-    "confirmed": 43,
-    "after_scoring": 22,
-    "after_dedup": 1,
-    "pushed": 1,
+    "candidates": 256,
+    "confirmed": 42,
+    "after_scoring": 21,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 502.9,
+    "duration_seconds": 597.9,
     "source_stats": {
-      "okx": 854
+      "okx": 856
     },
     "health_stats": {
-      "healthy": 818,
-      "sensitive": 36
+      "healthy": 819,
+      "sensitive": 37
     },
     "kill_breakdown": {
       "freshness": 0,
