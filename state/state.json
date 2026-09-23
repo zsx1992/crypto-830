@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-23T17:39:42.307492+00:00",
+  "lastScanAt": "2026-09-23T19:41:43.709970+00:00",
   "pushedSignals": [
     {
       "symbol": "ZHIPUUSDT",
@@ -916,23 +916,53 @@
       "breakoutIndex": 396,
       "breakoutPrice": 0.667,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "STRKUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 78,
+      "detectedAt": "2026-09-23T19:41:38.215950+00:00",
+      "pushedAt": "2026-09-23T19:41:38.215950+00:00",
+      "cooldownUntil": "2026-09-23T20:11:38.215950+00:00",
+      "signalHash": "35752ef9947b1728",
+      "endMs": 1790166600000,
+      "breakoutIndex": 577,
+      "breakoutPrice": 0.04023,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "JUPUSDT",
+      "patternType": "ascending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 78,
+      "detectedAt": "2026-09-23T19:41:43.709720+00:00",
+      "pushedAt": "2026-09-23T19:41:43.709720+00:00",
+      "cooldownUntil": "2026-09-23T20:11:43.709720+00:00",
+      "signalHash": "82d37d61846bec43",
+      "endMs": 1790167500000,
+      "breakoutIndex": 577,
+      "breakoutPrice": 0.2865,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 878,
-    "failed_pairs": 14,
-    "candidates": 233,
-    "confirmed": 36,
-    "after_scoring": 18,
-    "after_dedup": 0,
-    "pushed": 0,
+    "scanned_pairs": 868,
+    "failed_pairs": 16,
+    "candidates": 240,
+    "confirmed": 40,
+    "after_scoring": 20,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 639.2,
+    "duration_seconds": 512.3,
     "source_stats": {
-      "okx": 878
+      "okx": 868
     },
     "health_stats": {
-      "healthy": 832,
+      "healthy": 822,
       "sensitive": 46
     },
     "kill_breakdown": {
@@ -941,9 +971,9 @@
       "rr": 4,
       "volume": 0,
       "geometry": 3,
-      "trend": 7,
-      "stale": 24,
-      "demote_hs_top": 3,
+      "trend": 8,
+      "stale": 27,
+      "demote_hs_top": 4,
       "demote_counter1h": 0,
       "demote_counter1d": 1
     }
