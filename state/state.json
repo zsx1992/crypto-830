@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-23T15:36:09.518017+00:00",
+  "lastScanAt": "2026-09-23T17:27:52.634479+00:00",
   "pushedSignals": [
     {
       "symbol": "ZHIPUUSDT",
@@ -871,34 +871,79 @@
       "breakoutIndex": 594,
       "breakoutPrice": 0.05893,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "PLTRUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 79,
+      "detectedAt": "2026-09-23T17:27:43.228116+00:00",
+      "pushedAt": "2026-09-23T17:27:43.228116+00:00",
+      "cooldownUntil": "2026-09-24T01:27:43.228116+00:00",
+      "signalHash": "2851963e691b8874",
+      "endMs": 1789329600000,
+      "breakoutIndex": 298,
+      "breakoutPrice": 191.56,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "POLUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 77,
+      "detectedAt": "2026-09-23T17:27:47.953386+00:00",
+      "pushedAt": "2026-09-23T17:27:47.953386+00:00",
+      "cooldownUntil": "2026-09-23T19:27:47.953386+00:00",
+      "signalHash": "e2389dfd3c1d52c7",
+      "endMs": 1790150400000,
+      "breakoutIndex": 396,
+      "breakoutPrice": 0.1028,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "ETHFIUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 69,
+      "detectedAt": "2026-09-23T17:27:52.634171+00:00",
+      "pushedAt": "2026-09-23T17:27:52.634171+00:00",
+      "cooldownUntil": "2026-09-23T19:27:52.634171+00:00",
+      "signalHash": "f14133742cd18f30",
+      "endMs": 1789981200000,
+      "breakoutIndex": 396,
+      "breakoutPrice": 0.667,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 868,
-    "failed_pairs": 12,
-    "candidates": 222,
+    "scanned_pairs": 880,
+    "failed_pairs": 14,
+    "candidates": 233,
     "confirmed": 36,
     "after_scoring": 18,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_dedup": 3,
+    "pushed": 3,
     "observed": 0,
-    "duration_seconds": 699.1,
+    "duration_seconds": 487.1,
     "source_stats": {
-      "okx": 868
+      "okx": 880
     },
     "health_stats": {
-      "healthy": 825,
-      "sensitive": 43
+      "healthy": 834,
+      "sensitive": 46
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
       "rr": 4,
       "volume": 0,
-      "geometry": 4,
+      "geometry": 3,
       "trend": 7,
-      "stale": 25,
-      "demote_hs_top": 2,
+      "stale": 24,
+      "demote_hs_top": 3,
       "demote_counter1h": 0,
       "demote_counter1d": 1
     }
