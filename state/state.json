@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-24T18:29:28.396485+00:00",
+  "lastScanAt": "2026-09-24T19:30:57.007652+00:00",
   "pushedSignals": [
     {
       "symbol": "PIEVERSEUSDT",
@@ -1006,35 +1006,50 @@
       "breakoutIndex": 583,
       "breakoutPrice": 0.10447,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "MSTRUSDT",
+      "patternType": "rectangle",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 77,
+      "detectedAt": "2026-09-24T19:30:57.007345+00:00",
+      "pushedAt": "2026-09-24T19:30:57.007345+00:00",
+      "cooldownUntil": "2026-09-24T20:00:57.007345+00:00",
+      "signalHash": "60d255a4e9c01c45",
+      "endMs": 1789949700000,
+      "breakoutIndex": 268,
+      "breakoutPrice": 162.07,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 789,
+    "scanned_pairs": 787,
     "failed_pairs": 13,
-    "candidates": 256,
-    "confirmed": 37,
+    "candidates": 251,
+    "confirmed": 36,
     "after_scoring": 20,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 587.3,
+    "duration_seconds": 597.9,
     "source_stats": {
-      "okx": 789
+      "okx": 787
     },
     "health_stats": {
-      "healthy": 753,
+      "healthy": 751,
       "sensitive": 36
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 1,
-      "rr": 5,
+      "rr": 4,
       "volume": 0,
-      "geometry": 2,
-      "trend": 3,
+      "geometry": 3,
+      "trend": 4,
       "stale": 23,
-      "demote_hs_top": 4,
-      "demote_counter1h": 2,
+      "demote_hs_top": 3,
+      "demote_counter1h": 1,
       "demote_counter1d": 0
     }
   },
