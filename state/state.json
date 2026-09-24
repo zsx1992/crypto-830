@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-24T22:00:17.099906+00:00",
+  "lastScanAt": "2026-09-24T22:14:15.838108+00:00",
   "pushedSignals": [
     {
       "symbol": "GRVTUSDT",
@@ -994,21 +994,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 777,
+    "scanned_pairs": 781,
     "failed_pairs": 13,
-    "candidates": 249,
-    "confirmed": 40,
-    "after_scoring": 22,
-    "after_dedup": 1,
-    "pushed": 1,
+    "candidates": 251,
+    "confirmed": 37,
+    "after_scoring": 20,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 598.6,
+    "duration_seconds": 470.4,
     "source_stats": {
-      "okx": 777
+      "okx": 781
     },
     "health_stats": {
-      "healthy": 739,
-      "sensitive": 38
+      "healthy": 745,
+      "sensitive": 36
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1016,7 +1016,7 @@
       "rr": 4,
       "volume": 0,
       "geometry": 3,
-      "trend": 4,
+      "trend": 3,
       "stale": 27,
       "demote_hs_top": 4,
       "demote_counter1h": 2,
