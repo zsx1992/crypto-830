@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-24T22:14:15.838108+00:00",
+  "lastScanAt": "2026-09-24T22:43:23.544672+00:00",
   "pushedSignals": [
     {
       "symbol": "GRVTUSDT",
@@ -994,21 +994,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 781,
+    "scanned_pairs": 779,
     "failed_pairs": 13,
-    "candidates": 251,
-    "confirmed": 37,
+    "candidates": 252,
+    "confirmed": 38,
     "after_scoring": 20,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 470.4,
+    "observed": 1,
+    "duration_seconds": 473.4,
     "source_stats": {
-      "okx": 781
+      "okx": 779
     },
     "health_stats": {
-      "healthy": 745,
-      "sensitive": 36
+      "healthy": 742,
+      "sensitive": 37
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1018,7 +1018,7 @@
       "geometry": 3,
       "trend": 3,
       "stale": 27,
-      "demote_hs_top": 4,
+      "demote_hs_top": 5,
       "demote_counter1h": 2,
       "demote_counter1d": 0
     }
@@ -1421,6 +1421,22 @@
       "endMs": 1790168400000,
       "breakoutIndex": 508,
       "breakoutPrice": 0.09632,
+      "reconfirmAt": null,
+      "gate": "demote_counter1h"
+    },
+    {
+      "symbol": "STRKUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 77,
+      "detectedAt": "2026-09-24T22:43:23.544516+00:00",
+      "pushedAt": "2026-09-24T22:43:23.544516+00:00",
+      "cooldownUntil": "2026-09-24T23:13:23.544516+00:00",
+      "signalHash": "35752ef9947b1728",
+      "endMs": 1790166600000,
+      "breakoutIndex": 469,
+      "breakoutPrice": 0.04023,
       "reconfirmAt": null,
       "gate": "demote_counter1h"
     }
