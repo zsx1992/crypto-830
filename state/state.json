@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-24T18:05:27.933689+00:00",
+  "lastScanAt": "2026-09-24T18:29:28.396485+00:00",
   "pushedSignals": [
     {
       "symbol": "PIEVERSEUSDT",
@@ -1009,32 +1009,32 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 785,
+    "scanned_pairs": 789,
     "failed_pairs": 13,
-    "candidates": 254,
-    "confirmed": 35,
+    "candidates": 256,
+    "confirmed": 37,
     "after_scoring": 20,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 439.8,
+    "duration_seconds": 587.3,
     "source_stats": {
-      "okx": 785
+      "okx": 789
     },
     "health_stats": {
-      "healthy": 751,
-      "sensitive": 34
+      "healthy": 753,
+      "sensitive": 36
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 0,
+      "strength": 1,
       "rr": 5,
       "volume": 0,
       "geometry": 2,
       "trend": 3,
-      "stale": 21,
+      "stale": 23,
       "demote_hs_top": 4,
-      "demote_counter1h": 1,
+      "demote_counter1h": 2,
       "demote_counter1d": 0
     }
   },
