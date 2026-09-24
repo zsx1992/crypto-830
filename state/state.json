@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-24T13:06:14.541026+00:00",
+  "lastScanAt": "2026-09-24T15:26:56.498236+00:00",
   "pushedSignals": [
     {
       "symbol": "MONUSDT",
@@ -976,54 +976,69 @@
       "breakoutIndex": 179,
       "breakoutPrice": 94.97,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ICPUSDT",
+      "patternType": "double_bottom",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 59,
+      "detectedAt": "2026-09-24T13:31:32.212514+00:00",
+      "pushedAt": "2026-09-24T13:31:32.212514+00:00",
+      "cooldownUntil": "2026-09-24T14:01:32.212514+00:00",
+      "signalHash": "2a5f9f318da1c836",
+      "endMs": 1790242200000,
+      "breakoutIndex": 597,
+      "breakoutPrice": 3.025,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "ORDIUSDT",
+      "patternType": "double_bottom",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 74,
+      "detectedAt": "2026-09-24T15:26:56.497961+00:00",
+      "pushedAt": "2026-09-24T15:26:56.497961+00:00",
+      "cooldownUntil": "2026-09-24T15:56:56.497961+00:00",
+      "signalHash": "7932b8e42beb911a",
+      "endMs": 1790242200000,
+      "breakoutIndex": 595,
+      "breakoutPrice": 4.675,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 830,
-    "failed_pairs": 14,
-    "candidates": 278,
-    "confirmed": 44,
-    "after_scoring": 20,
+    "scanned_pairs": 783,
+    "failed_pairs": 11,
+    "candidates": 251,
+    "confirmed": 36,
+    "after_scoring": 18,
     "after_dedup": 1,
     "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 694.7,
+    "observed": 0,
+    "duration_seconds": 471.3,
     "source_stats": {
-      "okx": 830
+      "okx": 783
     },
     "health_stats": {
-      "healthy": 791,
-      "sensitive": 39
+      "healthy": 749,
+      "sensitive": 34
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 1,
-      "rr": 2,
+      "strength": 0,
+      "rr": 3,
       "volume": 0,
       "geometry": 2,
-      "trend": 7,
-      "stale": 32,
-      "demote_hs_top": 5,
-      "demote_counter1h": 4,
-      "demote_counter1d": 2
+      "trend": 8,
+      "stale": 24,
+      "demote_hs_top": 4,
+      "demote_counter1h": 0,
+      "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "RKLBUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 72,
-      "detectedAt": "2026-09-17T13:48:12.003507+00:00",
-      "pushedAt": "2026-09-17T13:48:12.003507+00:00",
-      "cooldownUntil": "2026-09-17T21:48:12.003507+00:00",
-      "signalHash": "b4ddd9f76ba3fb77",
-      "endMs": 1788854400000,
-      "breakoutIndex": 245,
-      "breakoutPrice": 67.02,
-      "reconfirmAt": null
-    },
     {
       "symbol": "PIEVERSEUSDT",
       "patternType": "descending_channel",
