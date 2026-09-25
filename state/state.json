@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-25T06:49:01.876555+00:00",
+  "lastScanAt": "2026-09-25T07:26:09.660986+00:00",
   "pushedSignals": [
     {
       "symbol": "SUSHIUSDT",
@@ -934,33 +934,33 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 765,
-    "failed_pairs": 13,
-    "candidates": 275,
+    "scanned_pairs": 766,
+    "failed_pairs": 14,
+    "candidates": 277,
     "confirmed": 37,
-    "after_scoring": 19,
+    "after_scoring": 20,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 604.3,
+    "observed": 1,
+    "duration_seconds": 407.9,
     "source_stats": {
-      "okx": 765
+      "okx": 766
     },
     "health_stats": {
-      "healthy": 732,
-      "sensitive": 33
+      "healthy": 730,
+      "sensitive": 36
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 3,
-      "rr": 4,
+      "strength": 2,
+      "rr": 3,
       "volume": 0,
       "geometry": 3,
       "trend": 1,
       "stale": 26,
       "demote_hs_top": 5,
       "demote_counter1h": 1,
-      "demote_counter1d": 1
+      "demote_counter1d": 2
     }
   },
   "observedSignals": [
@@ -1334,6 +1334,22 @@
       "breakoutPrice": 0.04023,
       "reconfirmAt": null,
       "gate": "demote_counter1h"
+    },
+    {
+      "symbol": "RAYUSDT",
+      "patternType": "double_bottom",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 77,
+      "detectedAt": "2026-09-25T07:26:09.660748+00:00",
+      "pushedAt": "2026-09-25T07:26:09.660748+00:00",
+      "cooldownUntil": "2026-09-26T07:26:09.660748+00:00",
+      "signalHash": "90e3f33d1ec5663a",
+      "endMs": 1780675200000,
+      "breakoutIndex": 220,
+      "breakoutPrice": 1.3258,
+      "reconfirmAt": null,
+      "gate": "rr"
     }
   ]
 }
