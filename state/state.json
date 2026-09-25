@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-25T18:27:07.985021+00:00",
+  "lastScanAt": "2026-09-25T18:56:10.614819+00:00",
   "pushedSignals": [
     {
       "symbol": "ACHUSDT",
@@ -994,21 +994,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 744,
+    "scanned_pairs": 740,
     "failed_pairs": 12,
-    "candidates": 270,
-    "confirmed": 31,
+    "candidates": 268,
+    "confirmed": 30,
     "after_scoring": 20,
-    "after_dedup": 2,
-    "pushed": 2,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 453.6,
+    "duration_seconds": 613.0,
     "source_stats": {
-      "okx": 744
+      "okx": 740
     },
     "health_stats": {
-      "sensitive": 37,
-      "healthy": 707
+      "healthy": 706,
+      "sensitive": 34
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1017,10 +1017,10 @@
       "volume": 0,
       "geometry": 2,
       "trend": 2,
-      "stale": 26,
+      "stale": 25,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
-      "demote_counter1d": 1
+      "demote_counter1d": 0
     }
   },
   "observedSignals": [
