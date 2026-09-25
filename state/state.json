@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-25T22:13:31.055221+00:00",
+  "lastScanAt": "2026-09-25T22:44:00.588564+00:00",
   "pushedSignals": [
     {
       "symbol": "BMNRUSDT",
@@ -966,13 +966,13 @@
   "scanStats": {
     "scanned_pairs": 738,
     "failed_pairs": 12,
-    "candidates": 261,
-    "confirmed": 31,
+    "candidates": 259,
+    "confirmed": 32,
     "after_scoring": 20,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 559.9,
+    "duration_seconds": 591.8,
     "source_stats": {
       "okx": 738
     },
@@ -982,12 +982,12 @@
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 0,
+      "strength": 1,
       "rr": 3,
       "volume": 0,
-      "geometry": 2,
-      "trend": 1,
-      "stale": 25,
+      "geometry": 3,
+      "trend": 0,
+      "stale": 27,
       "demote_hs_top": 4,
       "demote_counter1h": 0,
       "demote_counter1d": 1
