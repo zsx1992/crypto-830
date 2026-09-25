@@ -1,52 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-25T14:10:18.782028+00:00",
+  "lastScanAt": "2026-09-25T17:40:49.725443+00:00",
   "pushedSignals": [
-    {
-      "symbol": "SOLUSDT",
-      "patternType": "double_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 74,
-      "detectedAt": "2026-09-18T16:45:42.356943+00:00",
-      "pushedAt": "2026-09-18T16:45:42.356943+00:00",
-      "cooldownUntil": "2026-09-19T00:45:42.356943+00:00",
-      "signalHash": "47c7cc5162bca67d",
-      "endMs": 1789488000000,
-      "breakoutIndex": 298,
-      "breakoutPrice": 111.12,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "ETHUSDT",
-      "patternType": "descending_channel",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 85,
-      "detectedAt": "2026-09-18T16:45:47.303804+00:00",
-      "pushedAt": "2026-09-18T16:45:47.303804+00:00",
-      "cooldownUntil": "2026-09-18T18:45:47.303804+00:00",
-      "signalHash": "aa4c80bc60f7773b",
-      "endMs": 1789045200000,
-      "breakoutIndex": 228,
-      "breakoutPrice": 2628.84,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "CASHCATUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 70,
-      "detectedAt": "2026-09-18T16:55:45.391052+00:00",
-      "pushedAt": "2026-09-18T16:55:45.391052+00:00",
-      "cooldownUntil": "2026-09-18T18:55:45.391052+00:00",
-      "signalHash": "25b6cbd3a7a3e6b2",
-      "endMs": 1789124400000,
-      "breakoutIndex": 202,
-      "breakoutPrice": 0.1875,
-      "reconfirmAt": null
-    },
     {
       "symbol": "ACHUSDT",
       "patternType": "double_bottom",
@@ -976,36 +931,66 @@
       "breakoutIndex": 234,
       "breakoutPrice": 0.01644,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "XIAOMIUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 83,
+      "detectedAt": "2026-09-25T17:40:45.699315+00:00",
+      "pushedAt": "2026-09-25T17:40:45.699315+00:00",
+      "cooldownUntil": "2026-09-26T01:40:45.699315+00:00",
+      "signalHash": "ac4ecd60e63a554d",
+      "endMs": 1788739200000,
+      "breakoutIndex": 167,
+      "breakoutPrice": 3.361,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "SOLUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 73,
+      "detectedAt": "2026-09-25T17:40:49.725154+00:00",
+      "pushedAt": "2026-09-25T17:40:49.725154+00:00",
+      "cooldownUntil": "2026-09-26T01:40:49.725154+00:00",
+      "signalHash": "47c7cc5162bca67d",
+      "endMs": 1789488000000,
+      "breakoutIndex": 256,
+      "breakoutPrice": 111.12,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 765,
+    "scanned_pairs": 745,
     "failed_pairs": 13,
-    "candidates": 258,
-    "confirmed": 32,
-    "after_scoring": 20,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 268,
+    "confirmed": 27,
+    "after_scoring": 18,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 619.0,
+    "duration_seconds": 446.0,
     "source_stats": {
-      "okx": 765
+      "okx": 745
     },
     "health_stats": {
-      "healthy": 735,
-      "sensitive": 30
+      "healthy": 710,
+      "sensitive": 35
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 0,
+      "strength": 1,
       "rr": 3,
       "volume": 0,
-      "geometry": 3,
+      "geometry": 2,
       "trend": 1,
-      "stale": 26,
-      "demote_hs_top": 3,
-      "demote_counter1h": 1,
-      "demote_counter1d": 1
+      "stale": 24,
+      "demote_hs_top": 2,
+      "demote_counter1h": 0,
+      "demote_counter1d": 0
     }
   },
   "observedSignals": [
