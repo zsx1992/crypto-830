@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-25T01:25:17.352633+00:00",
+  "lastScanAt": "2026-09-25T01:48:04.260460+00:00",
   "pushedSignals": [
     {
       "symbol": "CHIPUSDT",
@@ -979,21 +979,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 779,
+    "scanned_pairs": 775,
     "failed_pairs": 13,
-    "candidates": 261,
-    "confirmed": 40,
-    "after_scoring": 22,
+    "candidates": 260,
+    "confirmed": 38,
+    "after_scoring": 20,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 632.2,
+    "duration_seconds": 464.7,
     "source_stats": {
-      "okx": 779
+      "okx": 775
     },
     "health_stats": {
-      "healthy": 743,
-      "sensitive": 36
+      "healthy": 740,
+      "sensitive": 35
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1002,7 +1002,7 @@
       "volume": 0,
       "geometry": 3,
       "trend": 4,
-      "stale": 29,
+      "stale": 28,
       "demote_hs_top": 3,
       "demote_counter1h": 2,
       "demote_counter1d": 0
