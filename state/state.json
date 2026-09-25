@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-25T18:56:10.614819+00:00",
+  "lastScanAt": "2026-09-25T20:55:12.880409+00:00",
   "pushedSignals": [
-    {
-      "symbol": "ACHUSDT",
-      "patternType": "double_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 75,
-      "detectedAt": "2026-09-18T19:21:44.751559+00:00",
-      "pushedAt": "2026-09-18T19:21:44.751559+00:00",
-      "cooldownUntil": "2026-09-19T03:21:44.751559+00:00",
-      "signalHash": "727eb2d3ecd7b41b",
-      "endMs": 1789113600000,
-      "breakoutIndex": 298,
-      "breakoutPrice": 0.005708,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "SUSHIUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 71,
-      "detectedAt": "2026-09-18T19:21:49.133127+00:00",
-      "pushedAt": "2026-09-18T19:21:49.133127+00:00",
-      "cooldownUntil": "2026-09-18T21:21:49.133127+00:00",
-      "signalHash": "8820ee5fcf41b2b2",
-      "endMs": 1788530400000,
-      "breakoutIndex": 82,
-      "breakoutPrice": 0.2071,
-      "reconfirmAt": null
-    },
     {
       "symbol": "BMNRUSDT",
       "patternType": "head_shoulders_bottom",
@@ -994,33 +964,33 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 740,
+    "scanned_pairs": 738,
     "failed_pairs": 12,
-    "candidates": 268,
+    "candidates": 257,
     "confirmed": 30,
-    "after_scoring": 20,
+    "after_scoring": 21,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 613.0,
+    "duration_seconds": 559.0,
     "source_stats": {
-      "okx": 740
+      "okx": 738
     },
     "health_stats": {
-      "healthy": 706,
-      "sensitive": 34
+      "sensitive": 34,
+      "healthy": 704
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
-      "rr": 3,
+      "rr": 2,
       "volume": 0,
       "geometry": 2,
-      "trend": 2,
+      "trend": 1,
       "stale": 25,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
-      "demote_counter1d": 0
+      "demote_counter1d": 1
     }
   },
   "observedSignals": [
