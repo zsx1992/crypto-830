@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-24T22:43:23.544672+00:00",
+  "lastScanAt": "2026-09-25T01:03:26.023859+00:00",
   "pushedSignals": [
-    {
-      "symbol": "GRVTUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 79,
-      "detectedAt": "2026-09-17T22:57:29.860268+00:00",
-      "pushedAt": "2026-09-17T22:57:29.860268+00:00",
-      "cooldownUntil": "2026-09-18T06:57:29.860268+00:00",
-      "signalHash": "a2edeb0ce963656f",
-      "endMs": 1787155200000,
-      "breakoutIndex": 136,
-      "breakoutPrice": 0.26151,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "FILUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 69,
-      "detectedAt": "2026-09-18T00:40:35.212669+00:00",
-      "pushedAt": "2026-09-18T00:40:35.212669+00:00",
-      "cooldownUntil": "2026-09-18T08:40:35.212669+00:00",
-      "signalHash": "ee44641718810c24",
-      "endMs": 1787932800000,
-      "breakoutIndex": 201,
-      "breakoutPrice": 0.7871,
-      "reconfirmAt": null
-    },
     {
       "symbol": "CHIPUSDT",
       "patternType": "head_shoulders_bottom",
@@ -991,35 +961,50 @@
       "breakoutIndex": 201,
       "breakoutPrice": 67.02,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "FILUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 66,
+      "detectedAt": "2026-09-25T01:03:26.023563+00:00",
+      "pushedAt": "2026-09-25T01:03:26.023563+00:00",
+      "cooldownUntil": "2026-09-25T09:03:26.023563+00:00",
+      "signalHash": "ee44641718810c24",
+      "endMs": 1787932800000,
+      "breakoutIndex": 159,
+      "breakoutPrice": 0.7871,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 779,
+    "scanned_pairs": 777,
     "failed_pairs": 13,
-    "candidates": 252,
-    "confirmed": 38,
-    "after_scoring": 20,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 1,
-    "duration_seconds": 473.4,
+    "candidates": 261,
+    "confirmed": 40,
+    "after_scoring": 23,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 0,
+    "duration_seconds": 641.8,
     "source_stats": {
-      "okx": 779
+      "okx": 777
     },
     "health_stats": {
       "healthy": 742,
-      "sensitive": 37
+      "sensitive": 35
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 1,
-      "rr": 4,
+      "strength": 2,
+      "rr": 3,
       "volume": 0,
       "geometry": 3,
-      "trend": 3,
-      "stale": 27,
-      "demote_hs_top": 5,
-      "demote_counter1h": 2,
+      "trend": 4,
+      "stale": 29,
+      "demote_hs_top": 4,
+      "demote_counter1h": 1,
       "demote_counter1d": 0
     }
   },
