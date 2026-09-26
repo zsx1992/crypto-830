@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-26T00:18:53.893924+00:00",
+  "lastScanAt": "2026-09-26T00:41:34.745733+00:00",
   "pushedSignals": [
     {
       "symbol": "APTUSDT",
@@ -957,7 +957,7 @@
     "after_dedup": 0,
     "pushed": 0,
     "observed": 1,
-    "duration_seconds": 528.8,
+    "duration_seconds": 550.5,
     "source_stats": {
       "okx": 744
     },
@@ -970,9 +970,9 @@
       "strength": 1,
       "rr": 2,
       "volume": 0,
-      "geometry": 3,
-      "trend": 1,
-      "stale": 26,
+      "geometry": 2,
+      "trend": 2,
+      "stale": 25,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
       "demote_counter1d": 1
@@ -1366,6 +1366,22 @@
       "breakoutPrice": 33.31,
       "reconfirmAt": null,
       "gate": "demote_hs_top"
+    },
+    {
+      "symbol": "UNIUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 70,
+      "detectedAt": "2026-09-26T00:41:34.745541+00:00",
+      "pushedAt": "2026-09-26T00:41:34.745541+00:00",
+      "cooldownUntil": "2026-09-26T02:41:34.745541+00:00",
+      "signalHash": "bab7d5457143a84d",
+      "endMs": 1790215200000,
+      "breakoutIndex": 360,
+      "breakoutPrice": 8.867,
+      "reconfirmAt": null,
+      "gate": "trend"
     }
   ]
 }
