@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-26T10:25:48.856387+00:00",
+  "lastScanAt": "2026-09-26T11:07:50.796170+00:00",
   "pushedSignals": [
     {
       "symbol": "OKBUSDT",
@@ -934,21 +934,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 728,
+    "scanned_pairs": 726,
     "failed_pairs": 12,
-    "candidates": 265,
-    "confirmed": 33,
-    "after_scoring": 20,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 494.0,
+    "candidates": 257,
+    "confirmed": 34,
+    "after_scoring": 21,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 374.5,
     "source_stats": {
-      "okx": 728
+      "okx": 726
     },
     "health_stats": {
-      "sensitive": 39,
-      "healthy": 689
+      "sensitive": 35,
+      "healthy": 691
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -957,28 +957,13 @@
       "volume": 0,
       "geometry": 3,
       "trend": 2,
-      "stale": 27,
+      "stale": 28,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "CNPYUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 81,
-      "detectedAt": "2026-09-19T10:41:38.490016+00:00",
-      "pushedAt": "2026-09-19T10:41:38.490016+00:00",
-      "cooldownUntil": "2026-09-19T11:11:38.490016+00:00",
-      "signalHash": "a3a29bc3ba7576f2",
-      "endMs": 1789790400000,
-      "breakoutIndex": 596,
-      "breakoutPrice": 0.5223,
-      "reconfirmAt": null
-    },
     {
       "symbol": "PNUTUSDT",
       "patternType": "double_bottom",
