@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-26T00:41:34.745733+00:00",
+  "lastScanAt": "2026-09-26T01:55:04.624487+00:00",
   "pushedSignals": [
-    {
-      "symbol": "APTUSDT",
-      "patternType": "double_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 63,
-      "detectedAt": "2026-09-19T00:49:50.794547+00:00",
-      "pushedAt": "2026-09-19T00:49:50.794547+00:00",
-      "cooldownUntil": "2026-09-19T08:49:50.794547+00:00",
-      "signalHash": "0edaecefeff4f701",
-      "endMs": 1788120000000,
-      "breakoutIndex": 298,
-      "breakoutPrice": 0.7308,
-      "reconfirmAt": null
-    },
     {
       "symbol": "DGAIUSDT",
       "patternType": "descending_channel",
@@ -949,21 +934,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 744,
+    "scanned_pairs": 740,
     "failed_pairs": 12,
-    "candidates": 262,
-    "confirmed": 31,
+    "candidates": 260,
+    "confirmed": 30,
     "after_scoring": 20,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 1,
-    "duration_seconds": 550.5,
+    "observed": 0,
+    "duration_seconds": 583.6,
     "source_stats": {
-      "okx": 744
+      "okx": 740
     },
     "health_stats": {
       "sensitive": 36,
-      "healthy": 708
+      "healthy": 704
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -975,7 +960,7 @@
       "stale": 25,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
-      "demote_counter1d": 1
+      "demote_counter1d": 0
     }
   },
   "observedSignals": [
