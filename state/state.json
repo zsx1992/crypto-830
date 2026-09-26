@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-26T14:50:49.681543+00:00",
+  "lastScanAt": "2026-09-26T15:01:53.418761+00:00",
   "pushedSignals": [
     {
       "symbol": "CROUSDT",
@@ -934,21 +934,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 666,
+    "scanned_pairs": 670,
     "failed_pairs": 10,
-    "candidates": 219,
+    "candidates": 222,
     "confirmed": 27,
     "after_scoring": 16,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 347.8,
+    "duration_seconds": 331.2,
     "source_stats": {
-      "okx": 666
+      "okx": 670
     },
     "health_stats": {
       "sensitive": 31,
-      "healthy": 635
+      "healthy": 639
     },
     "kill_breakdown": {
       "freshness": 0,
