@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-26T06:06:43.422473+00:00",
+  "lastScanAt": "2026-09-26T08:02:05.396348+00:00",
   "pushedSignals": [
     {
       "symbol": "SKHYUSDT",
@@ -901,35 +901,65 @@
       "breakoutIndex": 58,
       "breakoutPrice": 1.139,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "FILUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 75,
+      "detectedAt": "2026-09-26T08:02:00.277752+00:00",
+      "pushedAt": "2026-09-26T08:02:00.277752+00:00",
+      "cooldownUntil": "2026-09-26T10:02:00.277752+00:00",
+      "signalHash": "def2b97e779e5e26",
+      "endMs": 1790172000000,
+      "breakoutIndex": 398,
+      "breakoutPrice": 1.0803,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "FILUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 74,
+      "detectedAt": "2026-09-26T08:02:05.396081+00:00",
+      "pushedAt": "2026-09-26T08:02:05.396081+00:00",
+      "cooldownUntil": "2026-09-26T16:02:05.396081+00:00",
+      "signalHash": "ee44641718810c24",
+      "endMs": 1787932800000,
+      "breakoutIndex": 152,
+      "breakoutPrice": 0.7871,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 732,
+    "scanned_pairs": 734,
     "failed_pairs": 12,
-    "candidates": 264,
-    "confirmed": 31,
-    "after_scoring": 18,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 268,
+    "confirmed": 34,
+    "after_scoring": 21,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 569.0,
+    "duration_seconds": 497.5,
     "source_stats": {
-      "okx": 732
+      "okx": 734
     },
     "health_stats": {
-      "sensitive": 33,
-      "healthy": 699
+      "sensitive": 34,
+      "healthy": 700
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 2,
-      "rr": 2,
+      "rr": 3,
       "volume": 0,
       "geometry": 2,
-      "trend": 2,
-      "stale": 26,
-      "demote_hs_top": 3,
-      "demote_counter1h": 1,
+      "trend": 0,
+      "stale": 28,
+      "demote_hs_top": 5,
+      "demote_counter1h": 0,
       "demote_counter1d": 1
     }
   },
