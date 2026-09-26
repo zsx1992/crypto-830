@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-26T20:07:38.234215+00:00",
+  "lastScanAt": "2026-09-26T21:43:16.517575+00:00",
   "pushedSignals": [
     {
       "symbol": "DOTUSDT",
@@ -961,33 +961,48 @@
       "breakoutIndex": 322,
       "breakoutPrice": 97.18,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "BONKUSDT",
+      "patternType": "ascending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 84,
+      "detectedAt": "2026-09-26T21:43:16.517288+00:00",
+      "pushedAt": "2026-09-26T21:43:16.517288+00:00",
+      "cooldownUntil": "2026-09-26T22:13:16.517288+00:00",
+      "signalHash": "834d52d4368d7b60",
+      "endMs": 1790436600000,
+      "breakoutIndex": 595,
+      "breakoutPrice": 3.576e-06,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 614,
+    "scanned_pairs": 622,
     "failed_pairs": 10,
-    "candidates": 189,
-    "confirmed": 26,
-    "after_scoring": 18,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 196,
+    "confirmed": 25,
+    "after_scoring": 17,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 443.7,
+    "duration_seconds": 447.0,
     "source_stats": {
-      "okx": 614
+      "okx": 622
     },
     "health_stats": {
-      "sensitive": 27,
-      "healthy": 587
+      "sensitive": 29,
+      "healthy": 593
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 0,
+      "strength": 1,
       "rr": 2,
       "volume": 0,
-      "geometry": 3,
+      "geometry": 2,
       "trend": 1,
-      "stale": 20,
+      "stale": 18,
       "demote_hs_top": 2,
       "demote_counter1h": 0,
       "demote_counter1d": 0
