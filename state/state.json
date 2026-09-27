@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-27T13:00:13.222559+00:00",
+  "lastScanAt": "2026-09-27T14:20:13.314002+00:00",
   "pushedSignals": [
     {
       "symbol": "ARUSDT",
@@ -981,29 +981,29 @@
   "scanStats": {
     "scanned_pairs": 626,
     "failed_pairs": 10,
-    "candidates": 206,
-    "confirmed": 29,
-    "after_scoring": 18,
-    "after_dedup": 1,
-    "pushed": 1,
+    "candidates": 202,
+    "confirmed": 24,
+    "after_scoring": 15,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 507.0,
+    "duration_seconds": 436.8,
     "source_stats": {
       "okx": 626
     },
     "health_stats": {
-      "healthy": 594,
-      "sensitive": 32
+      "sensitive": 36,
+      "healthy": 590
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 2,
+      "strength": 0,
       "rr": 2,
       "volume": 0,
       "geometry": 2,
-      "trend": 2,
-      "stale": 22,
-      "demote_hs_top": 0,
+      "trend": 1,
+      "stale": 19,
+      "demote_hs_top": 1,
       "demote_counter1h": 2,
       "demote_counter1d": 1
     }
