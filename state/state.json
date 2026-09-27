@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-27T20:30:18.541966+00:00",
+  "lastScanAt": "2026-09-27T21:11:57.615466+00:00",
   "pushedSignals": [
     {
       "symbol": "OPGUSDT",
@@ -979,21 +979,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 606,
+    "scanned_pairs": 600,
     "failed_pairs": 10,
-    "candidates": 194,
+    "candidates": 195,
     "confirmed": 28,
     "after_scoring": 13,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 315.2,
+    "duration_seconds": 443.3,
     "source_stats": {
-      "okx": 606
+      "okx": 600
     },
     "health_stats": {
-      "sensitive": 33,
-      "healthy": 573
+      "healthy": 567,
+      "sensitive": 33
     },
     "kill_breakdown": {
       "freshness": 0,
