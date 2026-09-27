@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-27T17:41:26.703010+00:00",
+  "lastScanAt": "2026-09-27T18:41:24.481288+00:00",
   "pushedSignals": [
-    {
-      "symbol": "ARUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 63,
-      "detectedAt": "2026-09-20T17:46:58.084213+00:00",
-      "pushedAt": "2026-09-20T17:46:58.084213+00:00",
-      "cooldownUntil": "2026-09-20T18:16:58.084213+00:00",
-      "signalHash": "ad4eb1d3b90665f7",
-      "endMs": 1789918200000,
-      "breakoutIndex": 593,
-      "breakoutPrice": 4.402,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "KORUUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 72,
-      "detectedAt": "2026-09-20T17:47:02.116184+00:00",
-      "pushedAt": "2026-09-20T17:47:02.116184+00:00",
-      "cooldownUntil": "2026-09-20T19:47:02.116184+00:00",
-      "signalHash": "72774a7488b55bb3",
-      "endMs": 1788962400000,
-      "breakoutIndex": 154,
-      "breakoutPrice": 22.7,
-      "reconfirmAt": null
-    },
     {
       "symbol": "OPGUSDT",
       "patternType": "double_bottom",
@@ -991,35 +961,50 @@
       "breakoutIndex": 591,
       "breakoutPrice": 0.7015,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "BILLUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 80,
+      "detectedAt": "2026-09-27T18:41:24.481031+00:00",
+      "pushedAt": "2026-09-27T18:41:24.481031+00:00",
+      "cooldownUntil": "2026-09-27T19:11:24.481031+00:00",
+      "signalHash": "6f26b9e16faadf04",
+      "endMs": 1790164800000,
+      "breakoutIndex": 197,
+      "breakoutPrice": 0.01292,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 614,
+    "scanned_pairs": 610,
     "failed_pairs": 10,
-    "candidates": 206,
+    "candidates": 200,
     "confirmed": 29,
-    "after_scoring": 14,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_scoring": 15,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 359.3,
+    "duration_seconds": 498.2,
     "source_stats": {
-      "okx": 614
+      "okx": 610
     },
     "health_stats": {
-      "sensitive": 32,
-      "healthy": 582
+      "sensitive": 33,
+      "healthy": 577
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
       "rr": 2,
       "volume": 0,
-      "geometry": 3,
-      "trend": 7,
+      "geometry": 2,
+      "trend": 6,
       "stale": 21,
       "demote_hs_top": 2,
-      "demote_counter1h": 1,
+      "demote_counter1h": 2,
       "demote_counter1d": 0
     }
   },
