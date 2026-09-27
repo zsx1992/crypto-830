@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-27T08:30:49.775322+00:00",
+  "lastScanAt": "2026-09-27T12:37:56.946641+00:00",
   "pushedSignals": [
     {
       "symbol": "XAGUSDT",
@@ -979,21 +979,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 622,
+    "scanned_pairs": 628,
     "failed_pairs": 10,
-    "candidates": 197,
-    "confirmed": 27,
-    "after_scoring": 21,
+    "candidates": 206,
+    "confirmed": 30,
+    "after_scoring": 19,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 358.5,
+    "observed": 1,
+    "duration_seconds": 521.0,
     "source_stats": {
-      "okx": 622
+      "okx": 628
     },
     "health_stats": {
-      "healthy": 589,
-      "sensitive": 33
+      "sensitive": 33,
+      "healthy": 595
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1001,11 +1001,11 @@
       "rr": 2,
       "volume": 0,
       "geometry": 2,
-      "trend": 1,
-      "stale": 20,
-      "demote_hs_top": 0,
-      "demote_counter1h": 0,
-      "demote_counter1d": 0
+      "trend": 2,
+      "stale": 23,
+      "demote_hs_top": 1,
+      "demote_counter1h": 2,
+      "demote_counter1d": 1
     }
   },
   "observedSignals": [
@@ -1448,6 +1448,22 @@
       "breakoutPrice": 0.10447,
       "reconfirmAt": null,
       "gate": "demote_counter1h"
+    },
+    {
+      "symbol": "HUSDT",
+      "patternType": "descending_channel",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 75,
+      "detectedAt": "2026-09-27T12:37:56.946465+00:00",
+      "pushedAt": "2026-09-27T12:37:56.946465+00:00",
+      "cooldownUntil": "2026-09-27T14:37:56.946465+00:00",
+      "signalHash": "7fc6b0ff5962e853",
+      "endMs": 1790172000000,
+      "breakoutIndex": 326,
+      "breakoutPrice": 0.06223,
+      "reconfirmAt": null,
+      "gate": "demote_counter1d"
     }
   ]
 }
