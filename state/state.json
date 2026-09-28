@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-28T22:22:57.706391+00:00",
+  "lastScanAt": "2026-09-28T23:41:14.988037+00:00",
   "pushedSignals": [
-    {
-      "symbol": "GLWUSDT",
-      "patternType": "double_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 86,
-      "detectedAt": "2026-09-21T23:36:23.837500+00:00",
-      "pushedAt": "2026-09-21T23:36:23.837500+00:00",
-      "cooldownUntil": "2026-09-22T07:36:23.837500+00:00",
-      "signalHash": "8eac33d9459c5dfa",
-      "endMs": 1788436800000,
-      "breakoutIndex": 219,
-      "breakoutPrice": 169.35,
-      "reconfirmAt": null
-    },
     {
       "symbol": "SPACEUSDT",
       "patternType": "head_shoulders_bottom",
@@ -979,21 +964,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 839,
+    "scanned_pairs": 841,
     "failed_pairs": 15,
-    "candidates": 255,
-    "confirmed": 33,
-    "after_scoring": 18,
-    "after_dedup": 2,
-    "pushed": 2,
+    "candidates": 264,
+    "confirmed": 34,
+    "after_scoring": 19,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 676.4,
+    "duration_seconds": 605.2,
     "source_stats": {
-      "okx": 839
+      "okx": 841
     },
     "health_stats": {
-      "healthy": 811,
-      "sensitive": 28
+      "healthy": 812,
+      "sensitive": 29
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1002,28 +987,13 @@
       "volume": 0,
       "geometry": 2,
       "trend": 6,
-      "stale": 27,
+      "stale": 28,
       "demote_hs_top": 3,
       "demote_counter1h": 3,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "ARUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 73,
-      "detectedAt": "2026-09-21T23:36:29.699219+00:00",
-      "pushedAt": "2026-09-21T23:36:29.699219+00:00",
-      "cooldownUntil": "2026-09-22T00:06:29.699219+00:00",
-      "signalHash": "ad4eb1d3b90665f7",
-      "endMs": 1789918200000,
-      "breakoutIndex": 474,
-      "breakoutPrice": 4.402,
-      "reconfirmAt": null
-    },
     {
       "symbol": "FLOCKUSDT",
       "patternType": "descending_channel",
