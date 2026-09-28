@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-28T02:41:33.150392+00:00",
+  "lastScanAt": "2026-09-28T04:33:43.251382+00:00",
   "pushedSignals": [
     {
       "symbol": "OPGUSDT",
@@ -976,24 +976,54 @@
       "breakoutIndex": 197,
       "breakoutPrice": 0.01292,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "KAITOUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 67,
+      "detectedAt": "2026-09-28T04:33:39.270952+00:00",
+      "pushedAt": "2026-09-28T04:33:39.270952+00:00",
+      "cooldownUntil": "2026-09-28T06:33:39.270952+00:00",
+      "signalHash": "56b0c82ecab020fe",
+      "endMs": 1790539200000,
+      "breakoutIndex": 397,
+      "breakoutPrice": 0.3436,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "SKYUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 77,
+      "detectedAt": "2026-09-28T04:33:43.251175+00:00",
+      "pushedAt": "2026-09-28T04:33:43.251175+00:00",
+      "cooldownUntil": "2026-09-28T06:33:43.251175+00:00",
+      "signalHash": "c2f8cc756ccd114f",
+      "endMs": 1790085600000,
+      "breakoutIndex": 284,
+      "breakoutPrice": 0.07482,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 687,
+    "scanned_pairs": 703,
     "failed_pairs": 11,
-    "candidates": 214,
+    "candidates": 217,
     "confirmed": 32,
-    "after_scoring": 17,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_scoring": 18,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 506.4,
+    "duration_seconds": 494.3,
     "source_stats": {
-      "okx": 687
+      "okx": 703
     },
     "health_stats": {
-      "sensitive": 33,
-      "healthy": 654
+      "sensitive": 31,
+      "healthy": 672
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1001,29 +1031,14 @@
       "rr": 2,
       "volume": 0,
       "geometry": 2,
-      "trend": 6,
-      "stale": 25,
-      "demote_hs_top": 3,
-      "demote_counter1h": 1,
+      "trend": 7,
+      "stale": 23,
+      "demote_hs_top": 2,
+      "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "DOGEUSDT",
-      "patternType": "symmetrical_triangle",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 73,
-      "detectedAt": "2026-09-21T04:07:44.808510+00:00",
-      "pushedAt": "2026-09-21T04:07:44.808510+00:00",
-      "cooldownUntil": "2026-09-21T12:07:44.808510+00:00",
-      "signalHash": "dcd3ebd5b0ff82f3",
-      "endMs": 1787068800000,
-      "breakoutIndex": 103,
-      "breakoutPrice": 0.07248,
-      "reconfirmAt": null
-    },
     {
       "symbol": "WDCUSDT",
       "patternType": "head_shoulders_top",
