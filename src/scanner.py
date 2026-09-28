@@ -49,6 +49,12 @@ def counter_1d_long_gate(klines_1d, direction, interval):
     （实盘 1d 取 240 根，正常情况远超这个下限。）
     仅覆盖回测验证过的 15m/1h/4h；1d 形态自身不适用。
     SHORT 侧刻意不拦: 回测里 SHORT 顺逆无差异(39.4% vs 39.1%, z=0.02)。
+
+    ⚠️ 依据强度: 【弱规则】(2026-09-28 复核, 用户拍板保留, 见 config.yaml 同处注释)。
+    三次同口径回测 z = +1.74 / +2.56 / +1.83 在门槛 2 上下浮动, 上线时的 +2.56
+    是窗口幸运值。但方向三次一致(逆势 TP 率 27.3/23.1/33.3 全线低于顺势),
+    且只转观察流不删信号 —— 故保留, 但不预期它拦掉大部分亏损。
+    复核: python tools/check_stability.py
     """
     if direction != Direction.LONG or interval not in ("15m", "1h", "4h"):
         return None
