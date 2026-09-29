@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-29T00:26:05.028976+00:00",
+  "lastScanAt": "2026-09-29T02:17:23.868651+00:00",
   "pushedSignals": [
     {
       "symbol": "SNXXUSDT",
@@ -949,32 +949,32 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 837,
+    "scanned_pairs": 831,
     "failed_pairs": 15,
-    "candidates": 260,
-    "confirmed": 33,
-    "after_scoring": 20,
+    "candidates": 258,
+    "confirmed": 31,
+    "after_scoring": 18,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 620.9,
+    "observed": 1,
+    "duration_seconds": 592.0,
     "source_stats": {
-      "okx": 837
+      "okx": 831
     },
     "health_stats": {
-      "healthy": 811,
-      "sensitive": 26
+      "healthy": 807,
+      "sensitive": 24
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 0,
+      "strength": 1,
       "rr": 1,
       "volume": 0,
       "geometry": 2,
       "trend": 6,
-      "stale": 27,
+      "stale": 26,
       "demote_hs_top": 3,
-      "demote_counter1h": 1,
+      "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
@@ -1362,6 +1362,22 @@
       "breakoutPrice": 0.1891,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "RENDERUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 74,
+      "detectedAt": "2026-09-29T02:17:23.868495+00:00",
+      "pushedAt": "2026-09-29T02:17:23.868495+00:00",
+      "cooldownUntil": "2026-09-30T02:17:23.868495+00:00",
+      "signalHash": "277a22c60d73e0f8",
+      "endMs": 1788105600000,
+      "breakoutIndex": 231,
+      "breakoutPrice": 1.779,
+      "reconfirmAt": null,
+      "gate": "geometry"
     }
   ]
 }
