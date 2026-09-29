@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-29T16:11:52.175884+00:00",
+  "lastScanAt": "2026-09-29T19:19:28.185420+00:00",
   "pushedSignals": [
-    {
-      "symbol": "TAOUSDT",
-      "patternType": "double_bottom",
-      "interval": "1d",
-      "direction": "LONG",
-      "strength": 71,
-      "detectedAt": "2026-09-22T18:48:00.331726+00:00",
-      "pushedAt": "2026-09-22T18:48:00.331726+00:00",
-      "cooldownUntil": "2026-09-23T18:48:00.331726+00:00",
-      "signalHash": "1a46f1a10789157c",
-      "endMs": 1785168000000,
-      "breakoutIndex": 238,
-      "breakoutPrice": 312.3,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "ZENUSDT",
-      "patternType": "descending_channel",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 73,
-      "detectedAt": "2026-09-22T18:48:06.847659+00:00",
-      "pushedAt": "2026-09-22T18:48:06.847659+00:00",
-      "cooldownUntil": "2026-09-22T19:18:06.847659+00:00",
-      "signalHash": "56ee3f5826ebd000",
-      "endMs": 1789918200000,
-      "breakoutIndex": 399,
-      "breakoutPrice": 7.714,
-      "reconfirmAt": null
-    },
     {
       "symbol": "YGGUSDT",
       "patternType": "double_bottom",
@@ -919,21 +889,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 788,
-    "failed_pairs": 14,
-    "candidates": 234,
-    "confirmed": 26,
+    "scanned_pairs": 779,
+    "failed_pairs": 13,
+    "candidates": 224,
+    "confirmed": 24,
     "after_scoring": 11,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 612.4,
+    "duration_seconds": 445.0,
     "source_stats": {
-      "okx": 788
+      "okx": 779
     },
     "health_stats": {
-      "healthy": 759,
-      "sensitive": 29
+      "healthy": 749,
+      "sensitive": 30
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -941,8 +911,8 @@
       "rr": 2,
       "volume": 0,
       "geometry": 1,
-      "trend": 8,
-      "stale": 23,
+      "trend": 6,
+      "stale": 21,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
       "demote_counter1d": 0
