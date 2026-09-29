@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-29T02:17:23.868651+00:00",
+  "lastScanAt": "2026-09-29T02:52:18.503310+00:00",
   "pushedSignals": [
     {
       "symbol": "SNXXUSDT",
@@ -949,32 +949,32 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 831,
+    "scanned_pairs": 833,
     "failed_pairs": 15,
-    "candidates": 258,
-    "confirmed": 31,
-    "after_scoring": 18,
+    "candidates": 256,
+    "confirmed": 30,
+    "after_scoring": 16,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 1,
-    "duration_seconds": 592.0,
+    "observed": 0,
+    "duration_seconds": 448.4,
     "source_stats": {
-      "okx": 831
+      "okx": 833
     },
     "health_stats": {
-      "healthy": 807,
+      "healthy": 809,
       "sensitive": 24
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 1,
+      "strength": 2,
       "rr": 1,
       "volume": 0,
       "geometry": 2,
-      "trend": 6,
-      "stale": 26,
+      "trend": 5,
+      "stale": 25,
       "demote_hs_top": 3,
-      "demote_counter1h": 0,
+      "demote_counter1h": 1,
       "demote_counter1d": 0
     }
   },
