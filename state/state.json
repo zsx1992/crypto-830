@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-29T08:55:38.389364+00:00",
+  "lastScanAt": "2026-09-29T09:16:08.725486+00:00",
   "pushedSignals": [
     {
       "symbol": "SNXXUSDT",
@@ -949,21 +949,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 810,
+    "scanned_pairs": 808,
     "failed_pairs": 14,
     "candidates": 252,
-    "confirmed": 29,
+    "confirmed": 30,
     "after_scoring": 12,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 1,
-    "duration_seconds": 463.8,
+    "duration_seconds": 570.9,
     "source_stats": {
-      "okx": 810
+      "okx": 808
     },
     "health_stats": {
-      "healthy": 784,
-      "sensitive": 26
+      "healthy": 783,
+      "sensitive": 25
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -974,7 +974,7 @@
       "trend": 8,
       "stale": 24,
       "demote_hs_top": 3,
-      "demote_counter1h": 2,
+      "demote_counter1h": 3,
       "demote_counter1d": 0
     }
   },
@@ -1408,6 +1408,22 @@
       "endMs": 1790584200000,
       "breakoutIndex": 508,
       "breakoutPrice": 0.13216,
+      "reconfirmAt": null,
+      "gate": "demote_counter1h"
+    },
+    {
+      "symbol": "PENDLEUSDT",
+      "patternType": "ascending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 77,
+      "detectedAt": "2026-09-29T09:16:08.725252+00:00",
+      "pushedAt": "2026-09-29T09:16:08.725252+00:00",
+      "cooldownUntil": "2026-09-29T09:46:08.725252+00:00",
+      "signalHash": "759102bf1b079195",
+      "endMs": 1790525700000,
+      "breakoutIndex": 459,
+      "breakoutPrice": 2.582,
       "reconfirmAt": null,
       "gate": "demote_counter1h"
     }
