@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-29T06:47:14.005692+00:00",
+  "lastScanAt": "2026-09-29T08:55:38.389364+00:00",
   "pushedSignals": [
     {
       "symbol": "SNXXUSDT",
@@ -949,31 +949,31 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 814,
+    "scanned_pairs": 810,
     "failed_pairs": 14,
-    "candidates": 254,
-    "confirmed": 31,
-    "after_scoring": 14,
+    "candidates": 252,
+    "confirmed": 29,
+    "after_scoring": 12,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 1,
-    "duration_seconds": 427.6,
+    "duration_seconds": 463.8,
     "source_stats": {
-      "okx": 814
+      "okx": 810
     },
     "health_stats": {
-      "healthy": 788,
+      "healthy": 784,
       "sensitive": 26
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 1,
-      "rr": 1,
+      "rr": 2,
       "volume": 0,
       "geometry": 1,
       "trend": 8,
       "stale": 24,
-      "demote_hs_top": 4,
+      "demote_hs_top": 3,
       "demote_counter1h": 2,
       "demote_counter1d": 0
     }
@@ -1394,6 +1394,22 @@
       "breakoutPrice": 115.46,
       "reconfirmAt": null,
       "gate": "demote_hs_top"
+    },
+    {
+      "symbol": "CCUSDT",
+      "patternType": "ascending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 76,
+      "detectedAt": "2026-09-29T08:55:38.389104+00:00",
+      "pushedAt": "2026-09-29T08:55:38.389104+00:00",
+      "cooldownUntil": "2026-09-29T09:25:38.389104+00:00",
+      "signalHash": "2abcda2775c75d22",
+      "endMs": 1790584200000,
+      "breakoutIndex": 508,
+      "breakoutPrice": 0.13216,
+      "reconfirmAt": null,
+      "gate": "demote_counter1h"
     }
   ]
 }
