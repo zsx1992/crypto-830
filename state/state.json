@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-29T23:39:57.669552+00:00",
+  "lastScanAt": "2026-09-30T00:47:29.251028+00:00",
   "pushedSignals": [
-    {
-      "symbol": "ARUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 77,
-      "detectedAt": "2026-09-23T00:18:20.503180+00:00",
-      "pushedAt": "2026-09-23T00:18:20.503180+00:00",
-      "cooldownUntil": "2026-09-23T00:48:20.503180+00:00",
-      "signalHash": "ad4eb1d3b90665f7",
-      "endMs": 1789918200000,
-      "breakoutIndex": 375,
-      "breakoutPrice": 4.402,
-      "reconfirmAt": null
-    },
     {
       "symbol": "SEIUSDT",
       "patternType": "ascending_channel",
@@ -874,20 +859,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 773,
+    "scanned_pairs": 775,
     "failed_pairs": 13,
-    "candidates": 212,
-    "confirmed": 24,
-    "after_scoring": 14,
+    "candidates": 216,
+    "confirmed": 22,
+    "after_scoring": 10,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 446.2,
+    "duration_seconds": 605.9,
     "source_stats": {
-      "okx": 773
+      "okx": 775
     },
     "health_stats": {
-      "healthy": 740,
+      "healthy": 742,
       "sensitive": 33
     },
     "kill_breakdown": {
@@ -895,31 +880,15 @@
       "strength": 0,
       "rr": 2,
       "volume": 0,
-      "geometry": 1,
-      "trend": 3,
-      "stale": 21,
-      "demote_hs_top": 3,
-      "demote_counter1h": 1,
+      "geometry": 2,
+      "trend": 4,
+      "stale": 19,
+      "demote_hs_top": 2,
+      "demote_counter1h": 2,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "CBRSUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 72,
-      "detectedAt": "2026-09-23T00:18:24.373900+00:00",
-      "pushedAt": "2026-09-23T00:18:24.373900+00:00",
-      "cooldownUntil": "2026-09-23T08:18:24.373900+00:00",
-      "signalHash": "9ee34be1f3620902",
-      "endMs": 1789862400000,
-      "breakoutIndex": 290,
-      "breakoutPrice": 208.76,
-      "reconfirmAt": null,
-      "gate": "demote_counter1d"
-    },
     {
       "symbol": "AVAXUSDT",
       "patternType": "head_shoulders_bottom",
