@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-30T21:25:54.554234+00:00",
+  "lastScanAt": "2026-09-30T23:23:35.747479+00:00",
   "pushedSignals": [
-    {
-      "symbol": "DOGEUSDT",
-      "patternType": "ascending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 80,
-      "detectedAt": "2026-09-23T23:00:29.491241+00:00",
-      "pushedAt": "2026-09-23T23:00:29.491241+00:00",
-      "cooldownUntil": "2026-09-23T23:30:29.491241+00:00",
-      "signalHash": "108610ee2a88dd3f",
-      "endMs": 1790168400000,
-      "breakoutIndex": 564,
-      "breakoutPrice": 0.09632,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "LABUSDT",
-      "patternType": "ascending_channel",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 72,
-      "detectedAt": "2026-09-23T23:21:08.306158+00:00",
-      "pushedAt": "2026-09-23T23:21:08.306158+00:00",
-      "cooldownUntil": "2026-09-24T01:21:08.306158+00:00",
-      "signalHash": "3656545d21db0768",
-      "endMs": 1790103600000,
-      "breakoutIndex": 390,
-      "breakoutPrice": 0.05718,
-      "reconfirmAt": null
-    },
     {
       "symbol": "ZHIPUUSDT",
       "patternType": "double_top",
@@ -799,25 +769,25 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 761,
+    "scanned_pairs": 769,
     "failed_pairs": 15,
     "candidates": 213,
-    "confirmed": 23,
+    "confirmed": 22,
     "after_scoring": 10,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 426.6,
+    "duration_seconds": 631.7,
     "source_stats": {
-      "okx": 761
+      "okx": 769
     },
     "health_stats": {
-      "healthy": 732,
-      "sensitive": 29
+      "healthy": 739,
+      "sensitive": 30
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 1,
+      "strength": 0,
       "rr": 2,
       "volume": 0,
       "geometry": 2,
