@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-30T04:49:05.322896+00:00",
+  "lastScanAt": "2026-09-30T07:07:20.095495+00:00",
   "pushedSignals": [
     {
       "symbol": "SEIUSDT",
@@ -856,24 +856,39 @@
       "breakoutIndex": 440,
       "breakoutPrice": 0.1891,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "VVVUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 60,
+      "detectedAt": "2026-09-30T07:07:20.095215+00:00",
+      "pushedAt": "2026-09-30T07:07:20.095215+00:00",
+      "cooldownUntil": "2026-09-30T09:07:20.095215+00:00",
+      "signalHash": "d4679fd2670569ad",
+      "endMs": 1790326800000,
+      "breakoutIndex": 345,
+      "breakoutPrice": 28.185,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 745,
+    "scanned_pairs": 737,
     "failed_pairs": 13,
-    "candidates": 212,
+    "candidates": 215,
     "confirmed": 23,
     "after_scoring": 12,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 440.4,
+    "duration_seconds": 598.9,
     "source_stats": {
-      "okx": 745
+      "okx": 737
     },
     "health_stats": {
-      "healthy": 714,
-      "sensitive": 31
+      "healthy": 709,
+      "sensitive": 28
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -881,30 +896,14 @@
       "rr": 2,
       "volume": 0,
       "geometry": 2,
-      "trend": 4,
+      "trend": 3,
       "stale": 21,
-      "demote_hs_top": 2,
+      "demote_hs_top": 3,
       "demote_counter1h": 1,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "XIAOMIUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 80,
-      "detectedAt": "2026-09-23T05:48:07.656783+00:00",
-      "pushedAt": "2026-09-23T05:48:07.656783+00:00",
-      "cooldownUntil": "2026-09-23T13:48:07.656783+00:00",
-      "signalHash": "ac4ecd60e63a554d",
-      "endMs": 1788739200000,
-      "breakoutIndex": 167,
-      "breakoutPrice": 3.361,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "SNXXUSDT",
       "patternType": "double_bottom",
