@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-09-30T14:06:34.725159+00:00",
+  "lastScanAt": "2026-09-30T14:25:08.727525+00:00",
   "pushedSignals": [
     {
       "symbol": "SEIUSDT",
@@ -889,20 +889,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 763,
+    "scanned_pairs": 755,
     "failed_pairs": 17,
-    "candidates": 208,
-    "confirmed": 24,
-    "after_scoring": 11,
-    "after_dedup": 1,
-    "pushed": 1,
+    "candidates": 207,
+    "confirmed": 23,
+    "after_scoring": 10,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 419.9,
+    "duration_seconds": 624.3,
     "source_stats": {
-      "okx": 763
+      "okx": 755
     },
     "health_stats": {
-      "healthy": 736,
+      "healthy": 728,
       "sensitive": 27
     },
     "kill_breakdown": {
@@ -911,10 +911,10 @@
       "rr": 2,
       "volume": 0,
       "geometry": 2,
-      "trend": 5,
-      "stale": 20,
+      "trend": 4,
+      "stale": 19,
       "demote_hs_top": 3,
-      "demote_counter1h": 1,
+      "demote_counter1h": 2,
       "demote_counter1d": 0
     }
   },
