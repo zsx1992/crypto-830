@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-01T01:18:03.080985+00:00",
+  "lastScanAt": "2026-10-01T02:36:58.340686+00:00",
   "pushedSignals": [
     {
       "symbol": "ZHIPUUSDT",
@@ -784,21 +784,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 767,
+    "scanned_pairs": 759,
     "failed_pairs": 15,
     "candidates": 225,
-    "confirmed": 23,
+    "confirmed": 22,
     "after_scoring": 12,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 554.3,
+    "duration_seconds": 541.3,
     "source_stats": {
-      "okx": 767
+      "okx": 759
     },
     "health_stats": {
-      "healthy": 736,
-      "sensitive": 31
+      "healthy": 732,
+      "sensitive": 27
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -807,29 +807,13 @@
       "volume": 0,
       "geometry": 2,
       "trend": 3,
-      "stale": 19,
+      "stale": 18,
       "demote_hs_top": 3,
-      "demote_counter1h": 1,
+      "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "WIFUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 80,
-      "detectedAt": "2026-09-24T01:22:50.260424+00:00",
-      "pushedAt": "2026-09-24T01:22:50.260424+00:00",
-      "cooldownUntil": "2026-09-24T01:52:50.260424+00:00",
-      "signalHash": "4bb4c559deff1946",
-      "endMs": 1790118900000,
-      "breakoutIndex": 528,
-      "breakoutPrice": 0.2512,
-      "reconfirmAt": null,
-      "gate": "demote_hs_top"
-    },
     {
       "symbol": "CROUSDT",
       "patternType": "double_bottom",
