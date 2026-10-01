@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-01T08:41:02.008493+00:00",
+  "lastScanAt": "2026-10-01T09:36:40.268384+00:00",
   "pushedSignals": [
     {
       "symbol": "SKHYUSDT",
@@ -814,21 +814,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 769,
-    "failed_pairs": 17,
-    "candidates": 222,
+    "scanned_pairs": 773,
+    "failed_pairs": 19,
+    "candidates": 226,
     "confirmed": 24,
     "after_scoring": 13,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 530.8,
+    "duration_seconds": 613.1,
     "source_stats": {
-      "okx": 769
+      "okx": 773
     },
     "health_stats": {
-      "healthy": 742,
-      "sensitive": 27
+      "healthy": 748,
+      "sensitive": 25
     },
     "kill_breakdown": {
       "freshness": 0,
