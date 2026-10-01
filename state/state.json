@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-01T06:25:40.389114+00:00",
+  "lastScanAt": "2026-10-01T08:41:02.008493+00:00",
   "pushedSignals": [
-    {
-      "symbol": "ZHIPUUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 77,
-      "detectedAt": "2026-09-24T06:57:46.411136+00:00",
-      "pushedAt": "2026-09-24T06:57:46.411136+00:00",
-      "cooldownUntil": "2026-09-24T14:57:46.411136+00:00",
-      "signalHash": "0f42f1bd40aa5216",
-      "endMs": 1786924800000,
-      "breakoutIndex": 76,
-      "breakoutPrice": 128.54,
-      "reconfirmAt": null
-    },
     {
       "symbol": "SKHYUSDT",
       "patternType": "double_top",
@@ -811,24 +796,39 @@
       "breakoutIndex": 394,
       "breakoutPrice": 0.019837,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "BILLUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 73,
+      "detectedAt": "2026-10-01T08:41:02.008218+00:00",
+      "pushedAt": "2026-10-01T08:41:02.008218+00:00",
+      "cooldownUntil": "2026-10-01T16:41:02.008218+00:00",
+      "signalHash": "e18634b296c4ee51",
+      "endMs": 1790438400000,
+      "breakoutIndex": 280,
+      "breakoutPrice": 0.01148,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 771,
-    "failed_pairs": 15,
-    "candidates": 226,
-    "confirmed": 28,
-    "after_scoring": 14,
-    "after_dedup": 2,
-    "pushed": 2,
-    "observed": 1,
-    "duration_seconds": 671.9,
+    "scanned_pairs": 769,
+    "failed_pairs": 17,
+    "candidates": 222,
+    "confirmed": 24,
+    "after_scoring": 13,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 0,
+    "duration_seconds": 530.8,
     "source_stats": {
-      "okx": 771
+      "okx": 769
     },
     "health_stats": {
-      "healthy": 741,
-      "sensitive": 30
+      "healthy": 742,
+      "sensitive": 27
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -836,30 +836,14 @@
       "rr": 2,
       "volume": 0,
       "geometry": 2,
-      "trend": 5,
-      "stale": 22,
+      "trend": 2,
+      "stale": 19,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "CROUSDT",
-      "patternType": "double_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 84,
-      "detectedAt": "2026-09-24T06:57:51.052292+00:00",
-      "pushedAt": "2026-09-24T06:57:51.052292+00:00",
-      "cooldownUntil": "2026-09-24T14:57:51.052292+00:00",
-      "signalHash": "2370b1b9b58a9a7c",
-      "endMs": 1787011200000,
-      "breakoutIndex": 90,
-      "breakoutPrice": 0.05428,
-      "reconfirmAt": null,
-      "gate": "rr"
-    },
     {
       "symbol": "DOGEUSDT",
       "patternType": "ascending_channel",
