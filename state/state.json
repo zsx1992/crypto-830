@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-02T00:07:01.978820+00:00",
+  "lastScanAt": "2026-10-02T01:12:30.754789+00:00",
   "pushedSignals": [
-    {
-      "symbol": "FILUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 66,
-      "detectedAt": "2026-09-25T01:03:26.023563+00:00",
-      "pushedAt": "2026-09-25T01:03:26.023563+00:00",
-      "cooldownUntil": "2026-09-25T09:03:26.023563+00:00",
-      "signalHash": "ee44641718810c24",
-      "endMs": 1787932800000,
-      "breakoutIndex": 159,
-      "breakoutPrice": 0.7871,
-      "reconfirmAt": null
-    },
     {
       "symbol": "SUSHIUSDT",
       "patternType": "double_bottom",
@@ -829,21 +814,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 759,
+    "scanned_pairs": 757,
     "failed_pairs": 15,
-    "candidates": 238,
+    "candidates": 241,
     "confirmed": 28,
-    "after_scoring": 14,
-    "after_dedup": 2,
-    "pushed": 2,
+    "after_scoring": 12,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 452.5,
+    "duration_seconds": 431.5,
     "source_stats": {
-      "okx": 759
+      "okx": 757
     },
     "health_stats": {
-      "healthy": 726,
-      "sensitive": 32,
+      "healthy": 725,
+      "sensitive": 31,
       "over_smoothed": 1
     },
     "kill_breakdown": {
@@ -852,7 +837,7 @@
       "rr": 2,
       "volume": 0,
       "geometry": 4,
-      "trend": 4,
+      "trend": 6,
       "stale": 21,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
