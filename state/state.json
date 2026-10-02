@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-02T13:05:28.034075+00:00",
+  "lastScanAt": "2026-10-02T14:18:39.103776+00:00",
   "pushedSignals": [
-    {
-      "symbol": "AVAXUSDT",
-      "patternType": "rectangle",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 73,
-      "detectedAt": "2026-09-25T13:34:06.258634+00:00",
-      "pushedAt": "2026-09-25T13:34:06.258634+00:00",
-      "cooldownUntil": "2026-09-25T14:04:06.258634+00:00",
-      "signalHash": "eabf812ebf13c94b",
-      "endMs": 1790329500000,
-      "breakoutIndex": 590,
-      "breakoutPrice": 10.557,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "SENTUSDT",
-      "patternType": "ascending_channel",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 67,
-      "detectedAt": "2026-09-25T13:34:10.960079+00:00",
-      "pushedAt": "2026-09-25T13:34:10.960079+00:00",
-      "cooldownUntil": "2026-09-25T21:34:10.960079+00:00",
-      "signalHash": "93800abf6206a321",
-      "endMs": 1789041600000,
-      "breakoutIndex": 234,
-      "breakoutPrice": 0.01644,
-      "reconfirmAt": null
-    },
     {
       "symbol": "XIAOMIUSDT",
       "patternType": "double_top",
@@ -871,24 +841,54 @@
       "breakoutIndex": 395,
       "breakoutPrice": 0.08857,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "YGGUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 75,
+      "detectedAt": "2026-10-02T14:18:34.917930+00:00",
+      "pushedAt": "2026-10-02T14:18:34.917930+00:00",
+      "cooldownUntil": "2026-10-02T22:18:34.917930+00:00",
+      "signalHash": "9438a200414bf81f",
+      "endMs": 1789128000000,
+      "breakoutIndex": 240,
+      "breakoutPrice": 0.028,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "SUSHIUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 75,
+      "detectedAt": "2026-10-02T14:18:39.103555+00:00",
+      "pushedAt": "2026-10-02T14:18:39.103555+00:00",
+      "cooldownUntil": "2026-10-02T22:18:39.103555+00:00",
+      "signalHash": "40981be677b77310",
+      "endMs": 1788523200000,
+      "breakoutIndex": 138,
+      "breakoutPrice": 0.2636,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 778,
-    "failed_pairs": 18,
+    "scanned_pairs": 781,
+    "failed_pairs": 19,
     "candidates": 242,
-    "confirmed": 33,
-    "after_scoring": 21,
+    "confirmed": 32,
+    "after_scoring": 20,
     "after_dedup": 2,
     "pushed": 2,
     "observed": 0,
-    "duration_seconds": 571.8,
+    "duration_seconds": 553.5,
     "source_stats": {
-      "okx": 778
+      "okx": 781
     },
     "health_stats": {
-      "healthy": 749,
-      "sensitive": 28,
+      "healthy": 751,
+      "sensitive": 29,
       "over_smoothed": 1
     },
     "kill_breakdown": {
@@ -898,7 +898,7 @@
       "volume": 0,
       "geometry": 3,
       "trend": 4,
-      "stale": 26,
+      "stale": 25,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
       "demote_counter1d": 0
