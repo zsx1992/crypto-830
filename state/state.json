@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-02T01:30:54.274316+00:00",
+  "lastScanAt": "2026-10-02T06:05:34.595966+00:00",
   "pushedSignals": [
     {
       "symbol": "SUSHIUSDT",
@@ -811,23 +811,53 @@
       "breakoutIndex": 158,
       "breakoutPrice": 67.02,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "FARTCOINUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 87,
+      "detectedAt": "2026-10-02T06:05:28.910186+00:00",
+      "pushedAt": "2026-10-02T06:05:28.910186+00:00",
+      "cooldownUntil": "2026-10-02T06:35:28.910186+00:00",
+      "signalHash": "2010fc301a536efc",
+      "endMs": 1790884800000,
+      "breakoutIndex": 593,
+      "breakoutPrice": 0.1826,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "EIGENUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 85,
+      "detectedAt": "2026-10-02T06:05:34.595650+00:00",
+      "pushedAt": "2026-10-02T06:05:34.595650+00:00",
+      "cooldownUntil": "2026-10-02T06:35:34.595650+00:00",
+      "signalHash": "6a78aae71ab45b06",
+      "endMs": 1790882100000,
+      "breakoutIndex": 593,
+      "breakoutPrice": 0.2532,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 761,
-    "failed_pairs": 15,
-    "candidates": 240,
-    "confirmed": 29,
-    "after_scoring": 13,
-    "after_dedup": 0,
-    "pushed": 0,
+    "scanned_pairs": 768,
+    "failed_pairs": 16,
+    "candidates": 250,
+    "confirmed": 33,
+    "after_scoring": 18,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 414.5,
+    "duration_seconds": 548.8,
     "source_stats": {
-      "okx": 761
+      "okx": 768
     },
     "health_stats": {
-      "healthy": 729,
+      "healthy": 736,
       "sensitive": 31,
       "over_smoothed": 1
     },
@@ -837,10 +867,10 @@
       "rr": 2,
       "volume": 0,
       "geometry": 4,
-      "trend": 6,
-      "stale": 22,
+      "trend": 4,
+      "stale": 24,
       "demote_hs_top": 3,
-      "demote_counter1h": 0,
+      "demote_counter1h": 1,
       "demote_counter1d": 0
     }
   },
