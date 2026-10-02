@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-02T14:18:39.103776+00:00",
+  "lastScanAt": "2026-10-02T15:38:15.930233+00:00",
   "pushedSignals": [
     {
       "symbol": "XIAOMIUSDT",
@@ -871,23 +871,38 @@
       "breakoutIndex": 138,
       "breakoutPrice": 0.2636,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SKYUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 76,
+      "detectedAt": "2026-10-02T15:38:15.929945+00:00",
+      "pushedAt": "2026-10-02T15:38:15.929945+00:00",
+      "cooldownUntil": "2026-10-02T17:38:15.929945+00:00",
+      "signalHash": "c2f8cc756ccd114f",
+      "endMs": 1790085600000,
+      "breakoutIndex": 177,
+      "breakoutPrice": 0.07482,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 781,
-    "failed_pairs": 19,
-    "candidates": 242,
-    "confirmed": 32,
-    "after_scoring": 20,
-    "after_dedup": 2,
-    "pushed": 2,
+    "scanned_pairs": 775,
+    "failed_pairs": 21,
+    "candidates": 233,
+    "confirmed": 30,
+    "after_scoring": 17,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 553.5,
+    "duration_seconds": 404.3,
     "source_stats": {
-      "okx": 781
+      "okx": 775
     },
     "health_stats": {
-      "healthy": 751,
+      "healthy": 745,
       "sensitive": 29,
       "over_smoothed": 1
     },
@@ -896,9 +911,9 @@
       "strength": 0,
       "rr": 2,
       "volume": 0,
-      "geometry": 3,
-      "trend": 4,
-      "stale": 25,
+      "geometry": 2,
+      "trend": 6,
+      "stale": 24,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
       "demote_counter1d": 0
