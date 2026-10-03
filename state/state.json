@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-03T18:14:31.063337+00:00",
+  "lastScanAt": "2026-10-03T18:23:06.009863+00:00",
   "pushedSignals": [
     {
       "symbol": "BONKUSDT",
@@ -991,23 +991,38 @@
       "breakoutIndex": 194,
       "breakoutPrice": 0.05243,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "WLDUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 76,
+      "detectedAt": "2026-10-03T18:23:06.009618+00:00",
+      "pushedAt": "2026-10-03T18:23:06.009618+00:00",
+      "cooldownUntil": "2026-10-04T02:23:06.009618+00:00",
+      "signalHash": "296b266953156654",
+      "endMs": 1789488000000,
+      "breakoutIndex": 256,
+      "breakoutPrice": 0.5415,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 642,
+    "scanned_pairs": 640,
     "failed_pairs": 8,
-    "candidates": 231,
+    "candidates": 230,
     "confirmed": 26,
-    "after_scoring": 19,
-    "after_dedup": 2,
-    "pushed": 2,
+    "after_scoring": 18,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 524.7,
+    "duration_seconds": 327.1,
     "source_stats": {
-      "okx": 642
+      "okx": 640
     },
     "health_stats": {
-      "healthy": 614,
+      "healthy": 612,
       "sensitive": 27,
       "over_smoothed": 1
     },
@@ -1020,7 +1035,7 @@
       "trend": 2,
       "stale": 20,
       "demote_hs_top": 2,
-      "demote_counter1h": 0,
+      "demote_counter1h": 1,
       "demote_counter1d": 0
     }
   },
