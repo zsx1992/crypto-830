@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-03T00:24:56.558850+00:00",
+  "lastScanAt": "2026-10-03T02:19:23.041320+00:00",
   "pushedSignals": [
     {
       "symbol": "FILUSDT",
@@ -901,24 +901,39 @@
       "breakoutIndex": 393,
       "breakoutPrice": 0.3242,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SKYUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 65,
+      "detectedAt": "2026-10-03T02:19:19.167160+00:00",
+      "pushedAt": "2026-10-03T02:19:19.167160+00:00",
+      "cooldownUntil": "2026-10-03T04:19:19.167160+00:00",
+      "signalHash": "c2f8cc756ccd114f",
+      "endMs": 1790794800000,
+      "breakoutIndex": 382,
+      "breakoutPrice": 0.08857,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
     "scanned_pairs": 802,
     "failed_pairs": 20,
-    "candidates": 245,
+    "candidates": 246,
     "confirmed": 32,
     "after_scoring": 18,
     "after_dedup": 1,
     "pushed": 1,
     "observed": 1,
-    "duration_seconds": 593.6,
+    "duration_seconds": 602.3,
     "source_stats": {
       "okx": 802
     },
     "health_stats": {
-      "healthy": 765,
-      "sensitive": 36,
+      "healthy": 768,
+      "sensitive": 33,
       "over_smoothed": 1
     },
     "kill_breakdown": {
@@ -928,29 +943,13 @@
       "volume": 0,
       "geometry": 3,
       "trend": 6,
-      "stale": 24,
+      "stale": 23,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "UNIUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 70,
-      "detectedAt": "2026-09-26T00:41:34.745541+00:00",
-      "pushedAt": "2026-09-26T00:41:34.745541+00:00",
-      "cooldownUntil": "2026-09-26T02:41:34.745541+00:00",
-      "signalHash": "bab7d5457143a84d",
-      "endMs": 1790215200000,
-      "breakoutIndex": 360,
-      "breakoutPrice": 8.867,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "ORDIUSDT",
       "patternType": "double_bottom",
@@ -1334,6 +1333,22 @@
       "breakoutPrice": 0.1826,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "UNIUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 74,
+      "detectedAt": "2026-10-03T02:19:23.041175+00:00",
+      "pushedAt": "2026-10-03T02:19:23.041175+00:00",
+      "cooldownUntil": "2026-10-03T04:19:23.041175+00:00",
+      "signalHash": "bab7d5457143a84d",
+      "endMs": 1790215200000,
+      "breakoutIndex": 190,
+      "breakoutPrice": 8.867,
+      "reconfirmAt": null,
+      "gate": "demote_hs_top"
     }
   ]
 }
