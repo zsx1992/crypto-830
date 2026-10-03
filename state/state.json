@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-03T21:42:43.008317+00:00",
+  "lastScanAt": "2026-10-03T21:54:24.268128+00:00",
   "pushedSignals": [
-    {
-      "symbol": "BONKUSDT",
-      "patternType": "ascending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 84,
-      "detectedAt": "2026-09-26T21:43:16.517288+00:00",
-      "pushedAt": "2026-09-26T21:43:16.517288+00:00",
-      "cooldownUntil": "2026-09-26T22:13:16.517288+00:00",
-      "signalHash": "834d52d4368d7b60",
-      "endMs": 1790436600000,
-      "breakoutIndex": 595,
-      "breakoutPrice": 3.576e-06,
-      "reconfirmAt": null
-    },
     {
       "symbol": "ZECUSDT",
       "patternType": "ascending_channel",
@@ -1024,20 +1009,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 584,
+    "scanned_pairs": 580,
     "failed_pairs": 8,
-    "candidates": 210,
+    "candidates": 209,
     "confirmed": 24,
     "after_scoring": 15,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 448.0,
+    "duration_seconds": 406.7,
     "source_stats": {
-      "okx": 584
+      "okx": 580
     },
     "health_stats": {
-      "healthy": 560,
+      "healthy": 556,
       "sensitive": 23,
       "over_smoothed": 1
     },
