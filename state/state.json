@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-03T13:45:33.495961+00:00",
+  "lastScanAt": "2026-10-03T14:04:13.929997+00:00",
   "pushedSignals": [
     {
       "symbol": "WLDUSDT",
@@ -961,23 +961,38 @@
       "breakoutIndex": 227,
       "breakoutPrice": 0.0010712,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "AAOIUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 85,
+      "detectedAt": "2026-10-03T14:04:13.929730+00:00",
+      "pushedAt": "2026-10-03T14:04:13.929730+00:00",
+      "cooldownUntil": "2026-10-03T14:34:13.929730+00:00",
+      "signalHash": "085441dbdb8ddd95",
+      "endMs": 1790862300000,
+      "breakoutIndex": 408,
+      "breakoutPrice": 103.46,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 736,
-    "failed_pairs": 16,
-    "candidates": 251,
-    "confirmed": 32,
-    "after_scoring": 23,
+    "scanned_pairs": 722,
+    "failed_pairs": 14,
+    "candidates": 247,
+    "confirmed": 28,
+    "after_scoring": 19,
     "after_dedup": 1,
     "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 597.4,
+    "observed": 0,
+    "duration_seconds": 486.8,
     "source_stats": {
-      "okx": 736
+      "okx": 722
     },
     "health_stats": {
-      "healthy": 704,
+      "healthy": 690,
       "sensitive": 31,
       "over_smoothed": 1
     },
@@ -988,7 +1003,7 @@
       "volume": 0,
       "geometry": 2,
       "trend": 3,
-      "stale": 22,
+      "stale": 19,
       "demote_hs_top": 2,
       "demote_counter1h": 0,
       "demote_counter1d": 0
