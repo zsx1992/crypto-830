@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-03T08:29:58.044849+00:00",
+  "lastScanAt": "2026-10-03T08:41:46.994016+00:00",
   "pushedSignals": [
     {
       "symbol": "UNIUSDT",
@@ -946,18 +946,33 @@
       "breakoutIndex": 126,
       "breakoutPrice": 94.97,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ARUSDT",
+      "patternType": "double_bottom",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 80,
+      "detectedAt": "2026-10-03T08:41:46.993787+00:00",
+      "pushedAt": "2026-10-03T08:41:46.993787+00:00",
+      "cooldownUntil": "2026-10-03T09:11:46.993787+00:00",
+      "signalHash": "bec1b102b3797570",
+      "endMs": 1790965800000,
+      "breakoutIndex": 598,
+      "breakoutPrice": 4.587,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
     "scanned_pairs": 782,
     "failed_pairs": 18,
-    "candidates": 251,
-    "confirmed": 34,
-    "after_scoring": 23,
-    "after_dedup": 2,
-    "pushed": 2,
+    "candidates": 256,
+    "confirmed": 35,
+    "after_scoring": 24,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 449.4,
+    "duration_seconds": 450.8,
     "source_stats": {
       "okx": 782
     },
