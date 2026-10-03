@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-03T18:23:06.009863+00:00",
+  "lastScanAt": "2026-10-03T19:54:00.628529+00:00",
   "pushedSignals": [
     {
       "symbol": "BONKUSDT",
@@ -1006,24 +1006,39 @@
       "breakoutIndex": 256,
       "breakoutPrice": 0.5415,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SKHYUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 75,
+      "detectedAt": "2026-10-03T19:54:00.628289+00:00",
+      "pushedAt": "2026-10-03T19:54:00.628289+00:00",
+      "cooldownUntil": "2026-10-03T21:54:00.628289+00:00",
+      "signalHash": "2a47fa91a474bed9",
+      "endMs": 1790812800000,
+      "breakoutIndex": 349,
+      "breakoutPrice": 190.35,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 640,
+    "scanned_pairs": 600,
     "failed_pairs": 8,
-    "candidates": 230,
-    "confirmed": 26,
-    "after_scoring": 18,
+    "candidates": 213,
+    "confirmed": 24,
+    "after_scoring": 17,
     "after_dedup": 1,
     "pushed": 1,
     "observed": 0,
-    "duration_seconds": 327.1,
+    "duration_seconds": 423.9,
     "source_stats": {
-      "okx": 640
+      "okx": 600
     },
     "health_stats": {
-      "healthy": 612,
-      "sensitive": 27,
+      "healthy": 573,
+      "sensitive": 26,
       "over_smoothed": 1
     },
     "kill_breakdown": {
@@ -1035,7 +1050,7 @@
       "trend": 2,
       "stale": 20,
       "demote_hs_top": 2,
-      "demote_counter1h": 1,
+      "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
