@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-03T02:27:26.553996+00:00",
+  "lastScanAt": "2026-10-03T06:18:42.098239+00:00",
   "pushedSignals": [
     {
       "symbol": "FILUSDT",
@@ -916,24 +916,54 @@
       "breakoutIndex": 382,
       "breakoutPrice": 0.08857,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SKHYNIXUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 59,
+      "detectedAt": "2026-10-03T06:18:38.024054+00:00",
+      "pushedAt": "2026-10-03T06:18:38.024054+00:00",
+      "cooldownUntil": "2026-10-03T08:18:38.024054+00:00",
+      "signalHash": "213a5aaa55d16c69",
+      "endMs": 1790812800000,
+      "breakoutIndex": 362,
+      "breakoutPrice": 1349.1,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "WDCUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 79,
+      "detectedAt": "2026-10-03T06:18:42.098023+00:00",
+      "pushedAt": "2026-10-03T06:18:42.098023+00:00",
+      "cooldownUntil": "2026-10-03T14:18:42.098023+00:00",
+      "signalHash": "bc7d00cdc344636c",
+      "endMs": 1788969600000,
+      "breakoutIndex": 193,
+      "breakoutPrice": 416.41,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 802,
+    "scanned_pairs": 792,
     "failed_pairs": 20,
-    "candidates": 242,
-    "confirmed": 32,
-    "after_scoring": 18,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 244,
+    "confirmed": 34,
+    "after_scoring": 23,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 412.3,
+    "duration_seconds": 453.5,
     "source_stats": {
-      "okx": 802
+      "okx": 792
     },
     "health_stats": {
-      "healthy": 768,
-      "sensitive": 33,
+      "healthy": 759,
+      "sensitive": 32,
       "over_smoothed": 1
     },
     "kill_breakdown": {
@@ -942,7 +972,7 @@
       "rr": 2,
       "volume": 0,
       "geometry": 3,
-      "trend": 6,
+      "trend": 3,
       "stale": 23,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
@@ -950,22 +980,6 @@
     }
   },
   "observedSignals": [
-    {
-      "symbol": "ORDIUSDT",
-      "patternType": "double_bottom",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 70,
-      "detectedAt": "2026-09-26T05:38:27.139794+00:00",
-      "pushedAt": "2026-09-26T05:38:27.139794+00:00",
-      "cooldownUntil": "2026-09-26T06:08:27.139794+00:00",
-      "signalHash": "7932b8e42beb911a",
-      "endMs": 1790242200000,
-      "breakoutIndex": 442,
-      "breakoutPrice": 4.675,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "ZHIPUUSDT",
       "patternType": "head_shoulders_top",
