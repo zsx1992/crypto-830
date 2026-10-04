@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-04T14:59:17.531964+00:00",
+  "lastScanAt": "2026-10-04T15:07:21.262449+00:00",
   "pushedSignals": [
     {
       "symbol": "ETHFIUSDT",
@@ -1021,24 +1021,54 @@
       "breakoutIndex": 396,
       "breakoutPrice": 71.12,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SUIUSDT",
+      "patternType": "descending_channel",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 72,
+      "detectedAt": "2026-10-04T15:07:16.558836+00:00",
+      "pushedAt": "2026-10-04T15:07:16.558836+00:00",
+      "cooldownUntil": "2026-10-04T17:07:16.558836+00:00",
+      "signalHash": "019469cfadbb41e5",
+      "endMs": 1790989200000,
+      "breakoutIndex": 398,
+      "breakoutPrice": 1.1997,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "XAGUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 75,
+      "detectedAt": "2026-10-04T15:07:21.262126+00:00",
+      "pushedAt": "2026-10-04T15:07:21.262126+00:00",
+      "cooldownUntil": "2026-10-04T23:07:21.262126+00:00",
+      "signalHash": "cd48edba33851991",
+      "endMs": 1787918400000,
+      "breakoutIndex": 78,
+      "breakoutPrice": 66.52,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 561,
+    "scanned_pairs": 557,
     "failed_pairs": 9,
-    "candidates": 197,
+    "candidates": 195,
     "confirmed": 23,
-    "after_scoring": 14,
+    "after_scoring": 15,
     "after_dedup": 2,
     "pushed": 2,
-    "observed": 1,
-    "duration_seconds": 321.5,
+    "observed": 0,
+    "duration_seconds": 459.2,
     "source_stats": {
-      "okx": 561
+      "okx": 557
     },
     "health_stats": {
-      "healthy": 542,
-      "sensitive": 18,
+      "healthy": 537,
+      "sensitive": 19,
       "over_smoothed": 1
     },
     "kill_breakdown": {
@@ -1047,8 +1077,8 @@
       "rr": 1,
       "volume": 0,
       "geometry": 2,
-      "trend": 4,
-      "stale": 17,
+      "trend": 3,
+      "stale": 16,
       "demote_hs_top": 2,
       "demote_counter1h": 0,
       "demote_counter1d": 0
