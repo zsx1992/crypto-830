@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-04T18:47:05.604772+00:00",
+  "lastScanAt": "2026-10-04T18:53:19.694356+00:00",
   "pushedSignals": [
     {
       "symbol": "KAITOUSDT",
@@ -1036,18 +1036,33 @@
       "breakoutIndex": 346,
       "breakoutPrice": 156.15,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "QUANTUSDT",
+      "patternType": "ascending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 61,
+      "detectedAt": "2026-10-04T18:53:19.694131+00:00",
+      "pushedAt": "2026-10-04T18:53:19.694131+00:00",
+      "cooldownUntil": "2026-10-04T19:23:19.694131+00:00",
+      "signalHash": "fe04b014d59dc119",
+      "endMs": 1791080100000,
+      "breakoutIndex": 290,
+      "breakoutPrice": 258.4,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
     "scanned_pairs": 559,
     "failed_pairs": 9,
     "candidates": 202,
-    "confirmed": 21,
-    "after_scoring": 14,
+    "confirmed": 22,
+    "after_scoring": 15,
     "after_dedup": 1,
     "pushed": 1,
     "observed": 0,
-    "duration_seconds": 299.6,
+    "duration_seconds": 308.7,
     "source_stats": {
       "okx": 559
     },
@@ -1062,7 +1077,7 @@
       "volume": 0,
       "geometry": 2,
       "trend": 3,
-      "stale": 16,
+      "stale": 17,
       "demote_hs_top": 1,
       "demote_counter1h": 0,
       "demote_counter1d": 0
