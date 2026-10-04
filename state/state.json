@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-04T01:51:20.691389+00:00",
+  "lastScanAt": "2026-10-04T02:06:47.441347+00:00",
   "pushedSignals": [
     {
       "symbol": "XAGUSDT",
@@ -976,24 +976,39 @@
       "breakoutIndex": 349,
       "breakoutPrice": 190.35,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SKHYNIXUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 67,
+      "detectedAt": "2026-10-04T02:06:47.441142+00:00",
+      "pushedAt": "2026-10-04T02:06:47.441142+00:00",
+      "cooldownUntil": "2026-10-04T04:06:47.441142+00:00",
+      "signalHash": "213a5aaa55d16c69",
+      "endMs": 1790812800000,
+      "breakoutIndex": 342,
+      "breakoutPrice": 1349.1,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
     "scanned_pairs": 558,
     "failed_pairs": 8,
     "candidates": 189,
-    "confirmed": 22,
+    "confirmed": 23,
     "after_scoring": 13,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 390.0,
+    "duration_seconds": 426.0,
     "source_stats": {
       "okx": 558
     },
     "health_stats": {
-      "healthy": 536,
-      "sensitive": 21,
+      "healthy": 538,
+      "sensitive": 19,
       "over_smoothed": 1
     },
     "kill_breakdown": {
@@ -1002,8 +1017,8 @@
       "rr": 1,
       "volume": 0,
       "geometry": 2,
-      "trend": 4,
-      "stale": 19,
+      "trend": 5,
+      "stale": 20,
       "demote_hs_top": 2,
       "demote_counter1h": 0,
       "demote_counter1d": 0
