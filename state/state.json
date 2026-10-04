@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-04T15:07:21.262449+00:00",
+  "lastScanAt": "2026-10-04T15:18:09.927855+00:00",
   "pushedSignals": [
     {
       "symbol": "ETHFIUSDT",
@@ -1054,21 +1054,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 557,
+    "scanned_pairs": 555,
     "failed_pairs": 9,
-    "candidates": 195,
-    "confirmed": 23,
-    "after_scoring": 15,
-    "after_dedup": 2,
-    "pushed": 2,
+    "candidates": 190,
+    "confirmed": 22,
+    "after_scoring": 14,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 459.2,
+    "duration_seconds": 394.2,
     "source_stats": {
-      "okx": 557
+      "okx": 555
     },
     "health_stats": {
-      "healthy": 537,
-      "sensitive": 19,
+      "healthy": 536,
+      "sensitive": 18,
       "over_smoothed": 1
     },
     "kill_breakdown": {
@@ -1078,7 +1078,7 @@
       "volume": 0,
       "geometry": 2,
       "trend": 3,
-      "stale": 16,
+      "stale": 15,
       "demote_hs_top": 2,
       "demote_counter1h": 0,
       "demote_counter1d": 0
