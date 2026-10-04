@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-04T15:18:09.927855+00:00",
+  "lastScanAt": "2026-10-04T18:47:05.604772+00:00",
   "pushedSignals": [
-    {
-      "symbol": "ETHFIUSDT",
-      "patternType": "double_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 74,
-      "detectedAt": "2026-09-27T17:26:40.883066+00:00",
-      "pushedAt": "2026-09-27T17:26:40.883066+00:00",
-      "cooldownUntil": "2026-09-27T17:56:40.883066+00:00",
-      "signalHash": "9c5fbbea2bee5a35",
-      "endMs": 1790494200000,
-      "breakoutIndex": 591,
-      "breakoutPrice": 0.7015,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "BILLUSDT",
-      "patternType": "descending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 80,
-      "detectedAt": "2026-09-27T18:41:24.481031+00:00",
-      "pushedAt": "2026-09-27T18:41:24.481031+00:00",
-      "cooldownUntil": "2026-09-27T19:11:24.481031+00:00",
-      "signalHash": "6f26b9e16faadf04",
-      "endMs": 1790164800000,
-      "breakoutIndex": 197,
-      "breakoutPrice": 0.01292,
-      "reconfirmAt": null
-    },
     {
       "symbol": "KAITOUSDT",
       "patternType": "double_top",
@@ -1051,25 +1021,39 @@
       "breakoutIndex": 78,
       "breakoutPrice": 66.52,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SPCXUSDT",
+      "patternType": "ascending_channel",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 84,
+      "detectedAt": "2026-10-04T18:47:05.604494+00:00",
+      "pushedAt": "2026-10-04T18:47:05.604494+00:00",
+      "cooldownUntil": "2026-10-04T20:47:05.604494+00:00",
+      "signalHash": "4c9dfbc2721cce69",
+      "endMs": 1790884800000,
+      "breakoutIndex": 346,
+      "breakoutPrice": 156.15,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 555,
+    "scanned_pairs": 559,
     "failed_pairs": 9,
-    "candidates": 190,
-    "confirmed": 22,
+    "candidates": 202,
+    "confirmed": 21,
     "after_scoring": 14,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 394.2,
+    "duration_seconds": 299.6,
     "source_stats": {
-      "okx": 555
+      "okx": 559
     },
     "health_stats": {
-      "healthy": 536,
-      "sensitive": 18,
-      "over_smoothed": 1
+      "healthy": 541,
+      "sensitive": 18
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1078,29 +1062,13 @@
       "volume": 0,
       "geometry": 2,
       "trend": 3,
-      "stale": 15,
-      "demote_hs_top": 2,
+      "stale": 16,
+      "demote_hs_top": 1,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "GRAMUSDT",
-      "patternType": "double_bottom",
-      "interval": "1d",
-      "direction": "LONG",
-      "strength": 83,
-      "detectedAt": "2026-09-27T17:26:44.698655+00:00",
-      "pushedAt": "2026-09-27T17:26:44.698655+00:00",
-      "cooldownUntil": "2026-09-28T17:26:44.698655+00:00",
-      "signalHash": "bbfee4a6b49a5595",
-      "endMs": 1789574400000,
-      "breakoutIndex": 102,
-      "breakoutPrice": 1.652,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "TSLAUSDT",
       "patternType": "double_top",
