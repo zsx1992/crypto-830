@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-04T19:26:33.588490+00:00",
+  "lastScanAt": "2026-10-04T22:31:28.820239+00:00",
   "pushedSignals": [
     {
       "symbol": "KAITOUSDT",
@@ -1069,29 +1069,29 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 559,
+    "scanned_pairs": 573,
     "failed_pairs": 9,
-    "candidates": 206,
-    "confirmed": 22,
-    "after_scoring": 16,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 449.3,
+    "candidates": 211,
+    "confirmed": 23,
+    "after_scoring": 15,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 448.3,
     "source_stats": {
-      "okx": 559
+      "okx": 573
     },
     "health_stats": {
-      "healthy": 541,
-      "sensitive": 18
+      "healthy": 553,
+      "sensitive": 20
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
       "rr": 1,
       "volume": 0,
-      "geometry": 2,
-      "trend": 2,
+      "geometry": 3,
+      "trend": 3,
       "stale": 17,
       "demote_hs_top": 1,
       "demote_counter1h": 0,
