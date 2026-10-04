@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-04T18:53:19.694356+00:00",
+  "lastScanAt": "2026-10-04T19:26:33.588490+00:00",
   "pushedSignals": [
     {
       "symbol": "KAITOUSDT",
@@ -1051,18 +1051,33 @@
       "breakoutIndex": 290,
       "breakoutPrice": 258.4,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "NEARUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 73,
+      "detectedAt": "2026-10-04T19:26:28.843013+00:00",
+      "pushedAt": "2026-10-04T19:26:28.843013+00:00",
+      "cooldownUntil": "2026-10-04T21:26:28.843013+00:00",
+      "signalHash": "d15db6b88316b589",
+      "endMs": 1790751600000,
+      "breakoutIndex": 294,
+      "breakoutPrice": 5.278,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
     "scanned_pairs": 559,
     "failed_pairs": 9,
-    "candidates": 202,
+    "candidates": 206,
     "confirmed": 22,
-    "after_scoring": 15,
+    "after_scoring": 16,
     "after_dedup": 1,
     "pushed": 1,
-    "observed": 0,
-    "duration_seconds": 308.7,
+    "observed": 1,
+    "duration_seconds": 449.3,
     "source_stats": {
       "okx": 559
     },
@@ -1076,7 +1091,7 @@
       "rr": 1,
       "volume": 0,
       "geometry": 2,
-      "trend": 3,
+      "trend": 2,
       "stale": 17,
       "demote_hs_top": 1,
       "demote_counter1h": 0,
@@ -1449,6 +1464,22 @@
       "endMs": 1790751600000,
       "breakoutIndex": 299,
       "breakoutPrice": 5.278,
+      "reconfirmAt": null,
+      "gate": "trend"
+    },
+    {
+      "symbol": "SNXXUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 67,
+      "detectedAt": "2026-10-04T19:26:33.588299+00:00",
+      "pushedAt": "2026-10-04T19:26:33.588299+00:00",
+      "cooldownUntil": "2026-10-05T03:26:33.588299+00:00",
+      "signalHash": "63a339c657dfa6ea",
+      "endMs": 1790856000000,
+      "breakoutIndex": 281,
+      "breakoutPrice": 17.66,
       "reconfirmAt": null,
       "gate": "trend"
     }
