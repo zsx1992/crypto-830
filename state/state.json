@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-05T01:13:13.653646+00:00",
+  "lastScanAt": "2026-10-05T01:24:57.639139+00:00",
   "pushedSignals": [
     {
       "symbol": "KAITOUSDT",
@@ -1069,20 +1069,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 597,
+    "scanned_pairs": 599,
     "failed_pairs": 9,
     "candidates": 222,
-    "confirmed": 22,
+    "confirmed": 23,
     "after_scoring": 16,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 308.4,
+    "observed": 1,
+    "duration_seconds": 429.0,
     "source_stats": {
-      "okx": 597
+      "okx": 599
     },
     "health_stats": {
-      "healthy": 571,
+      "healthy": 573,
       "sensitive": 26
     },
     "kill_breakdown": {
@@ -1091,8 +1091,8 @@
       "rr": 1,
       "volume": 0,
       "geometry": 2,
-      "trend": 1,
-      "stale": 18,
+      "trend": 2,
+      "stale": 19,
       "demote_hs_top": 2,
       "demote_counter1h": 0,
       "demote_counter1d": 0
@@ -1480,6 +1480,22 @@
       "endMs": 1790856000000,
       "breakoutIndex": 281,
       "breakoutPrice": 17.66,
+      "reconfirmAt": null,
+      "gate": "trend"
+    },
+    {
+      "symbol": "TIAUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 75,
+      "detectedAt": "2026-10-05T01:24:57.638936+00:00",
+      "pushedAt": "2026-10-05T01:24:57.638936+00:00",
+      "cooldownUntil": "2026-10-05T09:24:57.638936+00:00",
+      "signalHash": "a611c74e42194896",
+      "endMs": 1789488000000,
+      "breakoutIndex": 225,
+      "breakoutPrice": 0.4957,
       "reconfirmAt": null,
       "gate": "trend"
     }
