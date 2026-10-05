@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-05T07:26:13.486070+00:00",
+  "lastScanAt": "2026-10-05T07:47:44.925174+00:00",
   "pushedSignals": [
     {
       "symbol": "DOTUSDT",
@@ -1054,20 +1054,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 643,
+    "scanned_pairs": 645,
     "failed_pairs": 9,
-    "candidates": 237,
-    "confirmed": 26,
-    "after_scoring": 18,
-    "after_dedup": 1,
-    "pushed": 1,
+    "candidates": 233,
+    "confirmed": 29,
+    "after_scoring": 20,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 479.9,
+    "duration_seconds": 338.2,
     "source_stats": {
-      "okx": 643
+      "okx": 645
     },
     "health_stats": {
-      "healthy": 616,
+      "healthy": 618,
       "sensitive": 27
     },
     "kill_breakdown": {
@@ -1076,8 +1076,8 @@
       "rr": 1,
       "volume": 0,
       "geometry": 3,
-      "trend": 2,
-      "stale": 22,
+      "trend": 3,
+      "stale": 24,
       "demote_hs_top": 2,
       "demote_counter1h": 0,
       "demote_counter1d": 0
