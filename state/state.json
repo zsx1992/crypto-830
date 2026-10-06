@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-06T03:30:23.634923+00:00",
+  "lastScanAt": "2026-10-06T07:26:03.840276+00:00",
   "pushedSignals": [
     {
       "symbol": "DGAIUSDT",
@@ -1036,55 +1036,54 @@
       "breakoutIndex": 57,
       "breakoutPrice": 936.85,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ETHFIUSDT",
+      "patternType": "ascending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 70,
+      "detectedAt": "2026-10-06T07:26:03.840058+00:00",
+      "pushedAt": "2026-10-06T07:26:03.840058+00:00",
+      "cooldownUntil": "2026-10-06T07:56:03.840058+00:00",
+      "signalHash": "28ad52e382205351",
+      "endMs": 1791204300000,
+      "breakoutIndex": 537,
+      "breakoutPrice": 0.755,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 729,
-    "failed_pairs": 9,
-    "candidates": 270,
+    "scanned_pairs": 713,
+    "failed_pairs": 7,
+    "candidates": 266,
     "confirmed": 35,
-    "after_scoring": 22,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_scoring": 21,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 575.4,
+    "duration_seconds": 382.5,
     "source_stats": {
-      "okx": 729
+      "okx": 713
     },
     "health_stats": {
-      "healthy": 692,
-      "sensitive": 37
+      "healthy": 679,
+      "sensitive": 34
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 1,
       "rr": 1,
       "volume": 0,
-      "geometry": 3,
-      "trend": 7,
+      "geometry": 4,
+      "trend": 8,
       "stale": 32,
-      "demote_hs_top": 1,
+      "demote_hs_top": 0,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "KIOXIAUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 80,
-      "detectedAt": "2026-09-29T06:47:14.005462+00:00",
-      "pushedAt": "2026-09-29T06:47:14.005462+00:00",
-      "cooldownUntil": "2026-09-29T14:47:14.005462+00:00",
-      "signalHash": "52164ffbae89567f",
-      "endMs": 1790539200000,
-      "breakoutIndex": 293,
-      "breakoutPrice": 115.46,
-      "reconfirmAt": null,
-      "gate": "demote_hs_top"
-    },
     {
       "symbol": "CCUSDT",
       "patternType": "ascending_channel",
