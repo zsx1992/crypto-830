@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-06T10:56:09.225816+00:00",
+  "lastScanAt": "2026-10-06T14:59:18.044098+00:00",
   "pushedSignals": [
-    {
-      "symbol": "DGAIUSDT",
-      "patternType": "descending_channel",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 71,
-      "detectedAt": "2026-09-29T13:58:08.826987+00:00",
-      "pushedAt": "2026-09-29T13:58:08.826987+00:00",
-      "cooldownUntil": "2026-09-29T15:58:08.826987+00:00",
-      "signalHash": "83450af5bc0c5071",
-      "endMs": 1790611200000,
-      "breakoutIndex": 395,
-      "breakoutPrice": 0.988,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "SPACEUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 66,
-      "detectedAt": "2026-09-29T13:58:12.221772+00:00",
-      "pushedAt": "2026-09-29T13:58:12.221772+00:00",
-      "cooldownUntil": "2026-09-29T21:58:12.221772+00:00",
-      "signalHash": "6860237b9db4ccf1",
-      "endMs": 1789905600000,
-      "breakoutIndex": 250,
-      "breakoutPrice": 0.005006,
-      "reconfirmAt": null
-    },
     {
       "symbol": "AAVEUSDT",
       "patternType": "head_shoulders_bottom",
@@ -1071,19 +1041,19 @@
   "scanStats": {
     "scanned_pairs": 719,
     "failed_pairs": 7,
-    "candidates": 262,
-    "confirmed": 37,
-    "after_scoring": 23,
+    "candidates": 254,
+    "confirmed": 36,
+    "after_scoring": 22,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 494.2,
+    "duration_seconds": 395.0,
     "source_stats": {
       "okx": 719
     },
     "health_stats": {
-      "healthy": 682,
-      "sensitive": 37
+      "healthy": 679,
+      "sensitive": 40
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1092,7 +1062,7 @@
       "volume": 0,
       "geometry": 5,
       "trend": 6,
-      "stale": 33,
+      "stale": 32,
       "demote_hs_top": 1,
       "demote_counter1h": 0,
       "demote_counter1d": 0
