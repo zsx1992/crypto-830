@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-07T16:51:13.877831+00:00",
+  "lastScanAt": "2026-10-07T18:48:01.316505+00:00",
   "pushedSignals": [
     {
       "symbol": "PLTRUSDT",
@@ -1204,21 +1204,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 803,
+    "scanned_pairs": 799,
     "failed_pairs": 7,
-    "candidates": 282,
-    "confirmed": 44,
+    "candidates": 275,
+    "confirmed": 43,
     "after_scoring": 23,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 461.6,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 570.8,
     "source_stats": {
-      "okx": 803
+      "okx": 799
     },
     "health_stats": {
-      "healthy": 762,
-      "sensitive": 41
+      "healthy": 757,
+      "sensitive": 42
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1226,8 +1226,8 @@
       "rr": 3,
       "volume": 0,
       "geometry": 5,
-      "trend": 8,
-      "stale": 35,
+      "trend": 7,
+      "stale": 36,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 0
