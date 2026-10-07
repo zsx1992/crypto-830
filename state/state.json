@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-06T23:54:06.215736+00:00",
+  "lastScanAt": "2026-10-07T01:51:23.990392+00:00",
   "pushedSignals": [
     {
       "symbol": "VVVUSDT",
@@ -1069,30 +1069,30 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 728,
-    "failed_pairs": 8,
-    "candidates": 269,
-    "confirmed": 37,
-    "after_scoring": 24,
+    "scanned_pairs": 727,
+    "failed_pairs": 9,
+    "candidates": 266,
+    "confirmed": 34,
+    "after_scoring": 22,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 588.4,
+    "observed": 2,
+    "duration_seconds": 592.4,
     "source_stats": {
-      "okx": 728
+      "okx": 727
     },
     "health_stats": {
       "healthy": 687,
-      "sensitive": 41
+      "sensitive": 40
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 1,
+      "strength": 0,
       "rr": 2,
       "volume": 0,
       "geometry": 5,
       "trend": 2,
-      "stale": 32,
+      "stale": 31,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
       "demote_counter1d": 0
@@ -1482,6 +1482,38 @@
       "breakoutPrice": 130.21,
       "reconfirmAt": null,
       "gate": "geometry"
+    },
+    {
+      "symbol": "GRASSUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 75,
+      "detectedAt": "2026-10-07T01:51:19.337486+00:00",
+      "pushedAt": "2026-10-07T01:51:19.337486+00:00",
+      "cooldownUntil": "2026-10-07T02:21:19.337486+00:00",
+      "signalHash": "0051e32ae7040d90",
+      "endMs": 1791293400000,
+      "breakoutIndex": 564,
+      "breakoutPrice": 0.698,
+      "reconfirmAt": null,
+      "gate": "demote_hs_top"
+    },
+    {
+      "symbol": "SUSHIUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 74,
+      "detectedAt": "2026-10-07T01:51:23.990150+00:00",
+      "pushedAt": "2026-10-07T01:51:23.990150+00:00",
+      "cooldownUntil": "2026-10-07T09:51:23.990150+00:00",
+      "signalHash": "40981be677b77310",
+      "endMs": 1788523200000,
+      "breakoutIndex": 111,
+      "breakoutPrice": 0.2636,
+      "reconfirmAt": null,
+      "gate": "trend"
     }
   ]
 }
