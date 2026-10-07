@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-07T09:08:40.566663+00:00",
+  "lastScanAt": "2026-10-07T09:27:50.354677+00:00",
   "pushedSignals": [
     {
       "symbol": "NEARUSDT",
@@ -1156,24 +1156,54 @@
       "breakoutIndex": 382,
       "breakoutPrice": 0.01215,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "AEROUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 81,
+      "detectedAt": "2026-10-07T09:27:45.592427+00:00",
+      "pushedAt": "2026-10-07T09:27:45.592427+00:00",
+      "cooldownUntil": "2026-10-07T09:57:45.592427+00:00",
+      "signalHash": "e7a1b4f738715cf2",
+      "endMs": 1791282600000,
+      "breakoutIndex": 529,
+      "breakoutPrice": 0.8164,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "VVVUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 63,
+      "detectedAt": "2026-10-07T09:27:50.354387+00:00",
+      "pushedAt": "2026-10-07T09:27:50.354387+00:00",
+      "cooldownUntil": "2026-10-07T11:27:50.354387+00:00",
+      "signalHash": "d4679fd2670569ad",
+      "endMs": 1790326800000,
+      "breakoutIndex": 175,
+      "breakoutPrice": 28.185,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 791,
+    "scanned_pairs": 793,
     "failed_pairs": 9,
-    "candidates": 284,
+    "candidates": 285,
     "confirmed": 44,
     "after_scoring": 27,
     "after_dedup": 2,
     "pushed": 2,
-    "observed": 1,
-    "duration_seconds": 572.9,
+    "observed": 0,
+    "duration_seconds": 549.4,
     "source_stats": {
-      "okx": 791
+      "okx": 793
     },
     "health_stats": {
-      "healthy": 746,
-      "sensitive": 45
+      "healthy": 749,
+      "sensitive": 44
     },
     "kill_breakdown": {
       "freshness": 0,
