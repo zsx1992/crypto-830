@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-08T09:39:52.829822+00:00",
+  "lastScanAt": "2026-10-08T13:13:07.507332+00:00",
   "pushedSignals": [
     {
       "symbol": "FLOCKUSDT",
@@ -1231,33 +1231,63 @@
       "breakoutIndex": 205,
       "breakoutPrice": 0.4957,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SOONUSDT",
+      "patternType": "descending_channel",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 77,
+      "detectedAt": "2026-10-08T13:12:56.741815+00:00",
+      "pushedAt": "2026-10-08T13:12:56.741815+00:00",
+      "cooldownUntil": "2026-10-08T15:12:56.741815+00:00",
+      "signalHash": "74371b2fdf7e3e34",
+      "endMs": 1791349200000,
+      "breakoutIndex": 395,
+      "breakoutPrice": 0.3295,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "PIUSDT",
+      "patternType": "rising_wedge",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 67,
+      "detectedAt": "2026-10-08T13:13:02.360365+00:00",
+      "pushedAt": "2026-10-08T13:13:02.360365+00:00",
+      "cooldownUntil": "2026-10-08T21:13:02.360365+00:00",
+      "signalHash": "8e9d371172779409",
+      "endMs": 1789430400000,
+      "breakoutIndex": 160,
+      "breakoutPrice": 0.09507,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 767,
+    "scanned_pairs": 751,
     "failed_pairs": 7,
-    "candidates": 245,
+    "candidates": 253,
     "confirmed": 41,
-    "after_scoring": 24,
+    "after_scoring": 22,
     "after_dedup": 2,
     "pushed": 2,
-    "observed": 0,
-    "duration_seconds": 622.6,
+    "observed": 1,
+    "duration_seconds": 627.4,
     "source_stats": {
-      "okx": 767
+      "okx": 751
     },
     "health_stats": {
-      "healthy": 726,
-      "sensitive": 41
+      "healthy": 714,
+      "sensitive": 37
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
-      "rr": 2,
+      "rr": 3,
       "volume": 0,
       "geometry": 6,
-      "trend": 6,
-      "stale": 33,
+      "trend": 7,
+      "stale": 31,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
       "demote_counter1d": 0
@@ -1727,6 +1757,22 @@
       "breakoutPrice": 84.93,
       "reconfirmAt": null,
       "gate": "geometry"
+    },
+    {
+      "symbol": "GLWUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 81,
+      "detectedAt": "2026-10-08T13:13:07.507138+00:00",
+      "pushedAt": "2026-10-08T13:13:07.507138+00:00",
+      "cooldownUntil": "2026-10-08T21:13:07.507138+00:00",
+      "signalHash": "8eac33d9459c5dfa",
+      "endMs": 1788436800000,
+      "breakoutIndex": 119,
+      "breakoutPrice": 169.35,
+      "reconfirmAt": null,
+      "gate": "trend"
     }
   ]
 }
