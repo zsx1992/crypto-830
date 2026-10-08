@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-08T22:26:42.019759+00:00",
+  "lastScanAt": "2026-10-08T22:41:04.205478+00:00",
   "pushedSignals": [
     {
       "symbol": "GRASSUSDT",
@@ -1222,12 +1222,12 @@
     "scanned_pairs": 866,
     "failed_pairs": 8,
     "candidates": 265,
-    "confirmed": 44,
+    "confirmed": 43,
     "after_scoring": 20,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 2,
-    "duration_seconds": 701.9,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 690.4,
     "source_stats": {
       "okx": 866
     },
@@ -1241,8 +1241,8 @@
       "rr": 3,
       "volume": 0,
       "geometry": 6,
-      "trend": 10,
-      "stale": 27,
+      "trend": 9,
+      "stale": 26,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 0
