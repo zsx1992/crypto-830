@@ -1,52 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-08T05:18:37.574167+00:00",
+  "lastScanAt": "2026-10-08T09:22:22.961855+00:00",
   "pushedSignals": [
-    {
-      "symbol": "AMDUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 79,
-      "detectedAt": "2026-10-01T06:25:30.814549+00:00",
-      "pushedAt": "2026-10-01T06:25:30.814549+00:00",
-      "cooldownUntil": "2026-10-01T08:25:30.814549+00:00",
-      "signalHash": "cd68478c531f6046",
-      "endMs": 1790780400000,
-      "breakoutIndex": 398,
-      "breakoutPrice": 628.65,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "PLUMEUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 70,
-      "detectedAt": "2026-10-01T06:25:36.108473+00:00",
-      "pushedAt": "2026-10-01T06:25:36.108473+00:00",
-      "cooldownUntil": "2026-10-01T08:25:36.108473+00:00",
-      "signalHash": "a3d8974f51addcf1",
-      "endMs": 1790751600000,
-      "breakoutIndex": 394,
-      "breakoutPrice": 0.019837,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "BILLUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 73,
-      "detectedAt": "2026-10-01T08:41:02.008218+00:00",
-      "pushedAt": "2026-10-01T08:41:02.008218+00:00",
-      "cooldownUntil": "2026-10-01T16:41:02.008218+00:00",
-      "signalHash": "e18634b296c4ee51",
-      "endMs": 1790438400000,
-      "breakoutIndex": 280,
-      "breakoutPrice": 0.01148,
-      "reconfirmAt": null
-    },
     {
       "symbol": "FLOCKUSDT",
       "patternType": "descending_channel",
@@ -1216,24 +1171,54 @@
       "breakoutIndex": 263,
       "breakoutPrice": 59.91,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "BILLUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 76,
+      "detectedAt": "2026-10-08T09:22:18.704935+00:00",
+      "pushedAt": "2026-10-08T09:22:18.704935+00:00",
+      "cooldownUntil": "2026-10-08T17:22:18.704935+00:00",
+      "signalHash": "e18634b296c4ee51",
+      "endMs": 1790438400000,
+      "breakoutIndex": 238,
+      "breakoutPrice": 0.01148,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "CBRSUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-10-08T09:22:22.961650+00:00",
+      "pushedAt": "2026-10-08T09:22:22.961650+00:00",
+      "cooldownUntil": "2026-10-08T17:22:22.961650+00:00",
+      "signalHash": "f1cbdc65812bc613",
+      "endMs": 1790683200000,
+      "breakoutIndex": 247,
+      "breakoutPrice": 195.38,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 753,
+    "scanned_pairs": 761,
     "failed_pairs": 7,
-    "candidates": 248,
-    "confirmed": 37,
-    "after_scoring": 20,
+    "candidates": 242,
+    "confirmed": 40,
+    "after_scoring": 22,
     "after_dedup": 2,
     "pushed": 2,
     "observed": 0,
-    "duration_seconds": 414.2,
+    "duration_seconds": 540.0,
     "source_stats": {
-      "okx": 753
+      "okx": 761
     },
     "health_stats": {
-      "healthy": 714,
-      "sensitive": 39
+      "healthy": 720,
+      "sensitive": 41
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1242,29 +1227,13 @@
       "volume": 0,
       "geometry": 6,
       "trend": 7,
-      "stale": 30,
-      "demote_hs_top": 2,
+      "stale": 32,
+      "demote_hs_top": 3,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "DGAIUSDT",
-      "patternType": "descending_channel",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 80,
-      "detectedAt": "2026-10-01T06:25:40.388911+00:00",
-      "pushedAt": "2026-10-01T06:25:40.388911+00:00",
-      "cooldownUntil": "2026-10-01T14:25:40.388911+00:00",
-      "signalHash": "ace9dd3d62fd48c4",
-      "endMs": 1789545600000,
-      "breakoutIndex": 81,
-      "breakoutPrice": 0.9054,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "PROSUSDT",
       "patternType": "descending_channel",
