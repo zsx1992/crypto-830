@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-08T09:22:22.961855+00:00",
+  "lastScanAt": "2026-10-08T09:39:52.829822+00:00",
   "pushedSignals": [
     {
       "symbol": "FLOCKUSDT",
@@ -1201,23 +1201,53 @@
       "breakoutIndex": 247,
       "breakoutPrice": 195.38,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ONDOUSDT",
+      "patternType": "double_bottom",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 68,
+      "detectedAt": "2026-10-08T09:39:48.336909+00:00",
+      "pushedAt": "2026-10-08T09:39:48.336909+00:00",
+      "cooldownUntil": "2026-10-08T10:09:48.336909+00:00",
+      "signalHash": "4bfc5b246d02ce4f",
+      "endMs": 1791395100000,
+      "breakoutIndex": 597,
+      "breakoutPrice": 0.4821,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "TIAUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 74,
+      "detectedAt": "2026-10-08T09:39:52.829549+00:00",
+      "pushedAt": "2026-10-08T09:39:52.829549+00:00",
+      "cooldownUntil": "2026-10-08T17:39:52.829549+00:00",
+      "signalHash": "a611c74e42194896",
+      "endMs": 1789488000000,
+      "breakoutIndex": 205,
+      "breakoutPrice": 0.4957,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 761,
+    "scanned_pairs": 767,
     "failed_pairs": 7,
-    "candidates": 242,
-    "confirmed": 40,
-    "after_scoring": 22,
+    "candidates": 245,
+    "confirmed": 41,
+    "after_scoring": 24,
     "after_dedup": 2,
     "pushed": 2,
     "observed": 0,
-    "duration_seconds": 540.0,
+    "duration_seconds": 622.6,
     "source_stats": {
-      "okx": 761
+      "okx": 767
     },
     "health_stats": {
-      "healthy": 720,
+      "healthy": 726,
       "sensitive": 41
     },
     "kill_breakdown": {
@@ -1226,8 +1256,8 @@
       "rr": 2,
       "volume": 0,
       "geometry": 6,
-      "trend": 7,
-      "stale": 32,
+      "trend": 6,
+      "stale": 33,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
       "demote_counter1d": 0
