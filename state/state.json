@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-09T15:16:29.474699+00:00",
+  "lastScanAt": "2026-10-09T16:37:14.817193+00:00",
   "pushedSignals": [
-    {
-      "symbol": "SKYUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 76,
-      "detectedAt": "2026-10-02T15:38:15.929945+00:00",
-      "pushedAt": "2026-10-02T15:38:15.929945+00:00",
-      "cooldownUntil": "2026-10-02T17:38:15.929945+00:00",
-      "signalHash": "c2f8cc756ccd114f",
-      "endMs": 1790085600000,
-      "breakoutIndex": 177,
-      "breakoutPrice": 0.07482,
-      "reconfirmAt": null
-    },
     {
       "symbol": "XIAOMIUSDT",
       "patternType": "double_top",
@@ -1126,34 +1111,49 @@
       "breakoutIndex": 246,
       "breakoutPrice": 112.7,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 63,
+      "detectedAt": "2026-10-09T16:37:14.816949+00:00",
+      "pushedAt": "2026-10-09T16:37:14.816949+00:00",
+      "cooldownUntil": "2026-10-10T16:37:14.816949+00:00",
+      "signalHash": "5abc727d303ed99e",
+      "endMs": 1783785600000,
+      "breakoutIndex": 189,
+      "breakoutPrice": 7.619,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 868,
+    "scanned_pairs": 790,
     "failed_pairs": 8,
-    "candidates": 294,
-    "confirmed": 41,
-    "after_scoring": 20,
-    "after_dedup": 2,
-    "pushed": 2,
+    "candidates": 264,
+    "confirmed": 34,
+    "after_scoring": 16,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 713.0,
+    "duration_seconds": 649.7,
     "source_stats": {
-      "okx": 868
+      "okx": 790
     },
     "health_stats": {
-      "healthy": 826,
-      "sensitive": 42
+      "healthy": 750,
+      "sensitive": 40
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
-      "rr": 2,
+      "rr": 1,
       "volume": 0,
-      "geometry": 7,
+      "geometry": 6,
       "trend": 8,
-      "stale": 28,
-      "demote_hs_top": 3,
+      "stale": 26,
+      "demote_hs_top": 2,
       "demote_counter1h": 0,
       "demote_counter1d": 1
     }
