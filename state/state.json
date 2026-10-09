@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-09T20:13:00.033209+00:00",
+  "lastScanAt": "2026-10-09T21:28:25.965946+00:00",
   "pushedSignals": [
-    {
-      "symbol": "PENGUUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 76,
-      "detectedAt": "2026-10-02T20:36:08.140688+00:00",
-      "pushedAt": "2026-10-02T20:36:08.140688+00:00",
-      "cooldownUntil": "2026-10-02T22:36:08.140688+00:00",
-      "signalHash": "e924774a04c4d135",
-      "endMs": 1790773200000,
-      "breakoutIndex": 397,
-      "breakoutPrice": 0.008763,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "HBARUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 69,
-      "detectedAt": "2026-10-02T20:36:12.699283+00:00",
-      "pushedAt": "2026-10-02T20:36:12.699283+00:00",
-      "cooldownUntil": "2026-10-02T22:36:12.699283+00:00",
-      "signalHash": "bd112f7642d57748",
-      "endMs": 1790942400000,
-      "breakoutIndex": 397,
-      "breakoutPrice": 0.09938,
-      "reconfirmAt": null
-    },
     {
       "symbol": "KAITOUSDT",
       "patternType": "double_top",
@@ -1111,24 +1081,39 @@
       "breakoutIndex": 291,
       "breakoutPrice": 6.617,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "HBARUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 74,
+      "detectedAt": "2026-10-09T21:28:25.965715+00:00",
+      "pushedAt": "2026-10-09T21:28:25.965715+00:00",
+      "cooldownUntil": "2026-10-09T23:28:25.965715+00:00",
+      "signalHash": "bd112f7642d57748",
+      "endMs": 1790942400000,
+      "breakoutIndex": 228,
+      "breakoutPrice": 0.09938,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
     "scanned_pairs": 754,
     "failed_pairs": 8,
-    "candidates": 255,
-    "confirmed": 39,
-    "after_scoring": 16,
+    "candidates": 259,
+    "confirmed": 37,
+    "after_scoring": 14,
     "after_dedup": 1,
     "pushed": 1,
     "observed": 0,
-    "duration_seconds": 519.1,
+    "duration_seconds": 555.6,
     "source_stats": {
       "okx": 754
     },
     "health_stats": {
-      "healthy": 715,
-      "sensitive": 39
+      "healthy": 716,
+      "sensitive": 38
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1136,11 +1121,11 @@
       "rr": 3,
       "volume": 0,
       "geometry": 6,
-      "trend": 8,
-      "stale": 28,
-      "demote_hs_top": 6,
+      "trend": 10,
+      "stale": 29,
+      "demote_hs_top": 3,
       "demote_counter1h": 0,
-      "demote_counter1d": 0
+      "demote_counter1d": 1
     }
   },
   "observedSignals": [
