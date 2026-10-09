@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-09T16:37:14.817193+00:00",
+  "lastScanAt": "2026-10-09T20:13:00.033209+00:00",
   "pushedSignals": [
-    {
-      "symbol": "XIAOMIUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 86,
-      "detectedAt": "2026-10-02T18:41:46.605330+00:00",
-      "pushedAt": "2026-10-02T18:41:46.605330+00:00",
-      "cooldownUntil": "2026-10-03T02:41:46.605330+00:00",
-      "signalHash": "ac4ecd60e63a554d",
-      "endMs": 1788739200000,
-      "breakoutIndex": 157,
-      "breakoutPrice": 3.361,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "AAOIUSDT",
-      "patternType": "descending_channel",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 77,
-      "detectedAt": "2026-10-02T18:41:52.296332+00:00",
-      "pushedAt": "2026-10-02T18:41:52.296332+00:00",
-      "cooldownUntil": "2026-10-02T19:11:52.296332+00:00",
-      "signalHash": "085441dbdb8ddd95",
-      "endMs": 1790862300000,
-      "breakoutIndex": 485,
-      "breakoutPrice": 103.46,
-      "reconfirmAt": null
-    },
     {
       "symbol": "PENGUUSDT",
       "patternType": "double_top",
@@ -1126,71 +1096,54 @@
       "breakoutIndex": 189,
       "breakoutPrice": 7.619,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "INJUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 90,
+      "detectedAt": "2026-10-09T20:13:00.033001+00:00",
+      "pushedAt": "2026-10-09T20:13:00.033001+00:00",
+      "cooldownUntil": "2026-10-10T04:13:00.033001+00:00",
+      "signalHash": "fb9c1768e72b0d49",
+      "endMs": 1791000000000,
+      "breakoutIndex": 291,
+      "breakoutPrice": 6.617,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 790,
+    "scanned_pairs": 754,
     "failed_pairs": 8,
-    "candidates": 264,
-    "confirmed": 34,
+    "candidates": 255,
+    "confirmed": 39,
     "after_scoring": 16,
     "after_dedup": 1,
     "pushed": 1,
     "observed": 0,
-    "duration_seconds": 649.7,
+    "duration_seconds": 519.1,
     "source_stats": {
-      "okx": 790
+      "okx": 754
     },
     "health_stats": {
-      "healthy": 750,
-      "sensitive": 40
+      "healthy": 715,
+      "sensitive": 39
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
-      "rr": 1,
+      "rr": 3,
       "volume": 0,
       "geometry": 6,
       "trend": 8,
-      "stale": 26,
-      "demote_hs_top": 2,
+      "stale": 28,
+      "demote_hs_top": 6,
       "demote_counter1h": 0,
-      "demote_counter1d": 1
+      "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "LITUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 70,
-      "detectedAt": "2026-10-02T18:41:56.946927+00:00",
-      "pushedAt": "2026-10-02T18:41:56.946927+00:00",
-      "cooldownUntil": "2026-10-02T20:41:56.946927+00:00",
-      "signalHash": "0042c04574ff2e21",
-      "endMs": 1790406000000,
-      "breakoutIndex": 275,
-      "breakoutPrice": 4.636,
-      "reconfirmAt": null,
-      "gate": "demote_hs_top"
-    },
-    {
-      "symbol": "KAITOUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 74,
-      "detectedAt": "2026-10-02T19:43:01.420921+00:00",
-      "pushedAt": "2026-10-02T19:43:01.420921+00:00",
-      "cooldownUntil": "2026-10-02T21:43:01.420921+00:00",
-      "signalHash": "56b0c82ecab020fe",
-      "endMs": 1790917200000,
-      "breakoutIndex": 398,
-      "breakoutPrice": 0.3242,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "FARTCOINUSDT",
       "patternType": "descending_channel",
