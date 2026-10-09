@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-09T09:30:52.492747+00:00",
+  "lastScanAt": "2026-10-09T09:46:49.508577+00:00",
   "pushedSignals": [
     {
       "symbol": "HOODUSDT",
@@ -1166,14 +1166,14 @@
     "after_scoring": 20,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 1,
-    "duration_seconds": 458.7,
+    "observed": 0,
+    "duration_seconds": 444.7,
     "source_stats": {
       "okx": 860
     },
     "health_stats": {
-      "healthy": 816,
-      "sensitive": 44
+      "healthy": 817,
+      "sensitive": 43
     },
     "kill_breakdown": {
       "freshness": 0,
