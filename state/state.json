@@ -1,67 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-09T09:46:49.508577+00:00",
+  "lastScanAt": "2026-10-09T15:16:29.474699+00:00",
   "pushedSignals": [
-    {
-      "symbol": "HOODUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 73,
-      "detectedAt": "2026-10-02T13:05:23.150330+00:00",
-      "pushedAt": "2026-10-02T13:05:23.150330+00:00",
-      "cooldownUntil": "2026-10-02T21:05:23.150330+00:00",
-      "signalHash": "eeba076a9b9b5f62",
-      "endMs": 1790769600000,
-      "breakoutIndex": 288,
-      "breakoutPrice": 112.7,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "SKYUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 67,
-      "detectedAt": "2026-10-02T13:05:28.033799+00:00",
-      "pushedAt": "2026-10-02T13:05:28.033799+00:00",
-      "cooldownUntil": "2026-10-02T15:05:28.033799+00:00",
-      "signalHash": "c2f8cc756ccd114f",
-      "endMs": 1790794800000,
-      "breakoutIndex": 395,
-      "breakoutPrice": 0.08857,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "YGGUSDT",
-      "patternType": "double_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 75,
-      "detectedAt": "2026-10-02T14:18:34.917930+00:00",
-      "pushedAt": "2026-10-02T14:18:34.917930+00:00",
-      "cooldownUntil": "2026-10-02T22:18:34.917930+00:00",
-      "signalHash": "9438a200414bf81f",
-      "endMs": 1789128000000,
-      "breakoutIndex": 240,
-      "breakoutPrice": 0.028,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "SUSHIUSDT",
-      "patternType": "double_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 75,
-      "detectedAt": "2026-10-02T14:18:39.103555+00:00",
-      "pushedAt": "2026-10-02T14:18:39.103555+00:00",
-      "cooldownUntil": "2026-10-02T22:18:39.103555+00:00",
-      "signalHash": "40981be677b77310",
-      "endMs": 1788523200000,
-      "breakoutIndex": 138,
-      "breakoutPrice": 0.2636,
-      "reconfirmAt": null
-    },
     {
       "symbol": "SKYUSDT",
       "patternType": "double_bottom",
@@ -1156,24 +1096,54 @@
       "breakoutIndex": 130,
       "breakoutPrice": 0.3436,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "AMDUSDT",
+      "patternType": "ascending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 65,
+      "detectedAt": "2026-10-09T15:16:24.939262+00:00",
+      "pushedAt": "2026-10-09T15:16:24.939262+00:00",
+      "cooldownUntil": "2026-10-09T23:16:24.939262+00:00",
+      "signalHash": "eafad849d00661cf",
+      "endMs": 1791288000000,
+      "breakoutIndex": 294,
+      "breakoutPrice": 621.49,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "HOODUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 74,
+      "detectedAt": "2026-10-09T15:16:29.474435+00:00",
+      "pushedAt": "2026-10-09T15:16:29.474435+00:00",
+      "cooldownUntil": "2026-10-09T23:16:29.474435+00:00",
+      "signalHash": "eeba076a9b9b5f62",
+      "endMs": 1790769600000,
+      "breakoutIndex": 246,
+      "breakoutPrice": 112.7,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 860,
+    "scanned_pairs": 868,
     "failed_pairs": 8,
-    "candidates": 288,
+    "candidates": 294,
     "confirmed": 41,
     "after_scoring": 20,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 444.7,
+    "duration_seconds": 713.0,
     "source_stats": {
-      "okx": 860
+      "okx": 868
     },
     "health_stats": {
-      "healthy": 817,
-      "sensitive": 43
+      "healthy": 826,
+      "sensitive": 42
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1181,11 +1151,11 @@
       "rr": 2,
       "volume": 0,
       "geometry": 7,
-      "trend": 9,
-      "stale": 30,
+      "trend": 8,
+      "stale": 28,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
-      "demote_counter1d": 0
+      "demote_counter1d": 1
     }
   },
   "observedSignals": [
