@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-11T20:41:12.761536+00:00",
+  "lastScanAt": "2026-10-11T22:18:08.084171+00:00",
   "pushedSignals": [
     {
       "symbol": "RKLBUSDT",
@@ -871,24 +871,39 @@
       "breakoutIndex": 396,
       "breakoutPrice": 3.209,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "PLUMEUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 72,
+      "detectedAt": "2026-10-11T22:18:08.083913+00:00",
+      "pushedAt": "2026-10-11T22:18:08.083913+00:00",
+      "cooldownUntil": "2026-10-12T00:18:08.083913+00:00",
+      "signalHash": "556a556652f3670d",
+      "endMs": 1791572400000,
+      "breakoutIndex": 358,
+      "breakoutPrice": 0.019077,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 584,
+    "scanned_pairs": 600,
     "failed_pairs": 4,
-    "candidates": 194,
-    "confirmed": 29,
-    "after_scoring": 11,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 198,
+    "confirmed": 30,
+    "after_scoring": 12,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 318.8,
+    "duration_seconds": 436.8,
     "source_stats": {
-      "okx": 584
+      "okx": 600
     },
     "health_stats": {
-      "healthy": 561,
-      "sensitive": 23
+      "healthy": 574,
+      "sensitive": 26
     },
     "kill_breakdown": {
       "freshness": 0,
