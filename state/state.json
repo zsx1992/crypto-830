@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-11T09:24:25.639165+00:00",
+  "lastScanAt": "2026-10-11T13:17:11.092060+00:00",
   "pushedSignals": [
     {
       "symbol": "COAIUSDT",
@@ -931,23 +931,38 @@
       "breakoutIndex": 597,
       "breakoutPrice": 0.02533,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "USELESSUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 70,
+      "detectedAt": "2026-10-11T13:17:11.091820+00:00",
+      "pushedAt": "2026-10-11T13:17:11.091820+00:00",
+      "cooldownUntil": "2026-10-11T15:17:11.091820+00:00",
+      "signalHash": "0120f3e95840315c",
+      "endMs": 1790506800000,
+      "breakoutIndex": 76,
+      "breakoutPrice": 0.26701,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 544,
+    "scanned_pairs": 542,
     "failed_pairs": 4,
-    "candidates": 180,
-    "confirmed": 27,
-    "after_scoring": 7,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 188,
+    "confirmed": 26,
+    "after_scoring": 9,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 299.2,
+    "duration_seconds": 376.9,
     "source_stats": {
-      "okx": 544
+      "okx": 542
     },
     "health_stats": {
-      "healthy": 523,
+      "healthy": 521,
       "sensitive": 21
     },
     "kill_breakdown": {
@@ -956,30 +971,14 @@
       "rr": 4,
       "volume": 0,
       "geometry": 7,
-      "trend": 6,
-      "stale": 25,
-      "demote_hs_top": 2,
+      "trend": 4,
+      "stale": 23,
+      "demote_hs_top": 1,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "KAITOUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 70,
-      "detectedAt": "2026-10-04T09:35:38.787859+00:00",
-      "pushedAt": "2026-10-04T09:35:38.787859+00:00",
-      "cooldownUntil": "2026-10-04T11:35:38.787859+00:00",
-      "signalHash": "56b0c82ecab020fe",
-      "endMs": 1790539200000,
-      "breakoutIndex": 248,
-      "breakoutPrice": 0.3436,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "NEARUSDT",
       "patternType": "head_shoulders_bottom",
