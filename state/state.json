@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-12T09:38:43.085315+00:00",
+  "lastScanAt": "2026-10-12T10:34:42.987022+00:00",
   "pushedSignals": [
     {
       "symbol": "RENDERUSDT",
@@ -889,31 +889,31 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 687,
+    "scanned_pairs": 695,
     "failed_pairs": 5,
-    "candidates": 217,
-    "confirmed": 30,
-    "after_scoring": 13,
-    "after_dedup": 2,
-    "pushed": 2,
-    "observed": 0,
-    "duration_seconds": 490.0,
+    "candidates": 223,
+    "confirmed": 32,
+    "after_scoring": 14,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 1,
+    "duration_seconds": 502.8,
     "source_stats": {
-      "okx": 687
+      "okx": 695
     },
     "health_stats": {
-      "healthy": 652,
+      "healthy": 660,
       "sensitive": 35
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 2,
+      "strength": 1,
       "rr": 4,
       "volume": 0,
-      "geometry": 4,
+      "geometry": 5,
       "trend": 2,
-      "stale": 25,
-      "demote_hs_top": 3,
+      "stale": 27,
+      "demote_hs_top": 4,
       "demote_counter1h": 0,
       "demote_counter1d": 2
     }
@@ -1396,6 +1396,22 @@
       "endMs": 1788739200000,
       "breakoutIndex": 90,
       "breakoutPrice": 130.21,
+      "reconfirmAt": null,
+      "gate": "demote_hs_top"
+    },
+    {
+      "symbol": "AEROUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 78,
+      "detectedAt": "2026-10-12T10:34:42.986763+00:00",
+      "pushedAt": "2026-10-12T10:34:42.986763+00:00",
+      "cooldownUntil": "2026-10-12T11:04:42.986763+00:00",
+      "signalHash": "71cfccacff993023",
+      "endMs": 1791787500000,
+      "breakoutIndex": 594,
+      "breakoutPrice": 0.9253,
       "reconfirmAt": null,
       "gate": "demote_hs_top"
     }
