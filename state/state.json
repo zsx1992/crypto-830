@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-13T04:15:57.347389+00:00",
+  "lastScanAt": "2026-10-13T09:46:38.422643+00:00",
   "pushedSignals": [
-    {
-      "symbol": "ETHFIUSDT",
-      "patternType": "ascending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 70,
-      "detectedAt": "2026-10-06T07:26:03.840058+00:00",
-      "pushedAt": "2026-10-06T07:26:03.840058+00:00",
-      "cooldownUntil": "2026-10-06T07:56:03.840058+00:00",
-      "signalHash": "28ad52e382205351",
-      "endMs": 1791204300000,
-      "breakoutIndex": 537,
-      "breakoutPrice": 0.755,
-      "reconfirmAt": null
-    },
     {
       "symbol": "CTUSDT",
       "patternType": "descending_triangle",
@@ -829,20 +814,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 823,
+    "scanned_pairs": 829,
     "failed_pairs": 7,
-    "candidates": 244,
-    "confirmed": 31,
-    "after_scoring": 12,
+    "candidates": 234,
+    "confirmed": 33,
+    "after_scoring": 14,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 1308.4,
+    "duration_seconds": 591.2,
     "source_stats": {
-      "okx": 823
+      "okx": 829
     },
     "health_stats": {
-      "healthy": 792,
+      "healthy": 798,
       "sensitive": 31
     },
     "kill_breakdown": {
@@ -851,11 +836,11 @@
       "rr": 3,
       "volume": 0,
       "geometry": 7,
-      "trend": 7,
-      "stale": 29,
+      "trend": 6,
+      "stale": 30,
       "demote_hs_top": 2,
       "demote_counter1h": 0,
-      "demote_counter1d": 0
+      "demote_counter1d": 1
     }
   },
   "observedSignals": [
