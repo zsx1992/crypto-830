@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-13T10:24:37.251705+00:00",
+  "lastScanAt": "2026-10-13T12:23:15.577360+00:00",
   "pushedSignals": [
-    {
-      "symbol": "CTUSDT",
-      "patternType": "descending_triangle",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 76,
-      "detectedAt": "2026-10-06T10:42:05.110865+00:00",
-      "pushedAt": "2026-10-06T10:42:05.110865+00:00",
-      "cooldownUntil": "2026-10-06T12:42:05.110865+00:00",
-      "signalHash": "fb9e04ce70bde1d1",
-      "endMs": 1791259200000,
-      "breakoutIndex": 138,
-      "breakoutPrice": 0.3837,
-      "reconfirmAt": null
-    },
     {
       "symbol": "LITEUSDT",
       "patternType": "descending_channel",
@@ -814,20 +799,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 831,
+    "scanned_pairs": 839,
     "failed_pairs": 7,
-    "candidates": 240,
-    "confirmed": 32,
-    "after_scoring": 14,
+    "candidates": 248,
+    "confirmed": 27,
+    "after_scoring": 12,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 454.4,
+    "duration_seconds": 669.4,
     "source_stats": {
-      "okx": 831
+      "okx": 839
     },
     "health_stats": {
-      "healthy": 799,
+      "healthy": 807,
       "sensitive": 32
     },
     "kill_breakdown": {
@@ -835,31 +820,15 @@
       "strength": 0,
       "rr": 3,
       "volume": 0,
-      "geometry": 7,
-      "trend": 5,
-      "stale": 29,
+      "geometry": 6,
+      "trend": 3,
+      "stale": 24,
       "demote_hs_top": 2,
       "demote_counter1h": 0,
       "demote_counter1d": 1
     }
   },
   "observedSignals": [
-    {
-      "symbol": "WDCUSDT",
-      "patternType": "descending_channel",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 80,
-      "detectedAt": "2026-10-06T10:42:09.708523+00:00",
-      "pushedAt": "2026-10-06T10:42:09.708523+00:00",
-      "cooldownUntil": "2026-10-06T12:42:09.708523+00:00",
-      "signalHash": "3fae0adccf731d9f",
-      "endMs": 1790884800000,
-      "breakoutIndex": 304,
-      "breakoutPrice": 426.97,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "ZHIPUUSDT",
       "patternType": "rising_wedge",
