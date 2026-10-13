@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-12T23:25:36.121893+00:00",
+  "lastScanAt": "2026-10-13T02:19:06.131836+00:00",
   "pushedSignals": [
-    {
-      "symbol": "COINUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 63,
-      "detectedAt": "2026-10-06T00:50:22.122717+00:00",
-      "pushedAt": "2026-10-06T00:50:22.122717+00:00",
-      "cooldownUntil": "2026-10-06T02:50:22.122717+00:00",
-      "signalHash": "2e8f58db423b5949",
-      "endMs": 1790168400000,
-      "breakoutIndex": 208,
-      "breakoutPrice": 193.5,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "MUUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 56,
-      "detectedAt": "2026-10-06T00:50:26.650904+00:00",
-      "pushedAt": "2026-10-06T00:50:26.650904+00:00",
-      "cooldownUntil": "2026-10-06T08:50:26.650904+00:00",
-      "signalHash": "06746ead13062b68",
-      "endMs": 1787745600000,
-      "breakoutIndex": 57,
-      "breakoutPrice": 936.85,
-      "reconfirmAt": null
-    },
     {
       "symbol": "ETHFIUSDT",
       "patternType": "ascending_channel",
@@ -841,33 +811,48 @@
       "breakoutIndex": 297,
       "breakoutPrice": 8.54,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "BEATUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-10-13T02:19:06.131623+00:00",
+      "pushedAt": "2026-10-13T02:19:06.131623+00:00",
+      "cooldownUntil": "2026-10-13T04:19:06.131623+00:00",
+      "signalHash": "d36e6ec694ef4b39",
+      "endMs": 1791450000000,
+      "breakoutIndex": 396,
+      "breakoutPrice": 0.08074,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 792,
-    "failed_pairs": 6,
-    "candidates": 248,
-    "confirmed": 30,
-    "after_scoring": 13,
-    "after_dedup": 0,
-    "pushed": 0,
+    "scanned_pairs": 817,
+    "failed_pairs": 7,
+    "candidates": 231,
+    "confirmed": 29,
+    "after_scoring": 14,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 655.9,
+    "duration_seconds": 593.9,
     "source_stats": {
-      "okx": 792
+      "okx": 817
     },
     "health_stats": {
-      "healthy": 764,
-      "sensitive": 28
+      "healthy": 786,
+      "sensitive": 31
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 1,
+      "strength": 0,
       "rr": 3,
       "volume": 0,
       "geometry": 7,
-      "trend": 3,
-      "stale": 27,
+      "trend": 2,
+      "stale": 25,
       "demote_hs_top": 2,
       "demote_counter1h": 0,
       "demote_counter1d": 1
