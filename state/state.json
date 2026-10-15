@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-15T06:37:25.930502+00:00",
+  "lastScanAt": "2026-10-15T07:19:23.379864+00:00",
   "pushedSignals": [
     {
       "symbol": "BILLUSDT",
@@ -724,21 +724,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 873,
+    "scanned_pairs": 877,
     "failed_pairs": 3,
-    "candidates": 250,
-    "confirmed": 35,
-    "after_scoring": 15,
-    "after_dedup": 2,
-    "pushed": 2,
-    "observed": 2,
-    "duration_seconds": 533.7,
+    "candidates": 253,
+    "confirmed": 34,
+    "after_scoring": 14,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 687.2,
     "source_stats": {
-      "okx": 873
+      "okx": 877
     },
     "health_stats": {
-      "healthy": 826,
-      "sensitive": 47
+      "healthy": 828,
+      "sensitive": 49
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -747,7 +747,7 @@
       "volume": 0,
       "geometry": 8,
       "trend": 2,
-      "stale": 28,
+      "stale": 27,
       "demote_hs_top": 7,
       "demote_counter1h": 0,
       "demote_counter1d": 0
