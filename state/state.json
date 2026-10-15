@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-15T22:43:00.442615+00:00",
+  "lastScanAt": "2026-10-15T23:31:11.920146+00:00",
   "pushedSignals": [
     {
       "symbol": "KAITOUSDT",
@@ -691,23 +691,38 @@
       "breakoutIndex": 255,
       "breakoutPrice": 0.12792,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "TIAUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 76,
+      "detectedAt": "2026-10-15T23:31:06.408949+00:00",
+      "pushedAt": "2026-10-15T23:31:06.408949+00:00",
+      "cooldownUntil": "2026-10-16T00:01:06.408949+00:00",
+      "signalHash": "a35eb47143ef6588",
+      "endMs": 1792057500000,
+      "breakoutIndex": 562,
+      "breakoutPrice": 0.5488,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 899,
+    "scanned_pairs": 897,
     "failed_pairs": 7,
-    "candidates": 261,
-    "confirmed": 34,
-    "after_scoring": 12,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 650.1,
+    "candidates": 272,
+    "confirmed": 37,
+    "after_scoring": 13,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 1,
+    "duration_seconds": 752.7,
     "source_stats": {
-      "okx": 899
+      "okx": 897
     },
     "health_stats": {
-      "healthy": 848,
+      "healthy": 846,
       "sensitive": 51
     },
     "kill_breakdown": {
@@ -716,8 +731,8 @@
       "rr": 2,
       "volume": 0,
       "geometry": 8,
-      "trend": 5,
-      "stale": 26,
+      "trend": 7,
+      "stale": 29,
       "demote_hs_top": 4,
       "demote_counter1h": 0,
       "demote_counter1d": 2
@@ -1155,6 +1170,22 @@
       "breakoutPrice": 49.01,
       "reconfirmAt": null,
       "gate": "demote_counter1d"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "patternType": "ascending_channel",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 80,
+      "detectedAt": "2026-10-15T23:31:11.919946+00:00",
+      "pushedAt": "2026-10-15T23:31:11.919946+00:00",
+      "cooldownUntil": "2026-10-16T01:31:11.919946+00:00",
+      "signalHash": "ce815d40e4b8bfa4",
+      "endMs": 1791298800000,
+      "breakoutIndex": 185,
+      "breakoutPrice": 84330.1,
+      "reconfirmAt": null,
+      "gate": "trend"
     }
   ]
 }
