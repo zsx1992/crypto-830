@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-15T20:43:52.747962+00:00",
+  "lastScanAt": "2026-10-15T22:10:52.682627+00:00",
   "pushedSignals": [
     {
       "symbol": "SKHYNIXUSDT",
@@ -711,31 +711,31 @@
   "scanStats": {
     "scanned_pairs": 903,
     "failed_pairs": 7,
-    "candidates": 251,
+    "candidates": 261,
     "confirmed": 34,
-    "after_scoring": 14,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_scoring": 13,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 1,
-    "duration_seconds": 663.2,
+    "duration_seconds": 655.9,
     "source_stats": {
       "okx": 903
     },
     "health_stats": {
-      "healthy": 852,
-      "sensitive": 51
+      "healthy": 849,
+      "sensitive": 54
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 0,
+      "strength": 1,
       "rr": 2,
       "volume": 0,
       "geometry": 8,
-      "trend": 6,
-      "stale": 28,
+      "trend": 5,
+      "stale": 26,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
-      "demote_counter1d": 1
+      "demote_counter1d": 2
     }
   },
   "observedSignals": [
@@ -1186,6 +1186,22 @@
       "breakoutPrice": 0.5415,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "DRAMUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 79,
+      "detectedAt": "2026-10-15T22:10:52.682438+00:00",
+      "pushedAt": "2026-10-15T22:10:52.682438+00:00",
+      "cooldownUntil": "2026-10-15T22:40:52.682438+00:00",
+      "signalHash": "8fb4802779ddc3cb",
+      "endMs": 1792077300000,
+      "breakoutIndex": 587,
+      "breakoutPrice": 49.01,
+      "reconfirmAt": null,
+      "gate": "demote_counter1d"
     }
   ]
 }
