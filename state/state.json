@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-15T22:10:52.682627+00:00",
+  "lastScanAt": "2026-10-15T22:43:00.442615+00:00",
   "pushedSignals": [
-    {
-      "symbol": "SKHYNIXUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 70,
-      "detectedAt": "2026-10-08T22:26:31.375139+00:00",
-      "pushedAt": "2026-10-08T22:26:31.375139+00:00",
-      "cooldownUntil": "2026-10-09T06:26:31.375139+00:00",
-      "signalHash": "2fcf9388ace2b81f",
-      "endMs": 1790035200000,
-      "breakoutIndex": 298,
-      "breakoutPrice": 1211.7,
-      "reconfirmAt": null
-    },
     {
       "symbol": "KAITOUSDT",
       "patternType": "double_top",
@@ -709,21 +694,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 903,
+    "scanned_pairs": 899,
     "failed_pairs": 7,
     "candidates": 261,
     "confirmed": 34,
-    "after_scoring": 13,
+    "after_scoring": 12,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 1,
-    "duration_seconds": 655.9,
+    "observed": 0,
+    "duration_seconds": 650.1,
     "source_stats": {
-      "okx": 903
+      "okx": 899
     },
     "health_stats": {
-      "healthy": 849,
-      "sensitive": 54
+      "healthy": 848,
+      "sensitive": 51
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -733,44 +718,12 @@
       "geometry": 8,
       "trend": 5,
       "stale": 26,
-      "demote_hs_top": 3,
+      "demote_hs_top": 4,
       "demote_counter1h": 0,
       "demote_counter1d": 2
     }
   },
   "observedSignals": [
-    {
-      "symbol": "FETUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 78,
-      "detectedAt": "2026-10-08T22:26:36.665898+00:00",
-      "pushedAt": "2026-10-08T22:26:36.665898+00:00",
-      "cooldownUntil": "2026-10-09T00:26:36.665898+00:00",
-      "signalHash": "c75acfbc44450ca0",
-      "endMs": 1791450000000,
-      "breakoutIndex": 392,
-      "breakoutPrice": 0.2143,
-      "reconfirmAt": null,
-      "gate": "demote_hs_top"
-    },
-    {
-      "symbol": "BILLUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 76,
-      "detectedAt": "2026-10-08T22:26:42.019543+00:00",
-      "pushedAt": "2026-10-08T22:26:42.019543+00:00",
-      "cooldownUntil": "2026-10-09T00:26:42.019543+00:00",
-      "signalHash": "bf33ceefb1c08b8f",
-      "endMs": 1791356400000,
-      "breakoutIndex": 388,
-      "breakoutPrice": 0.01004,
-      "reconfirmAt": null,
-      "gate": "geometry"
-    },
     {
       "symbol": "RENDERUSDT",
       "patternType": "head_shoulders_top",
