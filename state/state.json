@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-16T00:19:20.479069+00:00",
+  "lastScanAt": "2026-10-16T01:41:28.430358+00:00",
   "pushedSignals": [
     {
       "symbol": "KAITOUSDT",
@@ -709,21 +709,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 892,
+    "scanned_pairs": 888,
     "failed_pairs": 6,
-    "candidates": 276,
-    "confirmed": 35,
-    "after_scoring": 13,
+    "candidates": 265,
+    "confirmed": 37,
+    "after_scoring": 12,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 1,
-    "duration_seconds": 636.5,
+    "observed": 0,
+    "duration_seconds": 535.6,
     "source_stats": {
-      "okx": 892
+      "okx": 888
     },
     "health_stats": {
-      "healthy": 842,
-      "sensitive": 50
+      "healthy": 840,
+      "sensitive": 48
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -731,30 +731,14 @@
       "rr": 2,
       "volume": 0,
       "geometry": 8,
-      "trend": 4,
-      "stale": 27,
+      "trend": 8,
+      "stale": 30,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
-      "demote_counter1d": 2
+      "demote_counter1d": 1
     }
   },
   "observedSignals": [
-    {
-      "symbol": "RENDERUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 77,
-      "detectedAt": "2026-10-09T00:22:57.023314+00:00",
-      "pushedAt": "2026-10-09T00:22:57.023314+00:00",
-      "cooldownUntil": "2026-10-09T02:22:57.023314+00:00",
-      "signalHash": "4414541e31c72b5b",
-      "endMs": 1791396000000,
-      "breakoutIndex": 390,
-      "breakoutPrice": 1.817,
-      "reconfirmAt": null,
-      "gate": "demote_hs_top"
-    },
     {
       "symbol": "PNUTUSDT",
       "patternType": "double_bottom",
