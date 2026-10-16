@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-15T23:31:11.920146+00:00",
+  "lastScanAt": "2026-10-16T00:19:20.479069+00:00",
   "pushedSignals": [
     {
       "symbol": "KAITOUSDT",
@@ -709,21 +709,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 897,
-    "failed_pairs": 7,
-    "candidates": 272,
-    "confirmed": 37,
+    "scanned_pairs": 892,
+    "failed_pairs": 6,
+    "candidates": 276,
+    "confirmed": 35,
     "after_scoring": 13,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 1,
-    "duration_seconds": 752.7,
+    "duration_seconds": 636.5,
     "source_stats": {
-      "okx": 897
+      "okx": 892
     },
     "health_stats": {
-      "healthy": 846,
-      "sensitive": 51
+      "healthy": 842,
+      "sensitive": 50
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -731,9 +731,9 @@
       "rr": 2,
       "volume": 0,
       "geometry": 8,
-      "trend": 7,
-      "stale": 29,
-      "demote_hs_top": 4,
+      "trend": 4,
+      "stale": 27,
+      "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 2
     }
@@ -1186,6 +1186,22 @@
       "breakoutPrice": 84330.1,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "BILLUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 77,
+      "detectedAt": "2026-10-16T00:19:20.478838+00:00",
+      "pushedAt": "2026-10-16T00:19:20.478838+00:00",
+      "cooldownUntil": "2026-10-16T02:19:20.478838+00:00",
+      "signalHash": "bf33ceefb1c08b8f",
+      "endMs": 1791356400000,
+      "breakoutIndex": 218,
+      "breakoutPrice": 0.01004,
+      "reconfirmAt": null,
+      "gate": "geometry"
     }
   ]
 }
