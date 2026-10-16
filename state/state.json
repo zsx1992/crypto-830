@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-16T05:44:54.449904+00:00",
+  "lastScanAt": "2026-10-16T06:34:38.565737+00:00",
   "pushedSignals": [
     {
       "symbol": "KAITOUSDT",
@@ -721,23 +721,38 @@
       "breakoutIndex": 209,
       "breakoutPrice": 0.065713,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "GRASSUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 73,
+      "detectedAt": "2026-10-16T06:34:38.565491+00:00",
+      "pushedAt": "2026-10-16T06:34:38.565491+00:00",
+      "cooldownUntil": "2026-10-16T07:04:38.565491+00:00",
+      "signalHash": "6c5e59a7e7667f7d",
+      "endMs": 1792071900000,
+      "breakoutIndex": 537,
+      "breakoutPrice": 0.6657,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 801,
+    "scanned_pairs": 793,
     "failed_pairs": 5,
-    "candidates": 244,
-    "confirmed": 32,
+    "candidates": 245,
+    "confirmed": 30,
     "after_scoring": 11,
-    "after_dedup": 2,
-    "pushed": 2,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 558.2,
+    "duration_seconds": 550.7,
     "source_stats": {
-      "okx": 801
+      "okx": 793
     },
     "health_stats": {
-      "healthy": 767,
+      "healthy": 759,
       "sensitive": 34
     },
     "kill_breakdown": {
@@ -745,9 +760,9 @@
       "strength": 1,
       "rr": 2,
       "volume": 0,
-      "geometry": 7,
-      "trend": 5,
-      "stale": 26,
+      "geometry": 6,
+      "trend": 4,
+      "stale": 25,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 1
