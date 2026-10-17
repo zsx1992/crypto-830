@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-17T21:54:04.914456+00:00",
+  "lastScanAt": "2026-10-17T22:36:46.874882+00:00",
   "pushedSignals": [
     {
       "symbol": "JUPUSDT",
@@ -769,20 +769,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 577,
+    "scanned_pairs": 583,
     "failed_pairs": 5,
-    "candidates": 192,
+    "candidates": 191,
     "confirmed": 20,
     "after_scoring": 8,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 460.3,
+    "duration_seconds": 452.9,
     "source_stats": {
-      "okx": 577
+      "okx": 583
     },
     "health_stats": {
-      "healthy": 552,
+      "healthy": 558,
       "sensitive": 25
     },
     "kill_breakdown": {
