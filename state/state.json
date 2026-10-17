@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-17T06:22:36.481546+00:00",
+  "lastScanAt": "2026-10-17T06:50:31.036032+00:00",
   "pushedSignals": [
     {
       "symbol": "AMDUSDT",
@@ -769,21 +769,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 727,
+    "scanned_pairs": 721,
     "failed_pairs": 9,
-    "candidates": 255,
+    "candidates": 253,
     "confirmed": 29,
-    "after_scoring": 12,
+    "after_scoring": 13,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 514.7,
+    "duration_seconds": 412.6,
     "source_stats": {
-      "okx": 727
+      "okx": 721
     },
     "health_stats": {
-      "healthy": 696,
-      "sensitive": 31
+      "healthy": 691,
+      "sensitive": 30
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -791,7 +791,7 @@
       "rr": 2,
       "volume": 0,
       "geometry": 5,
-      "trend": 5,
+      "trend": 4,
       "stale": 20,
       "demote_hs_top": 3,
       "demote_counter1h": 1,
