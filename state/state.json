@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-17T21:24:54.964464+00:00",
+  "lastScanAt": "2026-10-17T21:54:04.914456+00:00",
   "pushedSignals": [
     {
       "symbol": "JUPUSDT",
@@ -769,20 +769,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 547,
+    "scanned_pairs": 577,
     "failed_pairs": 5,
-    "candidates": 206,
+    "candidates": 192,
     "confirmed": 20,
-    "after_scoring": 7,
+    "after_scoring": 8,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 2,
-    "duration_seconds": 311.5,
+    "observed": 0,
+    "duration_seconds": 460.3,
     "source_stats": {
-      "okx": 547
+      "okx": 577
     },
     "health_stats": {
-      "healthy": 522,
+      "healthy": 552,
       "sensitive": 25
     },
     "kill_breakdown": {
@@ -792,10 +792,10 @@
       "volume": 0,
       "geometry": 3,
       "trend": 1,
-      "stale": 13,
+      "stale": 14,
       "demote_hs_top": 5,
-      "demote_counter1h": 1,
-      "demote_counter1d": 1
+      "demote_counter1h": 0,
+      "demote_counter1d": 0
     }
   },
   "observedSignals": [
