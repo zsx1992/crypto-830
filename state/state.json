@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-17T17:28:47.166884+00:00",
+  "lastScanAt": "2026-10-17T17:39:58.186371+00:00",
   "pushedSignals": [
     {
       "symbol": "LITEUSDT",
@@ -784,21 +784,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 607,
+    "scanned_pairs": 593,
     "failed_pairs": 5,
-    "candidates": 214,
-    "confirmed": 28,
-    "after_scoring": 11,
-    "after_dedup": 2,
-    "pushed": 2,
+    "candidates": 208,
+    "confirmed": 26,
+    "after_scoring": 9,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 1,
-    "duration_seconds": 348.2,
+    "duration_seconds": 412.1,
     "source_stats": {
-      "okx": 607
+      "okx": 593
     },
     "health_stats": {
-      "healthy": 576,
-      "sensitive": 31
+      "healthy": 566,
+      "sensitive": 27
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -807,7 +807,7 @@
       "volume": 0,
       "geometry": 5,
       "trend": 3,
-      "stale": 19,
+      "stale": 18,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 1
@@ -1341,6 +1341,22 @@
       "breakoutPrice": 1.779,
       "reconfirmAt": null,
       "gate": "geometry"
+    },
+    {
+      "symbol": "MINAUSDT",
+      "patternType": "rectangle",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 70,
+      "detectedAt": "2026-10-17T17:39:58.186187+00:00",
+      "pushedAt": "2026-10-17T17:39:58.186187+00:00",
+      "cooldownUntil": "2026-10-17T18:09:58.186187+00:00",
+      "signalHash": "12c001f848a59bf1",
+      "endMs": 1792176300000,
+      "breakoutIndex": 517,
+      "breakoutPrice": 0.0755,
+      "reconfirmAt": null,
+      "gate": "trend"
     }
   ]
 }
