@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-17T00:47:41.494204+00:00",
+  "lastScanAt": "2026-10-17T01:17:05.845284+00:00",
   "pushedSignals": [
     {
       "symbol": "ETHUSDT",
@@ -724,20 +724,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 747,
+    "scanned_pairs": 743,
     "failed_pairs": 9,
-    "candidates": 237,
+    "candidates": 242,
     "confirmed": 28,
     "after_scoring": 11,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 552.7,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 412.4,
     "source_stats": {
-      "okx": 747
+      "okx": 743
     },
     "health_stats": {
-      "healthy": 719,
+      "healthy": 715,
       "sensitive": 28
     },
     "kill_breakdown": {
