@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-18T19:23:46.347008+00:00",
+  "lastScanAt": "2026-10-18T19:47:15.355747+00:00",
   "pushedSignals": [
     {
       "symbol": "PLUMEUSDT",
@@ -721,24 +721,39 @@
       "breakoutIndex": 176,
       "breakoutPrice": 0.01148,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SANDUSDT",
+      "patternType": "double_top",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 73,
+      "detectedAt": "2026-10-18T19:47:15.355508+00:00",
+      "pushedAt": "2026-10-18T19:47:15.355508+00:00",
+      "cooldownUntil": "2026-10-18T20:17:15.355508+00:00",
+      "signalHash": "2e0f110a9f639e75",
+      "endMs": 1792305000000,
+      "breakoutIndex": 598,
+      "breakoutPrice": 0.05751,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 601,
+    "scanned_pairs": 613,
     "failed_pairs": 5,
-    "candidates": 202,
-    "confirmed": 20,
-    "after_scoring": 9,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 194,
+    "confirmed": 22,
+    "after_scoring": 10,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 338.4,
+    "duration_seconds": 338.0,
     "source_stats": {
-      "okx": 601
+      "okx": 613
     },
     "health_stats": {
-      "healthy": 575,
-      "sensitive": 26
+      "healthy": 586,
+      "sensitive": 27
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -747,8 +762,8 @@
       "volume": 0,
       "geometry": 3,
       "trend": 2,
-      "stale": 19,
-      "demote_hs_top": 4,
+      "stale": 20,
+      "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
