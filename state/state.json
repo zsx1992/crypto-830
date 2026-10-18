@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-18T11:35:08.270640+00:00",
+  "lastScanAt": "2026-10-18T13:09:40.903141+00:00",
   "pushedSignals": [
     {
       "symbol": "USELESSUSDT",
@@ -741,30 +741,30 @@
   "scanStats": {
     "scanned_pairs": 589,
     "failed_pairs": 5,
-    "candidates": 202,
-    "confirmed": 18,
-    "after_scoring": 6,
+    "candidates": 197,
+    "confirmed": 17,
+    "after_scoring": 7,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 421.3,
+    "duration_seconds": 318.7,
     "source_stats": {
       "okx": 589
     },
     "health_stats": {
-      "healthy": 564,
-      "sensitive": 25
+      "healthy": 563,
+      "sensitive": 26
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
       "rr": 2,
       "volume": 0,
-      "geometry": 3,
+      "geometry": 2,
       "trend": 1,
-      "stale": 14,
+      "stale": 13,
       "demote_hs_top": 5,
-      "demote_counter1h": 1,
+      "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
