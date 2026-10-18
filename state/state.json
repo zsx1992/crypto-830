@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-18T18:52:59.265309+00:00",
+  "lastScanAt": "2026-10-18T19:23:46.347008+00:00",
   "pushedSignals": [
     {
       "symbol": "PLUMEUSDT",
@@ -724,21 +724,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 603,
+    "scanned_pairs": 601,
     "failed_pairs": 5,
-    "candidates": 205,
-    "confirmed": 21,
-    "after_scoring": 10,
+    "candidates": 202,
+    "confirmed": 20,
+    "after_scoring": 9,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 490.0,
+    "duration_seconds": 338.4,
     "source_stats": {
-      "okx": 603
+      "okx": 601
     },
     "health_stats": {
-      "healthy": 578,
-      "sensitive": 25
+      "healthy": 575,
+      "sensitive": 26
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -747,7 +747,7 @@
       "volume": 0,
       "geometry": 3,
       "trend": 2,
-      "stale": 20,
+      "stale": 19,
       "demote_hs_top": 4,
       "demote_counter1h": 0,
       "demote_counter1d": 0
