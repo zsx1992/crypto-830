@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-18T03:46:39.631326+00:00",
+  "lastScanAt": "2026-10-18T05:18:12.921943+00:00",
   "pushedSignals": [
     {
       "symbol": "XDPUSDT",
@@ -741,28 +741,28 @@
   "scanStats": {
     "scanned_pairs": 575,
     "failed_pairs": 5,
-    "candidates": 190,
-    "confirmed": 19,
-    "after_scoring": 6,
+    "candidates": 196,
+    "confirmed": 18,
+    "after_scoring": 7,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 320.5,
+    "duration_seconds": 446.5,
     "source_stats": {
       "okx": 575
     },
     "health_stats": {
-      "healthy": 552,
-      "sensitive": 23
+      "healthy": 553,
+      "sensitive": 22
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
       "rr": 2,
       "volume": 0,
-      "geometry": 3,
-      "trend": 3,
-      "stale": 13,
+      "geometry": 2,
+      "trend": 2,
+      "stale": 14,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 0
