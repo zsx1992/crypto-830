@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-18T21:43:34.769280+00:00",
+  "lastScanAt": "2026-10-18T22:01:47.025716+00:00",
   "pushedSignals": [
     {
       "symbol": "PLUMEUSDT",
@@ -739,21 +739,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 605,
+    "scanned_pairs": 593,
     "failed_pairs": 5,
-    "candidates": 189,
+    "candidates": 185,
     "confirmed": 24,
     "after_scoring": 11,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 339.4,
+    "duration_seconds": 400.9,
     "source_stats": {
-      "okx": 605
+      "okx": 593
     },
     "health_stats": {
-      "healthy": 579,
-      "sensitive": 26
+      "healthy": 568,
+      "sensitive": 25
     },
     "kill_breakdown": {
       "freshness": 0,
