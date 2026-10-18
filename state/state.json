@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-18T10:00:05.545509+00:00",
+  "lastScanAt": "2026-10-18T11:35:08.270640+00:00",
   "pushedSignals": [
     {
       "symbol": "USELESSUSDT",
@@ -739,21 +739,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 587,
+    "scanned_pairs": 589,
     "failed_pairs": 5,
-    "candidates": 203,
-    "confirmed": 20,
-    "after_scoring": 7,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 331.2,
+    "candidates": 202,
+    "confirmed": 18,
+    "after_scoring": 6,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 421.3,
     "source_stats": {
-      "okx": 587
+      "okx": 589
     },
     "health_stats": {
-      "healthy": 563,
-      "sensitive": 24
+      "healthy": 564,
+      "sensitive": 25
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -761,11 +761,11 @@
       "rr": 2,
       "volume": 0,
       "geometry": 3,
-      "trend": 2,
+      "trend": 1,
       "stale": 14,
       "demote_hs_top": 5,
-      "demote_counter1h": 0,
-      "demote_counter1d": 1
+      "demote_counter1h": 1,
+      "demote_counter1d": 0
     }
   },
   "observedSignals": [
