@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-18T13:09:40.903141+00:00",
+  "lastScanAt": "2026-10-18T14:15:11.024626+00:00",
   "pushedSignals": [
-    {
-      "symbol": "USELESSUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 70,
-      "detectedAt": "2026-10-11T13:17:11.091820+00:00",
-      "pushedAt": "2026-10-11T13:17:11.091820+00:00",
-      "cooldownUntil": "2026-10-11T15:17:11.091820+00:00",
-      "signalHash": "0120f3e95840315c",
-      "endMs": 1790506800000,
-      "breakoutIndex": 76,
-      "breakoutPrice": 0.26701,
-      "reconfirmAt": null
-    },
     {
       "symbol": "PNUTUSDT",
       "patternType": "double_bottom",
@@ -739,21 +724,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 589,
+    "scanned_pairs": 595,
     "failed_pairs": 5,
-    "candidates": 197,
-    "confirmed": 17,
+    "candidates": 193,
+    "confirmed": 19,
     "after_scoring": 7,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 318.7,
+    "observed": 1,
+    "duration_seconds": 318.5,
     "source_stats": {
-      "okx": 589
+      "okx": 595
     },
     "health_stats": {
-      "healthy": 563,
-      "sensitive": 26
+      "healthy": 567,
+      "sensitive": 28
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -761,9 +746,9 @@
       "rr": 2,
       "volume": 0,
       "geometry": 2,
-      "trend": 1,
-      "stale": 13,
-      "demote_hs_top": 5,
+      "trend": 2,
+      "stale": 15,
+      "demote_hs_top": 6,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
@@ -1344,6 +1329,22 @@
       "breakoutPrice": 82152.0,
       "reconfirmAt": null,
       "gate": "demote_counter1d"
+    },
+    {
+      "symbol": "ETHFIUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 70,
+      "detectedAt": "2026-10-18T14:15:11.024463+00:00",
+      "pushedAt": "2026-10-18T14:15:11.024463+00:00",
+      "cooldownUntil": "2026-10-18T16:15:11.024463+00:00",
+      "signalHash": "cf0cd32b59162ea8",
+      "endMs": 1791838800000,
+      "breakoutIndex": 264,
+      "breakoutPrice": 0.6781,
+      "reconfirmAt": null,
+      "gate": "demote_hs_top"
     }
   ]
 }
