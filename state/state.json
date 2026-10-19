@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-19T17:54:03.722480+00:00",
+  "lastScanAt": "2026-10-19T19:17:35.250420+00:00",
   "pushedSignals": [
     {
       "symbol": "BBUSDT",
@@ -754,31 +754,31 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 709,
+    "scanned_pairs": 713,
     "failed_pairs": 5,
-    "candidates": 239,
-    "confirmed": 28,
-    "after_scoring": 8,
+    "candidates": 246,
+    "confirmed": 32,
+    "after_scoring": 10,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 427.9,
+    "observed": 1,
+    "duration_seconds": 566.7,
     "source_stats": {
-      "okx": 709
+      "okx": 713
     },
     "health_stats": {
-      "healthy": 682,
-      "sensitive": 27
+      "healthy": 684,
+      "sensitive": 29
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
       "rr": 2,
       "volume": 0,
-      "geometry": 3,
+      "geometry": 4,
       "trend": 3,
-      "stale": 24,
-      "demote_hs_top": 5,
+      "stale": 28,
+      "demote_hs_top": 6,
       "demote_counter1h": 1,
       "demote_counter1d": 6
     }
@@ -1423,6 +1423,22 @@
       "breakoutPrice": 0.3992,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "LITUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 80,
+      "detectedAt": "2026-10-19T19:17:35.250180+00:00",
+      "pushedAt": "2026-10-19T19:17:35.250180+00:00",
+      "cooldownUntil": "2026-10-19T21:17:35.250180+00:00",
+      "signalHash": "0042c04574ff2e21",
+      "endMs": 1791403200000,
+      "breakoutIndex": 235,
+      "breakoutPrice": 3.3798,
+      "reconfirmAt": null,
+      "gate": "demote_hs_top"
     }
   ]
 }
