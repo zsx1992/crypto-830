@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-19T17:46:16.025332+00:00",
+  "lastScanAt": "2026-10-19T17:54:03.722480+00:00",
   "pushedSignals": [
     {
       "symbol": "BBUSDT",
@@ -754,20 +754,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 713,
+    "scanned_pairs": 709,
     "failed_pairs": 5,
-    "candidates": 240,
-    "confirmed": 29,
+    "candidates": 239,
+    "confirmed": 28,
     "after_scoring": 8,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 549.9,
+    "duration_seconds": 427.9,
     "source_stats": {
-      "okx": 713
+      "okx": 709
     },
     "health_stats": {
-      "healthy": 686,
+      "healthy": 682,
       "sensitive": 27
     },
     "kill_breakdown": {
@@ -775,9 +775,9 @@
       "strength": 0,
       "rr": 2,
       "volume": 0,
-      "geometry": 4,
+      "geometry": 3,
       "trend": 3,
-      "stale": 25,
+      "stale": 24,
       "demote_hs_top": 5,
       "demote_counter1h": 1,
       "demote_counter1d": 6
