@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-19T00:25:52.180540+00:00",
+  "lastScanAt": "2026-10-19T00:37:46.601557+00:00",
   "pushedSignals": [
     {
       "symbol": "ARXUSDT",
@@ -751,23 +751,38 @@
       "breakoutIndex": 272,
       "breakoutPrice": 0.2173,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "RAYUSDT",
+      "patternType": "ascending_channel",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 60,
+      "detectedAt": "2026-10-19T00:37:46.601323+00:00",
+      "pushedAt": "2026-10-19T00:37:46.601323+00:00",
+      "cooldownUntil": "2026-10-19T02:37:46.601323+00:00",
+      "signalHash": "fb0d2eddada4303a",
+      "endMs": 1791698400000,
+      "breakoutIndex": 242,
+      "breakoutPrice": 2.2921,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 645,
+    "scanned_pairs": 649,
     "failed_pairs": 5,
-    "candidates": 210,
+    "candidates": 212,
     "confirmed": 28,
     "after_scoring": 11,
-    "after_dedup": 2,
-    "pushed": 2,
-    "observed": 1,
-    "duration_seconds": 464.0,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 0,
+    "duration_seconds": 362.7,
     "source_stats": {
-      "okx": 645
+      "okx": 649
     },
     "health_stats": {
-      "healthy": 616,
+      "healthy": 620,
       "sensitive": 29
     },
     "kill_breakdown": {
