@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-20T19:08:41.078445+00:00",
+  "lastScanAt": "2026-10-20T21:03:53.773639+00:00",
   "pushedSignals": [
     {
       "symbol": "WDCUSDT",
@@ -781,24 +781,39 @@
       "breakoutIndex": 178,
       "breakoutPrice": 110.47,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SMCIUSDT",
+      "patternType": "ascending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 74,
+      "detectedAt": "2026-10-20T21:03:53.773345+00:00",
+      "pushedAt": "2026-10-20T21:03:53.773345+00:00",
+      "cooldownUntil": "2026-10-21T05:03:53.773345+00:00",
+      "signalHash": "1933f3e56d7c5b41",
+      "endMs": 1791547200000,
+      "breakoutIndex": 249,
+      "breakoutPrice": 39.69,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 716,
+    "scanned_pairs": 726,
     "failed_pairs": 8,
-    "candidates": 245,
-    "confirmed": 29,
-    "after_scoring": 7,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 255,
+    "confirmed": 33,
+    "after_scoring": 10,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 409.0,
+    "duration_seconds": 605.2,
     "source_stats": {
-      "okx": 716
+      "okx": 726
     },
     "health_stats": {
-      "healthy": 688,
-      "sensitive": 28
+      "healthy": 700,
+      "sensitive": 26
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -806,30 +821,14 @@
       "rr": 2,
       "volume": 0,
       "geometry": 5,
-      "trend": 6,
-      "stale": 20,
+      "trend": 9,
+      "stale": 23,
       "demote_hs_top": 4,
-      "demote_counter1h": 1,
-      "demote_counter1d": 4
+      "demote_counter1h": 2,
+      "demote_counter1d": 1
     }
   },
   "observedSignals": [
-    {
-      "symbol": "QNTUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 84,
-      "detectedAt": "2026-10-13T19:45:08.432437+00:00",
-      "pushedAt": "2026-10-13T19:45:08.432437+00:00",
-      "cooldownUntil": "2026-10-14T03:45:08.432437+00:00",
-      "signalHash": "4777cee297cabc7c",
-      "endMs": 1790352000000,
-      "breakoutIndex": 226,
-      "breakoutPrice": 46.33,
-      "reconfirmAt": null,
-      "gate": "geometry"
-    },
     {
       "symbol": "SUSHIUSDT",
       "patternType": "double_bottom",
