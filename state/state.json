@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-20T07:56:41.032485+00:00",
+  "lastScanAt": "2026-10-20T09:27:55.018003+00:00",
   "pushedSignals": [
     {
       "symbol": "ZKUSDT",
@@ -769,21 +769,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 671,
-    "failed_pairs": 5,
-    "candidates": 240,
-    "confirmed": 33,
-    "after_scoring": 12,
+    "scanned_pairs": 674,
+    "failed_pairs": 6,
+    "candidates": 239,
+    "confirmed": 35,
+    "after_scoring": 13,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 513.5,
+    "duration_seconds": 439.0,
     "source_stats": {
-      "okx": 671
+      "okx": 674
     },
     "health_stats": {
-      "healthy": 645,
-      "sensitive": 26
+      "healthy": 646,
+      "sensitive": 28
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -791,8 +791,8 @@
       "rr": 2,
       "volume": 0,
       "geometry": 6,
-      "trend": 8,
-      "stale": 29,
+      "trend": 9,
+      "stale": 30,
       "demote_hs_top": 3,
       "demote_counter1h": 1,
       "demote_counter1d": 1
