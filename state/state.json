@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-20T17:42:17.142874+00:00",
+  "lastScanAt": "2026-10-20T18:44:32.850257+00:00",
   "pushedSignals": [
-    {
-      "symbol": "ZKUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 68,
-      "detectedAt": "2026-10-13T17:49:33.115202+00:00",
-      "pushedAt": "2026-10-13T17:49:33.115202+00:00",
-      "cooldownUntil": "2026-10-13T18:19:33.115202+00:00",
-      "signalHash": "5226d85c77bcefc5",
-      "endMs": 1791882000000,
-      "breakoutIndex": 583,
-      "breakoutPrice": 0.016161,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "AAVEUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "1d",
-      "direction": "LONG",
-      "strength": 67,
-      "detectedAt": "2026-10-13T17:49:37.812249+00:00",
-      "pushedAt": "2026-10-13T17:49:37.812249+00:00",
-      "cooldownUntil": "2026-10-14T17:49:37.812249+00:00",
-      "signalHash": "91dc695f23dbc78e",
-      "endMs": 1784304000000,
-      "breakoutIndex": 185,
-      "breakoutPrice": 110.47,
-      "reconfirmAt": null
-    },
     {
       "symbol": "WDCUSDT",
       "patternType": "double_top",
@@ -796,36 +766,51 @@
       "breakoutIndex": 373,
       "breakoutPrice": 0.3669,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "AAVEUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 68,
+      "detectedAt": "2026-10-20T18:44:32.849994+00:00",
+      "pushedAt": "2026-10-20T18:44:32.849994+00:00",
+      "cooldownUntil": "2026-10-21T18:44:32.849994+00:00",
+      "signalHash": "91dc695f23dbc78e",
+      "endMs": 1784304000000,
+      "breakoutIndex": 178,
+      "breakoutPrice": 110.47,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 714,
-    "failed_pairs": 6,
-    "candidates": 242,
-    "confirmed": 28,
-    "after_scoring": 9,
+    "scanned_pairs": 716,
+    "failed_pairs": 8,
+    "candidates": 243,
+    "confirmed": 29,
+    "after_scoring": 8,
     "after_dedup": 1,
     "pushed": 1,
-    "observed": 2,
-    "duration_seconds": 536.5,
+    "observed": 0,
+    "duration_seconds": 602.7,
     "source_stats": {
-      "okx": 714
+      "okx": 716
     },
     "health_stats": {
-      "healthy": 685,
-      "sensitive": 29
+      "healthy": 688,
+      "sensitive": 28
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 1,
       "rr": 2,
       "volume": 0,
-      "geometry": 5,
+      "geometry": 6,
       "trend": 7,
-      "stale": 19,
+      "stale": 20,
       "demote_hs_top": 4,
       "demote_counter1h": 0,
-      "demote_counter1d": 0
+      "demote_counter1d": 1
     }
   },
   "observedSignals": [
