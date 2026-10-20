@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-20T18:44:32.850257+00:00",
+  "lastScanAt": "2026-10-20T19:08:41.078445+00:00",
   "pushedSignals": [
     {
       "symbol": "WDCUSDT",
@@ -786,13 +786,13 @@
   "scanStats": {
     "scanned_pairs": 716,
     "failed_pairs": 8,
-    "candidates": 243,
+    "candidates": 245,
     "confirmed": 29,
-    "after_scoring": 8,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_scoring": 7,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 602.7,
+    "duration_seconds": 409.0,
     "source_stats": {
       "okx": 716
     },
@@ -802,15 +802,15 @@
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 1,
+      "strength": 0,
       "rr": 2,
       "volume": 0,
-      "geometry": 6,
-      "trend": 7,
+      "geometry": 5,
+      "trend": 6,
       "stale": 20,
       "demote_hs_top": 4,
-      "demote_counter1h": 0,
-      "demote_counter1d": 1
+      "demote_counter1h": 1,
+      "demote_counter1d": 4
     }
   },
   "observedSignals": [
