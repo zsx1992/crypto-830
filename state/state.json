@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-20T22:20:45.712910+00:00",
+  "lastScanAt": "2026-10-20T22:34:44.433272+00:00",
   "pushedSignals": [
     {
       "symbol": "WDCUSDT",
@@ -799,20 +799,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 730,
+    "scanned_pairs": 728,
     "failed_pairs": 8,
-    "candidates": 264,
+    "candidates": 263,
     "confirmed": 33,
     "after_scoring": 10,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 517.2,
+    "duration_seconds": 409.2,
     "source_stats": {
-      "okx": 730
+      "okx": 728
     },
     "health_stats": {
-      "healthy": 703,
+      "healthy": 701,
       "sensitive": 27
     },
     "kill_breakdown": {
