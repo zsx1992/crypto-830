@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-21T22:43:21.854559+00:00",
+  "lastScanAt": "2026-10-21T22:55:58.974586+00:00",
   "pushedSignals": [
     {
       "symbol": "TSLAUSDT",
@@ -694,21 +694,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 753,
+    "scanned_pairs": 751,
     "failed_pairs": 7,
-    "candidates": 268,
+    "candidates": 266,
     "confirmed": 29,
     "after_scoring": 7,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 619.7,
+    "duration_seconds": 549.5,
     "source_stats": {
-      "okx": 753
+      "okx": 751
     },
     "health_stats": {
-      "healthy": 727,
-      "sensitive": 26
+      "healthy": 726,
+      "sensitive": 25
     },
     "kill_breakdown": {
       "freshness": 0,
