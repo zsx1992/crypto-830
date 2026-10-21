@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-21T07:24:46.665633+00:00",
+  "lastScanAt": "2026-10-21T08:02:04.954485+00:00",
   "pushedSignals": [
     {
       "symbol": "BTCUSDT",
@@ -784,20 +784,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 742,
-    "failed_pairs": 8,
-    "candidates": 273,
-    "confirmed": 36,
+    "scanned_pairs": 747,
+    "failed_pairs": 7,
+    "candidates": 276,
+    "confirmed": 35,
     "after_scoring": 11,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 518.4,
+    "duration_seconds": 602.1,
     "source_stats": {
-      "okx": 742
+      "okx": 747
     },
     "health_stats": {
-      "healthy": 718,
+      "healthy": 723,
       "sensitive": 24
     },
     "kill_breakdown": {
@@ -807,10 +807,10 @@
       "volume": 0,
       "geometry": 5,
       "trend": 4,
-      "stale": 28,
+      "stale": 27,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
-      "demote_counter1d": 9
+      "demote_counter1d": 8
     }
   },
   "observedSignals": [
