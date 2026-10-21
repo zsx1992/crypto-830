@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-20T22:34:44.433272+00:00",
+  "lastScanAt": "2026-10-21T00:18:10.882583+00:00",
   "pushedSignals": [
-    {
-      "symbol": "WDCUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 85,
-      "detectedAt": "2026-10-13T22:43:10.463598+00:00",
-      "pushedAt": "2026-10-13T22:43:10.463598+00:00",
-      "cooldownUntil": "2026-10-14T06:43:10.463598+00:00",
-      "signalHash": "bc7d00cdc344636c",
-      "endMs": 1788969600000,
-      "breakoutIndex": 129,
-      "breakoutPrice": 416.41,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "SOLUSDT",
-      "patternType": "ascending_channel",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 65,
-      "detectedAt": "2026-10-13T22:43:14.941142+00:00",
-      "pushedAt": "2026-10-13T22:43:14.941142+00:00",
-      "cooldownUntil": "2026-10-14T00:43:14.941142+00:00",
-      "signalHash": "a582ebc47f9ea059",
-      "endMs": 1791298800000,
-      "breakoutIndex": 235,
-      "breakoutPrice": 118.22,
-      "reconfirmAt": null
-    },
     {
       "symbol": "BTCUSDT",
       "patternType": "ascending_channel",
@@ -799,21 +769,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 728,
+    "scanned_pairs": 734,
     "failed_pairs": 8,
-    "candidates": 263,
-    "confirmed": 33,
+    "candidates": 264,
+    "confirmed": 35,
     "after_scoring": 10,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 409.2,
+    "observed": 1,
+    "duration_seconds": 528.7,
     "source_stats": {
-      "okx": 728
+      "okx": 734
     },
     "health_stats": {
-      "healthy": 701,
-      "sensitive": 27
+      "healthy": 708,
+      "sensitive": 26
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -821,11 +791,11 @@
       "rr": 2,
       "volume": 0,
       "geometry": 5,
-      "trend": 6,
-      "stale": 22,
+      "trend": 5,
+      "stale": 26,
       "demote_hs_top": 4,
       "demote_counter1h": 1,
-      "demote_counter1d": 5
+      "demote_counter1d": 8
     }
   },
   "observedSignals": [
@@ -1532,6 +1502,22 @@
       "breakoutPrice": 2471.24,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "WDCUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 78,
+      "detectedAt": "2026-10-21T00:18:10.882439+00:00",
+      "pushedAt": "2026-10-21T00:18:10.882439+00:00",
+      "cooldownUntil": "2026-10-21T02:18:10.882439+00:00",
+      "signalHash": "d9e87fb01af974ea",
+      "endMs": 1792494000000,
+      "breakoutIndex": 389,
+      "breakoutPrice": 359.61,
+      "reconfirmAt": null,
+      "gate": "demote_counter1d"
     }
   ]
 }
