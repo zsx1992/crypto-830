@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-22T22:42:46.113476+00:00",
+  "lastScanAt": "2026-10-22T22:56:27.922417+00:00",
   "pushedSignals": [
     {
       "symbol": "TIAUSDT",
@@ -619,21 +619,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 750,
+    "scanned_pairs": 748,
     "failed_pairs": 12,
-    "candidates": 284,
+    "candidates": 286,
     "confirmed": 32,
     "after_scoring": 10,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 599.4,
+    "duration_seconds": 596.4,
     "source_stats": {
-      "okx": 750
+      "okx": 748
     },
     "health_stats": {
-      "healthy": 728,
-      "sensitive": 22
+      "healthy": 724,
+      "sensitive": 24
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -642,7 +642,7 @@
       "volume": 0,
       "geometry": 3,
       "trend": 10,
-      "stale": 29,
+      "stale": 30,
       "demote_hs_top": 6,
       "demote_counter1h": 0,
       "demote_counter1d": 0
