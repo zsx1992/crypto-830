@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-22T01:49:10.000153+00:00",
+  "lastScanAt": "2026-10-22T02:02:14.894724+00:00",
   "pushedSignals": [
     {
       "symbol": "RIVERUSDT",
@@ -679,31 +679,31 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 749,
+    "scanned_pairs": 747,
     "failed_pairs": 7,
     "candidates": 265,
-    "confirmed": 31,
+    "confirmed": 30,
     "after_scoring": 8,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 563.1,
+    "observed": 1,
+    "duration_seconds": 537.6,
     "source_stats": {
-      "okx": 749
+      "okx": 747
     },
     "health_stats": {
-      "healthy": 722,
-      "sensitive": 27
+      "healthy": 721,
+      "sensitive": 26
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 1,
       "rr": 2,
       "volume": 0,
-      "geometry": 6,
-      "trend": 8,
-      "stale": 27,
-      "demote_hs_top": 3,
+      "geometry": 5,
+      "trend": 7,
+      "stale": 26,
+      "demote_hs_top": 4,
       "demote_counter1h": 0,
       "demote_counter1d": 3
     }
@@ -1396,6 +1396,22 @@
       "breakoutPrice": 179.02,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "POLUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 78,
+      "detectedAt": "2026-10-22T02:02:14.894507+00:00",
+      "pushedAt": "2026-10-22T02:02:14.894507+00:00",
+      "cooldownUntil": "2026-10-22T10:02:14.894507+00:00",
+      "signalHash": "553aae7f1f3818be",
+      "endMs": 1791187200000,
+      "breakoutIndex": 209,
+      "breakoutPrice": 0.10336,
+      "reconfirmAt": null,
+      "gate": "demote_hs_top"
     }
   ]
 }
