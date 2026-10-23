@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-22T22:56:27.922417+00:00",
+  "lastScanAt": "2026-10-23T01:27:05.420052+00:00",
   "pushedSignals": [
-    {
-      "symbol": "TIAUSDT",
-      "patternType": "descending_channel",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 76,
-      "detectedAt": "2026-10-15T23:31:06.408949+00:00",
-      "pushedAt": "2026-10-15T23:31:06.408949+00:00",
-      "cooldownUntil": "2026-10-16T00:01:06.408949+00:00",
-      "signalHash": "a35eb47143ef6588",
-      "endMs": 1792057500000,
-      "breakoutIndex": 562,
-      "breakoutPrice": 0.5488,
-      "reconfirmAt": null
-    },
     {
       "symbol": "TRXUSDT",
       "patternType": "descending_channel",
@@ -619,21 +604,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 748,
+    "scanned_pairs": 750,
     "failed_pairs": 12,
-    "candidates": 286,
-    "confirmed": 32,
+    "candidates": 287,
+    "confirmed": 30,
     "after_scoring": 10,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 596.4,
+    "duration_seconds": 430.7,
     "source_stats": {
-      "okx": 748
+      "okx": 750
     },
     "health_stats": {
-      "healthy": 724,
-      "sensitive": 24
+      "healthy": 729,
+      "sensitive": 21
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -641,46 +626,14 @@
       "rr": 2,
       "volume": 0,
       "geometry": 3,
-      "trend": 10,
-      "stale": 30,
+      "trend": 8,
+      "stale": 28,
       "demote_hs_top": 6,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "BTCUSDT",
-      "patternType": "ascending_channel",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 80,
-      "detectedAt": "2026-10-15T23:31:11.919946+00:00",
-      "pushedAt": "2026-10-15T23:31:11.919946+00:00",
-      "cooldownUntil": "2026-10-16T01:31:11.919946+00:00",
-      "signalHash": "ce815d40e4b8bfa4",
-      "endMs": 1791298800000,
-      "breakoutIndex": 185,
-      "breakoutPrice": 84330.1,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
-    {
-      "symbol": "BILLUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 77,
-      "detectedAt": "2026-10-16T00:19:20.478838+00:00",
-      "pushedAt": "2026-10-16T00:19:20.478838+00:00",
-      "cooldownUntil": "2026-10-16T02:19:20.478838+00:00",
-      "signalHash": "bf33ceefb1c08b8f",
-      "endMs": 1791356400000,
-      "breakoutIndex": 218,
-      "breakoutPrice": 0.01004,
-      "reconfirmAt": null,
-      "gate": "geometry"
-    },
     {
       "symbol": "ETHFIUSDT",
       "patternType": "double_top",
