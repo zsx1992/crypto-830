@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-23T01:27:05.420052+00:00",
+  "lastScanAt": "2026-10-23T01:52:35.889703+00:00",
   "pushedSignals": [
     {
       "symbol": "TRXUSDT",
@@ -606,13 +606,13 @@
   "scanStats": {
     "scanned_pairs": 750,
     "failed_pairs": 12,
-    "candidates": 287,
-    "confirmed": 30,
-    "after_scoring": 10,
+    "candidates": 284,
+    "confirmed": 29,
+    "after_scoring": 9,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 430.7,
+    "duration_seconds": 600.1,
     "source_stats": {
       "okx": 750
     },
@@ -626,9 +626,9 @@
       "rr": 2,
       "volume": 0,
       "geometry": 3,
-      "trend": 8,
-      "stale": 28,
-      "demote_hs_top": 6,
+      "trend": 9,
+      "stale": 27,
+      "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
