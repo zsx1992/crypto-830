@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-23T22:05:51.632224+00:00",
+  "lastScanAt": "2026-10-23T22:36:27.301694+00:00",
   "pushedSignals": [
     {
       "symbol": "SEIUSDT",
@@ -517,12 +517,12 @@
     "scanned_pairs": 745,
     "failed_pairs": 11,
     "candidates": 305,
-    "confirmed": 30,
+    "confirmed": 28,
     "after_scoring": 8,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 600.1,
+    "duration_seconds": 619.4,
     "source_stats": {
       "okx": 745
     },
@@ -532,12 +532,12 @@
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 2,
+      "strength": 0,
       "rr": 2,
       "volume": 0,
       "geometry": 5,
       "trend": 5,
-      "stale": 27,
+      "stale": 25,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 3
