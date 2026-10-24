@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-24T01:55:10.212129+00:00",
+  "lastScanAt": "2026-10-24T05:13:26.992489+00:00",
   "pushedSignals": [
     {
       "symbol": "WLDUSDT",
@@ -496,24 +496,39 @@
       "breakoutIndex": 397,
       "breakoutPrice": 0.17133,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "EDGEUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 64,
+      "detectedAt": "2026-10-24T05:13:26.992262+00:00",
+      "pushedAt": "2026-10-24T05:13:26.992262+00:00",
+      "cooldownUntil": "2026-10-24T07:13:26.992262+00:00",
+      "signalHash": "0858cf400a4a45d2",
+      "endMs": 1791781200000,
+      "breakoutIndex": 129,
+      "breakoutPrice": 0.3344,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 780,
+    "scanned_pairs": 774,
     "failed_pairs": 10,
-    "candidates": 307,
+    "candidates": 314,
     "confirmed": 31,
     "after_scoring": 11,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 607.7,
+    "duration_seconds": 586.7,
     "source_stats": {
-      "okx": 780
+      "okx": 774
     },
     "health_stats": {
-      "healthy": 752,
-      "sensitive": 28
+      "healthy": 747,
+      "sensitive": 27
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -521,11 +536,11 @@
       "rr": 2,
       "volume": 0,
       "geometry": 5,
-      "trend": 3,
-      "stale": 25,
+      "trend": 5,
+      "stale": 26,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
-      "demote_counter1d": 4
+      "demote_counter1d": 2
     }
   },
   "observedSignals": [
