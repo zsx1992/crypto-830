@@ -1,52 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-24T00:29:24.029504+00:00",
+  "lastScanAt": "2026-10-24T01:55:10.212129+00:00",
   "pushedSignals": [
-    {
-      "symbol": "SEIUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 66,
-      "detectedAt": "2026-10-17T00:47:37.274853+00:00",
-      "pushedAt": "2026-10-17T00:47:37.274853+00:00",
-      "cooldownUntil": "2026-10-17T02:47:37.274853+00:00",
-      "signalHash": "4806a77e694d3c2b",
-      "endMs": 1791273600000,
-      "breakoutIndex": 160,
-      "breakoutPrice": 0.07003,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "BSPUSDT",
-      "patternType": "double_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 66,
-      "detectedAt": "2026-10-17T01:44:17.115962+00:00",
-      "pushedAt": "2026-10-17T01:44:17.115962+00:00",
-      "cooldownUntil": "2026-10-17T02:14:17.115962+00:00",
-      "signalHash": "ac6334b0938bf500",
-      "endMs": 1792157400000,
-      "breakoutIndex": 552,
-      "breakoutPrice": 55.15,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "CHIPUSDT",
-      "patternType": "descending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 63,
-      "detectedAt": "2026-10-17T01:44:23.511707+00:00",
-      "pushedAt": "2026-10-17T01:44:23.511707+00:00",
-      "cooldownUntil": "2026-10-17T02:14:23.511707+00:00",
-      "signalHash": "583c684a602dba7a",
-      "endMs": 1791975600000,
-      "breakoutIndex": 356,
-      "breakoutPrice": 0.05493,
-      "reconfirmAt": null
-    },
     {
       "symbol": "WLDUSDT",
       "patternType": "double_bottom",
@@ -544,20 +499,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 769,
-    "failed_pairs": 11,
-    "candidates": 297,
-    "confirmed": 30,
+    "scanned_pairs": 780,
+    "failed_pairs": 10,
+    "candidates": 307,
+    "confirmed": 31,
     "after_scoring": 11,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 414.9,
+    "duration_seconds": 607.7,
     "source_stats": {
-      "okx": 769
+      "okx": 780
     },
     "health_stats": {
-      "healthy": 741,
+      "healthy": 752,
       "sensitive": 28
     },
     "kill_breakdown": {
@@ -570,26 +525,10 @@
       "stale": 25,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
-      "demote_counter1d": 3
+      "demote_counter1d": 4
     }
   },
   "observedSignals": [
-    {
-      "symbol": "ARBUSDT",
-      "patternType": "rectangle",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 80,
-      "detectedAt": "2026-10-17T00:47:41.494033+00:00",
-      "pushedAt": "2026-10-17T00:47:41.494033+00:00",
-      "cooldownUntil": "2026-10-17T02:47:41.494033+00:00",
-      "signalHash": "48b20b181766fc59",
-      "endMs": 1791309600000,
-      "breakoutIndex": 160,
-      "breakoutPrice": 0.19138,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "AMDUSDT",
       "patternType": "descending_channel",
