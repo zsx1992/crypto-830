@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-24T09:55:01.127423+00:00",
+  "lastScanAt": "2026-10-24T10:42:17.078757+00:00",
   "pushedSignals": [
     {
       "symbol": "APTUSDT",
@@ -529,21 +529,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 742,
+    "scanned_pairs": 744,
     "failed_pairs": 10,
-    "candidates": 293,
+    "candidates": 294,
     "confirmed": 32,
     "after_scoring": 12,
-    "after_dedup": 2,
-    "pushed": 2,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 406.9,
+    "duration_seconds": 575.9,
     "source_stats": {
-      "okx": 742
+      "okx": 744
     },
     "health_stats": {
-      "healthy": 713,
-      "sensitive": 29
+      "healthy": 714,
+      "sensitive": 30
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -552,7 +552,7 @@
       "volume": 0,
       "geometry": 3,
       "trend": 8,
-      "stale": 25,
+      "stale": 26,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 2
