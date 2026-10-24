@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-24T22:42:30.468092+00:00",
+  "lastScanAt": "2026-10-24T22:52:56.942323+00:00",
   "pushedSignals": [
     {
       "symbol": "WLDUSDT",
@@ -537,7 +537,7 @@
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 360.9,
+    "duration_seconds": 490.2,
     "source_stats": {
       "okx": 684
     },
