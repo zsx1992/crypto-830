@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-24T17:45:51.914308+00:00",
+  "lastScanAt": "2026-10-24T18:03:34.429371+00:00",
   "pushedSignals": [
     {
       "symbol": "WLDUSDT",
@@ -531,13 +531,13 @@
   "scanStats": {
     "scanned_pairs": 710,
     "failed_pairs": 8,
-    "candidates": 269,
+    "candidates": 271,
     "confirmed": 28,
     "after_scoring": 9,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 550.7,
+    "duration_seconds": 373.0,
     "source_stats": {
       "okx": 710
     },
