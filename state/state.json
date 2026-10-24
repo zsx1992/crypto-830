@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-24T22:52:56.942323+00:00",
+  "lastScanAt": "2026-10-24T23:06:27.997290+00:00",
   "pushedSignals": [
     {
       "symbol": "WLDUSDT",
@@ -529,21 +529,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 684,
+    "scanned_pairs": 672,
     "failed_pairs": 8,
-    "candidates": 264,
-    "confirmed": 28,
-    "after_scoring": 6,
+    "candidates": 262,
+    "confirmed": 27,
+    "after_scoring": 7,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 490.2,
+    "observed": 1,
+    "duration_seconds": 459.2,
     "source_stats": {
-      "okx": 684
+      "okx": 672
     },
     "health_stats": {
-      "healthy": 653,
-      "sensitive": 31
+      "healthy": 642,
+      "sensitive": 30
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -551,9 +551,9 @@
       "rr": 2,
       "volume": 0,
       "geometry": 5,
-      "trend": 7,
-      "stale": 21,
-      "demote_hs_top": 5,
+      "trend": 6,
+      "stale": 20,
+      "demote_hs_top": 4,
       "demote_counter1h": 0,
       "demote_counter1d": 3
     }
@@ -1038,6 +1038,22 @@
       "breakoutPrice": 0.0979,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "SKHYUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 73,
+      "detectedAt": "2026-10-24T23:06:27.997076+00:00",
+      "pushedAt": "2026-10-24T23:06:27.997076+00:00",
+      "cooldownUntil": "2026-10-25T01:06:27.997076+00:00",
+      "signalHash": "e82f221e582c9a57",
+      "endMs": 1792350000000,
+      "breakoutIndex": 254,
+      "breakoutPrice": 136.49,
+      "reconfirmAt": null,
+      "gate": "demote_counter1d"
     }
   ]
 }
