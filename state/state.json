@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-24T05:13:26.992489+00:00",
+  "lastScanAt": "2026-10-24T05:38:26.490463+00:00",
   "pushedSignals": [
     {
       "symbol": "WLDUSDT",
@@ -511,23 +511,38 @@
       "breakoutIndex": 129,
       "breakoutPrice": 0.3344,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "BATUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 79,
+      "detectedAt": "2026-10-24T05:38:26.490225+00:00",
+      "pushedAt": "2026-10-24T05:38:26.490225+00:00",
+      "cooldownUntil": "2026-10-24T06:08:26.490225+00:00",
+      "signalHash": "16e4cf37eff5b7d3",
+      "endMs": 1792795500000,
+      "breakoutIndex": 597,
+      "breakoutPrice": 0.15996,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 774,
+    "scanned_pairs": 768,
     "failed_pairs": 10,
-    "candidates": 314,
-    "confirmed": 31,
-    "after_scoring": 11,
+    "candidates": 308,
+    "confirmed": 32,
+    "after_scoring": 12,
     "after_dedup": 1,
     "pushed": 1,
     "observed": 0,
-    "duration_seconds": 586.7,
+    "duration_seconds": 429.1,
     "source_stats": {
-      "okx": 774
+      "okx": 768
     },
     "health_stats": {
-      "healthy": 747,
+      "healthy": 741,
       "sensitive": 27
     },
     "kill_breakdown": {
