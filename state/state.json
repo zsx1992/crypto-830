@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-25T10:17:57.238228+00:00",
+  "lastScanAt": "2026-10-25T11:05:14.380672+00:00",
   "pushedSignals": [
     {
       "symbol": "BILLUSDT",
@@ -544,21 +544,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 652,
+    "scanned_pairs": 640,
     "failed_pairs": 8,
-    "candidates": 246,
+    "candidates": 247,
     "confirmed": 24,
     "after_scoring": 7,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 0,
-    "duration_seconds": 460.6,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 1,
+    "duration_seconds": 426.5,
     "source_stats": {
-      "okx": 652
+      "okx": 640
     },
     "health_stats": {
-      "healthy": 621,
-      "sensitive": 31
+      "healthy": 608,
+      "sensitive": 32
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -569,8 +569,8 @@
       "trend": 5,
       "stale": 20,
       "demote_hs_top": 3,
-      "demote_counter1h": 0,
-      "demote_counter1d": 3
+      "demote_counter1h": 1,
+      "demote_counter1d": 2
     }
   },
   "observedSignals": [
@@ -1085,6 +1085,22 @@
       "breakoutPrice": 0.0979,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "XAUUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 81,
+      "detectedAt": "2026-10-25T11:05:14.380495+00:00",
+      "pushedAt": "2026-10-25T11:05:14.380495+00:00",
+      "cooldownUntil": "2026-10-25T11:35:14.380495+00:00",
+      "signalHash": "8e88667014bc8700",
+      "endMs": 1792620000000,
+      "breakoutIndex": 281,
+      "breakoutPrice": 4108.1,
+      "reconfirmAt": null,
+      "gate": "demote_counter1h"
     }
   ]
 }
