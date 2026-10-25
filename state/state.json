@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-25T05:55:29.539028+00:00",
+  "lastScanAt": "2026-10-25T06:37:16.020846+00:00",
   "pushedSignals": [
     {
       "symbol": "WLDUSDT",
@@ -544,29 +544,29 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 640,
+    "scanned_pairs": 650,
     "failed_pairs": 8,
-    "candidates": 248,
-    "confirmed": 26,
-    "after_scoring": 9,
+    "candidates": 249,
+    "confirmed": 25,
+    "after_scoring": 8,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 431.2,
+    "observed": 1,
+    "duration_seconds": 442.3,
     "source_stats": {
-      "okx": 640
+      "okx": 650
     },
     "health_stats": {
-      "healthy": 608,
-      "sensitive": 32
+      "healthy": 619,
+      "sensitive": 31
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
-      "rr": 3,
+      "rr": 2,
       "volume": 0,
       "geometry": 4,
-      "trend": 4,
+      "trend": 5,
       "stale": 21,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
@@ -1085,6 +1085,22 @@
       "breakoutPrice": 0.03812,
       "reconfirmAt": null,
       "gate": "rr"
+    },
+    {
+      "symbol": "CASHCATUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 83,
+      "detectedAt": "2026-10-25T06:37:16.020623+00:00",
+      "pushedAt": "2026-10-25T06:37:16.020623+00:00",
+      "cooldownUntil": "2026-10-25T07:07:16.020623+00:00",
+      "signalHash": "5ccbbca51f7b561e",
+      "endMs": 1792789200000,
+      "breakoutIndex": 472,
+      "breakoutPrice": 0.0979,
+      "reconfirmAt": null,
+      "gate": "trend"
     }
   ]
 }
