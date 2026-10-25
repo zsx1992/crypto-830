@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-25T19:57:06.242658+00:00",
+  "lastScanAt": "2026-10-25T21:23:08.485271+00:00",
   "pushedSignals": [
     {
       "symbol": "CRCLUSDT",
@@ -556,24 +556,54 @@
       "breakoutIndex": 134,
       "breakoutPrice": 0.01148,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "MRNAUSDT",
+      "patternType": "ascending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 77,
+      "detectedAt": "2026-10-25T21:23:02.649006+00:00",
+      "pushedAt": "2026-10-25T21:23:02.649006+00:00",
+      "cooldownUntil": "2026-10-26T05:23:02.649006+00:00",
+      "signalHash": "61da54fe96d31117",
+      "endMs": 1792598400000,
+      "breakoutIndex": 280,
+      "breakoutPrice": 203.01,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "LINKUSDT",
+      "patternType": "ascending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 78,
+      "detectedAt": "2026-10-25T21:23:08.485040+00:00",
+      "pushedAt": "2026-10-25T21:23:08.485040+00:00",
+      "cooldownUntil": "2026-10-25T21:53:08.485040+00:00",
+      "signalHash": "ab614edc566c894c",
+      "endMs": 1792607400000,
+      "breakoutIndex": 232,
+      "breakoutPrice": 12.445,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
     "scanned_pairs": 580,
     "failed_pairs": 8,
-    "candidates": 222,
-    "confirmed": 26,
-    "after_scoring": 10,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 233,
+    "confirmed": 32,
+    "after_scoring": 14,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 472.3,
+    "duration_seconds": 466.9,
     "source_stats": {
       "okx": 580
     },
     "health_stats": {
-      "healthy": 549,
-      "sensitive": 31
+      "healthy": 547,
+      "sensitive": 33
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -582,10 +612,10 @@
       "volume": 0,
       "geometry": 4,
       "trend": 6,
-      "stale": 20,
-      "demote_hs_top": 3,
+      "stale": 24,
+      "demote_hs_top": 4,
       "demote_counter1h": 0,
-      "demote_counter1d": 2
+      "demote_counter1d": 3
     }
   },
   "observedSignals": [
