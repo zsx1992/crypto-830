@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-26T01:52:37.949746+00:00",
+  "lastScanAt": "2026-10-26T04:01:03.798071+00:00",
   "pushedSignals": [
     {
       "symbol": "STXUSDT",
@@ -559,33 +559,33 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 607,
-    "failed_pairs": 7,
-    "candidates": 243,
-    "confirmed": 29,
+    "scanned_pairs": 630,
+    "failed_pairs": 8,
+    "candidates": 252,
+    "confirmed": 32,
     "after_scoring": 9,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 1,
-    "duration_seconds": 437.4,
+    "duration_seconds": 497.1,
     "source_stats": {
-      "okx": 607
+      "okx": 630
     },
     "health_stats": {
-      "healthy": 575,
-      "sensitive": 32
+      "healthy": 596,
+      "sensitive": 34
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
-      "rr": 1,
+      "rr": 2,
       "volume": 0,
       "geometry": 6,
-      "trend": 6,
-      "stale": 21,
-      "demote_hs_top": 4,
+      "trend": 7,
+      "stale": 23,
+      "demote_hs_top": 6,
       "demote_counter1h": 0,
-      "demote_counter1d": 3
+      "demote_counter1d": 2
     }
   },
   "observedSignals": [
@@ -1098,6 +1098,22 @@
       "endMs": 1792607400000,
       "breakoutIndex": 214,
       "breakoutPrice": 12.445,
+      "reconfirmAt": null,
+      "gate": "trend"
+    },
+    {
+      "symbol": "PONSUSDT",
+      "patternType": "ascending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 76,
+      "detectedAt": "2026-10-26T04:01:03.797864+00:00",
+      "pushedAt": "2026-10-26T04:01:03.797864+00:00",
+      "cooldownUntil": "2026-10-26T04:31:03.797864+00:00",
+      "signalHash": "815bb36e1a11ee52",
+      "endMs": 1792626300000,
+      "breakoutIndex": 206,
+      "breakoutPrice": 0.2813,
       "reconfirmAt": null,
       "gate": "trend"
     }
