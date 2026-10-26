@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-26T15:36:27.714467+00:00",
+  "lastScanAt": "2026-10-26T16:47:17.553497+00:00",
   "pushedSignals": [
     {
       "symbol": "STXUSDT",
@@ -619,21 +619,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 737,
-    "failed_pairs": 7,
-    "candidates": 293,
-    "confirmed": 36,
-    "after_scoring": 12,
+    "scanned_pairs": 738,
+    "failed_pairs": 6,
+    "candidates": 302,
+    "confirmed": 35,
+    "after_scoring": 11,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 435.9,
+    "duration_seconds": 530.5,
     "source_stats": {
-      "okx": 737
+      "okx": 738
     },
     "health_stats": {
-      "healthy": 697,
-      "sensitive": 40
+      "healthy": 696,
+      "sensitive": 42
     },
     "kill_breakdown": {
       "freshness": 0,
