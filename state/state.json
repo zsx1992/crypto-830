@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-27T20:03:37.881990+00:00",
+  "lastScanAt": "2026-10-27T23:21:20.663925+00:00",
   "pushedSignals": [
-    {
-      "symbol": "SMCIUSDT",
-      "patternType": "ascending_channel",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 74,
-      "detectedAt": "2026-10-20T21:03:53.773345+00:00",
-      "pushedAt": "2026-10-20T21:03:53.773345+00:00",
-      "cooldownUntil": "2026-10-21T05:03:53.773345+00:00",
-      "signalHash": "1933f3e56d7c5b41",
-      "endMs": 1791547200000,
-      "breakoutIndex": 249,
-      "breakoutPrice": 39.69,
-      "reconfirmAt": null
-    },
     {
       "symbol": "ASTSUSDT",
       "patternType": "descending_channel",
@@ -556,23 +541,38 @@
       "breakoutIndex": 172,
       "breakoutPrice": 0.07786,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "PEPEUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 79,
+      "detectedAt": "2026-10-27T23:21:14.972104+00:00",
+      "pushedAt": "2026-10-27T23:21:14.972104+00:00",
+      "cooldownUntil": "2026-10-28T01:21:14.972104+00:00",
+      "signalHash": "ad11403b455bd708",
+      "endMs": 1792029600000,
+      "breakoutIndex": 221,
+      "breakoutPrice": 4.352e-06,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 751,
-    "failed_pairs": 5,
-    "candidates": 299,
-    "confirmed": 36,
-    "after_scoring": 12,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 528.3,
+    "scanned_pairs": 754,
+    "failed_pairs": 6,
+    "candidates": 305,
+    "confirmed": 38,
+    "after_scoring": 13,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 1,
+    "duration_seconds": 442.3,
     "source_stats": {
-      "okx": 751
+      "okx": 754
     },
     "health_stats": {
-      "healthy": 715,
+      "healthy": 718,
       "sensitive": 36
     },
     "kill_breakdown": {
@@ -581,11 +581,11 @@
       "rr": 1,
       "volume": 0,
       "geometry": 5,
-      "trend": 8,
+      "trend": 7,
       "stale": 28,
-      "demote_hs_top": 4,
+      "demote_hs_top": 5,
       "demote_counter1h": 0,
-      "demote_counter1d": 6
+      "demote_counter1d": 7
     }
   },
   "observedSignals": [
@@ -1036,6 +1036,22 @@
       "breakoutPrice": 115.46,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "DNAUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 79,
+      "detectedAt": "2026-10-27T23:21:20.663677+00:00",
+      "pushedAt": "2026-10-27T23:21:20.663677+00:00",
+      "cooldownUntil": "2026-10-27T23:51:20.663677+00:00",
+      "signalHash": "199508db2b829112",
+      "endMs": 1793091600000,
+      "breakoutIndex": 547,
+      "breakoutPrice": 0.1966,
+      "reconfirmAt": null,
+      "gate": "demote_hs_top"
     }
   ]
 }
