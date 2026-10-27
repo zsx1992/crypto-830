@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-27T23:21:20.663925+00:00",
+  "lastScanAt": "2026-10-27T23:47:26.592118+00:00",
   "pushedSignals": [
     {
       "symbol": "ASTSUSDT",
@@ -559,21 +559,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 754,
+    "scanned_pairs": 756,
     "failed_pairs": 6,
-    "candidates": 305,
+    "candidates": 308,
     "confirmed": 38,
     "after_scoring": 13,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 442.3,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 602.0,
     "source_stats": {
-      "okx": 754
+      "okx": 756
     },
     "health_stats": {
-      "healthy": 718,
-      "sensitive": 36
+      "healthy": 722,
+      "sensitive": 34
     },
     "kill_breakdown": {
       "freshness": 0,
