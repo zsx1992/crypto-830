@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-27T13:43:31.167862+00:00",
+  "lastScanAt": "2026-10-27T14:16:17.278014+00:00",
   "pushedSignals": [
     {
       "symbol": "PEPEUSDT",
@@ -604,21 +604,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 753,
+    "scanned_pairs": 755,
     "failed_pairs": 5,
-    "candidates": 296,
+    "candidates": 297,
     "confirmed": 35,
-    "after_scoring": 14,
+    "after_scoring": 13,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 414.0,
+    "duration_seconds": 422.2,
     "source_stats": {
-      "okx": 753
+      "okx": 755
     },
     "health_stats": {
-      "healthy": 711,
-      "sensitive": 42
+      "healthy": 715,
+      "sensitive": 40
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -630,26 +630,10 @@
       "stale": 26,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
-      "demote_counter1d": 6
+      "demote_counter1d": 7
     }
   },
   "observedSignals": [
-    {
-      "symbol": "ARBUSDT",
-      "patternType": "descending_channel",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 72,
-      "detectedAt": "2026-10-20T13:49:17.452651+00:00",
-      "pushedAt": "2026-10-20T13:49:17.452651+00:00",
-      "cooldownUntil": "2026-10-20T14:19:17.452651+00:00",
-      "signalHash": "1d65cac4bb02d329",
-      "endMs": 1792342800000,
-      "breakoutIndex": 441,
-      "breakoutPrice": 0.18242,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "NGUSDT",
       "patternType": "head_shoulders_top",
