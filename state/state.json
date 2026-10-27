@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-27T00:59:51.966840+00:00",
+  "lastScanAt": "2026-10-27T01:23:15.981556+00:00",
   "pushedSignals": [
-    {
-      "symbol": "AAOIUSDT",
-      "patternType": "ascending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 81,
-      "detectedAt": "2026-10-20T01:23:15.723344+00:00",
-      "pushedAt": "2026-10-20T01:23:15.723344+00:00",
-      "cooldownUntil": "2026-10-20T01:53:15.723344+00:00",
-      "signalHash": "2cdfd3e5982a6a1c",
-      "endMs": 1792433700000,
-      "breakoutIndex": 594,
-      "breakoutPrice": 76.94,
-      "reconfirmAt": null
-    },
     {
       "symbol": "OPNUSDT",
       "patternType": "double_top",
@@ -589,21 +574,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 752,
+    "scanned_pairs": 748,
     "failed_pairs": 6,
-    "candidates": 298,
-    "confirmed": 35,
-    "after_scoring": 11,
+    "candidates": 299,
+    "confirmed": 34,
+    "after_scoring": 10,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 517.8,
+    "duration_seconds": 378.1,
     "source_stats": {
-      "okx": 752
+      "okx": 748
     },
     "health_stats": {
-      "healthy": 715,
-      "sensitive": 37
+      "healthy": 709,
+      "sensitive": 39
     },
     "kill_breakdown": {
       "freshness": 0,
