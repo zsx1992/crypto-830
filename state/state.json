@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-27T01:23:15.981556+00:00",
+  "lastScanAt": "2026-10-27T06:37:25.954175+00:00",
   "pushedSignals": [
-    {
-      "symbol": "OPNUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 61,
-      "detectedAt": "2026-10-20T04:09:11.531771+00:00",
-      "pushedAt": "2026-10-20T04:09:11.531771+00:00",
-      "cooldownUntil": "2026-10-20T12:09:11.531771+00:00",
-      "signalHash": "ed897c48b2c61a83",
-      "endMs": 1791878400000,
-      "breakoutIndex": 283,
-      "breakoutPrice": 0.05207,
-      "reconfirmAt": null
-    },
     {
       "symbol": "PEPEUSDT",
       "patternType": "double_bottom",
@@ -571,24 +556,54 @@
       "breakoutIndex": 264,
       "breakoutPrice": 0.3871,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SAMSUNGUSDT",
+      "patternType": "rising_wedge",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 73,
+      "detectedAt": "2026-10-27T06:37:21.974635+00:00",
+      "pushedAt": "2026-10-27T06:37:21.974635+00:00",
+      "cooldownUntil": "2026-10-27T14:37:21.974635+00:00",
+      "signalHash": "5c67813544bfced3",
+      "endMs": 1791331200000,
+      "breakoutIndex": 179,
+      "breakoutPrice": 201.45,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "OPNUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 64,
+      "detectedAt": "2026-10-27T06:37:25.953907+00:00",
+      "pushedAt": "2026-10-27T06:37:25.953907+00:00",
+      "cooldownUntil": "2026-10-27T14:37:25.953907+00:00",
+      "signalHash": "ed897c48b2c61a83",
+      "endMs": 1791878400000,
+      "breakoutIndex": 241,
+      "breakoutPrice": 0.05207,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 748,
-    "failed_pairs": 6,
-    "candidates": 299,
-    "confirmed": 34,
-    "after_scoring": 10,
-    "after_dedup": 0,
-    "pushed": 0,
+    "scanned_pairs": 735,
+    "failed_pairs": 5,
+    "candidates": 301,
+    "confirmed": 38,
+    "after_scoring": 13,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 378.1,
+    "duration_seconds": 396.4,
     "source_stats": {
-      "okx": 748
+      "okx": 735
     },
     "health_stats": {
-      "healthy": 709,
-      "sensitive": 39
+      "healthy": 698,
+      "sensitive": 37
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -596,30 +611,14 @@
       "rr": 2,
       "volume": 0,
       "geometry": 7,
-      "trend": 5,
-      "stale": 24,
+      "trend": 6,
+      "stale": 25,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 5
     }
   },
   "observedSignals": [
-    {
-      "symbol": "PLTRUSDT",
-      "patternType": "double_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 74,
-      "detectedAt": "2026-10-20T01:23:20.505893+00:00",
-      "pushedAt": "2026-10-20T01:23:20.505893+00:00",
-      "cooldownUntil": "2026-10-20T09:23:20.505893+00:00",
-      "signalHash": "2851963e691b8874",
-      "endMs": 1789329600000,
-      "breakoutIndex": 140,
-      "breakoutPrice": 191.56,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "ARBUSDT",
       "patternType": "descending_channel",
