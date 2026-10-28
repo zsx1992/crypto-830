@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-28T11:15:34.321011+00:00",
+  "lastScanAt": "2026-10-28T13:27:48.554917+00:00",
   "pushedSignals": [
     {
       "symbol": "MRNAUSDT",
@@ -541,24 +541,54 @@
       "breakoutIndex": 221,
       "breakoutPrice": 4.352e-06,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "DOSUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 69,
+      "detectedAt": "2026-10-28T13:27:43.371305+00:00",
+      "pushedAt": "2026-10-28T13:27:43.371305+00:00",
+      "cooldownUntil": "2026-10-28T15:27:43.371305+00:00",
+      "signalHash": "3e443f3b7d8d6dd7",
+      "endMs": 1793098800000,
+      "breakoutIndex": 397,
+      "breakoutPrice": 0.2999,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "WLDUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 64,
+      "detectedAt": "2026-10-28T13:27:48.554637+00:00",
+      "pushedAt": "2026-10-28T13:27:48.554637+00:00",
+      "cooldownUntil": "2026-10-28T13:57:48.554637+00:00",
+      "signalHash": "38ea6062fa9600d8",
+      "endMs": 1793176200000,
+      "breakoutIndex": 594,
+      "breakoutPrice": 0.4289,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 747,
-    "failed_pairs": 7,
-    "candidates": 302,
-    "confirmed": 37,
-    "after_scoring": 14,
-    "after_dedup": 0,
-    "pushed": 0,
+    "scanned_pairs": 744,
+    "failed_pairs": 6,
+    "candidates": 303,
+    "confirmed": 40,
+    "after_scoring": 16,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 557.9,
+    "duration_seconds": 585.6,
     "source_stats": {
-      "okx": 747
+      "okx": 744
     },
     "health_stats": {
-      "healthy": 706,
-      "sensitive": 41
+      "healthy": 704,
+      "sensitive": 40
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -566,11 +596,11 @@
       "rr": 1,
       "volume": 0,
       "geometry": 4,
-      "trend": 7,
+      "trend": 9,
       "stale": 31,
       "demote_hs_top": 2,
       "demote_counter1h": 0,
-      "demote_counter1d": 8
+      "demote_counter1d": 7
     }
   },
   "observedSignals": [
