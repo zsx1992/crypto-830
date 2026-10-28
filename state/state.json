@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-28T00:00:15.813944+00:00",
+  "lastScanAt": "2026-10-28T02:45:29.369964+00:00",
   "pushedSignals": [
     {
       "symbol": "ASTSUSDT",
@@ -561,66 +561,34 @@
   "scanStats": {
     "scanned_pairs": 758,
     "failed_pairs": 6,
-    "candidates": 310,
-    "confirmed": 39,
+    "candidates": 313,
+    "confirmed": 38,
     "after_scoring": 13,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 418.5,
+    "observed": 1,
+    "duration_seconds": 597.8,
     "source_stats": {
       "okx": 758
     },
     "health_stats": {
-      "healthy": 724,
-      "sensitive": 34
+      "healthy": 726,
+      "sensitive": 32
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
-      "rr": 1,
+      "rr": 0,
       "volume": 0,
       "geometry": 5,
       "trend": 8,
-      "stale": 29,
-      "demote_hs_top": 5,
+      "stale": 31,
+      "demote_hs_top": 4,
       "demote_counter1h": 0,
-      "demote_counter1d": 7
+      "demote_counter1d": 8
     }
   },
   "observedSignals": [
-    {
-      "symbol": "WDCUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 78,
-      "detectedAt": "2026-10-21T00:18:10.882439+00:00",
-      "pushedAt": "2026-10-21T00:18:10.882439+00:00",
-      "cooldownUntil": "2026-10-21T02:18:10.882439+00:00",
-      "signalHash": "d9e87fb01af974ea",
-      "endMs": 1792494000000,
-      "breakoutIndex": 389,
-      "breakoutPrice": 359.61,
-      "reconfirmAt": null,
-      "gate": "demote_counter1d"
-    },
-    {
-      "symbol": "AAOIUSDT",
-      "patternType": "ascending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 76,
-      "detectedAt": "2026-10-21T01:52:59.049040+00:00",
-      "pushedAt": "2026-10-21T01:52:59.049040+00:00",
-      "cooldownUntil": "2026-10-21T02:22:59.049040+00:00",
-      "signalHash": "2cdfd3e5982a6a1c",
-      "endMs": 1792433700000,
-      "breakoutIndex": 496,
-      "breakoutPrice": 76.94,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "SANDUSDT",
       "patternType": "double_top",
@@ -1052,6 +1020,22 @@
       "breakoutPrice": 0.1966,
       "reconfirmAt": null,
       "gate": "demote_hs_top"
+    },
+    {
+      "symbol": "TSMUSDT",
+      "patternType": "double_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 76,
+      "detectedAt": "2026-10-28T02:45:29.369796+00:00",
+      "pushedAt": "2026-10-28T02:45:29.369796+00:00",
+      "cooldownUntil": "2026-10-28T10:45:29.369796+00:00",
+      "signalHash": "b76a9035eadec7ed",
+      "endMs": 1792713600000,
+      "breakoutIndex": 296,
+      "breakoutPrice": 438.72,
+      "reconfirmAt": null,
+      "gate": "demote_counter1d"
     }
   ]
 }
