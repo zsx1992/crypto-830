@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-28T22:39:41.533874+00:00",
+  "lastScanAt": "2026-10-28T23:28:45.722048+00:00",
   "pushedSignals": [
     {
       "symbol": "CHZUSDT",
@@ -574,28 +574,28 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 782,
+    "scanned_pairs": 780,
     "failed_pairs": 4,
     "candidates": 307,
     "confirmed": 36,
     "after_scoring": 8,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 1,
-    "duration_seconds": 632.3,
+    "observed": 0,
+    "duration_seconds": 410.9,
     "source_stats": {
-      "okx": 782
+      "okx": 780
     },
     "health_stats": {
       "healthy": 738,
-      "sensitive": 44
+      "sensitive": 42
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 0,
+      "strength": 1,
       "rr": 1,
       "volume": 0,
-      "geometry": 4,
+      "geometry": 3,
       "trend": 13,
       "stale": 28,
       "demote_hs_top": 3,
