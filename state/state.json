@@ -1,52 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-29T10:26:38.065462+00:00",
+  "lastScanAt": "2026-10-29T14:50:31.686326+00:00",
   "pushedSignals": [
-    {
-      "symbol": "SANDUSDT",
-      "patternType": "double_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 82,
-      "detectedAt": "2026-10-22T13:47:40.484317+00:00",
-      "pushedAt": "2026-10-22T13:47:40.484317+00:00",
-      "cooldownUntil": "2026-10-22T14:17:40.484317+00:00",
-      "signalHash": "2e0f110a9f639e75",
-      "endMs": 1792305000000,
-      "breakoutIndex": 238,
-      "breakoutPrice": 0.05751,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "CBRSUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 72,
-      "detectedAt": "2026-10-22T13:47:45.023465+00:00",
-      "pushedAt": "2026-10-22T13:47:45.023465+00:00",
-      "cooldownUntil": "2026-10-22T21:47:45.023465+00:00",
-      "signalHash": "f1cbdc65812bc613",
-      "endMs": 1790683200000,
-      "breakoutIndex": 162,
-      "breakoutPrice": 195.38,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "AAPLUSDT",
-      "patternType": "descending_channel",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 70,
-      "detectedAt": "2026-10-22T14:18:15.325592+00:00",
-      "pushedAt": "2026-10-22T14:18:15.325592+00:00",
-      "cooldownUntil": "2026-10-22T16:18:15.325592+00:00",
-      "signalHash": "7b45410cb3fc79f0",
-      "endMs": 1792594800000,
-      "breakoutIndex": 398,
-      "breakoutPrice": 345.82,
-      "reconfirmAt": null
-    },
     {
       "symbol": "LITEUSDT",
       "patternType": "double_top",
@@ -601,55 +556,69 @@
       "breakoutIndex": 518,
       "breakoutPrice": 0.14286,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "METAUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 79,
+      "detectedAt": "2026-10-29T14:50:27.227581+00:00",
+      "pushedAt": "2026-10-29T14:50:27.227581+00:00",
+      "cooldownUntil": "2026-10-29T22:50:27.227581+00:00",
+      "signalHash": "915dcf17d85e57a7",
+      "endMs": 1792612800000,
+      "breakoutIndex": 256,
+      "breakoutPrice": 682.85,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "CLUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 77,
+      "detectedAt": "2026-10-29T14:50:31.685992+00:00",
+      "pushedAt": "2026-10-29T14:50:31.685992+00:00",
+      "cooldownUntil": "2026-10-29T22:50:31.685992+00:00",
+      "signalHash": "55b3d68afc5058a9",
+      "endMs": 1791460800000,
+      "breakoutIndex": 196,
+      "breakoutPrice": 92.69,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 822,
+    "scanned_pairs": 810,
     "failed_pairs": 4,
-    "candidates": 298,
-    "confirmed": 37,
+    "candidates": 297,
+    "confirmed": 35,
     "after_scoring": 11,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 653.0,
+    "duration_seconds": 638.7,
     "source_stats": {
-      "okx": 822
+      "okx": 810
     },
     "health_stats": {
-      "healthy": 780,
-      "sensitive": 42
+      "healthy": 769,
+      "sensitive": 41
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 1,
       "rr": 1,
       "volume": 0,
-      "geometry": 4,
-      "trend": 10,
-      "stale": 29,
+      "geometry": 3,
+      "trend": 8,
+      "stale": 30,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
-      "demote_counter1d": 5
+      "demote_counter1d": 6
     }
   },
   "observedSignals": [
-    {
-      "symbol": "PEPEUSDT",
-      "patternType": "double_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 75,
-      "detectedAt": "2026-10-22T14:18:20.208928+00:00",
-      "pushedAt": "2026-10-22T14:18:20.208928+00:00",
-      "cooldownUntil": "2026-10-22T16:18:20.208928+00:00",
-      "signalHash": "ad11403b455bd708",
-      "endMs": 1792029600000,
-      "breakoutIndex": 350,
-      "breakoutPrice": 4.352e-06,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "MINIMAXUSDT",
       "patternType": "descending_channel",
