@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-29T01:24:29.194325+00:00",
+  "lastScanAt": "2026-10-29T02:24:24.218415+00:00",
   "pushedSignals": [
     {
       "symbol": "CHZUSDT",
@@ -574,52 +574,36 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 786,
+    "scanned_pairs": 798,
     "failed_pairs": 4,
-    "candidates": 307,
-    "confirmed": 40,
-    "after_scoring": 9,
+    "candidates": 302,
+    "confirmed": 33,
+    "after_scoring": 8,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 1,
-    "duration_seconds": 568.3,
+    "observed": 0,
+    "duration_seconds": 638.2,
     "source_stats": {
-      "okx": 786
+      "okx": 798
     },
     "health_stats": {
-      "healthy": 743,
-      "sensitive": 43
+      "healthy": 756,
+      "sensitive": 42
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 2,
+      "strength": 1,
       "rr": 1,
       "volume": 0,
       "geometry": 3,
-      "trend": 15,
-      "stale": 31,
+      "trend": 12,
+      "stale": 27,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
-      "demote_counter1d": 7
+      "demote_counter1d": 5
     }
   },
   "observedSignals": [
-    {
-      "symbol": "POLUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 78,
-      "detectedAt": "2026-10-22T02:02:14.894507+00:00",
-      "pushedAt": "2026-10-22T02:02:14.894507+00:00",
-      "cooldownUntil": "2026-10-22T10:02:14.894507+00:00",
-      "signalHash": "553aae7f1f3818be",
-      "endMs": 1791187200000,
-      "breakoutIndex": 209,
-      "breakoutPrice": 0.10336,
-      "reconfirmAt": null,
-      "gate": "demote_hs_top"
-    },
     {
       "symbol": "ICPUSDT",
       "patternType": "head_shoulders_top",
