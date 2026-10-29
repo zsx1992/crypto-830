@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-28T23:28:45.722048+00:00",
+  "lastScanAt": "2026-10-29T01:24:29.194325+00:00",
   "pushedSignals": [
     {
       "symbol": "CHZUSDT",
@@ -574,30 +574,30 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 780,
+    "scanned_pairs": 786,
     "failed_pairs": 4,
     "candidates": 307,
-    "confirmed": 36,
-    "after_scoring": 8,
+    "confirmed": 40,
+    "after_scoring": 9,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 410.9,
+    "observed": 1,
+    "duration_seconds": 568.3,
     "source_stats": {
-      "okx": 780
+      "okx": 786
     },
     "health_stats": {
-      "healthy": 738,
-      "sensitive": 42
+      "healthy": 743,
+      "sensitive": 43
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 1,
+      "strength": 2,
       "rr": 1,
       "volume": 0,
       "geometry": 3,
-      "trend": 13,
-      "stale": 28,
+      "trend": 15,
+      "stale": 31,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
       "demote_counter1d": 7
@@ -1083,6 +1083,22 @@
       "breakoutPrice": 0.04854,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "PUMPUSDT",
+      "patternType": "ascending_channel",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 82,
+      "detectedAt": "2026-10-29T01:24:29.194156+00:00",
+      "pushedAt": "2026-10-29T01:24:29.194156+00:00",
+      "cooldownUntil": "2026-10-29T03:24:29.194156+00:00",
+      "signalHash": "df5f29033166363c",
+      "endMs": 1793203200000,
+      "breakoutIndex": 393,
+      "breakoutPrice": 0.00454,
+      "reconfirmAt": null,
+      "gate": "demote_counter1d"
     }
   ]
 }
