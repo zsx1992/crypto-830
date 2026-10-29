@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-29T02:24:24.218415+00:00",
+  "lastScanAt": "2026-10-29T02:46:33.726540+00:00",
   "pushedSignals": [
     {
       "symbol": "CHZUSDT",
@@ -574,25 +574,25 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 798,
+    "scanned_pairs": 804,
     "failed_pairs": 4,
-    "candidates": 302,
+    "candidates": 296,
     "confirmed": 33,
     "after_scoring": 8,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 638.2,
+    "duration_seconds": 581.8,
     "source_stats": {
-      "okx": 798
+      "okx": 804
     },
     "health_stats": {
-      "healthy": 756,
-      "sensitive": 42
+      "healthy": 767,
+      "sensitive": 37
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 1,
+      "strength": 2,
       "rr": 1,
       "volume": 0,
       "geometry": 3,
@@ -600,7 +600,7 @@
       "stale": 27,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
-      "demote_counter1d": 5
+      "demote_counter1d": 4
     }
   },
   "observedSignals": [
