@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-30T09:00:55.424129+00:00",
+  "lastScanAt": "2026-10-30T13:49:10.208584+00:00",
   "pushedSignals": [
     {
       "symbol": "HOODUSDT",
@@ -739,52 +739,36 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 977,
+    "scanned_pairs": 969,
     "failed_pairs": 3,
-    "candidates": 318,
+    "candidates": 316,
     "confirmed": 41,
     "after_scoring": 18,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 0,
-    "duration_seconds": 714.1,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 1,
+    "duration_seconds": 704.5,
     "source_stats": {
-      "okx": 977
+      "okx": 969
     },
     "health_stats": {
-      "healthy": 937,
-      "sensitive": 40
+      "healthy": 927,
+      "sensitive": 42
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 2,
+      "strength": 0,
       "rr": 1,
       "volume": 0,
-      "geometry": 3,
-      "trend": 8,
-      "stale": 26,
+      "geometry": 2,
+      "trend": 12,
+      "stale": 28,
       "demote_hs_top": 7,
       "demote_counter1h": 0,
-      "demote_counter1d": 2
+      "demote_counter1d": 1
     }
   },
   "observedSignals": [
-    {
-      "symbol": "MINIMAXUSDT",
-      "patternType": "descending_channel",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 78,
-      "detectedAt": "2026-10-23T13:21:09.917845+00:00",
-      "pushedAt": "2026-10-23T13:21:09.917845+00:00",
-      "cooldownUntil": "2026-10-23T21:21:09.917845+00:00",
-      "signalHash": "5cf00e4c41d3175d",
-      "endMs": 1792699200000,
-      "breakoutIndex": 297,
-      "breakoutPrice": 24.02,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "TSLAUSDT",
       "patternType": "double_top",
@@ -1264,6 +1248,22 @@
       "breakoutPrice": 0.036428,
       "reconfirmAt": null,
       "gate": "demote_hs_top"
+    },
+    {
+      "symbol": "MINIMAXUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 77,
+      "detectedAt": "2026-10-30T13:49:10.208380+00:00",
+      "pushedAt": "2026-10-30T13:49:10.208380+00:00",
+      "cooldownUntil": "2026-10-30T21:49:10.208380+00:00",
+      "signalHash": "5cf00e4c41d3175d",
+      "endMs": 1792699200000,
+      "breakoutIndex": 255,
+      "breakoutPrice": 24.02,
+      "reconfirmAt": null,
+      "gate": "trend"
     }
   ]
 }
