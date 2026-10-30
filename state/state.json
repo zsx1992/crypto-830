@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-30T00:37:42.182466+00:00",
+  "lastScanAt": "2026-10-30T01:53:34.046944+00:00",
   "pushedSignals": [
     {
       "symbol": "HOODUSDT",
@@ -664,30 +664,30 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 934,
+    "scanned_pairs": 952,
     "failed_pairs": 4,
-    "candidates": 315,
-    "confirmed": 41,
+    "candidates": 316,
+    "confirmed": 40,
     "after_scoring": 15,
-    "after_dedup": 5,
-    "pushed": 5,
-    "observed": 1,
-    "duration_seconds": 735.9,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 686.2,
     "source_stats": {
-      "okx": 934
+      "okx": 952
     },
     "health_stats": {
-      "healthy": 894,
-      "sensitive": 40
+      "healthy": 911,
+      "sensitive": 41
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 1,
       "rr": 1,
       "volume": 0,
-      "geometry": 4,
+      "geometry": 3,
       "trend": 13,
-      "stale": 26,
+      "stale": 25,
       "demote_hs_top": 6,
       "demote_counter1h": 0,
       "demote_counter1d": 1
