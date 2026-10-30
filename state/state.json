@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-30T13:49:10.208584+00:00",
+  "lastScanAt": "2026-10-30T15:52:48.701917+00:00",
   "pushedSignals": [
     {
       "symbol": "HOODUSDT",
@@ -736,24 +736,39 @@
       "breakoutIndex": 168,
       "breakoutPrice": 0.01021,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "HBARUSDT",
+      "patternType": "descending_channel",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 89,
+      "detectedAt": "2026-10-30T15:52:48.701614+00:00",
+      "pushedAt": "2026-10-30T15:52:48.701614+00:00",
+      "cooldownUntil": "2026-10-30T17:52:48.701614+00:00",
+      "signalHash": "9f7c3acd8dfbfe88",
+      "endMs": 1793289600000,
+      "breakoutIndex": 380,
+      "breakoutPrice": 0.06873,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 969,
+    "scanned_pairs": 961,
     "failed_pairs": 3,
-    "candidates": 316,
+    "candidates": 309,
     "confirmed": 41,
-    "after_scoring": 18,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 1,
-    "duration_seconds": 704.5,
+    "after_scoring": 17,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 0,
+    "duration_seconds": 674.6,
     "source_stats": {
-      "okx": 969
+      "okx": 961
     },
     "health_stats": {
-      "healthy": 927,
-      "sensitive": 42
+      "healthy": 921,
+      "sensitive": 40
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -763,28 +778,12 @@
       "geometry": 2,
       "trend": 12,
       "stale": 28,
-      "demote_hs_top": 7,
+      "demote_hs_top": 8,
       "demote_counter1h": 0,
       "demote_counter1d": 1
     }
   },
   "observedSignals": [
-    {
-      "symbol": "TSLAUSDT",
-      "patternType": "double_top",
-      "interval": "1d",
-      "direction": "SHORT",
-      "strength": 77,
-      "detectedAt": "2026-10-23T13:59:10.739351+00:00",
-      "pushedAt": "2026-10-23T13:59:10.739351+00:00",
-      "cooldownUntil": "2026-10-24T13:59:10.739351+00:00",
-      "signalHash": "81c64e3aa8331659",
-      "endMs": 1782921600000,
-      "breakoutIndex": 147,
-      "breakoutPrice": 325.16,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "RAYUSDT",
       "patternType": "double_bottom",
