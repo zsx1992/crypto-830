@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-30T19:04:28.188771+00:00",
+  "lastScanAt": "2026-10-30T20:44:31.436744+00:00",
   "pushedSignals": [
     {
       "symbol": "STXUSDT",
@@ -796,36 +796,66 @@
       "breakoutIndex": 510,
       "breakoutPrice": 0.04403,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "CPUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 66,
+      "detectedAt": "2026-10-30T20:44:22.346983+00:00",
+      "pushedAt": "2026-10-30T20:44:22.346983+00:00",
+      "cooldownUntil": "2026-10-31T04:44:22.346983+00:00",
+      "signalHash": "0116b2a7c54f3ef2",
+      "endMs": 1792814400000,
+      "breakoutIndex": 294,
+      "breakoutPrice": 0.007906,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "HOODUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 76,
+      "detectedAt": "2026-10-30T20:44:26.349054+00:00",
+      "pushedAt": "2026-10-30T20:44:26.349054+00:00",
+      "cooldownUntil": "2026-10-31T04:44:26.349054+00:00",
+      "signalHash": "eeba076a9b9b5f62",
+      "endMs": 1790769600000,
+      "breakoutIndex": 118,
+      "breakoutPrice": 112.7,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 951,
+    "scanned_pairs": 941,
     "failed_pairs": 3,
     "candidates": 318,
-    "confirmed": 44,
-    "after_scoring": 20,
+    "confirmed": 45,
+    "after_scoring": 18,
     "after_dedup": 2,
     "pushed": 2,
-    "observed": 0,
-    "duration_seconds": 688.8,
+    "observed": 1,
+    "duration_seconds": 745.9,
     "source_stats": {
-      "okx": 951
+      "okx": 941
     },
     "health_stats": {
-      "healthy": 914,
+      "healthy": 904,
       "sensitive": 37
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 0,
+      "strength": 1,
       "rr": 1,
       "volume": 0,
       "geometry": 4,
       "trend": 11,
-      "stale": 27,
+      "stale": 28,
       "demote_hs_top": 7,
-      "demote_counter1h": 0,
-      "demote_counter1d": 1
+      "demote_counter1h": 1,
+      "demote_counter1d": 2
     }
   },
   "observedSignals": [
@@ -1292,6 +1322,22 @@
       "breakoutPrice": 24.02,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "LABUSDT",
+      "patternType": "ascending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 88,
+      "detectedAt": "2026-10-30T20:44:31.436579+00:00",
+      "pushedAt": "2026-10-30T20:44:31.436579+00:00",
+      "cooldownUntil": "2026-10-30T21:14:31.436579+00:00",
+      "signalHash": "7857c89d27d359bc",
+      "endMs": 1793290500000,
+      "breakoutIndex": 503,
+      "breakoutPrice": 0.04403,
+      "reconfirmAt": null,
+      "gate": "demote_counter1h"
     }
   ]
 }
