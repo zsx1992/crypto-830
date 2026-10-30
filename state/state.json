@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-30T08:29:12.504838+00:00",
+  "lastScanAt": "2026-10-30T09:00:55.424129+00:00",
   "pushedSignals": [
     {
       "symbol": "HOODUSDT",
@@ -721,6 +721,21 @@
       "breakoutIndex": 296,
       "breakoutPrice": 5.338,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "CPUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 83,
+      "detectedAt": "2026-10-30T09:00:55.423881+00:00",
+      "pushedAt": "2026-10-30T09:00:55.423881+00:00",
+      "cooldownUntil": "2026-10-30T17:00:55.423881+00:00",
+      "signalHash": "0116b2a7c54f3ef2",
+      "endMs": 1789862400000,
+      "breakoutIndex": 168,
+      "breakoutPrice": 0.01021,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
@@ -729,24 +744,24 @@
     "candidates": 318,
     "confirmed": 41,
     "after_scoring": 18,
-    "after_dedup": 2,
-    "pushed": 2,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 695.4,
+    "duration_seconds": 714.1,
     "source_stats": {
       "okx": 977
     },
     "health_stats": {
-      "healthy": 938,
-      "sensitive": 39
+      "healthy": 937,
+      "sensitive": 40
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 1,
+      "strength": 2,
       "rr": 1,
       "volume": 0,
       "geometry": 3,
-      "trend": 9,
+      "trend": 8,
       "stale": 26,
       "demote_hs_top": 7,
       "demote_counter1h": 0,
