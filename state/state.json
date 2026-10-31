@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-31T00:40:18.839558+00:00",
+  "lastScanAt": "2026-10-31T01:04:40.102421+00:00",
   "pushedSignals": [
     {
       "symbol": "EDGEUSDT",
@@ -826,23 +826,38 @@
       "breakoutIndex": 291,
       "breakoutPrice": 22.73,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ARBUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 70,
+      "detectedAt": "2026-10-31T01:04:40.102202+00:00",
+      "pushedAt": "2026-10-31T01:04:40.102202+00:00",
+      "cooldownUntil": "2026-10-31T03:04:40.102202+00:00",
+      "signalHash": "cb7fb904b35b0aa9",
+      "endMs": 1792461600000,
+      "breakoutIndex": 229,
+      "breakoutPrice": 0.17133,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 835,
+    "scanned_pairs": 829,
     "failed_pairs": 3,
-    "candidates": 294,
-    "confirmed": 43,
-    "after_scoring": 20,
-    "after_dedup": 2,
-    "pushed": 2,
+    "candidates": 290,
+    "confirmed": 41,
+    "after_scoring": 19,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 468.9,
+    "duration_seconds": 605.0,
     "source_stats": {
-      "okx": 835
+      "okx": 829
     },
     "health_stats": {
-      "healthy": 808,
+      "healthy": 802,
       "sensitive": 27
     },
     "kill_breakdown": {
@@ -851,8 +866,8 @@
       "rr": 1,
       "volume": 0,
       "geometry": 4,
-      "trend": 9,
-      "stale": 29,
+      "trend": 8,
+      "stale": 27,
       "demote_hs_top": 6,
       "demote_counter1h": 0,
       "demote_counter1d": 3
