@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-10-31T18:25:34.037037+00:00",
+  "lastScanAt": "2026-10-31T18:47:20.228628+00:00",
   "pushedSignals": [
     {
       "symbol": "DOTUSDT",
@@ -841,23 +841,53 @@
       "breakoutIndex": 290,
       "breakoutPrice": 50.74,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "QUANTUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 81,
+      "detectedAt": "2026-10-31T18:47:16.333055+00:00",
+      "pushedAt": "2026-10-31T18:47:16.333055+00:00",
+      "cooldownUntil": "2026-11-01T02:47:16.333055+00:00",
+      "signalHash": "ec2257654b2dce2c",
+      "endMs": 1792843200000,
+      "breakoutIndex": 150,
+      "breakoutPrice": 215.8,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "APRUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 75,
+      "detectedAt": "2026-10-31T18:47:20.228394+00:00",
+      "pushedAt": "2026-10-31T18:47:20.228394+00:00",
+      "cooldownUntil": "2026-10-31T20:47:20.228394+00:00",
+      "signalHash": "39a60427bb56291b",
+      "endMs": 1792857600000,
+      "breakoutIndex": 234,
+      "breakoutPrice": 0.03812,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 621,
+    "scanned_pairs": 617,
     "failed_pairs": 3,
-    "candidates": 242,
+    "candidates": 241,
     "confirmed": 33,
     "after_scoring": 17,
-    "after_dedup": 3,
-    "pushed": 3,
-    "observed": 1,
-    "duration_seconds": 308.1,
+    "after_dedup": 2,
+    "pushed": 2,
+    "observed": 0,
+    "duration_seconds": 440.3,
     "source_stats": {
-      "okx": 621
+      "okx": 617
     },
     "health_stats": {
-      "healthy": 597,
+      "healthy": 593,
       "sensitive": 24
     },
     "kill_breakdown": {
