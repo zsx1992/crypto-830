@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-01T09:38:14.764910+00:00",
+  "lastScanAt": "2026-11-01T09:50:06.544879+00:00",
   "pushedSignals": [
     {
       "symbol": "AKEUSDT",
@@ -934,20 +934,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 525,
+    "scanned_pairs": 529,
     "failed_pairs": 3,
-    "candidates": 191,
+    "candidates": 192,
     "confirmed": 29,
     "after_scoring": 12,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 400.0,
+    "duration_seconds": 277.3,
     "source_stats": {
-      "okx": 525
+      "okx": 529
     },
     "health_stats": {
-      "healthy": 509,
+      "healthy": 513,
       "sensitive": 16
     },
     "kill_breakdown": {
