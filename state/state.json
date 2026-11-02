@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-02T01:02:19.882970+00:00",
+  "lastScanAt": "2026-11-02T07:35:18.289561+00:00",
   "pushedSignals": [
     {
       "symbol": "LINKUSDT",
@@ -901,24 +901,39 @@
       "breakoutIndex": 232,
       "breakoutPrice": 0.07886,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SKHYNIXUSDT",
+      "patternType": "ascending_channel",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 72,
+      "detectedAt": "2026-11-02T07:35:18.289310+00:00",
+      "pushedAt": "2026-11-02T07:35:18.289310+00:00",
+      "cooldownUntil": "2026-11-02T09:35:18.289310+00:00",
+      "signalHash": "0664a9338267c5b9",
+      "endMs": 1793062800000,
+      "breakoutIndex": 272,
+      "breakoutPrice": 1068.0,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 553,
-    "failed_pairs": 3,
-    "candidates": 210,
-    "confirmed": 29,
-    "after_scoring": 12,
-    "after_dedup": 0,
-    "pushed": 0,
+    "scanned_pairs": 597,
+    "failed_pairs": 5,
+    "candidates": 247,
+    "confirmed": 33,
+    "after_scoring": 16,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 408.5,
+    "duration_seconds": 471.7,
     "source_stats": {
-      "okx": 553
+      "okx": 597
     },
     "health_stats": {
-      "healthy": 534,
-      "sensitive": 19
+      "healthy": 573,
+      "sensitive": 24
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -926,46 +941,14 @@
       "rr": 1,
       "volume": 0,
       "geometry": 4,
-      "trend": 6,
-      "stale": 17,
-      "demote_hs_top": 5,
-      "demote_counter1h": 1,
-      "demote_counter1d": 0
+      "trend": 7,
+      "stale": 21,
+      "demote_hs_top": 4,
+      "demote_counter1h": 0,
+      "demote_counter1d": 1
     }
   },
   "observedSignals": [
-    {
-      "symbol": "LINKUSDT",
-      "patternType": "ascending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 73,
-      "detectedAt": "2026-10-26T01:52:37.949555+00:00",
-      "pushedAt": "2026-10-26T01:52:37.949555+00:00",
-      "cooldownUntil": "2026-10-26T02:22:37.949555+00:00",
-      "signalHash": "ab614edc566c894c",
-      "endMs": 1792607400000,
-      "breakoutIndex": 214,
-      "breakoutPrice": 12.445,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
-    {
-      "symbol": "PONSUSDT",
-      "patternType": "ascending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 76,
-      "detectedAt": "2026-10-26T04:01:03.797864+00:00",
-      "pushedAt": "2026-10-26T04:01:03.797864+00:00",
-      "cooldownUntil": "2026-10-26T04:31:03.797864+00:00",
-      "signalHash": "815bb36e1a11ee52",
-      "endMs": 1792626300000,
-      "breakoutIndex": 206,
-      "breakoutPrice": 0.2813,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "LITEUSDT",
       "patternType": "double_top",
