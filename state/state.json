@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-02T00:30:13.986874+00:00",
+  "lastScanAt": "2026-11-02T01:02:19.882970+00:00",
   "pushedSignals": [
     {
       "symbol": "LINKUSDT",
@@ -904,20 +904,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 537,
+    "scanned_pairs": 553,
     "failed_pairs": 3,
-    "candidates": 212,
-    "confirmed": 30,
+    "candidates": 210,
+    "confirmed": 29,
     "after_scoring": 12,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 344.5,
+    "duration_seconds": 408.5,
     "source_stats": {
-      "okx": 537
+      "okx": 553
     },
     "health_stats": {
-      "healthy": 518,
+      "healthy": 534,
       "sensitive": 19
     },
     "kill_breakdown": {
@@ -929,8 +929,8 @@
       "trend": 6,
       "stale": 17,
       "demote_hs_top": 5,
-      "demote_counter1h": 0,
-      "demote_counter1d": 2
+      "demote_counter1h": 1,
+      "demote_counter1d": 0
     }
   },
   "observedSignals": [
