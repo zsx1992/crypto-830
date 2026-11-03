@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-03T10:12:12.521102+00:00",
+  "lastScanAt": "2026-11-03T16:08:01.515027+00:00",
   "pushedSignals": [
     {
       "symbol": "PEPEUSDT",
@@ -886,55 +886,69 @@
       "breakoutIndex": 199,
       "breakoutPrice": 0.05207,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "GOOGLUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 89,
+      "detectedAt": "2026-11-03T16:07:57.802250+00:00",
+      "pushedAt": "2026-11-03T16:07:57.802250+00:00",
+      "cooldownUntil": "2026-11-04T00:07:57.802250+00:00",
+      "signalHash": "282518c8f5769eae",
+      "endMs": 1792843200000,
+      "breakoutIndex": 264,
+      "breakoutPrice": 293.23,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "SPXUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "4h",
+      "direction": "LONG",
+      "strength": 67,
+      "detectedAt": "2026-11-03T16:08:01.514809+00:00",
+      "pushedAt": "2026-11-03T16:08:01.514809+00:00",
+      "cooldownUntil": "2026-11-04T00:08:01.514809+00:00",
+      "signalHash": "88707571b127875b",
+      "endMs": 1792339200000,
+      "breakoutIndex": 215,
+      "breakoutPrice": 0.3871,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 733,
+    "scanned_pairs": 755,
     "failed_pairs": 5,
     "candidates": 278,
-    "confirmed": 47,
-    "after_scoring": 26,
-    "after_dedup": 0,
-    "pushed": 0,
+    "confirmed": 48,
+    "after_scoring": 24,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 393.7,
+    "duration_seconds": 608.2,
     "source_stats": {
-      "okx": 733
+      "okx": 755
     },
     "health_stats": {
-      "healthy": 698,
-      "sensitive": 35
+      "healthy": 721,
+      "sensitive": 34
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
-      "rr": 0,
+      "rr": 1,
       "volume": 0,
-      "geometry": 5,
-      "trend": 6,
-      "stale": 37,
-      "demote_hs_top": 9,
+      "geometry": 6,
+      "trend": 10,
+      "stale": 40,
+      "demote_hs_top": 5,
       "demote_counter1h": 0,
-      "demote_counter1d": 1
+      "demote_counter1d": 2
     }
   },
   "observedSignals": [
-    {
-      "symbol": "DRAMUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 77,
-      "detectedAt": "2026-10-27T13:35:48.376045+00:00",
-      "pushedAt": "2026-10-27T13:35:48.376045+00:00",
-      "cooldownUntil": "2026-10-27T15:35:48.376045+00:00",
-      "signalHash": "2e969de1c2d01b23",
-      "endMs": 1792350000000,
-      "breakoutIndex": 192,
-      "breakoutPrice": 46.87,
-      "reconfirmAt": null,
-      "gate": "demote_counter1d"
-    },
     {
       "symbol": "KIOXIAUSDT",
       "patternType": "head_shoulders_top",
