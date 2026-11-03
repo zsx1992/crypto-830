@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-03T00:53:49.125770+00:00",
+  "lastScanAt": "2026-11-03T01:49:05.454134+00:00",
   "pushedSignals": [
     {
       "symbol": "SAMSUNGUSDT",
@@ -921,19 +921,19 @@
   "scanStats": {
     "scanned_pairs": 741,
     "failed_pairs": 5,
-    "candidates": 281,
+    "candidates": 280,
     "confirmed": 44,
     "after_scoring": 25,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 597.6,
+    "duration_seconds": 422.1,
     "source_stats": {
       "okx": 741
     },
     "health_stats": {
-      "healthy": 705,
-      "sensitive": 36
+      "healthy": 708,
+      "sensitive": 33
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -944,8 +944,8 @@
       "trend": 5,
       "stale": 32,
       "demote_hs_top": 8,
-      "demote_counter1h": 0,
-      "demote_counter1d": 1
+      "demote_counter1h": 1,
+      "demote_counter1d": 0
     }
   },
   "observedSignals": [
