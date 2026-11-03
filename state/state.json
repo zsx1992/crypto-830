@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-03T18:06:55.837036+00:00",
+  "lastScanAt": "2026-11-03T21:42:07.883023+00:00",
   "pushedSignals": [
     {
       "symbol": "PEPEUSDT",
@@ -919,52 +919,36 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 741,
+    "scanned_pairs": 721,
     "failed_pairs": 3,
-    "candidates": 279,
-    "confirmed": 45,
-    "after_scoring": 23,
+    "candidates": 268,
+    "confirmed": 41,
+    "after_scoring": 20,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 573.4,
+    "duration_seconds": 364.0,
     "source_stats": {
-      "okx": 741
+      "okx": 721
     },
     "health_stats": {
-      "healthy": 708,
-      "sensitive": 33
+      "healthy": 692,
+      "sensitive": 29
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
-      "rr": 1,
+      "rr": 0,
       "volume": 0,
       "geometry": 6,
-      "trend": 9,
-      "stale": 38,
+      "trend": 10,
+      "stale": 35,
       "demote_hs_top": 4,
-      "demote_counter1h": 1,
+      "demote_counter1h": 0,
       "demote_counter1d": 1
     }
   },
   "observedSignals": [
-    {
-      "symbol": "KIOXIAUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 78,
-      "detectedAt": "2026-10-27T19:09:34.372170+00:00",
-      "pushedAt": "2026-10-27T19:09:34.372170+00:00",
-      "cooldownUntil": "2026-10-28T03:09:34.372170+00:00",
-      "signalHash": "52164ffbae89567f",
-      "endMs": 1790539200000,
-      "breakoutIndex": 122,
-      "breakoutPrice": 115.46,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "DNAUSDT",
       "patternType": "head_shoulders_top",
