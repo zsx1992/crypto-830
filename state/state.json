@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-04T22:10:39.663317+00:00",
+  "lastScanAt": "2026-11-04T22:40:34.554800+00:00",
   "pushedSignals": [
     {
       "symbol": "CTUSDT",
@@ -964,21 +964,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 841,
+    "scanned_pairs": 847,
     "failed_pairs": 5,
     "candidates": 280,
-    "confirmed": 50,
-    "after_scoring": 19,
-    "after_dedup": 1,
-    "pushed": 1,
+    "confirmed": 46,
+    "after_scoring": 18,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 606.2,
+    "duration_seconds": 670.4,
     "source_stats": {
-      "okx": 841
+      "okx": 847
     },
     "health_stats": {
-      "healthy": 803,
-      "sensitive": 38
+      "healthy": 808,
+      "sensitive": 39
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -986,30 +986,14 @@
       "rr": 0,
       "volume": 0,
       "geometry": 3,
-      "trend": 15,
-      "stale": 33,
+      "trend": 13,
+      "stale": 31,
       "demote_hs_top": 6,
       "demote_counter1h": 0,
-      "demote_counter1d": 6
+      "demote_counter1d": 5
     }
   },
   "observedSignals": [
-    {
-      "symbol": "CHIPUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 75,
-      "detectedAt": "2026-10-28T22:39:41.533685+00:00",
-      "pushedAt": "2026-10-28T22:39:41.533685+00:00",
-      "cooldownUntil": "2026-10-29T00:39:41.533685+00:00",
-      "signalHash": "67c61156277382dd",
-      "endMs": 1793185200000,
-      "breakoutIndex": 393,
-      "breakoutPrice": 0.04854,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "PUMPUSDT",
       "patternType": "ascending_channel",
