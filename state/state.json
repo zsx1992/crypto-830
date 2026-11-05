@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-05T12:08:09.363246+00:00",
+  "lastScanAt": "2026-11-05T16:00:24.651215+00:00",
   "pushedSignals": [
-    {
-      "symbol": "METAUSDT",
-      "patternType": "descending_channel",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 79,
-      "detectedAt": "2026-10-29T14:50:27.227581+00:00",
-      "pushedAt": "2026-10-29T14:50:27.227581+00:00",
-      "cooldownUntil": "2026-10-29T22:50:27.227581+00:00",
-      "signalHash": "915dcf17d85e57a7",
-      "endMs": 1792612800000,
-      "breakoutIndex": 256,
-      "breakoutPrice": 682.85,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "CLUSDT",
-      "patternType": "descending_channel",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 77,
-      "detectedAt": "2026-10-29T14:50:31.685992+00:00",
-      "pushedAt": "2026-10-29T14:50:31.685992+00:00",
-      "cooldownUntil": "2026-10-29T22:50:31.685992+00:00",
-      "signalHash": "55b3d68afc5058a9",
-      "endMs": 1791460800000,
-      "breakoutIndex": 196,
-      "breakoutPrice": 92.69,
-      "reconfirmAt": null
-    },
     {
       "symbol": "WDCUSDT",
       "patternType": "head_shoulders_bottom",
@@ -946,36 +916,51 @@
       "breakoutIndex": 226,
       "breakoutPrice": 0.1426,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "CRCLUSDT",
+      "patternType": "double_top",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 81,
+      "detectedAt": "2026-11-05T16:00:19.223187+00:00",
+      "pushedAt": "2026-11-05T16:00:19.223187+00:00",
+      "cooldownUntil": "2026-11-05T16:30:19.223187+00:00",
+      "signalHash": "fb1159dea490e782",
+      "endMs": 1793791800000,
+      "breakoutIndex": 594,
+      "breakoutPrice": 70.67,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 801,
-    "failed_pairs": 3,
-    "candidates": 286,
-    "confirmed": 50,
-    "after_scoring": 22,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 566.4,
+    "scanned_pairs": 816,
+    "failed_pairs": 4,
+    "candidates": 254,
+    "confirmed": 42,
+    "after_scoring": 20,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 1,
+    "duration_seconds": 666.3,
     "source_stats": {
-      "okx": 801
+      "okx": 816
     },
     "health_stats": {
-      "healthy": 761,
-      "sensitive": 40
+      "healthy": 774,
+      "sensitive": 42
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 1,
+      "strength": 0,
       "rr": 0,
       "volume": 0,
       "geometry": 5,
-      "trend": 7,
-      "stale": 32,
-      "demote_hs_top": 8,
-      "demote_counter1h": 1,
-      "demote_counter1d": 6
+      "trend": 11,
+      "stale": 29,
+      "demote_hs_top": 4,
+      "demote_counter1h": 0,
+      "demote_counter1d": 2
     }
   },
   "observedSignals": [
@@ -1378,6 +1363,22 @@
       "breakoutPrice": 20.77,
       "reconfirmAt": null,
       "gate": "demote_counter1d"
+    },
+    {
+      "symbol": "BNBUSDT",
+      "patternType": "ascending_channel",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 94,
+      "detectedAt": "2026-11-05T16:00:24.650981+00:00",
+      "pushedAt": "2026-11-05T16:00:24.650981+00:00",
+      "cooldownUntil": "2026-11-05T18:00:24.650981+00:00",
+      "signalHash": "265d6bd41d5c670e",
+      "endMs": 1793185200000,
+      "breakoutIndex": 236,
+      "breakoutPrice": 696.76,
+      "reconfirmAt": null,
+      "gate": "trend"
     }
   ]
 }
