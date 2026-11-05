@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-04T22:40:34.554800+00:00",
+  "lastScanAt": "2026-11-05T00:40:48.642815+00:00",
   "pushedSignals": [
     {
       "symbol": "CTUSDT",
@@ -964,21 +964,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 847,
+    "scanned_pairs": 843,
     "failed_pairs": 5,
-    "candidates": 280,
-    "confirmed": 46,
-    "after_scoring": 18,
+    "candidates": 282,
+    "confirmed": 49,
+    "after_scoring": 20,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 670.4,
+    "duration_seconds": 461.1,
     "source_stats": {
-      "okx": 847
+      "okx": 843
     },
     "health_stats": {
-      "healthy": 808,
-      "sensitive": 39
+      "healthy": 803,
+      "sensitive": 40
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -987,10 +987,10 @@
       "volume": 0,
       "geometry": 3,
       "trend": 13,
-      "stale": 31,
+      "stale": 32,
       "demote_hs_top": 6,
       "demote_counter1h": 0,
-      "demote_counter1d": 5
+      "demote_counter1d": 6
     }
   },
   "observedSignals": [
