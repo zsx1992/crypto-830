@@ -1,52 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-05T07:33:28.174737+00:00",
+  "lastScanAt": "2026-11-05T11:26:34.842857+00:00",
   "pushedSignals": [
-    {
-      "symbol": "CTUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 89,
-      "detectedAt": "2026-10-29T07:47:52.635816+00:00",
-      "pushedAt": "2026-10-29T07:47:52.635816+00:00",
-      "cooldownUntil": "2026-10-29T09:47:52.635816+00:00",
-      "signalHash": "776a4c96f1e45e21",
-      "endMs": 1793080800000,
-      "breakoutIndex": 398,
-      "breakoutPrice": 0.1426,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "CHIPUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 82,
-      "detectedAt": "2026-10-29T07:47:56.811907+00:00",
-      "pushedAt": "2026-10-29T07:47:56.811907+00:00",
-      "cooldownUntil": "2026-10-29T09:47:56.811907+00:00",
-      "signalHash": "67c61156277382dd",
-      "endMs": 1793185200000,
-      "breakoutIndex": 384,
-      "breakoutPrice": 0.04854,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "BATUSDT",
-      "patternType": "double_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 60,
-      "detectedAt": "2026-10-29T09:43:53.241457+00:00",
-      "pushedAt": "2026-10-29T09:43:53.241457+00:00",
-      "cooldownUntil": "2026-10-29T10:13:53.241457+00:00",
-      "signalHash": "ddec386dd585dd3e",
-      "endMs": 1793126700000,
-      "breakoutIndex": 518,
-      "breakoutPrice": 0.14286,
-      "reconfirmAt": null
-    },
     {
       "symbol": "METAUSDT",
       "patternType": "descending_channel",
@@ -976,71 +931,54 @@
       "breakoutIndex": 298,
       "breakoutPrice": 3.91,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "CTUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 88,
+      "detectedAt": "2026-11-05T11:26:29.819674+00:00",
+      "pushedAt": "2026-11-05T11:26:29.819674+00:00",
+      "cooldownUntil": "2026-11-05T13:26:29.819674+00:00",
+      "signalHash": "776a4c96f1e45e21",
+      "endMs": 1793080800000,
+      "breakoutIndex": 226,
+      "breakoutPrice": 0.1426,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 811,
-    "failed_pairs": 5,
-    "candidates": 280,
-    "confirmed": 48,
+    "scanned_pairs": 799,
+    "failed_pairs": 3,
+    "candidates": 284,
+    "confirmed": 47,
     "after_scoring": 22,
     "after_dedup": 1,
     "pushed": 1,
-    "observed": 0,
-    "duration_seconds": 427.6,
+    "observed": 1,
+    "duration_seconds": 577.2,
     "source_stats": {
-      "okx": 811
+      "okx": 799
     },
     "health_stats": {
-      "healthy": 772,
-      "sensitive": 39
+      "healthy": 756,
+      "sensitive": 43
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
       "rr": 0,
       "volume": 0,
-      "geometry": 4,
-      "trend": 8,
+      "geometry": 3,
+      "trend": 7,
       "stale": 30,
       "demote_hs_top": 8,
       "demote_counter1h": 1,
-      "demote_counter1d": 5
+      "demote_counter1d": 6
     }
   },
   "observedSignals": [
-    {
-      "symbol": "POLUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 79,
-      "detectedAt": "2026-10-29T07:48:00.408861+00:00",
-      "pushedAt": "2026-10-29T07:48:00.408861+00:00",
-      "cooldownUntil": "2026-10-29T15:48:00.408861+00:00",
-      "signalHash": "553aae7f1f3818be",
-      "endMs": 1791187200000,
-      "breakoutIndex": 166,
-      "breakoutPrice": 0.10336,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
-    {
-      "symbol": "OPUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 77,
-      "detectedAt": "2026-10-29T07:48:04.299658+00:00",
-      "pushedAt": "2026-10-29T07:48:04.299658+00:00",
-      "cooldownUntil": "2026-10-29T09:48:04.299658+00:00",
-      "signalHash": "89e3430bd4e494b9",
-      "endMs": 1792022400000,
-      "breakoutIndex": 58,
-      "breakoutPrice": 0.13434,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "NIGHTUSDT",
       "patternType": "head_shoulders_top",
@@ -1424,6 +1362,22 @@
       "breakoutPrice": 696.76,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "MINIMAXUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 81,
+      "detectedAt": "2026-11-05T11:26:34.842683+00:00",
+      "pushedAt": "2026-11-05T11:26:34.842683+00:00",
+      "cooldownUntil": "2026-11-05T11:56:34.842683+00:00",
+      "signalHash": "0807cc0095124142",
+      "endMs": 1793761200000,
+      "breakoutIndex": 480,
+      "breakoutPrice": 20.77,
+      "reconfirmAt": null,
+      "gate": "demote_counter1d"
     }
   ]
 }
