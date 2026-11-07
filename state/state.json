@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-07T03:22:31.184392+00:00",
+  "lastScanAt": "2026-11-07T08:37:24.858078+00:00",
   "pushedSignals": [
-    {
-      "symbol": "CRVUSDT",
-      "patternType": "descending_channel",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 84,
-      "detectedAt": "2026-10-31T06:54:52.726117+00:00",
-      "pushedAt": "2026-10-31T06:54:52.726117+00:00",
-      "cooldownUntil": "2026-10-31T08:54:52.726117+00:00",
-      "signalHash": "ced4c047bec007f8",
-      "endMs": 1793289600000,
-      "breakoutIndex": 365,
-      "breakoutPrice": 0.3092,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "CBRSUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 72,
-      "detectedAt": "2026-10-31T06:54:56.977478+00:00",
-      "pushedAt": "2026-10-31T06:54:56.977478+00:00",
-      "cooldownUntil": "2026-10-31T14:54:56.977478+00:00",
-      "signalHash": "f1cbdc65812bc613",
-      "endMs": 1790683200000,
-      "breakoutIndex": 110,
-      "breakoutPrice": 195.38,
-      "reconfirmAt": null
-    },
     {
       "symbol": "CLUSDT",
       "patternType": "descending_channel",
@@ -874,20 +844,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 715,
+    "scanned_pairs": 675,
     "failed_pairs": 3,
-    "candidates": 274,
-    "confirmed": 47,
-    "after_scoring": 25,
-    "after_dedup": 1,
-    "pushed": 1,
+    "candidates": 253,
+    "confirmed": 43,
+    "after_scoring": 20,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 549.3,
+    "duration_seconds": 449.8,
     "source_stats": {
-      "okx": 715
+      "okx": 675
     },
     "health_stats": {
-      "healthy": 681,
+      "healthy": 641,
       "sensitive": 34
     },
     "kill_breakdown": {
@@ -895,31 +865,15 @@
       "strength": 0,
       "rr": 0,
       "volume": 0,
-      "geometry": 5,
+      "geometry": 6,
       "trend": 7,
-      "stale": 38,
+      "stale": 36,
       "demote_hs_top": 6,
-      "demote_counter1h": 0,
-      "demote_counter1d": 4
+      "demote_counter1h": 1,
+      "demote_counter1d": 3
     }
   },
   "observedSignals": [
-    {
-      "symbol": "AGLDUSDT",
-      "patternType": "descending_channel",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 76,
-      "detectedAt": "2026-10-31T06:55:01.069388+00:00",
-      "pushedAt": "2026-10-31T06:55:01.069388+00:00",
-      "cooldownUntil": "2026-10-31T14:55:01.069388+00:00",
-      "signalHash": "961790b7100da85f",
-      "endMs": 1793275200000,
-      "breakoutIndex": 298,
-      "breakoutPrice": 0.1916,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "CRCLUSDT",
       "patternType": "descending_channel",
