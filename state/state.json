@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-07T23:34:22.458577+00:00",
+  "lastScanAt": "2026-11-07T23:49:53.432175+00:00",
   "pushedSignals": [
     {
       "symbol": "KITEUSDT",
@@ -786,13 +786,13 @@
   "scanStats": {
     "scanned_pairs": 465,
     "failed_pairs": 3,
-    "candidates": 186,
-    "confirmed": 28,
-    "after_scoring": 10,
-    "after_dedup": 1,
-    "pushed": 1,
+    "candidates": 190,
+    "confirmed": 29,
+    "after_scoring": 11,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 253.4,
+    "duration_seconds": 228.7,
     "source_stats": {
       "okx": 465
     },
@@ -807,7 +807,7 @@
       "volume": 0,
       "geometry": 6,
       "trend": 7,
-      "stale": 23,
+      "stale": 24,
       "demote_hs_top": 4,
       "demote_counter1h": 0,
       "demote_counter1d": 1
