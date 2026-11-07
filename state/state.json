@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-07T01:51:58.824285+00:00",
+  "lastScanAt": "2026-11-07T02:14:32.191252+00:00",
   "pushedSignals": [
     {
       "symbol": "PUMPUSDT",
@@ -856,18 +856,33 @@
       "breakoutIndex": 249,
       "breakoutPrice": 22.73,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "MERLUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 66,
+      "detectedAt": "2026-11-07T02:14:32.190912+00:00",
+      "pushedAt": "2026-11-07T02:14:32.190912+00:00",
+      "cooldownUntil": "2026-11-07T04:14:32.190912+00:00",
+      "signalHash": "403042a919f45a9e",
+      "endMs": 1793890800000,
+      "breakoutIndex": 368,
+      "breakoutPrice": 0.03006,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
     "scanned_pairs": 734,
     "failed_pairs": 4,
-    "candidates": 282,
-    "confirmed": 51,
-    "after_scoring": 26,
-    "after_dedup": 2,
-    "pushed": 2,
+    "candidates": 285,
+    "confirmed": 50,
+    "after_scoring": 27,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 554.3,
+    "duration_seconds": 530.3,
     "source_stats": {
       "okx": 734
     },
@@ -881,10 +896,10 @@
       "rr": 0,
       "volume": 0,
       "geometry": 6,
-      "trend": 8,
-      "stale": 40,
+      "trend": 7,
+      "stale": 38,
       "demote_hs_top": 6,
-      "demote_counter1h": 1,
+      "demote_counter1h": 0,
       "demote_counter1d": 4
     }
   },
