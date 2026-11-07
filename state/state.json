@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-07T20:26:00.313618+00:00",
+  "lastScanAt": "2026-11-07T20:35:13.740122+00:00",
   "pushedSignals": [
     {
       "symbol": "IRYSUSDT",
@@ -799,20 +799,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 491,
+    "scanned_pairs": 489,
     "failed_pairs": 3,
-    "candidates": 189,
-    "confirmed": 30,
+    "candidates": 190,
+    "confirmed": 31,
     "after_scoring": 13,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 256.0,
+    "duration_seconds": 248.7,
     "source_stats": {
-      "okx": 491
+      "okx": 489
     },
     "health_stats": {
-      "healthy": 466,
+      "healthy": 464,
       "sensitive": 25
     },
     "kill_breakdown": {
@@ -820,9 +820,9 @@
       "strength": 0,
       "rr": 0,
       "volume": 0,
-      "geometry": 5,
+      "geometry": 6,
       "trend": 7,
-      "stale": 25,
+      "stale": 26,
       "demote_hs_top": 4,
       "demote_counter1h": 0,
       "demote_counter1d": 1
