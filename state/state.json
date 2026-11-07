@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-07T15:55:20.893160+00:00",
+  "lastScanAt": "2026-11-07T16:45:35.263668+00:00",
   "pushedSignals": [
     {
       "symbol": "BTCUSDT",
@@ -826,24 +826,54 @@
       "breakoutIndex": 549,
       "breakoutPrice": 1358.76,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "DOTUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 83,
+      "detectedAt": "2026-11-07T16:45:31.552862+00:00",
+      "pushedAt": "2026-11-07T16:45:31.552862+00:00",
+      "cooldownUntil": "2026-11-08T00:45:31.552862+00:00",
+      "signalHash": "d00de6d0feb15965",
+      "endMs": 1793102400000,
+      "breakoutIndex": 246,
+      "breakoutPrice": 0.9088,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "PENGUUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 76,
+      "detectedAt": "2026-11-07T16:45:35.263388+00:00",
+      "pushedAt": "2026-11-07T16:45:35.263388+00:00",
+      "cooldownUntil": "2026-11-08T00:45:35.263388+00:00",
+      "signalHash": "6ff0d154baa129aa",
+      "endMs": 1793289600000,
+      "breakoutIndex": 246,
+      "breakoutPrice": 0.007073,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 569,
+    "scanned_pairs": 559,
     "failed_pairs": 3,
-    "candidates": 226,
-    "confirmed": 35,
+    "candidates": 223,
+    "confirmed": 38,
     "after_scoring": 14,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 416.5,
+    "duration_seconds": 429.8,
     "source_stats": {
-      "okx": 569
+      "okx": 559
     },
     "health_stats": {
-      "healthy": 539,
-      "sensitive": 30
+      "healthy": 528,
+      "sensitive": 31
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -851,10 +881,10 @@
       "rr": 0,
       "volume": 0,
       "geometry": 5,
-      "trend": 6,
-      "stale": 28,
-      "demote_hs_top": 6,
-      "demote_counter1h": 1,
+      "trend": 7,
+      "stale": 31,
+      "demote_hs_top": 7,
+      "demote_counter1h": 2,
       "demote_counter1d": 3
     }
   },
