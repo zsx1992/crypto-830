@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-07T20:05:20.238414+00:00",
+  "lastScanAt": "2026-11-07T20:26:00.313618+00:00",
   "pushedSignals": [
     {
       "symbol": "IRYSUSDT",
@@ -799,20 +799,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 499,
+    "scanned_pairs": 491,
     "failed_pairs": 3,
-    "candidates": 192,
+    "candidates": 189,
     "confirmed": 30,
     "after_scoring": 13,
-    "after_dedup": 2,
-    "pushed": 2,
-    "observed": 2,
-    "duration_seconds": 372.7,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 256.0,
     "source_stats": {
-      "okx": 499
+      "okx": 491
     },
     "health_stats": {
-      "healthy": 474,
+      "healthy": 466,
       "sensitive": 25
     },
     "kill_breakdown": {
