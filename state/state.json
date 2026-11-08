@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-08T18:19:32.566525+00:00",
+  "lastScanAt": "2026-11-08T19:00:59.125410+00:00",
   "pushedSignals": [
     {
       "symbol": "DOGEUSDT",
@@ -754,31 +754,31 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 471,
+    "scanned_pairs": 483,
     "failed_pairs": 3,
-    "candidates": 184,
+    "candidates": 186,
     "confirmed": 28,
     "after_scoring": 16,
-    "after_dedup": 2,
-    "pushed": 2,
-    "observed": 1,
-    "duration_seconds": 247.4,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 335.4,
     "source_stats": {
-      "okx": 471
+      "okx": 483
     },
     "health_stats": {
-      "healthy": 443,
-      "sensitive": 28
+      "healthy": 456,
+      "sensitive": 27
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
       "rr": 0,
       "volume": 0,
-      "geometry": 6,
+      "geometry": 5,
       "trend": 4,
-      "stale": 23,
-      "demote_hs_top": 1,
+      "stale": 24,
+      "demote_hs_top": 2,
       "demote_counter1h": 0,
       "demote_counter1d": 1
     }
