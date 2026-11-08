@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-08T23:04:08.394553+00:00",
+  "lastScanAt": "2026-11-08T23:14:56.752577+00:00",
   "pushedSignals": [
     {
       "symbol": "SKHYNIXUSDT",
@@ -769,21 +769,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 587,
+    "scanned_pairs": 593,
     "failed_pairs": 3,
-    "candidates": 204,
-    "confirmed": 37,
-    "after_scoring": 17,
+    "candidates": 203,
+    "confirmed": 36,
+    "after_scoring": 16,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 317.1,
+    "duration_seconds": 290.8,
     "source_stats": {
-      "okx": 587
+      "okx": 593
     },
     "health_stats": {
-      "healthy": 546,
-      "sensitive": 41
+      "healthy": 550,
+      "sensitive": 43
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -792,7 +792,7 @@
       "volume": 0,
       "geometry": 7,
       "trend": 7,
-      "stale": 28,
+      "stale": 29,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 1
