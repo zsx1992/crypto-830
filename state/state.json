@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-09T21:35:16.234417+00:00",
+  "lastScanAt": "2026-11-09T22:44:34.979271+00:00",
   "pushedSignals": [
     {
       "symbol": "NBISUSDT",
@@ -796,24 +796,39 @@
       "breakoutIndex": 264,
       "breakoutPrice": 6.546,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "CBRSUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-11-09T22:44:34.979058+00:00",
+      "pushedAt": "2026-11-09T22:44:34.979058+00:00",
+      "cooldownUntil": "2026-11-10T06:44:34.979058+00:00",
+      "signalHash": "f1cbdc65812bc613",
+      "endMs": 1790683200000,
+      "breakoutIndex": 52,
+      "breakoutPrice": 195.38,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 827,
+    "scanned_pairs": 773,
     "failed_pairs": 3,
-    "candidates": 259,
-    "confirmed": 47,
-    "after_scoring": 24,
-    "after_dedup": 2,
-    "pushed": 2,
+    "candidates": 237,
+    "confirmed": 45,
+    "after_scoring": 23,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 687.3,
+    "duration_seconds": 565.9,
     "source_stats": {
-      "okx": 827
+      "okx": 773
     },
     "health_stats": {
-      "healthy": 778,
-      "sensitive": 49
+      "healthy": 730,
+      "sensitive": 43
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -821,8 +836,8 @@
       "rr": 0,
       "volume": 0,
       "geometry": 7,
-      "trend": 6,
-      "stale": 39,
+      "trend": 5,
+      "stale": 37,
       "demote_hs_top": 6,
       "demote_counter1h": 0,
       "demote_counter1d": 4
