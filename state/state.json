@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-09T12:01:02.429412+00:00",
+  "lastScanAt": "2026-11-09T12:18:18.143790+00:00",
   "pushedSignals": [
     {
       "symbol": "CBRSUSDT",
@@ -796,24 +796,39 @@
       "breakoutIndex": 240,
       "breakoutPrice": 140.97,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "MVLLUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 73,
+      "detectedAt": "2026-11-09T12:18:18.143490+00:00",
+      "pushedAt": "2026-11-09T12:18:18.143490+00:00",
+      "cooldownUntil": "2026-11-09T20:18:18.143490+00:00",
+      "signalHash": "745f6fd8d403fd40",
+      "endMs": 1793217600000,
+      "breakoutIndex": 234,
+      "breakoutPrice": 22.73,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 741,
+    "scanned_pairs": 749,
     "failed_pairs": 3,
-    "candidates": 238,
-    "confirmed": 45,
+    "candidates": 239,
+    "confirmed": 44,
     "after_scoring": 23,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 396.8,
+    "duration_seconds": 506.4,
     "source_stats": {
-      "okx": 741
+      "okx": 749
     },
     "health_stats": {
-      "healthy": 692,
-      "sensitive": 49
+      "healthy": 698,
+      "sensitive": 51
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -821,11 +836,11 @@
       "rr": 0,
       "volume": 0,
       "geometry": 6,
-      "trend": 5,
+      "trend": 6,
       "stale": 37,
-      "demote_hs_top": 7,
+      "demote_hs_top": 6,
       "demote_counter1h": 0,
-      "demote_counter1d": 4
+      "demote_counter1d": 3
     }
   },
   "observedSignals": [
