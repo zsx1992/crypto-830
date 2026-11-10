@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-10T20:26:34.121129+00:00",
+  "lastScanAt": "2026-11-10T20:46:08.352477+00:00",
   "pushedSignals": [
     {
       "symbol": "DNAUSDT",
@@ -916,24 +916,39 @@
       "breakoutIndex": 367,
       "breakoutPrice": 0.3668,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "HIMSUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-11-10T20:46:08.352141+00:00",
+      "pushedAt": "2026-11-10T20:46:08.352141+00:00",
+      "cooldownUntil": "2026-11-11T04:46:08.352141+00:00",
+      "signalHash": "cc7dba5871124969",
+      "endMs": 1793275200000,
+      "breakoutIndex": 250,
+      "breakoutPrice": 26.4,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 769,
+    "scanned_pairs": 763,
     "failed_pairs": 3,
-    "candidates": 259,
+    "candidates": 256,
     "confirmed": 52,
     "after_scoring": 26,
-    "after_dedup": 5,
-    "pushed": 5,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 401.0,
+    "duration_seconds": 536.2,
     "source_stats": {
-      "okx": 769
+      "okx": 763
     },
     "health_stats": {
-      "healthy": 723,
-      "sensitive": 46
+      "healthy": 718,
+      "sensitive": 45
     },
     "kill_breakdown": {
       "freshness": 0,
