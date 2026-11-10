@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-10T04:48:15.260969+00:00",
+  "lastScanAt": "2026-11-10T12:26:57.724232+00:00",
   "pushedSignals": [
-    {
-      "symbol": "OPNUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 70,
-      "detectedAt": "2026-11-03T07:49:07.938993+00:00",
-      "pushedAt": "2026-11-03T07:49:07.938993+00:00",
-      "cooldownUntil": "2026-11-03T15:49:07.938993+00:00",
-      "signalHash": "ed897c48b2c61a83",
-      "endMs": 1791878400000,
-      "breakoutIndex": 199,
-      "breakoutPrice": 0.05207,
-      "reconfirmAt": null
-    },
     {
       "symbol": "GOOGLUSDT",
       "patternType": "descending_channel",
@@ -841,55 +826,69 @@
       "breakoutIndex": 501,
       "breakoutPrice": 0.004732,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "TRUMPUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 74,
+      "detectedAt": "2026-11-10T12:26:46.915242+00:00",
+      "pushedAt": "2026-11-10T12:26:46.915242+00:00",
+      "cooldownUntil": "2026-11-10T20:26:46.915242+00:00",
+      "signalHash": "f4837183797a2887",
+      "endMs": 1793318400000,
+      "breakoutIndex": 264,
+      "breakoutPrice": 1.298,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "AKEUSDT",
+      "patternType": "double_top",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 73,
+      "detectedAt": "2026-11-10T12:26:52.802324+00:00",
+      "pushedAt": "2026-11-10T12:26:52.802324+00:00",
+      "cooldownUntil": "2026-11-10T12:56:52.802324+00:00",
+      "signalHash": "31fa4474e8a836c3",
+      "endMs": 1794127500000,
+      "breakoutIndex": 469,
+      "breakoutPrice": 0.004732,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 751,
+    "scanned_pairs": 729,
     "failed_pairs": 3,
-    "candidates": 239,
-    "confirmed": 44,
-    "after_scoring": 22,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 378.5,
+    "candidates": 234,
+    "confirmed": 43,
+    "after_scoring": 21,
+    "after_dedup": 2,
+    "pushed": 2,
+    "observed": 1,
+    "duration_seconds": 518.4,
     "source_stats": {
-      "okx": 751
+      "okx": 729
     },
     "health_stats": {
-      "healthy": 713,
-      "sensitive": 38
+      "healthy": 690,
+      "sensitive": 39
     },
     "kill_breakdown": {
       "freshness": 0,
-      "strength": 0,
+      "strength": 1,
       "rr": 0,
       "volume": 0,
       "geometry": 6,
-      "trend": 7,
-      "stale": 36,
-      "demote_hs_top": 6,
+      "trend": 9,
+      "stale": 34,
+      "demote_hs_top": 5,
       "demote_counter1h": 0,
-      "demote_counter1d": 3
+      "demote_counter1d": 1
     }
   },
   "observedSignals": [
-    {
-      "symbol": "CRCLUSDT",
-      "patternType": "head_shoulders_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 79,
-      "detectedAt": "2026-11-03T07:49:12.432338+00:00",
-      "pushedAt": "2026-11-03T07:49:12.432338+00:00",
-      "cooldownUntil": "2026-11-03T09:49:12.432338+00:00",
-      "signalHash": "43e1e8143bec05ad",
-      "endMs": 1792764000000,
-      "breakoutIndex": 213,
-      "breakoutPrice": 79.99,
-      "reconfirmAt": null,
-      "gate": "demote_hs_top"
-    },
     {
       "symbol": "KATUSDT",
       "patternType": "head_shoulders_bottom",
@@ -1401,6 +1400,22 @@
       "breakoutPrice": 258.96,
       "reconfirmAt": null,
       "gate": "demote_counter1d"
+    },
+    {
+      "symbol": "METAUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 74,
+      "detectedAt": "2026-11-10T12:26:57.723988+00:00",
+      "pushedAt": "2026-11-10T12:26:57.723988+00:00",
+      "cooldownUntil": "2026-11-10T20:26:57.723988+00:00",
+      "signalHash": "915dcf17d85e57a7",
+      "endMs": 1792612800000,
+      "breakoutIndex": 184,
+      "breakoutPrice": 682.85,
+      "reconfirmAt": null,
+      "gate": "trend"
     }
   ]
 }
