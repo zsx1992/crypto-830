@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-11T08:02:15.531069+00:00",
+  "lastScanAt": "2026-11-11T08:30:43.671002+00:00",
   "pushedSignals": [
     {
       "symbol": "UNIUSDT",
@@ -934,21 +934,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 759,
+    "scanned_pairs": 757,
     "failed_pairs": 3,
-    "candidates": 253,
+    "candidates": 251,
     "confirmed": 46,
     "after_scoring": 20,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 381.2,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 374.8,
     "source_stats": {
-      "okx": 759
+      "okx": 757
     },
     "health_stats": {
-      "healthy": 711,
-      "sensitive": 48
+      "healthy": 710,
+      "sensitive": 47
     },
     "kill_breakdown": {
       "freshness": 0,
