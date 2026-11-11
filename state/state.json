@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-11T16:33:14.859386+00:00",
+  "lastScanAt": "2026-11-11T16:43:42.391390+00:00",
   "pushedSignals": [
     {
       "symbol": "AMZNUSDT",
@@ -889,21 +889,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 713,
+    "scanned_pairs": 715,
     "failed_pairs": 3,
-    "candidates": 231,
+    "candidates": 230,
     "confirmed": 45,
     "after_scoring": 18,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 2,
-    "duration_seconds": 493.0,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 357.6,
     "source_stats": {
-      "okx": 713
+      "okx": 715
     },
     "health_stats": {
-      "healthy": 670,
-      "sensitive": 43
+      "healthy": 673,
+      "sensitive": 42
     },
     "kill_breakdown": {
       "freshness": 0,
