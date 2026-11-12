@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-12T06:28:57.120734+00:00",
+  "lastScanAt": "2026-11-12T13:09:22.596201+00:00",
   "pushedSignals": [
-    {
-      "symbol": "XIAOMIUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "4h",
-      "direction": "LONG",
-      "strength": 80,
-      "detectedAt": "2026-11-05T07:33:28.174446+00:00",
-      "pushedAt": "2026-11-05T07:33:28.174446+00:00",
-      "cooldownUntil": "2026-11-05T15:33:28.174446+00:00",
-      "signalHash": "40f4a1e1001b4544",
-      "endMs": 1792353600000,
-      "breakoutIndex": 298,
-      "breakoutPrice": 3.91,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "CTUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 88,
-      "detectedAt": "2026-11-05T11:26:29.819674+00:00",
-      "pushedAt": "2026-11-05T11:26:29.819674+00:00",
-      "cooldownUntil": "2026-11-05T13:26:29.819674+00:00",
-      "signalHash": "776a4c96f1e45e21",
-      "endMs": 1793080800000,
-      "breakoutIndex": 226,
-      "breakoutPrice": 0.1426,
-      "reconfirmAt": null
-    },
     {
       "symbol": "CRCLUSDT",
       "patternType": "double_top",
@@ -901,24 +871,39 @@
       "breakoutIndex": 393,
       "breakoutPrice": 0.010361,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "CBRSUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 89,
+      "detectedAt": "2026-11-12T13:09:18.049082+00:00",
+      "pushedAt": "2026-11-12T13:09:18.049082+00:00",
+      "cooldownUntil": "2026-11-12T15:09:18.049082+00:00",
+      "signalHash": "11905a40f0b9ccdf",
+      "endMs": 1793289600000,
+      "breakoutIndex": 160,
+      "breakoutPrice": 99.28,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 732,
-    "failed_pairs": 4,
-    "candidates": 226,
-    "confirmed": 43,
-    "after_scoring": 19,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 359.5,
+    "scanned_pairs": 731,
+    "failed_pairs": 3,
+    "candidates": 241,
+    "confirmed": 45,
+    "after_scoring": 21,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 1,
+    "duration_seconds": 520.8,
     "source_stats": {
-      "okx": 732
+      "okx": 731
     },
     "health_stats": {
-      "healthy": 689,
-      "sensitive": 43
+      "healthy": 691,
+      "sensitive": 40
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -926,30 +911,14 @@
       "rr": 0,
       "volume": 0,
       "geometry": 9,
-      "trend": 11,
+      "trend": 7,
       "stale": 34,
-      "demote_hs_top": 4,
-      "demote_counter1h": 0,
+      "demote_hs_top": 7,
+      "demote_counter1h": 1,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "MINIMAXUSDT",
-      "patternType": "descending_channel",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 81,
-      "detectedAt": "2026-11-05T11:26:34.842683+00:00",
-      "pushedAt": "2026-11-05T11:26:34.842683+00:00",
-      "cooldownUntil": "2026-11-05T11:56:34.842683+00:00",
-      "signalHash": "0807cc0095124142",
-      "endMs": 1793761200000,
-      "breakoutIndex": 480,
-      "breakoutPrice": 20.77,
-      "reconfirmAt": null,
-      "gate": "demote_counter1d"
-    },
     {
       "symbol": "BNBUSDT",
       "patternType": "ascending_channel",
@@ -1395,6 +1364,22 @@
       "endMs": 1793289600000,
       "breakoutIndex": 169,
       "breakoutPrice": 99.28,
+      "reconfirmAt": null,
+      "gate": "trend"
+    },
+    {
+      "symbol": "CAPUSDT",
+      "patternType": "double_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 71,
+      "detectedAt": "2026-11-12T13:09:22.595978+00:00",
+      "pushedAt": "2026-11-12T13:09:22.595978+00:00",
+      "cooldownUntil": "2026-11-12T15:09:22.595978+00:00",
+      "signalHash": "62a8a3d29e3d622d",
+      "endMs": 1793545200000,
+      "breakoutIndex": 207,
+      "breakoutPrice": 0.0918,
       "reconfirmAt": null,
       "gate": "trend"
     }
