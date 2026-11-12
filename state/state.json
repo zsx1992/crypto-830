@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-12T04:26:57.263334+00:00",
+  "lastScanAt": "2026-11-12T06:28:57.120734+00:00",
   "pushedSignals": [
     {
       "symbol": "XIAOMIUSDT",
@@ -904,21 +904,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 734,
+    "scanned_pairs": 732,
     "failed_pairs": 4,
-    "candidates": 222,
-    "confirmed": 41,
-    "after_scoring": 18,
+    "candidates": 226,
+    "confirmed": 43,
+    "after_scoring": 19,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 513.9,
+    "duration_seconds": 359.5,
     "source_stats": {
-      "okx": 734
+      "okx": 732
     },
     "health_stats": {
-      "healthy": 690,
-      "sensitive": 44
+      "healthy": 689,
+      "sensitive": 43
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -927,8 +927,8 @@
       "volume": 0,
       "geometry": 9,
       "trend": 11,
-      "stale": 33,
-      "demote_hs_top": 3,
+      "stale": 34,
+      "demote_hs_top": 4,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
