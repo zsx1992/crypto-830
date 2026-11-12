@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-12T13:27:30.382641+00:00",
+  "lastScanAt": "2026-11-12T16:00:58.185308+00:00",
   "pushedSignals": [
-    {
-      "symbol": "CRCLUSDT",
-      "patternType": "double_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 81,
-      "detectedAt": "2026-11-05T16:00:19.223187+00:00",
-      "pushedAt": "2026-11-05T16:00:19.223187+00:00",
-      "cooldownUntil": "2026-11-05T16:30:19.223187+00:00",
-      "signalHash": "fb1159dea490e782",
-      "endMs": 1793791800000,
-      "breakoutIndex": 594,
-      "breakoutPrice": 70.67,
-      "reconfirmAt": null
-    },
     {
       "symbol": "AIUSDT",
       "patternType": "ascending_channel",
@@ -886,55 +871,54 @@
       "breakoutIndex": 160,
       "breakoutPrice": 99.28,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ONDSUSDT",
+      "patternType": "descending_triangle",
+      "interval": "1d",
+      "direction": "SHORT",
+      "strength": 85,
+      "detectedAt": "2026-11-12T16:00:58.185026+00:00",
+      "pushedAt": "2026-11-12T16:00:58.185026+00:00",
+      "cooldownUntil": "2026-11-13T16:00:58.185026+00:00",
+      "signalHash": "2eab9a54450ed8e6",
+      "endMs": 1793203200000,
+      "breakoutIndex": 136,
+      "breakoutPrice": 6.454,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 747,
-    "failed_pairs": 3,
-    "candidates": 241,
-    "confirmed": 46,
-    "after_scoring": 22,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 1,
-    "duration_seconds": 581.2,
+    "scanned_pairs": 760,
+    "failed_pairs": 4,
+    "candidates": 233,
+    "confirmed": 45,
+    "after_scoring": 21,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 0,
+    "duration_seconds": 585.9,
     "source_stats": {
-      "okx": 747
+      "okx": 760
     },
     "health_stats": {
-      "healthy": 705,
-      "sensitive": 42
+      "healthy": 715,
+      "sensitive": 45
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
       "rr": 0,
       "volume": 0,
-      "geometry": 9,
+      "geometry": 10,
       "trend": 9,
-      "stale": 36,
-      "demote_hs_top": 6,
+      "stale": 37,
+      "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "BNBUSDT",
-      "patternType": "ascending_channel",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 94,
-      "detectedAt": "2026-11-05T16:00:24.650981+00:00",
-      "pushedAt": "2026-11-05T16:00:24.650981+00:00",
-      "cooldownUntil": "2026-11-05T18:00:24.650981+00:00",
-      "signalHash": "265d6bd41d5c670e",
-      "endMs": 1793185200000,
-      "breakoutIndex": 236,
-      "breakoutPrice": 696.76,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "ETCUSDT",
       "patternType": "descending_channel",
