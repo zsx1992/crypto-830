@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-13T09:57:50.268979+00:00",
+  "lastScanAt": "2026-11-13T10:11:44.549804+00:00",
   "pushedSignals": [
     {
       "symbol": "INTWUSDT",
@@ -856,24 +856,39 @@
       "breakoutIndex": 189,
       "breakoutPrice": 143.45,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "RKLBUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 66,
+      "detectedAt": "2026-11-13T10:11:40.144044+00:00",
+      "pushedAt": "2026-11-13T10:11:40.144044+00:00",
+      "cooldownUntil": "2026-11-13T12:11:40.144044+00:00",
+      "signalHash": "60d6dac120c3901f",
+      "endMs": 1794207600000,
+      "breakoutIndex": 302,
+      "breakoutPrice": 52.84,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 797,
+    "scanned_pairs": 801,
     "failed_pairs": 5,
-    "candidates": 258,
-    "confirmed": 48,
+    "candidates": 263,
+    "confirmed": 49,
     "after_scoring": 23,
-    "after_dedup": 2,
-    "pushed": 2,
-    "observed": 2,
-    "duration_seconds": 585.2,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 1,
+    "duration_seconds": 625.6,
     "source_stats": {
-      "okx": 797
+      "okx": 801
     },
     "health_stats": {
-      "healthy": 746,
-      "sensitive": 51
+      "healthy": 749,
+      "sensitive": 52
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -881,7 +896,7 @@
       "rr": 0,
       "volume": 0,
       "geometry": 11,
-      "trend": 10,
+      "trend": 11,
       "stale": 36,
       "demote_hs_top": 4,
       "demote_counter1h": 0,
@@ -1368,6 +1383,22 @@
       "breakoutPrice": 57.72,
       "reconfirmAt": null,
       "gate": "geometry"
+    },
+    {
+      "symbol": "HUMAUSDT",
+      "patternType": "descending_channel",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 83,
+      "detectedAt": "2026-11-13T10:11:44.549637+00:00",
+      "pushedAt": "2026-11-13T10:11:44.549637+00:00",
+      "cooldownUntil": "2026-11-13T12:11:44.549637+00:00",
+      "signalHash": "d3754eca84c07bcb",
+      "endMs": 1794502800000,
+      "breakoutIndex": 394,
+      "breakoutPrice": 0.00849,
+      "reconfirmAt": null,
+      "gate": "trend"
     }
   ]
 }
