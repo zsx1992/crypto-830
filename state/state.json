@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-13T02:06:11.298847+00:00",
+  "lastScanAt": "2026-11-13T02:16:07.680477+00:00",
   "pushedSignals": [
     {
       "symbol": "QCOMUSDT",
@@ -889,20 +889,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 748,
+    "scanned_pairs": 746,
     "failed_pairs": 4,
-    "candidates": 255,
-    "confirmed": 47,
+    "candidates": 253,
+    "confirmed": 46,
     "after_scoring": 19,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 397.8,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 410.3,
     "source_stats": {
-      "okx": 748
+      "okx": 746
     },
     "health_stats": {
-      "healthy": 701,
+      "healthy": 699,
       "sensitive": 47
     },
     "kill_breakdown": {
@@ -910,9 +910,9 @@
       "strength": 0,
       "rr": 0,
       "volume": 0,
-      "geometry": 11,
+      "geometry": 10,
       "trend": 10,
-      "stale": 38,
+      "stale": 37,
       "demote_hs_top": 4,
       "demote_counter1h": 2,
       "demote_counter1d": 1
