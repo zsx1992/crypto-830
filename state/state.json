@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-13T18:05:43.339960+00:00",
+  "lastScanAt": "2026-11-13T19:32:14.396483+00:00",
   "pushedSignals": [
     {
       "symbol": "HOODUSDT",
@@ -886,24 +886,69 @@
       "breakoutIndex": 170,
       "breakoutPrice": 97.0,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "RAYUSDT",
+      "patternType": "double_bottom",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 75,
+      "detectedAt": "2026-11-13T18:16:03.349574+00:00",
+      "pushedAt": "2026-11-13T18:16:03.349574+00:00",
+      "cooldownUntil": "2026-11-14T18:16:03.349574+00:00",
+      "signalHash": "90e3f33d1ec5663a",
+      "endMs": 1780675200000,
+      "breakoutIndex": 170,
+      "breakoutPrice": 1.3258,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "COINUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 68,
+      "detectedAt": "2026-11-13T18:16:07.692075+00:00",
+      "pushedAt": "2026-11-13T18:16:07.692075+00:00",
+      "cooldownUntil": "2026-11-14T02:16:07.692075+00:00",
+      "signalHash": "fa28f0cee4745efd",
+      "endMs": 1793275200000,
+      "breakoutIndex": 210,
+      "breakoutPrice": 153.27,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "ETHFIUSDT",
+      "patternType": "ascending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 73,
+      "detectedAt": "2026-11-13T19:32:14.396183+00:00",
+      "pushedAt": "2026-11-13T19:32:14.396183+00:00",
+      "cooldownUntil": "2026-11-13T20:02:14.396183+00:00",
+      "signalHash": "28ad52e382205351",
+      "endMs": 1794427200000,
+      "breakoutIndex": 437,
+      "breakoutPrice": 0.615,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 763,
+    "scanned_pairs": 753,
     "failed_pairs": 3,
-    "candidates": 237,
+    "candidates": 239,
     "confirmed": 43,
     "after_scoring": 20,
-    "after_dedup": 4,
-    "pushed": 4,
-    "observed": 1,
-    "duration_seconds": 559.7,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 0,
+    "duration_seconds": 589.8,
     "source_stats": {
-      "okx": 763
+      "okx": 753
     },
     "health_stats": {
-      "healthy": 715,
-      "sensitive": 48
+      "healthy": 702,
+      "sensitive": 51
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -911,11 +956,11 @@
       "rr": 0,
       "volume": 0,
       "geometry": 9,
-      "trend": 10,
-      "stale": 29,
+      "trend": 9,
+      "stale": 30,
       "demote_hs_top": 4,
       "demote_counter1h": 0,
-      "demote_counter1d": 0
+      "demote_counter1d": 1
     }
   },
   "observedSignals": [
