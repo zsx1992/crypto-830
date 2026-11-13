@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-13T10:11:44.549804+00:00",
+  "lastScanAt": "2026-11-13T12:07:33.018820+00:00",
   "pushedSignals": [
-    {
-      "symbol": "INTWUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 77,
-      "detectedAt": "2026-11-06T11:42:17.374699+00:00",
-      "pushedAt": "2026-11-06T11:42:17.374699+00:00",
-      "cooldownUntil": "2026-11-06T19:42:17.374699+00:00",
-      "signalHash": "52843db9166a449a",
-      "endMs": 1793217600000,
-      "breakoutIndex": 254,
-      "breakoutPrice": 9.65,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "ZENUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 73,
-      "detectedAt": "2026-11-06T11:42:21.195783+00:00",
-      "pushedAt": "2026-11-06T11:42:21.195783+00:00",
-      "cooldownUntil": "2026-11-06T19:42:21.195783+00:00",
-      "signalHash": "a6c783f2d67b643e",
-      "endMs": 1792598400000,
-      "breakoutIndex": 254,
-      "breakoutPrice": 5.338,
-      "reconfirmAt": null
-    },
     {
       "symbol": "ZECUSDT",
       "patternType": "double_bottom",
@@ -871,24 +841,54 @@
       "breakoutIndex": 302,
       "breakoutPrice": 52.84,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "INTWUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 79,
+      "detectedAt": "2026-11-13T12:07:29.008776+00:00",
+      "pushedAt": "2026-11-13T12:07:29.008776+00:00",
+      "cooldownUntil": "2026-11-13T20:07:29.008776+00:00",
+      "signalHash": "52843db9166a449a",
+      "endMs": 1793217600000,
+      "breakoutIndex": 211,
+      "breakoutPrice": 9.65,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "ZENUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 76,
+      "detectedAt": "2026-11-13T12:07:33.018640+00:00",
+      "pushedAt": "2026-11-13T12:07:33.018640+00:00",
+      "cooldownUntil": "2026-11-13T20:07:33.018640+00:00",
+      "signalHash": "a6c783f2d67b643e",
+      "endMs": 1792598400000,
+      "breakoutIndex": 211,
+      "breakoutPrice": 5.338,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 801,
+    "scanned_pairs": 791,
     "failed_pairs": 5,
-    "candidates": 263,
-    "confirmed": 49,
-    "after_scoring": 23,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 625.6,
+    "candidates": 259,
+    "confirmed": 45,
+    "after_scoring": 21,
+    "after_dedup": 2,
+    "pushed": 2,
+    "observed": 0,
+    "duration_seconds": 595.4,
     "source_stats": {
-      "okx": 801
+      "okx": 791
     },
     "health_stats": {
-      "healthy": 749,
-      "sensitive": 52
+      "healthy": 740,
+      "sensitive": 51
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -896,46 +896,14 @@
       "rr": 0,
       "volume": 0,
       "geometry": 11,
-      "trend": 11,
-      "stale": 36,
+      "trend": 9,
+      "stale": 35,
       "demote_hs_top": 4,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "DELLUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "15m",
-      "direction": "LONG",
-      "strength": 85,
-      "detectedAt": "2026-11-06T11:42:25.899596+00:00",
-      "pushedAt": "2026-11-06T11:42:25.899596+00:00",
-      "cooldownUntil": "2026-11-06T12:12:25.899596+00:00",
-      "signalHash": "70595283e655d1ee",
-      "endMs": 1793950200000,
-      "breakoutIndex": 589,
-      "breakoutPrice": 342.73,
-      "reconfirmAt": null,
-      "gate": "demote_counter1d"
-    },
-    {
-      "symbol": "CRCLUSDT",
-      "patternType": "double_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 81,
-      "detectedAt": "2026-11-06T11:42:30.508646+00:00",
-      "pushedAt": "2026-11-06T11:42:30.508646+00:00",
-      "cooldownUntil": "2026-11-06T12:12:30.508646+00:00",
-      "signalHash": "fb1159dea490e782",
-      "endMs": 1793791800000,
-      "breakoutIndex": 515,
-      "breakoutPrice": 70.67,
-      "reconfirmAt": null,
-      "gate": "demote_counter1h"
-    },
     {
       "symbol": "POLUSDT",
       "patternType": "head_shoulders_top",
