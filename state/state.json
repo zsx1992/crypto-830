@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-14T07:35:59.815933+00:00",
+  "lastScanAt": "2026-11-14T14:28:33.660717+00:00",
   "pushedSignals": [
     {
       "symbol": "DOTUSDT",
@@ -946,36 +946,66 @@
       "breakoutIndex": 211,
       "breakoutPrice": 1177.9,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SKHYUSDT",
+      "patternType": "ascending_channel",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 83,
+      "detectedAt": "2026-11-14T14:28:25.569791+00:00",
+      "pushedAt": "2026-11-14T14:28:25.569791+00:00",
+      "cooldownUntil": "2026-11-14T16:28:25.569791+00:00",
+      "signalHash": "86635c2c1bf6121a",
+      "endMs": 1794546000000,
+      "breakoutIndex": 375,
+      "breakoutPrice": 132.51,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "TAOUSDT",
+      "patternType": "descending_channel",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 73,
+      "detectedAt": "2026-11-14T14:28:29.861322+00:00",
+      "pushedAt": "2026-11-14T14:28:29.861322+00:00",
+      "cooldownUntil": "2026-11-14T16:28:29.861322+00:00",
+      "signalHash": "ca09c8c9a8f25e3f",
+      "endMs": 1794409200000,
+      "breakoutIndex": 350,
+      "breakoutPrice": 206.63,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 712,
+    "scanned_pairs": 676,
     "failed_pairs": 2,
-    "candidates": 232,
-    "confirmed": 42,
-    "after_scoring": 26,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 0,
-    "duration_seconds": 517.5,
+    "candidates": 217,
+    "confirmed": 38,
+    "after_scoring": 25,
+    "after_dedup": 2,
+    "pushed": 2,
+    "observed": 1,
+    "duration_seconds": 376.9,
     "source_stats": {
-      "okx": 712
+      "okx": 676
     },
     "health_stats": {
-      "healthy": 668,
-      "sensitive": 44
+      "healthy": 634,
+      "sensitive": 42
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
-      "rr": 0,
+      "rr": 1,
       "volume": 0,
-      "geometry": 8,
-      "trend": 4,
-      "stale": 29,
+      "geometry": 6,
+      "trend": 3,
+      "stale": 25,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
-      "demote_counter1d": 1
+      "demote_counter1d": 0
     }
   },
   "observedSignals": [
@@ -1392,6 +1422,22 @@
       "endMs": 1794531600000,
       "breakoutIndex": 396,
       "breakoutPrice": 156.17,
+      "reconfirmAt": null,
+      "gate": "trend"
+    },
+    {
+      "symbol": "AXTIUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 70,
+      "detectedAt": "2026-11-14T14:28:33.660557+00:00",
+      "pushedAt": "2026-11-14T14:28:33.660557+00:00",
+      "cooldownUntil": "2026-11-14T22:28:33.660557+00:00",
+      "signalHash": "2aa91b10ce592160",
+      "endMs": 1793592000000,
+      "breakoutIndex": 228,
+      "breakoutPrice": 48.57,
       "reconfirmAt": null,
       "gate": "trend"
     }
