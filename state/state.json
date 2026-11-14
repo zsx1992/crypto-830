@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-14T06:58:41.726200+00:00",
+  "lastScanAt": "2026-11-14T07:09:26.975911+00:00",
   "pushedSignals": [
     {
       "symbol": "DOTUSDT",
@@ -901,24 +901,54 @@
       "breakoutIndex": 383,
       "breakoutPrice": 594.15,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "LITEUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 90,
+      "detectedAt": "2026-11-14T07:09:22.289543+00:00",
+      "pushedAt": "2026-11-14T07:09:22.289543+00:00",
+      "cooldownUntil": "2026-11-14T07:39:22.289543+00:00",
+      "signalHash": "19cc35999a360b64",
+      "endMs": 1794576600000,
+      "breakoutIndex": 533,
+      "breakoutPrice": 597.2,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "TQQQUSDT",
+      "patternType": "ascending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 90,
+      "detectedAt": "2026-11-14T07:09:26.975685+00:00",
+      "pushedAt": "2026-11-14T07:09:26.975685+00:00",
+      "cooldownUntil": "2026-11-14T07:39:26.975685+00:00",
+      "signalHash": "b03169c0a316b277",
+      "endMs": 1794576600000,
+      "breakoutIndex": 533,
+      "breakoutPrice": 58.79,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
     "scanned_pairs": 722,
     "failed_pairs": 2,
-    "candidates": 240,
+    "candidates": 244,
     "confirmed": 43,
     "after_scoring": 25,
     "after_dedup": 2,
     "pushed": 2,
     "observed": 0,
-    "duration_seconds": 555.9,
+    "duration_seconds": 358.5,
     "source_stats": {
       "okx": 722
     },
     "health_stats": {
-      "healthy": 674,
-      "sensitive": 48
+      "healthy": 675,
+      "sensitive": 47
     },
     "kill_breakdown": {
       "freshness": 0,
