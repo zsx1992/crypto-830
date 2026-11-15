@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-15T03:16:19.133000+00:00",
+  "lastScanAt": "2026-11-15T05:39:56.320159+00:00",
   "pushedSignals": [
-    {
-      "symbol": "BCHUSDT",
-      "patternType": "ascending_channel",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 66,
-      "detectedAt": "2026-11-08T05:12:22.467926+00:00",
-      "pushedAt": "2026-11-08T05:12:22.467926+00:00",
-      "cooldownUntil": "2026-11-08T07:12:22.467926+00:00",
-      "signalHash": "796b92ffafff77dd",
-      "endMs": 1793563200000,
-      "breakoutIndex": 257,
-      "breakoutPrice": 278.6,
-      "reconfirmAt": null
-    },
     {
       "symbol": "EIGENUSDT",
       "patternType": "double_top",
@@ -1021,23 +1006,53 @@
       "breakoutIndex": 129,
       "breakoutPrice": 0.05207,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "CRCLUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 88,
+      "detectedAt": "2026-11-15T05:39:51.908126+00:00",
+      "pushedAt": "2026-11-15T05:39:51.908126+00:00",
+      "cooldownUntil": "2026-11-15T13:39:51.908126+00:00",
+      "signalHash": "3b51769f06d4898c",
+      "endMs": 1793102400000,
+      "breakoutIndex": 201,
+      "breakoutPrice": 75.74,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "INTCUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 81,
+      "detectedAt": "2026-11-15T05:39:56.319912+00:00",
+      "pushedAt": "2026-11-15T05:39:56.319912+00:00",
+      "cooldownUntil": "2026-11-15T13:39:56.319912+00:00",
+      "signalHash": "0a02c067b9fa1ebb",
+      "endMs": 1793217600000,
+      "breakoutIndex": 201,
+      "breakoutPrice": 71.21,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 742,
+    "scanned_pairs": 730,
     "failed_pairs": 2,
-    "candidates": 221,
-    "confirmed": 40,
-    "after_scoring": 24,
-    "after_dedup": 0,
-    "pushed": 0,
+    "candidates": 229,
+    "confirmed": 42,
+    "after_scoring": 25,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 549.4,
+    "duration_seconds": 561.9,
     "source_stats": {
-      "okx": 742
+      "okx": 730
     },
     "health_stats": {
-      "healthy": 706,
+      "healthy": 694,
       "sensitive": 36
     },
     "kill_breakdown": {
@@ -1047,61 +1062,13 @@
       "volume": 0,
       "geometry": 7,
       "trend": 5,
-      "stale": 26,
-      "demote_hs_top": 3,
+      "stale": 28,
+      "demote_hs_top": 4,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "FARTCOINUSDT",
-      "patternType": "double_top",
-      "interval": "1d",
-      "direction": "SHORT",
-      "strength": 68,
-      "detectedAt": "2026-11-08T05:12:26.273866+00:00",
-      "pushedAt": "2026-11-08T05:12:26.273866+00:00",
-      "cooldownUntil": "2026-11-09T05:12:26.273866+00:00",
-      "signalHash": "12ab8955084af96a",
-      "endMs": 1790092800000,
-      "breakoutIndex": 224,
-      "breakoutPrice": 0.122,
-      "reconfirmAt": null,
-      "gate": "geometry"
-    },
-    {
-      "symbol": "SNXXUSDT",
-      "patternType": "double_top",
-      "interval": "1d",
-      "direction": "SHORT",
-      "strength": 66,
-      "detectedAt": "2026-11-08T05:12:29.723967+00:00",
-      "pushedAt": "2026-11-08T05:12:29.723967+00:00",
-      "cooldownUntil": "2026-11-09T05:12:29.723967+00:00",
-      "signalHash": "21009e3a228a91e4",
-      "endMs": 1790006400000,
-      "breakoutIndex": 90,
-      "breakoutPrice": 12.17,
-      "reconfirmAt": null,
-      "gate": "geometry"
-    },
-    {
-      "symbol": "AAVEUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "1d",
-      "direction": "LONG",
-      "strength": 65,
-      "detectedAt": "2026-11-08T05:12:33.406107+00:00",
-      "pushedAt": "2026-11-08T05:12:33.406107+00:00",
-      "cooldownUntil": "2026-11-09T05:12:33.406107+00:00",
-      "signalHash": "91dc695f23dbc78e",
-      "endMs": 1784304000000,
-      "breakoutIndex": 160,
-      "breakoutPrice": 110.47,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "GALAUSDT",
       "patternType": "head_shoulders_top",
