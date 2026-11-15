@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-15T11:27:16.568618+00:00",
+  "lastScanAt": "2026-11-15T11:40:47.987308+00:00",
   "pushedSignals": [
     {
       "symbol": "EIGENUSDT",
@@ -1054,21 +1054,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 738,
+    "scanned_pairs": 734,
     "failed_pairs": 2,
-    "candidates": 246,
+    "candidates": 241,
     "confirmed": 44,
     "after_scoring": 27,
-    "after_dedup": 1,
-    "pushed": 1,
+    "after_dedup": 0,
+    "pushed": 0,
     "observed": 0,
-    "duration_seconds": 507.5,
+    "duration_seconds": 557.2,
     "source_stats": {
-      "okx": 738
+      "okx": 734
     },
     "health_stats": {
-      "healthy": 697,
-      "sensitive": 41
+      "healthy": 694,
+      "sensitive": 40
     },
     "kill_breakdown": {
       "freshness": 0,
