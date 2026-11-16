@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-16T22:31:00.758997+00:00",
+  "lastScanAt": "2026-11-16T22:40:40.347124+00:00",
   "pushedSignals": [
     {
       "symbol": "CBRSUSDT",
@@ -1134,10 +1134,10 @@
     "candidates": 229,
     "confirmed": 41,
     "after_scoring": 24,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 432.6,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 523.7,
     "source_stats": {
       "okx": 707
     },
