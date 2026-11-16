@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-16T15:19:58.774471+00:00",
+  "lastScanAt": "2026-11-16T22:31:00.758997+00:00",
   "pushedSignals": [
-    {
-      "symbol": "XIAOMIUSDT",
-      "patternType": "head_shoulders_bottom",
-      "interval": "1d",
-      "direction": "LONG",
-      "strength": 68,
-      "detectedAt": "2026-11-09T21:35:11.092992+00:00",
-      "pushedAt": "2026-11-09T21:35:11.092992+00:00",
-      "cooldownUntil": "2026-11-10T21:35:11.092992+00:00",
-      "signalHash": "cdf9ae86d511921b",
-      "endMs": 1793289600000,
-      "breakoutIndex": 82,
-      "breakoutPrice": 3.585,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "CXMTUSDT",
-      "patternType": "descending_channel",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 83,
-      "detectedAt": "2026-11-09T21:35:16.234114+00:00",
-      "pushedAt": "2026-11-09T21:35:16.234114+00:00",
-      "cooldownUntil": "2026-11-09T23:35:16.234114+00:00",
-      "signalHash": "a6ff7d10a4ac43e4",
-      "endMs": 1793689200000,
-      "breakoutIndex": 264,
-      "breakoutPrice": 6.546,
-      "reconfirmAt": null
-    },
     {
       "symbol": "CBRSUSDT",
       "patternType": "double_top",
@@ -1141,24 +1111,39 @@
       "breakoutIndex": 192,
       "breakoutPrice": 22.73,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "XIAOMIUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1d",
+      "direction": "LONG",
+      "strength": 61,
+      "detectedAt": "2026-11-16T22:30:56.663963+00:00",
+      "pushedAt": "2026-11-16T22:30:56.663963+00:00",
+      "cooldownUntil": "2026-11-17T22:30:56.663963+00:00",
+      "signalHash": "cdf9ae86d511921b",
+      "endMs": 1793289600000,
+      "breakoutIndex": 82,
+      "breakoutPrice": 3.585,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 696,
-    "failed_pairs": 6,
-    "candidates": 221,
-    "confirmed": 42,
-    "after_scoring": 28,
-    "after_dedup": 2,
-    "pushed": 2,
+    "scanned_pairs": 707,
+    "failed_pairs": 5,
+    "candidates": 229,
+    "confirmed": 41,
+    "after_scoring": 24,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 1,
-    "duration_seconds": 509.0,
+    "duration_seconds": 432.6,
     "source_stats": {
-      "okx": 696
+      "okx": 707
     },
     "health_stats": {
-      "healthy": 667,
-      "sensitive": 29
+      "healthy": 679,
+      "sensitive": 28
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1166,10 +1151,10 @@
       "rr": 1,
       "volume": 0,
       "geometry": 6,
-      "trend": 2,
-      "stale": 29,
-      "demote_hs_top": 5,
-      "demote_counter1h": 0,
+      "trend": 3,
+      "stale": 28,
+      "demote_hs_top": 6,
+      "demote_counter1h": 1,
       "demote_counter1d": 0
     }
   },
@@ -1573,6 +1558,22 @@
       "breakoutPrice": 182.81,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "KSTRUSDT",
+      "patternType": "head_shoulders_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-11-16T22:31:00.758797+00:00",
+      "pushedAt": "2026-11-16T22:31:00.758797+00:00",
+      "cooldownUntil": "2026-11-17T06:31:00.758797+00:00",
+      "signalHash": "31fbcd03dda1d9b9",
+      "endMs": 1794787200000,
+      "breakoutIndex": 295,
+      "breakoutPrice": 17.4,
+      "reconfirmAt": null,
+      "gate": "demote_hs_top"
     }
   ]
 }
