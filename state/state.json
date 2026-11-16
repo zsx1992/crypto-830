@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-16T11:58:11.787511+00:00",
+  "lastScanAt": "2026-11-16T12:10:11.732484+00:00",
   "pushedSignals": [
     {
       "symbol": "MVLLUSDT",
@@ -1096,24 +1096,54 @@
       "breakoutIndex": 289,
       "breakoutPrice": 0.1049,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "LINKUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 70,
+      "detectedAt": "2026-11-16T12:10:07.505853+00:00",
+      "pushedAt": "2026-11-16T12:10:07.505853+00:00",
+      "cooldownUntil": "2026-11-16T20:10:07.505853+00:00",
+      "signalHash": "42ccf8f77bc13e70",
+      "endMs": 1794528000000,
+      "breakoutIndex": 287,
+      "breakoutPrice": 9.273,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "MRVLUSDT",
+      "patternType": "ascending_channel",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 91,
+      "detectedAt": "2026-11-16T12:10:11.732295+00:00",
+      "pushedAt": "2026-11-16T12:10:11.732295+00:00",
+      "cooldownUntil": "2026-11-16T14:10:11.732295+00:00",
+      "signalHash": "aa381f587e819f5f",
+      "endMs": 1794531600000,
+      "breakoutIndex": 329,
+      "breakoutPrice": 156.17,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 666,
+    "scanned_pairs": 662,
     "failed_pairs": 4,
-    "candidates": 207,
+    "candidates": 211,
     "confirmed": 42,
-    "after_scoring": 26,
+    "after_scoring": 27,
     "after_dedup": 2,
     "pushed": 2,
-    "observed": 2,
-    "duration_seconds": 483.6,
+    "observed": 0,
+    "duration_seconds": 356.7,
     "source_stats": {
-      "okx": 666
+      "okx": 662
     },
     "health_stats": {
       "healthy": 632,
-      "sensitive": 34
+      "sensitive": 30
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1121,8 +1151,8 @@
       "rr": 1,
       "volume": 0,
       "geometry": 6,
-      "trend": 4,
-      "stale": 28,
+      "trend": 3,
+      "stale": 26,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 0
