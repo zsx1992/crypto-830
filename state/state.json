@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-17T04:49:56.850849+00:00",
+  "lastScanAt": "2026-11-17T07:52:23.955040+00:00",
   "pushedSignals": [
     {
       "symbol": "TRUMPUSDT",
@@ -1126,24 +1126,54 @@
       "breakoutIndex": 212,
       "breakoutPrice": 143.94,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "APTUSDT",
+      "patternType": "descending_channel",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 77,
+      "detectedAt": "2026-11-17T07:52:18.317633+00:00",
+      "pushedAt": "2026-11-17T07:52:18.317633+00:00",
+      "cooldownUntil": "2026-11-17T09:52:18.317633+00:00",
+      "signalHash": "66291ac8ccae53f6",
+      "endMs": 1794574800000,
+      "breakoutIndex": 334,
+      "breakoutPrice": 0.488,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "SHIBUSDT",
+      "patternType": "descending_channel",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 76,
+      "detectedAt": "2026-11-17T07:52:23.954735+00:00",
+      "pushedAt": "2026-11-17T07:52:23.954735+00:00",
+      "cooldownUntil": "2026-11-17T09:52:23.954735+00:00",
+      "signalHash": "a8a2323c3ab04ba9",
+      "endMs": 1794574800000,
+      "breakoutIndex": 334,
+      "breakoutPrice": 4.038e-06,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 711,
+    "scanned_pairs": 703,
     "failed_pairs": 5,
-    "candidates": 239,
-    "confirmed": 36,
-    "after_scoring": 22,
+    "candidates": 248,
+    "confirmed": 42,
+    "after_scoring": 27,
     "after_dedup": 2,
     "pushed": 2,
-    "observed": 1,
-    "duration_seconds": 482.4,
+    "observed": 0,
+    "duration_seconds": 547.8,
     "source_stats": {
-      "okx": 711
+      "okx": 703
     },
     "health_stats": {
-      "healthy": 677,
-      "sensitive": 34
+      "healthy": 668,
+      "sensitive": 35
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -1152,8 +1182,8 @@
       "volume": 0,
       "geometry": 5,
       "trend": 3,
-      "stale": 26,
-      "demote_hs_top": 5,
+      "stale": 30,
+      "demote_hs_top": 6,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
