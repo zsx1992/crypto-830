@@ -1,52 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-17T00:09:16.473601+00:00",
+  "lastScanAt": "2026-11-17T04:49:56.850849+00:00",
   "pushedSignals": [
-    {
-      "symbol": "DOSUSDT",
-      "patternType": "descending_channel",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 80,
-      "detectedAt": "2026-11-10T04:07:56.152030+00:00",
-      "pushedAt": "2026-11-10T04:07:56.152030+00:00",
-      "cooldownUntil": "2026-11-10T06:07:56.152030+00:00",
-      "signalHash": "923a8576881376b9",
-      "endMs": 1794207600000,
-      "breakoutIndex": 396,
-      "breakoutPrice": 0.1673,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "NBISUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 71,
-      "detectedAt": "2026-11-10T04:07:59.969274+00:00",
-      "pushedAt": "2026-11-10T04:07:59.969274+00:00",
-      "cooldownUntil": "2026-11-10T12:07:59.969274+00:00",
-      "signalHash": "e8c4a6f880655f80",
-      "endMs": 1793217600000,
-      "breakoutIndex": 254,
-      "breakoutPrice": 143.94,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "AKEUSDT",
-      "patternType": "double_top",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 58,
-      "detectedAt": "2026-11-10T04:28:58.393696+00:00",
-      "pushedAt": "2026-11-10T04:28:58.393696+00:00",
-      "cooldownUntil": "2026-11-10T04:58:58.393696+00:00",
-      "signalHash": "31fa4474e8a836c3",
-      "endMs": 1794127500000,
-      "breakoutIndex": 501,
-      "breakoutPrice": 0.004732,
-      "reconfirmAt": null
-    },
     {
       "symbol": "TRUMPUSDT",
       "patternType": "descending_channel",
@@ -1141,23 +1096,53 @@
       "breakoutIndex": 596,
       "breakoutPrice": 0.09343,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "BTCUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 74,
+      "detectedAt": "2026-11-17T04:49:49.418208+00:00",
+      "pushedAt": "2026-11-17T04:49:49.418208+00:00",
+      "cooldownUntil": "2026-11-17T12:49:49.418208+00:00",
+      "signalHash": "a769619725c8ff21",
+      "endMs": 1793793600000,
+      "breakoutIndex": 251,
+      "breakoutPrice": 73837.1,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "NBISUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-11-17T04:49:53.231117+00:00",
+      "pushedAt": "2026-11-17T04:49:53.231117+00:00",
+      "cooldownUntil": "2026-11-17T12:49:53.231117+00:00",
+      "signalHash": "e8c4a6f880655f80",
+      "endMs": 1793217600000,
+      "breakoutIndex": 212,
+      "breakoutPrice": 143.94,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 709,
+    "scanned_pairs": 711,
     "failed_pairs": 5,
-    "candidates": 235,
-    "confirmed": 44,
-    "after_scoring": 28,
+    "candidates": 239,
+    "confirmed": 36,
+    "after_scoring": 22,
     "after_dedup": 2,
     "pushed": 2,
-    "observed": 0,
-    "duration_seconds": 400.3,
+    "observed": 1,
+    "duration_seconds": 482.4,
     "source_stats": {
-      "okx": 709
+      "okx": 711
     },
     "health_stats": {
-      "healthy": 675,
+      "healthy": 677,
       "sensitive": 34
     },
     "kill_breakdown": {
@@ -1167,9 +1152,9 @@
       "volume": 0,
       "geometry": 5,
       "trend": 3,
-      "stale": 30,
-      "demote_hs_top": 6,
-      "demote_counter1h": 1,
+      "stale": 26,
+      "demote_hs_top": 5,
+      "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
@@ -1589,6 +1574,22 @@
       "breakoutPrice": 17.4,
       "reconfirmAt": null,
       "gate": "demote_hs_top"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "patternType": "double_top",
+      "interval": "1d",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-11-17T04:49:56.850704+00:00",
+      "pushedAt": "2026-11-17T04:49:56.850704+00:00",
+      "cooldownUntil": "2026-11-18T04:49:56.850704+00:00",
+      "signalHash": "9d6f620a282a811f",
+      "endMs": 1792598400000,
+      "breakoutIndex": 221,
+      "breakoutPrice": 77570.1,
+      "reconfirmAt": null,
+      "gate": "rr"
     }
   ]
 }
