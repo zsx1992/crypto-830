@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-18T13:39:31.149402+00:00",
+  "lastScanAt": "2026-11-18T14:30:05.528150+00:00",
   "pushedSignals": [
     {
       "symbol": "AVAXUSDT",
@@ -1039,7 +1039,7 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 767,
+    "scanned_pairs": 761,
     "failed_pairs": 5,
     "candidates": 247,
     "confirmed": 38,
@@ -1047,13 +1047,13 @@
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 599.2,
+    "duration_seconds": 405.1,
     "source_stats": {
-      "okx": 767
+      "okx": 761
     },
     "health_stats": {
-      "healthy": 728,
-      "sensitive": 39
+      "healthy": 719,
+      "sensitive": 42
     },
     "kill_breakdown": {
       "freshness": 0,
