@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-18T00:50:18.728623+00:00",
+  "lastScanAt": "2026-11-18T04:46:18.319145+00:00",
   "pushedSignals": [
     {
       "symbol": "LITUSDT",
@@ -1054,52 +1054,36 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 765,
+    "scanned_pairs": 749,
     "failed_pairs": 5,
-    "candidates": 242,
-    "confirmed": 41,
-    "after_scoring": 25,
+    "candidates": 246,
+    "confirmed": 39,
+    "after_scoring": 26,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 416.1,
+    "duration_seconds": 559.5,
     "source_stats": {
-      "okx": 765
+      "okx": 749
     },
     "health_stats": {
-      "healthy": 724,
-      "sensitive": 41
+      "healthy": 712,
+      "sensitive": 37
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
       "rr": 1,
       "volume": 0,
-      "geometry": 7,
-      "trend": 4,
-      "stale": 31,
+      "geometry": 5,
+      "trend": 3,
+      "stale": 28,
       "demote_hs_top": 4,
       "demote_counter1h": 0,
       "demote_counter1d": 0
     }
   },
   "observedSignals": [
-    {
-      "symbol": "CXMTUSDT",
-      "patternType": "descending_channel",
-      "interval": "1h",
-      "direction": "LONG",
-      "strength": 78,
-      "detectedAt": "2026-11-11T01:04:31.271858+00:00",
-      "pushedAt": "2026-11-11T01:04:31.271858+00:00",
-      "cooldownUntil": "2026-11-11T03:04:31.271858+00:00",
-      "signalHash": "a6ff7d10a4ac43e4",
-      "endMs": 1793689200000,
-      "breakoutIndex": 237,
-      "breakoutPrice": 6.546,
-      "reconfirmAt": null,
-      "gate": "demote_counter1d"
-    },
     {
       "symbol": "SAMSUNGUSDT",
       "patternType": "head_shoulders_top",
