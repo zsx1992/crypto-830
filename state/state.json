@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-19T22:28:27.903604+00:00",
+  "lastScanAt": "2026-11-19T23:36:49.525519+00:00",
   "pushedSignals": [
     {
       "symbol": "UPUSDT",
@@ -1054,20 +1054,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 758,
+    "scanned_pairs": 762,
     "failed_pairs": 4,
-    "candidates": 270,
+    "candidates": 271,
     "confirmed": 41,
     "after_scoring": 24,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 504.5,
+    "observed": 1,
+    "duration_seconds": 600.9,
     "source_stats": {
-      "okx": 758
+      "okx": 762
     },
     "health_stats": {
-      "healthy": 721,
+      "healthy": 725,
       "sensitive": 37
     },
     "kill_breakdown": {
@@ -1515,6 +1515,22 @@
       "breakoutPrice": 367.42,
       "reconfirmAt": null,
       "gate": "demote_counter1d"
+    },
+    {
+      "symbol": "SHIBUSDT",
+      "patternType": "descending_channel",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 82,
+      "detectedAt": "2026-11-19T23:36:49.525357+00:00",
+      "pushedAt": "2026-11-19T23:36:49.525357+00:00",
+      "cooldownUntil": "2026-11-20T01:36:49.525357+00:00",
+      "signalHash": "a8a2323c3ab04ba9",
+      "endMs": 1794574800000,
+      "breakoutIndex": 270,
+      "breakoutPrice": 4.038e-06,
+      "reconfirmAt": null,
+      "gate": "trend"
     }
   ]
 }
