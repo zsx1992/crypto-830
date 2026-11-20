@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-20T03:46:11.490383+00:00",
+  "lastScanAt": "2026-11-20T06:28:30.183882+00:00",
   "pushedSignals": [
     {
       "symbol": "DOGEUSDT",
@@ -1036,23 +1036,38 @@
       "breakoutIndex": 210,
       "breakoutPrice": 157.35,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SHIBUSDT",
+      "patternType": "descending_channel",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 84,
+      "detectedAt": "2026-11-20T06:28:30.183650+00:00",
+      "pushedAt": "2026-11-20T06:28:30.183650+00:00",
+      "cooldownUntil": "2026-11-20T08:28:30.183650+00:00",
+      "signalHash": "a8a2323c3ab04ba9",
+      "endMs": 1794574800000,
+      "breakoutIndex": 263,
+      "breakoutPrice": 4.038e-06,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 772,
+    "scanned_pairs": 774,
     "failed_pairs": 4,
-    "candidates": 265,
+    "candidates": 270,
     "confirmed": 41,
-    "after_scoring": 23,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_scoring": 24,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 577.8,
+    "duration_seconds": 401.8,
     "source_stats": {
-      "okx": 772
+      "okx": 774
     },
     "health_stats": {
-      "healthy": 733,
+      "healthy": 735,
       "sensitive": 39
     },
     "kill_breakdown": {
@@ -1061,8 +1076,8 @@
       "rr": 2,
       "volume": 0,
       "geometry": 6,
-      "trend": 5,
-      "stale": 32,
+      "trend": 4,
+      "stale": 33,
       "demote_hs_top": 5,
       "demote_counter1h": 0,
       "demote_counter1d": 0
