@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-21T11:39:56.943643+00:00",
+  "lastScanAt": "2026-11-21T12:23:27.971053+00:00",
   "pushedSignals": [
     {
       "symbol": "SKHYUSDT",
@@ -916,23 +916,53 @@
       "breakoutIndex": 168,
       "breakoutPrice": 1177.9,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "AVGOUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 80,
+      "detectedAt": "2026-11-21T12:23:22.256783+00:00",
+      "pushedAt": "2026-11-21T12:23:22.256783+00:00",
+      "cooldownUntil": "2026-11-21T20:23:22.256783+00:00",
+      "signalHash": "c62c69d8be6c90c4",
+      "endMs": 1795089600000,
+      "breakoutIndex": 293,
+      "breakoutPrice": 316.0,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "CRCLUSDT",
+      "patternType": "descending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 67,
+      "detectedAt": "2026-11-21T12:23:27.970785+00:00",
+      "pushedAt": "2026-11-21T12:23:27.970785+00:00",
+      "cooldownUntil": "2026-11-21T12:53:27.970785+00:00",
+      "signalHash": "cd16e7e7308e73e0",
+      "endMs": 1794920400000,
+      "breakoutIndex": 226,
+      "breakoutPrice": 55.89,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 827,
+    "scanned_pairs": 821,
     "failed_pairs": 3,
-    "candidates": 252,
-    "confirmed": 39,
-    "after_scoring": 27,
+    "candidates": 268,
+    "confirmed": 41,
+    "after_scoring": 28,
     "after_dedup": 2,
     "pushed": 2,
     "observed": 0,
-    "duration_seconds": 569.7,
+    "duration_seconds": 438.4,
     "source_stats": {
-      "okx": 827
+      "okx": 821
     },
     "health_stats": {
-      "healthy": 792,
+      "healthy": 786,
       "sensitive": 35
     },
     "kill_breakdown": {
@@ -942,10 +972,10 @@
       "volume": 0,
       "geometry": 4,
       "trend": 3,
-      "stale": 32,
+      "stale": 33,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
-      "demote_counter1d": 0
+      "demote_counter1d": 1
     }
   },
   "observedSignals": [
