@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-22T00:17:34.238587+00:00",
+  "lastScanAt": "2026-11-22T00:40:23.265495+00:00",
   "pushedSignals": [
     {
       "symbol": "CRCLUSDT",
@@ -841,24 +841,39 @@
       "breakoutIndex": 219,
       "breakoutPrice": 0.00571,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ETCUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 67,
+      "detectedAt": "2026-11-22T00:40:23.265219+00:00",
+      "pushedAt": "2026-11-22T00:40:23.265219+00:00",
+      "cooldownUntil": "2026-11-22T08:40:23.265219+00:00",
+      "signalHash": "e19e2efcb175c5c3",
+      "endMs": 1794168000000,
+      "breakoutIndex": 254,
+      "breakoutPrice": 6.142,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 667,
+    "scanned_pairs": 663,
     "failed_pairs": 1,
-    "candidates": 242,
+    "candidates": 244,
     "confirmed": 41,
     "after_scoring": 26,
-    "after_dedup": 2,
-    "pushed": 2,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 482.1,
+    "duration_seconds": 508.9,
     "source_stats": {
-      "okx": 667
+      "okx": 663
     },
     "health_stats": {
-      "healthy": 635,
-      "sensitive": 32
+      "healthy": 632,
+      "sensitive": 31
     },
     "kill_breakdown": {
       "freshness": 0,
