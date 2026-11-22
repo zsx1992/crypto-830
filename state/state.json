@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-22T16:36:00.368523+00:00",
+  "lastScanAt": "2026-11-22T18:09:26.667803+00:00",
   "pushedSignals": [
-    {
-      "symbol": "ZROUSDT",
-      "patternType": "descending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 86,
-      "detectedAt": "2026-11-15T18:06:29.354033+00:00",
-      "pushedAt": "2026-11-15T18:06:29.354033+00:00",
-      "cooldownUntil": "2026-11-15T18:36:29.354033+00:00",
-      "signalHash": "eef71efbd9614a1b",
-      "endMs": 1794733200000,
-      "breakoutIndex": 583,
-      "breakoutPrice": 1.3809,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "ZROUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 79,
-      "detectedAt": "2026-11-15T18:06:34.078915+00:00",
-      "pushedAt": "2026-11-15T18:06:34.078915+00:00",
-      "cooldownUntil": "2026-11-15T20:06:34.078915+00:00",
-      "signalHash": "231596ff3715748d",
-      "endMs": 1794574800000,
-      "breakoutIndex": 377,
-      "breakoutPrice": 1.4204,
-      "reconfirmAt": null
-    },
     {
       "symbol": "TRUMPUSDT",
       "patternType": "descending_channel",
@@ -856,55 +826,54 @@
       "breakoutIndex": 218,
       "breakoutPrice": 0.04497,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "ZROUSDT",
+      "patternType": "double_top",
+      "interval": "1h",
+      "direction": "SHORT",
+      "strength": 76,
+      "detectedAt": "2026-11-22T18:09:26.667554+00:00",
+      "pushedAt": "2026-11-22T18:09:26.667554+00:00",
+      "cooldownUntil": "2026-11-22T20:09:26.667554+00:00",
+      "signalHash": "231596ff3715748d",
+      "endMs": 1794574800000,
+      "breakoutIndex": 209,
+      "breakoutPrice": 1.4204,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
     "scanned_pairs": 527,
     "failed_pairs": 1,
-    "candidates": 203,
+    "candidates": 204,
     "confirmed": 34,
-    "after_scoring": 17,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_scoring": 18,
+    "after_dedup": 1,
+    "pushed": 1,
     "observed": 0,
-    "duration_seconds": 358.3,
+    "duration_seconds": 358.1,
     "source_stats": {
       "okx": 527
     },
     "health_stats": {
-      "healthy": 504,
-      "sensitive": 23
+      "healthy": 505,
+      "sensitive": 22
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
       "rr": 1,
       "volume": 0,
-      "geometry": 6,
-      "trend": 3,
-      "stale": 26,
+      "geometry": 5,
+      "trend": 2,
+      "stale": 27,
       "demote_hs_top": 1,
-      "demote_counter1h": 0,
+      "demote_counter1h": 1,
       "demote_counter1d": 6
     }
   },
   "observedSignals": [
-    {
-      "symbol": "ZROUSDT",
-      "patternType": "descending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 86,
-      "detectedAt": "2026-11-15T17:59:55.817519+00:00",
-      "pushedAt": "2026-11-15T17:59:55.817519+00:00",
-      "cooldownUntil": "2026-11-15T18:29:55.817519+00:00",
-      "signalHash": "eef71efbd9614a1b",
-      "endMs": 1794733200000,
-      "breakoutIndex": 584,
-      "breakoutPrice": 1.3809,
-      "reconfirmAt": null,
-      "gate": "demote_counter1h"
-    },
     {
       "symbol": "TRUMPUSDT",
       "patternType": "descending_channel",
