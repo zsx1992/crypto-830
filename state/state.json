@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-22T07:57:38.049196+00:00",
+  "lastScanAt": "2026-11-22T08:27:24.532039+00:00",
   "pushedSignals": [
     {
       "symbol": "JTOUSDT",
@@ -874,20 +874,20 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 557,
+    "scanned_pairs": 553,
     "failed_pairs": 1,
-    "candidates": 208,
-    "confirmed": 36,
-    "after_scoring": 23,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 378.7,
+    "candidates": 207,
+    "confirmed": 35,
+    "after_scoring": 21,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 402.8,
     "source_stats": {
-      "okx": 557
+      "okx": 553
     },
     "health_stats": {
-      "healthy": 532,
+      "healthy": 528,
       "sensitive": 25
     },
     "kill_breakdown": {
@@ -896,7 +896,7 @@
       "rr": 1,
       "volume": 0,
       "geometry": 6,
-      "trend": 1,
+      "trend": 2,
       "stale": 31,
       "demote_hs_top": 2,
       "demote_counter1h": 0,
