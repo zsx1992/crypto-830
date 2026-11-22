@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-22T08:27:24.532039+00:00",
+  "lastScanAt": "2026-11-22T10:27:17.581947+00:00",
   "pushedSignals": [
     {
       "symbol": "JTOUSDT",
@@ -874,33 +874,33 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 553,
+    "scanned_pairs": 567,
     "failed_pairs": 1,
-    "candidates": 207,
+    "candidates": 210,
     "confirmed": 35,
-    "after_scoring": 21,
+    "after_scoring": 19,
     "after_dedup": 0,
     "pushed": 0,
-    "observed": 0,
-    "duration_seconds": 402.8,
+    "observed": 1,
+    "duration_seconds": 417.2,
     "source_stats": {
-      "okx": 553
+      "okx": 567
     },
     "health_stats": {
-      "healthy": 528,
-      "sensitive": 25
+      "healthy": 541,
+      "sensitive": 26
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
       "rr": 1,
       "volume": 0,
-      "geometry": 6,
-      "trend": 2,
-      "stale": 31,
+      "geometry": 5,
+      "trend": 3,
+      "stale": 28,
       "demote_hs_top": 2,
       "demote_counter1h": 0,
-      "demote_counter1d": 3
+      "demote_counter1d": 5
     }
   },
   "observedSignals": [
@@ -1383,6 +1383,22 @@
       "breakoutPrice": 0.0279,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "BERAUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "15m",
+      "direction": "LONG",
+      "strength": 78,
+      "detectedAt": "2026-11-22T10:27:17.581762+00:00",
+      "pushedAt": "2026-11-22T10:27:17.581762+00:00",
+      "cooldownUntil": "2026-11-22T10:57:17.581762+00:00",
+      "signalHash": "cd6ca90aa5aab5c4",
+      "endMs": 1795296600000,
+      "breakoutIndex": 597,
+      "breakoutPrice": 0.07866,
+      "reconfirmAt": null,
+      "gate": "demote_counter1d"
     }
   ]
 }
