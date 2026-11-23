@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-22T23:56:11.213328+00:00",
+  "lastScanAt": "2026-11-23T02:30:04.698407+00:00",
   "pushedSignals": [
     {
       "symbol": "BONKUSDT",
@@ -829,21 +829,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 533,
+    "scanned_pairs": 569,
     "failed_pairs": 1,
-    "candidates": 212,
-    "confirmed": 36,
-    "after_scoring": 18,
+    "candidates": 225,
+    "confirmed": 37,
+    "after_scoring": 19,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 0,
-    "duration_seconds": 273.8,
+    "duration_seconds": 440.6,
     "source_stats": {
-      "okx": 533
+      "okx": 569
     },
     "health_stats": {
-      "healthy": 510,
-      "sensitive": 23
+      "healthy": 540,
+      "sensitive": 29
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -851,30 +851,14 @@
       "rr": 1,
       "volume": 0,
       "geometry": 6,
-      "trend": 1,
-      "stale": 29,
-      "demote_hs_top": 1,
-      "demote_counter1h": 2,
-      "demote_counter1d": 7
+      "trend": 2,
+      "stale": 30,
+      "demote_hs_top": 2,
+      "demote_counter1h": 1,
+      "demote_counter1d": 6
     }
   },
   "observedSignals": [
-    {
-      "symbol": "TQQQUSDT",
-      "patternType": "ascending_channel",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 84,
-      "detectedAt": "2026-11-15T23:58:22.906077+00:00",
-      "pushedAt": "2026-11-15T23:58:22.906077+00:00",
-      "cooldownUntil": "2026-11-16T01:58:22.906077+00:00",
-      "signalHash": "a8e7346266c96f8a",
-      "endMs": 1794556800000,
-      "breakoutIndex": 342,
-      "breakoutPrice": 58.08,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "FARTCOINUSDT",
       "patternType": "double_top",
