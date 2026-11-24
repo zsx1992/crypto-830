@@ -1,37 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-24T02:36:25.249234+00:00",
+  "lastScanAt": "2026-11-24T05:09:35.529585+00:00",
   "pushedSignals": [
-    {
-      "symbol": "BTCUSDT",
-      "patternType": "descending_channel",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 74,
-      "detectedAt": "2026-11-17T04:49:49.418208+00:00",
-      "pushedAt": "2026-11-17T04:49:49.418208+00:00",
-      "cooldownUntil": "2026-11-17T12:49:49.418208+00:00",
-      "signalHash": "a769619725c8ff21",
-      "endMs": 1793793600000,
-      "breakoutIndex": 251,
-      "breakoutPrice": 73837.1,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "NBISUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 72,
-      "detectedAt": "2026-11-17T04:49:53.231117+00:00",
-      "pushedAt": "2026-11-17T04:49:53.231117+00:00",
-      "cooldownUntil": "2026-11-17T12:49:53.231117+00:00",
-      "signalHash": "e8c4a6f880655f80",
-      "endMs": 1793217600000,
-      "breakoutIndex": 212,
-      "breakoutPrice": 143.94,
-      "reconfirmAt": null
-    },
     {
       "symbol": "APTUSDT",
       "patternType": "descending_channel",
@@ -751,32 +721,47 @@
       "breakoutIndex": 82,
       "breakoutPrice": 3.585,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "NBISUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 72,
+      "detectedAt": "2026-11-24T05:09:35.529342+00:00",
+      "pushedAt": "2026-11-24T05:09:35.529342+00:00",
+      "cooldownUntil": "2026-11-24T13:09:35.529342+00:00",
+      "signalHash": "e8c4a6f880655f80",
+      "endMs": 1793217600000,
+      "breakoutIndex": 170,
+      "breakoutPrice": 143.94,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 798,
+    "scanned_pairs": 800,
     "failed_pairs": 2,
-    "candidates": 271,
+    "candidates": 264,
     "confirmed": 37,
     "after_scoring": 18,
-    "after_dedup": 0,
-    "pushed": 0,
-    "observed": 2,
-    "duration_seconds": 606.8,
+    "after_dedup": 1,
+    "pushed": 1,
+    "observed": 0,
+    "duration_seconds": 592.1,
     "source_stats": {
-      "okx": 798
+      "okx": 800
     },
     "health_stats": {
-      "healthy": 758,
-      "sensitive": 40
+      "healthy": 761,
+      "sensitive": 39
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
-      "rr": 2,
+      "rr": 1,
       "volume": 0,
       "geometry": 5,
-      "trend": 5,
+      "trend": 6,
       "stale": 31,
       "demote_hs_top": 2,
       "demote_counter1h": 0,
@@ -784,22 +769,6 @@
     }
   },
   "observedSignals": [
-    {
-      "symbol": "BTCUSDT",
-      "patternType": "double_top",
-      "interval": "1d",
-      "direction": "SHORT",
-      "strength": 72,
-      "detectedAt": "2026-11-17T04:49:56.850704+00:00",
-      "pushedAt": "2026-11-17T04:49:56.850704+00:00",
-      "cooldownUntil": "2026-11-18T04:49:56.850704+00:00",
-      "signalHash": "9d6f620a282a811f",
-      "endMs": 1792598400000,
-      "breakoutIndex": 221,
-      "breakoutPrice": 77570.1,
-      "reconfirmAt": null,
-      "gate": "rr"
-    },
     {
       "symbol": "ZROUSDT",
       "patternType": "double_top",
