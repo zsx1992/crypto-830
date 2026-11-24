@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-24T14:11:39.650203+00:00",
+  "lastScanAt": "2026-11-24T16:35:33.901227+00:00",
   "pushedSignals": [
-    {
-      "symbol": "SHIBUSDT",
-      "patternType": "descending_channel",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 82,
-      "detectedAt": "2026-11-17T14:52:47.229966+00:00",
-      "pushedAt": "2026-11-17T14:52:47.229966+00:00",
-      "cooldownUntil": "2026-11-17T22:52:47.229966+00:00",
-      "signalHash": "ab11e71355f588f6",
-      "endMs": 1794168000000,
-      "breakoutIndex": 281,
-      "breakoutPrice": 4.036e-06,
-      "reconfirmAt": null
-    },
     {
       "symbol": "TRXUSDT",
       "patternType": "ascending_channel",
@@ -751,55 +736,54 @@
       "breakoutIndex": 215,
       "breakoutPrice": 1093.45,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "SHIBUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 79,
+      "detectedAt": "2026-11-24T16:35:33.901001+00:00",
+      "pushedAt": "2026-11-24T16:35:33.901001+00:00",
+      "cooldownUntil": "2026-11-25T00:35:33.901001+00:00",
+      "signalHash": "ab11e71355f588f6",
+      "endMs": 1794168000000,
+      "breakoutIndex": 238,
+      "breakoutPrice": 4.036e-06,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 784,
-    "failed_pairs": 2,
-    "candidates": 271,
-    "confirmed": 39,
-    "after_scoring": 19,
+    "scanned_pairs": 729,
+    "failed_pairs": 1,
+    "candidates": 242,
+    "confirmed": 41,
+    "after_scoring": 20,
     "after_dedup": 1,
     "pushed": 1,
     "observed": 0,
-    "duration_seconds": 571.4,
+    "duration_seconds": 416.8,
     "source_stats": {
-      "okx": 784
+      "okx": 729
     },
     "health_stats": {
-      "healthy": 743,
-      "sensitive": 41
+      "healthy": 697,
+      "sensitive": 32
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
       "rr": 2,
       "volume": 0,
-      "geometry": 6,
-      "trend": 7,
-      "stale": 35,
-      "demote_hs_top": 1,
+      "geometry": 7,
+      "trend": 6,
+      "stale": 37,
+      "demote_hs_top": 3,
       "demote_counter1h": 0,
-      "demote_counter1d": 4
+      "demote_counter1d": 3
     }
   },
   "observedSignals": [
-    {
-      "symbol": "ZROUSDT",
-      "patternType": "double_top",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 73,
-      "detectedAt": "2026-11-17T14:52:51.733028+00:00",
-      "pushedAt": "2026-11-17T14:52:51.733028+00:00",
-      "cooldownUntil": "2026-11-17T16:52:51.733028+00:00",
-      "signalHash": "231596ff3715748d",
-      "endMs": 1794574800000,
-      "breakoutIndex": 333,
-      "breakoutPrice": 1.4204,
-      "reconfirmAt": null,
-      "gate": "trend"
-    },
     {
       "symbol": "PIPPINUSDT",
       "patternType": "descending_channel",
