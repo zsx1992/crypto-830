@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-26T22:33:55.541658+00:00",
+  "lastScanAt": "2026-11-26T22:44:33.885261+00:00",
   "pushedSignals": [
     {
       "symbol": "SHIBUSDT",
@@ -664,21 +664,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 628,
+    "scanned_pairs": 624,
     "failed_pairs": 4,
     "candidates": 259,
     "confirmed": 37,
     "after_scoring": 16,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 2,
-    "duration_seconds": 314.5,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 461.3,
     "source_stats": {
-      "okx": 628
+      "okx": 624
     },
     "health_stats": {
-      "healthy": 605,
-      "sensitive": 23
+      "healthy": 602,
+      "sensitive": 22
     },
     "kill_breakdown": {
       "freshness": 0,
