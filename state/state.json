@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-27T23:06:24.658110+00:00",
+  "lastScanAt": "2026-11-27T23:48:01.037039+00:00",
   "pushedSignals": [
     {
       "symbol": "WDCUSDT",
@@ -586,24 +586,39 @@
       "breakoutIndex": 328,
       "breakoutPrice": 0.004501,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "AMDUSDT",
+      "patternType": "ascending_channel",
+      "interval": "15m",
+      "direction": "SHORT",
+      "strength": 80,
+      "detectedAt": "2026-11-27T23:48:01.036752+00:00",
+      "pushedAt": "2026-11-27T23:48:01.036752+00:00",
+      "cooldownUntil": "2026-11-28T00:18:01.036752+00:00",
+      "signalHash": "f6a148fd13d6acb8",
+      "endMs": 1795489200000,
+      "breakoutIndex": 252,
+      "breakoutPrice": 442.45,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 718,
+    "scanned_pairs": 710,
     "failed_pairs": 6,
-    "candidates": 310,
-    "confirmed": 41,
-    "after_scoring": 14,
+    "candidates": 305,
+    "confirmed": 42,
+    "after_scoring": 15,
     "after_dedup": 1,
     "pushed": 1,
     "observed": 0,
-    "duration_seconds": 492.3,
+    "duration_seconds": 529.5,
     "source_stats": {
-      "okx": 718
+      "okx": 710
     },
     "health_stats": {
-      "healthy": 690,
-      "sensitive": 28
+      "healthy": 683,
+      "sensitive": 27
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -612,9 +627,9 @@
       "volume": 0,
       "geometry": 5,
       "trend": 6,
-      "stale": 29,
-      "demote_hs_top": 4,
-      "demote_counter1h": 1,
+      "stale": 30,
+      "demote_hs_top": 3,
+      "demote_counter1h": 2,
       "demote_counter1d": 10
     }
   },
