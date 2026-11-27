@@ -1,22 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-27T05:20:30.401216+00:00",
+  "lastScanAt": "2026-11-27T07:32:51.286969+00:00",
   "pushedSignals": [
-    {
-      "symbol": "SHIBUSDT",
-      "patternType": "descending_channel",
-      "interval": "1h",
-      "direction": "SHORT",
-      "strength": 84,
-      "detectedAt": "2026-11-20T06:28:30.183650+00:00",
-      "pushedAt": "2026-11-20T06:28:30.183650+00:00",
-      "cooldownUntil": "2026-11-20T08:28:30.183650+00:00",
-      "signalHash": "a8a2323c3ab04ba9",
-      "endMs": 1794574800000,
-      "breakoutIndex": 263,
-      "breakoutPrice": 4.038e-06,
-      "reconfirmAt": null
-    },
     {
       "symbol": "ARUSDT",
       "patternType": "descending_channel",
@@ -664,21 +649,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 640,
+    "scanned_pairs": 648,
     "failed_pairs": 2,
-    "candidates": 275,
-    "confirmed": 43,
+    "candidates": 274,
+    "confirmed": 42,
     "after_scoring": 13,
     "after_dedup": 0,
     "pushed": 0,
     "observed": 1,
-    "duration_seconds": 448.6,
+    "duration_seconds": 473.0,
     "source_stats": {
-      "okx": 640
+      "okx": 648
     },
     "health_stats": {
-      "healthy": 615,
-      "sensitive": 25
+      "healthy": 624,
+      "sensitive": 24
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -686,8 +671,8 @@
       "rr": 3,
       "volume": 0,
       "geometry": 5,
-      "trend": 8,
-      "stale": 31,
+      "trend": 7,
+      "stale": 29,
       "demote_hs_top": 3,
       "demote_counter1h": 0,
       "demote_counter1d": 11
@@ -1269,6 +1254,22 @@
       "breakoutPrice": 0.4944,
       "reconfirmAt": null,
       "gate": "trend"
+    },
+    {
+      "symbol": "LITEUSDT",
+      "patternType": "head_shoulders_bottom",
+      "interval": "1h",
+      "direction": "LONG",
+      "strength": 75,
+      "detectedAt": "2026-11-27T07:32:51.286781+00:00",
+      "pushedAt": "2026-11-27T07:32:51.286781+00:00",
+      "cooldownUntil": "2026-11-27T09:32:51.286781+00:00",
+      "signalHash": "516d0adc77c33d2f",
+      "endMs": 1795687200000,
+      "breakoutIndex": 393,
+      "breakoutPrice": 495.97,
+      "reconfirmAt": null,
+      "gate": "demote_counter1d"
     }
   ]
 }
