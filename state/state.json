@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-28T01:21:27.182267+00:00",
+  "lastScanAt": "2026-11-28T05:04:44.284198+00:00",
   "pushedSignals": [
     {
       "symbol": "WDCUSDT",
@@ -619,21 +619,21 @@
     }
   ],
   "scanStats": {
-    "scanned_pairs": 708,
-    "failed_pairs": 6,
-    "candidates": 308,
-    "confirmed": 47,
-    "after_scoring": 15,
-    "after_dedup": 1,
-    "pushed": 1,
-    "observed": 1,
-    "duration_seconds": 397.6,
+    "scanned_pairs": 681,
+    "failed_pairs": 5,
+    "candidates": 280,
+    "confirmed": 45,
+    "after_scoring": 14,
+    "after_dedup": 0,
+    "pushed": 0,
+    "observed": 0,
+    "duration_seconds": 340.5,
     "source_stats": {
-      "okx": 708
+      "okx": 681
     },
     "health_stats": {
-      "healthy": 676,
-      "sensitive": 32
+      "healthy": 656,
+      "sensitive": 25
     },
     "kill_breakdown": {
       "freshness": 0,
@@ -642,9 +642,9 @@
       "volume": 0,
       "geometry": 5,
       "trend": 7,
-      "stale": 35,
+      "stale": 33,
       "demote_hs_top": 3,
-      "demote_counter1h": 4,
+      "demote_counter1h": 3,
       "demote_counter1d": 11
     }
   },
