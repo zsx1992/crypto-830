@@ -1,67 +1,7 @@
 {
   "version": 1,
-  "lastScanAt": "2026-11-28T10:01:52.290015+00:00",
+  "lastScanAt": "2026-11-28T14:40:40.570036+00:00",
   "pushedSignals": [
-    {
-      "symbol": "CBRSUSDT",
-      "patternType": "ascending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 81,
-      "detectedAt": "2026-11-21T11:39:52.981616+00:00",
-      "pushedAt": "2026-11-21T11:39:52.981616+00:00",
-      "cooldownUntil": "2026-11-21T12:09:52.981616+00:00",
-      "signalHash": "b38b6a73b5e7816c",
-      "endMs": 1794996000000,
-      "breakoutIndex": 323,
-      "breakoutPrice": 96.73,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "SNDKUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 69,
-      "detectedAt": "2026-11-21T11:39:56.943353+00:00",
-      "pushedAt": "2026-11-21T11:39:56.943353+00:00",
-      "cooldownUntil": "2026-11-21T19:39:56.943353+00:00",
-      "signalHash": "c7e0ef336394a6e7",
-      "endMs": 1793217600000,
-      "breakoutIndex": 168,
-      "breakoutPrice": 1177.9,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "AVGOUSDT",
-      "patternType": "double_top",
-      "interval": "4h",
-      "direction": "SHORT",
-      "strength": 80,
-      "detectedAt": "2026-11-21T12:23:22.256783+00:00",
-      "pushedAt": "2026-11-21T12:23:22.256783+00:00",
-      "cooldownUntil": "2026-11-21T20:23:22.256783+00:00",
-      "signalHash": "c62c69d8be6c90c4",
-      "endMs": 1795089600000,
-      "breakoutIndex": 293,
-      "breakoutPrice": 316.0,
-      "reconfirmAt": null
-    },
-    {
-      "symbol": "CRCLUSDT",
-      "patternType": "descending_channel",
-      "interval": "15m",
-      "direction": "SHORT",
-      "strength": 67,
-      "detectedAt": "2026-11-21T12:23:27.970785+00:00",
-      "pushedAt": "2026-11-21T12:23:27.970785+00:00",
-      "cooldownUntil": "2026-11-21T12:53:27.970785+00:00",
-      "signalHash": "cd16e7e7308e73e0",
-      "endMs": 1794920400000,
-      "breakoutIndex": 226,
-      "breakoutPrice": 55.89,
-      "reconfirmAt": null
-    },
     {
       "symbol": "ONDOUSDT",
       "patternType": "descending_channel",
@@ -586,36 +526,66 @@
       "breakoutIndex": 239,
       "breakoutPrice": 5.977,
       "reconfirmAt": null
+    },
+    {
+      "symbol": "AVGOUSDT",
+      "patternType": "double_top",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 83,
+      "detectedAt": "2026-11-28T14:40:36.143340+00:00",
+      "pushedAt": "2026-11-28T14:40:36.143340+00:00",
+      "cooldownUntil": "2026-11-28T22:40:36.143340+00:00",
+      "signalHash": "c62c69d8be6c90c4",
+      "endMs": 1795089600000,
+      "breakoutIndex": 251,
+      "breakoutPrice": 316.0,
+      "reconfirmAt": null
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "patternType": "descending_channel",
+      "interval": "4h",
+      "direction": "SHORT",
+      "strength": 82,
+      "detectedAt": "2026-11-28T14:40:40.569739+00:00",
+      "pushedAt": "2026-11-28T14:40:40.569739+00:00",
+      "cooldownUntil": "2026-11-28T22:40:40.569739+00:00",
+      "signalHash": "bbd692303f149889",
+      "endMs": 1794240000000,
+      "breakoutIndex": 217,
+      "breakoutPrice": 7.094,
+      "reconfirmAt": null
     }
   ],
   "scanStats": {
-    "scanned_pairs": 667,
-    "failed_pairs": 3,
-    "candidates": 264,
+    "scanned_pairs": 637,
+    "failed_pairs": 1,
+    "candidates": 257,
     "confirmed": 40,
-    "after_scoring": 13,
-    "after_dedup": 0,
-    "pushed": 0,
+    "after_scoring": 15,
+    "after_dedup": 2,
+    "pushed": 2,
     "observed": 0,
-    "duration_seconds": 353.8,
+    "duration_seconds": 472.4,
     "source_stats": {
-      "okx": 667
+      "okx": 637
     },
     "health_stats": {
-      "healthy": 641,
-      "sensitive": 26
+      "healthy": 608,
+      "sensitive": 29
     },
     "kill_breakdown": {
       "freshness": 0,
       "strength": 0,
       "rr": 1,
       "volume": 0,
-      "geometry": 5,
-      "trend": 9,
-      "stale": 30,
+      "geometry": 6,
+      "trend": 8,
+      "stale": 32,
       "demote_hs_top": 2,
       "demote_counter1h": 0,
-      "demote_counter1d": 10
+      "demote_counter1d": 8
     }
   },
   "observedSignals": [
